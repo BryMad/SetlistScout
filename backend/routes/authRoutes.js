@@ -91,7 +91,7 @@ router.get('/callback', async (req, res) => {
 <html>
 <body>
 <script>
-  window.opener.postMessage('authenticated', 'http://localhost:5173');
+  window.opener.postMessage('authenticated', 'https://setlistscout.onrender.com');
   window.close();
 </script>
 </body>

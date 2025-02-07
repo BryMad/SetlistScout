@@ -34,7 +34,7 @@ app.use(express.json());
 
 // Configure CORS
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://setlistscout.onrender.com',
   credentials: true,
 }));
 
