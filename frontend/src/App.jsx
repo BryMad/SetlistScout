@@ -21,8 +21,10 @@ import UserInput from "./components/UserInput";
 import TracksHUD from "./components/TracksHUD";
 import { extractSetlistID } from "./utils/setlistHelpers";
 
+export const server_url =
+  import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+
 function App() {
-  // console.log(import.meta.env.SETLIST_API);
   const [userInput, setUserInput] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [spotifyData, setSpotifyData] = useState([]);
@@ -33,7 +35,7 @@ function App() {
   // Event listener for login status in popup window
   useEffect(() => {
     const handleMessage = (event) => {
-      if (event.origin !== "http://localhost:3000") return;
+      if (event.origin !== server_url) return;
       if (event.data === "authenticated") {
         setLoggedIn(true);
       }
@@ -53,7 +55,7 @@ function App() {
 
       // Send POST request to backend
       const response = await axios.post(
-        "http://localhost:3000/playlist/create_playlist",
+        `${server_url}/playlist/create_playlist`,
         {
           track_ids: track_ids,
           band: tourData.bandName,
@@ -79,7 +81,7 @@ function App() {
     const height = 730;
     const left = window.screenX + (window.innerWidth - width) / 2;
     const top = window.screenY + (window.innerHeight - height) / 2;
-    const url = "http://localhost:3000/auth/login";
+    const url = `${server_url}/auth/login`;
 
     window.open(
       url,
@@ -92,7 +94,7 @@ function App() {
     setLoading(true);
     setDisplayError(null);
     try {
-      const response = await fetch("http://localhost:3000/setlist", {
+      const response = await fetch(`${server_url}/setlist`, {
         method: "post",
         cors: "cors",
         headers: {
