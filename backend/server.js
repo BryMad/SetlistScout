@@ -40,13 +40,13 @@ const store = new RedisStore({ client: redisClient }); // Updated initialization
 
 // Session Middleware
 app.use(session({
-  store: store, // Updated usage
+  store: store,
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production', // Must be true in production.
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   },
 }));
 
