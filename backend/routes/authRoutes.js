@@ -19,11 +19,13 @@ const redirect_uri = process.env.REDIRECT_URI;
 // Spotify Login route
 router.get('/login', (req, res) => {
   const state = generateRandomString(16);
+  console.log('login state:', state);
   const scope = 'playlist-modify-public';
   // Store state in session for verification
   req.session.state = state;
   // debug
   // console.log("/LOGIN");
+  console.log("STRINGIFY:====")
   console.log(querystring.stringify({
     response_type: 'code',
     client_id: client_id,
@@ -45,10 +47,16 @@ router.get('/login', (req, res) => {
 
 // Spotify Callback route
 router.get('/callback', async (req, res) => {
+
   try {
+    console.log('Host header:', req.headers.host);
     const code = req.query.code || null;
     const state = req.query.state || null;
+    console.log('code:', code);
+    console.log('callback state:', state);
     const storedState = req.session.state || null;
+    console.log("storedState: ", storedState);
+    console.log("state: ", state);
 
     if (state === null || state !== storedState) {
       console.log('it was REDIRECT 45');
@@ -86,26 +94,27 @@ router.get('/callback', async (req, res) => {
       req.session.user_id = userResponse.data.id;
       console.log('User ID:', req.session.user_id);
       console.log('it was REDIRECT 78');
-      // Redirect to frontend 
+      const frontEndURL = process.env.NODE_ENV === 'production'
+        ? 'https://setlistscout.onrender.com'
+        : 'http://localhost:5173';
+
+
+      // Redirect to frontend
       res.send(`<!DOCTYPE html>
 <html>
 <body>
 <script>
-  window.opener.postMessage('authenticated', 'https://setlistscout.onrender.com');
+  window.opener.postMessage('authenticated', '${frontEndURL}');
   window.close();
 </script>
 </body>
 </html>`);
     } else {
-      console.log('it was REDIRECT 88');
       res.redirect('/error?error=invalid_token');
     }
   } catch (error) {
     console.error('Error exchanging code for token:', error);
-    console.log('it was REDIRECT 96');
-
     res.redirect('/error?error=exception');
   }
 });
-
 module.exports = router;
