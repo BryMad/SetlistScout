@@ -12,6 +12,8 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  Link,
+  Text,
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.css";
@@ -102,12 +104,19 @@ function App() {
         },
         body: JSON.stringify({ listID: extractSetlistID(userInput) }),
       });
-      if (response.status === 400) {
-        setDisplayError(
-          "Please find a different setlist with tour information"
-        );
-        console.log("response: ", response);
-        throw new Error("data not found");
+      if (!response.ok) {
+        const errorData = await response.json();
+        if (response.status === 429) {
+          setDisplayError(
+            "Too many requests. Setlist.fm is rate-limiting us. Please try again later."
+          );
+        } else {
+          // Fallback for 400, 500, etc.
+          setDisplayError(errorData.error || "An error occurred.");
+        }
+
+        // We exit here, so we don't process further.
+        return;
       }
       const data = await response.json();
 
@@ -136,7 +145,13 @@ function App() {
                 fetchSetlists={fetchSetlists}
               />
               {displayError && (
-                <Alert status="error" mt={4} borderRadius="md">
+                <Alert
+                  status="error"
+                  mt={4}
+                  borderRadius="md"
+                  bg="red.800"
+                  color="white"
+                >
                   <AlertIcon />
                   <AlertTitle mr={2}>Error:</AlertTitle>
                   <AlertDescription>{displayError}</AlertDescription>
@@ -154,6 +169,32 @@ function App() {
               />
             </Box>
           </SimpleGrid>
+          <Box mt={8} textAlign="center" fontSize="sm" opacity={0.8}>
+            <Text>
+              This app uses the Spotify API but is not endorsed, certified, or
+              otherwise approved by Spotify. Spotify is a registered trademark
+              of Spotify AB.
+            </Text>
+            <Text>
+              Please see{" "}
+              <Link
+                href="https://developer.spotify.com/policy"
+                color="blue.300"
+                isExternal
+              >
+                Spotify Developer Policy
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="https://developer.spotify.com/documentation/design"
+                color="blue.300"
+                isExternal
+              >
+                Brand Guidelines
+              </Link>{" "}
+              for more info.
+            </Text>
+          </Box>
         </Container>
       </Box>
     </ChakraProvider>

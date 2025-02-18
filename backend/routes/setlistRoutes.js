@@ -9,27 +9,34 @@ const { getSpotifySongInfo } = require("../utils/spotifyAPIRequests.js");
 
 router.post('/', async (req, res) => {
   try {
-
     const tourInfo = await getTourName(req.body.listID);
-    console.log("======tourInfo:===== ", tourInfo);
+    console.log("tourInfo: ", tourInfo);
 
-    // If setlist has no tour information, set status, return error
+    // If setlist has no tour information, return error
     if (!tourInfo.tourName) {
       return res.status(400).json({ error: "This Setlist does not have tour information" });
     }
     console.log("tourInfo: ", tourInfo);
     await delay(600);
-    // Get all tour songs played during the tour from setlist.fm API call
+    // Fetch all tour songs using setlist.fm API.
     const allTourInfo = await getAllTourSongs(
       tourInfo.bandName,
       tourInfo.tourName
     );
-    // Handle error if no tour information is returned
+    // If the function returned an error, handle it:
     if (!allTourInfo || !Array.isArray(allTourInfo)) {
-      return res.status(400).json({ error: "Server is busy. Please try again" });
+      if (allTourInfo && allTourInfo.statusCode) {
+        return res
+          .status(allTourInfo.statusCode)
+          .json({ error: allTourInfo.message });
+      }
+      // Otherwise, default to 400.
+      return res
+        .status(400)
+        .json({ error: "Server is busy. Please try again." });
     }
 
-    // Parse all tour songs to get ordered song list
+    // Compile an ordered list of songs from the tour info.
     const tourInfoOrdered = getSongTally(allTourInfo);
     const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered);
     const tourData = {
@@ -42,7 +49,7 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.error('Error in /setlist route:', error);
 
-    // Check if the error is a 504 Gateway Timeout
+    // Handle 504 Gateway Timeout specifically.
     if (error.response && error.response.status === 504) {
       return res.status(504).json({
         error: "Setlist.fm service is currently unavailable. Please try again later."
