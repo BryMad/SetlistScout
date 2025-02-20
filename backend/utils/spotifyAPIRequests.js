@@ -107,6 +107,39 @@ const searchSingleSong = async (token) => {
   }
 }
 
+const searchArtist = async (token, artistName) => {
+  // const query = `q:${artistName}`;
+  logger.info("Searching for Artist", { artistName });
+  const queryParams = new URLSearchParams({
+    q: artistName,
+    type: 'artist',
+    limit: 10
+  });
+  const url = `https://api.spotify.com/v1/search?${queryParams.toString()}`;
+  // console.log("ARTIST URL: ======", url)
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    logger.info("Artist search successful", { artistName });
+
+    return response.data.artists.items.map((artist) => ({
+      name: artist.name,
+      // id: artist.id,
+      image: artist.images[2] ? artist.images[2] : artist.images[0],
+      // genres: artist.genres,
+      // followers: artist.followers.total
+    }));
+  } catch (error) {
+    logger.error("Error searching artist", { artistName, error: error.message });
+    throw error;
+  }
+
+}
+
+
 const searchSong = async (token, artistName, trackName) => {
   const query = `track:${trackName} artist:${artistName}`;
   logger.info("Searching for song", { artistName, trackName });
@@ -158,4 +191,4 @@ const getSpotifySongInfo = async (songList) => {
   }
 }
 
-module.exports = { getSpotifySongInfo }
+module.exports = { searchArtist, getSpotifySongInfo, getAccessToken }

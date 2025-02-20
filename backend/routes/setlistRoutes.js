@@ -5,7 +5,7 @@ const {
   getAllTourSongs, delay
 } = require("../utils/setlistAPIRequests.js");
 const { getSongTally } = require("../utils/setlistFormatData.js");
-const { getSpotifySongInfo } = require("../utils/spotifyAPIRequests.js");
+const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/spotifyAPIRequests.js");
 
 router.post('/', async (req, res) => {
   try {
@@ -66,4 +66,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/artist_search', async (req, res) => {
+  try {
+    const token = await getAccessToken();
+    const search_query = req.body.artistName;
+    const searchResults = await searchArtist(token, search_query);
+    res.json(searchResults);
+  } catch (error) {
+    console.error('Error in /artist_search route:', error);
+    res.status(500).json({ error: "Internal Server Error. Please try again later." });
+  }
+}
+);
 module.exports = router;
