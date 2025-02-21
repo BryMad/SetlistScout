@@ -33,6 +33,7 @@ function App() {
   const [tourData, setTourData] = useState({});
   const [displayError, setDisplayError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
 
   // Event listener for login status in popup window
   useEffect(() => {
@@ -142,7 +143,9 @@ function App() {
                 userInput={userInput}
                 setUserInput={setUserInput}
                 loading={loading}
+                setLoading={setLoading}
                 fetchSetlists={fetchSetlists}
+                server_url={server_url}
               />
               {displayError && (
                 <Alert
