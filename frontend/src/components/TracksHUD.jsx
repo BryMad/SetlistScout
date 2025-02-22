@@ -23,7 +23,7 @@ export default function TracksHUD({
   return (
     <Box width={{ base: "100%" }} mt={8}>
       <Flex justify="center" align="flex-start" mb={8}>
-        {!loggedIn && spotifyData?.length === 0 && !loading && (
+        {/* {!loggedIn && spotifyData?.length === 0 && !loading && (
           <Text as="strong">
             find a show from your favorite artist on{" "}
             <Link
@@ -36,7 +36,7 @@ export default function TracksHUD({
             </Link>{" "}
             and input the show's url to see what songs they're playing on tour
           </Text>
-        )}
+        )} */}
 
         {loading && (
           <VStack>

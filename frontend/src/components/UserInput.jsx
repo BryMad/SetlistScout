@@ -28,6 +28,7 @@ export default function UserInput({
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
+  const [searchLoading, setSearchLoading] = useState(false);
 
   // For closing the dropdown when user clicks outside
   const containerRef = useRef(null);
@@ -46,7 +47,7 @@ export default function UserInput({
 
   const fetchArtistSuggestions = async (query) => {
     try {
-      setLoading(true);
+      setSearchLoading(true);
       const response = await fetch(`${server_url}/setlist/artist_search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,7 +61,7 @@ export default function UserInput({
     } catch (error) {
       console.error("Error fetching artist suggestions:", error);
     } finally {
-      setLoading(false);
+      setSearchLoading(false);
     }
   };
 
@@ -134,7 +135,7 @@ export default function UserInput({
       // mt={8}
     >
       <Text fontWeight="bold" mb={2}>
-        Search for an Artist
+        Search for an Artist to get their tour info:
       </Text>
       <Input
         placeholder="Type an artist name"
@@ -143,7 +144,7 @@ export default function UserInput({
         size="lg"
         variant="outline"
       />
-      {loading && (
+      {searchLoading && (
         <Box mt={2}>
           <Spinner size="sm" />
           <Text as="span" ml={2}>

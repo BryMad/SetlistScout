@@ -2,15 +2,18 @@ const express = require('express');
 const router = express.Router();
 const {
   getTourName,
-  getAllTourSongs, searchArtistInfo, delay
+  getAllTourSongs, getArtistPage, delay
 } = require("../utils/setlistAPIRequests.js");
-const { getSongTally } = require("../utils/setlistFormatData.js");
+const { getSongTally, getTour } = require("../utils/setlistFormatData.js");
 const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/spotifyAPIRequests.js");
 
 router.post('/', async (req, res) => {
   const { artist } = req.body;
   try {
-    const artistInfo = await searchArtistInfo(artist);
+    const artistPage = await getArtistPage(artist);
+    const tourInfo = getTour(artistPage);
+    // res.json(tourInfo);
+    console.log("tour: ", tourInfo);
     // TODO const tourName = helper(artistInfo)
 
     // API call for setlist w/ artistname
@@ -21,14 +24,14 @@ router.post('/', async (req, res) => {
     // console.log("tourInfo: ", tourInfo);
 
     // If setlist has no tour information, return error
-    // if (!tourInfo.tourName) {
-    //   return res.status(400).json({ error: "This Setlist does not have tour information" });
-    // }
-    // console.log("tourInfo: ", tourInfo);
-    // await delay(600);
+    if (!tourInfo.tourName) {
+      return res.status(400).json({ error: "This Setlist does not have tour information" });
+    }
+    console.log("tourInfo: ", tourInfo);
+    await delay(600);
     // Fetch all tour songs using setlist.fm API.
     const allTourInfo = await getAllTourSongs(
-      artist, tourName
+      artist, tourInfo.tourName
     );
     // If the function returned an error, handle it:
     if (!allTourInfo || !Array.isArray(allTourInfo)) {

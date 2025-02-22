@@ -19,10 +19,10 @@ const limiter = new Bottleneck({
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const searchArtistInfo = async (artist) => {
-  logger.info('Requesting artist search', { artist });
+const getArtistPage = async (artist) => {
+  logger.info('Requesting setlist artist page', { artist });
   const response = await axios.get(
-    `https://api.setlist.fm/rest/1.0/setlist/${listID}`,
+    `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${artist}&p=1`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -30,11 +30,8 @@ const searchArtistInfo = async (artist) => {
       },
     }
   );
-  logger.info('Received tour name data', { listID, bandName: response.data.artist.name });
-  return {
-    bandName: response.data.artist.name,
-    tourName: response.data.tour?.name,
-  };
+  logger.info('Received setlist at artist page');
+  return response.data;
 
 }
 
@@ -114,4 +111,4 @@ const getAllTourSongs = async (artistName, tourName) => {
   }
 };
 
-module.exports = { searchArtistInfo, getTourName, getAllTourSongs, delay };
+module.exports = { getArtistPage, getTourName, getAllTourSongs, delay };

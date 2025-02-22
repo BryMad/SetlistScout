@@ -1,6 +1,32 @@
 const { all } = require("axios");
+const { getTourName } = require("./setlistAPIRequests");
 
 module.exports = {
+
+  getTour: (artistPage) => {
+
+    // Check for valid input and the presence of a setlist array
+    if (!artistPage || !Array.isArray(artistPage.setlist)) {
+      return null;
+    }
+
+    // Iterate through the setlist array
+    for (const setlistEntry of artistPage.setlist) {
+      // Check if tour data exists
+      if (setlistEntry.tour && setlistEntry.tour.name) {
+        // Return the artist name and tour name in an object
+        return {
+          bandName: setlistEntry.artist?.name ?? null,
+          tourName: setlistEntry.tour.name
+        };
+      }
+    }
+
+    // Return null if no tour name is found
+    return null;
+  },
+
+
   getSongTally: (allTourInfo) => {
     const counts = new Map();
     // const totalShows = allTourInfo[0].total;

@@ -33,7 +33,6 @@ function App() {
   const [tourData, setTourData] = useState({});
   const [displayError, setDisplayError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
 
   // Event listener for login status in popup window
   useEffect(() => {
@@ -115,8 +114,6 @@ function App() {
           // Fallback for 400, 500, etc.
           setDisplayError(errorData.error || "An error occurred.");
         }
-
-        // We exit here, so we don't process further.
         return;
       }
       const data = await response.json();
@@ -124,8 +121,6 @@ function App() {
       setSpotifyData(data.spotifySongsOrdered || []);
       setTourData(data.tourData || []);
       setUserInput("");
-      console.log(data.spotifySongsOrdered);
-      console.log(data.tourData);
     } catch (error) {
       console.log("error: ", JSON.stringify(error));
     } finally {
@@ -135,8 +130,14 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box bg="gray.900" color="white" minH="100vh" p={4}>
-        <Container maxW="container.xl">
+      <Box
+        bg="gray.900"
+        color="white"
+        display="flex"
+        flexDirection="column"
+        minH="100vh"
+      >
+        <Container maxW="container.xl" flex="1" p={4}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <Box p={4}>
               <UserInput
@@ -174,33 +175,34 @@ function App() {
               />
             </Box>
           </SimpleGrid>
-          <Box mt={8} textAlign="center" fontSize="sm" opacity={0.8}>
-            <Text>
-              This app uses the Spotify API but is not endorsed, certified, or
-              otherwise approved by Spotify. Spotify is a registered trademark
-              of Spotify AB.
-            </Text>
-            <Text>
-              Please see{" "}
-              <Link
-                href="https://developer.spotify.com/policy"
-                color="blue.300"
-                isExternal
-              >
-                Spotify Developer Policy
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="https://developer.spotify.com/documentation/design"
-                color="blue.300"
-                isExternal
-              >
-                Brand Guidelines
-              </Link>{" "}
-              for more info.
-            </Text>
-          </Box>
         </Container>
+
+        <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>
+          <Text>
+            This app uses the Spotify API but is not endorsed, certified, or
+            otherwise approved by Spotify. Spotify is a registered trademark of
+            Spotify AB.
+          </Text>
+          <Text>
+            Please see{" "}
+            <Link
+              href="https://developer.spotify.com/policy"
+              color="blue.300"
+              isExternal
+            >
+              Spotify Developer Policy
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="https://developer.spotify.com/documentation/design"
+              color="blue.300"
+              isExternal
+            >
+              Brand Guidelines
+            </Link>{" "}
+            for more info.
+          </Text>
+        </Box>
       </Box>
     </ChakraProvider>
   );
