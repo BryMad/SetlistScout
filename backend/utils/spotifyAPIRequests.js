@@ -127,7 +127,7 @@ const searchArtist = async (token, artistName) => {
 
     return response.data.artists.items.map((artist) => ({
       name: artist.name,
-      // id: artist.id,
+      id: artist.id,
       image: artist.images[2] ? artist.images[2] : artist.images[0],
       // genres: artist.genres,
       // followers: artist.followers.total

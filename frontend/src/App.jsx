@@ -145,7 +145,9 @@ function App() {
                 loading={loading}
                 setLoading={setLoading}
                 fetchSetlists={fetchSetlists}
-                server_url={server_url}
+                setSpotifyData={setSpotifyData}
+                setTourData={setTourData}
+                setDisplayError={setDisplayError}
               />
               {displayError && (
                 <Alert

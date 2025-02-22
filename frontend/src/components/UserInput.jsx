@@ -12,6 +12,7 @@ import {
   Text,
   Spinner,
 } from "@chakra-ui/react";
+import { server_url } from "../App";
 
 export default function UserInput({
   userInput,
@@ -19,25 +20,28 @@ export default function UserInput({
   loading,
   setLoading,
   fetchSetlists,
-  server_url,
+  setSpotifyData,
+  setTourData,
+  setDisplayError,
 }) {
   // ! TODO put back into app.jsx??
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [selectedArtist, setSelectedArtist] = useState(null);
 
   // For closing the dropdown when user clicks outside
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      if (artistQuery.length >= 2) {
+    if (selectedArtist && selectedArtist.name === artistQuery) return;
+    const debounceTimeout = setTimeout(() => {
+      if (artistQuery.length >= 1) {
         fetchArtistSuggestions(artistQuery);
       } else {
         setSuggestions([]); // Clear if too short
       }
     }, 300);
-
-    return () => clearTimeout(delayDebounce);
+    return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
   const fetchArtistSuggestions = async (query) => {
@@ -60,13 +64,56 @@ export default function UserInput({
     }
   };
 
-  const handleSelectArtist = (artist) => {
+  const fetchTour = async (artist) => {
     // For now, just fill the input with the chosen artist's name
     // or do something else like run a separate "get setlist" call
+
     setArtistQuery(artist.name);
-    // Clear suggestions after selection
     setSuggestions([]);
+    setSelectedArtist(artist); // Set selected artist
+    try {
+      // TODO second loading or separate logic for other side
+      setLoading(true);
+      const response = await fetch(`${server_url}/setlist/`, {
+        method: "post",
+        cors: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ artist: artist.name }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        if (response.status === 429) {
+          setDisplayError(
+            "Too many requests. Setlist.fm is rate-limiting us. Please try again later."
+          );
+        } else {
+          // Fallback for 400, 500, etc.
+          setDisplayError(errorData.error || "An error occurred.");
+        }
+
+        // We exit here, so we don't process further.
+        return;
+      }
+      const data = await response.json();
+
+      setSpotifyData(data.spotifySongsOrdered || []);
+      setTourData(data.tourData || []);
+      setArtistQuery("");
+      setSelectedArtist(null);
+
+      console.log(data.spotifySongsOrdered);
+      console.log(data.tourData);
+    } catch (error) {
+      console.error("Error fetching setlists:", error);
+    } finally {
+      setLoading(false);
+    }
+
+    // ! artist.name
   };
+
   // Close dropdown if user clicks outside
   useEffect(() => {
     function handleClickOutside(e) {
@@ -77,9 +124,15 @@ export default function UserInput({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
   return (
-    <Box ref={containerRef} position="relative" width="100%">
+    <Box
+      ref={containerRef}
+      position="relative"
+      width="100%"
+      alignItems="center"
+      justifyContent="center"
+      // mt={8}
+    >
       <Text fontWeight="bold" mb={2}>
         Search for an Artist
       </Text>
@@ -110,13 +163,13 @@ export default function UserInput({
           overflow="hidden"
         >
           <List spacing={0}>
-            {suggestions.map((artist, index) => (
+            {suggestions.map((artist) => (
               <ListItem
-                key={index}
+                key={artist.id}
                 px={4}
                 py={2}
                 _hover={{ backgroundColor: "gray.600", cursor: "pointer" }}
-                onClick={() => handleSelectArtist(artist)}
+                onClick={() => fetchTour(artist)}
               >
                 <HStack spacing={3}>
                   {/* Artist Image */}

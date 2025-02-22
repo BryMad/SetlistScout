@@ -21,8 +21,8 @@ export default function TracksHUD({
   loading,
 }) {
   return (
-    <Box width={{ base: "100%" }}>
-      <Flex justify="center" align="flex-start" mt={8} mb={8}>
+    <Box width={{ base: "100%" }} mt={8}>
+      <Flex justify="center" align="flex-start" mb={8}>
         {!loggedIn && spotifyData?.length === 0 && !loading && (
           <Text as="strong">
             find a show from your favorite artist on{" "}
