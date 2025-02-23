@@ -1,6 +1,6 @@
-// File: ./src/components/Track.jsx
+// File: ./frontend/src/components/Track.jsx
 import React from "react";
-import { Flex, Box, Text, Image, Button, Link } from "@chakra-ui/react";
+import { Flex, Box, Text, Image, Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 export default function Track({ item, tourData }) {
@@ -35,38 +35,35 @@ export default function Track({ item, tourData }) {
           <Text fontWeight="bold" fontSize="lg" mb={1}>
             {item.artistName ? item.artistName : item.artist}
           </Text>
+
+          {/* Song name now linked to Spotify, if we have a valid URI */}
           <Text fontSize="md" color="gray.300">
-            {item.songName
-              ? item.songName
-              : `${item.song} - not found on Spotify`}
+            {item.uri ? (
+              <Link
+                href={getSpotifyLink(item.uri)}
+                isExternal
+                color="teal.400"
+                textDecoration="underline"
+              >
+                {item.songName
+                  ? item.songName
+                  : `${item.song} - not found on Spotify`}
+                {/* <ExternalLinkIcon mx="4px" /> */}
+              </Link>
+            ) : // Fallback if there is no URI
+            item.songName ? (
+              item.songName
+            ) : (
+              `${item.song} - not found on Spotify`
+            )}
           </Text>
         </Box>
       </Flex>
 
-      {/* Probability or frequency */}
       <Box ml={4} textAlign="right">
         <Text color="gray.400" mb={2}>
           {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
         </Text>
-
-        {/* “Listen on Spotify” Button */}
-        {item.uri && (
-          <Link
-            href={getSpotifyLink(item.uri)}
-            isExternal
-            _hover={{ textDecoration: "none" }}
-          >
-            <Button
-              leftIcon={<ExternalLinkIcon />}
-              backgroundColor="#1DB954" // Spotify brand green
-              color="white"
-              _hover={{ backgroundColor: "#1ed760" }}
-              size="sm"
-            >
-              Listen on Spotify
-            </Button>
-          </Link>
-        )}
       </Box>
     </Flex>
   );

@@ -8,6 +8,7 @@ import {
   Grid,
   ChakraProvider,
   SimpleGrid,
+  CloseButton,
   Alert,
   AlertIcon,
   AlertTitle,
@@ -157,10 +158,17 @@ function App() {
                   borderRadius="md"
                   bg="red.800"
                   color="white"
+                  position="relative" // allow absolutely positioned CloseButton
                 >
                   <AlertIcon />
                   <AlertTitle mr={2}>Error:</AlertTitle>
-                  <AlertDescription>{displayError}</AlertDescription>
+                  <AlertDescription flex="1">{displayError}</AlertDescription>
+                  <CloseButton
+                    position="absolute"
+                    right="8px"
+                    top="8px"
+                    onClick={() => setDisplayError(null)} // dismiss the alert
+                  />
                 </Alert>
               )}
             </Box>
