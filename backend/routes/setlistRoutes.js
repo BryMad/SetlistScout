@@ -24,13 +24,12 @@ router.post('/', async (req, res) => {
             console.log("MBID matches Spotify ID!")
             matched = true;
             artistPage = await getArtistPageByMBID(mbid);
-            // return res.json(artistPage);
         } else {
             console.log("MBID match failed, searching Setlist by name")
             artistPage = await getArtistPageByName(artist);
 
         }
-        // return res.json(artistPage);
+        return res.json(artistPage);
         const tourInfo = getTour(artistPage);
         // return res.json(tourInfo);
 
@@ -38,10 +37,14 @@ router.post('/', async (req, res) => {
         // return res.json(tourName);
         // console.log("tour: ", tourName);
 
+        // TODO Delete?? this probably doesn't happen anymore bc blank during chooseTour yields "No Tour Info"
         if (!tourName) {
             return res.status(400).json({ error: "This Setlist does not have tour information" });
         }
         console.log("tourInfo: ", tourInfo);
+
+        // TODO if tourName is "No Tour Info", process artistPage as if.
+
         await delay(600);
         // Fetch all tour songs using setlist.fm API.
         let allTourInfo = [];
