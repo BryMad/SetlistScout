@@ -73,15 +73,22 @@ export default function TracksHUD({
       {spotifyData?.length > 0 && !loading && (
         <Box my={8}>
           <Divider mb={4} />
-          <Heading as="h4" size="md" fontWeight="semibold">
-            Songs <Text as="strong">{tourData.bandName}</Text> has played on{" "}
-            <Text as="strong">
-              {tourData.tourName}
-              {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
-                " Tour"}
-            </Text>
-            :
-          </Heading>
+          {tourData.tourName === "No Tour Info" ? (
+            <Heading as="h4" size="md" fontWeight="semibold">
+              Songs <Text as="strong">{tourData.bandName}</Text> has played in
+              last {tourData.totalShows} shows:
+            </Heading>
+          ) : (
+            <Heading as="h4" size="md" fontWeight="semibold">
+              Songs <Text as="strong">{tourData.bandName}</Text> has played on{" "}
+              <Text as="strong">
+                {tourData.tourName}
+                {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
+                  " Tour"}
+              </Text>
+              :
+            </Heading>
+          )}
         </Box>
       )}
 

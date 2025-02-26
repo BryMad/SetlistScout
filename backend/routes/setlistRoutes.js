@@ -42,13 +42,15 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: "This Setlist does not have tour information" });
         }
         console.log("tourInfo: ", tourInfo);
+        // return res.json({ tourName });
 
         // TODO if tourName is "No Tour Info", process artistPage straight into getSongtally (must put in array) .
-
         await delay(600);
-        // Fetch all tour songs using setlist.fm API.
         let allTourInfo = [];
-        if (matched) {
+        if (tourName === "No Tour Info") {
+            allTourInfo.push(artistPage);
+        }
+        else if (matched) {
             allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
         } else {
             allTourInfo = await getAllTourSongs(artist.name, tourName);
