@@ -19,7 +19,7 @@ const limiter = new Bottleneck({
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const getArtistPageByName = async (artist) => {
+const getArtistPageByNameRaw = async (artist) => {
     logger.info('Requesting setlist artist page', { artist });
     const response = await axios.get(
         `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${artist}&p=1`,
@@ -31,11 +31,11 @@ const getArtistPageByName = async (artist) => {
         }
     );
     logger.info('Received setlist at artist page');
-    console.log("response: ", response.data);
+    // console.log("response: ", response.data);
     return response.data;
 
 }
-const getArtistPageByMBID = async (mbid) => {
+const getArtistPageByMBIDRaw = async (mbid) => {
     logger.info('Requesting setlist artist page by MBID:', { mbid });
     const response = await axios.get(
         `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1`,
@@ -47,10 +47,14 @@ const getArtistPageByMBID = async (mbid) => {
         }
     );
     logger.info('Received setlist at artist page');
-    console.log("response: ", response.data);
+    // console.log("response: ", response.data);
     return response.data;
 
 }
+
+// apply limiter
+const getArtistPageByMBID = limiter.wrap(getArtistPageByMBIDRaw);
+const getArtistPageByName = limiter.wrap(getArtistPageByNameRaw);
 
 const getTourName = async (listID) => {
     logger.info('Requesting tour name', { listID });
@@ -73,18 +77,20 @@ const getTourName = async (listID) => {
 const getAllTourSongs = async (artistName, tourName) => {
     logger.info('Starting to fetch all tour songs', { artistName, tourName });
     try {
-        const response = await axios.get(
-            `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${artistName}&p=1&tourName=${tourName}`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": process.env.SETLIST_API_KEY,
-                },
-            }
+        const firstResponse = await limiter.schedule(() =>
+            axios.get(
+                `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${artistName}&p=1&tourName=${tourName}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": process.env.SETLIST_API_KEY,
+                    },
+                }
+            )
         );
         logger.debug('Received first page of setlist data', { artistName, tourName });
 
-        const firstPage = response.data;
+        const firstPage = firstResponse.data;
         const totalPages = Math.ceil(firstPage.total / firstPage.itemsPerPage);
         const allData = [firstPage];
         await delay(1000);
@@ -131,18 +137,19 @@ const getAllTourSongs = async (artistName, tourName) => {
 const getAllTourSongsByMBID = async (artistName, mbid, tourName) => {
     logger.info('Starting to fetch all tour songs by MBID', { artistName, tourName });
     try {
-        const response = await axios.get(
-            `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1&tourName=${tourName}`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": process.env.SETLIST_API_KEY,
-                },
-            }
-        );
+        const firstResponse = await limiter.schedule(() =>
+            axios.get(
+                `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1&tourName=${tourName}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": process.env.SETLIST_API_KEY,
+                    },
+                }
+            ));
         logger.debug('Received first page of setlist data', { artistName, tourName });
 
-        const firstPage = response.data;
+        const firstPage = firstResponse.data;
         const totalPages = Math.ceil(firstPage.total / firstPage.itemsPerPage);
         const allData = [firstPage];
         await delay(1000);
