@@ -81,7 +81,9 @@ export default function UserInput({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ artist: artist.name }),
+        body: JSON.stringify({
+          artist: { name: artist.name, spotifyId: artist.id, url: artist.url },
+        }),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -98,6 +100,7 @@ export default function UserInput({
         return;
       }
       const data = await response.json();
+      console.log("fetchTour Response: ", data);
 
       setSpotifyData(data.spotifySongsOrdered || []);
       setTourData(data.tourData || []);
@@ -175,7 +178,7 @@ export default function UserInput({
                 <HStack spacing={3}>
                   {/* Artist Image */}
                   <Image
-                    src={artist.image?.url || "https://via.placeholder.com/40"} // Placeholder if no image
+                    src={artist.image?.url || "https://placehold.co/40"} // Placeholder if no image
                     boxSize="40px"
                     // borderRadius="full"
                     alt={artist.name}
