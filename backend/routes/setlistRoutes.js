@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
             artistPage = await getArtistPageByName(artist);
 
         }
-        return res.json(artistPage);
+        // return res.json(artistPage);
         const tourInfo = getTour(artistPage);
         // return res.json(tourInfo);
 
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
         }
         console.log("tourInfo: ", tourInfo);
 
-        // TODO if tourName is "No Tour Info", process artistPage as if.
+        // TODO if tourName is "No Tour Info", process artistPage straight into getSongtally (must put in array) .
 
         await delay(600);
         // Fetch all tour songs using setlist.fm API.
@@ -53,7 +53,6 @@ router.post('/', async (req, res) => {
         } else {
             allTourInfo = await getAllTourSongs(artist.name, tourName);
         }
-        // return res.json(allTourInfo);
         // If the function returned an error, handle it:
         if (!allTourInfo || !Array.isArray(allTourInfo)) {
             if (allTourInfo && allTourInfo.statusCode) {
