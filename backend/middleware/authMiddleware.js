@@ -1,4 +1,7 @@
 const ensureAuthenticated = (req, res, next) => {
+  console.log('Request cookies:', req.headers.cookie);
+  console.log('Session ID:', req.sessionID);
+  console.log('Session data:', req.session);
   console.log('Authentication check:', {
     hasSession: !!req.session,
     hasAccessToken: !!req.session?.access_token,

@@ -46,38 +46,81 @@ function App() {
     );
   };
 
-  // Event listener for login status
+  // Check for authentication tokens on initial load and when URL changes
   useEffect(() => {
-    // Check for auth query parameter (for mobile flow)
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("auth") === "success") {
+    // Check localStorage first (might be from a previous session)
+    const storedToken = localStorage.getItem("spotify_access_token");
+    const storedUserId = localStorage.getItem("spotify_user_id");
+
+    if (storedToken && storedUserId) {
       setLoggedIn(true);
-
-      // Restore previous state from sessionStorage
-      const savedState = sessionStorage.getItem("concertCramState");
-      if (savedState) {
-        try {
-          const parsedState = JSON.parse(savedState);
-          setSpotifyData(parsedState.spotifyData || []);
-          setTourData(parsedState.tourData || {});
-        } catch (error) {
-          console.error("Error restoring state:", error);
-        }
-        // Clear storage after restoring
-        sessionStorage.removeItem("concertCramState");
-      }
-
-      // Clean up the URL
-      window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    // Original desktop popup message handler
+    // Check URL for auth parameters and URL fragments
+    const params = new URLSearchParams(window.location.search);
+
+    // Handle URL fragment (for mobile flow with tokens)
+    if (window.location.hash) {
+      const hashParams = new URLSearchParams(
+        window.location.hash.substring(1) // Remove the # character
+      );
+
+      const accessToken = hashParams.get("access_token");
+      const userId = hashParams.get("user_id");
+
+      if (accessToken && userId) {
+        console.log("Received auth tokens from URL fragment");
+
+        // Store tokens
+        localStorage.setItem("spotify_access_token", accessToken);
+        localStorage.setItem("spotify_user_id", userId);
+        setLoggedIn(true);
+
+        // Clean URL
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+
+        // Restore previous state from sessionStorage
+        const savedState = sessionStorage.getItem("concertCramState");
+        if (savedState) {
+          try {
+            const parsedState = JSON.parse(savedState);
+            setSpotifyData(parsedState.spotifyData || []);
+            setTourData(parsedState.tourData || {});
+          } catch (error) {
+            console.error("Error restoring state:", error);
+          }
+          // Clear storage after restoring
+          sessionStorage.removeItem("concertCramState");
+        }
+      }
+    }
+
+    // Event listener for authentication via popup (desktop flow)
     const handleMessage = (event) => {
-      if (event.origin !== server_url) return;
+      // Validate origin for security
+      if (new URL(event.origin).hostname !== new URL(server_url).hostname) {
+        return;
+      }
+
+      // Handle legacy message format
       if (event.data === "authenticated") {
+        setLoggedIn(true);
+        return;
+      }
+
+      // Handle new token-based message format
+      if (event.data && event.data.type === "authentication") {
+        console.log("Received auth tokens from popup");
+        localStorage.setItem("spotify_access_token", event.data.access_token);
+        localStorage.setItem("spotify_user_id", event.data.user_id);
         setLoggedIn(true);
       }
     };
+
     window.addEventListener("message", handleMessage);
     return () => {
       window.removeEventListener("message", handleMessage);
@@ -86,21 +129,33 @@ function App() {
 
   const createPlaylist = async () => {
     try {
+      // Get tokens from localStorage
+      const accessToken = localStorage.getItem("spotify_access_token");
+      const userId = localStorage.getItem("spotify_user_id");
+
+      if (!accessToken || !userId) {
+        console.error("Missing authentication tokens");
+        setPlaylistNotification({
+          message: "Authentication required. Please log in again.",
+          status: "error",
+        });
+        return;
+      }
+
       // filter songs that didn't return spotify data
       const track_ids = spotifyData
         .filter((item) => item.artistName !== undefined)
         .map((item) => item.uri);
 
-      // Send POST request to backend
+      // Send POST request to backend with tokens
       const response = await axios.post(
         `${server_url}/playlist/create_playlist`,
         {
           track_ids: track_ids,
           band: tourData.bandName,
           tour: tourData.tourName,
-        },
-        {
-          withCredentials: true, // Include this if you're using cookies/sessions
+          access_token: accessToken,
+          user_id: userId,
         }
       );
 
@@ -126,13 +181,26 @@ function App() {
       }
     } catch (error) {
       console.error("Error creating playlist:", error);
-      // Set error notification with more details if available
-      setPlaylistNotification({
-        message: `Error creating playlist: ${
-          error.response?.data?.error || "Please try again"
-        }`,
-        status: "error",
-      });
+
+      // Check for auth errors specifically
+      if (error.response?.status === 401) {
+        setPlaylistNotification({
+          message: "Authentication expired. Please log in again.",
+          status: "error",
+        });
+        // Clear tokens and logged in state
+        localStorage.removeItem("spotify_access_token");
+        localStorage.removeItem("spotify_user_id");
+        setLoggedIn(false);
+      } else {
+        // Set error notification with more details if available
+        setPlaylistNotification({
+          message: `Error creating playlist: ${
+            error.response?.data?.error || "Please try again"
+          }`,
+          status: "error",
+        });
+      }
     }
   };
 
