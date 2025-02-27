@@ -47,7 +47,6 @@ router.get('/login', (req, res) => {
 
 // Spotify Callback route
 router.get('/callback', async (req, res) => {
-
   try {
     console.log('Host header:', req.headers.host);
     const code = req.query.code || null;
@@ -94,13 +93,21 @@ router.get('/callback', async (req, res) => {
       req.session.user_id = userResponse.data.id;
       console.log('User ID:', req.session.user_id);
       console.log('it was REDIRECT 78');
+
       const frontEndURL = process.env.NODE_ENV === 'production'
         ? 'https://setlistscout.onrender.com'
         : 'http://localhost:5173';
 
+      // Detect if user is on mobile
+      const userAgent = req.headers['user-agent'];
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
-      // Redirect to frontend
-      res.send(`<!DOCTYPE html>
+      if (isMobile) {
+        // For mobile, redirect back to main app with success parameter
+        res.redirect(`${frontEndURL}?auth=success`);
+      } else {
+        // For desktop, use the existing popup message approach
+        res.send(`<!DOCTYPE html>
 <html>
 <body>
 <script>
@@ -109,6 +116,7 @@ router.get('/callback', async (req, res) => {
 </script>
 </body>
 </html>`);
+      }
     } else {
       res.redirect('/error?error=invalid_token');
     }
@@ -117,4 +125,5 @@ router.get('/callback', async (req, res) => {
     res.redirect('/error?error=exception');
   }
 });
+
 module.exports = router;

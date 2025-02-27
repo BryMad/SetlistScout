@@ -37,10 +37,41 @@ function App() {
   const [playlistNotification, setPlaylistNotification] = useState({
     message: "",
     status: "",
-  }); // New state for playlist notification
+  });
 
-  // Event listener for login status in popup window
+  // Check if device is mobile
+  const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  };
+
+  // Event listener for login status
   useEffect(() => {
+    // Check for auth query parameter (for mobile flow)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("auth") === "success") {
+      setLoggedIn(true);
+
+      // Restore previous state from sessionStorage
+      const savedState = sessionStorage.getItem("concertCramState");
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+          setSpotifyData(parsedState.spotifyData || []);
+          setTourData(parsedState.tourData || {});
+        } catch (error) {
+          console.error("Error restoring state:", error);
+        }
+        // Clear storage after restoring
+        sessionStorage.removeItem("concertCramState");
+      }
+
+      // Clean up the URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Original desktop popup message handler
     const handleMessage = (event) => {
       if (event.origin !== server_url) return;
       if (event.data === "authenticated") {
@@ -106,17 +137,30 @@ function App() {
   };
 
   const spotifyLogin = () => {
-    const width = 450;
-    const height = 730;
-    const left = window.screenX + (window.innerWidth - width) / 2;
-    const top = window.screenY + (window.innerHeight - height) / 2;
-    const url = `${server_url}/auth/login`;
+    if (isMobile()) {
+      // Save current state to sessionStorage before redirecting on mobile
+      const stateToSave = {
+        spotifyData,
+        tourData,
+      };
+      sessionStorage.setItem("concertCramState", JSON.stringify(stateToSave));
 
-    window.open(
-      url,
-      "Spotify Login",
-      `width=${width},height=${height},top=${top},left=${left}`
-    );
+      // Redirect to Spotify login
+      window.location.href = `${server_url}/auth/login`;
+    } else {
+      // Desktop popup approach
+      const width = 450;
+      const height = 730;
+      const left = window.screenX + (window.innerWidth - width) / 2;
+      const top = window.screenY + (window.innerHeight - height) / 2;
+      const url = `${server_url}/auth/login`;
+
+      window.open(
+        url,
+        "Spotify Login",
+        `width=${width},height=${height},top=${top},left=${left}`
+      );
+    }
   };
 
   const fetchSetlists = async () => {
