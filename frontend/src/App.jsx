@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.css";
-import "./index.css";
 import axios from "axios";
 import Track from "./components/Track";
 import UserInput from "./components/UserInput";
