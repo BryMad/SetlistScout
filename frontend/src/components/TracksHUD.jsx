@@ -9,6 +9,10 @@ import {
   Text,
   Link,
   Spinner,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
 } from "@chakra-ui/react";
 import Track from "./Track";
 
@@ -19,25 +23,11 @@ export default function TracksHUD({
   spotifyData,
   tourData,
   loading,
+  playlistNotification,
 }) {
   return (
     <Box width={{ base: "100%" }} mt={8}>
       <Flex justify="center" align="flex-start" mb={8}>
-        {/* {!loggedIn && spotifyData?.length === 0 && !loading && (
-          <Text as="strong">
-            find a show from your favorite artist on{" "}
-            <Link
-              href="https://www.setlist.fm"
-              isExternal
-              textDecoration="underline"
-              color="blue.500"
-            >
-              setlist.fm
-            </Link>{" "}
-            and input the show's url to see what songs they're playing on tour
-          </Text>
-        )} */}
-
         {loading && (
           <VStack>
             <Spinner size="sm" />
@@ -46,17 +36,20 @@ export default function TracksHUD({
             </Text>
           </VStack>
         )}
+
         {!loggedIn && spotifyData?.length > 0 && !loading && (
           <Button
             size="xl"
             px="25px"
             py="15px"
             colorScheme="green"
+            bg="green.500"
             onClick={spotifyLogin}
           >
             Login to Spotify to create playlist
           </Button>
         )}
+
         {loggedIn && spotifyData?.length > 0 && !loading && (
           <Button
             size="xl"
@@ -69,6 +62,21 @@ export default function TracksHUD({
           </Button>
         )}
       </Flex>
+
+      {/* Playlist Notification Message */}
+      {playlistNotification && playlistNotification.message && (
+        <Alert
+          status={playlistNotification.status}
+          variant="solid"
+          mb={4}
+          borderRadius="md"
+          position="relative"
+        >
+          <AlertIcon />
+          <Text flex="1">{playlistNotification.message}</Text>
+          <CloseButton position="absolute" right="8px" top="8px" />
+        </Alert>
+      )}
 
       {spotifyData?.length > 0 && !loading && (
         <Box my={8}>
@@ -93,7 +101,7 @@ export default function TracksHUD({
       )}
 
       <Flex justify="space-between" mt={8}>
-        <Flex direction="column">
+        <Flex direction="column" width="100%">
           {!loading &&
             spotifyData?.map((item) => (
               <Track key={item.id} item={item} tourData={tourData} />

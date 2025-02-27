@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.css";
+// import "./index.css";
 import axios from "axios";
 import Track from "./components/Track";
 import UserInput from "./components/UserInput";
@@ -34,6 +35,10 @@ function App() {
   const [tourData, setTourData] = useState({});
   const [displayError, setDisplayError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [playlistNotification, setPlaylistNotification] = useState({
+    message: "",
+    status: "",
+  }); // New state for playlist notification
 
   // Event listener for login status in popup window
   useEffect(() => {
@@ -71,11 +76,33 @@ function App() {
 
       if (response.status === 200) {
         console.log("Playlist created successfully");
+        // Set success notification
+        setPlaylistNotification({
+          message: "Playlist created successfully!",
+          status: "success",
+        });
+
+        // Clear notification after 5 seconds
+        setTimeout(() => {
+          setPlaylistNotification({ message: "", status: "" });
+        }, 5000);
       } else {
         console.error("Failed to create playlist");
+        // Set error notification
+        setPlaylistNotification({
+          message: "Error creating playlist",
+          status: "error",
+        });
       }
     } catch (error) {
       console.error("Error creating playlist:", error);
+      // Set error notification with more details if available
+      setPlaylistNotification({
+        message: `Error creating playlist: ${
+          error.response?.data?.error || "Please try again"
+        }`,
+        status: "error",
+      });
     }
   };
 
@@ -180,6 +207,7 @@ function App() {
                 spotifyData={spotifyData}
                 tourData={tourData}
                 loading={loading}
+                playlistNotification={playlistNotification}
               />
             </Box>
           </SimpleGrid>
