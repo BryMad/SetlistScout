@@ -58,9 +58,6 @@ export default function TracksHUD({
             px="25px"
             py="15px"
             colorScheme="green"
-            bg="green.500"
-            color="white"
-            _hover={{ bg: "green.600" }}
             onClick={createPlaylist}
           >
             Create Playlist
