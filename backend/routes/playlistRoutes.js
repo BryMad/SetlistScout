@@ -4,25 +4,26 @@ const axios = require('axios');
 const ensureAuthenticated = require('../middleware/authMiddleware');
 
 // POST /create_playlist
-router.post('/create_playlist', async (req, res) => {
+router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
   try {
-    // Get access token and user ID from request body or session
-    const access_token = req.body.access_token || req.session?.access_token;
-    const user_id = req.body.user_id || req.session?.user_id;
-    const track_ids = req.body.track_ids;
-    const band = req.body.band;
-    const tour = req.body.tour;
+    // Get access token and user ID from session
+    const access_token = req.session.access_token;
+    const user_id = req.session.user_id;
 
     if (!access_token || !user_id) {
       return res.status(401).json({ error: 'User not authenticated' });
     }
+
+    const track_ids = req.body.track_ids;
+    const band = req.body.band;
+    const tour = req.body.tour;
 
     // Create a new playlist
     const createPlaylistResponse = await axios.post(
       `https://api.spotify.com/v1/users/${user_id}/playlists`,
       {
         name: `${band} - ${tour} songs`,
-        description: 'Created by SetlistScout',
+        description: 'Created by my app',
         public: true,
       },
       {
