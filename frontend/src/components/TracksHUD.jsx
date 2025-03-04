@@ -44,8 +44,6 @@ export default function TracksHUD({
             py="15px"
             colorScheme="green"
             bg="green.500"
-            color="white"
-            _hover={{ bg: "green.600" }}
             onClick={spotifyLogin}
           >
             Login to Spotify to create playlist
