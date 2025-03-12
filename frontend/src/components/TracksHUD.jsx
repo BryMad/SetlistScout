@@ -1,4 +1,4 @@
-// src/components/TracksHUD.jsx
+// src/components/TracksHUD.jsx (updated)
 import React from "react";
 import {
   Button,
@@ -8,10 +8,10 @@ import {
   Divider,
   Heading,
   Text,
-  Spinner,
 } from "@chakra-ui/react";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
+import ProgressIndicator from "./ProgressIndicator";
 import { useAuth } from "../hooks/useAuth";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
@@ -25,6 +25,7 @@ export default function TracksHUD() {
     loading,
     playlistNotification,
     setNotification,
+    progress,
   } = useSetlist();
 
   // Calculate if we should show the tracks section
@@ -33,43 +34,40 @@ export default function TracksHUD() {
   return (
     <Box width={{ base: "100%" }} mt={8}>
       <Flex justify="center" align="flex-start" mb={8}>
-        {loading && (
-          <VStack>
-            <Spinner size="sm" />
-            <Text mt={4} textAlign="center">
-              Getting setlist data...
-            </Text>
-          </VStack>
-        )}
-
-        {!isLoggedIn && showTracks && (
-          <Button
-            size="xl"
-            px="25px"
-            py="15px"
-            colorScheme="green"
-            bg="green.500"
-            color="white"
-            _hover={{ bg: "green.600" }}
-            onClick={() => login({ spotifyData, tourData })}
-          >
-            Login to Spotify to create playlist
-          </Button>
-        )}
-
-        {isLoggedIn && showTracks && (
-          <Button
-            size="xl"
-            px="25px"
-            py="15px"
-            colorScheme="green"
-            bg="green.500"
-            color="white"
-            _hover={{ bg: "green.600" }}
-            onClick={createPlaylist}
-          >
-            Create Playlist
-          </Button>
+        {loading ? (
+          <ProgressIndicator isLoading={loading} progress={progress} />
+        ) : (
+          showTracks && (
+            <>
+              {!isLoggedIn ? (
+                <Button
+                  size="xl"
+                  px="25px"
+                  py="15px"
+                  colorScheme="green"
+                  bg="green.500"
+                  color="white"
+                  _hover={{ bg: "green.600" }}
+                  onClick={() => login({ spotifyData, tourData })}
+                >
+                  Login to Spotify to create playlist
+                </Button>
+              ) : (
+                <Button
+                  size="xl"
+                  px="25px"
+                  py="15px"
+                  colorScheme="green"
+                  bg="green.500"
+                  color="white"
+                  _hover={{ bg: "green.600" }}
+                  onClick={createPlaylist}
+                >
+                  Create Playlist
+                </Button>
+              )}
+            </>
+          )
         )}
       </Flex>
 

@@ -1,3 +1,4 @@
+// File: ./backend/server.js (update)
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -40,7 +41,7 @@ app.use(cors({
 app.options('*', cors());
 
 // Initialize RedisStore
-const store = new RedisStore({ client: redisClient }); // Updated initialization
+const store = new RedisStore({ client: redisClient });
 
 // Session Middleware
 app.use(session({
@@ -60,10 +61,12 @@ app.use(session({
 const authRoutes = require('./routes/authRoutes');
 const playlistRoutes = require('./routes/playlistRoutes');
 const setlistRoutes = require('./routes/setlistRoutes');
+const sseRoutes = require('./routes/sseRoutes'); // Add the new SSE routes
 
 app.use('/auth', authRoutes);
 app.use('/playlist', playlistRoutes);
 app.use('/setlist', setlistRoutes);
+app.use('/sse', sseRoutes); // Mount the SSE routes
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Spotify Setlist App!');
