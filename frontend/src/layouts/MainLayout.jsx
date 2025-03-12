@@ -1,6 +1,6 @@
 // src/layouts/MainLayout.jsx
 import React from "react";
-import { Box, Container, SimpleGrid, Text, Link } from "@chakra-ui/react";
+import { Box, Container, Text, Link } from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
 
@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
       color="white"
       display="flex"
       flexDirection="column"
-      minH="100vh"
+      minH="calc(100vh - 60px)"
     >
       <Container maxW="container.xl" flex="1" p={4}>
         {error && (
@@ -30,9 +30,7 @@ export default function MainLayout({ children }) {
           />
         )}
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          {children}
-        </SimpleGrid>
+        {children}
       </Container>
 
       <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>

@@ -1,18 +1,23 @@
+// src/pages/Contact.jsx
 import React from "react";
-import { Box, Heading, Text, VStack, Link, Flex, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Link,
+  Flex,
+  Icon,
+  Container,
+} from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 
 export default function Contact() {
   return (
-    <Box>
+    <Container maxW="container.md" mt={8}>
       <VStack spacing={6} align="start">
-        <Heading
-          as="h1"
-          size="xl"
-          bgGradient="linear(to-r, teal.400, green.400)"
-          bgClip="text"
-        >
-          Contact Us
+        <Heading as="h1" size="xl" color="teal.400">
+          Contact
         </Heading>
 
         <Text>
@@ -29,11 +34,11 @@ export default function Contact() {
 
         <Text mt={4}>For technical issues, please include details about:</Text>
         <Box pl={4}>
-          <Text>• What browser you're using</Text>
-          <Text>• What you were trying to do</Text>
-          <Text>• Any error messages you received</Text>
+          <Text>• your browser</Text>
+          <Text>• what artist you were searching for</Text>
+          <Text>• any error messages you received</Text>
         </Box>
       </VStack>
-    </Box>
+    </Container>
   );
 }
