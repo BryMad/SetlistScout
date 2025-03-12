@@ -1,149 +1,214 @@
+// src/components/NavBar.jsx
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Box,
   Flex,
-  HStack,
+  Spacer,
   Button,
   Text,
-  useDisclosure,
+  useColorModeValue,
+  Stack,
   IconButton,
   Collapse,
-  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useAuth } from "../hooks/useAuth";
 
-export default function Navbar({
-  isLoggedIn,
-  handleLogout,
-  handleLogin,
-  setRightPanelContent,
-  activeNav,
-}) {
+export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
-
-  // Use the activeNav prop to determine which tab is highlighted.
-  const isActive = (content) => activeNav === content;
-
-  const handleNavClick = (content) => {
-    setRightPanelContent(content);
-  };
+  const { isLoggedIn, login, logout } = useAuth();
+  const location = useLocation();
+  const bgColor = useColorModeValue("gray.800", "gray.900");
+  const textColor = useColorModeValue("white", "gray.200");
 
   return (
-    <Box as="nav" bg="gray.900" px={4} boxShadow="md">
-      <Flex h={16} alignItems="center" justifyContent="space-between">
-        <HStack spacing={8} alignItems="center">
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-            bgGradient="linear(to-r, teal.400, green.400)"
-            bgClip="text"
-            cursor="pointer"
-            onClick={() => handleNavClick("tracks")}
-          >
-            Setlist Scout
-          </Text>
-        </HStack>
-        <Flex alignItems="center">
-          <HStack
-            as="nav"
-            spacing={4}
-            display={{ base: "none", md: "flex" }}
-            mx={4}
-          >
-            <Button
-              variant={isActive("about") ? "solid" : "ghost"}
-              colorScheme="teal"
-              _hover={{ color: "teal.400" }}
-              onClick={() => handleNavClick("about")}
-            >
-              About
-            </Button>
-            <Button
-              variant={isActive("contact") ? "solid" : "ghost"}
-              colorScheme="teal"
-              _hover={{ color: "teal.400" }}
-              onClick={() => handleNavClick("contact")}
-            >
-              Contact
-            </Button>
-            {isLoggedIn ? (
-              <Button colorScheme="teal" variant="ghost" onClick={handleLogout}>
-                Logout
-              </Button>
-            ) : (
-              <Button colorScheme="teal" variant="ghost" onClick={handleLogin}>
-                Login
-              </Button>
-            )}
-          </HStack>
-
+    <Box>
+      <Flex
+        bg={bgColor}
+        color={textColor}
+        minH={"60px"}
+        py={{ base: 2 }}
+        px={{ base: 4 }}
+        align={"center"}
+      >
+        {/* Mobile hamburger menu on the left */}
+        <Flex
+          flex={{ base: 1, md: "auto" }}
+          ml={{ base: -2 }}
+          display={{ base: "flex", md: "none" }}
+          justify="flex-start"
+        >
           <IconButton
-            display={{ base: "flex", md: "none" }}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
-            variant="ghost"
-            aria-label="Toggle Navigation"
+            variant={"ghost"}
+            aria-label={"Toggle Navigation"}
           />
         </Flex>
+
+        {/* Logo */}
+        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <Text
+            fontWeight="bold"
+            fontSize="2xl"
+            color="teal.400"
+            as={Link}
+            to="/"
+          >
+            Setlist Scout
+          </Text>
+        </Flex>
+
+        {/* Right-aligned menu items for desktop */}
+        <Stack
+          direction={"row"}
+          spacing={4}
+          display={{ base: "none", md: "flex" }}
+          align="center"
+        >
+          {/* Navigation Links */}
+          <DesktopNav location={location} />
+
+          {/* Login/Logout Button */}
+          <Box>
+            <Link
+              to="#"
+              onClick={(e) => {
+                e.preventDefault();
+                isLoggedIn ? logout() : login();
+              }}
+            >
+              <Box
+                p={2}
+                fontSize={"md"}
+                fontWeight={500}
+                color={"white"}
+                _hover={{
+                  textDecoration: "none",
+                  color: "teal.400",
+                }}
+              >
+                {isLoggedIn ? "Logout" : "Login"}
+              </Box>
+            </Link>
+          </Box>
+        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <Box pb={4} display={{ md: "none" }}>
-          <VStack spacing={4} align="stretch">
-            <Button
-              variant={isActive("about") ? "solid" : "ghost"}
-              justifyContent="flex-start"
-              colorScheme="teal"
-              _hover={{ color: "teal.400" }}
-              onClick={() => {
-                handleNavClick("about");
-                onToggle();
-              }}
-            >
-              About
-            </Button>
-            <Button
-              variant={isActive("contact") ? "solid" : "ghost"}
-              justifyContent="flex-start"
-              colorScheme="teal"
-              _hover={{ color: "teal.400" }}
-              onClick={() => {
-                handleNavClick("contact");
-                onToggle();
-              }}
-            >
-              Contact
-            </Button>
-            {isLoggedIn ? (
-              <Button
-                variant="ghost"
-                justifyContent="flex-start"
-                colorScheme="teal"
-                onClick={() => {
-                  handleLogout();
-                  onToggle();
-                }}
-              >
-                Logout
-              </Button>
-            ) : (
-              <Button
-                justifyContent="flex-start"
-                variant="ghost"
-                colorScheme="teal"
-                onClick={() => {
-                  handleLogin();
-                  onToggle();
-                }}
-              >
-                Login
-              </Button>
-            )}
-          </VStack>
-        </Box>
+        <MobileNav
+          location={location}
+          isLoggedIn={isLoggedIn}
+          login={login}
+          logout={logout}
+        />
       </Collapse>
     </Box>
   );
 }
+
+const DesktopNav = ({ location }) => {
+  const linkColor = "white";
+  const linkHoverColor = "teal.400";
+  const activeColor = "teal.400";
+
+  return (
+    <Stack direction={"row"} spacing={4}>
+      {NAV_ITEMS.map((navItem) => {
+        const isActive = location.pathname === navItem.href;
+        return (
+          <Box key={navItem.label}>
+            <Link to={navItem.href}>
+              <Box
+                p={2}
+                fontSize={"md"}
+                fontWeight={500}
+                color={isActive ? activeColor : linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
+              >
+                {navItem.label}
+              </Box>
+            </Link>
+          </Box>
+        );
+      })}
+    </Stack>
+  );
+};
+
+const MobileNav = ({ location, isLoggedIn, login, logout }) => {
+  return (
+    <Stack bg={"gray.800"} p={4} display={{ md: "none" }}>
+      {NAV_ITEMS.map((navItem) => (
+        <MobileNavItem
+          key={navItem.label}
+          {...navItem}
+          isActive={location.pathname === navItem.href}
+        />
+      ))}
+      <Flex
+        py={2}
+        as={Link}
+        to={"#"}
+        justify={"space-between"}
+        align={"center"}
+        _hover={{
+          textDecoration: "none",
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          isLoggedIn ? logout() : login();
+        }}
+      >
+        <Text fontWeight={600} color={"white"}>
+          {isLoggedIn ? "Logout" : "Login"}
+        </Text>
+      </Flex>
+    </Stack>
+  );
+};
+
+const MobileNavItem = ({ label, href, isActive }) => {
+  const color = isActive ? "teal.400" : "white";
+
+  return (
+    <Stack spacing={4}>
+      <Flex
+        py={2}
+        as={Link}
+        to={href}
+        justify={"space-between"}
+        align={"center"}
+        _hover={{
+          textDecoration: "none",
+        }}
+      >
+        <Text fontWeight={600} color={color}>
+          {label}
+        </Text>
+      </Flex>
+    </Stack>
+  );
+};
+
+const NAV_ITEMS = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
