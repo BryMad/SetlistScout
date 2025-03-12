@@ -17,6 +17,7 @@ import "./App.css";
 import axios from "axios";
 import UserInput from "./components/UserInput";
 import TracksHUD from "./components/TracksHUD";
+import Navbar from "./components/Navbar";
 import { extractSetlistID } from "./utils/setlistHelpers";
 
 export const server_url =
@@ -237,6 +238,28 @@ function App() {
   };
 
   /**
+   * Handles user logout
+   * - Removes stored tokens
+   * - Updates logged in state
+   */
+  const handleLogout = () => {
+    localStorage.removeItem("spotify_access_token");
+    localStorage.removeItem("spotify_user_id");
+    setLoggedIn(false);
+
+    // Set notification about logout
+    setPlaylistNotification({
+      message: "Successfully logged out",
+      status: "info",
+    });
+
+    // Clear notification after 3 seconds
+    setTimeout(() => {
+      setPlaylistNotification({ message: "", status: "" });
+    }, 3000);
+  };
+
+  /**
    * Fetches setlist data from the server
    * - Extracts setlist ID from user input
    * - Handles loading state and errors
@@ -288,6 +311,11 @@ function App() {
         flexDirection="column"
         minH="100vh"
       >
+        <Navbar
+          isLoggedIn={loggedIn}
+          handleLogout={handleLogout}
+          handleLogin={spotifyLogin}
+        />
         <Container maxW="container.xl" flex="1" p={4}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <Box p={4}>
