@@ -18,6 +18,8 @@ import axios from "axios";
 import UserInput from "./components/UserInput";
 import TracksHUD from "./components/TracksHUD";
 import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Contact from "./components/Contact";
 import { extractSetlistID } from "./utils/setlistHelpers";
 
 export const server_url =
@@ -34,6 +36,8 @@ function App() {
     message: "",
     status: "",
   });
+  // Add state to track which content to show in the right panel
+  const [rightPanelContent, setRightPanelContent] = useState("tracks");
 
   /**
    * Utility function to check if the current device is mobile
@@ -302,6 +306,36 @@ function App() {
     }
   };
 
+  // When a search happens, we want to show the tracks
+  const handleSearch = (spotifyDataResults, tourDataResults) => {
+    setSpotifyData(spotifyDataResults);
+    setTourData(tourDataResults);
+    setRightPanelContent("tracks"); // Switch to tracks view when a search happens
+  };
+
+  // Render the right panel content based on the rightPanelContent state
+  const renderRightPanelContent = () => {
+    switch (rightPanelContent) {
+      case "about":
+        return <About />;
+      case "contact":
+        return <Contact />;
+      case "tracks":
+      default:
+        return (
+          <TracksHUD
+            spotifyLogin={spotifyLogin}
+            createPlaylist={createPlaylist}
+            loggedIn={loggedIn}
+            spotifyData={spotifyData}
+            tourData={tourData}
+            loading={loading}
+            playlistNotification={playlistNotification}
+          />
+        );
+    }
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Box
@@ -315,14 +349,16 @@ function App() {
           isLoggedIn={loggedIn}
           handleLogout={handleLogout}
           handleLogin={spotifyLogin}
+          setRightPanelContent={setRightPanelContent}
         />
+
         <Container maxW="container.xl" flex="1" p={4}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <Box p={4}>
               <UserInput
                 loading={loading}
                 setLoading={setLoading}
-                setSpotifyData={setSpotifyData}
+                setSpotifyData={handleSearch}
                 setTourData={setTourData}
                 setDisplayError={setDisplayError}
               />
@@ -333,7 +369,7 @@ function App() {
                   borderRadius="md"
                   bg="red.800"
                   color="white"
-                  position="relative" // allow absolutely positioned CloseButton
+                  position="relative"
                 >
                   <AlertIcon />
                   <AlertTitle mr={2}>Error:</AlertTitle>
@@ -342,22 +378,12 @@ function App() {
                     position="absolute"
                     right="8px"
                     top="8px"
-                    onClick={() => setDisplayError(null)} // dismiss the alert
+                    onClick={() => setDisplayError(null)}
                   />
                 </Alert>
               )}
             </Box>
-            <Box p={4}>
-              <TracksHUD
-                spotifyLogin={spotifyLogin}
-                createPlaylist={createPlaylist}
-                loggedIn={loggedIn}
-                spotifyData={spotifyData}
-                tourData={tourData}
-                loading={loading}
-                playlistNotification={playlistNotification}
-              />
-            </Box>
+            <Box p={4}>{renderRightPanelContent()}</Box>
           </SimpleGrid>
         </Container>
 

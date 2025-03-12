@@ -13,8 +13,25 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-export default function Navbar({ isLoggedIn, handleLogout, handleLogin }) {
+export default function Navbar({
+  isLoggedIn,
+  handleLogout,
+  handleLogin,
+  setRightPanelContent,
+}) {
   const { isOpen, onToggle } = useDisclosure();
+
+  // Track active content to highlight the appropriate button
+  const [activeContent, setActiveContent] = React.useState("tracks");
+
+  // Helper to determine if content is active
+  const isActive = (content) => activeContent === content;
+
+  // Handler for navigation buttons
+  const handleNavClick = (content) => {
+    setActiveContent(content);
+    setRightPanelContent(content);
+  };
 
   return (
     <Box as="nav" bg="gray.900" px={4} boxShadow="md">
@@ -25,6 +42,8 @@ export default function Navbar({ isLoggedIn, handleLogout, handleLogin }) {
             fontWeight="bold"
             bgGradient="linear(to-r, teal.400, green.400)"
             bgClip="text"
+            cursor="pointer"
+            onClick={() => handleNavClick("tracks")}
           >
             Setlist Scout
           </Text>
@@ -36,10 +55,20 @@ export default function Navbar({ isLoggedIn, handleLogout, handleLogin }) {
             display={{ base: "none", md: "flex" }}
             mx={4}
           >
-            <Button variant="ghost" _hover={{ color: "teal.400" }}>
+            <Button
+              variant={isActive("about") ? "solid" : "ghost"}
+              colorScheme="teal"
+              _hover={{ color: "teal.400" }}
+              onClick={() => handleNavClick("about")}
+            >
               About
             </Button>
-            <Button variant="ghost" _hover={{ color: "teal.400" }}>
+            <Button
+              variant={isActive("contact") ? "solid" : "ghost"}
+              colorScheme="teal"
+              _hover={{ color: "teal.400" }}
+              onClick={() => handleNavClick("contact")}
+            >
               Contact
             </Button>
             {isLoggedIn ? (
@@ -79,16 +108,26 @@ export default function Navbar({ isLoggedIn, handleLogout, handleLogin }) {
         <Box pb={4} display={{ md: "none" }}>
           <VStack spacing={4} align="stretch">
             <Button
-              variant="ghost"
+              variant={isActive("about") ? "solid" : "ghost"}
               justifyContent="flex-start"
+              colorScheme="teal"
               _hover={{ color: "teal.400" }}
+              onClick={() => {
+                handleNavClick("about");
+                onToggle(); // Close mobile menu after navigation
+              }}
             >
               About
             </Button>
             <Button
-              variant="ghost"
+              variant={isActive("contact") ? "solid" : "ghost"}
               justifyContent="flex-start"
+              colorScheme="teal"
               _hover={{ color: "teal.400" }}
+              onClick={() => {
+                handleNavClick("contact");
+                onToggle(); // Close mobile menu after navigation
+              }}
             >
               Contact
             </Button>
