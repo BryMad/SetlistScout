@@ -17,38 +17,26 @@ export default function UserInput({
   setSpotifyData,
   setTourData,
   setDisplayError,
+  setRightPanelContent, // Prop to update the right panel view
 }) {
-  // ! TODO put useStates back into app.jsx??
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
-
-  // For closing the dropdown when user clicks outside
   const containerRef = useRef(null);
 
-  /**
-   * Effect hook to handle debounced artist search
-   * - Debounces search requests to avoid excessive API calls
-   * - Fetches artist suggestions when query length is sufficient
-   */
   useEffect(() => {
     if (selectedArtist && selectedArtist.name === artistQuery) return;
     const debounceTimeout = setTimeout(() => {
       if (artistQuery.length >= 1) {
         fetchArtistSuggestions(artistQuery);
       } else {
-        setSuggestions([]); // Clear if too short
+        setSuggestions([]);
       }
     }, 300);
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
-  /**
-   * Effect hook to close dropdown when clicking outside
-   * - Adds event listener to detect clicks outside the component
-   * - Clears suggestions when clicking outside
-   */
   useEffect(() => {
     function handleClickOutside(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -59,11 +47,6 @@ export default function UserInput({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /**
-   * Fetches artist suggestions from the server (via Spotify API search)
-   * @param {string} query The artist search query
-   * @async
-   */
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
@@ -84,15 +67,16 @@ export default function UserInput({
     }
   };
 
-  /**
-   * Fetches tour information for a selected artist (via setlist.fm API)
-   * @param {Object} artist The selected artist object (from server Spotify search)
-   * @async
-   */
   const fetchTour = async (artist) => {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
+
+    // Immediately switch to the TrackHUD view and update active navigation.
+    if (setRightPanelContent) {
+      setRightPanelContent("tracks");
+    }
+
     try {
       setLoading(true);
       const response = await fetch(`${server_url}/setlist/`, {
@@ -112,19 +96,14 @@ export default function UserInput({
             "Too many requests. Setlist.fm is rate-limiting us. Please try again later."
           );
         } else {
-          // Fallback for 400, 500, etc.
           setDisplayError(errorData.error || "An error occurred.");
         }
         return;
       }
       const data = await response.json();
-      // console.log("fetchTour Response: ", data);
-      setSpotifyData(data.spotifySongsOrdered || []);
-      setTourData(data.tourData || []);
+      setSpotifyData(data.spotifySongsOrdered || [], data.tourData || []);
       setArtistQuery("");
       setSelectedArtist(null);
-      // console.log(data.spotifySongsOrdered);
-      // console.log(data.tourData);
     } catch (error) {
       console.error("Error fetching setlists:", error);
     } finally {
@@ -139,7 +118,6 @@ export default function UserInput({
       width="100%"
       alignItems="center"
       justifyContent="center"
-      // mt={8}
     >
       <Text fontWeight="bold" mb={2}>
         Search for an Artist to get their tour info:
@@ -159,7 +137,6 @@ export default function UserInput({
           </Text>
         </Box>
       )}
-      {/* Render suggestions in a "dropdown" style */}
       {suggestions.length > 0 && (
         <Box
           position="absolute"
@@ -180,13 +157,11 @@ export default function UserInput({
                 onClick={() => fetchTour(artist)}
               >
                 <HStack spacing={3}>
-                  {/* Artist Image */}
                   <Image
-                    src={artist.image?.url || "https://placehold.co/40"} // Placeholder if no image
+                    src={artist.image?.url || "https://placehold.co/40"}
                     boxSize="40px"
                     alt={artist.name}
                   />
-                  {/* Artist Name */}
                   <Text>{artist.name}</Text>
                 </HStack>
               </ListItem>

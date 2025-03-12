@@ -36,17 +36,20 @@ function App() {
     message: "",
     status: "",
   });
-  // Add state to track which content to show in the right panel
+  // Active right panel content: "tracks", "about", or "contact"
   const [rightPanelContent, setRightPanelContent] = useState("tracks");
+  // Active navigation state to highlight the appropriate button
+  const [activeNav, setActiveNav] = useState("tracks");
 
-  // Update the right panel content
+  // Update both the right panel content and active navigation state
   const handleSetRightPanelContent = useCallback((content) => {
     setRightPanelContent(content);
+    setActiveNav(content);
   }, []);
 
   /**
-   * Utility function to check if the current device is mobile
-   * @returns {boolean} True if the device is mobile, false otherwise
+   * Utility function to check if the current device is mobile.
+   * @returns {boolean} True if the device is mobile, false otherwise.
    */
   const isMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -54,14 +57,21 @@ function App() {
     );
   };
 
-  /**
-   * Effect hook to check for authentication tokens on initial load and URL changes
-   * - Checks localStorage for existing tokens
-   * - Handles authentication via URL fragments (mobile flow)
-   * - Sets up event listener for authentication via popup (desktop flow)
-   */
+  // Added handleLogout function to resolve the error.
+  const handleLogout = () => {
+    localStorage.removeItem("spotify_access_token");
+    localStorage.removeItem("spotify_user_id");
+    setLoggedIn(false);
+    setPlaylistNotification({
+      message: "Successfully logged out",
+      status: "info",
+    });
+    setTimeout(() => {
+      setPlaylistNotification({ message: "", status: "" });
+    }, 3000);
+  };
+
   useEffect(() => {
-    // Check localStorage for existing tokens
     const storedToken = localStorage.getItem("spotify_access_token");
     const storedUserId = localStorage.getItem("spotify_user_id");
 
@@ -69,14 +79,8 @@ function App() {
       setLoggedIn(true);
     }
 
-    // Check URL for auth parameters and URL fragments
-    const params = new URLSearchParams(window.location.search);
-
-    // Handle URL fragment (for mobile flow with tokens)
     if (window.location.hash) {
-      const hashParams = new URLSearchParams(
-        window.location.hash.substring(1) // Remove the # character
-      );
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
       const accessToken = hashParams.get("access_token");
       const userId = hashParams.get("user_id");
       if (accessToken && userId) {
@@ -84,15 +88,12 @@ function App() {
         localStorage.setItem("spotify_access_token", accessToken);
         localStorage.setItem("spotify_user_id", userId);
         setLoggedIn(true);
-
-        // Clean URL
         window.history.replaceState(
           {},
           document.title,
           window.location.pathname
         );
 
-        // Restore previous state from sessionStorage
         const savedState = sessionStorage.getItem("concertCramState");
         if (savedState) {
           try {
@@ -102,20 +103,16 @@ function App() {
           } catch (error) {
             console.error("Error restoring state:", error);
           }
-          // Clear storage after restoring
           sessionStorage.removeItem("concertCramState");
         }
       }
     }
 
-    // Event listener for authentication via popup (desktop flow)
     const handleMessage = (event) => {
-      // Validate origin for security
       if (new URL(event.origin).hostname !== new URL(server_url).hostname) {
         return;
       }
 
-      // Handle new token-based message format
       if (event.data && event.data.type === "authentication") {
         console.log("Received auth tokens from popup");
         localStorage.setItem("spotify_access_token", event.data.access_token);
@@ -130,16 +127,8 @@ function App() {
     };
   }, []);
 
-  /**
-   * Creates a Spotify playlist using the fetched setlist data
-   * - Uses stored authentication tokens
-   * - Filters out songs without Spotify data
-   * - Handles success and error notifications
-   * @async
-   */
   const createPlaylist = async () => {
     try {
-      // Get tokens from localStorage
       const accessToken = localStorage.getItem("spotify_access_token");
       const userId = localStorage.getItem("spotify_user_id");
 
@@ -152,12 +141,10 @@ function App() {
         return;
       }
 
-      // filter songs that didn't return spotify data
       const track_ids = spotifyData
         .filter((item) => item.artistName !== undefined)
         .map((item) => item.uri);
 
-      // Send POST request to backend with tokens
       const response = await axios.post(
         `${server_url}/playlist/create_playlist`,
         {
@@ -171,19 +158,15 @@ function App() {
 
       if (response.status === 200) {
         console.log("Playlist created successfully");
-        // Set success notification
         setPlaylistNotification({
           message: "Playlist created successfully!",
           status: "success",
         });
-
-        // Clear notification after 5 seconds
         setTimeout(() => {
           setPlaylistNotification({ message: "", status: "" });
         }, 5000);
       } else {
         console.error("Failed to create playlist");
-        // Set error notification
         setPlaylistNotification({
           message: "Error creating playlist",
           status: "error",
@@ -192,18 +175,15 @@ function App() {
     } catch (error) {
       console.error("Error creating playlist:", error);
 
-      // Check for auth errors specifically
       if (error.response?.status === 401) {
         setPlaylistNotification({
           message: "Authentication expired. Please log in again.",
           status: "error",
         });
-        // Clear tokens and logged in state
         localStorage.removeItem("spotify_access_token");
         localStorage.removeItem("spotify_user_id");
         setLoggedIn(false);
       } else {
-        // Set error notification with more details if available
         setPlaylistNotification({
           message: `Error creating playlist: ${
             error.response?.data?.error || "Please try again"
@@ -214,30 +194,20 @@ function App() {
     }
   };
 
-  /**
-   * Initiates Spotify login process based on device type
-   * - For mobile: Saves state to sessionStorage and redirects
-   * - For desktop: Opens a popup for authentication
-   */
   const spotifyLogin = () => {
     if (isMobile()) {
-      // Save current state to sessionStorage before redirecting on mobile
       const stateToSave = {
         spotifyData,
         tourData,
       };
       sessionStorage.setItem("concertCramState", JSON.stringify(stateToSave));
-
-      // Redirect to Spotify login
       window.location.href = `${server_url}/auth/login`;
     } else {
-      // Desktop popup approach
       const width = 450;
       const height = 730;
       const left = window.screenX + (window.innerWidth - width) / 2;
       const top = window.screenY + (window.innerHeight - height) / 2;
       const url = `${server_url}/auth/login`;
-
       window.open(
         url,
         "Spotify Login",
@@ -246,35 +216,6 @@ function App() {
     }
   };
 
-  /**
-   * Handles user logout
-   * - Removes stored tokens
-   * - Updates logged in state
-   */
-  const handleLogout = () => {
-    localStorage.removeItem("spotify_access_token");
-    localStorage.removeItem("spotify_user_id");
-    setLoggedIn(false);
-
-    // Set notification about logout
-    setPlaylistNotification({
-      message: "Successfully logged out",
-      status: "info",
-    });
-
-    // Clear notification after 3 seconds
-    setTimeout(() => {
-      setPlaylistNotification({ message: "", status: "" });
-    }, 3000);
-  };
-
-  /**
-   * Fetches setlist data from the server
-   * - Extracts setlist ID from user input
-   * - Handles loading state and errors
-   * - Updates state with fetched data
-   * @async
-   */
   const fetchSetlists = async () => {
     setLoading(true);
     setDisplayError(null);
@@ -294,15 +235,13 @@ function App() {
             "Too many requests. Setlist.fm is rate-limiting us. Please try again later."
           );
         } else {
-          // Fallback for 400, 500, etc.
           setDisplayError(errorData.error || "An error occurred.");
         }
         return;
       }
       const data = await response.json();
-
       setSpotifyData(data.spotifySongsOrdered || []);
-      setTourData(data.tourData || []);
+      setTourData(data.tourData || {});
       setUserInput("");
     } catch (error) {
       console.log("error: ", JSON.stringify(error));
@@ -311,14 +250,12 @@ function App() {
     }
   };
 
-  // When a search happens, we want to show the tracks
   const handleSearch = (spotifyDataResults, tourDataResults) => {
     setSpotifyData(spotifyDataResults);
     setTourData(tourDataResults);
-    setRightPanelContent("tracks"); // Switch to tracks view when a search happens
+    handleSetRightPanelContent("tracks");
   };
 
-  // Render the right panel content based on the rightPanelContent state
   const renderRightPanelContent = () => {
     switch (rightPanelContent) {
       case "about":
@@ -355,8 +292,8 @@ function App() {
           handleLogout={handleLogout}
           handleLogin={spotifyLogin}
           setRightPanelContent={handleSetRightPanelContent}
+          activeNav={activeNav}
         />
-
         <Container maxW="container.xl" flex="1" p={4}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <Box p={4}>
@@ -366,6 +303,7 @@ function App() {
                 setSpotifyData={handleSearch}
                 setTourData={setTourData}
                 setDisplayError={setDisplayError}
+                setRightPanelContent={handleSetRightPanelContent}
               />
               {displayError && (
                 <Alert
@@ -391,7 +329,6 @@ function App() {
             <Box p={4}>{renderRightPanelContent()}</Box>
           </SimpleGrid>
         </Container>
-
         <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>
           <Text>
             This app uses the Spotify API but is not endorsed, certified, or

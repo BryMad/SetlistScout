@@ -17,18 +17,14 @@ export default function Navbar({
   handleLogout,
   handleLogin,
   setRightPanelContent,
+  activeNav,
 }) {
   const { isOpen, onToggle } = useDisclosure();
 
-  // Track active content to highlight the appropriate button
-  const [activeContent, setActiveContent] = React.useState("tracks");
+  // Use the activeNav prop to determine which tab is highlighted.
+  const isActive = (content) => activeNav === content;
 
-  // Helper to determine if content is active
-  const isActive = (content) => activeContent === content;
-
-  // Handler for navigation buttons
   const handleNavClick = (content) => {
-    setActiveContent(content);
     setRightPanelContent(content);
   };
 
@@ -81,7 +77,6 @@ export default function Navbar({
             )}
           </HStack>
 
-          {/* Mobile menu button */}
           <IconButton
             display={{ base: "flex", md: "none" }}
             onClick={onToggle}
@@ -94,7 +89,6 @@ export default function Navbar({
         </Flex>
       </Flex>
 
-      {/* Mobile menu content */}
       <Collapse in={isOpen} animateOpacity>
         <Box pb={4} display={{ md: "none" }}>
           <VStack spacing={4} align="stretch">
@@ -105,7 +99,7 @@ export default function Navbar({
               _hover={{ color: "teal.400" }}
               onClick={() => {
                 handleNavClick("about");
-                onToggle(); // Close mobile menu after navigation
+                onToggle();
               }}
             >
               About
@@ -117,7 +111,7 @@ export default function Navbar({
               _hover={{ color: "teal.400" }}
               onClick={() => {
                 handleNavClick("contact");
-                onToggle(); // Close mobile menu after navigation
+                onToggle();
               }}
             >
               Contact
