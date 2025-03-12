@@ -1,3 +1,4 @@
+// src/components/UserInput.jsx
 import React, { useEffect, useState, useRef } from "react";
 import {
   HStack,
@@ -9,16 +10,13 @@ import {
   Text,
   Spinner,
 } from "@chakra-ui/react";
-import { server_url } from "../App";
+import { useSetlist } from "../hooks/useSetlist";
 
-export default function UserInput({
-  loading,
-  setLoading,
-  setSpotifyData,
-  setTourData,
-  setDisplayError,
-  setRightPanelContent, // Prop to update the right panel view
-}) {
+/**
+ * Component for artist search input
+ */
+export default function UserInput() {
+  const { fetchTourData, loading, searchForArtists } = useSetlist();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -27,6 +25,7 @@ export default function UserInput({
 
   useEffect(() => {
     if (selectedArtist && selectedArtist.name === artistQuery) return;
+
     const debounceTimeout = setTimeout(() => {
       if (artistQuery.length >= 1) {
         fetchArtistSuggestions(artistQuery);
@@ -34,6 +33,7 @@ export default function UserInput({
         setSuggestions([]);
       }
     }, 300);
+
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
@@ -43,23 +43,22 @@ export default function UserInput({
         setSuggestions([]);
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+  /**
+   * Fetches artist suggestions
+   * @param {string} query The artist search query
+   * @async
+   */
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
-      const response = await fetch(`${server_url}/setlist/artist_search`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ artistName: query }),
-      });
-      if (!response.ok) {
-        throw new Error("Network response was not OK");
-      }
-      const data = await response.json();
-      setSuggestions(data || []);
+      const results = await searchForArtists(query);
+      setSuggestions(results || []);
     } catch (error) {
       console.error("Error fetching artist suggestions:", error);
     } finally {
@@ -67,48 +66,20 @@ export default function UserInput({
     }
   };
 
-  const fetchTour = async (artist) => {
+
+  /**
+   * Fetches tour information for a selected artist
+   * @param {Object} artist The selected artist object
+   * @async
+   */
+  const handleArtistSelect = async (artist) => {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
-
-    // Immediately switch to the TrackHUD view and update active navigation.
-    if (setRightPanelContent) {
-      setRightPanelContent("tracks");
-    }
-
-    try {
-      setLoading(true);
-      const response = await fetch(`${server_url}/setlist/`, {
-        method: "post",
-        cors: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          artist: { name: artist.name, spotifyId: artist.id, url: artist.url },
-        }),
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        if (response.status === 429) {
-          setDisplayError(
-            "Too many requests. Setlist.fm is rate-limiting us. Please try again later."
-          );
-        } else {
-          setDisplayError(errorData.error || "An error occurred.");
-        }
-        return;
-      }
-      const data = await response.json();
-      setSpotifyData(data.spotifySongsOrdered || [], data.tourData || []);
-      setArtistQuery("");
-      setSelectedArtist(null);
-    } catch (error) {
-      console.error("Error fetching setlists:", error);
-    } finally {
-      setLoading(false);
-    }
+    await fetchTourData(artist);
+    // Reset the form
+    setArtistQuery("");
+    setSelectedArtist(null);
   };
 
   return (
@@ -122,13 +93,16 @@ export default function UserInput({
       <Text fontWeight="bold" mb={2}>
         Search for an Artist to get their tour info:
       </Text>
+
       <Input
         placeholder="Type an artist name"
         value={artistQuery}
         onChange={(e) => setArtistQuery(e.target.value)}
         size="lg"
         variant="outline"
+        disabled={loading}
       />
+
       {searchLoading && (
         <Box mt={2}>
           <Spinner size="sm" />
@@ -137,6 +111,8 @@ export default function UserInput({
           </Text>
         </Box>
       )}
+
+      {/* Render suggestions in a "dropdown" style */}
       {suggestions.length > 0 && (
         <Box
           position="absolute"
@@ -154,7 +130,7 @@ export default function UserInput({
                 px={4}
                 py={2}
                 _hover={{ backgroundColor: "gray.600", cursor: "pointer" }}
-                onClick={() => fetchTour(artist)}
+                onClick={() => handleArtistSelect(artist)}
               >
                 <HStack spacing={3}>
                   <Image
