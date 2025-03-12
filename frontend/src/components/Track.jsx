@@ -8,6 +8,27 @@ export default function Track({ item, tourData }) {
     return `https://open.spotify.com/track/${trackId}`;
   };
 
+  // Helper to clean song titles by removing remaster/remix information
+  const cleanSongTitle = (title) => {
+    if (!title) return title;
+    //patterns to filter out
+    const patterns = [
+      /\s*-\s*(Remaster(ed)?|Remix(ed)?|Re-?master|Mix).*$/i,
+      /\s*-\s*\d{4}(\s+.+)?$/i,
+      /\s*-\s*(Deluxe|Special|Anniversary|Expanded).*$/i,
+      /\s*-\s*(Mono|Stereo|Live|Acoustic|Single Version|Album Version|Radio Edit).*$/i,
+      /\s*-\s*\(.*\)$/i,
+      /\s*\(Remaster(ed)?|Remix(ed)?\).*$/i,
+      /\s*\(\d{4}(\s+.+)?\)$/i,
+    ];
+    let cleanedTitle = title;
+    // Apply each pattern to progressively clean the title
+    for (const pattern of patterns) {
+      cleanedTitle = cleanedTitle.replace(pattern, "");
+    }
+    return cleanedTitle.trim();
+  };
+
   // Use default placeholder if item.image is undefined
   const albumCover = item.image
     ? item.image.url
@@ -44,12 +65,12 @@ export default function Track({ item, tourData }) {
                 textDecoration="underline"
               >
                 {item.songName
-                  ? item.songName
+                  ? cleanSongTitle(item.songName)
                   : `${item.song} - not found on Spotify`}
               </Link>
             ) : // Fallback if there is no URI
             item.songName ? (
-              item.songName
+              cleanSongTitle(item.songName)
             ) : (
               `${item.song} - not found on Spotify`
             )}
@@ -58,8 +79,11 @@ export default function Track({ item, tourData }) {
       </Flex>
 
       <Box ml={4} textAlign="right">
-        <Text color="gray.400" mb={2}>
+        <Text color="gray.400" fontWeight="medium" mb={1}>
           {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
+        </Text>
+        <Text color="gray.500" fontSize="sm">
+          Played at {item.count} of {tourData.totalShows} shows
         </Text>
       </Box>
     </Flex>

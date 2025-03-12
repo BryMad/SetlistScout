@@ -17,20 +17,12 @@ import { useSetlist } from "../hooks/useSetlist";
  */
 export default function UserInput() {
   const { fetchTourData, loading, searchForArtists } = useSetlist();
-
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
-
-  // For closing the dropdown when user clicks outside
   const containerRef = useRef(null);
 
-  /**
-   * Effect hook to handle debounced artist search
-   * - Debounces search requests to avoid excessive API calls
-   * - Fetches artist suggestions when query length is sufficient
-   */
   useEffect(() => {
     if (selectedArtist && selectedArtist.name === artistQuery) return;
 
@@ -38,18 +30,13 @@ export default function UserInput() {
       if (artistQuery.length >= 1) {
         fetchArtistSuggestions(artistQuery);
       } else {
-        setSuggestions([]); // Clear if too short
+        setSuggestions([]);
       }
     }, 300);
 
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
-  /**
-   * Effect hook to close dropdown when clicking outside
-   * - Adds event listener to detect clicks outside the component
-   * - Clears suggestions when clicking outside
-   */
   useEffect(() => {
     function handleClickOutside(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -60,6 +47,7 @@ export default function UserInput() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
 
   /**
    * Fetches artist suggestions
@@ -78,6 +66,7 @@ export default function UserInput() {
     }
   };
 
+
   /**
    * Fetches tour information for a selected artist
    * @param {Object} artist The selected artist object
@@ -87,9 +76,7 @@ export default function UserInput() {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
-
     await fetchTourData(artist);
-
     // Reset the form
     setArtistQuery("");
     setSelectedArtist(null);
@@ -146,13 +133,11 @@ export default function UserInput() {
                 onClick={() => handleArtistSelect(artist)}
               >
                 <HStack spacing={3}>
-                  {/* Artist Image */}
                   <Image
                     src={artist.image?.url || "https://placehold.co/40"}
                     boxSize="40px"
                     alt={artist.name}
                   />
-                  {/* Artist Name */}
                   <Text>{artist.name}</Text>
                 </HStack>
               </ListItem>
