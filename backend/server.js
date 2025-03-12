@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const { RedisStore } = require('connect-redis'); // Updated import
+const { RedisStore } = require('connect-redis');
 const { createClient } = require('redis');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -67,15 +67,6 @@ app.use('/setlist', setlistRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Spotify Setlist App!');
-});
-
-app.get('/set-session', (req, res) => {
-  req.session.testValue = 'Hello, Redis!';
-  res.send('Session value set.');
-});
-
-app.get('/get-session', (req, res) => {
-  res.send(`Session value: ${req.session.testValue}`);
 });
 
 app.use((err, req, res, next) => {

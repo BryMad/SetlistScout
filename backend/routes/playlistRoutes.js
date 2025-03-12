@@ -3,7 +3,20 @@ const router = express.Router();
 const axios = require('axios');
 const ensureAuthenticated = require('../middleware/authMiddleware');
 
-// POST /create_playlist
+/**
+ * Endpoint: POST /create_playlist
+ * Creates a Spotify playlist with selected tracks
+ * - Accepts auth tokens via body or session
+ * - Creates playlist with tour-specific name
+ * - Adds tracks to the playlist
+ * 
+ * @param {Object} req.body.access_token Spotify access token
+ * @param {Object} req.body.user_id Spotify user ID
+ * @param {Array<string>} req.body.track_ids Spotify track URIs
+ * @param {string} req.body.band Band name
+ * @param {string} req.body.tour Tour name
+ * @returns {Object} Success message and playlist ID
+ */
 router.post('/create_playlist', async (req, res) => {
   try {
     // Get access token and user ID from request body or session

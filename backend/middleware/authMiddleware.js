@@ -1,3 +1,13 @@
+/**
+ * Middleware to ensure user is authenticated
+ * - Checks for valid session with access_token and user_id
+ * - Logs detailed authentication state for debugging
+ * 
+ * @param {Object} req Express request object
+ * @param {Object} res Express response object
+ * @param {Function} next Express next middleware function
+ * @returns {Function} Next middleware or 401 unauthorized response
+ */
 const ensureAuthenticated = (req, res, next) => {
   console.log('Request cookies:', req.headers.cookie);
   console.log('Session ID:', req.sessionID);

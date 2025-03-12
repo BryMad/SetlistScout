@@ -1,10 +1,8 @@
-// File: ./frontend/src/components/Track.jsx
 import React from "react";
 import { Flex, Box, Text, Image, Link } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 export default function Track({ item, tourData }) {
-  // Helper to convert spotify URI ("spotify:track:<id>") to an open link
+  // Helper to convert spotify URI ("spotify:track:<id>") to an open spotify link
   const getSpotifyLink = (uri) => {
     const trackId = uri?.split(":").pop(); // e.g. "spotify:track:12345" => "12345"
     return `https://open.spotify.com/track/${trackId}`;
@@ -36,7 +34,7 @@ export default function Track({ item, tourData }) {
             {item.artistName ? item.artistName : item.artist}
           </Text>
 
-          {/* Song name now linked to Spotify, if we have a valid URI */}
+          {/* Song name linked to Spotify, if we have a valid URI */}
           <Text fontSize="md" color="gray.300">
             {item.uri ? (
               <Link
@@ -48,7 +46,6 @@ export default function Track({ item, tourData }) {
                 {item.songName
                   ? item.songName
                   : `${item.song} - not found on Spotify`}
-                {/* <ExternalLinkIcon mx="4px" /> */}
               </Link>
             ) : // Fallback if there is no URI
             item.songName ? (

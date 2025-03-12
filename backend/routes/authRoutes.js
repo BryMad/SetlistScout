@@ -5,17 +5,29 @@ const axios = require('axios');
 const querystring = require('querystring');
 const crypto = require('crypto');
 
-// Generate a random string for state parameter
-const generateRandomString = (length) => {
-  return crypto.randomBytes(length).toString('hex').slice(0, length);
-};
-
-// Load environment variables
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
 
-// Spotify Login route
+/**
+ * Generates a random string for state parameter
+ * Used to prevent CSRF attacks in OAuth flow
+ * 
+ * @param {number} length Length of the random string
+ * @returns {string} Random hexadecimal string
+ */
+const generateRandomString = (length) => {
+  return crypto.randomBytes(length).toString('hex').slice(0, length);
+};
+
+
+
+/**
+ * Endpoint: GET /login
+ * Initiates Spotify OAuth flow
+ * - Generates state parameter and stores in session
+ * - Redirects to Spotify authorization URL
+ */
 router.get('/login', (req, res) => {
   const state = generateRandomString(16);
   console.log('login state:', state);
@@ -44,7 +56,14 @@ router.get('/login', (req, res) => {
     }));
 });
 
-// Spotify Callback route
+/**
+ * Endpoint: GET /callback
+ * Handles Spotify OAuth callback
+ * - Verifies state to prevent CSRF
+ * - Exchanges authorization code for access token
+ * - Fetches user information
+ * - Handles different flows for mobile vs desktop
+ */
 router.get('/callback', async (req, res) => {
   try {
     console.log('Host header:', req.headers.host);

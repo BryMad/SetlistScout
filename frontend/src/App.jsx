@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-  Input,
-  Flex,
   Box,
-  Button,
   Container,
-  Grid,
   ChakraProvider,
   SimpleGrid,
   CloseButton,
@@ -19,7 +15,6 @@ import {
 import theme from "./theme";
 import "./App.css";
 import axios from "axios";
-import Track from "./components/Track";
 import UserInput from "./components/UserInput";
 import TracksHUD from "./components/TracksHUD";
 import { extractSetlistID } from "./utils/setlistHelpers";
@@ -39,16 +34,24 @@ function App() {
     status: "",
   });
 
-  // Check if device is mobile
+  /**
+   * Utility function to check if the current device is mobile
+   * @returns {boolean} True if the device is mobile, false otherwise
+   */
   const isMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
   };
 
-  // Check for authentication tokens on initial load and when URL changes
+  /**
+   * Effect hook to check for authentication tokens on initial load and URL changes
+   * - Checks localStorage for existing tokens
+   * - Handles authentication via URL fragments (mobile flow)
+   * - Sets up event listener for authentication via popup (desktop flow)
+   */
   useEffect(() => {
-    // Check localStorage first (might be from a previous session)
+    // Check localStorage for existing tokens
     const storedToken = localStorage.getItem("spotify_access_token");
     const storedUserId = localStorage.getItem("spotify_user_id");
 
@@ -64,14 +67,10 @@ function App() {
       const hashParams = new URLSearchParams(
         window.location.hash.substring(1) // Remove the # character
       );
-
       const accessToken = hashParams.get("access_token");
       const userId = hashParams.get("user_id");
-
       if (accessToken && userId) {
         console.log("Received auth tokens from URL fragment");
-
-        // Store tokens
         localStorage.setItem("spotify_access_token", accessToken);
         localStorage.setItem("spotify_user_id", userId);
         setLoggedIn(true);
@@ -106,12 +105,6 @@ function App() {
         return;
       }
 
-      // Handle legacy message format
-      if (event.data === "authenticated") {
-        setLoggedIn(true);
-        return;
-      }
-
       // Handle new token-based message format
       if (event.data && event.data.type === "authentication") {
         console.log("Received auth tokens from popup");
@@ -127,6 +120,13 @@ function App() {
     };
   }, []);
 
+  /**
+   * Creates a Spotify playlist using the fetched setlist data
+   * - Uses stored authentication tokens
+   * - Filters out songs without Spotify data
+   * - Handles success and error notifications
+   * @async
+   */
   const createPlaylist = async () => {
     try {
       // Get tokens from localStorage
@@ -204,6 +204,11 @@ function App() {
     }
   };
 
+  /**
+   * Initiates Spotify login process based on device type
+   * - For mobile: Saves state to sessionStorage and redirects
+   * - For desktop: Opens a popup for authentication
+   */
   const spotifyLogin = () => {
     if (isMobile()) {
       // Save current state to sessionStorage before redirecting on mobile
@@ -231,6 +236,13 @@ function App() {
     }
   };
 
+  /**
+   * Fetches setlist data from the server
+   * - Extracts setlist ID from user input
+   * - Handles loading state and errors
+   * - Updates state with fetched data
+   * @async
+   */
   const fetchSetlists = async () => {
     setLoading(true);
     setDisplayError(null);
@@ -280,11 +292,8 @@ function App() {
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <Box p={4}>
               <UserInput
-                userInput={userInput}
-                setUserInput={setUserInput}
                 loading={loading}
                 setLoading={setLoading}
-                fetchSetlists={fetchSetlists}
                 setSpotifyData={setSpotifyData}
                 setTourData={setTourData}
                 setDisplayError={setDisplayError}

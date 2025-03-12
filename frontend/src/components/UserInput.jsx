@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
-  Button,
   HStack,
-  Flex,
   Input,
   Image,
   Box,
-  VStack,
   List,
   ListItem,
   Text,
@@ -15,16 +12,13 @@ import {
 import { server_url } from "../App";
 
 export default function UserInput({
-  userInput,
-  setUserInput,
   loading,
   setLoading,
-  fetchSetlists,
   setSpotifyData,
   setTourData,
   setDisplayError,
 }) {
-  // ! TODO put back into app.jsx??
+  // ! TODO put useStates back into app.jsx??
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -33,6 +27,11 @@ export default function UserInput({
   // For closing the dropdown when user clicks outside
   const containerRef = useRef(null);
 
+  /**
+   * Effect hook to handle debounced artist search
+   * - Debounces search requests to avoid excessive API calls
+   * - Fetches artist suggestions when query length is sufficient
+   */
   useEffect(() => {
     if (selectedArtist && selectedArtist.name === artistQuery) return;
     const debounceTimeout = setTimeout(() => {
@@ -45,6 +44,26 @@ export default function UserInput({
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
+  /**
+   * Effect hook to close dropdown when clicking outside
+   * - Adds event listener to detect clicks outside the component
+   * - Clears suggestions when clicking outside
+   */
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setSuggestions([]);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  /**
+   * Fetches artist suggestions from the server (via Spotify API search)
+   * @param {string} query The artist search query
+   * @async
+   */
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
@@ -65,15 +84,16 @@ export default function UserInput({
     }
   };
 
+  /**
+   * Fetches tour information for a selected artist (via setlist.fm API)
+   * @param {Object} artist The selected artist object (from server Spotify search)
+   * @async
+   */
   const fetchTour = async (artist) => {
-    // For now, just fill the input with the chosen artist's name
-    // or do something else like run a separate "get setlist" call
-
     setArtistQuery(artist.name);
     setSuggestions([]);
-    setSelectedArtist(artist); // Set selected artist
+    setSelectedArtist(artist);
     try {
-      // TODO second loading or separate logic for other side
       setLoading(true);
       const response = await fetch(`${server_url}/setlist/`, {
         method: "post",
@@ -95,39 +115,23 @@ export default function UserInput({
           // Fallback for 400, 500, etc.
           setDisplayError(errorData.error || "An error occurred.");
         }
-
-        // We exit here, so we don't process further.
         return;
       }
       const data = await response.json();
-      console.log("fetchTour Response: ", data);
-
+      // console.log("fetchTour Response: ", data);
       setSpotifyData(data.spotifySongsOrdered || []);
       setTourData(data.tourData || []);
       setArtistQuery("");
       setSelectedArtist(null);
-
-      console.log(data.spotifySongsOrdered);
-      console.log(data.tourData);
+      // console.log(data.spotifySongsOrdered);
+      // console.log(data.tourData);
     } catch (error) {
       console.error("Error fetching setlists:", error);
     } finally {
       setLoading(false);
     }
-
-    // ! artist.name
   };
 
-  // Close dropdown if user clicks outside
-  useEffect(() => {
-    function handleClickOutside(e) {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setSuggestions([]);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
   return (
     <Box
       ref={containerRef}
@@ -180,7 +184,6 @@ export default function UserInput({
                   <Image
                     src={artist.image?.url || "https://placehold.co/40"} // Placeholder if no image
                     boxSize="40px"
-                    // borderRadius="full"
                     alt={artist.name}
                   />
                   {/* Artist Name */}

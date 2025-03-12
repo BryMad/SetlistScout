@@ -1,22 +1,18 @@
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
-const winston = require('winston');
-
-// Configure the Winston logger
-const logger = winston.createLogger({
-  level: 'debug',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console({ format: winston.format.simple() }),
-    // Additional transports can be added here.
-  ],
-});
-
+const logger = require('../utils/logger');
 const limiter = new Bottleneck({
   minTime: 600, // minimum time (ms) between requests
   maxConcurrent: 1, // maximum concurrent requests
 });
 
+/**
+ * Introduces a delay between API calls
+ * - Used for rate limiting
+ * 
+ * @param {number} ms Milliseconds to delay
+ * @returns {Promise} Promise that resolves after the delay
+ */
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
@@ -73,10 +69,32 @@ const getArtistPageByMBIDRaw = async (mbid) => {
   return response.data;
 };
 
-// Wrap the raw functions so that each call is automatically rate-limited.
+/**
+ * Gets artist page by name from Setlist.fm
+ * - Rate-limited to avoid API restrictions
+ * 
+ * @param {Object} artist Artist object with name
+ * @returns {Object} Artist page data from Setlist.fm
+ * @async
+ */
 const getArtistPageByName = limiter.wrap(getArtistPageByNameRaw);
+/**
+ * Gets artist page by MusicBrainz ID from Setlist.fm
+ * - Rate-limited to avoid API restrictions
+ * 
+ * @param {string} mbid MusicBrainz ID
+ * @returns {Object} Artist page data from Setlist.fm
+ * @async
+ */
 const getArtistPageByMBID = limiter.wrap(getArtistPageByMBIDRaw);
 
+/**
+ * Gets tour name from a setlist
+ * 
+ * @param {string} listID Setlist ID
+ * @returns {Object} Band name and tour name
+ * @async
+ */
 const getTourName = async (listID) => {
   logger.info('Requesting tour name', { listID });
   const url = `https://api.setlist.fm/rest/1.0/setlist/${listID}`;
@@ -93,6 +111,16 @@ const getTourName = async (listID) => {
   };
 };
 
+/**
+ * Gets all songs played during a tour
+ * - Fetches all pages of results
+ * - Handles rate limiting and retries
+ * 
+ * @param {string} artistName Artist name
+ * @param {string} tourName Tour name
+ * @returns {Array} All tour setlist data
+ * @async
+ */
 const getAllTourSongs = async (artistName, tourName) => {
   logger.info('Starting to fetch all tour songs', { artistName, tourName });
   try {
@@ -150,6 +178,16 @@ const getAllTourSongs = async (artistName, tourName) => {
   }
 };
 
+/**
+ * Gets all songs played during a tour using MusicBrainz ID
+ * - Similar to getAllTourSongs but uses MBID for more precise matching
+ * 
+ * @param {string} artistName Artist name
+ * @param {string} mbid MusicBrainz ID
+ * @param {string} tourName Tour name
+ * @returns {Array} All tour setlist data
+ * @async
+ */
 const getAllTourSongsByMBID = async (artistName, mbid, tourName) => {
   logger.info('Starting to fetch all tour songs by MBID', { artistName, tourName });
   try {

@@ -5,34 +5,33 @@ const { isArtistNameMatch } = require("./musicBrainzChecks");
 
 module.exports = {
 
+  /**
+   * Extracts and formats tour information from artist page
+   * - Organizes tours by artist and counts occurrences
+   * - Tracks years of tour activity
+   * 
+   * @param {Object} artistPage Artist page data from Setlist.fm
+   * @returns {Object} Formatted tour information by artist
+   */
   getTour: (artistPage) => {
-    // console.log("Raw artist page data:", JSON.stringify(artistPage, null, 2));
-
-
-
     // Validate input.
     if (!artistPage || !Array.isArray(artistPage.setlist)) {
-      return {}; // or null, depending on your preference.
+      return {};
     }
-
-    // The result will be an object mapping artist names to tours.
+    // The result is bject mapping artist names to tours.
     const result = {};
-
     for (const entry of artistPage.setlist) {
       // 1) Extract the artist name.
       const artistName = entry.artist?.name;
       if (!artistName) {
-        continue; // Skip if there's no artist name.
+        continue; // Skip if no artist name.
       }
-
-      // 2) Ensure our result has a key for this artist.
+      // 2) Ensure result has a key for this artist.
       if (!result[artistName]) {
         result[artistName] = {};
       }
-
       // 3) Extract the tour name, defaulting to "No Tour Info" if none exists.
       const tourName = entry.tour?.name || "No Tour Info";
-
       // 4) Ensure we have an object for this tour under the given artist.
       if (!result[artistName][tourName]) {
         result[artistName][tourName] = {
@@ -41,10 +40,8 @@ module.exports = {
           years: new Set(),
         };
       }
-
       // 5) Increment the count of shows for this (artist, tour).
       result[artistName][tourName].count++;
-
       // 6) Extract the year from the eventDate if present.
       if (entry.eventDate) {
         // eventDate is usually in dd-mm-yyyy format.
@@ -55,36 +52,28 @@ module.exports = {
         }
       }
     }
-
     // 7) Convert each 'years' Set to a sorted array.
     for (const [artistName, toursMap] of Object.entries(result)) {
       for (const [tour, dataObj] of Object.entries(toursMap)) {
         dataObj.years = Array.from(dataObj.years).sort();
       }
     }
-
     return result;
   },
 
   /**
-   * Chooses the best tour name from the tourInfo object.
-   *
-   * @param {Object} tourInfo - Object returned by getTour with structure:
-   *   {
-   *     "Artist Name": {
-   *       "Tour Name": { tourName: 'Tour Name', count: number, years: [year1, year2, ...] },
-   *       ...
-   *     },
-   *     ...
-   *   }
-   * @param {string} targetArtistName - The artist name from the request body.
-   * @returns {string} - The selected tour name.
+   * Chooses the best tour name based on various criteria
+   * - Prefers actual tour names over "No Tour Info"
+   * - Filters out VIP/soundcheck tours
+   * - Selects most recent tour if multiple options
+   * 
+   * @param {Object} tourInfo Tour information from getTour
+   * @param {string} targetArtistName Target artist name for matching
+   * @returns {string} Selected tour name
    */
   chooseTour: (tourInfo, targetArtistName) => {
-
     const artistNames = Object.keys(tourInfo);
     let selectedArtist;
-
     // If only one artist, select that one.
     if (artistNames.length === 1) {
       selectedArtist = artistNames[0];
@@ -96,14 +85,12 @@ module.exports = {
         selectedArtist = artistNames[0];
       }
     }
-
     // Get the tours for the selected artist.
     const tours = tourInfo[selectedArtist];
     let tourNames = Object.keys(tours);
     if (tourNames.length === 0) {
       return ""; // No tour found.
     }
-
     // If multiple tours exist, prefer actual tour names over the placeholder.
     if (tourNames.length > 1) {
       const actualTours = tourNames.filter(name => name.toLowerCase() !== "no tour info");
@@ -111,12 +98,10 @@ module.exports = {
         tourNames = actualTours;
       }
     }
-
     // If there's only one tour option, return it.
     if (tourNames.length === 1) {
       return tours[tourNames[0]].tourName;
     }
-
     // Filter out tours with exclusion keywords like VIP or sound check.
     const exclusionKeywords = ["vip", "v.i.p.", "sound check", "soundcheck"];
     let filteredTours = tourNames.filter(tourName => {
@@ -127,7 +112,6 @@ module.exports = {
     if (filteredTours.length === 0) {
       filteredTours = tourNames;
     }
-
     // Among the remaining tours, select the one with the most recent year.
     let chosenTourName = filteredTours[0];
     let latestYear = 0;
@@ -142,15 +126,18 @@ module.exports = {
         chosenTourName = tourName;
       }
     }
-
     return tours[chosenTourName].tourName;
-
   },
 
-
-
-
-
+  /**
+   * Processes and tallies songs from setlists
+   * - Counts song occurrences across all shows
+   * - Handles covers vs. original songs
+   * - Calculates play frequencies
+   * 
+   * @param {Array} allTourInfo All tour setlist data
+   * @returns {Object} Processed song data with counts and order
+   */
   getSongTally: (allTourInfo) => {
     const counts = new Map();
     // const totalShows = allTourInfo[0].total;
