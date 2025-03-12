@@ -27,12 +27,6 @@ export default function Contact() {
           </Link>
         </Flex>
 
-        <Text mt={4}>
-          Please feel free to reach out with any questions, feature requests,
-          bug reports, or general feedback about Setlist Scout. We're constantly
-          working to improve the application and your input is valuable to us.
-        </Text>
-
         <Text mt={4}>For technical issues, please include details about:</Text>
         <Box pl={4}>
           <Text>• What browser you're using</Text>

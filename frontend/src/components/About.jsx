@@ -25,13 +25,7 @@ export default function About() {
         <Text>
           Setlist Scout is a tool designed to help concert-goers prepare for
           upcoming shows by providing insights into what songs their favorite
-          artists are currently playing on tour.
-        </Text>
-
-        <Text>
-          Have you ever been to a concert and wished you were more familiar with
-          the songs being played? Or maybe you want to make sure you know all
-          the lyrics before the big show? Setlist Scout has you covered!
+          artists are playing on tour.
         </Text>
 
         <Heading as="h2" size="md" mt={4}>
@@ -43,32 +37,21 @@ export default function About() {
             Search for your favorite artist using our search bar
           </ListItem>
           <ListItem>
-            We'll analyze their recent setlists from their current tour
+            Setlist Scout looks up their recent shows on{" "}
+            <Link href="https://www.setlist.fm" isExternal color="teal.400">
+              Setlist.fm
+            </Link>
+            , finds the songs they've been playing on tour, and tallies them up
+            (in order of highest likelihood)
           </ListItem>
           <ListItem>
-            See which songs they're most likely to play based on tour data
-          </ListItem>
-          <ListItem>
-            Create a Spotify playlist with one click to start cramming for the
-            show
+            Login to{" "}
+            <Link href="https://www.spotify.com" isExternal color="teal.400">
+              Spotify
+            </Link>{" "}
+            to create a playlist of these songs and start cramming for the show!
           </ListItem>
         </UnorderedList>
-
-        <Heading as="h2" size="md" mt={4}>
-          Data Sources
-        </Heading>
-
-        <Text>
-          Setlist Scout uses data from{" "}
-          <Link href="https://www.setlist.fm" isExternal color="teal.400">
-            Setlist.fm
-          </Link>{" "}
-          to analyze tour patterns and{" "}
-          <Link href="https://www.spotify.com" isExternal color="teal.400">
-            Spotify
-          </Link>{" "}
-          to create playlists and match songs.
-        </Text>
 
         <Heading as="h2" size="md" mt={4}>
           Privacy

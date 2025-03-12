@@ -67,11 +67,11 @@ export default function Navbar({
               Contact
             </Button>
             {isLoggedIn ? (
-              <Button colorScheme="teal" onClick={handleLogout}>
+              <Button colorScheme="teal" variant="ghost" onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
-              <Button colorScheme="teal" onClick={handleLogin}>
+              <Button colorScheme="teal" variant="ghost" onClick={handleLogin}>
                 Login
               </Button>
             )}
@@ -118,6 +118,8 @@ export default function Navbar({
             </Button>
             {isLoggedIn ? (
               <Button
+                variant="ghost"
+                justifyContent="flex-start"
                 colorScheme="teal"
                 onClick={() => {
                   handleLogout();
@@ -128,6 +130,8 @@ export default function Navbar({
               </Button>
             ) : (
               <Button
+                justifyContent="flex-start"
+                variant="ghost"
                 colorScheme="teal"
                 onClick={() => {
                   handleLogin();
