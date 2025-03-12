@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   Box,
   Container,
@@ -38,6 +38,11 @@ function App() {
   });
   // Add state to track which content to show in the right panel
   const [rightPanelContent, setRightPanelContent] = useState("tracks");
+
+  // Update the right panel content
+  const handleSetRightPanelContent = useCallback((content) => {
+    setRightPanelContent(content);
+  }, []);
 
   /**
    * Utility function to check if the current device is mobile
@@ -349,7 +354,7 @@ function App() {
           isLoggedIn={loggedIn}
           handleLogout={handleLogout}
           handleLogin={spotifyLogin}
-          setRightPanelContent={setRightPanelContent}
+          setRightPanelContent={handleSetRightPanelContent}
         />
 
         <Container maxW="container.xl" flex="1" p={4}>

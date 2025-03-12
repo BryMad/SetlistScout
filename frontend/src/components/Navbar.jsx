@@ -9,7 +9,6 @@ import {
   IconButton,
   Collapse,
   VStack,
-  Spacer,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
@@ -72,19 +71,11 @@ export default function Navbar({
               Contact
             </Button>
             {isLoggedIn ? (
-              <Button
-                colorScheme="teal"
-                variant="outline"
-                onClick={handleLogout}
-              >
+              <Button colorScheme="teal" onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
-              <Button
-                colorScheme="teal"
-                variant="outline"
-                onClick={handleLogin}
-              >
+              <Button colorScheme="teal" onClick={handleLogin}>
                 Login
               </Button>
             )}
@@ -134,16 +125,20 @@ export default function Navbar({
             {isLoggedIn ? (
               <Button
                 colorScheme="teal"
-                variant="outline"
-                onClick={handleLogout}
+                onClick={() => {
+                  handleLogout();
+                  onToggle();
+                }}
               >
                 Logout
               </Button>
             ) : (
               <Button
                 colorScheme="teal"
-                variant="outline"
-                onClick={handleLogin}
+                onClick={() => {
+                  handleLogin();
+                  onToggle();
+                }}
               >
                 Login
               </Button>
