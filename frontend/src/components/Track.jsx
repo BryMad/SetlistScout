@@ -1,3 +1,4 @@
+// src/components/Track.jsx
 import React from "react";
 import { Flex, Box, Text, Image, Link } from "@chakra-ui/react";
 
@@ -41,22 +42,25 @@ export default function Track({ item, tourData }) {
       borderBottom="1px solid"
       borderColor="gray.700"
       justify="space-between"
+      width="100%"
+      maxW="100%"
     >
-      <Flex align="center">
+      <Flex align="center" maxW="70%">
         <Image
           src={albumCover}
           alt="Album cover"
           boxSize="64px"
           objectFit="cover"
           mr={4}
+          flexShrink={0}
         />
-        <Box>
-          <Text fontWeight="bold" fontSize="lg" mb={1}>
+        <Box overflow="hidden">
+          <Text fontWeight="bold" fontSize="lg" mb={1} noOfLines={1}>
             {item.artistName ? item.artistName : item.artist}
           </Text>
 
           {/* Song name linked to Spotify, if we have a valid URI */}
-          <Text fontSize="md" color="gray.300">
+          <Text fontSize="md" color="gray.300" noOfLines={1}>
             {item.uri ? (
               <Link
                 href={getSpotifyLink(item.uri)}
@@ -78,7 +82,7 @@ export default function Track({ item, tourData }) {
         </Box>
       </Flex>
 
-      <Box ml={4} textAlign="right">
+      <Box ml={4} textAlign="right" flexShrink={0}>
         <Text color="gray.400" fontWeight="medium" mb={1}>
           {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
         </Text>

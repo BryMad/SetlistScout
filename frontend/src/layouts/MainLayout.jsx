@@ -19,8 +19,14 @@ export default function MainLayout({ children }) {
       display="flex"
       flexDirection="column"
       minH="calc(100vh - 60px)"
+      width="100%"
     >
-      <Container maxW="container.xl" flex="1" p={4}>
+      <Container
+        maxW="container.xl"
+        flex="1"
+        px={{ base: 2, md: 4 }}
+        width="100%"
+      >
         {error && (
           <AlertMessage
             status="error"

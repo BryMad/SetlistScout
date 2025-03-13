@@ -1,6 +1,10 @@
-// src/context/SetlistContext.jsx
+// File: ./frontend/src/context/SetlistContext.jsx (updated)
 import { createContext, useState, useCallback } from "react";
-import { fetchArtistTour, fetchSetlistById } from "../api/setlistService";
+import {
+  fetchArtistTour,
+  fetchSetlistById,
+  searchArtists,
+} from "../api/setlistService";
 
 // Create the context
 export const SetlistContext = createContext(null);
@@ -20,7 +24,31 @@ export const SetlistProvider = ({ children }) => {
       message: "",
       status: "",
     },
+    progress: {
+      stage: "",
+      message: "Getting setlist data...",
+      percent: null,
+    },
   });
+
+  /**
+   * Update progress information
+   *
+   * @param {Object} progressData Progress data object
+   */
+  const updateProgress = useCallback((progressData) => {
+    setState((prev) => ({
+      ...prev,
+      progress: {
+        stage: progressData.stage || prev.progress.stage,
+        message: progressData.message || prev.progress.message,
+        percent:
+          progressData.progress !== undefined
+            ? progressData.progress
+            : prev.progress.percent,
+      },
+    }));
+  }, []);
 
   /**
    * Fetch tour data for an artist
@@ -28,29 +56,53 @@ export const SetlistProvider = ({ children }) => {
    * @param {Object} artist Artist object with name, id, and url
    * @returns {Promise<void>}
    */
-  const fetchTourData = useCallback(async (artist) => {
-    setState((prev) => ({ ...prev, loading: true, error: null }));
-
-    try {
-      const { spotifyData, tourData } = await fetchArtistTour(artist);
+  const fetchTourData = useCallback(
+    async (artist) => {
       setState((prev) => ({
         ...prev,
-        spotifyData,
-        tourData,
-        loading: false,
+        loading: true,
+        error: null,
+        progress: {
+          stage: "initializing",
+          message: "Starting search...",
+          percent: 0,
+        },
       }));
 
-      return { success: true };
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        loading: false,
-        error: error.message || "Failed to fetch tour data",
-      }));
+      try {
+        // Pass progress callback to fetchArtistTour
+        const result = await fetchArtistTour(artist, updateProgress);
 
-      return { success: false, error: error.message };
-    }
-  }, []);
+        setState((prev) => ({
+          ...prev,
+          spotifyData: result.spotifySongsOrdered,
+          tourData: result.tourData,
+          loading: false,
+          progress: {
+            stage: "complete",
+            message: "Data loaded successfully!",
+            percent: 100,
+          },
+        }));
+
+        return { success: true };
+      } catch (error) {
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error: error.message || "Failed to fetch tour data",
+          progress: {
+            stage: "error",
+            message: error.message || "Failed to fetch tour data",
+            percent: null,
+          },
+        }));
+
+        return { success: false, error: error.message };
+      }
+    },
+    [updateProgress]
+  );
 
   /**
    * Fetches setlist data by ID
@@ -59,7 +111,16 @@ export const SetlistProvider = ({ children }) => {
    * @returns {Promise<void>}
    */
   const fetchSetlistData = useCallback(async (setlistUrl) => {
-    setState((prev) => ({ ...prev, loading: true, error: null }));
+    setState((prev) => ({
+      ...prev,
+      loading: true,
+      error: null,
+      progress: {
+        stage: "initializing",
+        message: "Getting setlist data...",
+        percent: null,
+      },
+    }));
 
     try {
       const { spotifyData, tourData } = await fetchSetlistById(setlistUrl);
@@ -68,6 +129,11 @@ export const SetlistProvider = ({ children }) => {
         spotifyData,
         tourData,
         loading: false,
+        progress: {
+          stage: "complete",
+          message: "Data loaded successfully!",
+          percent: 100,
+        },
       }));
 
       return { success: true };
@@ -76,6 +142,11 @@ export const SetlistProvider = ({ children }) => {
         ...prev,
         loading: false,
         error: error.message || "Failed to fetch setlist data",
+        progress: {
+          stage: "error",
+          message: error.message || "Failed to fetch setlist data",
+          percent: null,
+        },
       }));
 
       return { success: false, error: error.message };
@@ -135,6 +206,8 @@ export const SetlistProvider = ({ children }) => {
     setNotification,
     clearError,
     restoreData,
+    searchForArtists: searchArtists,
+    updateProgress,
   };
 
   return (
