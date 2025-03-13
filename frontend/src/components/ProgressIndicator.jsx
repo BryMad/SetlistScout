@@ -37,22 +37,31 @@ const ProgressIndicator = ({ isLoading, progress }) => {
 
   return (
     <VStack spacing={4} width="100%" my={4}>
-      <Box display="flex" alignItems="center">
-        <Spinner size="sm" mr={2} />
+      <Box
+        display="flex"
+        alignItems="center"
+        minHeight="24px" // Fixed height for message container
+        width="100%"
+      >
+        <Spinner size="sm" mr={2} flexShrink={0} />
         <Text fontSize="md">
           {getStageEmoji(progress.stage)} {progress.message}
         </Text>
       </Box>
 
-      <Progress
-        value={progress.percent !== null ? progress.percent : 0}
-        size="sm"
-        width="100%"
-        colorScheme="teal"
-        hasStripe
-        isAnimated
-        borderRadius="md"
-      />
+      <Box width="100%" height="20px">
+        {" "}
+        {/* Fixed height container for progress bar */}
+        <Progress
+          value={progress.percent !== null ? progress.percent : 0}
+          size="sm"
+          width="100%"
+          colorScheme="teal"
+          hasStripe
+          isAnimated
+          borderRadius="md"
+        />
+      </Box>
     </VStack>
   );
 };

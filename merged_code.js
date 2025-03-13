@@ -53,7 +53,10 @@ export const SetlistProvider = ({ children }) => {
       progress: {
         stage: progressData.stage || prev.progress.stage,
         message: progressData.message || prev.progress.message,
-        percent: progressData.progress || prev.progress.percent,
+        percent:
+          progressData.progress !== undefined
+            ? progressData.progress
+            : prev.progress.percent,
       },
     }));
   }, []);
@@ -688,17 +691,15 @@ const ProgressIndicator = ({ isLoading, progress }) => {
         </Text>
       </Box>
 
-      {progress.percent !== null && (
-        <Progress
-          value={progress.percent}
-          size="sm"
-          width="100%"
-          colorScheme="teal"
-          hasStripe
-          isAnimated
-          borderRadius="md"
-        />
-      )}
+      <Progress
+        value={progress.percent !== null ? progress.percent : 0}
+        size="sm"
+        width="100%"
+        colorScheme="teal"
+        hasStripe
+        isAnimated
+        borderRadius="md"
+      />
     </VStack>
   );
 };
@@ -3619,10 +3620,10 @@ router.post('/search_with_updates', async (req, res) => {
  */
 async function processArtistWithUpdates(artist, clientId) {
   try {
-    sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`);
+    sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`, 5);
 
     // Step 1: Fetch MusicBrainz ID
-    sseManager.sendUpdate(clientId, 'musicbrainz', 'Contacting MusicBrainz for artist identification');
+    sseManager.sendUpdate(clientId, 'musicbrainz', 'Contacting MusicBrainz for artist identification', 15);
     const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
     const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
     const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
@@ -3632,16 +3633,16 @@ async function processArtistWithUpdates(artist, clientId) {
     let matched = false;
 
     if (isArtistNameMatch(artist.name, mbArtistName)) {
-      sseManager.sendUpdate(clientId, 'setlist_search', `Found exact match for ${artist.name} on MusicBrainz, getting setlist data`);
+      sseManager.sendUpdate(clientId, 'setlist_search', `Found exact match for ${artist.name} on MusicBrainz, getting setlist data`, 30);
       matched = true;
       artistPage = await getArtistPageByMBID(mbid);
     } else {
-      sseManager.sendUpdate(clientId, 'setlist_search', `Searching Setlist.fm for ${artist.name}`);
+      sseManager.sendUpdate(clientId, 'setlist_search', `Searching Setlist.fm for ${artist.name}`, 30);
       artistPage = await getArtistPageByName(artist);
     }
 
     // Step 3: Process tour information
-    sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information');
+    sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
     const tourInfo = getTour(artistPage);
     const tourName = chooseTour(tourInfo, artist.name);
 
@@ -3655,13 +3656,13 @@ async function processArtistWithUpdates(artist, clientId) {
     let allTourInfo = [];
 
     if (tourName === "No Tour Info") {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', 'No specific tour found, using recent performances');
+      sseManager.sendUpdate(clientId, 'setlist_fetch', 'No specific tour found, using recent performances', 55);
       allTourInfo.push(artistPage);
     } else if (matched) {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`);
+      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
       allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
     } else {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`);
+      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
       allTourInfo = await getAllTourSongs(artist.name, tourName);
     }
 
@@ -3676,11 +3677,11 @@ async function processArtistWithUpdates(artist, clientId) {
     }
 
     // Step 5: Process songs from setlists
-    sseManager.sendUpdate(clientId, 'song_processing', 'Analyzing setlists and counting song frequencies');
+    sseManager.sendUpdate(clientId, 'song_processing', 'Analyzing setlists and counting song frequencies', 70);
     const tourInfoOrdered = getSongTally(allTourInfo);
 
     // Step 6: Get Spotify data for songs
-    sseManager.sendUpdate(clientId, 'spotify_search', 'Finding songs on Spotify', 70);
+    sseManager.sendUpdate(clientId, 'spotify_search', 'Finding songs on Spotify', 85);
     const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered);
 
     // Final step: Return complete data

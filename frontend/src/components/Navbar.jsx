@@ -33,25 +33,8 @@ export default function NavBar() {
         px={{ base: 4 }}
         align={"center"}
       >
-        {/* Mobile hamburger menu on the left */}
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-          justify="flex-start"
-        >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
-        </Flex>
-
-        {/* Logo */}
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        {/* App title - left-aligned on all screen sizes */}
+        <Flex flex={{ base: 1, md: "auto" }} justify="start">
           <Text
             fontWeight="bold"
             fontSize="2xl"
@@ -61,6 +44,23 @@ export default function NavBar() {
           >
             Setlist Scout
           </Text>
+        </Flex>
+
+        {/* Right-aligned hamburger menu for mobile */}
+        <Flex
+          display={{ base: "flex", md: "none" }}
+          position="absolute"
+          right="4"
+          top="3"
+        >
+          <IconButton
+            onClick={onToggle}
+            icon={
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+            }
+            variant={"ghost"}
+            aria-label={"Toggle Navigation"}
+          />
         </Flex>
 
         {/* Right-aligned menu items for desktop */}

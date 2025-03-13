@@ -1,4 +1,4 @@
-// File: ./backend/server.js (update)
+// File: ./backend/server.js (updated with Redis connection handling)
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -11,11 +11,39 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Create Redis client
+// Create Redis client with improved connection handling
 const redisClient = createClient({
   url: process.env.REDIS_URL,
+  socket: {
+    connectTimeout: 60000, // 60 seconds
+    keepAlive: 30000, // Send keep-alive every 30 seconds
+    reconnectStrategy: (retries) => {
+      if (retries > 10) {
+        console.error('Too many retries on Redis. Giving up.');
+        return new Error('Too many retries');
+      }
+      return Math.min(retries * 100, 3000); // increasing delay, capped at 3s
+    }
+  }
 });
 
+// Set up Redis event listeners for connection management
+redisClient.on('error', (err) => {
+  console.error('Redis connection error:', err);
+  if (err.code === 'ECONNRESET' || err.code === 'CONNECTION_BROKEN') {
+    console.log('Connection reset detected - Redis will automatically attempt to reconnect');
+  }
+});
+
+redisClient.on('reconnecting', () => {
+  console.log('Attempting to reconnect to Redis...');
+});
+
+redisClient.on('connect', () => {
+  console.log('Connected/Reconnected to Redis');
+});
+
+// Connect to Redis
 redisClient.connect()
   .then(() => console.log('Connected to Redis'))
   .catch(err => console.error('Redis connection error:', err));
@@ -56,6 +84,20 @@ app.use(session({
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   },
 }));
+
+// Keep Redis connection alive with periodic pings
+const REDIS_PING_INTERVAL = 30000; // 30 seconds
+setInterval(async () => {
+  try {
+    if (redisClient.isOpen) {
+      await redisClient.ping();
+      // Uncomment for debugging:
+      // console.log('Redis ping successful');
+    }
+  } catch (error) {
+    console.error('Redis ping failed:', error);
+  }
+}, REDIS_PING_INTERVAL);
 
 // Route Imports
 const authRoutes = require('./routes/authRoutes');

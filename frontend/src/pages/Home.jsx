@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 import React from "react";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import UserInput from "../components/UserInput";
 import TracksHUD from "../components/TracksHUD";
 
@@ -10,13 +10,24 @@ import TracksHUD from "../components/TracksHUD";
  */
 export default function Home() {
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-      <Box p={4}>
-        <UserInput />
-      </Box>
-      <Box p={4}>
-        <TracksHUD />
-      </Box>
-    </SimpleGrid>
+    <Grid
+      templateColumns={{
+        base: "1fr",
+        md: "minmax(300px, 1fr) minmax(300px, 2fr)",
+      }}
+      gap={6}
+      width="100%"
+    >
+      <GridItem>
+        <Box p={4}>
+          <UserInput />
+        </Box>
+      </GridItem>
+      <GridItem>
+        <Box p={4}>
+          <TracksHUD />
+        </Box>
+      </GridItem>
+    </Grid>
   );
 }
