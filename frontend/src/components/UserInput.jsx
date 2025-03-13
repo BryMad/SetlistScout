@@ -9,6 +9,7 @@ import {
   ListItem,
   Text,
   Spinner,
+  Container,
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 
@@ -48,7 +49,6 @@ export default function UserInput() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
   /**
    * Fetches artist suggestions
    * @param {string} query The artist search query
@@ -65,7 +65,6 @@ export default function UserInput() {
       setSearchLoading(false);
     }
   };
-
 
   /**
    * Fetches tour information for a selected artist
@@ -87,6 +86,8 @@ export default function UserInput() {
       ref={containerRef}
       position="relative"
       width="100%"
+      maxWidth="100%"
+      mx="auto"
       alignItems="center"
       justifyContent="center"
     >
@@ -100,6 +101,7 @@ export default function UserInput() {
         onChange={(e) => setArtistQuery(e.target.value)}
         size="lg"
         variant="outline"
+        width="100%"
         disabled={loading}
       />
 

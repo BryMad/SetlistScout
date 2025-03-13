@@ -25,6 +25,7 @@ export default function MainLayout({ children }) {
         maxW="container.xl"
         flex="1"
         px={{ base: 2, md: 4 }}
+        py={{ base: 3, md: 5 }}
         width="100%"
       >
         {error && (
