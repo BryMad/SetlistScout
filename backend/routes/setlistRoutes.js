@@ -111,8 +111,17 @@ async function processArtistWithUpdates(artist, clientId) {
     const tourInfoOrdered = getSongTally(allTourInfo);
 
     // Step 6: Get Spotify data for songs
-    sseManager.sendUpdate(clientId, 'spotify_search', 'Finding songs on Spotify', 85);
-    const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered);
+    // Instead of a single update, pass the SSE manager's sendUpdate function to track progress
+    const progressCallback = (progressData) => {
+      sseManager.sendUpdate(
+        clientId,
+        progressData.stage,
+        progressData.message,
+        progressData.progress
+      );
+    };
+
+    const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
 
     // Final step: Return complete data
     const tourData = {

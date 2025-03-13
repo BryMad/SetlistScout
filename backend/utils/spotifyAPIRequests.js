@@ -1,3 +1,4 @@
+// File: ./backend/utils/spotifyAPIRequests.js (updated with progress tracking)
 const axios = require("axios");
 const Bottleneck = require('bottleneck');
 const { v4: uuidv4 } = require('uuid');
@@ -40,7 +41,6 @@ const getAccessToken = async () => {
  * @async
  */
 const searchArtist = async (token, artistName) => {
-  // const query = `q:${artistName}`;
   logger.info("Searching for Artist", { artistName });
   const queryParams = new URLSearchParams({
     q: artistName,
@@ -48,7 +48,6 @@ const searchArtist = async (token, artistName) => {
     limit: 10
   });
   const url = `https://api.spotify.com/v1/search?${queryParams.toString()}`;
-  // console.log("ARTIST URL: ======", url)
   try {
     const response = await axios.get(url, {
       headers: {
@@ -62,14 +61,11 @@ const searchArtist = async (token, artistName) => {
       id: artist.id,
       url: artist.external_urls.spotify,
       image: artist.images[2] ? artist.images[2] : artist.images[0],
-      // genres: artist.genres,
-      // followers: artist.followers.total
     }));
   } catch (error) {
     logger.error("Error searching artist", { artistName, error: error.message });
     throw error;
   }
-
 }
 
 /**
@@ -127,109 +123,89 @@ const searchSong = async (token, artistName, trackName) => {
 const limitedSearchSong = limiter.wrap(searchSong);
 
 /**
- * Gets Spotify information for a list of songs
+ * Gets Spotify information for a list of songs with progress updates
  * - Looks up each song on Spotify
  * - Formats and combines with original song data
+ * - Provides progress updates via callback
  * 
  * @param {Array} songList List of songs to look up
+ * @param {Function} progressCallback Optional callback for progress updates
  * @returns {Array} Songs with Spotify data
  * @async
  */
-const getSpotifySongInfo = async (songList) => {
+const getSpotifySongInfo = async (songList, progressCallback = null) => {
   logger.info("Compiling Spotify song information");
   try {
     const token = await getAccessToken();
-    const promises = songList.map((song) => {
-      return limitedSearchSong(token, song.artist, song.song);
-    });
-    const spotifyResponses = await Promise.all(promises);
+
+    // Initial progress update - starting song search
+    if (progressCallback) {
+      progressCallback({
+        stage: 'spotify_search',
+        message: 'Starting Spotify song lookup...',
+        progress: 85
+      });
+    }
+
+    const totalSongs = songList.length;
+    const batchSize = 5; // Process songs in batches for better progress reporting
+    const batches = Math.ceil(totalSongs / batchSize);
+    const spotifyDataParsed = [];
+
+    // Process songs in batches with progress updates
+    for (let i = 0; i < batches; i++) {
+      // Calculate start and end indices for current batch
+      const start = i * batchSize;
+      const end = Math.min(start + batchSize, totalSongs);
+      const currentBatch = songList.slice(start, end);
+
+      // Update progress
+      if (progressCallback) {
+        const progress = 85 + ((i / batches) * 15); // Scale from 85% to 100%
+        const songsProcessed = Math.min((i + 1) * batchSize, totalSongs);
+        progressCallback({
+          stage: 'spotify_search',
+          message: `Looking up songs on Spotify (${songsProcessed}/${totalSongs})...`,
+          progress
+        });
+      }
+
+      // Process this batch
+      const promises = currentBatch.map((song) => {
+        return limitedSearchSong(token, song.artist, song.song);
+      });
+
+      const batchResponses = await Promise.all(promises);
+
+      // Process responses
+      batchResponses.forEach((data, idx) => {
+        const songIndex = start + idx;
+        const obj = {
+          songName: data.tracks.items[0]?.name,
+          artistName: data.tracks.items[0]?.artists[0]?.name,
+          image: data.tracks.items[0]?.album?.images?.find((img) => img.height === 64),
+          uri: data.tracks.items[0]?.uri,
+          id: uuidv4(),
+        };
+        spotifyDataParsed.push({ ...obj, ...songList[songIndex] });
+      });
+    }
+
+    // Final progress update
+    if (progressCallback) {
+      progressCallback({
+        stage: 'spotify_search',
+        message: 'All songs processed!',
+        progress: 100
+      });
+    }
+
     logger.info("All songs retrieved from Spotify");
-    const spotifyDataParsed = spotifyResponses.map((data, index) => {
-      const obj = {
-        songName: data.tracks.items[0]?.name,
-        artistName: data.tracks.items[0]?.artists[0]?.name,
-        image: data.tracks.items[0]?.album?.images?.find((img) => img.height === 64),
-        uri: data.tracks.items[0]?.uri,
-        id: uuidv4(),
-      };
-      return { ...obj, ...songList[index] };
-    });
     return spotifyDataParsed;
   } catch (error) {
     logger.error("Error getting Spotify song info", error.message);
     throw error;
   }
 }
-
-// Older Basic Functions from learning Spotify API
-
-// const basicQuery = async (token) => {
-//   logger.info("Making basic query to Spotify");
-//   try {
-//     const response = await axios.get("https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb", {
-//       headers: {
-//         Authorization: `Bearer ${token}`
-//       }
-//     });
-//     logger.info("Basic query successful");
-//     return response.data;
-//   } catch (error) {
-//     logger.error("Error in basic query", error.message);
-//     throw error;
-//   }
-// }
-
-// const searchSingleSong = async (token) => {
-//   logger.info("Searching for a single song on Spotify");
-//   try {
-//     const response = await axios.get("https://api.spotify.com/v1/search?q=track%3Awith+or+without+you+artist%3Au2&type=track", {
-//       headers: {
-//         Authorization: `Bearer ${token}`
-//       }
-//     });
-//     logger.info("Single song search completed");
-//     return response.data;
-//   }
-//   catch (error) {
-//     logger.error("Error searching single song", error.message);
-//     throw error;
-//   }
-// }
-
-// const getUserID = async (token) => {
-//   logger.info("Getting user ID from Spotify");
-//   try {
-//     const response = await axios.get("https://api.spotify.com/v1/me", {
-//       headers: {
-//         Authorization: `Bearer ${token}`
-//       }
-//     });
-//     logger.info("User ID retrieved");
-//     return response.data.id;
-//   } catch (error) {
-//     logger.error("Error getting user ID", error.message);
-//     throw error;
-//   }
-// }
-
-// const createPlaylist = async (token, userId) => {
-//   logger.info("Creating new playlist for user", { userId });
-//   try {
-//     const response = await axios.post(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-//       "name": "New Playlist",
-//       "description": "New playlist description",
-//       "public": false
-//     }, {
-//       headers: {
-//         Authorization: `Bearer ${token}`
-//       }
-//     });
-//     logger.info("Playlist created successfully");
-//     return response.data;
-//   } catch (error) {
-//     logger.error("Error creating playlist", error.message);
-//     throw error;
-//   }
-// }
 
 module.exports = { searchArtist, getSpotifySongInfo, getAccessToken }
