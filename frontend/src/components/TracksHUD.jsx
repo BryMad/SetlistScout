@@ -1,12 +1,21 @@
 // src/components/TracksHUD.jsx
 import React from "react";
-import { Button, Flex, Box, Divider, Heading, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Box,
+  Divider,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
 import { useAuth } from "../hooks/useAuth";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
+import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
   const { isLoggedIn, login } = useAuth();
@@ -33,31 +42,39 @@ export default function TracksHUD() {
         showTracks && (
           <Flex justify="center" mb={8} width="full">
             {!isLoggedIn ? (
-              <Button
-                size="lg"
-                px="25px"
-                py="15px"
-                colorScheme="green"
-                bg="green.500"
-                color="white"
-                _hover={{ bg: "green.600" }}
-                onClick={() => login({ spotifyData, tourData })}
-              >
-                Login to Spotify to create playlist
-              </Button>
+              <Flex align="center">
+                <Button
+                  size="md"
+                  width="90px"
+                  py="15px"
+                  bg="#1DB954" /* Spotify green */
+                  color="white"
+                  variant="ghost"
+                  _hover={{ bg: "#1AA34A" }}
+                  onClick={() => login({ spotifyData, tourData })}
+                  borderRadius="md"
+                >
+                  Login
+                </Button>
+                <Text mx={2}>to create playlist on</Text>
+                <Image src={spotifyLogo} alt="Spotify" height="34px" />
+              </Flex>
             ) : (
-              <Button
-                size="lg"
-                px="25px"
-                py="15px"
-                colorScheme="green"
-                bg="green.500"
-                color="white"
-                _hover={{ bg: "green.600" }}
-                onClick={createPlaylist}
-              >
-                Create Playlist
-              </Button>
+              <Flex align="center">
+                <Button
+                  size="md"
+                  width="90px"
+                  py="15px"
+                  bg="#1DB954" /* Spotify green */
+                  color="white"
+                  _hover={{ bg: "green.600" }}
+                  onClick={createPlaylist}
+                >
+                  Create
+                </Button>
+                <Text mx={2}> playlist on </Text>
+                <Image src={spotifyLogo} alt="Spotify" height="34px" />
+              </Flex>
             )}
           </Flex>
         )
