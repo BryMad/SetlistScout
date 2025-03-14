@@ -53,7 +53,7 @@ export default function About() {
         </UnorderedList>
 
         <Heading as="h2" size="md" mt={4}>
-          Privacy:
+          Privacy Policy:
         </Heading>
 
         <Text>
