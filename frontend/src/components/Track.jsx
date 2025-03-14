@@ -10,16 +10,16 @@ import {
 } from "@chakra-ui/react";
 
 export default function Track({ item, tourData }) {
-  // Helper to convert spotify URI ("spotify:track:<id>") to an open spotify link
+  // Helper to convert Spotify URI ("spotify:track:<id>") to an open Spotify link
   const getSpotifyLink = (uri) => {
-    const trackId = uri?.split(":").pop(); // e.g. "spotify:track:12345" => "12345"
+    const trackId = uri?.split(":").pop(); // e.g., "spotify:track:12345" => "12345"
     return `https://open.spotify.com/track/${trackId}`;
   };
 
   // Helper to clean song titles by removing remaster/remix information
   const cleanSongTitle = (title) => {
     if (!title) return title;
-    //patterns to filter out
+    // Patterns to filter out
     const patterns = [
       /\s*-\s*(Remaster(ed)?|Remix(ed)?|Re-?master|Mix).*$/i,
       /\s*-\s*\d{4}(\s+.+)?$/i,
@@ -37,7 +37,7 @@ export default function Track({ item, tourData }) {
     return cleanedTitle.trim();
   };
 
-  // Use default placeholder if item.image is undefined
+  // Use a default placeholder if item.image is undefined
   const albumCover = item.image
     ? item.image.url
     : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
@@ -45,41 +45,29 @@ export default function Track({ item, tourData }) {
   // Determine the layout based on screen size
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  // Mobile layout: artwork stacked on top of text
+  // Render mobile layout: two columns
   if (isMobile) {
     return (
-      <Box p={4} borderBottom="1px solid" borderColor="gray.700" width="100%">
-        <Flex justify="space-between" mb={3}>
+      <Flex p={4} borderBottom="1px solid" borderColor="gray.700" width="100%">
+        {/* Column 1: Image, Artist - Song Title, and Spotify link */}
+        <Box flex="1">
           <Image
             src={albumCover}
             alt="Album cover"
             boxSize="60px"
             objectFit="cover"
             borderRadius="2px"
-            mr={3}
-            flexShrink={0}
+            mb={2}
           />
-          <Box textAlign="right">
-            <Text color="gray.400" fontWeight="medium" fontSize="sm">
-              {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
-            </Text>
-            <Text color="gray.500" fontSize="xs">
-              Played at {item.count} of {tourData.totalShows} shows
-            </Text>
-          </Box>
-        </Flex>
-
-        <Box>
-          <Text fontWeight="bold" fontSize="md" mb={1}>
-            {item.artistName ? item.artistName : item.artist}
-          </Text>
-
-          <Text fontSize="sm" color="gray.300" mb={1}>
+          <Text fontSize="md" noOfLines={1}>
+            <Box as="span" fontWeight="bold">
+              {item.artistName ? item.artistName : item.artist}
+            </Box>
+            {" - "}
             {item.songName
               ? cleanSongTitle(item.songName)
               : `${item.song} - not found on Spotify`}
           </Text>
-
           {item.uri && (
             <Link
               href={getSpotifyLink(item.uri)}
@@ -88,16 +76,28 @@ export default function Track({ item, tourData }) {
               fontSize="xs"
               opacity={0.9}
               _hover={{ opacity: 1 }}
+              mt={1}
+              display="block"
             >
               LISTEN ON SPOTIFY
             </Link>
           )}
         </Box>
-      </Box>
+
+        {/* Column 2: Likelihood and "Played at" info */}
+        <Box ml={4} textAlign="right" minWidth="140px">
+          <Text color="gray.400" fontWeight="medium" mb={1}>
+            {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
+          </Text>
+          <Text color="gray.500" fontSize="sm">
+            Played at {item.count} of {tourData.totalShows} shows
+          </Text>
+        </Box>
+      </Flex>
     );
   }
 
-  // Desktop layout: three-column layout
+  // Render desktop layout: three columns
   return (
     <Flex
       align="center"
@@ -107,28 +107,27 @@ export default function Track({ item, tourData }) {
       width="100%"
     >
       {/* Column 1: Album artwork */}
-      <Image
-        src={albumCover}
-        alt="Album cover"
-        boxSize="64px"
-        objectFit="cover"
-        mr={4}
-        flexShrink={0}
-        borderRadius="4px"
-      />
+      <Box mr={4}>
+        <Image
+          src={albumCover}
+          alt="Album cover"
+          boxSize="64px"
+          objectFit="cover"
+          borderRadius="4px"
+        />
+      </Box>
 
-      {/* Column 2: Vertical stacking of artist, track name, and Spotify link */}
-      <Box flex="1" overflow="hidden" mr={4}>
-        <Text fontWeight="bold" fontSize="md" mb={1} noOfLines={1}>
-          {item.artistName ? item.artistName : item.artist}
-        </Text>
-
-        <Text fontSize="sm" color="gray.300" mb={1} noOfLines={1}>
+      {/* Column 2: Artist - Song Title (row 1) and Spotify link (row 2) */}
+      <Box flex="1" mr={4}>
+        <Text fontSize="md" noOfLines={1}>
+          <Box as="span" fontWeight="bold">
+            {item.artistName ? item.artistName : item.artist}
+          </Box>
+          {" - "}
           {item.songName
             ? cleanSongTitle(item.songName)
             : `${item.song} - not found on Spotify`}
         </Text>
-
         {item.uri && (
           <Link
             href={getSpotifyLink(item.uri)}
@@ -137,6 +136,7 @@ export default function Track({ item, tourData }) {
             fontSize="xs"
             opacity={0.9}
             _hover={{ opacity: 1 }}
+            mt={1}
             display="block"
           >
             LISTEN ON SPOTIFY
@@ -144,8 +144,8 @@ export default function Track({ item, tourData }) {
         )}
       </Box>
 
-      {/* Column 3: Likelihood information */}
-      <Box textAlign="right" flexShrink={0} minWidth="100px">
+      {/* Column 3: Likelihood (row 1) and "Played at" info (row 2) */}
+      <Box textAlign="right" minWidth="140px">
         <Text color="gray.400" fontWeight="medium" mb={1}>
           {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
         </Text>
