@@ -139,6 +139,7 @@ export default function UserInput() {
                     src={artist.image?.url || "https://placehold.co/40"}
                     boxSize="40px"
                     alt={artist.name}
+                    borderRadius={["2px", "2px", "4px"]} // Responsive border radius: 2px for small/medium, 4px for large
                   />
                   <Text>{artist.name}</Text>
                 </HStack>
