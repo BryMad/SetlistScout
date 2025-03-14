@@ -57,10 +57,15 @@ export default function About() {
         </Heading>
 
         <Text>
-          We only request the minimum Spotify permissions needed to create
-          playlists on your behalf. We don't store any of your personal
-          information beyond what's needed for the application to function.
+          Setlist Scout collects minimal user data. When you log in via Spotify,
+          we temporarily store your Spotify User ID and the temporary tokens
+          needed to create playlists on your behalf. This data is stored in
+          encrypted sessions that expire after 24 hours. We do not analyze your
+          listening habits or playlist data. We do not share your data with any
+          third parties beyond the necessary interactions with Spotify's API to
+          provide our service.
         </Text>
+
         <Heading as="h2" size="md" mt={4}>
           Issues:
         </Heading>

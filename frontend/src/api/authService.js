@@ -53,11 +53,6 @@ export const checkAuthStatus = () => {
   };
 };
 
-/**
- * Processes authentication data from URL fragments (for mobile) or localStorage
- * 
- * @returns {Object} Processed authentication data and saved state
- */
 export const processAuthResponse = () => {
   let authData = { processed: false, accessToken: null, userId: null, savedState: null };
 
@@ -67,11 +62,20 @@ export const processAuthResponse = () => {
       window.location.hash.substring(1) // Remove the # character
     );
     const accessToken = hashParams.get("access_token");
+    const refreshToken = hashParams.get("refresh_token");
     const userId = hashParams.get("user_id");
 
     if (accessToken && userId) {
       localStorage.setItem("spotify_access_token", accessToken);
       localStorage.setItem("spotify_user_id", userId);
+
+      // Store refresh token if available
+      if (refreshToken) {
+        localStorage.setItem("spotify_refresh_token", refreshToken);
+      }
+
+      // Store timestamp for expiration checking
+      localStorage.setItem("spotify_token_timestamp", Date.now().toString());
 
       // Clean URL
       window.history.replaceState({}, document.title, window.location.pathname);
@@ -103,6 +107,65 @@ export const processAuthResponse = () => {
 };
 
 /**
+ * Refreshes the access token using the refresh token
+ * 
+ * @returns {Promise<Object>} New tokens or null if refresh failed
+ */
+export const refreshAccessToken = async () => {
+  try {
+    const refresh_token = localStorage.getItem("spotify_refresh_token");
+
+    if (!refresh_token) {
+      return null;
+    }
+
+    const response = await axios.post(
+      `${server_url}/auth/refresh`,
+      { refresh_token },
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+
+    if (response.data.access_token) {
+      // Save the new tokens
+      localStorage.setItem("spotify_access_token", response.data.access_token);
+
+      // Save new refresh token if provided
+      if (response.data.refresh_token) {
+        localStorage.setItem("spotify_refresh_token", response.data.refresh_token);
+      }
+
+      return response.data;
+    }
+
+    return null;
+  } catch (error) {
+    console.error("Error refreshing token:", error);
+    return null;
+  }
+};
+
+/**
+ * Checks if the stored token needs refreshing
+ * 
+ * @returns {boolean} True if token is expired or close to expiry
+ */
+export const isTokenExpired = () => {
+  const tokenTimestamp = localStorage.getItem("spotify_token_timestamp");
+
+  if (!tokenTimestamp) {
+    return true;
+  }
+
+  // Tokens typically expire after 3600 seconds (1 hour)
+  // Refresh when less than 5 minutes remaining
+  const EXPIRATION_TIME = 3600 * 1000; // 1 hour in milliseconds
+  const BUFFER_TIME = 300 * 1000; // 5 minutes in milliseconds
+  const now = Date.now();
+
+  return now - parseInt(tokenTimestamp) > EXPIRATION_TIME - BUFFER_TIME;
+};
+
+/**
  * Sets up an authentication listener for the popup window response
  * 
  * @param {Function} callback Function to call with authentication data
@@ -118,10 +181,19 @@ export const setupAuthListener = (callback) => {
     // Handle auth message format
     if (event.data && event.data.type === "authentication") {
       const accessToken = event.data.access_token;
+      const refreshToken = event.data.refresh_token;
       const userId = event.data.user_id;
 
       localStorage.setItem("spotify_access_token", accessToken);
       localStorage.setItem("spotify_user_id", userId);
+
+      // Store refresh token if available
+      if (refreshToken) {
+        localStorage.setItem("spotify_refresh_token", refreshToken);
+      }
+
+      // Store timestamp for expiration checking
+      localStorage.setItem("spotify_token_timestamp", Date.now().toString());
 
       callback({
         isLoggedIn: true,
@@ -147,4 +219,6 @@ export const setupAuthListener = (callback) => {
 export const logout = () => {
   localStorage.removeItem("spotify_access_token");
   localStorage.removeItem("spotify_user_id");
+  localStorage.removeItem("spotify_refresh_token");
+  localStorage.removeItem("spotify_token_timestamp");
 };

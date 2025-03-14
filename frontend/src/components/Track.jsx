@@ -9,6 +9,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
+// Import the Spotify logo
+import SpotifyLogo from "../assets/spotify_logo_white.svg";
+
 export default function Track({ item, tourData }) {
   // Convert Spotify URI ("spotify:track:<id>") to an open Spotify link.
   const getSpotifyLink = (uri) => {
@@ -43,7 +46,7 @@ export default function Track({ item, tourData }) {
   // Determine layout based on screen size.
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  // Mobile layout: two columns. Column 1 is the image; Column 2 has five rows.
+  // Mobile layout: two columns. Column 1 is the image; Column 2 has multiple rows.
   if (isMobile) {
     return (
       <Flex
@@ -78,38 +81,29 @@ export default function Track({ item, tourData }) {
               : `${item.song} - not found on Spotify`}
           </Text>
 
-          {/* Row 3: Likelihood */}
-          <Text
-            textAlign="right"
-            color="gray.400"
-            fontWeight="medium"
-            fontSize="sm"
-            mt={1}
-          >
-            {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
-          </Text>
+          {/* Row 3: Likelihood with Spotify logo */}
+          <Flex justifyContent="flex-end" alignItems="center" mt={1}>
+            <Text color="gray.400" fontWeight="medium" fontSize="sm" mr={2}>
+              {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
+            </Text>
+            {item.uri && (
+              <Link
+                href={getSpotifyLink(item.uri)}
+                isExternal
+                display="flex"
+                alignItems="center"
+                opacity={0.9}
+                _hover={{ opacity: 1 }}
+              >
+                <Image src={SpotifyLogo} alt="Listen on Spotify" width="16px" />
+              </Link>
+            )}
+          </Flex>
 
           {/* Row 4: Played at info */}
           <Text textAlign="right" color="gray.500" fontSize="sm" mt={1}>
             Played at {item.count} of {tourData.totalShows} shows
           </Text>
-
-          {/* Row 5: Listen on Spotify link */}
-          {item.uri && (
-            <Link
-              textAlign="right"
-              href={getSpotifyLink(item.uri)}
-              isExternal
-              color="#1DB954"
-              fontSize="xs"
-              opacity={0.9}
-              _hover={{ opacity: 1 }}
-              mt={2}
-              display="block"
-            >
-              LISTEN ON SPOTIFY
-            </Link>
-          )}
         </Box>
       </Flex>
     );
@@ -135,38 +129,43 @@ export default function Track({ item, tourData }) {
         />
       </Box>
 
-      {/* Column 2: Artist - Song Title and Spotify link */}
+      {/* Column 2: Artist name and Song Title in separate rows */}
       <Box flex="1" mr={4}>
-        <Text fontSize="md" noOfLines={1}>
-          <Box as="span" fontWeight="bold">
-            {item.artistName ? item.artistName : item.artist}
-          </Box>
-          {" - "}
+        {/* Row 1: Artist name */}
+        <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+          {item.artistName ? item.artistName : item.artist}
+        </Text>
+
+        {/* Row 2: Song name */}
+        <Text fontSize="md" color="gray.300" noOfLines={1}>
           {item.songName
             ? cleanSongTitle(item.songName)
             : `${item.song} - not found on Spotify`}
         </Text>
-        {item.uri && (
-          <Link
-            href={getSpotifyLink(item.uri)}
-            isExternal
-            color="#1DB954"
-            fontSize="xs"
-            opacity={0.9}
-            _hover={{ opacity: 1 }}
-            mt={1}
-            display="block"
-          >
-            LISTEN ON SPOTIFY
-          </Link>
-        )}
       </Box>
 
-      {/* Column 3: Likelihood and Played at info */}
+      {/* Column 3: Likelihood with Spotify logo, and Played at info */}
       <Box textAlign="right" minWidth="140px">
-        <Text color="gray.400" fontWeight="medium" mb={1}>
-          {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
-        </Text>
+        {/* Likelihood and Spotify logo on the same line */}
+        <Flex justifyContent="flex-end" alignItems="center" mb={1}>
+          <Text color="gray.400" fontWeight="medium" mr={2}>
+            {Math.round((item.count / tourData.totalShows) * 100)}% likelihood
+          </Text>
+          {item.uri && (
+            <Link
+              href={getSpotifyLink(item.uri)}
+              isExternal
+              display="flex"
+              alignItems="center"
+              _hover={{ opacity: 1 }}
+              opacity={0.9}
+            >
+              <Image src={SpotifyLogo} alt="Listen on Spotify" width="18px" />
+            </Link>
+          )}
+        </Flex>
+
+        {/* Played at info */}
         <Text color="gray.500" fontSize="sm">
           Played at {item.count} of {tourData.totalShows} shows
         </Text>

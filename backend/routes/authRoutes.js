@@ -123,11 +123,12 @@ router.get('/callback', async (req, res) => {
       const userAgent = req.headers['user-agent'];
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
+      // In the callback route:
       if (isMobile) {
         // For mobile, redirect with tokens in URL fragment
         console.log('Mobile detected, redirecting with tokens in fragment');
         // Use # fragment to prevent tokens from being sent to server in subsequent requests
-        res.redirect(`${frontEndURL}?auth=success#access_token=${access_token}&user_id=${user_id}`);
+        res.redirect(`${frontEndURL}?auth=success#access_token=${access_token}&refresh_token=${refresh_token}&user_id=${user_id}`);
       } else {
         // For desktop, use the popup message approach but send tokens
         console.log('Desktop detected, sending tokens via postMessage');
@@ -138,6 +139,7 @@ router.get('/callback', async (req, res) => {
   window.opener.postMessage({
     type: 'authentication',
     access_token: '${access_token}',
+    refresh_token: '${refresh_token}',
     user_id: '${user_id}'
   }, '${frontEndURL}');
   window.close();
@@ -153,5 +155,54 @@ router.get('/callback', async (req, res) => {
     res.redirect('/error?error=exception');
   }
 });
+
+/**
+ * Endpoint: POST /refresh
+ * Refreshes an expired access token using the refresh token
+ */
+router.post('/refresh', async (req, res) => {
+  try {
+    const { refresh_token } = req.body;
+
+    if (!refresh_token) {
+      return res.status(400).json({ error: 'No refresh token provided' });
+    }
+
+    const data = qs.stringify({
+      grant_type: 'refresh_token',
+      refresh_token: refresh_token
+    });
+
+    const headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + Buffer.from(`${client_id}:${client_secret}`).toString('base64')
+    };
+
+    const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers });
+
+    if (tokenResponse.status === 200) {
+      // Sometimes Spotify doesn't return a new refresh token
+      const new_access_token = tokenResponse.data.access_token;
+      const new_refresh_token = tokenResponse.data.refresh_token || refresh_token;
+
+      // Update session if it exists
+      if (req.session) {
+        req.session.access_token = new_access_token;
+        req.session.refresh_token = new_refresh_token;
+      }
+
+      return res.json({
+        access_token: new_access_token,
+        refresh_token: new_refresh_token
+      });
+    } else {
+      return res.status(401).json({ error: 'Failed to refresh token' });
+    }
+  } catch (error) {
+    console.error('Error refreshing token:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 module.exports = router;

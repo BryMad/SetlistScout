@@ -39,12 +39,35 @@ export const useAuth = () => {
     });
   }, [authContext]);
 
+  /**
+     * Refresh the access token
+     * @returns {Promise<boolean>} Success status
+     */
+  const refreshToken = useCallback(async () => {
+    try {
+      const result = await refreshAccessToken();
+      if (result) {
+        authContext.updateAuth({
+          isLoggedIn: true,
+          accessToken: result.access_token,
+          userId: authContext.userId
+        });
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      return false;
+    }
+  }, [authContext]);
+
   return {
     isLoggedIn,
     userId,
     accessToken,
     restoredState,
     login,
-    logout: handleLogout
+    logout: handleLogout,
+    refreshToken
   };
 };

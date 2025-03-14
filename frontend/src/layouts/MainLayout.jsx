@@ -1,8 +1,9 @@
 // src/layouts/MainLayout.jsx
 import React from "react";
-import { Box, Container, Text, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, Image, Text, Link } from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
+import spotifyLogo from "../assets/spotify_logo_full_white.png";
 
 /**
  * Main layout component for the application
@@ -41,6 +42,24 @@ export default function MainLayout({ children }) {
       </Container>
 
       <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>
+        <Flex
+          align="center"
+          justify="center"
+          mb={4}
+          borderBottom="1px"
+          borderColor="gray.700"
+          pb={3}
+        >
+          <Text mr={2} fontSize="md">
+            artist search and playlist creation powered by
+          </Text>
+          <Image
+            src={spotifyLogo}
+            alt="Spotify Logo"
+            height="30px"
+            width="auto"
+          />
+        </Flex>
         <Text>
           This app uses the Spotify API but is not endorsed, certified, or
           otherwise approved by Spotify. Spotify is a registered trademark of
