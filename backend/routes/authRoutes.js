@@ -1,3 +1,4 @@
+// backend/routes/authRoutes.js - COMPLETE FILE
 const express = require('express');
 const router = express.Router();
 const qs = require('qs');
@@ -20,30 +21,26 @@ const generateRandomString = (length) => {
   return crypto.randomBytes(length).toString('hex').slice(0, length);
 };
 
-
-
 /**
  * Endpoint: GET /login
  * Initiates Spotify OAuth flow
- * - Generates state parameter and stores in session
- * - Redirects to Spotify authorization URL
+ * - Now also captures app state to restore after login
  */
 router.get('/login', (req, res) => {
   const state = generateRandomString(16);
-  console.log('login state:', state);
   const scope = 'playlist-modify-public';
+
   // Store state in session for verification
   req.session.state = state;
 
-  console.log("STRINGIFY:====");
-  console.log(querystring.stringify({
-    response_type: 'code',
-    client_id: client_id,
-    scope: scope,
-    redirect_uri: redirect_uri,
-    state: state,
-    show_dialog: true
-  }));
+  // Store app state in session if provided
+  if (req.query.appState) {
+    try {
+      req.session.appState = req.query.appState;
+    } catch (error) {
+      console.error('Error storing app state:', error);
+    }
+  }
 
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -59,21 +56,15 @@ router.get('/login', (req, res) => {
 /**
  * Endpoint: GET /callback
  * Handles Spotify OAuth callback
- * - Verifies state to prevent CSRF
- * - Exchanges authorization code for access token
- * - Fetches user information
- * - Handles different flows for mobile vs desktop
+ * - No longer returns tokens to the frontend
+ * - Only sends success/failure status
  */
 router.get('/callback', async (req, res) => {
   try {
-    console.log('Host header:', req.headers.host);
     const code = req.query.code || null;
     const state = req.query.state || null;
-    console.log('code:', code);
-    console.log('callback state:', state);
     const storedState = req.session.state || null;
-    console.log("storedState: ", storedState);
-    console.log("state: ", state);
+    const appState = req.session.appState || null;
 
     if (state === null || state !== storedState) {
       console.log('State mismatch error');
@@ -85,6 +76,7 @@ router.get('/callback', async (req, res) => {
 
     // Clear state
     req.session.state = null;
+
     const data = qs.stringify({
       code: code,
       redirect_uri: redirect_uri,
@@ -96,8 +88,7 @@ router.get('/callback', async (req, res) => {
       'Authorization': 'Basic ' + Buffer.from(`${client_id}:${client_secret}`).toString('base64')
     };
 
-    console.log('Requesting token from Spotify');
-    const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers: headers });
+    const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers });
 
     if (tokenResponse.status === 200) {
       const access_token = tokenResponse.data.access_token;
@@ -108,9 +99,8 @@ router.get('/callback', async (req, res) => {
         headers: { 'Authorization': `Bearer ${access_token}` }
       });
       const user_id = userResponse.data.id;
-      console.log('User ID:', user_id);
 
-      // Still store in session for backward compatibility
+      // Store tokens and user ID in session
       req.session.access_token = access_token;
       req.session.refresh_token = refresh_token;
       req.session.user_id = user_id;
@@ -123,24 +113,23 @@ router.get('/callback', async (req, res) => {
       const userAgent = req.headers['user-agent'];
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
-      // In the callback route:
+      // Return app state if we have it
+      const stateParam = appState ? `&state=${encodeURIComponent(appState)}` : '';
+
       if (isMobile) {
-        // For mobile, redirect with tokens in URL fragment
-        console.log('Mobile detected, redirecting with tokens in fragment');
-        // Use # fragment to prevent tokens from being sent to server in subsequent requests
-        res.redirect(`${frontEndURL}?auth=success#access_token=${access_token}&refresh_token=${refresh_token}&user_id=${user_id}`);
+        // For mobile, redirect with success flag only (no tokens)
+        res.redirect(`${frontEndURL}?auth=success${stateParam}`);
       } else {
-        // For desktop, use the popup message approach but send tokens
-        console.log('Desktop detected, sending tokens via postMessage');
+        // For desktop, use the popup message approach but only send status (no tokens)
         res.send(`<!DOCTYPE html>
 <html>
 <body>
 <script>
   window.opener.postMessage({
     type: 'authentication',
-    access_token: '${access_token}',
-    refresh_token: '${refresh_token}',
-    user_id: '${user_id}'
+    success: true,
+    userId: '${user_id}',
+    state: ${appState ? appState : 'null'}
   }, '${frontEndURL}');
   window.close();
 </script>
@@ -157,20 +146,45 @@ router.get('/callback', async (req, res) => {
 });
 
 /**
- * Endpoint: POST /refresh
- * Refreshes an expired access token using the refresh token
+ * Endpoint: GET /status
+ * Checks if user is authenticated
  */
-router.post('/refresh', async (req, res) => {
+router.get('/status', (req, res) => {
+  const isLoggedIn = !!(req.session && req.session.access_token && req.session.user_id);
+
+  res.json({
+    isLoggedIn,
+    userId: isLoggedIn ? req.session.user_id : null
+  });
+});
+
+/**
+ * Endpoint: POST /logout
+ * Logs the user out by clearing their session
+ */
+router.post('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ error: 'Failed to log out' });
+      }
+      res.clearCookie('connect.sid'); // Clear the session cookie
+      return res.json({ success: true });
+    });
+  } else {
+    return res.json({ success: true });
+  }
+});
+
+/**
+ * Internal method to refresh token - no longer exposed to frontend
+ * Now used by apiClient interceptor on the backend
+ */
+const refreshAccessToken = async (refreshToken) => {
   try {
-    const { refresh_token } = req.body;
-
-    if (!refresh_token) {
-      return res.status(400).json({ error: 'No refresh token provided' });
-    }
-
     const data = qs.stringify({
       grant_type: 'refresh_token',
-      refresh_token: refresh_token
+      refresh_token: refreshToken
     });
 
     const headers = {
@@ -181,28 +195,18 @@ router.post('/refresh', async (req, res) => {
     const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers });
 
     if (tokenResponse.status === 200) {
-      // Sometimes Spotify doesn't return a new refresh token
-      const new_access_token = tokenResponse.data.access_token;
-      const new_refresh_token = tokenResponse.data.refresh_token || refresh_token;
-
-      // Update session if it exists
-      if (req.session) {
-        req.session.access_token = new_access_token;
-        req.session.refresh_token = new_refresh_token;
-      }
-
-      return res.json({
-        access_token: new_access_token,
-        refresh_token: new_refresh_token
-      });
-    } else {
-      return res.status(401).json({ error: 'Failed to refresh token' });
+      return {
+        access_token: tokenResponse.data.access_token,
+        refresh_token: tokenResponse.data.refresh_token || refreshToken
+      };
     }
+    return null;
   } catch (error) {
     console.error('Error refreshing token:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return null;
   }
-});
+};
 
-
+// Export both the router and refreshAccessToken, but make router the default export
+router.refreshAccessToken = refreshAccessToken;
 module.exports = router;

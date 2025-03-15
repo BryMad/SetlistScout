@@ -1,3 +1,5 @@
+// frontend/src/api/authService.js - CHANGES NEEDED
+
 import axios from 'axios';
 import { isMobileDevice } from '../utils/deviceDetection';
 
@@ -6,31 +8,34 @@ const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
 
 /**
  * Initiates Spotify login based on device type
- * - For mobile: Saves state to sessionStorage and redirects
- * - For desktop: Opens a popup for authentication
+ * - Redirects to Spotify login with proper credentials
+ * - No longer stores state in sessionStorage (will use server sessions)
  * 
  * @param {Object} currentState Current app state to save before redirecting
  * @returns {void}
  */
 export const initiateSpotifyLogin = (currentState) => {
-  if (isMobileDevice()) {
-    // Save current state to sessionStorage before redirecting on mobile
-    if (currentState) {
-      sessionStorage.setItem("concertCramState", JSON.stringify(currentState));
-    }
+  // Create a stateful redirect with app state
+  let loginUrl = `${server_url}/auth/login`;
 
-    // Redirect to Spotify login
-    window.location.href = `${server_url}/auth/login`;
+  // If we have state to preserve, send it with the login request
+  if (currentState) {
+    // We'll encode the state and send it as a parameter
+    loginUrl += `?appState=${encodeURIComponent(JSON.stringify(currentState))}`;
+  }
+
+  if (isMobileDevice()) {
+    // Direct redirect for mobile
+    window.location.href = loginUrl;
   } else {
-    // Desktop popup approach
+    // Popup approach for desktop
     const width = 450;
     const height = 730;
     const left = window.screenX + (window.innerWidth - width) / 2;
     const top = window.screenY + (window.innerHeight - height) / 2;
-    const url = `${server_url}/auth/login`;
 
     window.open(
-      url,
+      loginUrl,
       "Spotify Login",
       `width=${width},height=${height},top=${top},left=${left}`
     );
@@ -38,67 +43,63 @@ export const initiateSpotifyLogin = (currentState) => {
 };
 
 /**
- * Checks if user is authenticated by checking localStorage tokens
+ * Checks if user is authenticated via API endpoint
  * 
- * @returns {Object} Authentication state object { isLoggedIn, userId, accessToken }
+ * @returns {Promise<Object>} Authentication state object { isLoggedIn, userId }
  */
-export const checkAuthStatus = () => {
-  const accessToken = localStorage.getItem("spotify_access_token");
-  const userId = localStorage.getItem("spotify_user_id");
+export const checkAuthStatus = async () => {
+  try {
+    const response = await axios.get(`${server_url}/auth/status`, {
+      withCredentials: true // Important to include cookies
+    });
 
-  return {
-    isLoggedIn: !!(accessToken && userId),
-    userId,
-    accessToken
-  };
+    return {
+      isLoggedIn: response.data.isLoggedIn,
+      userId: response.data.userId
+    };
+  } catch (error) {
+    console.error('Error checking auth status:', error);
+    return {
+      isLoggedIn: false,
+      userId: null
+    };
+  }
 };
 
+/**
+ * Process auth response - simplified to handle session-based auth
+ * 
+ * @returns {Object} Authentication data or empty object
+ */
 export const processAuthResponse = () => {
-  let authData = { processed: false, accessToken: null, userId: null, savedState: null };
+  let authData = { processed: false, userId: null, savedState: null };
 
-  // Handle URL fragment (for mobile flow with tokens)
-  if (window.location.hash) {
-    const hashParams = new URLSearchParams(
-      window.location.hash.substring(1) // Remove the # character
-    );
-    const accessToken = hashParams.get("access_token");
-    const refreshToken = hashParams.get("refresh_token");
-    const userId = hashParams.get("user_id");
+  // Handle URL query parameter for success
+  const urlParams = new URLSearchParams(window.location.search);
+  const authSuccess = urlParams.get("auth") === "success";
+  const stateParam = urlParams.get("state");
 
-    if (accessToken && userId) {
-      localStorage.setItem("spotify_access_token", accessToken);
-      localStorage.setItem("spotify_user_id", userId);
+  if (authSuccess) {
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
 
-      // Store refresh token if available
-      if (refreshToken) {
-        localStorage.setItem("spotify_refresh_token", refreshToken);
+    // If we have state in the URL, parse it
+    if (stateParam) {
+      try {
+        const savedState = JSON.parse(decodeURIComponent(stateParam));
+        authData = {
+          processed: true,
+          userId: null, // We don't need the actual userId here
+          savedState
+        };
+      } catch (error) {
+        console.error("Error restoring state:", error);
       }
-
-      // Store timestamp for expiration checking
-      localStorage.setItem("spotify_token_timestamp", Date.now().toString());
-
-      // Clean URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-
-      // Restore previous state from sessionStorage
-      const savedStateStr = sessionStorage.getItem("concertCramState");
-      let savedState = null;
-
-      if (savedStateStr) {
-        try {
-          savedState = JSON.parse(savedStateStr);
-          // Clear storage after getting value
-          sessionStorage.removeItem("concertCramState");
-        } catch (error) {
-          console.error("Error restoring state:", error);
-        }
-      }
-
+    } else {
       authData = {
         processed: true,
-        accessToken,
-        userId,
-        savedState
+        userId: null,
+        savedState: null
       };
     }
   }
@@ -107,66 +108,26 @@ export const processAuthResponse = () => {
 };
 
 /**
- * Refreshes the access token using the refresh token
+ * Logs the user out by making a request to clear the server session
  * 
- * @returns {Promise<Object>} New tokens or null if refresh failed
+ * @returns {Promise<void>}
  */
-export const refreshAccessToken = async () => {
+export const logout = async () => {
   try {
-    const refresh_token = localStorage.getItem("spotify_refresh_token");
+    await axios.post(`${server_url}/auth/logout`, {}, {
+      withCredentials: true // Include cookies
+    });
 
-    if (!refresh_token) {
-      return null;
-    }
+    // No need to clear localStorage anymore
 
-    const response = await axios.post(
-      `${server_url}/auth/refresh`,
-      { refresh_token },
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-
-    if (response.data.access_token) {
-      // Save the new tokens
-      localStorage.setItem("spotify_access_token", response.data.access_token);
-
-      // Save new refresh token if provided
-      if (response.data.refresh_token) {
-        localStorage.setItem("spotify_refresh_token", response.data.refresh_token);
-      }
-
-      return response.data;
-    }
-
-    return null;
   } catch (error) {
-    console.error("Error refreshing token:", error);
-    return null;
+    console.error('Error logging out:', error);
   }
-};
-
-/**
- * Checks if the stored token needs refreshing
- * 
- * @returns {boolean} True if token is expired or close to expiry
- */
-export const isTokenExpired = () => {
-  const tokenTimestamp = localStorage.getItem("spotify_token_timestamp");
-
-  if (!tokenTimestamp) {
-    return true;
-  }
-
-  // Tokens typically expire after 3600 seconds (1 hour)
-  // Refresh when less than 5 minutes remaining
-  const EXPIRATION_TIME = 3600 * 1000; // 1 hour in milliseconds
-  const BUFFER_TIME = 300 * 1000; // 5 minutes in milliseconds
-  const now = Date.now();
-
-  return now - parseInt(tokenTimestamp) > EXPIRATION_TIME - BUFFER_TIME;
 };
 
 /**
  * Sets up an authentication listener for the popup window response
+ * Only handles authentication success/failure message, no tokens
  * 
  * @param {Function} callback Function to call with authentication data
  * @returns {Function} Cleanup function to remove the event listener
@@ -178,27 +139,16 @@ export const setupAuthListener = (callback) => {
       return;
     }
 
-    // Handle auth message format
+    // Handle auth message format - now simplified, no tokens
     if (event.data && event.data.type === "authentication") {
-      const accessToken = event.data.access_token;
-      const refreshToken = event.data.refresh_token;
-      const userId = event.data.user_id;
-
-      localStorage.setItem("spotify_access_token", accessToken);
-      localStorage.setItem("spotify_user_id", userId);
-
-      // Store refresh token if available
-      if (refreshToken) {
-        localStorage.setItem("spotify_refresh_token", refreshToken);
-      }
-
-      // Store timestamp for expiration checking
-      localStorage.setItem("spotify_token_timestamp", Date.now().toString());
+      const isLoggedIn = event.data.success === true;
+      const userId = event.data.userId;
+      const savedState = event.data.state;
 
       callback({
-        isLoggedIn: true,
-        accessToken,
-        userId
+        isLoggedIn,
+        userId,
+        savedState
       });
     }
   };
@@ -209,16 +159,4 @@ export const setupAuthListener = (callback) => {
   return () => {
     window.removeEventListener("message", handleMessage);
   };
-};
-
-/**
- * Logs the user out by removing authentication tokens
- * 
- * @returns {void}
- */
-export const logout = () => {
-  localStorage.removeItem("spotify_access_token");
-  localStorage.removeItem("spotify_user_id");
-  localStorage.removeItem("spotify_refresh_token");
-  localStorage.removeItem("spotify_token_timestamp");
 };

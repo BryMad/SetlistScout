@@ -1,20 +1,24 @@
-// src/hooks/useSpotify.js
+// src/hooks/useSpotify.js - CHANGES NEEDED
+
 import { useCallback } from 'react';
-import { createPlaylist } from '../api/playlistService';
+import axios from 'axios';
 import { useAuth } from './useAuth';
 import { useSetlist } from './useSetlist';
+import { server_url } from "../App";
 
 /**
  * Custom hook for Spotify operations
+ * - Modified to use session-based authentication
  * 
  * @returns {Object} Spotify methods and state
  */
 export const useSpotify = () => {
-  const { isLoggedIn, userId, accessToken, logout } = useAuth();
+  const { isLoggedIn, userId, logout } = useAuth();
   const { tourData, spotifyData, setNotification } = useSetlist();
 
   /**
    * Creates a Spotify playlist from the current songs
+   * - No longer sends tokens in the request
    * 
    * @returns {Promise<void>}
    */
@@ -41,32 +45,42 @@ export const useSpotify = () => {
       return;
     }
 
-    // Create the playlist
-    const result = await createPlaylist({
-      trackIds,
-      bandName: tourData.bandName,
-      tourName: tourData.tourName || "Tour",
-      accessToken,
-      userId
-    });
+    try {
+      // Create the playlist using session-based authentication
+      const response = await axios.post(
+        `${server_url}/playlist/create_playlist`,
+        {
+          track_ids: trackIds,
+          band: tourData.bandName,
+          tour: tourData.tourName || "Tour"
+        },
+        {
+          withCredentials: true // Important to include cookies for session auth
+        }
+      );
 
-    if (result.success) {
       setNotification({
-        message: result.message,
+        message: "Playlist created successfully!",
         status: "success"
       });
-    } else {
-      // Handle auth errors by logging out
-      if (result.authError) {
-        logout();
-      }
+    } catch (error) {
+      console.error('Error creating playlist:', error);
 
-      setNotification({
-        message: result.message,
-        status: "error"
-      });
+      // Handle auth errors by logging out
+      if (error.response?.status === 401 || error.response?.data?.authError) {
+        logout();
+        setNotification({
+          message: "Authentication expired. Please log in again.",
+          status: "error"
+        });
+      } else {
+        setNotification({
+          message: error.response?.data?.error || "Failed to create playlist",
+          status: "error"
+        });
+      }
     }
-  }, [isLoggedIn, userId, accessToken, spotifyData, tourData, setNotification, logout]);
+  }, [isLoggedIn, userId, spotifyData, tourData, setNotification, logout]);
 
   return {
     isLoggedIn,

@@ -103,7 +103,7 @@ setInterval(async () => {
 const authRoutes = require('./routes/authRoutes');
 const playlistRoutes = require('./routes/playlistRoutes');
 const setlistRoutes = require('./routes/setlistRoutes');
-const sseRoutes = require('./routes/sseRoutes'); // Add the new SSE routes
+const sseRoutes = require('./routes/sseRoutes');
 
 app.use('/auth', authRoutes);
 app.use('/playlist', playlistRoutes);
