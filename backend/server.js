@@ -7,6 +7,7 @@ const { createClient } = require('redis');
 const cors = require('cors');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -111,9 +112,18 @@ app.use('/playlist', playlistRoutes);
 app.use('/setlist', setlistRoutes);
 app.use('/sse', sseRoutes); // Mount the SSE routes
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Spotify Setlist App!');
+
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+app.get('*', (req, res
+) => {
+  console.log('Serving the frontend application');
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
+
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the Spotify Setlist App!');
+// });
 
 app.use((err, req, res, next) => {
   console.error('Unhandled Error:', err);
