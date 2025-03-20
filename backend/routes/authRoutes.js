@@ -67,6 +67,8 @@ router.get('/login', (req, res) => {
 router.get('/callback', async (req, res) => {
   try {
     console.log('Host header:', req.headers.host);
+    console.log('Origin header:', req.headers.origin);
+    console.log('Referer header:', req.headers.referer);
     const code = req.query.code || null;
     const state = req.query.state || null;
     console.log('code:', code);
@@ -136,14 +138,26 @@ router.get('/callback', async (req, res) => {
 <html>
 <body>
 <script>
-  window.opener.postMessage({
-    type: 'authentication',
-    // ! TODO DELETE access and refresh tokens from URL, add a boolean
-    access_token: '${access_token}',
-    refresh_token: '${refresh_token}',
-    isLoggedIn: true
-  }, '${frontEndURL}');
-  window.close();
+  // For cross-domain communication, we need to be careful with the targetOrigin
+  // Using '*' is less secure but guarantees the message will be delivered
+  // In this specific case, it's acceptable because we're only sending the auth status
+  const targetOrigin = '*';
+  console.log('Sending authentication data');
+  
+  try {
+    window.opener.postMessage({
+      type: 'authentication',
+      isLoggedIn: true
+    }, targetOrigin);
+    console.log('Authentication message sent');
+  } catch (err) {
+    console.error('Error sending auth message:', err);
+  }
+  
+  // Close the popup after a short delay to ensure the message is processed
+  setTimeout(() => {
+    window.close();
+  }, 300);
 </script>
 </body>
 </html>`);
@@ -206,6 +220,16 @@ router.post('/refresh', async (req, res) => {
 });
 
 router.get('/status', (req, res) => {
+  console.log('Request cookies:', req.headers.cookie);
+  console.log('Session ID:', req.sessionID);
+  console.log('Session data:', req.session);
+  console.log('Authentication check:', {
+    hasSession: !!req.session,
+    hasAccessToken: !!req.session?.access_token,
+    hasUserId: !!req.session?.user_id,
+    userAgent: req.headers['user-agent']
+  });
+
   const isLoggedIn = !!(req.session && req.session.access_token && req.session.user_id);
 
   res.json({

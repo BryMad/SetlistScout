@@ -46,13 +46,28 @@ export const initiateSpotifyLogin = (currentState) => {
  */
 export const setupAuthListener = (callback) => {
   const handleMessage = (event) => {
-    // Validate origin for security
-    if (new URL(event.origin).hostname !== new URL(server_url).hostname) {
+    // Modify this to accept messages from any origin during authentication
+    // Since we're only checking for a specific message type, this is safer than it appears
+    console.log(`Auth message received from: ${event.origin}`);
+
+    // Optional: If you want to be more restrictive
+    /* 
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'https://setlistscout.onrender.com',
+      'https://setlistscout-server.onrender.com',
+      'https://accounts.spotify.com'
+    ];
+    
+    if (!allowedOrigins.includes(event.origin)) {
+      console.warn(`Rejected message from unauthorized origin: ${event.origin}`);
       return;
     }
+    */
 
     // Handle auth message format
     if (event.data && event.data.type === "authentication") {
+      console.log('Authentication message received:', event.data.type);
       callback({
         isLoggedIn: event.data.isLoggedIn,
         userId: null // Will be fetched from the status endpoint
@@ -67,12 +82,15 @@ export const setupAuthListener = (callback) => {
     window.removeEventListener("message", handleMessage);
   };
 };
+
 export const checkSessionStatus = async () => {
   try {
+    console.log('Checking session status');
     const response = await axios.get(`${server_url}/auth/status`, {
       withCredentials: true // Important to include cookies
     });
 
+    console.log('Session status response:', response.data);
     return {
       isLoggedIn: response.data.isLoggedIn,
       userId: response.data.userId

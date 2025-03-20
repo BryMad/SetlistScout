@@ -78,10 +78,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Must be true in production.
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production', // Must be true in production
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Important for cross-site cookies
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    // No domain setting since frontend and backend are on different domains
   },
 }));
 

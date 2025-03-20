@@ -68,14 +68,38 @@ export const AuthProvider = ({ children }) => {
 
     // Setup listener for popup auth flow (desktop)
     const cleanupListener = setupAuthListener(async () => {
-      // When auth message received, verify with server
-      const { isLoggedIn, userId } = await checkSessionStatus();
+      console.log("Auth message received, checking status with server...");
 
-      setAuthState((prevState) => ({
-        ...prevState,
-        isLoggedIn,
-        userId,
-      }));
+      // More aggressive checking: retry multiple times with delay
+      // This helps if the server needs time to save the session
+      let attempts = 0;
+      const maxAttempts = 3;
+      let isAuthenticated = false;
+
+      while (attempts < maxAttempts && !isAuthenticated) {
+        attempts++;
+        console.log(`Auth status check attempt ${attempts}`);
+
+        // When auth message received, verify with server
+        const { isLoggedIn, userId } = await checkSessionStatus();
+        console.log("Auth status:", isLoggedIn, userId);
+
+        if (isLoggedIn) {
+          isAuthenticated = true;
+          setAuthState((prevState) => ({
+            ...prevState,
+            isLoggedIn,
+            userId,
+          }));
+        } else if (attempts < maxAttempts) {
+          // Wait before trying again
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      }
+
+      if (!isAuthenticated) {
+        console.warn("Failed to verify authentication after multiple attempts");
+      }
     });
 
     // Cleanup function
