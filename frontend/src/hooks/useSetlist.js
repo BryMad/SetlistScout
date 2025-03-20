@@ -11,18 +11,20 @@ import { useAuth } from './useAuth';
  */
 export const useSetlist = () => {
   const setlistContext = useContext(SetlistContext);
-  const { restoredState } = useAuth();
-
-  if (!setlistContext) {
-    throw new Error('useSetlist must be used within a SetlistProvider');
-  }
-
-  // Restore data from auth if available (mobile flow)
   useEffect(() => {
-    if (restoredState) {
-      setlistContext.restoreData(restoredState);
+    // Check for saved state in sessionStorage
+    const savedState = sessionStorage.getItem("concertCramState");
+    if (savedState) {
+      try {
+        const parsedState = JSON.parse(savedState);
+        setlistContext.restoreData(parsedState);
+        // Clear the saved state after restoring
+        sessionStorage.removeItem("concertCramState");
+      } catch (error) {
+        console.error("Error restoring saved state:", error);
+      }
     }
-  }, [restoredState, setlistContext]);
+  }, [setlistContext]);
 
   /**
    * Search for artists by name

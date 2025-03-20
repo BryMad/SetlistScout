@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
           window.location.pathname
         );
 
-        // Recheck session status after redirect
+        // Recheck session status after redirect to ensure we have the latest status
         const updatedStatus = await checkSessionStatus();
 
         setAuthState({

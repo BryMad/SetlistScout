@@ -112,37 +112,41 @@ router.get('/callback', async (req, res) => {
       const user_id = userResponse.data.id;
       console.log('User ID:', user_id);
 
-      // Still store in session for backward compatibility
+      // Store tokens in session (secure server-side storage)
       req.session.access_token = access_token;
       req.session.refresh_token = refresh_token;
       req.session.user_id = user_id;
 
-      const frontEndURL = process.env.NODE_ENV === 'production'
-        ? 'https://setlistscout.onrender.com'
-        : 'http://localhost:5173';
+      // Save the session explicitly to ensure it's stored before redirect
+      req.session.save(err => {
+        if (err) {
+          console.error('Session save error:', err);
+        }
 
-      // Detect if user is on mobile
-      const userAgent = req.headers['user-agent'];
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+        const frontEndURL = process.env.NODE_ENV === 'production'
+          ? 'https://setlistscout.onrender.com'
+          : 'http://localhost:5173';
 
-      // In the callback route:
-      if (isMobile) {
-        // For mobile, redirect with tokens in URL fragment
-        console.log('Mobile detected, redirecting with tokens in fragment');
-        // Use # fragment to prevent tokens from being sent to server in subsequent requests
-        res.redirect(`${frontEndURL}?auth=success#loginStatus=success`);
-      } else {
-        // For desktop, use the popup message approach but send tokens
-        console.log('Desktop detected, sending tokens via postMessage');
-        res.send(`<!DOCTYPE html>
+        // Detect if user is on mobile
+        const userAgent = req.headers['user-agent'];
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+
+        if (isMobile) {
+          // For mobile, redirect with loginStatus=success in fragment
+          // But don't include actual tokens for security
+          console.log('Mobile detected, redirecting with success status');
+          res.redirect(`${frontEndURL}/#loginStatus=success`);
+        } else {
+          // For desktop, use the popup message approach
+          console.log('Desktop detected, sending message via postMessage');
+          res.send(`<!DOCTYPE html>
 <html>
 <body>
 <script>
-  // For cross-domain communication, we need to be careful with the targetOrigin
-  // Using '*' is less secure but guarantees the message will be delivered
-  // In this specific case, it's acceptable because we're only sending the auth status
+  // For cross-domain communication, the targetOrigin should ideally be specific
+  // We're using '*' since this is just sending auth status, not tokens
   const targetOrigin = '*';
-  console.log('Sending authentication data');
+  console.log('Sending authentication success message');
   
   try {
     window.opener.postMessage({
@@ -154,14 +158,15 @@ router.get('/callback', async (req, res) => {
     console.error('Error sending auth message:', err);
   }
   
-  // Close the popup after a short delay to ensure the message is processed
+  // Close the popup after a short delay
   setTimeout(() => {
     window.close();
   }, 300);
 </script>
 </body>
 </html>`);
-      }
+        }
+      });
     } else {
       res.redirect('/error?error=invalid_token');
     }
@@ -235,6 +240,14 @@ router.get('/status', (req, res) => {
   res.json({
     isLoggedIn,
     userId: isLoggedIn ? req.session.user_id : null
+  });
+});
+router.get('/debug-session', (req, res) => {
+  res.json({
+    sessionId: req.sessionID,
+    hasSession: !!req.session,
+    hasAccessToken: !!req.session?.access_token,
+    cookies: req.headers.cookie
   });
 });
 
