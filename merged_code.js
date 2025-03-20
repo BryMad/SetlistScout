@@ -300,14 +300,38 @@ export const AuthProvider = ({ children }) => {
 
     // Setup listener for popup auth flow (desktop)
     const cleanupListener = setupAuthListener(async () => {
-      // When auth message received, verify with server
-      const { isLoggedIn, userId } = await checkSessionStatus();
+      console.log("Auth message received, checking status with server...");
 
-      setAuthState((prevState) => ({
-        ...prevState,
-        isLoggedIn,
-        userId,
-      }));
+      // More aggressive checking: retry multiple times with delay
+      // This helps if the server needs time to save the session
+      let attempts = 0;
+      const maxAttempts = 3;
+      let isAuthenticated = false;
+
+      while (attempts < maxAttempts && !isAuthenticated) {
+        attempts++;
+        console.log(`Auth status check attempt ${attempts}`);
+
+        // When auth message received, verify with server
+        const { isLoggedIn, userId } = await checkSessionStatus();
+        console.log("Auth status:", isLoggedIn, userId);
+
+        if (isLoggedIn) {
+          isAuthenticated = true;
+          setAuthState((prevState) => ({
+            ...prevState,
+            isLoggedIn,
+            userId,
+          }));
+        } else if (attempts < maxAttempts) {
+          // Wait before trying again
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      }
+
+      if (!isAuthenticated) {
+        console.warn("Failed to verify authentication after multiple attempts");
+      }
     });
 
     // Cleanup function
@@ -2232,13 +2256,28 @@ export const initiateSpotifyLogin = (currentState) => {
  */
 export const setupAuthListener = (callback) => {
   const handleMessage = (event) => {
-    // Validate origin for security
-    if (new URL(event.origin).hostname !== new URL(server_url).hostname) {
+    // Modify this to accept messages from any origin during authentication
+    // Since we're only checking for a specific message type, this is safer than it appears
+    console.log(`Auth message received from: ${event.origin}`);
+
+    // Optional: If you want to be more restrictive
+    /* 
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'https://setlistscout.onrender.com',
+      'https://setlistscout-server.onrender.com',
+      'https://accounts.spotify.com'
+    ];
+    
+    if (!allowedOrigins.includes(event.origin)) {
+      console.warn(`Rejected message from unauthorized origin: ${event.origin}`);
       return;
     }
+    */
 
     // Handle auth message format
     if (event.data && event.data.type === "authentication") {
+      console.log('Authentication message received:', event.data.type);
       callback({
         isLoggedIn: event.data.isLoggedIn,
         userId: null // Will be fetched from the status endpoint
@@ -2253,12 +2292,15 @@ export const setupAuthListener = (callback) => {
     window.removeEventListener("message", handleMessage);
   };
 };
+
 export const checkSessionStatus = async () => {
   try {
+    console.log('Checking session status');
     const response = await axios.get(`${server_url}/auth/status`, {
       withCredentials: true // Important to include cookies
     });
 
+    console.log('Session status response:', response.data);
     return {
       isLoggedIn: response.data.isLoggedIn,
       userId: response.data.userId
@@ -2268,7 +2310,6 @@ export const checkSessionStatus = async () => {
     return { isLoggedIn: false, userId: null };
   }
 };
-
 
 // File: ./frontend/src/pages/About.jsx
 // src/pages/About.jsx
@@ -2552,10 +2593,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Must be true in production.
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production', // Must be true in production
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Important for cross-site cookies
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    // No domain setting since frontend and backend are on different domains
   },
 }));
 
@@ -3660,6 +3702,8 @@ router.get('/login', (req, res) => {
 router.get('/callback', async (req, res) => {
   try {
     console.log('Host header:', req.headers.host);
+    console.log('Origin header:', req.headers.origin);
+    console.log('Referer header:', req.headers.referer);
     const code = req.query.code || null;
     const state = req.query.state || null;
     console.log('code:', code);
@@ -3729,14 +3773,26 @@ router.get('/callback', async (req, res) => {
 <html>
 <body>
 <script>
-  window.opener.postMessage({
-    type: 'authentication',
-    // ! TODO DELETE access and refresh tokens from URL, add a boolean
-    access_token: '${access_token}',
-    refresh_token: '${refresh_token}',
-    isLoggedIn: true
-  }, '${frontEndURL}');
-  window.close();
+  // For cross-domain communication, we need to be careful with the targetOrigin
+  // Using '*' is less secure but guarantees the message will be delivered
+  // In this specific case, it's acceptable because we're only sending the auth status
+  const targetOrigin = '*';
+  console.log('Sending authentication data');
+  
+  try {
+    window.opener.postMessage({
+      type: 'authentication',
+      isLoggedIn: true
+    }, targetOrigin);
+    console.log('Authentication message sent');
+  } catch (err) {
+    console.error('Error sending auth message:', err);
+  }
+  
+  // Close the popup after a short delay to ensure the message is processed
+  setTimeout(() => {
+    window.close();
+  }, 300);
 </script>
 </body>
 </html>`);
@@ -3799,6 +3855,16 @@ router.post('/refresh', async (req, res) => {
 });
 
 router.get('/status', (req, res) => {
+  console.log('Request cookies:', req.headers.cookie);
+  console.log('Session ID:', req.sessionID);
+  console.log('Session data:', req.session);
+  console.log('Authentication check:', {
+    hasSession: !!req.session,
+    hasAccessToken: !!req.session?.access_token,
+    hasUserId: !!req.session?.user_id,
+    userAgent: req.headers['user-agent']
+  });
+
   const isLoggedIn = !!(req.session && req.session.access_token && req.session.user_id);
 
   res.json({
