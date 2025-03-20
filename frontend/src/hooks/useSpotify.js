@@ -10,7 +10,7 @@ import { useSetlist } from './useSetlist';
  * @returns {Object} Spotify methods and state
  */
 export const useSpotify = () => {
-  const { isLoggedIn, userId, accessToken, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   const { tourData, spotifyData, setNotification } = useSetlist();
 
   /**
@@ -45,9 +45,7 @@ export const useSpotify = () => {
     const result = await createPlaylist({
       trackIds,
       bandName: tourData.bandName,
-      tourName: tourData.tourName || "Tour",
-      accessToken,
-      userId
+      tourName: tourData.tourName || "Tour"
     });
 
     if (result.success) {
@@ -66,7 +64,7 @@ export const useSpotify = () => {
         status: "error"
       });
     }
-  }, [isLoggedIn, userId, accessToken, spotifyData, tourData, setNotification, logout]);
+  }, [isLoggedIn, spotifyData, tourData, setNotification, logout]);
 
   return {
     isLoggedIn,

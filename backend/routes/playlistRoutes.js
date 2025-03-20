@@ -17,18 +17,14 @@ const ensureAuthenticated = require('../middleware/authMiddleware');
  * @param {string} req.body.tour Tour name
  * @returns {Object} Success message and playlist ID
  */
-router.post('/create_playlist', async (req, res) => {
+router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
   try {
-    // Get access token and user ID from request body or session
-    const access_token = req.body.access_token || req.session?.access_token;
-    const user_id = req.body.user_id || req.session?.user_id;
+    // Get access token and user ID from session
+    const access_token = req.session.access_token;
+    const user_id = req.session.user_id;
     const track_ids = req.body.track_ids;
     const band = req.body.band;
     const tour = req.body.tour;
-
-    if (!access_token || !user_id) {
-      return res.status(401).json({ error: 'User not authenticated' });
-    }
 
     // Create a new playlist
     const createPlaylistResponse = await axios.post(

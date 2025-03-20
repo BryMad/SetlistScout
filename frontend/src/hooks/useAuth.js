@@ -1,7 +1,7 @@
 // src/hooks/useAuth.js
 import { useContext, useCallback } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { initiateSpotifyLogin, logout } from '../api/authService';
+import { initiateSpotifyLogin } from '../api/authService';
 
 /**
  * Custom hook for authentication operations
@@ -16,58 +16,13 @@ export const useAuth = () => {
   }
 
   // Get state from context
-  const { isLoggedIn, userId, accessToken, restoredState } = authContext;
-
-  /**
-   * Log into Spotify
-   * 
-   * @param {Object} [stateToSave] State to save before redirecting
-   */
-  const login = useCallback((stateToSave) => {
-    initiateSpotifyLogin(stateToSave);
-  }, []);
-
-  /**
-   * Log out of Spotify
-   */
-  const handleLogout = useCallback(() => {
-    logout();
-    authContext.updateAuth({
-      isLoggedIn: false,
-      userId: null,
-      accessToken: null
-    });
-  }, [authContext]);
-
-  /**
-     * Refresh the access token
-     * @returns {Promise<boolean>} Success status
-     */
-  const refreshToken = useCallback(async () => {
-    try {
-      const result = await refreshAccessToken();
-      if (result) {
-        authContext.updateAuth({
-          isLoggedIn: true,
-          accessToken: result.access_token,
-          userId: authContext.userId
-        });
-        return true;
-      }
-      return false;
-    } catch (error) {
-      console.error('Error refreshing token:', error);
-      return false;
-    }
-  }, [authContext]);
+  const { isLoggedIn, userId, isInitialized, login, logout } = authContext;
 
   return {
     isLoggedIn,
     userId,
-    accessToken,
-    restoredState,
+    isInitialized,
     login,
-    logout: handleLogout,
-    refreshToken
+    logout
   };
 };

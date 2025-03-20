@@ -128,7 +128,7 @@ router.get('/callback', async (req, res) => {
         // For mobile, redirect with tokens in URL fragment
         console.log('Mobile detected, redirecting with tokens in fragment');
         // Use # fragment to prevent tokens from being sent to server in subsequent requests
-        res.redirect(`${frontEndURL}?auth=success#access_token=${access_token}&refresh_token=${refresh_token}&user_id=${user_id}`);
+        res.redirect(`${frontEndURL}?auth=success#loginStatus=success`);
       } else {
         // For desktop, use the popup message approach but send tokens
         console.log('Desktop detected, sending tokens via postMessage');
@@ -138,9 +138,10 @@ router.get('/callback', async (req, res) => {
 <script>
   window.opener.postMessage({
     type: 'authentication',
+    // ! TODO DELETE access and refresh tokens from URL, add a boolean
     access_token: '${access_token}',
     refresh_token: '${refresh_token}',
-    user_id: '${user_id}'
+    isLoggedIn: true
   }, '${frontEndURL}');
   window.close();
 </script>
@@ -204,5 +205,28 @@ router.post('/refresh', async (req, res) => {
   }
 });
 
+router.get('/status', (req, res) => {
+  const isLoggedIn = !!(req.session && req.session.access_token && req.session.user_id);
 
+  res.json({
+    isLoggedIn,
+    userId: isLoggedIn ? req.session.user_id : null
+  });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        console.error('Error destroying session:', err);
+        return res.status(500).json({ error: 'Failed to log out' });
+      }
+
+      res.clearCookie('connect.sid'); // Clear the session cookie
+      return res.json({ success: true });
+    });
+  } else {
+    return res.json({ success: true });
+  }
+});
 module.exports = router;

@@ -14,7 +14,7 @@ const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
  * @param {string} params.userId Spotify user ID
  * @returns {Promise<Object>} Promise resolving to playlist creation result
  */
-export const createPlaylist = async ({ trackIds, bandName, tourName, accessToken, userId }) => {
+export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
   try {
     const response = await axios.post(
       `${server_url}/playlist/create_playlist`,
@@ -22,11 +22,11 @@ export const createPlaylist = async ({ trackIds, bandName, tourName, accessToken
         track_ids: trackIds,
         band: bandName,
         tour: tourName,
-        access_token: accessToken,
-        user_id: userId
+        // No longer sending access_token and user_id
       },
       {
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true // Include cookies for session
       }
     );
 
