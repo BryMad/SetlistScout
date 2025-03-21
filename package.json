@@ -1,0 +1,15 @@
+{
+  "name": "setlistscout",
+  "version": "1.0.0",
+  "description": "Ever go to a concert, only to realize the band isn't' playing that one song you love?",
+  "main": "merged_code.js",
+  "scripts": {
+    "server-build": "cd backend && npm i",
+    "frontend-build": "cd frontend && npm run build-install",
+    "build": "npm run server-build && npm run frontend-build",
+    "start": "cd backend && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
