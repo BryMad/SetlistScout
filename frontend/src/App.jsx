@@ -11,7 +11,8 @@ import Contact from "./pages/Contact";
 import { AuthProvider } from "./context/AuthContext";
 import { SetlistProvider } from "./context/SetlistContext";
 
-export const server_url = import.meta.env.VITE_SERVER_URL || "/";
+export const server_url =
+  import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
 
 function App() {
   return (
