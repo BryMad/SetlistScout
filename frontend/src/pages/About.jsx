@@ -1,4 +1,3 @@
-// src/pages/About.jsx
 import React from "react";
 import {
   Box,
@@ -52,22 +51,8 @@ export default function About() {
           </ListItem>
         </UnorderedList>
 
-        <Heading as="h2" size="md" mt={4}>
-          Privacy:
-        </Heading>
-
-        <Text>
-          Setlist Scout collects minimal user data. When you log in via Spotify,
-          we temporarily store your Spotify User ID and the temporary tokens
-          needed to create playlists on your behalf. This data is stored in
-          encrypted sessions that expire after 24 hours. We do not analyze your
-          listening habits or playlist data. We do not share your data with any
-          third parties beyond the necessary interactions with Spotify's API to
-          provide our service.
-        </Text>
-
-        <Heading as="h2" size="md" mt={4}>
-          Issues:
+        <Heading as="h1" size="xl" color="teal.400">
+          Issues
         </Heading>
 
         <Text>
@@ -79,6 +64,58 @@ export default function About() {
           </Link>{" "}
           and let us know what's not working, and we'll try to fix it!
         </Text>
+        <Box>
+          <VStack spacing={6} align="start">
+            <Heading as="h1" size="xl" color="teal.400">
+              Privacy Policy
+            </Heading>
+
+            <Text>
+              Setlist Scout is designed with privacy in mind. We collect only
+              the minimum data necessary:
+            </Text>
+
+            <UnorderedList spacing={2} pl={4}>
+              <ListItem>
+                <Text as="span" fontWeight="semibold">
+                  Spotify User ID:
+                </Text>{" "}
+                Stored temporarily to identify your account when creating
+                playlists
+              </ListItem>
+              <ListItem>
+                <Text as="span" fontWeight="semibold">
+                  Spotify Access Tokens:
+                </Text>{" "}
+                Stored securely to perform authorized actions on your behalf
+              </ListItem>
+              <ListItem>
+                <Text as="span" fontWeight="semibold">
+                  Session Information:
+                </Text>{" "}
+                Stored in encrypted server-side sessions
+              </ListItem>
+            </UnorderedList>
+
+            <Text>
+              We use your data exclusively to create Spotify playlists based on
+              your artist selections and maintain your login session.
+            </Text>
+
+            <Text>
+              We do not analyze your listening habits, store your search
+              history, track your application usage, or share your data with
+              third parties (beyond necessary Spotify API interactions).{" "}
+            </Text>
+
+            <Text>
+              All authentication data is stored in encrypted sessions that
+              expire after 24 hours. We do not maintain databases of user
+              information or activity. You can delete your session data at any
+              time by logging out.
+            </Text>
+          </VStack>
+        </Box>
       </VStack>
     </Container>
   );
