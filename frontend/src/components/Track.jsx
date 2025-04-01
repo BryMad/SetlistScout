@@ -7,10 +7,11 @@ import {
   Image,
   Link,
   useBreakpointValue,
+  Divider,
 } from "@chakra-ui/react";
 
 // Import the Spotify logo
-import spotifyLogo from "../assets/spotify_logo_white.svg";
+import spotifyLogo from "../assets/spotify_logo.svg";
 
 export default function Track({ item, tourData }) {
   // Convert Spotify URI ("spotify:track:<id>") to an open Spotify link.
@@ -30,6 +31,34 @@ export default function Track({ item, tourData }) {
       /\s*-\s*\(.*\)$/i,
       /\s*\(Remaster(ed)?|Remix(ed)?\).*$/i,
       /\s*\(\d{4}(\s+.+)?\)$/i,
+      /\s+(Deluxe(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Special(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Anniversary(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Expanded(\s+Edition|\s+Version)?)\s*$/i,
+    ];
+    let cleanedTitle = title;
+    for (const pattern of patterns) {
+      cleanedTitle = cleanedTitle.replace(pattern, "");
+    }
+    return cleanedTitle.trim();
+  };
+
+  const cleanAlbumTitle = (title) => {
+    if (!title) return title;
+    const patterns = [
+      /\s*-\s*(Remaster(ed)?|Remix(ed)?|Re-?master|Mix).*$/i,
+      /\s*-\s*\d{4}(\s+.+)?$/i,
+      /\s*-\s*(Deluxe|Special|Anniversary|Expanded).*$/i,
+      /\s*-\s*(Mono|Stereo|Live|Acoustic|Single Version|Album Version|Radio Edit).*$/i,
+      /\s*-\s*\(.*\)$/i,
+      /\s*\(Remaster(ed)?|Remix(ed)?\).*$/i,
+      /\s*\(\d{4}(\s+.+)?\)$/i,
+      /\s+(Deluxe(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Special(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Anniversary(\s+Edition|\s+Version)?)\s*$/i,
+      /\s+(Expanded(\s+Edition|\s+Version)?)\s*$/i,
+      // Patterns for variants in parentheses
+      /\s*\(?Deluxe(\s+Edition|\s+Version)?\)?.*$/i,
     ];
     let cleanedTitle = title;
     for (const pattern of patterns) {
@@ -53,9 +82,13 @@ export default function Track({ item, tourData }) {
   const albumCover = item.image
     ? item.image.url
     : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
-
+  console.log("Album cover URL:", albumCover); // Debugging line to check the URL
+  const albumCoverMed = item.imageMed
+    ? item.imageMed.url
+    : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
+  console.log("Album cover medium URL:", albumCoverMed); // Debugging line to check the medium URL
   // Determine layout based on screen size.
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = useBreakpointValue({ base: true, lg: false });
 
   // Mobile layout: two columns. Column 1 is the image; Column 2 has multiple rows.
   if (isMobile) {
@@ -65,63 +98,87 @@ export default function Track({ item, tourData }) {
         borderBottom="1px solid"
         borderColor="gray.700"
         width="100%"
-        align="flex-start"
+        direction="row"
       >
-        {/* Column 1: Album cover */}
-        <Box flexShrink={0}>
+        {/* Left column: Image and track info */}
+        <Flex direction="column" flex="1" mr={3}>
+          {/* Album artwork */}
           <Image
             src={albumCover}
             alt="Album cover"
-            boxSize="60px"
+            boxSize="64px"
             objectFit="cover"
-            borderRadius="2px"
+            borderRadius="4px"
+            mb={3}
           />
-        </Box>
 
-        {/* Column 2: Textual details */}
-        <Box flex="1" ml={4}>
-          {/* Row 1: track */}
-          <Text fontSize="md" fontWeight="bold" noOfLines={1}>
-            {item.songName
-              ? cleanSongTitle(item.songName)
-              : `${item.song} - not found on Spotify`}
-          </Text>
-
-          {/* Row 2: Artist */}
-          <Text fontSize="md" color="gray.300" noOfLines={1}>
-            {item.artistName ? item.artistName : item.artist}
-          </Text>
-
-          {/* Row 3: Album  */}
-          {item.albumName && (
-            <Text fontSize="sm" color="gray.400" noOfLines={1} mt={1}>
-              {item.albumName}
+          {/* Track info */}
+          <Box textAlign="left">
+            {/* Track name */}
+            <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+              {item.songName
+                ? cleanSongTitle(item.songName)
+                : `${item.song} - not found on Spotify`}
             </Text>
-          )}
 
-          {/* Likelihood with Spotify logo */}
-          <Flex justifyContent="flex-end" alignItems="center" mt={1}>
-            <Text color="gray.400" fontWeight="medium" fontSize="sm" mr={2}>
+            {/* Artist name */}
+            <Text fontSize="md" color="gray.300" noOfLines={1}>
+              {item.artistName ? item.artistName : item.artist}
+            </Text>
+
+            {/* Album name */}
+            {item.albumName && (
+              <Text fontSize="sm" color="gray.400" noOfLines={1}>
+                {cleanAlbumTitle(item.albumName)}
+              </Text>
+            )}
+          </Box>
+        </Flex>
+
+        {/* Right column: Likelihood and Spotify button - UPDATED */}
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-end"
+          justifyContent="center"
+          minWidth="120px"
+        >
+          {/* Likelihood */}
+          <Flex alignItems="center" mb={1}>
+            <Text color="gray.400" fontWeight="medium" fontSize="sm">
               {calculateLikelihood()}% likelihood
             </Text>
-            {item.uri && (
-              <Link
-                href={getSpotifyLink(item.uri)}
-                isExternal
-                display="flex"
-                alignItems="center"
-                opacity={0.9}
-                _hover={{ opacity: 1 }}
-              >
-                <Image src={spotifyLogo} alt="Listen on Spotify" width="16px" />
-              </Link>
-            )}
           </Flex>
 
-          {/* Row 4: Played at info */}
-          <Text textAlign="right" color="gray.500" fontSize="xs" mt={1}>
+          {/* Played at info */}
+          <Text color="gray.500" fontSize="xs" mb={2}>
             Played at {getDisplayCount()} of {tourData.totalShows} shows
           </Text>
+
+          {/* Spotify button */}
+          {item.uri && (
+            <Link
+              href={getSpotifyLink(item.uri)}
+              isExternal
+              display="inline-flex"
+              alignItems="center"
+              bg="gray.700"
+              color="#1DB954"
+              fontWeight="bold"
+              fontSize="xs"
+              px={3}
+              py={1}
+              borderRadius="full"
+              _hover={{
+                bg: "gray.600",
+                color: "#1DB954",
+                textDecoration: "none",
+              }}
+            >
+              <Image src={spotifyLogo} alt="Spotify" width="16px" mr={1} />
+              OPEN SPOTIFY
+            </Link>
+          )}
         </Box>
       </Flex>
     );
@@ -152,7 +209,7 @@ export default function Track({ item, tourData }) {
         {/* Row 1: Track name */}
         <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
           {item.songName
-            ? cleanSongTitle(item.songName)
+            ? item.songName
             : `${item.song} - not found on Spotify`}
         </Text>
 
@@ -170,30 +227,49 @@ export default function Track({ item, tourData }) {
       </Box>
 
       {/* Column 3: Likelihood with Spotify logo, and Played at info */}
-      <Box textAlign="right" minWidth="140px">
-        {/* Likelihood and Spotify logo on the same line */}
-        <Flex justifyContent="flex-end" alignItems="center" mb={1}>
-          <Text color="gray.400" fontWeight="medium" mr={2}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="flex-end"
+        justifyContent="center"
+        minWidth="160px"
+      >
+        {/* Likelihood */}
+        <Flex alignItems="center" mb={1}>
+          <Text color="gray.400" fontWeight="medium" fontSize="sm">
             {calculateLikelihood()}% likelihood
           </Text>
-          {item.uri && (
-            <Link
-              href={getSpotifyLink(item.uri)}
-              isExternal
-              display="flex"
-              alignItems="center"
-              _hover={{ opacity: 1 }}
-              opacity={0.9}
-            >
-              <Image src={spotifyLogo} alt="Listen on Spotify" width="18px" />
-            </Link>
-          )}
         </Flex>
 
         {/* Played at info */}
-        <Text color="gray.500" fontSize="xs">
+        <Text color="gray.500" fontSize="xs" mb={2}>
           Played at {getDisplayCount()} of {tourData.totalShows} shows
         </Text>
+
+        {/* Spotify button */}
+        {item.uri && (
+          <Link
+            href={getSpotifyLink(item.uri)}
+            isExternal
+            display="inline-flex"
+            alignItems="center"
+            bg="gray.700"
+            color="#1DB954"
+            fontWeight="bold"
+            fontSize="xs"
+            px={3}
+            py={1}
+            borderRadius="full"
+            _hover={{
+              bg: "gray.600",
+              color: "#1DB954",
+              textDecoration: "none",
+            }}
+          >
+            <Image src={spotifyLogo} alt="Spotify" width="16px" mr={1} />
+            OPEN SPOTIFY
+          </Link>
+        )}
       </Box>
     </Flex>
   );

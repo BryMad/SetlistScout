@@ -184,6 +184,7 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
           songName: data.tracks.items[0]?.name,
           artistName: data.tracks.items[0]?.artists[0]?.name,
           image: data.tracks.items[0]?.album?.images?.find((img) => img.height === 64),
+          imageMed: data.tracks.items[0]?.album?.images?.find((img) => img.height === 300),
           albumName: data.tracks.items[0]?.album?.name,
           albumReleaseDate: data.tracks.items[0]?.album?.release_date,
           uri: data.tracks.items[0]?.uri,

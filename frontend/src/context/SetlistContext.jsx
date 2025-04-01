@@ -71,6 +71,7 @@ export const SetlistProvider = ({ children }) => {
       try {
         // Pass progress callback to fetchArtistTour
         const result = await fetchArtistTour(artist, updateProgress);
+        console.log("Artist tour data:", result);
 
         setState((prev) => ({
           ...prev,
