@@ -20,8 +20,8 @@ export const useSpotify = () => {
    * @returns {Promise<void>}
    */
   const handleCreatePlaylist = useCallback(async () => {
-    // Reset playlist URL
-    setPlaylistUrl(null);
+    // Don't reset playlist URL here to prevent it from disappearing
+    // after successful playlist creation
 
     // Ensure we have necessary data and auth
     if (!isLoggedIn || !spotifyData?.length || !tourData?.bandName) {

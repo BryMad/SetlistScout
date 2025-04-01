@@ -33,12 +33,24 @@ export default function TracksHUD() {
   // Calculate if we should show the tracks section
   const showTracks = spotifyData?.length > 0 && !loading;
 
-  // Clear playlist URL when component updates with new spotifyData
+  // Modified: Only clear playlist URL when new search is initiated
+  // This will keep the URL visible after creation until a new search
   useEffect(() => {
-    if (spotifyData && spotifyData.length > 0) {
-      clearPlaylistUrl();
-    }
-  }, [spotifyData, clearPlaylistUrl]);
+    // Keep track of previous spotifyData length to detect new searches
+    const handleNewSearch = () => {
+      if (playlistUrl) {
+        clearPlaylistUrl();
+      }
+    };
+
+    // Add an event listener to clear playlistUrl when a new search starts
+    window.addEventListener("new-search-started", handleNewSearch);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("new-search-started", handleNewSearch);
+    };
+  }, [clearPlaylistUrl, playlistUrl]);
 
   return (
     <Box width="full" maxW="100%">

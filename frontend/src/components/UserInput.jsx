@@ -74,6 +74,9 @@ export default function UserInput() {
    * @async
    */
   const handleArtistSelect = async (artist) => {
+    // Dispatch an event to notify that a new search is starting
+    window.dispatchEvent(new Event("new-search-started"));
+
     // Clear the playlist URL when a new artist is selected
     if (clearPlaylistUrl) {
       clearPlaylistUrl();

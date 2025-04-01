@@ -82,12 +82,12 @@ export default function Track({ item, tourData }) {
   const albumCover = item.image
     ? item.image.url
     : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
-  console.log("Album cover URL:", albumCover); // Debugging line to check the URL
-  const albumCoverMed = item.imageMed
-    ? item.imageMed.url
-    : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
-  console.log("Album cover medium URL:", albumCoverMed); // Debugging line to check the medium URL
-  // Determine layout based on screen size.
+  // console.log("Album cover URL:", albumCover); // Debugging line to check the URL
+  // const albumCoverMed = item.imageMed
+  //   ? item.imageMed.url
+  //   : "https://icons.veryicon.com/png/o/miscellaneous/small-icons-in-the-art-room/question-mark-42.png";
+  // console.log("Album cover medium URL:", albumCoverMed); // Debugging line to check the medium URL
+  // // Determine layout based on screen size.
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
   // Mobile layout: two columns. Column 1 is the image; Column 2 has multiple rows.
@@ -115,14 +115,14 @@ export default function Track({ item, tourData }) {
           {/* Track info */}
           <Box textAlign="left">
             {/* Track name */}
-            <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+            <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
               {item.songName
                 ? cleanSongTitle(item.songName)
                 : `${item.song} - not found on Spotify`}
             </Text>
 
             {/* Artist name */}
-            <Text fontSize="md" color="gray.300" noOfLines={1}>
+            <Text fontSize="sm" color="gray.300" noOfLines={1}>
               {item.artistName ? item.artistName : item.artist}
             </Text>
 
