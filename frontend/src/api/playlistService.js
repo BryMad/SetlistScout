@@ -22,7 +22,6 @@ export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
         track_ids: trackIds,
         band: bandName,
         tour: tourName,
-        // No longer sending access_token and user_id
       },
       {
         headers: { "Content-Type": "application/json" },
@@ -33,7 +32,8 @@ export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
     return {
       success: true,
       message: "Playlist created successfully!",
-      playlistId: response.data.playlist_id
+      playlistId: response.data.playlist_id,
+      playlistUrl: response.data.playlist_url // This will come from the backend
     };
   } catch (error) {
     console.error("Error creating playlist:", error);

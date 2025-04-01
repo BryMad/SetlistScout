@@ -1,5 +1,5 @@
 // src/hooks/useSpotify.js
-import { useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { createPlaylist } from '../api/playlistService';
 import { useAuth } from './useAuth';
 import { useSetlist } from './useSetlist';
@@ -12,6 +12,7 @@ import { useSetlist } from './useSetlist';
 export const useSpotify = () => {
   const { isLoggedIn, logout } = useAuth();
   const { tourData, spotifyData, setNotification } = useSetlist();
+  const [playlistUrl, setPlaylistUrl] = useState(null);
 
   /**
    * Creates a Spotify playlist from the current songs
@@ -19,6 +20,9 @@ export const useSpotify = () => {
    * @returns {Promise<void>}
    */
   const handleCreatePlaylist = useCallback(async () => {
+    // Reset playlist URL
+    setPlaylistUrl(null);
+
     // Ensure we have necessary data and auth
     if (!isLoggedIn || !spotifyData?.length || !tourData?.bandName) {
       setNotification({
@@ -49,6 +53,11 @@ export const useSpotify = () => {
     });
 
     if (result.success) {
+      // Store the playlist URL if it was returned
+      if (result.playlistUrl) {
+        setPlaylistUrl(result.playlistUrl);
+      }
+
       setNotification({
         message: result.message,
         status: "success"
@@ -66,8 +75,17 @@ export const useSpotify = () => {
     }
   }, [isLoggedIn, spotifyData, tourData, setNotification, logout]);
 
+  /**
+   * Clears the current playlist URL
+   */
+  const clearPlaylistUrl = useCallback(() => {
+    setPlaylistUrl(null);
+  }, []);
+
   return {
     isLoggedIn,
-    createPlaylist: handleCreatePlaylist
+    createPlaylist: handleCreatePlaylist,
+    playlistUrl,
+    clearPlaylistUrl
   };
 };

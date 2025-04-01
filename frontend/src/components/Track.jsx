@@ -105,6 +105,7 @@ export default function Track({ item, tourData }) {
                 alignItems="center"
                 opacity={0.9}
                 _hover={{ opacity: 1 }}
+                title="Open in Spotify"
               >
                 <Image src={spotifyLogo} alt="Listen on Spotify" width="16px" />
               </Link>

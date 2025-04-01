@@ -43,6 +43,7 @@ router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
     );
 
     const playlist_id = createPlaylistResponse.data.id;
+    const playlist_url = createPlaylistResponse.data.external_urls.spotify;
 
     // Add tracks to the playlist
     await axios.post(
@@ -58,7 +59,11 @@ router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
       }
     );
 
-    res.status(200).json({ message: 'Playlist created successfully', playlist_id: playlist_id });
+    res.status(200).json({
+      message: 'Playlist created successfully',
+      playlist_id: playlist_id,
+      playlist_url: playlist_url  // Return the playlist URL
+    });
   } catch (error) {
     console.error('Error creating playlist:', error.response ? error.response.data : error);
     res.status(500).json({ error: 'Failed to create playlist' });

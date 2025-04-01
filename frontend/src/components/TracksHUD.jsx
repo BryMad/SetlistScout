@@ -1,5 +1,4 @@
-// src/components/TracksHUD.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Flex,
@@ -8,7 +7,9 @@ import {
   Heading,
   Image,
   Text,
+  Link,
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
@@ -19,7 +20,7 @@ import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
   const { isLoggedIn, login } = useAuth();
-  const { createPlaylist } = useSpotify();
+  const { createPlaylist, playlistUrl, clearPlaylistUrl } = useSpotify();
   const {
     spotifyData,
     tourData,
@@ -32,6 +33,13 @@ export default function TracksHUD() {
   // Calculate if we should show the tracks section
   const showTracks = spotifyData?.length > 0 && !loading;
 
+  // Clear playlist URL when component updates with new spotifyData
+  useEffect(() => {
+    if (spotifyData && spotifyData.length > 0) {
+      clearPlaylistUrl();
+    }
+  }, [spotifyData, clearPlaylistUrl]);
+
   return (
     <Box width="full" maxW="100%">
       {loading ? (
@@ -40,7 +48,7 @@ export default function TracksHUD() {
         </Box>
       ) : (
         showTracks && (
-          <Flex justify="center" mb={8} width="full">
+          <Flex direction="column" alignItems="center" mb={8} width="full">
             {!isLoggedIn ? (
               <Flex align="center">
                 <Button
@@ -75,6 +83,22 @@ export default function TracksHUD() {
                 <Text mx={2}> playlist on </Text>
                 <Image src={spotifyLogo} alt="Spotify" height="34px" />
               </Flex>
+            )}
+
+            {/* Playlist URL Link - Show if available */}
+            {playlistUrl && (
+              <Link
+                href={playlistUrl}
+                isExternal
+                mt={4}
+                color="#1DB954"
+                fontWeight="bold"
+                display="flex"
+                alignItems="center"
+              >
+                View {tourData.bandName} playlist on Spotify{" "}
+                <ExternalLinkIcon ml={1} />
+              </Link>
             )}
           </Flex>
         )

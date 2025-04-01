@@ -1,4 +1,3 @@
-// File: ./frontend/src/context/SetlistContext.jsx (updated)
 import { createContext, useState, useCallback } from "react";
 import {
   fetchArtistTour,

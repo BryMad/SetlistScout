@@ -12,12 +12,14 @@ import {
   Container,
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
+import { useSpotify } from "../hooks/useSpotify";
 
 /**
  * Component for artist search input
  */
 export default function UserInput() {
   const { fetchTourData, loading, searchForArtists } = useSetlist();
+  const { clearPlaylistUrl } = useSpotify(); // Get the clearPlaylistUrl function
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -72,6 +74,11 @@ export default function UserInput() {
    * @async
    */
   const handleArtistSelect = async (artist) => {
+    // Clear the playlist URL when a new artist is selected
+    if (clearPlaylistUrl) {
+      clearPlaylistUrl();
+    }
+
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
