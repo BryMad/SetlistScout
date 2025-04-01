@@ -80,19 +80,26 @@ export default function Track({ item, tourData }) {
 
         {/* Column 2: Textual details */}
         <Box flex="1" ml={4}>
-          {/* Row 1: Artist */}
+          {/* Row 1: track */}
           <Text fontSize="md" fontWeight="bold" noOfLines={1}>
-            {item.artistName ? item.artistName : item.artist}
-          </Text>
-
-          {/* Row 2: Song name */}
-          <Text fontSize="md" color="gray.300" noOfLines={1}>
             {item.songName
               ? cleanSongTitle(item.songName)
               : `${item.song} - not found on Spotify`}
           </Text>
 
-          {/* Row 3: Likelihood with Spotify logo */}
+          {/* Row 2: Artist */}
+          <Text fontSize="md" color="gray.300" noOfLines={1}>
+            {item.artistName ? item.artistName : item.artist}
+          </Text>
+
+          {/* Row 3: Album  */}
+          {item.albumName && (
+            <Text fontSize="sm" color="gray.400" noOfLines={1} mt={1}>
+              {item.albumName}
+            </Text>
+          )}
+
+          {/* Likelihood with Spotify logo */}
           <Flex justifyContent="flex-end" alignItems="center" mt={1}>
             <Text color="gray.400" fontWeight="medium" fontSize="sm" mr={2}>
               {calculateLikelihood()}% likelihood
@@ -105,7 +112,6 @@ export default function Track({ item, tourData }) {
                 alignItems="center"
                 opacity={0.9}
                 _hover={{ opacity: 1 }}
-                title="Open in Spotify"
               >
                 <Image src={spotifyLogo} alt="Listen on Spotify" width="16px" />
               </Link>
@@ -143,17 +149,24 @@ export default function Track({ item, tourData }) {
 
       {/* Column 2: Artist name and Song Title in separate rows */}
       <Box flex="1" mr={4}>
-        {/* Row 1: Artist name */}
-        <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+        {/* Row 1: Track name */}
+        <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
+          {item.songName
+            ? cleanSongTitle(item.songName)
+            : `${item.song} - not found on Spotify`}
+        </Text>
+
+        {/* Row 2: Artist name */}
+        <Text fontSize="sm" color="gray.300" noOfLines={1}>
           {item.artistName ? item.artistName : item.artist}
         </Text>
 
-        {/* Row 2: Song name - full version for desktop */}
-        <Text fontSize="md" color="gray.300" noOfLines={1}>
-          {item.songName
-            ? item.songName
-            : `${item.song} - not found on Spotify`}
-        </Text>
+        {/* Row 3: Album name (new) */}
+        {item.albumName && (
+          <Text fontSize="sm" color="gray.400" noOfLines={1}>
+            {item.albumName}
+          </Text>
+        )}
       </Box>
 
       {/* Column 3: Likelihood with Spotify logo, and Played at info */}

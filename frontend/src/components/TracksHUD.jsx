@@ -96,8 +96,7 @@ export default function TracksHUD() {
                 display="flex"
                 alignItems="center"
               >
-                View {tourData.bandName} playlist on Spotify{" "}
-                <ExternalLinkIcon ml={1} />
+                View your playlist on Spotify <ExternalLinkIcon ml={1} />
               </Link>
             )}
           </Flex>
