@@ -28,8 +28,8 @@ export default function NavBar() {
       <Flex
         bg={bgColor}
         color={textColor}
-        minH={"60px"}
-        py={{ base: 2 }}
+        minH={"70px"}
+        py={{ base: 4 }}
         px={{ base: 4 }}
         align={"center"}
       >
@@ -98,7 +98,6 @@ export default function NavBar() {
           </Box>
         </Stack>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav
           location={location}

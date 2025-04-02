@@ -19,7 +19,6 @@ export const searchArtists = async (artistName) => {
       { artistName },
       { headers: { "Content-Type": "application/json" } }
     );
-
     return response.data || [];
   } catch (error) {
     console.error("Error searching for artists:", error);

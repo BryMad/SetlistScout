@@ -101,8 +101,8 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      <Text fontWeight="bold" fontSize="sm" whiteSpace="nowrap" mb={2}>
-        Search an Artist to see what they're playing live:
+      <Text fontWeight="bold" fontSize="sm" mb={2}>
+        Enter an Artist to see what they're playing live:
       </Text>
 
       <Input

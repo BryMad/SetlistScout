@@ -1,6 +1,14 @@
 // src/layouts/MainLayout.jsx
 import React from "react";
-import { Box, Container, Flex, Image, Text, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Image,
+  Text,
+  Link,
+  VStack,
+} from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
@@ -51,7 +59,7 @@ export default function MainLayout({ children }) {
           pb={3}
         >
           <Text mr={2} color="#1DB954" fontSize="md">
-            artist search and playlist creation powered by
+            artist search, track search, and playlist creation powered by
           </Text>
           <Image
             src={spotifyLogo}
@@ -60,30 +68,34 @@ export default function MainLayout({ children }) {
             width="auto"
           />
         </Flex>
-        <Text>
-          This app uses the Spotify API but is not endorsed, certified, or
-          otherwise approved by Spotify. Spotify is a registered trademark of
-          Spotify AB.
-        </Text>
-        <Text>
-          Please see{" "}
-          <Link
-            href="https://developer.spotify.com/policy"
-            color="blue.300"
-            isExternal
-          >
-            Spotify Developer Policy
-          </Link>{" "}
-          and{" "}
-          <Link
-            href="https://developer.spotify.com/documentation/design"
-            color="blue.300"
-            isExternal
-          >
-            Brand Guidelines
-          </Link>{" "}
-          for more info.
-        </Text>
+
+        {/* Added VStack with padding bottom to group these text items */}
+        <VStack spacing={2} pb={6}>
+          <Text>
+            This app uses the Spotify API but is not endorsed, certified, or
+            otherwise approved by Spotify. Spotify is a registered trademark of
+            Spotify AB.
+          </Text>
+          <Text>
+            Please see{" "}
+            <Link
+              href="https://developer.spotify.com/policy"
+              color="blue.300"
+              isExternal
+            >
+              Spotify Developer Policy
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="https://developer.spotify.com/documentation/design"
+              color="blue.300"
+              isExternal
+            >
+              Brand Guidelines
+            </Link>{" "}
+            for more info.
+          </Text>
+        </VStack>
       </Box>
     </Box>
   );

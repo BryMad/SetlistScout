@@ -1,6 +1,15 @@
 // src/components/ProgressIndicator.jsx
 import React from "react";
-import { Box, VStack, Spinner, Text, Progress } from "@chakra-ui/react";
+import {
+  Box,
+  VStack,
+  Spinner,
+  Text,
+  Progress,
+  Image,
+  Flex,
+} from "@chakra-ui/react";
+import spotifyLogo from "../assets/spotify_logo.svg"; // Make sure this path is correct
 
 /**
  * Component to display progress updates during API requests
@@ -25,7 +34,7 @@ const ProgressIndicator = ({ isLoading, progress }) => {
       case "song_processing":
         return "🎸";
       case "spotify_search":
-        return "🎧";
+        return null; // We'll use the Spotify logo image instead of an emoji
       case "complete":
         return "✅";
       case "error":
@@ -34,6 +43,11 @@ const ProgressIndicator = ({ isLoading, progress }) => {
         return "⏳";
     }
   };
+
+  // Check if this is a Spotify-related message
+  const isSpotifyMessage =
+    progress.stage === "spotify_search" ||
+    (progress.message && progress.message.includes("Spotify"));
 
   return (
     <VStack spacing={4} width="100%" my={4}>
@@ -44,9 +58,25 @@ const ProgressIndicator = ({ isLoading, progress }) => {
         width="100%"
       >
         <Spinner size="sm" mr={2} flexShrink={0} />
-        <Text fontSize="md">
-          {getStageEmoji(progress.stage)} {progress.message}
-        </Text>
+
+        {isSpotifyMessage ? (
+          // For Spotify messages, display logo + message
+          <Flex align="center">
+            <Image
+              src={spotifyLogo}
+              alt="Spotify"
+              width="18px"
+              height="18px"
+              mr={2}
+            />
+            <Text fontSize="md">{progress.message}</Text>
+          </Flex>
+        ) : (
+          // For other messages, display with emoji
+          <Text fontSize="md">
+            {getStageEmoji(progress.stage)} {progress.message}
+          </Text>
+        )}
       </Box>
 
       <Box width="100%" height="20px">
@@ -56,7 +86,7 @@ const ProgressIndicator = ({ isLoading, progress }) => {
           value={progress.percent !== null ? progress.percent : 0}
           size="sm"
           width="100%"
-          colorScheme="teal"
+          colorScheme="teal" // Keep the original teal color for consistency
           hasStripe
           isAnimated
           borderRadius="md"
