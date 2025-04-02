@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Container, Flex, Image, Text, Link } from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
-import spotifyLogo from "../assets/spotify_logo_full_white.png";
+import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 /**
  * Main layout component for the application
@@ -50,7 +50,7 @@ export default function MainLayout({ children }) {
           borderColor="gray.700"
           pb={3}
         >
-          <Text mr={2} fontSize="md">
+          <Text mr={2} color="#1DB954" fontSize="md">
             artist search and playlist creation powered by
           </Text>
           <Image

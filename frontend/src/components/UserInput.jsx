@@ -101,12 +101,12 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      <Text fontWeight="bold" mb={2}>
-        Search for an Artist to get their tour info:
+      <Text fontWeight="bold" fontSize="sm" whiteSpace="nowrap" mb={2}>
+        Search an Artist to see what they're playing live:
       </Text>
 
       <Input
-        placeholder="Type an artist name"
+        placeholder="artist name"
         value={artistQuery}
         onChange={(e) => setArtistQuery(e.target.value)}
         size="lg"
