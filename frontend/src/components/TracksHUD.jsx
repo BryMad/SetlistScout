@@ -62,41 +62,82 @@ export default function TracksHUD() {
         showTracks && (
           <Flex direction="column" alignItems="center" mb={8} width="full">
             {!isLoggedIn ? (
-              <Flex align="center">
+              <Flex
+                align="center"
+                flexWrap="wrap"
+                justifyContent="center"
+                gap={2}
+                my={2}
+              >
                 <Button
-                  size="md"
-                  width="90px"
-                  py="15px"
-                  bg="#1DB954" /* Spotify green */
+                  size="sm" // Changed from "md" to "sm"
+                  width="auto" // Changed from fixed width to auto
+                  px={4} // Added horizontal padding
+                  py={2} // Reduced vertical padding from 15px
+                  bg="#1DB954"
                   color="white"
-                  variant="ghost"
-                  _hover={{ bg: "#1AA34A" }}
-                  onClick={() => login({ spotifyData, tourData })}
-                  borderRadius="md"
+                  variant="solid" // Changed from "ghost" to "solid"
+                  _hover={{
+                    bg: "#1AA34A",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  }}
+                  transition="all 0.2s ease" // Added transition for hover effects
+                  borderRadius="full" // Made it pill-shaped
+                  fontWeight="medium" // Slightly reduced font weight
+                  letterSpacing="0.5px" // Added letter spacing
+                  flexShrink={0}
+                  onClick={() => login({ spotifyData, tourData })} // Kept the original onClick handler
                 >
                   Login
                 </Button>
-                <Text mx={2}>to create playlist on</Text>
-                <Image src={spotifyLogo} alt="Spotify" height="34px" />
+                <Text textAlign="center">to create playlist on</Text>
+                <Image
+                  src={spotifyLogo}
+                  alt="Spotify"
+                  height="34px"
+                  flexShrink={0}
+                />
               </Flex>
             ) : (
-              <Flex align="center">
+              <Flex
+                align="center"
+                flexWrap="wrap"
+                justifyContent="center"
+                gap={2}
+                my={2}
+              >
                 <Button
-                  size="md"
-                  width="90px"
-                  py="15px"
-                  bg="#1DB954" /* Spotify green */
+                  size="sm"
+                  width="auto"
+                  px={4}
+                  py={2}
+                  bg="#1DB954"
                   color="white"
-                  _hover={{ bg: "green.600" }}
-                  onClick={createPlaylist}
+                  variant="solid"
+                  _hover={{
+                    bg: "#1AA34A",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  }}
+                  transition="all 0.2s ease"
+                  borderRadius="full"
+                  fontWeight="medium"
+                  letterSpacing="0.5px"
+                  flexShrink={0}
+                  onClick={createPlaylist} // Kept the original onClick handler
                 >
                   Create
                 </Button>
-                <Text mx={2}> playlist on </Text>
-                <Image src={spotifyLogo} alt="Spotify" height="34px" />
+                <Text textAlign="center">playlist on</Text>
+                <Image
+                  src={spotifyLogo}
+                  alt="Spotify"
+                  height="34px"
+                  flexShrink={0}
+                />
               </Flex>
             )}
-
             {/* Playlist URL Link - Show if available */}
             {playlistUrl && (
               <Link

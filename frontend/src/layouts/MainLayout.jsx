@@ -53,12 +53,15 @@ export default function MainLayout({ children }) {
         <Flex
           align="center"
           justify="center"
+          flexWrap="wrap"
+          gap={2}
           mb={4}
           borderBottom="1px"
           borderColor="gray.700"
           pb={3}
+          px={2}
         >
-          <Text mr={2} color="#1DB954" fontSize="md">
+          <Text color="#1DB954" fontSize="md" textAlign="center">
             artist search, track search, and playlist creation powered by
           </Text>
           <Image
@@ -66,6 +69,7 @@ export default function MainLayout({ children }) {
             alt="Spotify Logo"
             height="30px"
             width="auto"
+            flexShrink={0}
           />
         </Flex>
 

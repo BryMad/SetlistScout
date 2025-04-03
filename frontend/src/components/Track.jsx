@@ -1,4 +1,3 @@
-// src/components/Track.jsx
 import React from "react";
 import {
   Flex,
@@ -116,20 +115,23 @@ export default function Track({ item, tourData }) {
           <Box textAlign="left">
             {/* Track name */}
             <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
-              {item.songName
+              {/* {item.songName
                 ? cleanSongTitle(item.songName)
-                : `${item.song} - not found on Spotify`}
+                : `${item.song} - not found on Spotify`} */}
+              TRACK------23CHARACTERS
             </Text>
 
             {/* Artist name */}
             <Text fontSize="sm" color="gray.300" noOfLines={1}>
-              {item.artistName ? item.artistName : item.artist}
+              {/* {item.artistName ? item.artistName : item.artist} */}
+              ARTIST18CHARACTERS
             </Text>
 
             {/* Album name */}
             {item.albumName && (
               <Text fontSize="sm" color="gray.400" noOfLines={1}>
-                {cleanAlbumTitle(item.albumName)}
+                {/* {cleanAlbumTitle(item.albumName)} */}
+                ALBUM--------25CHARACTERS
               </Text>
             )}
           </Box>
@@ -208,20 +210,23 @@ export default function Track({ item, tourData }) {
       <Box flex="1" mr={4}>
         {/* Row 1: Track name */}
         <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
-          {item.songName
+          {/* {item.songName
             ? item.songName
-            : `${item.song} - not found on Spotify`}
+            : `${item.song} - not found on Spotify`} */}
+          TRACK------23CHARACTERS
         </Text>
 
         {/* Row 2: Artist name */}
         <Text fontSize="sm" color="gray.300" noOfLines={1}>
-          {item.artistName ? item.artistName : item.artist}
+          {/* {item.artistName ? item.artistName : item.artist} */}
+          ARTIST18CHARACTERS
         </Text>
 
         {/* Row 3: Album name (new) */}
         {item.albumName && (
           <Text fontSize="sm" color="gray.400" noOfLines={1}>
-            {item.albumName}
+            {/* {item.albumName} */}
+            ALBUM--------25CHARACTERS
           </Text>
         )}
       </Box>

@@ -28,7 +28,7 @@ export default function NavBar() {
       <Flex
         bg={bgColor}
         color={textColor}
-        minH={"70px"}
+        height="70px"
         py={{ base: 4 }}
         px={{ base: 4 }}
         align={"center"}
