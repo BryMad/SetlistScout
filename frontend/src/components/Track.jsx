@@ -1,5 +1,4 @@
-// File: ./src/components/Track.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Box,
@@ -8,26 +7,27 @@ import {
   Link,
   CircularProgress,
   CircularProgressLabel,
-  IconButton,
   Badge,
   useBreakpointValue,
   useColorModeValue,
   Tooltip,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaSpotify } from "react-icons/fa";
 
 // Motion-enhanced Chakra components
 const MotionFlex = motion(Flex);
-const MotionBox = motion(Box);
 const MotionBadge = motion(Badge);
+const MotionText = motion(Text);
 
 /**
- * Enhanced Track component with modern data visualization
+ * Enhanced Track component with modern data visualization and balanced animations
  */
 export default function Track({ item, tourData }) {
-  // Determine if this is a mobile layout
+  // State for animated percentage
+  const [animatedPercentage, setAnimatedPercentage] = useState(0);
+
+  // Determine if this is a mobile layout - moved earlier to prevent layout shifts
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   // Theme colors
@@ -36,6 +36,44 @@ export default function Track({ item, tourData }) {
   const statsBg = useColorModeValue("gray.50", "gray.700");
   const textColor = useColorModeValue("gray.800", "white");
   const mutedColor = useColorModeValue("gray.500", "gray.400");
+
+  // Animate the percentage value on mount - optimized animation speed
+  useEffect(() => {
+    const targetPercentage = calculateLikelihood();
+    let startTime = null;
+    let animationFrameId = null;
+
+    // Animation function
+    const animateProgress = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+
+      // Calculate elapsed time
+      const elapsedTime = timestamp - startTime;
+      // Animation duration (reduced from 2000ms to 800ms)
+      const duration = 800;
+      // Calculate raw progress (0 to 1)
+      const rawProgress = Math.min(elapsedTime / duration, 1);
+
+      // Linear animation - no easing
+      const currentValue = Math.round(rawProgress * targetPercentage);
+      setAnimatedPercentage(currentValue);
+
+      // Continue animation until complete
+      if (rawProgress < 1) {
+        animationFrameId = requestAnimationFrame(animateProgress);
+      }
+    };
+
+    // Start animation immediately
+    animationFrameId = requestAnimationFrame(animateProgress);
+
+    // Cleanup
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
 
   /**
    * Convert a Spotify URI ("spotify:track:12345") into an open.spotify.com link
@@ -143,9 +181,14 @@ export default function Track({ item, tourData }) {
   const percentage = calculateLikelihood();
   const likelihoodColor = getLikelihoodColor();
 
+  // Skip animation if isMobile is undefined (prevents layout shift)
+  if (isMobile === undefined) {
+    return null; // Render nothing until breakpoint is determined
+  }
+
   return (
     <MotionFlex
-      p={4}
+      p={3}
       bg={bgColor}
       borderRadius="none"
       boxShadow="sm"
@@ -156,20 +199,16 @@ export default function Track({ item, tourData }) {
       direction={isMobile ? "column" : "row"}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.4 }} // Reduced from 0.8 to 0.4
     >
       {/* Left section: Album art + Track info */}
       <Flex
         align="center"
         width={isMobile ? "100%" : "60%"}
-        mb={isMobile ? 4 : 0}
+        mb={isMobile ? 3 : 0}
       >
-        {/* Album artwork with hover effect */}
-        <MotionBox
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-          mr={4}
-        >
+        {/* Album artwork - no animation per Spotify guidelines */}
+        <Box mr={4}>
           <Image
             src={albumCover}
             alt="Album cover"
@@ -178,7 +217,7 @@ export default function Track({ item, tourData }) {
             borderRadius="md"
             boxShadow="md"
           />
-        </MotionBox>
+        </Box>
 
         {/* Track info */}
         <Box>
@@ -204,46 +243,52 @@ export default function Track({ item, tourData }) {
       <MotionFlex
         bg={statsBg}
         borderRadius="md"
-        p={3}
+        p={2}
         width={isMobile ? "100%" : "240px"}
         align="center"
         justify="space-between"
         boxShadow="none"
-        whileHover={{ boxShadow: "sm" }}
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.35, delay: 0.1 }} // Reduced from 0.65/0.2 to 0.35/0.1
       >
         {/* Circular progress to visualize likelihood */}
-        <CircularProgress
-          value={percentage}
-          size="60px"
-          thickness="8px"
-          color={`${likelihoodColor}.400`}
-          trackColor={useColorModeValue("gray.100", "gray.600")}
-        >
-          <CircularProgressLabel fontWeight="bold" fontSize="sm">
-            {percentage}%
-          </CircularProgressLabel>
-        </CircularProgress>
+        <Box position="relative">
+          <CircularProgress
+            value={animatedPercentage}
+            size="55px"
+            thickness="5px"
+            color={`${likelihoodColor}.400`}
+            trackColor={useColorModeValue("gray.100", "gray.600")}
+          >
+            <CircularProgressLabel fontWeight="bold" fontSize="xs">
+              {animatedPercentage}%
+            </CircularProgressLabel>
+          </CircularProgress>
+        </Box>
 
         {/* Likelihood assessment, show count, and Spotify button */}
-        <Flex direction="column" mx={2} width="100%">
-          <MotionBadge
+        <Flex
+          direction="column"
+          mx={2}
+          width="100%"
+          height="100%"
+          justify="space-between"
+        >
+          <Badge
             colorScheme={likelihoodColor}
             mb={1}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            px={2}
+            alignSelf="flex-start"
           >
             {getLikelihoodText()}
-          </MotionBadge>
+          </Badge>
 
-          <Text fontSize="xs" color={mutedColor} mb={2}>
+          <Text fontSize="xs" color={mutedColor} mb={1}>
             {getDisplayCount()} of {tourData.totalShows} shows
           </Text>
 
-          {/* Spotify Link Button */}
+          {/* Spotify Link Button - no animation */}
           {item.uri && (
             <Link
               href={getSpotifyLink(item.uri)}
@@ -253,6 +298,7 @@ export default function Track({ item, tourData }) {
               fontSize="xs"
               fontWeight="medium"
               color="green.500"
+              mt={1}
               _hover={{ textDecoration: "none", color: "green.600" }}
             >
               <Box as={FaSpotify} mr={1} />

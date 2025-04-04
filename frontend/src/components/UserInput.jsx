@@ -9,8 +9,10 @@ import {
   ListItem,
   Text,
   Spinner,
-  Container,
+  Link,
+  Flex,
 } from "@chakra-ui/react";
+import { FaSpotify } from "react-icons/fa";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 
@@ -91,6 +93,15 @@ export default function UserInput() {
     setSelectedArtist(null);
   };
 
+  /**
+   * Handles clicking on the Spotify icon
+   * @param {Event} e The click event
+   */
+  const handleSpotifyIconClick = (e) => {
+    // Prevent the click from bubbling up to parent elements
+    e.stopPropagation();
+  };
+
   return (
     <Box
       ref={containerRef}
@@ -141,18 +152,36 @@ export default function UserInput() {
                 key={artist.id}
                 px={4}
                 py={2}
-                _hover={{ backgroundColor: "gray.600", cursor: "pointer" }}
-                onClick={() => handleArtistSelect(artist)}
+                _hover={{ backgroundColor: "gray.600" }}
               >
-                <HStack spacing={3}>
-                  <Image
-                    src={artist.image?.url || "https://placehold.co/40"}
-                    boxSize="40px"
-                    alt={artist.name}
-                    borderRadius={["2px", "2px", "4px"]} // Responsive border radius: 2px for small/medium, 4px for large
-                  />
-                  <Text>{artist.name}</Text>
-                </HStack>
+                <Flex width="100%" justify="space-between" align="center">
+                  <Box
+                    onClick={() => handleArtistSelect(artist)}
+                    flex="1"
+                    _hover={{ cursor: "pointer" }}
+                  >
+                    <HStack spacing={3}>
+                      <Image
+                        src={artist.image?.url || "https://placehold.co/40"}
+                        boxSize="40px"
+                        alt={artist.name}
+                        borderRadius={["2px", "2px", "4px"]}
+                      />
+                      <Text>{artist.name}</Text>
+                    </HStack>
+                  </Box>
+                  <Link
+                    href={artist.url}
+                    isExternal
+                    onClick={handleSpotifyIconClick}
+                    p={2}
+                    color="#1DB954"
+                    _hover={{ color: "#1AA34A" }}
+                    aria-label={`Open ${artist.name} on Spotify`}
+                  >
+                    <FaSpotify size={20} />
+                  </Link>
+                </Flex>
               </ListItem>
             ))}
           </List>
