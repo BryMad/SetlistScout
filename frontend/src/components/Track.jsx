@@ -168,8 +168,8 @@ export default function Track({ item, tourData }) {
     if (percentage >= 80) return "Very Likely";
     if (percentage >= 60) return "Likely";
     if (percentage >= 40) return "Possible";
-    if (percentage >= 20) return "Unlikely";
-    return "Rare";
+    if (percentage >= 20) return "Rare";
+    return "Very Rare";
   };
 
   // Provide a fallback cover image if none is available

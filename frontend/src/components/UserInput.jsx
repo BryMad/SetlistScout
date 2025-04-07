@@ -109,6 +109,7 @@ export default function UserInput() {
       width="100%"
       maxWidth="100%"
       mx="auto"
+      mt={8}
       alignItems="center"
       justifyContent="center"
     >

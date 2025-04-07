@@ -22,7 +22,7 @@ export default function About() {
           About Setlist Scout
         </Heading>
 
-        <Text>
+        <Text fontFamily="body">
           Setlist Scout is a tool designed to help concert-goers prepare for
           upcoming shows by providing insights into what songs their favorite
           artists are playing on tour.

@@ -36,9 +36,12 @@ export default function NavBar() {
         {/* App title - left-aligned on all screen sizes */}
         <Flex flex={{ base: 1, md: "auto" }} justify="start">
           <Text
-            fontWeight="bold"
-            fontSize="2xl"
+            fontFamily="heading" // This will use Bebas Neue from the theme
+            fontSize="5xl" // Make it slightly larger to match the Bebas Neue style
+            letterSpacing="1px" // Optional: adds a bit of spacing for Bebas Neue
             color="teal.400"
+            mt={8}
+            ml={4}
             as={Link}
             to="/"
           >
@@ -69,6 +72,7 @@ export default function NavBar() {
           spacing={4}
           display={{ base: "none", md: "flex" }}
           align="center"
+          mr={4}
         >
           {/* Navigation Links */}
           <DesktopNav location={location} />

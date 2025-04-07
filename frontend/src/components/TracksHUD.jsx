@@ -53,7 +53,7 @@ export default function TracksHUD() {
   }, [clearPlaylistUrl, playlistUrl]);
 
   return (
-    <Box width="full" maxW="100%">
+    <Box mt={8} width="full" maxW="100%">
       {loading ? (
         <Box width="full" mb={8}>
           <ProgressIndicator isLoading={loading} progress={progress} />
@@ -171,20 +171,21 @@ export default function TracksHUD() {
           <Box my={8} width="full">
             <Divider mb={4} />
             {tourData.tourName === "No Tour Info" ? (
-              <Heading as="h4" size="md" fontWeight="semibold">
-                Songs <Text as="strong">{tourData.bandName}</Text> has played in
-                last {tourData.totalShows} shows:
-              </Heading>
+              <Text size="md" fontWeight="semibold">
+                Tracks <Text as="strong">{tourData.bandName}</Text> has played
+                in last {tourData.totalShows} shows:
+              </Text>
             ) : (
-              <Heading as="h4" size="md" fontWeight="semibold">
-                Songs <Text as="strong">{tourData.bandName}</Text> has played on{" "}
+              <Text as="h4" size="md" fontWeight="semibold">
+                tracks <Text as="strong">{tourData.bandName}</Text> has played
+                on the{" "}
                 <Text as="strong">
                   {tourData.tourName}
                   {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
                     " Tour"}
                 </Text>
                 :
-              </Heading>
+              </Text>
             )}
           </Box>
 
