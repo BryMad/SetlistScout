@@ -13,6 +13,7 @@ export const useSpotify = () => {
   const { isLoggedIn, logout } = useAuth();
   const { tourData, spotifyData, setNotification } = useSetlist();
   const [playlistUrl, setPlaylistUrl] = useState(null);
+  const [isCreatingPlaylist, setIsCreatingPlaylist] = useState(false);
 
   /**
    * Creates a Spotify playlist from the current songs
@@ -20,9 +21,6 @@ export const useSpotify = () => {
    * @returns {Promise<void>}
    */
   const handleCreatePlaylist = useCallback(async () => {
-    // Don't reset playlist URL here to prevent it from disappearing
-    // after successful playlist creation
-
     // Ensure we have necessary data and auth
     if (!isLoggedIn || !spotifyData?.length || !tourData?.bandName) {
       setNotification({
@@ -45,33 +43,48 @@ export const useSpotify = () => {
       return;
     }
 
-    // Create the playlist
-    const result = await createPlaylist({
-      trackIds,
-      bandName: tourData.bandName,
-      tourName: tourData.tourName || "Tour"
-    });
+    // Set creating playlist state to true
+    setIsCreatingPlaylist(true);
 
-    if (result.success) {
-      // Store the playlist URL if it was returned
-      if (result.playlistUrl) {
-        setPlaylistUrl(result.playlistUrl);
-      }
-
-      setNotification({
-        message: result.message,
-        status: "success"
+    try {
+      // Create the playlist
+      const result = await createPlaylist({
+        trackIds,
+        bandName: tourData.bandName,
+        tourName: tourData.tourName || "Tour"
       });
-    } else {
-      // Handle auth errors by logging out
-      if (result.authError) {
-        logout();
+
+      if (result.success) {
+        // Store the playlist URL if it was returned
+        if (result.playlistUrl) {
+          setPlaylistUrl(result.playlistUrl);
+        }
+
+        setNotification({
+          message: result.message,
+          status: "success"
+        });
+      } else {
+        // Handle auth errors by logging out
+        if (result.authError) {
+          logout();
+        }
+
+        setNotification({
+          message: result.message,
+          status: "error"
+        });
       }
+    } catch (error) {
+      console.error("Error creating playlist:", error);
 
       setNotification({
-        message: result.message,
+        message: "Failed to create playlist. Please try again.",
         status: "error"
       });
+    } finally {
+      // Always set creating playlist state to false when done
+      setIsCreatingPlaylist(false);
     }
   }, [isLoggedIn, spotifyData, tourData, setNotification, logout]);
 
@@ -86,6 +99,7 @@ export const useSpotify = () => {
     isLoggedIn,
     createPlaylist: handleCreatePlaylist,
     playlistUrl,
-    clearPlaylistUrl
+    clearPlaylistUrl,
+    isCreatingPlaylist
   };
 };

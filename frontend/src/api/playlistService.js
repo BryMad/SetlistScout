@@ -5,17 +5,20 @@ const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
 
 /**
  * Creates a Spotify playlist from the provided tracks
+ * - Shows progress indicator for large playlists
+ * - Handles batching on the server side
  * 
  * @param {Object} params Parameters for playlist creation
  * @param {Array<string>} params.trackIds List of Spotify track URIs
  * @param {string} params.bandName Band name for the playlist title
  * @param {string} params.tourName Tour name for the playlist title
- * @param {string} params.accessToken Spotify access token
- * @param {string} params.userId Spotify user ID
  * @returns {Promise<Object>} Promise resolving to playlist creation result
  */
 export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
   try {
+    // Add timeout for large playlists as they'll take longer to process
+    const timeout = trackIds.length > 100 ? 60000 : 30000; // 60 seconds for large playlists
+
     const response = await axios.post(
       `${server_url}/playlist/create_playlist`,
       {
@@ -25,7 +28,8 @@ export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
       },
       {
         headers: { "Content-Type": "application/json" },
-        withCredentials: true // Include cookies for session
+        withCredentials: true, // Include cookies for session
+        timeout: timeout // Set timeout based on playlist size
       }
     );
 
@@ -44,6 +48,22 @@ export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
         success: false,
         message: "Authentication expired. Please log in again.",
         authError: true
+      };
+    }
+
+    // Handle timeout errors
+    if (error.code === 'ECONNABORTED') {
+      return {
+        success: false,
+        message: "Request timed out. Your playlist might still be creating. Please check your Spotify account."
+      };
+    }
+
+    // Handle API limit errors
+    if (error.response?.status === 429) {
+      return {
+        success: false,
+        message: "Spotify rate limit reached. Please try again in a few minutes."
       };
     }
 

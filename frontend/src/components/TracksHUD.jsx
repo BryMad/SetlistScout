@@ -8,6 +8,7 @@ import {
   Image,
   Text,
   Link,
+  Spinner,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Track from "./Track";
@@ -20,7 +21,8 @@ import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
   const { isLoggedIn, login } = useAuth();
-  const { createPlaylist, playlistUrl, clearPlaylistUrl } = useSpotify();
+  const { createPlaylist, playlistUrl, clearPlaylistUrl, isCreatingPlaylist } =
+    useSpotify();
   const {
     spotifyData,
     tourData,
@@ -70,44 +72,6 @@ export default function TracksHUD() {
                 my={2}
               >
                 <Button
-                  size="sm" // Changed from "md" to "sm"
-                  width="auto" // Changed from fixed width to auto
-                  px={4} // Added horizontal padding
-                  py={2} // Reduced vertical padding from 15px
-                  bg="#1DB954"
-                  color="white"
-                  variant="solid" // Changed from "ghost" to "solid"
-                  _hover={{
-                    bg: "#1AA34A",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                  }}
-                  transition="all 0.2s ease" // Added transition for hover effects
-                  borderRadius="full" // Made it pill-shaped
-                  fontWeight="medium" // Slightly reduced font weight
-                  letterSpacing="0.5px" // Added letter spacing
-                  flexShrink={0}
-                  onClick={() => login({ spotifyData, tourData })} // Kept the original onClick handler
-                >
-                  Login
-                </Button>
-                <Text textAlign="center">to create playlist on</Text>
-                <Image
-                  src={spotifyLogo}
-                  alt="Spotify"
-                  height="34px"
-                  flexShrink={0}
-                />
-              </Flex>
-            ) : (
-              <Flex
-                align="center"
-                flexWrap="wrap"
-                justifyContent="center"
-                gap={2}
-                my={2}
-              >
-                <Button
                   size="sm"
                   width="auto"
                   px={4}
@@ -125,11 +89,11 @@ export default function TracksHUD() {
                   fontWeight="medium"
                   letterSpacing="0.5px"
                   flexShrink={0}
-                  onClick={createPlaylist} // Kept the original onClick handler
+                  onClick={() => login({ spotifyData, tourData })}
                 >
-                  Create
+                  Login
                 </Button>
-                <Text textAlign="center">playlist on</Text>
+                <Text textAlign="center">to create playlist on</Text>
                 <Image
                   src={spotifyLogo}
                   alt="Spotify"
@@ -137,7 +101,63 @@ export default function TracksHUD() {
                   flexShrink={0}
                 />
               </Flex>
+            ) : (
+              <>
+                <Flex
+                  align="center"
+                  flexWrap="wrap"
+                  justifyContent="center"
+                  gap={2}
+                  my={2}
+                >
+                  <Button
+                    size="sm"
+                    width="auto"
+                    px={4}
+                    py={2}
+                    bg="#1DB954"
+                    color="white"
+                    variant="solid"
+                    _hover={{
+                      bg: "#1AA34A",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                    }}
+                    transition="all 0.2s ease"
+                    borderRadius="full"
+                    fontWeight="medium"
+                    letterSpacing="0.5px"
+                    flexShrink={0}
+                    onClick={createPlaylist}
+                    isDisabled={isCreatingPlaylist}
+                  >
+                    Create
+                  </Button>
+                  <Text textAlign="center">playlist on</Text>
+                  <Image
+                    src={spotifyLogo}
+                    alt="Spotify"
+                    height="34px"
+                    flexShrink={0}
+                  />
+                </Flex>
+
+                {/* Simple creating playlist indicator */}
+                {isCreatingPlaylist && (
+                  <Flex
+                    align="center"
+                    mt={2}
+                    p={2}
+                    bg="gray.700"
+                    borderRadius="md"
+                  >
+                    <Spinner size="sm" color="#1DB954" mr={2} />
+                    <Text>Creating playlist...</Text>
+                  </Flex>
+                )}
+              </>
             )}
+
             {/* Playlist URL Link - Show if available */}
             {playlistUrl && (
               <Link
