@@ -12,7 +12,9 @@ import { AuthProvider } from "./context/AuthContext";
 import { SetlistProvider } from "./context/SetlistContext";
 
 export const server_url =
-  import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+  process.env.NODE_ENV === "production"
+    ? "" // Empty string means use relative URLs like '/api/endpoint'
+    : "http://localhost:3000"; // For local development
 
 function App() {
   return (

@@ -2,9 +2,7 @@
 import axios from 'axios';
 import { extractSetlistID } from '../utils/setlistHelpers';
 import eventSourceService from './sseService';
-
-// Get the server URL from environment variable
-const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+import { server_url } from "../App";
 
 /**
  * Search for artists by name

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { isMobileDevice } from '../utils/deviceDetection';
+import { server_url } from "../App";
 
-// Get the server URL from environment variable
-const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
 
 /**
  * Initiates Spotify login based on device type

@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { server_url } from "../App";
 
-// Get the server URL from environment variable
-const server_url = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+
 
 /**
  * Creates a Spotify playlist from the provided tracks
