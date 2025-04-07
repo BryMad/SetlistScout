@@ -12,7 +12,7 @@ export default function Home() {
   // Responsive column layout
   const columns = useBreakpointValue({
     base: "1fr",
-    lg: "minmax(300px, 1fr) minmax(300px, 2fr)", // Changed from md to lg
+    lg: "minmax(300px, 1fr) minmax(300px, 2fr)", // Changed from md to lg for better mobile layout
   });
 
   return (
