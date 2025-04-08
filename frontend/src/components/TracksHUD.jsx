@@ -56,9 +56,9 @@ export default function TracksHUD() {
   }, [clearPlaylistUrl, playlistUrl]);
 
   return (
-    <Box mt={{ base: 6, md: 0 }} width="full" maxW="100%">
+    <Box width="full" maxW="100%">
       {loading ? (
-        <Box width="full" mb={6}>
+        <Box width="full" mb={{ base: 3, md: 6 }}>
           <ProgressIndicator isLoading={loading} progress={progress} />
         </Box>
       ) : (

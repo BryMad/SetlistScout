@@ -109,7 +109,7 @@ export default function UserInput() {
       width="100%"
       maxWidth="100%"
       mx="auto"
-      mb={{ base: 4, md: 0 }}
+      mb={{ base: 2, md: 0 }}
       alignItems="center"
       justifyContent="center"
     >

@@ -20,7 +20,7 @@ export default function Home() {
       <GridItem width="100%">
         <Box
           py={{ base: 4, md: 4 }}
-          px={{ base: 2, md: 4 }}
+          px={{ base: 4, md: 4 }}
           width="100%"
           mb={{ base: 2, md: 0 }}
         >
