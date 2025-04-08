@@ -56,14 +56,14 @@ export default function TracksHUD() {
   }, [clearPlaylistUrl, playlistUrl]);
 
   return (
-    <Box mt={8} width="full" maxW="100%">
+    <Box mt={{ base: 6, md: 0 }} width="full" maxW="100%">
       {loading ? (
-        <Box width="full" mb={8}>
+        <Box width="full" mb={6}>
           <ProgressIndicator isLoading={loading} progress={progress} />
         </Box>
       ) : (
         showTracks && (
-          <Flex direction="column" alignItems="center" mb={8} width="full">
+          <Flex direction="column" alignItems="center" mb={6} width="full">
             {!isLoggedIn ? (
               <Flex
                 align="center"
@@ -189,7 +189,7 @@ export default function TracksHUD() {
 
       {showTracks && (
         <>
-          <Box my={8} width="full">
+          <Box my={6} width="full">
             <Divider mb={4} />
             {tourData.tourName === "No Tour Info" ? (
               <Text size="md" fontWeight="semibold">

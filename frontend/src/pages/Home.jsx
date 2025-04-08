@@ -19,10 +19,10 @@ export default function Home() {
     <Grid templateColumns={columns} gap={6} width="100%" maxWidth="100%">
       <GridItem width="100%">
         <Box
-          py={4} // Consistent padding
+          py={{ base: 4, md: 4 }}
           px={{ base: 2, md: 4 }}
           width="100%"
-          height={{ base: "80px", md: "80px" }} // Fixed height
+          mb={{ base: 2, md: 0 }}
         >
           <UserInput />
         </Box>
