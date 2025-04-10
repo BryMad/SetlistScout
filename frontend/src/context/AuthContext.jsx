@@ -28,6 +28,9 @@ export const AuthProvider = ({ children }) => {
     isInitialized: false,
   });
 
+  // Add state for sessionRestored flag
+  const [sessionRestored, setSessionRestored] = useState(false);
+
   // Initialize auth on first load
   useEffect(() => {
     const initializeAuth = async () => {
@@ -55,6 +58,9 @@ export const AuthProvider = ({ children }) => {
           userId: updatedStatus.userId,
           isInitialized: true,
         });
+
+        // Set session restored flag to trigger state restoration
+        setSessionRestored(true);
       } else {
         setAuthState({
           isLoggedIn,
@@ -91,6 +97,9 @@ export const AuthProvider = ({ children }) => {
             isLoggedIn,
             userId,
           }));
+
+          // Set session restored flag to trigger state restoration
+          setSessionRestored(true);
         } else if (attempts < maxAttempts) {
           // Wait before trying again
           await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -152,8 +161,9 @@ export const AuthProvider = ({ children }) => {
       updateAuth,
       login,
       logout,
+      sessionRestored, // Add sessionRestored flag to context
     }),
-    [authState, updateAuth, login, logout]
+    [authState, updateAuth, login, logout, sessionRestored]
   );
 
   return (

@@ -11,6 +11,8 @@ import { useAuth } from './useAuth';
  */
 export const useSetlist = () => {
   const setlistContext = useContext(SetlistContext);
+  const { sessionRestored } = useAuth(); // Get sessionRestored flag from auth context
+
   useEffect(() => {
     // Check for saved state in sessionStorage
     const savedState = sessionStorage.getItem("concertCramState");
@@ -24,7 +26,25 @@ export const useSetlist = () => {
         console.error("Error restoring saved state:", error);
       }
     }
-  }, [setlistContext]);
+  }, []); // Initial check on component mount
+
+  // Add another effect that triggers when the sessionRestored flag changes
+  useEffect(() => {
+    if (sessionRestored) {
+      console.log("Session restored, checking for saved setlist data");
+      const savedState = sessionStorage.getItem("concertCramState");
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+          setlistContext.restoreData(parsedState);
+          // Clear the saved state after restoring
+          sessionStorage.removeItem("concertCramState");
+        } catch (error) {
+          console.error("Error restoring saved state after login:", error);
+        }
+      }
+    }
+  }, [sessionRestored, setlistContext]);
 
   /**
    * Search for artists by name
