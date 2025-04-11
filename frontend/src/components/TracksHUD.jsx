@@ -112,8 +112,8 @@ export default function TracksHUD() {
                   maxW="md"
                   px={2}
                 >
-                  note: awaiting Spotify approval for playlist creation to be
-                  available to public. Please email{" "}
+                  note: awaiting Spotify approval for login/playlist creation to
+                  be publicly available. Please email{" "}
                   <Link href="mailto:setlistscout@gmail.com" color="teal.400">
                     setlistscout@gmail.com
                   </Link>{" "}
@@ -169,8 +169,8 @@ export default function TracksHUD() {
                     maxW="md"
                     px={2}
                   >
-                    note: awaiting Spotify approval for playlist creation to be
-                    available to public. Please email{" "}
+                    note: awaiting Spotify approval for login/playlist creation
+                    to be publicly available. Please email{" "}
                     <Link href="mailto:setlistscout@gmail.com" color="teal.400">
                       setlistscout@gmail.com
                     </Link>{" "}
