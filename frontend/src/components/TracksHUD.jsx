@@ -108,7 +108,7 @@ export default function TracksHUD() {
                   fontSize="xs"
                   color="gray.500"
                   mt={2}
-                  textAlign="center"
+                  textAlign="left"
                   maxW="md"
                   px={2}
                 >
@@ -165,7 +165,7 @@ export default function TracksHUD() {
                     fontSize="xs"
                     color="gray.500"
                     mt={2}
-                    textAlign="center"
+                    textAlign="left"
                     maxW="md"
                     px={2}
                   >
