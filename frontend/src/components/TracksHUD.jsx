@@ -107,13 +107,13 @@ export default function TracksHUD() {
                 <Text
                   fontSize="xs"
                   color="gray.500"
-                  mt={1}
+                  mt={2}
                   textAlign="center"
                   maxW="md"
                   px={2}
                 >
                   note: awaiting Spotify approval for login/playlist creation to
-                  be publicly available. Please email{" "}
+                  be publicly available. Email{" "}
                   <Link href="mailto:setlistscout@gmail.com" color="teal.400">
                     setlistscout@gmail.com
                   </Link>{" "}
@@ -164,13 +164,13 @@ export default function TracksHUD() {
                   <Text
                     fontSize="xs"
                     color="gray.500"
-                    mt={1}
+                    mt={2}
                     textAlign="center"
                     maxW="md"
                     px={2}
                   >
                     note: awaiting Spotify approval for login/playlist creation
-                    to be publicly available. Please email{" "}
+                    to be publicly available. Email{" "}
                     <Link href="mailto:setlistscout@gmail.com" color="teal.400">
                       setlistscout@gmail.com
                     </Link>{" "}
