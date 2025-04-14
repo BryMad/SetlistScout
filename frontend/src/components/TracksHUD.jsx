@@ -34,11 +34,10 @@ export default function TracksHUD() {
     progress,
   } = useSetlist();
 
-  // Calculate if we should show the tracks section
+  // Determine if we should show the tracks section
   const showTracks = spotifyData?.length > 0 && !loading;
 
-  // Modified: Only clear playlist URL when new search is initiated
-  // This will keep the URL visible after creation until a new search
+  // Clears prev playlist URL when a new search is initiated
   useEffect(() => {
     // Keep track of previous spotifyData length to detect new searches
     const handleNewSearch = () => {
@@ -46,10 +45,8 @@ export default function TracksHUD() {
         clearPlaylistUrl();
       }
     };
-
     // Add an event listener to clear playlistUrl when a new search starts
     window.addEventListener("new-search-started", handleNewSearch);
-
     // Clean up the event listener
     return () => {
       window.removeEventListener("new-search-started", handleNewSearch);
@@ -176,20 +173,6 @@ export default function TracksHUD() {
                     </Link>{" "}
                     to be a pre-approved beta user.
                   </Text>
-
-                  {/* Simple creating playlist indicator */}
-                  {isCreatingPlaylist && (
-                    <Flex
-                      align="center"
-                      mt={2}
-                      p={2}
-                      bg="gray.700"
-                      borderRadius="md"
-                    >
-                      <Spinner size="sm" color="#1DB954" mr={2} />
-                      <Text>Creating playlist...</Text>
-                    </Flex>
-                  )}
                 </VStack>
 
                 {/* Simple creating playlist indicator */}
