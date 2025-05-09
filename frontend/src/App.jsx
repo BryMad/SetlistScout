@@ -8,13 +8,11 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import AdminSetup from "./components/AdminSetup";
 import { AuthProvider } from "./context/AuthContext";
 import { SetlistProvider } from "./context/SetlistContext";
 
-export const server_url =
-  process.env.NODE_ENV === "production"
-    ? "" // Empty string means use relative URLs like '/api/endpoint'
-    : "http://localhost:3000"; // For local development
+export const server_url = "";
 
 function App() {
   return (
@@ -28,6 +26,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/admin-setup" element={<AdminSetup />} />
               </Routes>
             </MainLayout>
           </Router>

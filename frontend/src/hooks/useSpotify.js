@@ -1,28 +1,28 @@
-// src/hooks/useSpotify.js
+
 import { useState, useCallback } from 'react';
 import { createPlaylist } from '../api/playlistService';
-import { useAuth } from './useAuth';
 import { useSetlist } from './useSetlist';
 
 /**
  * Custom hook for Spotify operations
+ * - Modified to work with service account pattern
  * 
  * @returns {Object} Spotify methods and state
  */
 export const useSpotify = () => {
-  const { isLoggedIn, logout } = useAuth();
   const { tourData, spotifyData, setNotification } = useSetlist();
   const [playlistUrl, setPlaylistUrl] = useState(null);
   const [isCreatingPlaylist, setIsCreatingPlaylist] = useState(false);
 
   /**
    * Creates a Spotify playlist from the current songs
+   * - Uses admin service account automatically
    * 
    * @returns {Promise<void>}
    */
   const handleCreatePlaylist = useCallback(async () => {
-    // Ensure we have necessary data and auth
-    if (!isLoggedIn || !spotifyData?.length || !tourData?.bandName) {
+    // Ensure we have necessary data
+    if (!spotifyData?.length || !tourData?.bandName) {
       setNotification({
         message: "Missing required data to create playlist",
         status: "error"
@@ -47,7 +47,7 @@ export const useSpotify = () => {
     setIsCreatingPlaylist(true);
 
     try {
-      // Create the playlist
+      // Create the playlist using admin account
       const result = await createPlaylist({
         trackIds,
         bandName: tourData.bandName,
@@ -65,11 +65,6 @@ export const useSpotify = () => {
           status: "success"
         });
       } else {
-        // Handle auth errors by logging out
-        if (result.authError) {
-          logout();
-        }
-
         setNotification({
           message: result.message,
           status: "error"
@@ -86,7 +81,7 @@ export const useSpotify = () => {
       // Always set creating playlist state to false when done
       setIsCreatingPlaylist(false);
     }
-  }, [isLoggedIn, spotifyData, tourData, setNotification, logout]);
+  }, [spotifyData, tourData, setNotification]);
 
   /**
    * Clears the current playlist URL
@@ -96,7 +91,8 @@ export const useSpotify = () => {
   }, []);
 
   return {
-    isLoggedIn,
+    // Always return isLoggedIn as true since we're using admin account
+    isLoggedIn: true,
     createPlaylist: handleCreatePlaylist,
     playlistUrl,
     clearPlaylistUrl,

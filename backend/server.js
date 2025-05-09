@@ -1,4 +1,4 @@
-// File: ./backend/server.js (updated with Redis connection handling)
+// File: ./backend/server.js
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -8,6 +8,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
+
+// Import the AdminAuthService
+const AdminAuthService = require('./utils/adminAuth');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,6 +51,13 @@ redisClient.on('connect', () => {
 redisClient.connect()
   .then(() => console.log('Connected to Redis'))
   .catch(err => console.error('Redis connection error:', err));
+
+// Initialize AdminAuthService with the Redis client
+// This should be done after the Redis client is connected
+const adminAuth = new AdminAuthService(redisClient);
+
+// Make adminAuth available to routes through app locals
+app.locals.adminAuth = adminAuth;
 
 // Set trust proxy
 app.set('trust proxy', 1);
@@ -105,31 +115,46 @@ setInterval(async () => {
 const authRoutes = require('./routes/authRoutes');
 const playlistRoutes = require('./routes/playlistRoutes');
 const setlistRoutes = require('./routes/setlistRoutes');
-const sseRoutes = require('./routes/sseRoutes'); // Add the new SSE routes
+const sseRoutes = require('./routes/sseRoutes');
+// Import the admin routes
+const adminRoutes = require('./routes/adminRoutes');
 
+// Mount all route handlers
 app.use('/auth', authRoutes);
 app.use('/playlist', playlistRoutes);
 app.use('/setlist', setlistRoutes);
-app.use('/sse', sseRoutes); // Mount the SSE routes
+app.use('/sse', sseRoutes);
+// Mount the admin routes
+app.use('/admin', adminRoutes);
 
+// Log check for admin setup on startup
+adminAuth.isSetup()
+  .then(isSetup => {
+    console.log(`Admin Spotify account setup status: ${isSetup ? 'Configured' : 'Not configured'}`);
+    if (!isSetup) {
+      console.log('Visit /admin-setup in your browser to configure the admin Spotify account');
+    }
+  })
+  .catch(err => {
+    console.error('Error checking admin setup:', err);
+  });
 
+// Static file serving
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-app.get('*', (req, res
-) => {
+// Catch-all route for SPA
+app.get('*', (req, res) => {
   console.log('Serving the frontend application');
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the Spotify Setlist App!');
-// });
-
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Unhandled Error:', err);
   res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });

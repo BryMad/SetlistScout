@@ -1,14 +1,12 @@
-// src/components/TracksHUD.jsx
 import React, { useEffect } from "react";
 import {
   Button,
   Flex,
   Box,
   Divider,
-  Heading,
-  Image,
   Text,
   Link,
+  Image,
   VStack,
   Spinner,
 } from "@chakra-ui/react";
@@ -16,13 +14,11 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
-import { useAuth } from "../hooks/useAuth";
-import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
+import { useSetlist } from "../hooks/useSetlist";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
-  const { isLoggedIn, login } = useAuth();
   const { createPlaylist, playlistUrl, clearPlaylistUrl, isCreatingPlaylist } =
     useSpotify();
   const {
@@ -62,133 +58,54 @@ export default function TracksHUD() {
       ) : (
         showTracks && (
           <Flex direction="column" alignItems="center" mb={6} width="full">
-            {!isLoggedIn ? (
-              <VStack spacing={0} width="auto" maxW="md">
-                <Flex
-                  align="center"
-                  flexWrap="wrap"
-                  justifyContent="center"
-                  gap={2}
-                  my={2}
+            {/* Create Playlist Button - No login needed anymore */}
+            <VStack spacing={0} width="auto" maxW="md">
+              <Flex
+                align="center"
+                flexWrap="wrap"
+                justifyContent="center"
+                gap={2}
+                my={2}
+              >
+                <Button
+                  size="sm"
+                  width="auto"
+                  px={4}
+                  py={2}
+                  bg="#1DB954"
+                  color="white"
+                  variant="solid"
+                  _hover={{
+                    bg: "#1AA34A",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  }}
+                  transition="all 0.2s ease"
+                  borderRadius="full"
+                  fontWeight="medium"
+                  letterSpacing="0.5px"
+                  flexShrink={0}
+                  onClick={createPlaylist}
+                  isDisabled={isCreatingPlaylist}
                 >
-                  <Button
-                    size="sm"
-                    width="auto"
-                    px={4}
-                    py={2}
-                    bg="#1DB954"
-                    color="white"
-                    variant="solid"
-                    _hover={{
-                      bg: "#1AA34A",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                    }}
-                    transition="all 0.2s ease"
-                    borderRadius="full"
-                    fontWeight="medium"
-                    letterSpacing="0.5px"
-                    flexShrink={0}
-                    onClick={() => login({ spotifyData, tourData })}
-                  >
-                    Login
-                  </Button>
-                  <Text textAlign="center">to create playlist on</Text>
-                  <Image
-                    src={spotifyLogo}
-                    alt="Spotify"
-                    height="34px"
-                    flexShrink={0}
-                  />
-                </Flex>
-                <Text
-                  fontSize="xs"
-                  color="gray.500"
-                  mt={2}
-                  textAlign="left"
-                  maxW="md"
-                  px={2}
-                >
-                  note: awaiting Spotify approval for login/playlist creation to
-                  be publicly available. Email{" "}
-                  <Link href="mailto:setlistscout@gmail.com" color="teal.400">
-                    setlistscout@gmail.com
-                  </Link>{" "}
-                  to be a pre-approved beta user.
-                </Text>
-              </VStack>
-            ) : (
-              <>
-                <VStack spacing={0} width="auto" maxW="md">
-                  <Flex
-                    align="center"
-                    flexWrap="wrap"
-                    justifyContent="center"
-                    gap={2}
-                    my={2}
-                  >
-                    <Button
-                      size="sm"
-                      width="auto"
-                      px={4}
-                      py={2}
-                      bg="#1DB954"
-                      color="white"
-                      variant="solid"
-                      _hover={{
-                        bg: "#1AA34A",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                      }}
-                      transition="all 0.2s ease"
-                      borderRadius="full"
-                      fontWeight="medium"
-                      letterSpacing="0.5px"
-                      flexShrink={0}
-                      onClick={createPlaylist}
-                      isDisabled={isCreatingPlaylist}
-                    >
-                      Create
-                    </Button>
-                    <Text textAlign="center">playlist on</Text>
-                    <Image
-                      src={spotifyLogo}
-                      alt="Spotify"
-                      height="34px"
-                      flexShrink={0}
-                    />
-                  </Flex>
-                  <Text
-                    fontSize="xs"
-                    color="gray.500"
-                    mt={2}
-                    textAlign="left"
-                    maxW="md"
-                    px={2}
-                  >
-                    note: awaiting Spotify approval for login/playlist creation
-                    to be publicly available. Email{" "}
-                    <Link href="mailto:setlistscout@gmail.com" color="teal.400">
-                      setlistscout@gmail.com
-                    </Link>{" "}
-                    to be a pre-approved beta user.
-                  </Text>
-                </VStack>
+                  Create
+                </Button>
+                <Text textAlign="center">playlist on</Text>
+                <Image
+                  src={spotifyLogo}
+                  alt="Spotify"
+                  height="34px"
+                  flexShrink={0}
+                />
+              </Flex>
+            </VStack>
 
-                {/* Simple creating playlist indicator */}
-                {isCreatingPlaylist && (
-                  <Flex
-                    align="center"
-                    mt={2}
-                    p={2}
-                    bg="gray.700"
-                    borderRadius="md"
-                  >
-                    <Spinner size="sm" color="#1DB954" mr={2} />
-                    <Text>Creating playlist...</Text>
-                  </Flex>
-                )}
-              </>
+            {/* Simple creating playlist indicator */}
+            {isCreatingPlaylist && (
+              <Flex align="center" mt={2} p={2} bg="gray.700" borderRadius="md">
+                <Spinner size="sm" color="#1DB954" mr={2} />
+                <Text>Creating playlist...</Text>
+              </Flex>
             )}
 
             {/* Playlist URL Link - Show if available */}

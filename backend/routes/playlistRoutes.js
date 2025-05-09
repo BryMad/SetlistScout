@@ -71,14 +71,14 @@ async function addTracksInBatches(playlistId, accessToken, trackIds) {
  */
 router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
   try {
-    // Get access token and user ID from session
-    const access_token = req.session.access_token;
-    const user_id = req.session.user_id;
+    // Get access token and user ID from admin auth middleware
+    const access_token = req.adminToken;
+    const user_id = req.adminUserId;
     const track_ids = req.body.track_ids;
     const band = req.body.band;
     const tour = req.body.tour;
 
-    console.log(`Creating playlist with ${track_ids.length} tracks`);
+    console.log(`Creating playlist with ${track_ids.length} tracks using admin account`);
 
     // Create a new playlist
     const createPlaylistResponse = await axios.post(

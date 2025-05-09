@@ -1,28 +1,33 @@
+
 /**
- * Middleware to ensure user is authenticated
- * - Checks for valid session with access_token and user_id
- * - Logs detailed authentication state for debugging
+ * Modified middleware to use admin credentials instead of user session
  * 
  * @param {Object} req Express request object
  * @param {Object} res Express response object
  * @param {Function} next Express next middleware function
  * @returns {Function} Next middleware or 401 unauthorized response
  */
-const ensureAuthenticated = (req, res, next) => {
-  console.log('Request cookies:', req.headers.cookie);
-  console.log('Session ID:', req.sessionID);
-  console.log('Session data:', req.session);
-  console.log('Authentication check:', {
-    hasSession: !!req.session,
-    hasAccessToken: !!req.session?.access_token,
-    hasUserId: !!req.session?.user_id,
-    userAgent: req.headers['user-agent']
-  });
+const ensureAuthenticated = async (req, res, next) => {
+  try {
+    const adminAuth = req.app.locals.adminAuth;
 
-  if (req.session && req.session.access_token && req.session.user_id) {
+    // Check if admin is set up
+    const isSetup = await adminAuth.isSetup();
+    if (!isSetup) {
+      return res.status(401).json({
+        error: 'Admin setup required',
+        setupRequired: true
+      });
+    }
+
+    // Add admin access token to request for use in routes
+    req.adminToken = await adminAuth.getAccessToken();
+    req.adminUserId = await adminAuth.getUserId();
+
     return next();
-  } else {
-    return res.status(401).json({ error: 'User not authenticated' });
+  } catch (error) {
+    console.error('Authentication error:', error);
+    return res.status(401).json({ error: 'Authentication failed' });
   }
 };
 

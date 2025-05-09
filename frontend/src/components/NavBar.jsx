@@ -1,11 +1,9 @@
-// src/components/NavBar.jsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Box,
   Flex,
   Spacer,
-  Button,
   Text,
   useColorModeValue,
   Stack,
@@ -14,14 +12,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { useAuth } from "../hooks/useAuth";
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
-  const { isLoggedIn, login, logout } = useAuth();
   const location = useLocation();
   const bgColor = useColorModeValue("gray.800", "gray.900");
   const textColor = useColorModeValue("white", "gray.200");
+  console.log("NavBar rendering - updated version without login button");
 
   return (
     <Box>
@@ -76,39 +73,10 @@ export default function NavBar() {
         >
           {/* Navigation Links */}
           <DesktopNav location={location} />
-
-          {/* Login/Logout Button */}
-          <Box>
-            <Link
-              to="#"
-              onClick={(e) => {
-                e.preventDefault();
-                isLoggedIn ? logout() : login();
-              }}
-            >
-              <Box
-                p={2}
-                fontSize={"md"}
-                fontWeight={500}
-                color={"white"}
-                _hover={{
-                  textDecoration: "none",
-                  color: "teal.400",
-                }}
-              >
-                {isLoggedIn ? "Logout" : "Login"}
-              </Box>
-            </Link>
-          </Box>
         </Stack>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav
-          location={location}
-          isLoggedIn={isLoggedIn}
-          login={login}
-          logout={logout}
-        />
+        <MobileNav location={location} />
       </Collapse>
     </Box>
   );
@@ -146,7 +114,7 @@ const DesktopNav = ({ location }) => {
   );
 };
 
-const MobileNav = ({ location, isLoggedIn, login, logout }) => {
+const MobileNav = ({ location }) => {
   return (
     <Stack bg={"gray.800"} p={4} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
@@ -156,24 +124,6 @@ const MobileNav = ({ location, isLoggedIn, login, logout }) => {
           isActive={location.pathname === navItem.href}
         />
       ))}
-      <Flex
-        py={2}
-        as={Link}
-        to={"#"}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
-        onClick={(e) => {
-          e.preventDefault();
-          isLoggedIn ? logout() : login();
-        }}
-      >
-        <Text fontWeight={600} color={"white"}>
-          {isLoggedIn ? "Logout" : "Login"}
-        </Text>
-      </Flex>
     </Stack>
   );
 };
