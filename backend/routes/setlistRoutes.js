@@ -1,6 +1,7 @@
 // File: ./backend/routes/setlistRoutes.js
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 const {
   getTourName,
   getAllTourSongs, getArtistPageByName, getArtistPageByMBID, delay,
@@ -11,6 +12,31 @@ const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/s
 const { fetchMBIdFromSpotifyId } = require("../utils/musicBrainzAPIRequests.js");
 const { isArtistNameMatch } = require("../utils/musicBrainzChecks.js");
 const sseManager = require('../utils/sseManager');
+
+// New function to search artists using Deezer API
+const searchArtistDeezer = async (artistName) => {
+  try {
+    console.log("Searching for Artist on Deezer", { artistName });
+
+    // Use Deezer API to search for artists
+    const response = await axios.get(
+      `https://api.deezer.com/search/artist?q=${encodeURIComponent(artistName)}&limit=10`
+    );
+
+    console.log("Deezer artist search successful", { artistName });
+
+    // Transform Deezer data to match our expected format
+    return response.data.data.map((artist) => ({
+      name: artist.name,
+      id: artist.id,
+      url: artist.link,
+      image: { url: artist.picture_medium },
+    }));
+  } catch (error) {
+    console.error("Error searching artist on Deezer", { artistName, error: error.message });
+    throw error;
+  }
+};
 
 /**
  * Endpoint: POST /search_with_updates
@@ -247,6 +273,24 @@ router.post('/artist_search', async (req, res) => {
     res.json(searchResults);
   } catch (error) {
     console.error('Error in /artist_search route:', error);
+    res.status(500).json({ error: "Internal Server Error. Please try again later." });
+  }
+});
+
+/**
+ * Endpoint: POST /artist_search_deezer
+ * Searches for artists on Deezer
+ * 
+ * @param {string} req.body.artistName Artist name to search
+ * @returns {Array} Matching artist objects from Deezer
+ */
+router.post('/artist_search_deezer', async (req, res) => {
+  try {
+    const search_query = req.body.artistName;
+    const searchResults = await searchArtistDeezer(search_query);
+    res.json(searchResults);
+  } catch (error) {
+    console.error('Error in /artist_search_deezer route:', error);
     res.status(500).json({ error: "Internal Server Error. Please try again later." });
   }
 });

@@ -1,7 +1,7 @@
 // src/hooks/useSetlist.js
 import { useContext, useEffect } from 'react';
 import { SetlistContext } from '../context/SetlistContext';
-import { searchArtists } from '../api/setlistService';
+import { searchArtists, searchArtistsDeezer } from '../api/setlistService';
 import { useAuth } from './useAuth';
 
 /**
@@ -47,7 +47,7 @@ export const useSetlist = () => {
   }, [sessionRestored, setlistContext]);
 
   /**
-   * Search for artists by name
+   * Search for artists by name using Spotify API
    * 
    * @param {string} artistName Artist name to search for
    * @returns {Promise<Array>} Promise resolving to array of artist matches
@@ -64,8 +64,27 @@ export const useSetlist = () => {
     }
   };
 
+  /**
+   * Search for artists by name using Deezer API
+   * 
+   * @param {string} artistName Artist name to search for
+   * @returns {Promise<Array>} Promise resolving to array of artist matches
+   */
+  const searchForArtistsDeezer = async (artistName) => {
+    try {
+      return await searchArtistsDeezer(artistName);
+    } catch (error) {
+      setlistContext.setNotification({
+        message: `Error searching for artists: ${error.message}`,
+        status: "error"
+      });
+      return [];
+    }
+  };
+
   return {
     ...setlistContext,
-    searchForArtists
+    searchForArtists,
+    searchForArtistsDeezer
   };
 };

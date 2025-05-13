@@ -1,11 +1,11 @@
-// File: ./frontend/src/api/setlistService.js (updated)
+// File: ./frontend/src/api/setlistService.js
 import axios from 'axios';
 import { extractSetlistID } from '../utils/setlistHelpers';
 import eventSourceService from './sseService';
 import { server_url } from "../App";
 
 /**
- * Search for artists by name
+ * Search for artists by name using Spotify
  * 
  * @param {string} artistName Artist name to search for
  * @returns {Promise<Array>} Promise resolving to array of artist matches
@@ -20,6 +20,26 @@ export const searchArtists = async (artistName) => {
     return response.data || [];
   } catch (error) {
     console.error("Error searching for artists:", error);
+    throw error;
+  }
+};
+
+/**
+ * Search for artists by name using Deezer
+ * 
+ * @param {string} artistName Artist name to search for
+ * @returns {Promise<Array>} Promise resolving to array of artist matches
+ */
+export const searchArtistsDeezer = async (artistName) => {
+  try {
+    const response = await axios.post(
+      `${server_url}/setlist/artist_search_deezer`,
+      { artistName },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response.data || [];
+  } catch (error) {
+    console.error("Error searching for artists with Deezer:", error);
     throw error;
   }
 };

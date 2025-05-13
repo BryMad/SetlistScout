@@ -9,19 +9,19 @@ import {
   ListItem,
   Text,
   Spinner,
-  Link,
   Flex,
 } from "@chakra-ui/react";
-import { FaSpotify } from "react-icons/fa";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 
 /**
  * Component for artist search input
+ * - Uses Deezer API for artist search
+ * - Uses Spotify API for setlist and playlist functionality
  */
 export default function UserInput() {
-  const { fetchTourData, loading, searchForArtists } = useSetlist();
-  const { clearPlaylistUrl } = useSpotify(); // Get the clearPlaylistUrl function
+  const { fetchTourData, loading, searchForArtistsDeezer } = useSetlist();
+  const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -54,14 +54,14 @@ export default function UserInput() {
   }, []);
 
   /**
-   * Fetches artist suggestions
+   * Fetches artist suggestions from Deezer
    * @param {string} query The artist search query
    * @async
    */
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
-      const results = await searchForArtists(query);
+      const results = await searchForArtistsDeezer(query);
       setSuggestions(results || []);
     } catch (error) {
       console.error("Error fetching artist suggestions:", error);
@@ -91,15 +91,6 @@ export default function UserInput() {
     // Reset the form
     setArtistQuery("");
     setSelectedArtist(null);
-  };
-
-  /**
-   * Handles clicking on the Spotify icon
-   * @param {Event} e The click event
-   */
-  const handleSpotifyIconClick = (e) => {
-    // Prevent the click from bubbling up to parent elements
-    e.stopPropagation();
   };
 
   return (
@@ -171,17 +162,6 @@ export default function UserInput() {
                       <Text>{artist.name}</Text>
                     </HStack>
                   </Box>
-                  <Link
-                    href={artist.url}
-                    isExternal
-                    onClick={handleSpotifyIconClick}
-                    p={2}
-                    color="#1DB954"
-                    _hover={{ color: "#1AA34A" }}
-                    aria-label={`Open ${artist.name} on Spotify`}
-                  >
-                    <FaSpotify size={20} />
-                  </Link>
                 </Flex>
               </ListItem>
             ))}
