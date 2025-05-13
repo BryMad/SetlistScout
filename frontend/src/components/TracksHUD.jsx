@@ -1,5 +1,5 @@
 // File: ./frontend/src/components/TracksHUD.jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Button,
   Flex,
@@ -20,7 +20,6 @@ import { useAuth } from "../hooks/useAuth";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 import { getFromLocalStorage } from "../utils/storage";
-import ConsentModal from "./ConsentModal";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
@@ -36,14 +35,11 @@ export default function TracksHUD() {
     progress,
   } = useSetlist();
 
-  // State for consent modal
-  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
-
   // Determine if we should show the tracks section
   const showTracks = spotifyData?.length > 0 && !loading;
 
   // Clears prev playlist URL when a new search is initiated
-  useEffect(() => {
+  React.useEffect(() => {
     // Keep track of previous spotifyData length to detect new searches
     const handleNewSearch = () => {
       if (playlistUrl) {
@@ -67,31 +63,18 @@ export default function TracksHUD() {
       // If they have consented, proceed with login
       login({ spotifyData, tourData });
     } else {
-      // If they haven't consented, show the consent modal
-      setIsConsentModalOpen(true);
-    }
-  };
-
-  // Handle consent modal close
-  const handleConsentModalClose = () => {
-    setIsConsentModalOpen(false);
-
-    // Check if user has consented now (after modal closed)
-    const hasConsented = getFromLocalStorage("setlistScoutConsent");
-    if (hasConsented) {
-      // If they consented in the modal, proceed with login
-      login({ spotifyData, tourData });
+      // We no longer need to open the consent modal here
+      // The app-level modal will handle this
+      // Just inform the user they need to accept terms first
+      setNotification({
+        message: "Please accept the Terms & Privacy Policy to continue",
+        status: "info",
+      });
     }
   };
 
   return (
     <Box width="full" maxW="100%">
-      {/* Consent Modal - only shown when triggered */}
-      <ConsentModal
-        isOpen={isConsentModalOpen}
-        onClose={handleConsentModalClose}
-      />
-
       {loading ? (
         <Box width="full" mb={{ base: 3, md: 6 }}>
           <ProgressIndicator isLoading={loading} progress={progress} />
@@ -126,7 +109,7 @@ export default function TracksHUD() {
                     fontWeight="medium"
                     letterSpacing="0.5px"
                     flexShrink={0}
-                    onClick={handleLoginClick} // Use the new handler instead of directly calling login
+                    onClick={handleLoginClick}
                   >
                     Login
                   </Button>

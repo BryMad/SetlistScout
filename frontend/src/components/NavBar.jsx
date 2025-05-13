@@ -1,5 +1,5 @@
 // File: ./frontend/src/components/NavBar.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Box,
@@ -12,11 +12,11 @@ import {
   IconButton,
   Collapse,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useAuth } from "../hooks/useAuth";
 import { getFromLocalStorage } from "../utils/storage";
-import ConsentModal from "./ConsentModal";
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -24,9 +24,7 @@ export default function NavBar() {
   const location = useLocation();
   const bgColor = useColorModeValue("gray.800", "gray.900");
   const textColor = useColorModeValue("white", "gray.200");
-
-  // Add state for consent modal
-  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
+  const toast = useToast();
 
   // Handle login click
   const handleLoginClick = (e) => {
@@ -38,29 +36,21 @@ export default function NavBar() {
       if (hasConsented) {
         login();
       } else {
-        setIsConsentModalOpen(true);
+        // Instead of opening the modal directly, show a toast notification
+        // The app-level modal will appear naturally on initial load
+        toast({
+          title: "Consent Required",
+          description: "Please accept the Terms & Privacy Policy first",
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+        });
       }
-    }
-  };
-
-  // Handle consent modal close
-  const handleConsentModalClose = () => {
-    setIsConsentModalOpen(false);
-
-    const hasConsented = getFromLocalStorage("setlistScoutConsent");
-    if (hasConsented) {
-      login();
     }
   };
 
   return (
     <Box>
-      {/* Add the ConsentModal here */}
-      <ConsentModal
-        isOpen={isConsentModalOpen}
-        onClose={handleConsentModalClose}
-      />
-
       <Flex
         bg={bgColor}
         color={textColor}
@@ -113,7 +103,7 @@ export default function NavBar() {
           {/* Navigation Links */}
           <DesktopNav location={location} />
 
-          {/* Login/Logout Button - Update to use the new handler */}
+          {/* Login/Logout Button */}
           <Box>
             <Link to="#" onClick={handleLoginClick}>
               <Box
@@ -195,7 +185,7 @@ const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
         _hover={{
           textDecoration: "none",
         }}
-        onClick={handleLogin} // Use the new handler function
+        onClick={handleLogin}
       >
         <Text fontWeight={600} color={"white"}>
           {isLoggedIn ? "Logout" : "Login"}

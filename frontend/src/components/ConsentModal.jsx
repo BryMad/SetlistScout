@@ -32,7 +32,6 @@ import { logConsent } from "../api/consentService";
  * - Displays End User Agreement and Privacy Policy
  * - Requires user consent before using Spotify features
  * - Stores consent in localStorage and on server
- * - Only shown when triggered (not automatically)
  */
 const ConsentModal = ({ isOpen, onClose }) => {
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -101,7 +100,7 @@ const ConsentModal = ({ isOpen, onClose }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={() => {}} // Still prevent normal closing
+      onClose={() => {}} // Prevent closing by clicking outside
       closeOnOverlayClick={false}
       closeOnEsc={false}
       size="xl"
@@ -144,13 +143,24 @@ const ConsentModal = ({ isOpen, onClose }) => {
                         permission
                       </Text>
                       <Text>
+                        • We request the "playlist-modify-public" scope to
+                        create playlists on your behalf
+                      </Text>
+                      <Text>
                         • Spotify is a third-party beneficiary of this agreement
                       </Text>
                       <Text>
-                        • We only use your data as described in our policy
+                        • Setlist Scout is solely responsible for its services
+                      </Text>
+                      <Text>
+                        • You agree not to modify or reverse-engineer Spotify
+                        content
                       </Text>
                       <Text>
                         • You are responsible for maintaining account security
+                      </Text>
+                      <Text>
+                        • Logging out will remove your data from our system
                       </Text>
                     </VStack>
                     <RouterLink to="/legal" target="_blank">
@@ -181,16 +191,23 @@ const ConsentModal = ({ isOpen, onClose }) => {
                         ID, access tokens)
                       </Text>
                       <Text>
+                        • We request only the "playlist-modify-public" scope to
+                        create playlists on your behalf
+                      </Text>
+                      <Text>
                         • Authentication data is stored in encrypted sessions
                         that expire after 24 hours
                       </Text>
                       <Text>
-                        • We do not analyze your listening habits or store
-                        search history
+                        • We use a session cookie to maintain your login state
                       </Text>
                       <Text>
-                        • Third parties (including Spotify) may place cookies on
-                        your browser
+                        • Logging out will disconnect your Spotify account and
+                        remove your data from our systems
+                      </Text>
+                      <Text>
+                        • We do not analyze your listening habits or store
+                        search history
                       </Text>
                     </VStack>
                     <RouterLink to="/legal?tab=1" target="_blank">

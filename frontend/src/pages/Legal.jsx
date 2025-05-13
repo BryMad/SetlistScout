@@ -32,7 +32,7 @@ export default function Legal() {
         Legal Information
       </Heading>
       <Text color="gray.500" mb={6}>
-        Effective Date: May 12, 2025
+        Effective Date: May 13, 2025
       </Text>
 
       <Tabs
@@ -115,7 +115,9 @@ export default function Legal() {
                 </Text>
                 <Text>
                   2. You authorize Setlist Scout to access your Spotify account
-                  with the permissions you approve
+                  with the permissions you approve (specifically the
+                  "playlist-modify-public" scope, which allows us to create
+                  public playlists on your behalf)
                 </Text>
                 <Text>
                   3. You acknowledge that Spotify is a third-party beneficiary
@@ -182,6 +184,15 @@ export default function Legal() {
                   • Engage in any activity that could harm other users or our
                   service
                 </Text>
+                <Text>
+                  • Modify or create derivative works based on the Spotify
+                  Platform, Spotify Service or Spotify Content
+                </Text>
+                <Text>
+                  • Decompile, reverse-engineer, disassemble, or otherwise
+                  reduce the Spotify Platform, Spotify Service, and Spotify
+                  Content to source code or other human-perceivable form
+                </Text>
               </Box>
 
               <Heading as="h2" size="lg">
@@ -203,15 +214,37 @@ export default function Legal() {
                 ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY,
                 FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
               </Text>
+              <Text mt={2}>
+                WITH RESPECT TO THE SPOTIFY PLATFORM, SPOTIFY SERVICE, AND
+                SPOTIFY CONTENT, WE MAKE NO WARRANTIES OR REPRESENTATIONS ON
+                BEHALF OF SPOTIFY AND EXPRESSLY DISCLAIM ALL IMPLIED WARRANTIES
+                WITH RESPECT TO THE SPOTIFY PLATFORM, SPOTIFY SERVICE AND
+                SPOTIFY CONTENT, INCLUDING THE IMPLIED WARRANTIES OF
+                MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+                NON-INFRINGEMENT.
+              </Text>
 
               <Heading as="h2" size="lg">
-                Limitation of Liability
+                Responsibility and Limitation of Liability
               </Heading>
-              <Text fontWeight="bold">
+              <Text>
+                Setlist Scout is solely responsible for its products and
+                services. Spotify and any other third-party services integrated
+                into Setlist Scout are not responsible for Setlist Scout or its
+                operation.
+              </Text>
+              <Text fontWeight="bold" mt={2}>
                 TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL SETLIST
                 SCOUT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
                 CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO
                 YOUR USE OF THE SERVICE.
+              </Text>
+              <Text mt={2}>
+                SPOTIFY AND ITS AFFILIATES SHALL NOT BE LIABLE FOR ANY DAMAGES
+                OR LOSSES ARISING FROM YOUR USE OF THE SPOTIFY PLATFORM, SPOTIFY
+                SERVICE, OR SPOTIFY CONTENT, OR YOUR USE OF SETLIST SCOUT.
+                SPOTIFY PROVIDES THE SPOTIFY PLATFORM, SPOTIFY SERVICE, AND
+                SPOTIFY CONTENT "AS IS" WITHOUT ANY WARRANTY OR REPRESENTATION.
               </Text>
 
               <Heading as="h2" size="lg">
@@ -307,6 +340,11 @@ export default function Legal() {
                   <strong>Session Information</strong>: Stored in encrypted
                   server-side sessions
                 </Text>
+                <Text>
+                  <strong>Spotify API Scopes</strong>: We request only the
+                  "playlist-modify-public" scope, which allows us to create
+                  public playlists on your behalf
+                </Text>
               </Box>
 
               <Heading as="h3" size="md">
@@ -335,14 +373,14 @@ export default function Legal() {
                 Cookies and Similar Technologies
               </Heading>
               <Text>
-                Our service uses cookies and similar technologies to enhance
-                your experience. These technologies may collect information such
-                as your IP address, browser type, and usage patterns.
+                Our service uses a session cookie to maintain your logged-in
+                state. This cookie is deleted when you log out or expires after
+                24 hours.
               </Text>
               <Text>
-                Third parties, including Spotify, may place cookies on your
-                browser to collect information about your browsing activities on
-                our website.
+                When you authenticate with Spotify, their authentication service
+                may place cookies on your browser during the authentication
+                process on their domain.
               </Text>
 
               <Heading as="h2" size="lg">
@@ -399,6 +437,11 @@ export default function Legal() {
                 information or activity. You can delete your session data at any
                 time by logging out.
               </Text>
+              <Text>
+                <strong>Important</strong>: Logging out of Setlist Scout will
+                disconnect your Spotify account and remove your data from our
+                systems.
+              </Text>
 
               <Heading as="h2" size="lg">
                 Your Privacy Rights and Choices
@@ -415,17 +458,21 @@ export default function Legal() {
                 </Text>
                 <Text>
                   <strong>Disconnect</strong>: Disconnect your Spotify account
-                  from our service at any time
+                  from our service at any time by logging out
                 </Text>
                 <Text>
-                  <strong>Opt-Out</strong>: Control whether third parties place
-                  cookies on your browser
+                  <strong>Opt-Out</strong>: Control cookie settings through your
+                  browser
                 </Text>
               </Box>
 
               <Text mt={2}>To exercise these rights, you can:</Text>
               <Box pl={4}>
-                <Text>• Log out from our application</Text>
+                <Text>
+                  • <strong>Log out</strong> from our application using the
+                  "Logout" button in the navigation bar (this will disconnect
+                  your Spotify account and delete your session data)
+                </Text>
                 <Text>• Email us at setlistscout@gmail.com</Text>
               </Box>
 
