@@ -1,5 +1,5 @@
-// src/components/NavBar.jsx
-import React from "react";
+// File: ./frontend/src/components/NavBar.jsx
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Box,
@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useAuth } from "../hooks/useAuth";
+import { getFromLocalStorage } from "../utils/storage";
+import ConsentModal from "./ConsentModal";
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -23,8 +25,42 @@ export default function NavBar() {
   const bgColor = useColorModeValue("gray.800", "gray.900");
   const textColor = useColorModeValue("white", "gray.200");
 
+  // Add state for consent modal
+  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
+
+  // Handle login click
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      logout();
+    } else {
+      const hasConsented = getFromLocalStorage("setlistScoutConsent");
+      if (hasConsented) {
+        login();
+      } else {
+        setIsConsentModalOpen(true);
+      }
+    }
+  };
+
+  // Handle consent modal close
+  const handleConsentModalClose = () => {
+    setIsConsentModalOpen(false);
+
+    const hasConsented = getFromLocalStorage("setlistScoutConsent");
+    if (hasConsented) {
+      login();
+    }
+  };
+
   return (
     <Box>
+      {/* Add the ConsentModal here */}
+      <ConsentModal
+        isOpen={isConsentModalOpen}
+        onClose={handleConsentModalClose}
+      />
+
       <Flex
         bg={bgColor}
         color={textColor}
@@ -77,15 +113,9 @@ export default function NavBar() {
           {/* Navigation Links */}
           <DesktopNav location={location} />
 
-          {/* Login/Logout Button */}
+          {/* Login/Logout Button - Update to use the new handler */}
           <Box>
-            <Link
-              to="#"
-              onClick={(e) => {
-                e.preventDefault();
-                isLoggedIn ? logout() : login();
-              }}
-            >
+            <Link to="#" onClick={handleLoginClick}>
               <Box
                 p={2}
                 fontSize={"md"}
@@ -106,7 +136,7 @@ export default function NavBar() {
         <MobileNav
           location={location}
           isLoggedIn={isLoggedIn}
-          login={login}
+          handleLogin={handleLoginClick}
           logout={logout}
         />
       </Collapse>
@@ -146,7 +176,7 @@ const DesktopNav = ({ location }) => {
   );
 };
 
-const MobileNav = ({ location, isLoggedIn, login, logout }) => {
+const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
   return (
     <Stack bg={"gray.800"} p={4} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
@@ -165,10 +195,7 @@ const MobileNav = ({ location, isLoggedIn, login, logout }) => {
         _hover={{
           textDecoration: "none",
         }}
-        onClick={(e) => {
-          e.preventDefault();
-          isLoggedIn ? logout() : login();
-        }}
+        onClick={handleLogin} // Use the new handler function
       >
         <Text fontWeight={600} color={"white"}>
           {isLoggedIn ? "Logout" : "Login"}
@@ -201,6 +228,7 @@ const MobileNavItem = ({ label, href, isActive }) => {
   );
 };
 
+// Updated NAV_ITEMS to include single Legal link
 const NAV_ITEMS = [
   {
     label: "Home",
@@ -211,7 +239,7 @@ const NAV_ITEMS = [
     href: "/about",
   },
   {
-    label: "Contact",
-    href: "/contact",
+    label: "Privacy/Terms",
+    href: "/legal",
   },
 ];

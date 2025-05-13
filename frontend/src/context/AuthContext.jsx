@@ -1,4 +1,4 @@
-// src/context/AuthContext.jsx
+// File: ./frontend/src/context/AuthContext.jsx
 import {
   createContext,
   useState,
@@ -13,6 +13,7 @@ import {
   setupAuthListener,
 } from "../api/authService";
 import { server_url } from "../App";
+import { getFromLocalStorage } from "../utils/storage";
 
 export const AuthContext = createContext(null);
 
@@ -20,6 +21,7 @@ export const AuthContext = createContext(null);
  * Provider component for authentication state
  * - Manages auth state across the application
  * - Handles auth flow initialization and callbacks
+ * - Enforces consent before login
  */
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
@@ -125,8 +127,18 @@ export const AuthProvider = ({ children }) => {
     }));
   }, []);
 
-  // Login helper function
+  // Login helper function - Modified to check for consent
   const login = useCallback((stateToSave) => {
+    // Check if user has consented to terms and privacy policy
+    const hasConsented = getFromLocalStorage("setlistScoutConsent");
+
+    if (!hasConsented) {
+      console.log(
+        "User must accept terms and privacy policy before logging in"
+      );
+      return;
+    }
+
     // Save state if needed
     if (stateToSave) {
       sessionStorage.setItem("concertCramState", JSON.stringify(stateToSave));

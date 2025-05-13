@@ -1,5 +1,5 @@
-// src/components/TracksHUD.jsx
-import React, { useEffect } from "react";
+// File: ./frontend/src/components/TracksHUD.jsx
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Flex,
@@ -19,6 +19,8 @@ import ProgressIndicator from "./ProgressIndicator";
 import { useAuth } from "../hooks/useAuth";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
+import { getFromLocalStorage } from "../utils/storage";
+import ConsentModal from "./ConsentModal";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
@@ -33,6 +35,9 @@ export default function TracksHUD() {
     setNotification,
     progress,
   } = useSetlist();
+
+  // State for consent modal
+  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
 
   // Determine if we should show the tracks section
   const showTracks = spotifyData?.length > 0 && !loading;
@@ -53,8 +58,40 @@ export default function TracksHUD() {
     };
   }, [clearPlaylistUrl, playlistUrl]);
 
+  // Handle login button click
+  const handleLoginClick = () => {
+    // Check if user has already consented
+    const hasConsented = getFromLocalStorage("setlistScoutConsent");
+
+    if (hasConsented) {
+      // If they have consented, proceed with login
+      login({ spotifyData, tourData });
+    } else {
+      // If they haven't consented, show the consent modal
+      setIsConsentModalOpen(true);
+    }
+  };
+
+  // Handle consent modal close
+  const handleConsentModalClose = () => {
+    setIsConsentModalOpen(false);
+
+    // Check if user has consented now (after modal closed)
+    const hasConsented = getFromLocalStorage("setlistScoutConsent");
+    if (hasConsented) {
+      // If they consented in the modal, proceed with login
+      login({ spotifyData, tourData });
+    }
+  };
+
   return (
     <Box width="full" maxW="100%">
+      {/* Consent Modal - only shown when triggered */}
+      <ConsentModal
+        isOpen={isConsentModalOpen}
+        onClose={handleConsentModalClose}
+      />
+
       {loading ? (
         <Box width="full" mb={{ base: 3, md: 6 }}>
           <ProgressIndicator isLoading={loading} progress={progress} />
@@ -89,7 +126,7 @@ export default function TracksHUD() {
                     fontWeight="medium"
                     letterSpacing="0.5px"
                     flexShrink={0}
-                    onClick={() => login({ spotifyData, tourData })}
+                    onClick={handleLoginClick} // Use the new handler instead of directly calling login
                   >
                     Login
                   </Button>

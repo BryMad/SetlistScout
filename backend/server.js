@@ -1,4 +1,4 @@
-// File: ./backend/server.js (updated with Redis connection handling)
+// File: ./backend/server.js
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -48,6 +48,9 @@ redisClient.on('connect', () => {
 redisClient.connect()
   .then(() => console.log('Connected to Redis'))
   .catch(err => console.error('Redis connection error:', err));
+
+// Make Redis client available to route handlers
+app.set('redisClient', redisClient);
 
 // Set trust proxy
 app.set('trust proxy', 1);
@@ -105,31 +108,32 @@ setInterval(async () => {
 const authRoutes = require('./routes/authRoutes');
 const playlistRoutes = require('./routes/playlistRoutes');
 const setlistRoutes = require('./routes/setlistRoutes');
-const sseRoutes = require('./routes/sseRoutes'); // Add the new SSE routes
+const sseRoutes = require('./routes/sseRoutes');
+const consentRoutes = require('./routes/consentRoutes'); // Add consent routes
 
+// Mount Routes
 app.use('/auth', authRoutes);
 app.use('/playlist', playlistRoutes);
 app.use('/setlist', setlistRoutes);
-app.use('/sse', sseRoutes); // Mount the SSE routes
+app.use('/sse', sseRoutes);
+app.use('/consent', consentRoutes); // Mount the consent routes
 
-
+// Serve static files
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-app.get('*', (req, res
-) => {
+// All other routes serve the frontend application
+app.get('*', (req, res) => {
   console.log('Serving the frontend application');
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the Spotify Setlist App!');
-// });
-
+// Error handler
 app.use((err, req, res, next) => {
   console.error('Unhandled Error:', err);
   res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
