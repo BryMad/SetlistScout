@@ -1,15 +1,6 @@
-// src/components/ProgressIndicator.jsx
+// src/components/ProgressIndicator.jsx - No Emoji Version
 import React from "react";
-import {
-  Box,
-  VStack,
-  Spinner,
-  Text,
-  Progress,
-  Image,
-  Flex,
-} from "@chakra-ui/react";
-import spotifyLogo from "../assets/spotify_logo.svg"; // Make sure this path is correct
+import { Box, VStack, Spinner, Text, Progress } from "@chakra-ui/react";
 
 /**
  * Component to display progress updates during API requests
@@ -21,34 +12,6 @@ import spotifyLogo from "../assets/spotify_logo.svg"; // Make sure this path is 
 const ProgressIndicator = ({ isLoading, progress }) => {
   if (!isLoading) return null;
 
-  const getStageEmoji = (stage) => {
-    switch (stage) {
-      case "musicbrainz":
-        return "🔍";
-      case "setlist_search":
-        return "🎵";
-      case "tour_processing":
-        return "🚌";
-      case "setlist_fetch":
-        return "📋";
-      case "song_processing":
-        return "🎸";
-      case "spotify_search":
-        return null; // We'll use the Spotify logo image instead of an emoji
-      case "complete":
-        return "✅";
-      case "error":
-        return "❌";
-      default:
-        return "⏳";
-    }
-  };
-
-  // Check if this is a Spotify-related message
-  const isSpotifyMessage =
-    progress.stage === "spotify_search" ||
-    (progress.message && progress.message.includes("Spotify"));
-
   return (
     <VStack spacing={4} width="100%" my={4}>
       <Box
@@ -58,25 +21,7 @@ const ProgressIndicator = ({ isLoading, progress }) => {
         width="100%"
       >
         <Spinner size="sm" mr={2} flexShrink={0} />
-
-        {isSpotifyMessage ? (
-          // For Spotify messages, display logo + message
-          <Flex align="center">
-            <Image
-              src={spotifyLogo}
-              alt="Spotify"
-              width="18px"
-              height="18px"
-              mr={2}
-            />
-            <Text fontSize="md">{progress.message}</Text>
-          </Flex>
-        ) : (
-          // For other messages, display with emoji
-          <Text fontSize="md">
-            {getStageEmoji(progress.stage)} {progress.message}
-          </Text>
-        )}
+        <Text fontSize="md">{progress.message}</Text>
       </Box>
 
       <Box width="100%" height="20px">
