@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
-import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 /**
  * Main layout component for the application
@@ -50,28 +49,7 @@ export default function MainLayout({ children }) {
       </Container>
 
       <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>
-        <Flex
-          align="center"
-          justify="center"
-          flexWrap="wrap"
-          gap={2}
-          mb={4}
-          borderBottom="1px"
-          borderColor="gray.700"
-          pb={3}
-          px={2}
-        >
-          <Text color="#1DB954" fontSize="md" textAlign="center">
-            artist search, track search, and playlist creation powered by
-          </Text>
-          <Image
-            src={spotifyLogo}
-            alt="Spotify Logo"
-            height="30px"
-            width="auto"
-            flexShrink={0}
-          />
-        </Flex>
+        {/* Removed Spotify attribution since it's now in TracksHUD */}
 
         {/* Added VStack with padding bottom to group these text items */}
         <VStack spacing={2} pb={6}>

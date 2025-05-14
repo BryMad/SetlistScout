@@ -54,20 +54,22 @@ export default function NavBar() {
       <Flex
         bg={bgColor}
         color={textColor}
-        height="70px"
+        // Remove fixed height constraint or increase it
+        minHeight="70px"
         py={{ base: 4 }}
         px={{ base: 4 }}
-        align={"center"}
+        align={"flex-start"} // Change from center to flex-start
       >
         {/* App title - left-aligned on all screen sizes */}
         <Flex flex={{ base: 1, md: "auto" }} justify="start">
           <Text
-            fontFamily="heading" // This will use Bebas Neue from the theme
-            fontSize="5xl" // Make it slightly larger to match the Bebas Neue style
-            letterSpacing="1px" // Optional: adds a bit of spacing for Bebas Neue
-            color="teal.400"
-            mt={8}
-            ml={4}
+            fontFamily="heading"
+            fontSize="6xl"
+            letterSpacing="1px"
+            color="purple.600"
+            pt={3} // Use padding-top instead of margin-top
+            pb={2} // Use padding-bottom instead of margin-bottom
+            pl={8} // Use padding-left instead of margin-left
             as={Link}
             to="/"
           >
@@ -113,7 +115,7 @@ export default function NavBar() {
                 color={"white"}
                 _hover={{
                   textDecoration: "none",
-                  color: "teal.400",
+                  color: "purple.400",
                 }}
               >
                 {isLoggedIn ? "Logout" : "Login"}
@@ -136,8 +138,8 @@ export default function NavBar() {
 
 const DesktopNav = ({ location }) => {
   const linkColor = "white";
-  const linkHoverColor = "teal.400";
-  const activeColor = "teal.400";
+  const linkHoverColor = "purple.400";
+  const activeColor = "purple.600";
 
   return (
     <Stack direction={"row"} spacing={4}>

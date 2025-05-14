@@ -1,4 +1,4 @@
-// File: ./frontend/src/components/TracksHUD.jsx
+// File: ./src/components/TracksHUD.jsx
 import React from "react";
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   Link,
   VStack,
   Spinner,
+  Fade,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Track from "./Track";
@@ -81,64 +82,65 @@ export default function TracksHUD() {
         </Box>
       ) : (
         showTracks && (
-          <Flex direction="column" alignItems="center" mb={6} width="full">
-            {!isLoggedIn ? (
-              <VStack spacing={0} width="auto" maxW="md">
+          <Box width="full">
+            {/* 1. Spotify Attribution with Fade-in effect */}
+            <Fade in={showTracks} transition={{ enter: { duration: 0.5 } }}>
+              <VStack>
                 <Flex
-                  align="center"
+                  align="left"
+                  justify="left"
                   flexWrap="wrap"
-                  justifyContent="center"
                   gap={2}
-                  my={2}
+                  mt={4}
+                  px={2}
                 >
-                  <Button
-                    size="sm"
-                    width="auto"
-                    px={4}
-                    py={2}
-                    bg="#1DB954"
-                    color="white"
-                    variant="solid"
-                    _hover={{
-                      bg: "#1AA34A",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                    }}
-                    transition="all 0.2s ease"
-                    borderRadius="full"
-                    fontWeight="medium"
-                    letterSpacing="0.5px"
-                    flexShrink={0}
-                    onClick={handleLoginClick}
-                  >
-                    Login
-                  </Button>
-                  <Text textAlign="center">to create playlist on</Text>
+                  <Text color="#1DB954" fontSize="md" textAlign="left">
+                    track lookup and playlist creation powered by:
+                  </Text>
+                </Flex>
+                <Flex>
                   <Image
+                    mt={2}
+                    mb={4}
                     src={spotifyLogo}
-                    alt="Spotify"
-                    height="34px"
+                    alt="Spotify Logo"
+                    height="auto"
+                    width="150px"
                     flexShrink={0}
                   />
                 </Flex>
-                <Text
-                  fontSize="xs"
-                  color="gray.500"
-                  mt={2}
-                  textAlign="left"
-                  maxW="md"
-                  px={2}
-                >
-                  note: awaiting Spotify approval for login/playlist creation to
-                  be publicly available. Email{" "}
-                  <Link href="mailto:setlistscout@gmail.com" color="teal.400">
-                    setlistscout@gmail.com
-                  </Link>{" "}
-                  to be a pre-approved beta user.
-                </Text>
               </VStack>
-            ) : (
-              <>
+            </Fade>
+
+            {/* 2. Divider */}
+            <Box width="full">
+              <Divider mb={4} />
+            </Box>
+
+            {/* 3. Track heading */}
+            <Box mb={6} width="full">
+              {tourData.tourName === "No Tour Info" ? (
+                <Text size="md" fontWeight="semibold">
+                  Tracks <Text as="strong">{tourData.bandName}</Text> has played
+                  in last {tourData.totalShows} shows:
+                </Text>
+              ) : (
+                <Text as="h4" size="md" fontWeight="semibold">
+                  tracks <Text as="strong">{tourData.bandName}</Text> has played
+                  on the{" "}
+                  <Text as="strong">
+                    {tourData.tourName}
+                    {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
+                      " Tour"}
+                  </Text>
+                  :
+                </Text>
+              )}
+            </Box>
+
+            {/* 4. Login/Create Playlist Button */}
+            <Flex direction="column" alignItems="center" mb={6} width="full">
+              {!isLoggedIn ? (
                 <VStack spacing={0} width="auto" maxW="md">
                   <Flex
                     align="center"
@@ -153,7 +155,7 @@ export default function TracksHUD() {
                       px={4}
                       py={2}
                       bg="#1DB954"
-                      color="white"
+                      color="black"
                       variant="solid"
                       _hover={{
                         bg: "#1AA34A",
@@ -165,71 +167,92 @@ export default function TracksHUD() {
                       fontWeight="medium"
                       letterSpacing="0.5px"
                       flexShrink={0}
-                      onClick={createPlaylist}
-                      isDisabled={isCreatingPlaylist}
+                      onClick={handleLoginClick}
                     >
-                      Create
+                      Login
                     </Button>
-                    <Text textAlign="center">playlist on</Text>
-                    <Image
-                      src={spotifyLogo}
-                      alt="Spotify"
-                      height="34px"
-                      flexShrink={0}
-                    />
+                    <Text textAlign="center">to create playlist</Text>
                   </Flex>
-                  <Text
-                    fontSize="xs"
-                    color="gray.500"
-                    mt={2}
-                    textAlign="left"
-                    maxW="md"
-                    px={2}
-                  >
-                    note: awaiting Spotify approval for login/playlist creation
-                    to be publicly available. Email{" "}
-                    <Link href="mailto:setlistscout@gmail.com" color="teal.400">
-                      setlistscout@gmail.com
-                    </Link>{" "}
-                    to be a pre-approved beta user.
-                  </Text>
                 </VStack>
+              ) : (
+                <>
+                  <VStack spacing={0} width="auto" maxW="md">
+                    <Flex
+                      align="center"
+                      flexWrap="wrap"
+                      justifyContent="center"
+                      gap={2}
+                      my={2}
+                    >
+                      <Button
+                        size="sm"
+                        width="auto"
+                        px={4}
+                        py={2}
+                        bg="#1DB954"
+                        color="white"
+                        variant="solid"
+                        _hover={{
+                          bg: "#1AA34A",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                        }}
+                        transition="all 0.2s ease"
+                        borderRadius="full"
+                        fontWeight="medium"
+                        letterSpacing="0.5px"
+                        flexShrink={0}
+                        onClick={createPlaylist}
+                        isDisabled={isCreatingPlaylist}
+                      >
+                        Create Playlist
+                      </Button>
+                    </Flex>
+                  </VStack>
 
-                {/* Simple creating playlist indicator */}
-                {isCreatingPlaylist && (
-                  <Flex
-                    align="center"
-                    mt={2}
-                    p={2}
-                    bg="gray.700"
-                    borderRadius="md"
-                  >
-                    <Spinner size="sm" color="#1DB954" mr={2} />
-                    <Text>Creating playlist...</Text>
-                  </Flex>
-                )}
-              </>
-            )}
+                  {/* Simple creating playlist indicator */}
+                  {isCreatingPlaylist && (
+                    <Flex
+                      align="center"
+                      mt={2}
+                      p={2}
+                      bg="gray.700"
+                      borderRadius="md"
+                    >
+                      <Spinner size="sm" color="#1DB954" mr={2} />
+                      <Text>Creating playlist...</Text>
+                    </Flex>
+                  )}
+                </>
+              )}
 
-            {/* Playlist URL Link - Show if available */}
-            {playlistUrl && (
-              <Link
-                href={playlistUrl}
-                isExternal
-                mt={4}
-                color="#1DB954"
-                fontWeight="bold"
-                display="flex"
-                alignItems="center"
-              >
-                View your playlist on Spotify <ExternalLinkIcon ml={1} />
-              </Link>
-            )}
-          </Flex>
+              {/* Playlist URL Link - Show if available */}
+              {playlistUrl && (
+                <Link
+                  href={playlistUrl}
+                  isExternal
+                  mt={4}
+                  color="#1DB954"
+                  fontWeight="bold"
+                  display="flex"
+                  alignItems="center"
+                >
+                  View your playlist on Spotify <ExternalLinkIcon ml={1} />
+                </Link>
+              )}
+            </Flex>
+
+            {/* 5. Tracks list */}
+            <Box width="full">
+              {spotifyData.map((item) => (
+                <Track key={item.id} item={item} tourData={tourData} />
+              ))}
+            </Box>
+          </Box>
         )
       )}
 
-      {/* Playlist Notification Message */}
+      {/* Playlist Notification Message - Keep outside the main section for visibility */}
       {playlistNotification && playlistNotification.message && (
         <AlertMessage
           status={playlistNotification.status}
@@ -237,37 +260,6 @@ export default function TracksHUD() {
           onClose={() => setNotification({ message: "", status: "" })}
           width="full"
         />
-      )}
-
-      {showTracks && (
-        <>
-          <Box my={6} width="full">
-            <Divider mb={4} />
-            {tourData.tourName === "No Tour Info" ? (
-              <Text size="md" fontWeight="semibold">
-                Tracks <Text as="strong">{tourData.bandName}</Text> has played
-                in last {tourData.totalShows} shows:
-              </Text>
-            ) : (
-              <Text as="h4" size="md" fontWeight="semibold">
-                tracks <Text as="strong">{tourData.bandName}</Text> has played
-                on the{" "}
-                <Text as="strong">
-                  {tourData.tourName}
-                  {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
-                    " Tour"}
-                </Text>
-                :
-              </Text>
-            )}
-          </Box>
-
-          <Box width="full">
-            {spotifyData.map((item) => (
-              <Track key={item.id} item={item} tourData={tourData} />
-            ))}
-          </Box>
-        </>
       )}
     </Box>
   );
