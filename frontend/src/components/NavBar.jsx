@@ -61,27 +61,29 @@ function NavBar() {
       <Flex
         bg={bgColor}
         color={textColor}
-        // Remove fixed height constraint or increase it
         minHeight="70px"
         py={{ base: 4 }}
-        px={{ base: 4 }}
-        align={"flex-start"} // Change from center to flex-start
+        px={{ base: 0 }} // Changed from px={{ base: 4 }} to remove horizontal padding
+        align={"center"} // Changed from flex-start to center for vertical alignment
+        width="100%"
       >
         {/* App title - left-aligned on all screen sizes */}
-        <Flex flex={{ base: 1, md: "auto" }} justify="start">
+        <Flex flex={{ base: 1 }} ml={0} align="center">
           <Text
             fontFamily="heading"
             fontSize="6xl"
             letterSpacing="1px"
             color="purple.400"
-            pt={3} // Use padding-top instead of margin-top
-            pb={2} // Use padding-bottom instead of margin-bottom
-            pl={8} // Use padding-left instead of margin-left
+            pt={3}
+            pb={2}
+            ml={4} // Small margin to prevent it from touching the edge
             as={Link}
             to="/"
+            whiteSpace="nowrap" // Prevent text wrapping
           >
             Setlist Scout
           </Text>
+          <Spacer />
         </Flex>
 
         {/* Right-aligned hamburger menu for mobile */}
