@@ -58,8 +58,8 @@ function AppContent() {
 
   return (
     <>
-      <NavBar />
       <MainLayout>
+        <NavBar />
         {/* Add ConsentModal at the app level */}
         <ConsentModal
           isOpen={isConsentModalOpen}

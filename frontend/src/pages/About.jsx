@@ -37,8 +37,8 @@ export default function About() {
           <ListItem>
             Search for your favorite artist using our search bar. Artists will
             be populated by{" "}
-            <Link href="https://www.spotify.com" isExternal color="teal.400">
-              Spotify
+            <Link href="https://www.deezer.com/us/" isExternal color="teal.400">
+              Deezer API
             </Link>{" "}
             search data. Select an artist...
           </ListItem>
