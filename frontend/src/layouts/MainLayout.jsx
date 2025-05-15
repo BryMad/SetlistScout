@@ -1,22 +1,9 @@
 // src/layouts/MainLayout.jsx
 import React from "react";
-import {
-  Box,
-  Container,
-  Flex,
-  Image,
-  Text,
-  Link,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Container, Text, Link, VStack } from "@chakra-ui/react";
 import AlertMessage from "../components/AlertMessage";
 import { useSetlist } from "../hooks/useSetlist";
 
-/**
- * Main layout component for the application
- * - Provides consistent structure across pages
- * - Handles global error display
- */
 export default function MainLayout({ children }) {
   const { error, clearError } = useSetlist();
 
@@ -26,33 +13,33 @@ export default function MainLayout({ children }) {
       color="white"
       display="flex"
       flexDirection="column"
-      minH="calc(100vh - 60px)"
+      minH="100vh"
       width="100%"
     >
-      <Container
-        maxW="container.xl"
-        flex="1"
-        px={{ base: 2, md: 4 }}
-        py={{ base: 3, md: 5 }}
-        width="100%"
-      >
-        {error && (
-          <AlertMessage
-            status="error"
-            title="Error"
-            message={error}
-            onClose={clearError}
-          />
-        )}
+      {/* Main content - will grow to fill available space */}
+      <Box flex="1">
+        <Container
+          maxW="container.xl"
+          px={{ base: 2, md: 4 }}
+          py={{ base: 3, md: 5 }}
+          width="100%"
+        >
+          {error && (
+            <AlertMessage
+              status="error"
+              title="Error"
+              message={error}
+              onClose={clearError}
+            />
+          )}
 
-        {children}
-      </Container>
+          {children}
+        </Container>
+      </Box>
 
+      {/* Footer - won't flex grow */}
       <Box as="footer" textAlign="center" fontSize="sm" opacity={0.8} p={4}>
-        {/* Removed Spotify attribution since it's now in TracksHUD */}
-
-        {/* Added VStack with padding bottom to group these text items */}
-        <VStack spacing={2} pb={6}>
+        <VStack spacing={2}>
           <Text>
             This app uses the Spotify API but is not endorsed, certified, or
             otherwise approved by Spotify. Spotify is a registered trademark of

@@ -1,4 +1,4 @@
-// File: ./frontend/src/components/NavBar.jsx
+// File: ./src/components/NavBar.jsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -18,7 +18,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useAuth } from "../hooks/useAuth";
 import { getFromLocalStorage } from "../utils/storage";
 
-export default function NavBar() {
+function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
   const { isLoggedIn, login, logout } = useAuth();
   const location = useLocation();
@@ -49,6 +49,13 @@ export default function NavBar() {
     }
   };
 
+  // Check if we should show the link based on consent status
+  // For Legal pages, we always show them even without consent
+  const shouldShowLink = (href) => {
+    const hasConsented = getFromLocalStorage("setlistScoutConsent");
+    return hasConsented || href.includes("/legal");
+  };
+
   return (
     <Box>
       <Flex
@@ -66,7 +73,7 @@ export default function NavBar() {
             fontFamily="heading"
             fontSize="6xl"
             letterSpacing="1px"
-            color="purple.600"
+            color="purple.400"
             pt={3} // Use padding-top instead of margin-top
             pb={2} // Use padding-bottom instead of margin-bottom
             pl={8} // Use padding-left instead of margin-left
@@ -115,7 +122,7 @@ export default function NavBar() {
                 color={"white"}
                 _hover={{
                   textDecoration: "none",
-                  color: "purple.400",
+                  color: "purple.600",
                 }}
               >
                 {isLoggedIn ? "Logout" : "Login"}
@@ -138,8 +145,8 @@ export default function NavBar() {
 
 const DesktopNav = ({ location }) => {
   const linkColor = "white";
-  const linkHoverColor = "purple.400";
-  const activeColor = "purple.600";
+  const linkHoverColor = "purple.600";
+  const activeColor = "purple.400";
 
   return (
     <Stack direction={"row"} spacing={4}>
@@ -164,6 +171,29 @@ const DesktopNav = ({ location }) => {
           </Box>
         );
       })}
+    </Stack>
+  );
+};
+
+const MobileNavItem = ({ label, href, isActive }) => {
+  const color = isActive ? "teal.400" : "white";
+
+  return (
+    <Stack spacing={4}>
+      <Flex
+        py={2}
+        as={Link}
+        to={href}
+        justify={"space-between"}
+        align={"center"}
+        _hover={{
+          textDecoration: "none",
+        }}
+      >
+        <Text fontWeight={600} color={color}>
+          {label}
+        </Text>
+      </Flex>
     </Stack>
   );
 };
@@ -197,30 +227,7 @@ const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
   );
 };
 
-const MobileNavItem = ({ label, href, isActive }) => {
-  const color = isActive ? "teal.400" : "white";
-
-  return (
-    <Stack spacing={4}>
-      <Flex
-        py={2}
-        as={Link}
-        to={href}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
-      >
-        <Text fontWeight={600} color={color}>
-          {label}
-        </Text>
-      </Flex>
-    </Stack>
-  );
-};
-
-// Updated NAV_ITEMS to include single Legal link
+// Updated NAV_ITEMS - no change, just for completeness
 const NAV_ITEMS = [
   {
     label: "Home",
@@ -235,3 +242,5 @@ const NAV_ITEMS = [
     href: "/legal",
   },
 ];
+
+export default NavBar;

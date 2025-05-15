@@ -1,4 +1,3 @@
-// File: ./src/components/TracksHUD.jsx
 import React from "react";
 import {
   Button,
@@ -76,6 +75,51 @@ export default function TracksHUD() {
 
   return (
     <Box width="full" maxW="100%">
+      {/* Spotify Attribution - Visible initially and after loading is complete */}
+      {!loading && (
+        <VStack width="full">
+          <Flex
+            align="left"
+            justify="left"
+            flexWrap="wrap"
+            gap={2}
+            // mt={4}
+            px={2}
+          >
+            <Text
+              color="purple.400"
+              fontWeight="bold"
+              fontSize="sm"
+              textAlign="left"
+            >
+              Track lookup and playlist creation powered by:
+            </Text>
+          </Flex>
+          <Flex>
+            <Link href="https://open.spotify.com" isExternal display="block">
+              <Image
+                mt={9}
+                mb={9}
+                src={spotifyLogo}
+                alt="Spotify Logo"
+                height="auto"
+                width="200px"
+                flexShrink={0}
+                style={{ cursor: "pointer !important" }}
+                _hover={{ cursor: "pointer !important" }}
+              />
+            </Link>
+          </Flex>
+        </VStack>
+      )}
+
+      {/* Divider - Only shown when there are tracks to display */}
+      {showTracks && (
+        <Box width="full">
+          <Divider mb={6} mt={4} />
+        </Box>
+      )}
+
       {loading ? (
         <Box width="full" mb={{ base: 3, md: 6 }}>
           <ProgressIndicator isLoading={loading} progress={progress} />
@@ -83,41 +127,7 @@ export default function TracksHUD() {
       ) : (
         showTracks && (
           <Box width="full">
-            {/* 1. Spotify Attribution with Fade-in effect */}
-            <Fade in={showTracks} transition={{ enter: { duration: 0.5 } }}>
-              <VStack>
-                <Flex
-                  align="left"
-                  justify="left"
-                  flexWrap="wrap"
-                  gap={2}
-                  mt={4}
-                  px={2}
-                >
-                  <Text color="#1DB954" fontSize="md" textAlign="left">
-                    track lookup and playlist creation powered by:
-                  </Text>
-                </Flex>
-                <Flex>
-                  <Image
-                    mt={2}
-                    mb={4}
-                    src={spotifyLogo}
-                    alt="Spotify Logo"
-                    height="auto"
-                    width="150px"
-                    flexShrink={0}
-                  />
-                </Flex>
-              </VStack>
-            </Fade>
-
-            {/* 2. Divider */}
-            <Box width="full">
-              <Divider mb={4} />
-            </Box>
-
-            {/* 3. Track heading */}
+            {/* Track heading */}
             <Box mb={6} width="full">
               {tourData.tourName === "No Tour Info" ? (
                 <Text size="md" fontWeight="semibold">
@@ -125,20 +135,21 @@ export default function TracksHUD() {
                   in last {tourData.totalShows} shows:
                 </Text>
               ) : (
-                <Text as="h4" size="md" fontWeight="semibold">
-                  tracks <Text as="strong">{tourData.bandName}</Text> has played
-                  on the{" "}
+                <Text as="h4" size="md">
+                  These are the tracks{" "}
+                  <Text as="strong">{tourData.bandName}</Text> has played on the{" "}
+                  "
                   <Text as="strong">
                     {tourData.tourName}
                     {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
                       " Tour"}
                   </Text>
-                  :
+                  ".
                 </Text>
               )}
             </Box>
 
-            {/* 4. Login/Create Playlist Button */}
+            {/* Login/Create Playlist Button */}
             <Flex direction="column" alignItems="center" mb={6} width="full">
               {!isLoggedIn ? (
                 <VStack spacing={0} width="auto" maxW="md">
@@ -154,11 +165,11 @@ export default function TracksHUD() {
                       width="auto"
                       px={4}
                       py={2}
-                      bg="#1DB954"
+                      bg="purple.400"
                       color="black"
                       variant="solid"
                       _hover={{
-                        bg: "#1AA34A",
+                        bg: "#purple.500",
                         transform: "translateY(-2px)",
                         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                       }}
@@ -189,11 +200,11 @@ export default function TracksHUD() {
                         width="auto"
                         px={4}
                         py={2}
-                        bg="#1DB954"
-                        color="white"
+                        bg="purple.400"
+                        color="black"
                         variant="solid"
                         _hover={{
-                          bg: "#1AA34A",
+                          bg: "#purple.500",
                           transform: "translateY(-2px)",
                           boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                         }}
@@ -242,7 +253,7 @@ export default function TracksHUD() {
               )}
             </Flex>
 
-            {/* 5. Tracks list */}
+            {/* Tracks list */}
             <Box width="full">
               {spotifyData.map((item) => (
                 <Track key={item.id} item={item} tourData={tourData} />

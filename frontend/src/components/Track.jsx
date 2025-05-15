@@ -11,9 +11,9 @@ import {
   useBreakpointValue,
   useColorModeValue,
   Tooltip,
+  Button,
 } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSpotify } from "react-icons/fa";
 
 // Motion-enhanced Chakra components
 const MotionFlex = motion(Flex);
@@ -36,6 +36,9 @@ export default function Track({ item, tourData }) {
   const statsBg = useColorModeValue("gray.50", "gray.700");
   const textColor = useColorModeValue("gray.800", "white");
   const mutedColor = useColorModeValue("gray.500", "gray.400");
+  // Spotify brand green color
+  const spotifyGreen = "#1DB954";
+  const spotifyGreenHover = "#1AA34A";
 
   // Animate the percentage value on mount - optimized animation speed
   useEffect(() => {
@@ -153,11 +156,11 @@ export default function Track({ item, tourData }) {
    */
   const getLikelihoodColor = () => {
     const percentage = calculateLikelihood();
-    if (percentage >= 80) return "green";
-    if (percentage >= 60) return "teal";
-    if (percentage >= 40) return "blue";
-    if (percentage >= 20) return "purple";
-    return "pink";
+    if (percentage >= 80) return "purple";
+    if (percentage >= 60) return "blue";
+    if (percentage >= 40) return "yellow";
+    if (percentage >= 20) return "orange";
+    return "red";
   };
 
   /**
@@ -288,22 +291,25 @@ export default function Track({ item, tourData }) {
             {getDisplayCount()} of {tourData.totalShows} shows
           </Text>
 
-          {/* Spotify Link Button - no animation */}
+          {/* Spotify Button - with exact Spotify brand green */}
           {item.uri && (
-            <Link
+            <Button
+              as="a"
               href={getSpotifyLink(item.uri)}
-              isExternal
-              display="flex"
-              alignItems="center"
-              fontSize="xs"
-              fontWeight="medium"
-              color="green.500"
+              size="xs"
+              bg={spotifyGreen}
+              color="black"
+              width="100%"
+              height="24px"
               mt={1}
-              _hover={{ textDecoration: "none", color: "green.600" }}
+              fontWeight="medium"
+              fontSize="xs"
+              target="_blank"
+              rel="noopener noreferrer"
+              _hover={{ bg: spotifyGreenHover, color: "black" }}
             >
-              <Box as={FaSpotify} mr={1} />
               OPEN SPOTIFY
-            </Link>
+            </Button>
           )}
         </Flex>
       </MotionFlex>

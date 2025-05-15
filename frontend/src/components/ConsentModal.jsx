@@ -1,4 +1,4 @@
-// File: ./frontend/src/components/ConsentModal.jsx
+// File: ./src/components/ConsentModal.jsx
 import React, { useState } from "react";
 import {
   Modal,
@@ -23,7 +23,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { getFromLocalStorage, saveToLocalStorage } from "../utils/storage";
 import { logConsent } from "../api/consentService";
 
@@ -31,6 +31,7 @@ import { logConsent } from "../api/consentService";
  * Consent Modal Component
  * - Displays End User Agreement and Privacy Policy
  * - Requires user consent before using Spotify features
+ * - Allows viewing full legal documents before consenting
  * - Stores consent in localStorage and on server
  */
 const ConsentModal = ({ isOpen, onClose }) => {
@@ -38,6 +39,7 @@ const ConsentModal = ({ isOpen, onClose }) => {
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const toast = useToast();
+  const navigate = useNavigate();
 
   // Handle user consent
   const handleConsent = async () => {
@@ -95,6 +97,18 @@ const ConsentModal = ({ isOpen, onClose }) => {
         setIsSubmitting(false);
       }
     }
+  };
+
+  // Handle clicking on legal links - temporarily close modal
+  const handleLegalLinkClick = (path) => {
+    // Save modal state to reopen it when returning from legal pages
+    sessionStorage.setItem("returnToConsent", "true");
+
+    // Temporarily close the modal
+    onClose();
+
+    // Navigate to the legal page
+    navigate(path);
   };
 
   return (
@@ -163,16 +177,15 @@ const ConsentModal = ({ isOpen, onClose }) => {
                         • Logging out will remove your data from our system
                       </Text>
                     </VStack>
-                    <RouterLink to="/legal" target="_blank">
-                      <Button
-                        rightIcon={<ExternalLinkIcon />}
-                        colorScheme="teal"
-                        variant="outline"
-                        size="sm"
-                      >
-                        Read full agreement
-                      </Button>
-                    </RouterLink>
+                    <Button
+                      rightIcon={<ExternalLinkIcon />}
+                      colorScheme="teal"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleLegalLinkClick("/legal")}
+                    >
+                      Read full agreement
+                    </Button>
                   </Box>
                 </TabPanel>
 
@@ -210,16 +223,15 @@ const ConsentModal = ({ isOpen, onClose }) => {
                         search history
                       </Text>
                     </VStack>
-                    <RouterLink to="/legal?tab=1" target="_blank">
-                      <Button
-                        rightIcon={<ExternalLinkIcon />}
-                        colorScheme="teal"
-                        variant="outline"
-                        size="sm"
-                      >
-                        Read full policy
-                      </Button>
-                    </RouterLink>
+                    <Button
+                      rightIcon={<ExternalLinkIcon />}
+                      colorScheme="teal"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleLegalLinkClick("/legal?tab=1")}
+                    >
+                      Read full policy
+                    </Button>
                   </Box>
                 </TabPanel>
               </TabPanels>
@@ -236,10 +248,10 @@ const ConsentModal = ({ isOpen, onClose }) => {
                 <Text>
                   I agree to the{" "}
                   <Link
-                    as={RouterLink}
-                    to="/legal"
+                    as="span"
                     color="teal.500"
-                    target="_blank"
+                    onClick={() => handleLegalLinkClick("/legal")}
+                    cursor="pointer"
                   >
                     End User Agreement
                   </Link>
@@ -255,10 +267,10 @@ const ConsentModal = ({ isOpen, onClose }) => {
                 <Text>
                   I agree to the{" "}
                   <Link
-                    as={RouterLink}
-                    to="/legal?tab=1"
+                    as="span"
                     color="teal.500"
-                    target="_blank"
+                    onClick={() => handleLegalLinkClick("/legal?tab=1")}
+                    cursor="pointer"
                   >
                     Privacy Policy
                   </Link>
