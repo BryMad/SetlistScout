@@ -8,11 +8,12 @@ import {
   Image,
   Text,
   Link,
+  Icon,
   VStack,
   Spinner,
   Fade,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, EmailIcon } from "@chakra-ui/icons";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
@@ -144,7 +145,7 @@ export default function TracksHUD() {
                     {!tourData.tourName.trim().toLowerCase().endsWith("tour") &&
                       " Tour"}
                   </Text>
-                  ".
+                  ":
                 </Text>
               )}
             </Box>
@@ -184,6 +185,25 @@ export default function TracksHUD() {
                     </Button>
                     <Text textAlign="center">to create playlist</Text>
                   </Flex>
+                  <Text
+                    textAlign="left"
+                    fontSize="sm"
+                    color="gray.500"
+                    mt={2}
+                    mb={4}
+                  >
+                    note: pending Spotify approval for public login. Please
+                    email{" "}
+                    <Box as="span" display="inline" whiteSpace="nowrap">
+                      <Link
+                        href="mailto:setlistscout@gmail.com"
+                        color="teal.400"
+                      >
+                        setlistscout@gmail.com
+                      </Link>
+                    </Box>{" "}
+                    to be a pre-approved beta user.
+                  </Text>
                 </VStack>
               ) : (
                 <>
