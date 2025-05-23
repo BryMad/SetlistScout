@@ -25,6 +25,26 @@ export const searchArtists = async (artistName) => {
 };
 
 /**
+ * Search for artists by name using MusicBrainz with fanart.tv images
+ * 
+ * @param {string} artistName Artist name to search for
+ * @returns {Promise<Array>} Promise resolving to array of artist matches
+ */
+export const searchArtistsMusicBrainz = async (artistName) => {
+  try {
+    const response = await axios.post(
+      `${server_url}/setlist/artist_search_musicbrainz`,
+      { artistName },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response.data || [];
+  } catch (error) {
+    console.error("Error searching for artists with MusicBrainz:", error);
+    throw error;
+  }
+};
+
+/**
  * Search for artists by name using Deezer
  * 
  * @param {string} artistName Artist name to search for

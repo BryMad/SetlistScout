@@ -9,9 +9,50 @@ const {
 } = require("../utils/setlistAPIRequests.js");
 const { getSongTally, getTour, chooseTour } = require("../utils/setlistFormatData.js");
 const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/spotifyAPIRequests.js");
-const { fetchMBIdFromSpotifyId } = require("../utils/musicBrainzAPIRequests.js");
+const { fetchMBIdFromSpotifyId, searchArtistMusicBrainz, getArtistImageFromFanart, getFallbackArtistImage } = require("../utils/musicBrainzAPIRequests.js");
 const { isArtistNameMatch } = require("../utils/musicBrainzChecks.js");
 const sseManager = require('../utils/sseManager');
+
+// New function to search artists using MusicBrainz API with fanart.tv images
+const searchArtistMusicBrainzWithImages = async (artistName) => {
+  try {
+    console.log("Searching for Artist on MusicBrainz with images", { artistName });
+
+    // Get artists from MusicBrainz
+    const artists = await searchArtistMusicBrainz(artistName);
+    
+    // Fetch images from fanart.tv for each artist
+    const artistsWithImages = await Promise.all(
+      artists.map(async (artist) => {
+        try {
+          // Try to get image from fanart.tv
+          const fanartImage = await getArtistImageFromFanart(artist.mbid);
+          
+          // Use fanart image if available, otherwise use fallback
+          const imageUrl = fanartImage || getFallbackArtistImage(artist.name);
+          
+          return {
+            ...artist,
+            image: { url: imageUrl }
+          };
+        } catch (error) {
+          console.error(`Error fetching image for artist ${artist.name}:`, error);
+          // Use fallback image on error
+          return {
+            ...artist,
+            image: { url: getFallbackArtistImage(artist.name) }
+          };
+        }
+      })
+    );
+
+    console.log("MusicBrainz artist search with images successful", { artistName, count: artistsWithImages.length });
+    return artistsWithImages;
+  } catch (error) {
+    console.error("Error searching artist on MusicBrainz with images", { artistName, error: error.message });
+    throw error;
+  }
+};
 
 // New function to search artists using Deezer API
 const searchArtistDeezer = async (artistName) => {
@@ -273,6 +314,24 @@ router.post('/artist_search', async (req, res) => {
     res.json(searchResults);
   } catch (error) {
     console.error('Error in /artist_search route:', error);
+    res.status(500).json({ error: "Internal Server Error. Please try again later." });
+  }
+});
+
+/**
+ * Endpoint: POST /artist_search_musicbrainz
+ * Searches for artists on MusicBrainz with fanart.tv images
+ * 
+ * @param {string} req.body.artistName Artist name to search
+ * @returns {Array} Matching artist objects from MusicBrainz with images
+ */
+router.post('/artist_search_musicbrainz', async (req, res) => {
+  try {
+    const search_query = req.body.artistName;
+    const searchResults = await searchArtistMusicBrainzWithImages(search_query);
+    res.json(searchResults);
+  } catch (error) {
+    console.error('Error in /artist_search_musicbrainz route:', error);
     res.status(500).json({ error: "Internal Server Error. Please try again later." });
   }
 });

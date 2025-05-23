@@ -16,11 +16,11 @@ import { useSpotify } from "../hooks/useSpotify";
 
 /**
  * Component for artist search input
- * - Uses Deezer API for artist search
+ * - Uses MusicBrainz API for artist search with fanart.tv images
  * - Uses Spotify API for setlist and playlist functionality
  */
 export default function UserInput() {
-  const { fetchTourData, loading, searchForArtistsDeezer } = useSetlist();
+  const { fetchTourData, loading, searchForArtistsMusicBrainz } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -54,14 +54,14 @@ export default function UserInput() {
   }, []);
 
   /**
-   * Fetches artist suggestions from Deezer
+   * Fetches artist suggestions from MusicBrainz with fanart.tv images
    * @param {string} query The artist search query
    * @async
    */
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
-      const results = await searchForArtistsDeezer(query);
+      const results = await searchForArtistsMusicBrainz(query);
       setSuggestions(results || []);
     } catch (error) {
       console.error("Error fetching artist suggestions:", error);
@@ -159,7 +159,14 @@ export default function UserInput() {
                         alt={artist.name}
                         borderRadius={["2px", "2px", "4px"]}
                       />
-                      <Text>{artist.name}</Text>
+                      <Box flex="1">
+                        <Text>{artist.name}</Text>
+                        {(artist.disambiguation || artist.country) && (
+                          <Text fontSize="xs" color="gray.400">
+                            {[artist.disambiguation, artist.country].filter(Boolean).join(' • ')}
+                          </Text>
+                        )}
+                      </Box>
                     </HStack>
                   </Box>
                 </Flex>

@@ -1,7 +1,7 @@
 // src/hooks/useSetlist.js
 import { useContext, useEffect } from 'react';
 import { SetlistContext } from '../context/SetlistContext';
-import { searchArtists, searchArtistsDeezer } from '../api/setlistService';
+import { searchArtists, searchArtistsDeezer, searchArtistsMusicBrainz } from '../api/setlistService';
 import { useAuth } from './useAuth';
 
 /**
@@ -65,6 +65,24 @@ export const useSetlist = () => {
   };
 
   /**
+   * Search for artists by name using MusicBrainz with fanart.tv images
+   * 
+   * @param {string} artistName Artist name to search for
+   * @returns {Promise<Array>} Promise resolving to array of artist matches
+   */
+  const searchForArtistsMusicBrainz = async (artistName) => {
+    try {
+      return await searchArtistsMusicBrainz(artistName);
+    } catch (error) {
+      setlistContext.setNotification({
+        message: `Error searching for artists: ${error.message}`,
+        status: "error"
+      });
+      return [];
+    }
+  };
+
+  /**
    * Search for artists by name using Deezer API
    * 
    * @param {string} artistName Artist name to search for
@@ -85,6 +103,7 @@ export const useSetlist = () => {
   return {
     ...setlistContext,
     searchForArtists,
-    searchForArtistsDeezer
+    searchForArtistsDeezer,
+    searchForArtistsMusicBrainz
   };
 };
