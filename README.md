@@ -1,11 +1,9 @@
 # Setlist Scout
 
-Ever gone to a concert, only to realize the band isn't' playing that one song you love?
+Ever gone to a concert, only to realize the band isn't' playing that one song you love? Want to know what songs a band is playing before you see them at Coachella?
 
-Ever wanted to know what deep cuts a band is playing before you go to the show?
+Setlist Scout lets you discover what songs your favorites artists are currently playing on tour and allows you to generate Spotify playlists of the songs your most likely to hear.
 
-Setlist Scout is a web app that lets users discover the songs their favorites artists are currently playing on tour and generates Spotify playlists based on that information.
+With concerts getting so ridiculously expensive, Setlist Scout helps you be more informed before a big show. Or if you've already bought tickets, the app can help you scout out the show so you can sing along to every song.
 
-With concerts getting so ridiculously expensive, Setlist Scout helps you be more informed before a big show. And once you've bought tickets, the app can help you scout for the show so you can sing along to every song.
-
-[Check out the site here](https://setlistscout.onrender.com)
+Check it out here: [setlistscout.onrender.com](https://setlistscout.onrender.com)
