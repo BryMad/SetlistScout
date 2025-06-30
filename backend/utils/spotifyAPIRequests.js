@@ -165,7 +165,7 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
         const songsProcessed = Math.min((i + 1) * batchSize, totalSongs);
         progressCallback({
           stage: 'spotify_search',
-          message: `Looking up songs on Spotify (${songsProcessed}/${totalSongs})...`,
+          message: `Looking up tracks (${songsProcessed}/${totalSongs})...`,
           progress
         });
       }
