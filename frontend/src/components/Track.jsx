@@ -297,8 +297,7 @@ export default function Track({ item, tourData }) {
               as="a"
               href={getSpotifyLink(item.uri)}
               size="xs"
-              bg={spotifyGreen}
-              color="black"
+              variant="spotify"
               width="100%"
               height="24px"
               mt={1}
@@ -306,7 +305,6 @@ export default function Track({ item, tourData }) {
               fontSize="xs"
               target="_blank"
               rel="noopener noreferrer"
-              _hover={{ bg: spotifyGreenHover, color: "black" }}
             >
               OPEN SPOTIFY
             </Button>

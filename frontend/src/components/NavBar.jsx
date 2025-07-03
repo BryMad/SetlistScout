@@ -59,27 +59,31 @@ function NavBar() {
   return (
     <Box>
       <Flex
-        bg={bgColor}
+        bg="gray.900"
+        borderBottom="1px solid"
+        borderColor="gray.700"
         color={textColor}
-        minHeight="70px"
-        py={{ base: 4 }}
-        px={{ base: 0 }} // Changed from px={{ base: 4 }} to remove horizontal padding
-        align={"center"} // Changed from flex-start to center for vertical alignment
+        minHeight="60px"
+        py={{ base: 3 }}
+        px={{ base: 4, md: 8 }}
+        align="center"
         width="100%"
+        position="sticky"
+        top="0"
+        zIndex="10"
       >
         {/* App title - left-aligned on all screen sizes */}
         <Flex flex={{ base: 1 }} ml={0} align="center">
           <Text
             fontFamily="heading"
-            fontSize="6xl"
-            letterSpacing="1px"
-            color="purple.400"
-            pt={3}
-            pb={2}
-            ml={4} // Small margin to prevent it from touching the edge
+            fontSize={{ base: "4xl", md: "5xl" }}
+            letterSpacing="tight"
+            color="brand.400"
             as={Link}
             to="/"
-            whiteSpace="nowrap" // Prevent text wrapping
+            whiteSpace="nowrap"
+            _hover={{ color: "brand.300" }}
+            transition="color 0.2s"
           >
             Setlist Scout
           </Text>
@@ -115,22 +119,15 @@ function NavBar() {
           <DesktopNav location={location} />
 
           {/* Login/Logout Button */}
-          <Box>
-            <Link to="#" onClick={handleLoginClick}>
-              <Box
-                p={2}
-                fontSize={"md"}
-                fontWeight={500}
-                color={"white"}
-                _hover={{
-                  textDecoration: "none",
-                  color: "purple.600",
-                }}
-              >
-                {isLoggedIn ? "Logout" : "Login"}
-              </Box>
-            </Link>
-          </Box>
+          <Button
+            size="sm"
+            variant="solid"
+            colorScheme="brand"
+            onClick={handleLoginClick}
+            fontWeight="medium"
+          >
+            {isLoggedIn ? "Logout" : "Login"}
+          </Button>
         </Stack>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
@@ -146,9 +143,9 @@ function NavBar() {
 }
 
 const DesktopNav = ({ location }) => {
-  const linkColor = "white";
-  const linkHoverColor = "purple.600";
-  const activeColor = "purple.400";
+  const linkColor = "gray.300";
+  const linkHoverColor = "white";
+  const activeColor = "brand.400";
 
   return (
     <Stack direction={"row"} spacing={4}>
@@ -158,14 +155,18 @@ const DesktopNav = ({ location }) => {
           <Box key={navItem.label}>
             <Link to={navItem.href}>
               <Box
-                p={2}
-                fontSize={"md"}
-                fontWeight={500}
+                px={3}
+                py={1}
+                fontSize={"sm"}
+                fontWeight="medium"
                 color={isActive ? activeColor : linkColor}
+                borderRadius="md"
                 _hover={{
                   textDecoration: "none",
                   color: linkHoverColor,
+                  bg: "whiteAlpha.100",
                 }}
+                transition="all 0.2s"
               >
                 {navItem.label}
               </Box>
@@ -178,7 +179,7 @@ const DesktopNav = ({ location }) => {
 };
 
 const MobileNavItem = ({ label, href, isActive }) => {
-  const color = isActive ? "teal.400" : "white";
+  const color = isActive ? "brand.400" : "gray.300";
 
   return (
     <Stack spacing={4}>
@@ -202,7 +203,7 @@ const MobileNavItem = ({ label, href, isActive }) => {
 
 const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
   return (
-    <Stack bg={"gray.800"} p={4} display={{ md: "none" }}>
+    <Stack bg={"gray.800"} p={4} display={{ md: "none" }} borderTop="1px solid" borderColor="gray.700">
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
           key={navItem.label}
@@ -210,21 +211,17 @@ const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
           isActive={location.pathname === navItem.href}
         />
       ))}
-      <Flex
-        py={2}
-        as={Link}
-        to={"#"}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
+      <Button
+        mt={2}
+        size="sm"
+        variant="solid"
+        colorScheme="brand"
         onClick={handleLogin}
+        fontWeight="medium"
+        width="full"
       >
-        <Text fontWeight={600} color={"white"}>
-          {isLoggedIn ? "Logout" : "Login"}
-        </Text>
-      </Flex>
+        {isLoggedIn ? "Logout" : "Login"}
+      </Button>
     </Stack>
   );
 };

@@ -104,18 +104,23 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      <Text fontWeight="bold" fontSize="sm" mb={2}>
+      <Text fontWeight="semibold" fontSize="md" mb={3} color="gray.300">
         Enter an Artist to see what they're playing live:
       </Text>
 
       <Input
-        placeholder="artist name"
+        placeholder="Search for an artist..."
         value={artistQuery}
         onChange={(e) => setArtistQuery(e.target.value)}
         size="lg"
-        variant="outline"
+        variant="filled"
+        bg="gray.800"
+        borderRadius="xl"
         width="100%"
         disabled={loading}
+        _hover={{ bg: "gray.700" }}
+        _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+        transition="all 0.2s"
       />
 
       {searchLoading && (
@@ -132,19 +137,23 @@ export default function UserInput() {
         <Box
           position="absolute"
           zIndex="10"
-          bg="gray.700"
+          bg="gray.800"
           mt={2}
           width="100%"
-          borderRadius="md"
+          borderRadius="lg"
           overflow="hidden"
+          boxShadow="xl"
+          border="1px solid"
+          borderColor="gray.700"
         >
           <List spacing={0}>
             {suggestions.map((artist) => (
               <ListItem
                 key={artist.id}
                 px={4}
-                py={2}
-                _hover={{ backgroundColor: "gray.600" }}
+                py={3}
+                _hover={{ backgroundColor: "gray.700" }}
+                transition="background-color 0.2s"
               >
                 <Flex width="100%" justify="space-between" align="center">
                   <Box
@@ -157,6 +166,7 @@ export default function UserInput() {
                         src={artist.image?.url || "https://placehold.co/40"}
                         boxSize="40px"
                         alt={artist.name}
+                        borderRadius="full"
                         borderRadius={["2px", "2px", "4px"]}
                       />
                       <Text>{artist.name}</Text>

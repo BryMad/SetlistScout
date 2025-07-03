@@ -88,8 +88,8 @@ export default function TracksHUD() {
             px={2}
           >
             <Text
-              color="purple.400"
-              fontWeight="bold"
+              color="gray.400"
+              fontWeight="medium"
               fontSize="sm"
               textAlign="left"
             >
@@ -104,7 +104,7 @@ export default function TracksHUD() {
                 src={spotifyLogo}
                 alt="Spotify Logo"
                 height="auto"
-                width="200px"
+                width="160px"
                 flexShrink={0}
                 style={{ cursor: "pointer !important" }}
                 _hover={{ cursor: "pointer !important" }}
@@ -162,23 +162,12 @@ export default function TracksHUD() {
                     my={2}
                   >
                     <Button
-                      size="sm"
+                      size="md"
                       width="auto"
-                      px={4}
-                      py={2}
-                      bg="purple.400"
-                      color="black"
-                      variant="solid"
-                      _hover={{
-                        bg: "#purple.500",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                      }}
-                      transition="all 0.2s ease"
-                      borderRadius="full"
-                      fontWeight="medium"
-                      letterSpacing="0.5px"
-                      flexShrink={0}
+                      px={6}
+                      py={3}
+                      colorScheme="brand"
+                      colorScheme="brand"
                       onClick={handleLoginClick}
                     >
                       Login
@@ -197,7 +186,7 @@ export default function TracksHUD() {
                     <Box as="span" display="inline" whiteSpace="nowrap">
                       <Link
                         href="mailto:setlistscout@gmail.com"
-                        color="teal.400"
+                        color="accent.400"
                       >
                         setlistscout@gmail.com
                       </Link>
@@ -216,23 +205,11 @@ export default function TracksHUD() {
                       my={2}
                     >
                       <Button
-                        size="sm"
+                        size="md"
                         width="auto"
-                        px={4}
-                        py={2}
-                        bg="purple.400"
-                        color="black"
-                        variant="solid"
-                        _hover={{
-                          bg: "#purple.500",
-                          transform: "translateY(-2px)",
-                          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                        }}
-                        transition="all 0.2s ease"
-                        borderRadius="full"
-                        fontWeight="medium"
-                        letterSpacing="0.5px"
-                        flexShrink={0}
+                        px={6}
+                        py={3}
+                        colorScheme="brand"
                         onClick={createPlaylist}
                         isDisabled={isCreatingPlaylist}
                       >
@@ -250,7 +227,7 @@ export default function TracksHUD() {
                       bg="gray.700"
                       borderRadius="md"
                     >
-                      <Spinner size="sm" color="#1DB954" mr={2} />
+                      <Spinner size="sm" color="spotify.green" mr={2} />
                       <Text>Creating playlist...</Text>
                     </Flex>
                   )}
@@ -263,10 +240,12 @@ export default function TracksHUD() {
                   href={playlistUrl}
                   isExternal
                   mt={4}
-                  color="#1DB954"
+                  color="spotify.green"
                   fontWeight="bold"
                   display="flex"
                   alignItems="center"
+                  _hover={{ color: "#1ed760" }}
+                  transition="color 0.2s"
                 >
                   View your playlist on Spotify <ExternalLinkIcon ml={1} />
                 </Link>

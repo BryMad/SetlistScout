@@ -19,7 +19,8 @@ export default function Home() {
     <Grid templateColumns={columns} gap={6} width="100%" maxWidth="100%">
       <GridItem width="100%">
         <Box
-          py={{ base: 4, md: 4 }}
+          pt={{ base: 8, md: 10 }}
+          pb={{ base: 4, md: 4 }}
           px={{ base: 4, md: 4 }}
           width="100%"
           mb={{ base: 2, md: 0 }}
@@ -28,7 +29,7 @@ export default function Home() {
         </Box>
       </GridItem>
       <GridItem width="100%">
-        <Box p={{ base: 2, md: 4 }} width="100%">
+        <Box pt={{ base: 8, md: 10 }} pb={{ base: 2, md: 4 }} px={{ base: 2, md: 4 }} width="100%">
           <TracksHUD />
         </Box>
       </GridItem>
