@@ -22,13 +22,15 @@ import TourDropdown from "./TourDropdown";
  */
 export default function UserInput() {
   const { 
-    fetchTourOptions, 
+    fetchTourOptions,
+    fetchTourData,
     selectTour,
     analysisLoading, 
     loading, 
     searchForArtistsDeezer,
     tourOptions,
-    resetSearch
+    resetSearch,
+    advancedSearchEnabled
   } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
@@ -52,13 +54,13 @@ export default function UserInput() {
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
-  // Show tour dropdown when tour options are available
+  // Show tour dropdown when tour options are available (only in advanced mode)
   useEffect(() => {
-    if (tourOptions.length > 0) {
+    if (advancedSearchEnabled && tourOptions.length > 0) {
       setShowTourDropdown(true);
       setSuggestions([]); // Hide artist suggestions
     }
-  }, [tourOptions]);
+  }, [tourOptions, advancedSearchEnabled]);
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -106,7 +108,17 @@ export default function UserInput() {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
-    await fetchTourOptions(artist);
+    
+    if (advancedSearchEnabled) {
+      // New flow: show tour selection dropdown
+      await fetchTourOptions(artist);
+    } else {
+      // Original flow: directly process the most recent tour
+      await fetchTourData(artist);
+      // Reset the form
+      setArtistQuery("");
+      setSelectedArtist(null);
+    }
   };
 
   /**

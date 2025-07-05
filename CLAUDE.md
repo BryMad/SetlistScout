@@ -65,15 +65,29 @@ cd frontend && npm run lint
    - SSE manager utility handles connection lifecycle
 
 4. **Data Flow**
-   - User inputs Setlist.fm URL → Backend fetches artist/tour data
+   - **Original Mode**: User selects artist → Automatically processes most recent tour
+   - **Advanced Mode**: User selects artist → Analyzes tours → User selects specific tour
    - MusicBrainz validates artist mapping
    - Setlists aggregated and songs tallied by frequency
    - Optional: Create Spotify playlist with auth
 
+5. **Feature Flag System**
+   - `advancedSearchEnabled` flag in SetlistContext controls search behavior
+   - Default: `false` (original user experience)
+   - When `true`: Shows advanced tour selection interface
+   - Toggle function available: `toggleAdvancedSearch()`
+
 ### API Endpoints
 
 - **Auth**: `/auth/login`, `/auth/callback`, `/auth/refresh`, `/auth/logout`
-- **Setlist**: `/setlist/` (sync), `/setlist/search_with_updates` (streaming)
+- **Setlist**: 
+  - `/setlist/` (sync - original flow)
+  - `/setlist/search_with_updates` (streaming - original flow)
+  - `/setlist/analyze_tours` (advanced search - tour analysis)
+  - `/setlist/process_selected_tour_with_updates` (advanced search - with SSE)
+  - `/setlist/process_selected_tour` (advanced search - without SSE)
+  - `/setlist/artist_search` (Spotify artist search)
+  - `/setlist/artist_search_deezer` (Deezer artist search)
 - **Playlist**: `/playlist/create_playlist` (requires auth)
 - **SSE**: `/sse/connect` (real-time updates)
 - **Consent**: `/consent/log`, `/consent/verify/:id`
@@ -135,11 +149,11 @@ cd frontend && npm run lint
 
 ## Advanced Search Feature Implementation Status
 
-### ✅ COMPLETED: Step 1 - Enhanced Default Flow
+### ✅ COMPLETED: Step 1 - Complete Advanced Search Infrastructure
 
 **Implementation Date**: July 2025
 
-The enhanced default flow has been successfully implemented with the following features:
+**Current Status**: Feature flag system implemented - advanced search functionality built and preserved while maintaining original user experience.
 
 #### Backend Enhancements
 - **Enhanced Data Fetching**: Modified search to fetch up to 60 shows (3 API calls) instead of 20
@@ -149,56 +163,83 @@ The enhanced default flow has been successfully implemented with the following f
   - Automatically detects multiple tours with metadata (date ranges, show counts, staleness indicators)
   - Filters out VIP/soundcheck tours
   - Identifies orphan shows (individual shows not part of named tours)
-- **New API Endpoints**:
+- **Dual API Endpoints**:
   - `/analyze_tours` - Returns tour options with metadata for user selection
   - `/process_selected_tour_with_updates` - Processes selected tour with SSE progress updates
   - `/process_selected_tour` - Non-SSE version for tour processing
 - **Fixed Deezer Integration**: Added missing `deezerApiCalls.js` utility with proper image format
 
 #### Frontend Enhancements
-- **Nested Dropdown UI**: Replaced full-page navigation with elegant nested dropdown
-  - `TourDropdown` component appears to the right of artist selection
+- **Feature Flag System**: `advancedSearchEnabled` controls which search flow is used
+  - **Default (false)**: Original behavior - select artist → immediate results
+  - **Advanced (true)**: Enhanced flow - select artist → tour selection → results
+- **TourDropdown Component**: Complete tour selection interface
+  - Nested dropdown appears inline with artist search
   - Shows "Checking tours..." during analysis
   - Clean, compact tour selection with metadata
-- **Enhanced User Experience**:
-  - "Recommended!" badge for most recent tours
-  - "Older tour" indicators for tours >2 years old
-  - Year ranges and show counts for each tour option
-  - "Shows with no tour info" option for orphan shows
-- **Maintained SSE Integration**: Full real-time progress updates during tour processing
-  - Shows progress for setlist fetching, song analysis, and Spotify lookups
-  - Proper error handling and status updates
+  - "Recommended!" badges and staleness indicators
+- **Preserved Original Flow**: Complete backward compatibility
+  - Uses `fetchTourData()` for immediate processing
+  - No UI changes visible to users in default mode
+- **Mobile UI Refinements**: Enhanced TracksHUD component
+  - Consistent button sizing across all screen sizes
+  - Right-aligned stats section with vertical divider
+  - 2px border radius on album artwork (Spotify guidelines)
+  - Optimized spacing and layout for mobile devices
 
-#### Key Features Delivered
-1. **Smart Tour Detection**: Analyzes 60 recent shows to identify all available tours
-2. **Inline Tour Selection**: No page navigation - dropdown appears inline with artist search
-3. **Tour Metadata**: Date ranges, show counts, recency indicators, and staleness warnings
-4. **Orphan Show Handling**: Option for individual shows not part of named tours
-5. **Real-time Progress**: SSE updates throughout the processing pipeline
-6. **Improved API Efficiency**: Optimized requests with proper rate limiting and logging
+#### Key Implementation Features
+1. **Seamless Mode Switching**: Single flag controls entire user experience
+2. **Complete Infrastructure**: All advanced search functionality ready for activation
+3. **Zero User Impact**: Live site maintains original behavior and appearance
+4. **Development Ready**: Easy to toggle between modes for testing/development
+5. **SSE Integration**: Full real-time progress updates in both modes
+6. **Mobile Optimization**: Responsive design improvements across all components
 
-#### Current User Flow
+#### Current Live User Flow (Default Mode)
+1. **Artist Search**: User types artist name → Deezer suggestions appear
+2. **Artist Selection**: User clicks artist → Immediate processing of most recent tour
+3. **Progress Updates**: Real-time SSE updates during processing
+4. **Results**: Song data appears in TracksHUD with full setlist analysis
+
+#### Advanced Mode Flow (Available via Flag)
 1. **Artist Search**: User types artist name → Deezer suggestions appear
 2. **Artist Selection**: User clicks artist → Tour analysis begins ("Checking tours...")
 3. **Tour Selection**: Dropdown appears with tour options and metadata
 4. **Processing**: Real-time progress updates as selected tour is processed
 5. **Results**: Song data appears in TracksHUD with full setlist analysis
 
-### 🔄 NEXT STEPS: Remaining Implementation
+### 🔄 NEXT STEPS: Future Development
 
-#### Step 2: Advanced Search Toggle (Future)
-- Add "Advanced options" toggle to main search UI
-- Create year picker component (only visible in advanced mode)
-- Keep current enhanced flow as primary experience
+#### Immediate Options
+- **UI Toggle**: Add advanced search toggle button to interface
+- **Development Mode**: Change `advancedSearchEnabled: false` to `true` for testing
 
-#### Step 3: Year-based Search Implementation (Future)
-- Add backend endpoint for year-filtered search
-- Implement intelligent sampling for large result sets
-- Group results by tour name and present selection UI
+#### Future Enhancements
+- **Year-based Filtering**: Add date range selection to advanced mode
+- **Tour Comparison**: Allow comparing setlists between different tours
+- **Advanced Analytics**: Show tour evolution and song popularity trends
+
+### Technical Implementation Details
+
+#### Feature Flag Location
+- **File**: `frontend/src/context/SetlistContext.jsx:38`
+- **Default**: `advancedSearchEnabled: false`
+- **Toggle Function**: `toggleAdvancedSearch()` available in context
+
+#### Flow Control Logic
+- **File**: `frontend/src/components/UserInput.jsx:112-121`
+- **Logic**: Conditional branch based on `advancedSearchEnabled` flag
+- **Fallback**: Original `fetchTourData()` maintains legacy behavior
+
+#### Key Components
+- **TourDropdown**: `frontend/src/components/TourDropdown.jsx`
+- **SetlistContext**: Enhanced with tour analysis state and methods
+- **API Services**: Dual endpoint support in `frontend/src/api/setlistService.js`
 
 ### Technical Notes
 - All tour grouping uses `tour.name` property from Setlist.fm API
 - Show counting is capped at 60 to prevent data overflow
-- SSE integration maintained for real-time user feedback
-- Mobile-responsive design implemented for all new components
+- SSE integration maintained for real-time user feedback in both modes
+- Mobile-responsive design implemented for all components
 - Comprehensive error handling and fallback mechanisms in place
+- Zero breaking changes - complete backward compatibility maintained

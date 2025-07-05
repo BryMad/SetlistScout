@@ -34,6 +34,8 @@ export const SetlistProvider = ({ children }) => {
     tourOptions: [],
     selectedArtist: null,
     analysisLoading: false,
+    // Feature flag for advanced search mode
+    advancedSearchEnabled: false,
   });
 
   /**
@@ -327,6 +329,16 @@ export const SetlistProvider = ({ children }) => {
     }));
   }, []);
 
+  /**
+   * Toggle advanced search mode
+   */
+  const toggleAdvancedSearch = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      advancedSearchEnabled: !prev.advancedSearchEnabled,
+    }));
+  }, []);
+
   // Value provided to consumers
   const contextValue = {
     ...state,
@@ -341,6 +353,7 @@ export const SetlistProvider = ({ children }) => {
     fetchTourOptions,
     selectTour,
     resetSearch,
+    toggleAdvancedSearch,
   };
 
   return (
