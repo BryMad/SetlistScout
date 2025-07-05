@@ -85,6 +85,29 @@ cd frontend && npm run lint
 - `/src/context/` - Auth and Setlist React contexts
 - `/src/api/` - API service layer
 - `/src/utils/` - Helper functions
+- `/src/theme.js` - Chakra UI theme configuration
+
+### Design System & Styling
+
+1. **Theme Configuration**
+   - Custom Chakra UI theme in `src/theme.js`
+   - Brand colors: Indigo palette (`brand.500`, etc.)
+   - Accent colors: Rose palette (`accent.500`, etc.)
+   - Spotify colors: Isolated to `spotify.green` for Spotify-specific actions only
+   - Modern shadow, border radius, and spacing scales
+
+2. **Styling Approach**
+   - Chakra UI component library with custom theme
+   - No CSS modules or styled-components
+   - Minimal global CSS (only in `src/index.css`)
+   - Button hover effects and micro-interactions built into theme
+   - Responsive design using Chakra's responsive props
+
+3. **Brand Identity**
+   - Independent visual identity (not affiliated with Spotify)
+   - Spotify green (#1DB954) used ONLY for Spotify-specific actions
+   - All other UI elements use indigo brand colors or rose accents
+   - Modern glass-morphism effects and subtle animations
 
 ### Backend Structure
 
@@ -109,3 +132,73 @@ cd frontend && npm run lint
 7. **Security**: Never log or expose API tokens. All sensitive data in environment variables.
 
 8. **Deployment**: Configured for Render.com with build commands in root package.json.
+
+## Advanced Search Feature Implementation Status
+
+### ✅ COMPLETED: Step 1 - Enhanced Default Flow
+
+**Implementation Date**: July 2025
+
+The enhanced default flow has been successfully implemented with the following features:
+
+#### Backend Enhancements
+- **Enhanced Data Fetching**: Modified search to fetch up to 60 shows (3 API calls) instead of 20
+  - New functions: `getMultipleArtistPages()` and `getMultipleArtistPagesByMBID()`
+  - Added logging and show count validation to prevent data overflow
+- **Smart Tour Detection**: Added `analyzeTours()` function to process multiple pages and identify all tours
+  - Automatically detects multiple tours with metadata (date ranges, show counts, staleness indicators)
+  - Filters out VIP/soundcheck tours
+  - Identifies orphan shows (individual shows not part of named tours)
+- **New API Endpoints**:
+  - `/analyze_tours` - Returns tour options with metadata for user selection
+  - `/process_selected_tour_with_updates` - Processes selected tour with SSE progress updates
+  - `/process_selected_tour` - Non-SSE version for tour processing
+- **Fixed Deezer Integration**: Added missing `deezerApiCalls.js` utility with proper image format
+
+#### Frontend Enhancements
+- **Nested Dropdown UI**: Replaced full-page navigation with elegant nested dropdown
+  - `TourDropdown` component appears to the right of artist selection
+  - Shows "Checking tours..." during analysis
+  - Clean, compact tour selection with metadata
+- **Enhanced User Experience**:
+  - "Recommended!" badge for most recent tours
+  - "Older tour" indicators for tours >2 years old
+  - Year ranges and show counts for each tour option
+  - "Shows with no tour info" option for orphan shows
+- **Maintained SSE Integration**: Full real-time progress updates during tour processing
+  - Shows progress for setlist fetching, song analysis, and Spotify lookups
+  - Proper error handling and status updates
+
+#### Key Features Delivered
+1. **Smart Tour Detection**: Analyzes 60 recent shows to identify all available tours
+2. **Inline Tour Selection**: No page navigation - dropdown appears inline with artist search
+3. **Tour Metadata**: Date ranges, show counts, recency indicators, and staleness warnings
+4. **Orphan Show Handling**: Option for individual shows not part of named tours
+5. **Real-time Progress**: SSE updates throughout the processing pipeline
+6. **Improved API Efficiency**: Optimized requests with proper rate limiting and logging
+
+#### Current User Flow
+1. **Artist Search**: User types artist name → Deezer suggestions appear
+2. **Artist Selection**: User clicks artist → Tour analysis begins ("Checking tours...")
+3. **Tour Selection**: Dropdown appears with tour options and metadata
+4. **Processing**: Real-time progress updates as selected tour is processed
+5. **Results**: Song data appears in TracksHUD with full setlist analysis
+
+### 🔄 NEXT STEPS: Remaining Implementation
+
+#### Step 2: Advanced Search Toggle (Future)
+- Add "Advanced options" toggle to main search UI
+- Create year picker component (only visible in advanced mode)
+- Keep current enhanced flow as primary experience
+
+#### Step 3: Year-based Search Implementation (Future)
+- Add backend endpoint for year-filtered search
+- Implement intelligent sampling for large result sets
+- Group results by tour name and present selection UI
+
+### Technical Notes
+- All tour grouping uses `tour.name` property from Setlist.fm API
+- Show counting is capped at 60 to prevent data overflow
+- SSE integration maintained for real-time user feedback
+- Mobile-responsive design implemented for all new components
+- Comprehensive error handling and fallback mechanisms in place

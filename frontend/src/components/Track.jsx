@@ -217,7 +217,7 @@ export default function Track({ item, tourData }) {
             alt="Album cover"
             boxSize="64px"
             objectFit="cover"
-            borderRadius="md"
+            borderRadius="2px"
             boxShadow="md"
           />
         </Box>
@@ -244,19 +244,18 @@ export default function Track({ item, tourData }) {
 
       {/* Right section: Enhanced likelihood HUD */}
       <MotionFlex
-        bg={statsBg}
         borderRadius="md"
         p={2}
-        width={isMobile ? "100%" : "240px"}
+        width={isMobile ? "100%" : "auto"}
         align="center"
-        justify="space-between"
+        justify="flex-end"
         boxShadow="none"
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.35, delay: 0.1 }} // Reduced from 0.65/0.2 to 0.35/0.1
       >
         {/* Circular progress to visualize likelihood */}
-        <Box position="relative">
+        <Box position="relative" mr={4}>
           <CircularProgress
             value={animatedPercentage}
             size="55px"
@@ -270,41 +269,56 @@ export default function Track({ item, tourData }) {
           </CircularProgress>
         </Box>
 
+        {/* Vertical divider */}
+        <Box
+          width="1px"
+          height="50px"
+          bg={useColorModeValue("gray.200", "gray.600")}
+          mr={4}
+        />
+
         {/* Likelihood assessment, show count, and Spotify button */}
         <Flex
           direction="column"
-          mx={2}
-          width="100%"
+          width="auto"
           height="100%"
           justify="space-between"
+          align="flex-end"
         >
           <Badge
             colorScheme={likelihoodColor}
             mb={1}
             px={2}
-            alignSelf="flex-start"
+            alignSelf="flex-end"
           >
             {getLikelihoodText()}
           </Badge>
 
-          <Text fontSize="xs" color={mutedColor} mb={1}>
+          <Text 
+            fontSize="xs" 
+            color={mutedColor} 
+            mb={1}
+            textAlign="right"
+          >
             {getDisplayCount()} of {tourData.totalShows} shows
           </Text>
 
-          {/* Spotify Button - with exact Spotify brand green */}
+          {/* Spotify Button - consistent size across all screen sizes */}
           {item.uri && (
             <Button
               as="a"
               href={getSpotifyLink(item.uri)}
               size="xs"
               variant="spotify"
-              width="100%"
+              width="auto"
+              maxW="120px"
               height="24px"
               mt={1}
               fontWeight="medium"
               fontSize="xs"
               target="_blank"
               rel="noopener noreferrer"
+              alignSelf="flex-end"
             >
               OPEN SPOTIFY
             </Button>

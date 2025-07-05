@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
+import TourDropdown from "./TourDropdown";
 
 /**
  * Component for artist search input
@@ -20,12 +21,21 @@ import { useSpotify } from "../hooks/useSpotify";
  * - Uses Spotify API for setlist and playlist functionality
  */
 export default function UserInput() {
-  const { fetchTourData, loading, searchForArtistsDeezer } = useSetlist();
+  const { 
+    fetchTourOptions, 
+    selectTour,
+    analysisLoading, 
+    loading, 
+    searchForArtistsDeezer,
+    tourOptions,
+    resetSearch
+  } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [showTourDropdown, setShowTourDropdown] = useState(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -42,10 +52,19 @@ export default function UserInput() {
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
+  // Show tour dropdown when tour options are available
+  useEffect(() => {
+    if (tourOptions.length > 0) {
+      setShowTourDropdown(true);
+      setSuggestions([]); // Hide artist suggestions
+    }
+  }, [tourOptions]);
+
   useEffect(() => {
     function handleClickOutside(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
         setSuggestions([]);
+        setShowTourDropdown(false);
       }
     }
 
@@ -71,7 +90,7 @@ export default function UserInput() {
   };
 
   /**
-   * Fetches tour information for a selected artist
+   * Fetches tour options for a selected artist
    * @param {Object} artist The selected artist object
    * @async
    */
@@ -87,10 +106,31 @@ export default function UserInput() {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
-    await fetchTourData(artist);
-    // Reset the form
+    await fetchTourOptions(artist);
+  };
+
+  /**
+   * Handles tour selection and processes the setlist data
+   * @param {Object} tour The selected tour object
+   * @async
+   */
+  const handleTourSelect = async (tour) => {
+    setShowTourDropdown(false);
+    await selectTour(tour);
+    // Reset the form after successful processing
     setArtistQuery("");
     setSelectedArtist(null);
+  };
+
+  /**
+   * Handles clicking outside or starting a new search
+   */
+  const handleReset = () => {
+    setShowTourDropdown(false);
+    setArtistQuery("");
+    setSelectedArtist(null);
+    setSuggestions([]);
+    resetSearch();
   };
 
   return (
@@ -117,7 +157,7 @@ export default function UserInput() {
         bg="gray.800"
         borderRadius="xl"
         width="100%"
-        disabled={loading}
+        disabled={loading || analysisLoading}
         _hover={{ bg: "gray.700" }}
         _focus={{ bg: "gray.700", borderColor: "brand.400" }}
         transition="all 0.2s"
@@ -178,6 +218,14 @@ export default function UserInput() {
           </List>
         </Box>
       )}
+
+      {/* Tour Dropdown */}
+      <TourDropdown
+        tourOptions={tourOptions}
+        onTourSelect={handleTourSelect}
+        isLoading={analysisLoading}
+        isVisible={showTourDropdown || analysisLoading}
+      />
     </Box>
   );
 }
