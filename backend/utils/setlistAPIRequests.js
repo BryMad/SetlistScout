@@ -89,6 +89,174 @@ const getArtistPageByName = limiter.wrap(getArtistPageByNameRaw);
 const getArtistPageByMBID = limiter.wrap(getArtistPageByMBIDRaw);
 
 /**
+ * Gets multiple pages of artist setlists for better tour detection
+ * - Fetches up to 3 pages (60 shows) by default
+ * - Helps identify multiple tours in recent history
+ * 
+ * @param {Object} artist Artist object with name
+ * @param {number} pageCount Number of pages to fetch (default: 3)
+ * @returns {Array} Array of page data
+ * @async
+ */
+const getMultipleArtistPages = async (artist, pageCount = 3) => {
+  logger.info('Fetching multiple artist pages for tour detection', { artist: artist.name, pageCount });
+  const encodedArtistName = encodeURIComponent(`"${artist.name}"`);
+  const allPages = [];
+  
+  try {
+    // Fetch first page
+    const firstPage = await limiter.schedule(() => {
+      const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=1`;
+      return axiosGetWithRetry(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.SETLIST_API_KEY,
+        },
+      });
+    });
+    
+    allPages.push(firstPage.data);
+    const totalAvailable = Math.ceil(firstPage.data.total / firstPage.data.itemsPerPage);
+    const pagesToFetch = Math.min(pageCount, totalAvailable);
+    
+    // Ensure we don't exceed the intended show limit (20 shows per page)
+    const maxShows = pageCount * 20;
+    
+    // Fetch additional pages if available
+    if (pagesToFetch > 1) {
+      const promises = [];
+      for (let i = 2; i <= pagesToFetch; i++) {
+        const request = limiter.schedule(() => {
+          const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=${i}`;
+          return axiosGetWithRetry(url, {
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": process.env.SETLIST_API_KEY,
+            },
+          });
+        });
+        promises.push(request);
+      }
+      
+      const additionalResponses = await Promise.all(promises);
+      additionalResponses.forEach(resp => {
+        allPages.push(resp.data);
+      });
+    }
+    
+    const totalShows = allPages.reduce((sum, page) => sum + page.setlist.length, 0);
+    
+    logger.info('Successfully fetched artist pages', { 
+      artist: artist.name, 
+      pagesRetrieved: allPages.length,
+      totalShows: totalShows,
+      maxIntended: maxShows
+    });
+    
+    // Log if we got more shows than intended
+    if (totalShows > maxShows) {
+      logger.warn('Retrieved more shows than intended', {
+        artist: artist.name,
+        totalShows,
+        maxIntended: maxShows,
+        excess: totalShows - maxShows
+      });
+    }
+    
+    return allPages;
+  } catch (error) {
+    logger.error('Error fetching multiple artist pages', {
+      artist: artist.name,
+      error: error.message
+    });
+    throw error;
+  }
+};
+
+/**
+ * Gets multiple pages of artist setlists by MBID
+ * - Similar to getMultipleArtistPages but uses MusicBrainz ID
+ * 
+ * @param {string} mbid MusicBrainz ID
+ * @param {number} pageCount Number of pages to fetch (default: 3)
+ * @returns {Array} Array of page data
+ * @async
+ */
+const getMultipleArtistPagesByMBID = async (mbid, pageCount = 3) => {
+  logger.info('Fetching multiple artist pages by MBID for tour detection', { mbid, pageCount });
+  const allPages = [];
+  
+  try {
+    // Fetch first page
+    const firstPage = await limiter.schedule(() => {
+      const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1`;
+      return axiosGetWithRetry(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.SETLIST_API_KEY,
+        },
+      });
+    });
+    
+    allPages.push(firstPage.data);
+    const totalAvailable = Math.ceil(firstPage.data.total / firstPage.data.itemsPerPage);
+    const pagesToFetch = Math.min(pageCount, totalAvailable);
+    
+    // Ensure we don't exceed the intended show limit (20 shows per page)
+    const maxShows = pageCount * 20;
+    
+    // Fetch additional pages if available
+    if (pagesToFetch > 1) {
+      const promises = [];
+      for (let i = 2; i <= pagesToFetch; i++) {
+        const request = limiter.schedule(() => {
+          const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=${i}`;
+          return axiosGetWithRetry(url, {
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": process.env.SETLIST_API_KEY,
+            },
+          });
+        });
+        promises.push(request);
+      }
+      
+      const additionalResponses = await Promise.all(promises);
+      additionalResponses.forEach(resp => {
+        allPages.push(resp.data);
+      });
+    }
+    
+    const totalShows = allPages.reduce((sum, page) => sum + page.setlist.length, 0);
+    
+    logger.info('Successfully fetched artist pages by MBID', { 
+      mbid, 
+      pagesRetrieved: allPages.length,
+      totalShows: totalShows,
+      maxIntended: maxShows
+    });
+    
+    // Log if we got more shows than intended
+    if (totalShows > maxShows) {
+      logger.warn('Retrieved more shows than intended by MBID', {
+        mbid,
+        totalShows,
+        maxIntended: maxShows,
+        excess: totalShows - maxShows
+      });
+    }
+    
+    return allPages;
+  } catch (error) {
+    logger.error('Error fetching multiple artist pages by MBID', {
+      mbid,
+      error: error.message
+    });
+    throw error;
+  }
+};
+
+/**
  * Gets tour name from a setlist
  * 
  * @param {string} listID Setlist ID
@@ -244,4 +412,13 @@ const getAllTourSongsByMBID = async (artistName, mbid, tourName) => {
   }
 };
 
-module.exports = { getArtistPageByMBID, getArtistPageByName, getTourName, getAllTourSongs, getAllTourSongsByMBID, delay };
+module.exports = { 
+  getArtistPageByMBID, 
+  getArtistPageByName, 
+  getMultipleArtistPages, 
+  getMultipleArtistPagesByMBID,
+  getTourName, 
+  getAllTourSongs, 
+  getAllTourSongsByMBID, 
+  delay 
+};

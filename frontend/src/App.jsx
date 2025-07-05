@@ -8,7 +8,6 @@ import {
   useLocation,
 } from "react-router-dom";
 import theme from "./theme";
-import "./App.css";
 import NavBar from "./components/NavBar";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
