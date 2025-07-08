@@ -10,16 +10,6 @@ import {
   Text,
   Spinner,
   Flex,
-  Switch,
-  VStack,
-  FormControl,
-  FormLabel,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Collapse,
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
@@ -33,7 +23,6 @@ import TourDropdown from "./TourDropdown";
 export default function UserInput() {
   const { 
     fetchTourOptions,
-    fetchTourOptionsForYear,
     fetchTourData,
     selectTour,
     analysisLoading, 
@@ -41,10 +30,7 @@ export default function UserInput() {
     searchForArtistsDeezer,
     tourOptions,
     resetSearch,
-    advancedSearchEnabled,
-    toggleAdvancedSearch,
-    selectedYear,
-    setSelectedYear
+    advancedSearchEnabled
   } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
@@ -124,14 +110,8 @@ export default function UserInput() {
     setSelectedArtist(artist);
     
     if (advancedSearchEnabled) {
-      // Advanced flow: check if year is selected
-      if (selectedYear) {
-        // Year-filtered search: show tour selection dropdown for specific year
-        await fetchTourOptionsForYear(artist, selectedYear);
-      } else {
-        // Advanced search without year: show tour selection dropdown for recent tours
-        await fetchTourOptions(artist);
-      }
+      // New flow: show tour selection dropdown
+      await fetchTourOptions(artist);
     } else {
       // Original flow: directly process the most recent tour
       await fetchTourData(artist);
@@ -165,14 +145,6 @@ export default function UserInput() {
     resetSearch();
   };
 
-  // Reset form when advanced search is toggled off
-  useEffect(() => {
-    if (!advancedSearchEnabled) {
-      setSelectedYear(null);
-      handleReset();
-    }
-  }, [advancedSearchEnabled]);
-
   return (
     <Box
       ref={containerRef}
@@ -187,54 +159,6 @@ export default function UserInput() {
       <Text fontWeight="semibold" fontSize="md" mb={3} color="gray.300">
         Enter an Artist to see what they're playing live:
       </Text>
-
-      {/* Advanced Search Toggle */}
-      <VStack spacing={3} mb={4} align="stretch">
-        <FormControl display="flex" alignItems="center" justifyContent="space-between">
-          <FormLabel htmlFor="advanced-search" mb="0" color="gray.300" fontSize="sm">
-            Advanced Search (Historic Tours)
-          </FormLabel>
-          <Switch
-            id="advanced-search"
-            isChecked={advancedSearchEnabled}
-            onChange={toggleAdvancedSearch}
-            colorScheme="brand"
-            disabled={loading || analysisLoading}
-          />
-        </FormControl>
-
-        {/* Year Input - Only show when advanced search is enabled */}
-        <Collapse in={advancedSearchEnabled} animateOpacity>
-          <FormControl>
-            <FormLabel color="gray.400" fontSize="sm" mb={2}>
-              Year (optional - leave empty for recent tours)
-            </FormLabel>
-            <NumberInput
-              value={selectedYear || ""}
-              onChange={(valueString) => {
-                const value = parseInt(valueString);
-                setSelectedYear(isNaN(value) ? null : value);
-              }}
-              min={1960}
-              max={new Date().getFullYear()}
-              size="md"
-              disabled={loading || analysisLoading}
-            >
-              <NumberInputField
-                placeholder={`e.g., ${new Date().getFullYear() - 1}`}
-                bg="gray.800"
-                borderColor="gray.600"
-                _hover={{ borderColor: "gray.500" }}
-                _focus={{ borderColor: "brand.400", bg: "gray.700" }}
-              />
-              <NumberInputStepper>
-                <NumberIncrementStepper color="gray.400" />
-                <NumberDecrementStepper color="gray.400" />
-              </NumberInputStepper>
-            </NumberInput>
-          </FormControl>
-        </Collapse>
-      </VStack>
 
       <Input
         placeholder="Search for an artist..."

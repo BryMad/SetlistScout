@@ -4,9 +4,7 @@ import {
   fetchSetlistById,
   searchArtists,
   analyzeTours,
-  analyzeToursForYear,
   processSelectedTourWithUpdates,
-  convertDeezerToSpotifyArtist,
 } from "../api/setlistService";
 
 // Create the context
@@ -38,8 +36,6 @@ export const SetlistProvider = ({ children }) => {
     analysisLoading: false,
     // Feature flag for advanced search mode
     advancedSearchEnabled: false,
-    // Year filtering state
-    selectedYear: null,
   });
 
   /**
@@ -211,30 +207,6 @@ export const SetlistProvider = ({ children }) => {
   }, []);
 
   /**
-   * Check if an artist object is from Deezer (needs conversion to Spotify)
-   * 
-   * @param {Object} artist Artist object
-   * @returns {boolean} True if artist is from Deezer
-   */
-  const isDeezerArtist = (artist) => {
-    return artist.url && artist.url.includes('deezer.com');
-  };
-
-  /**
-   * Convert Deezer artist to Spotify artist if needed
-   * 
-   * @param {Object} artist Artist object (could be Deezer or Spotify)
-   * @returns {Promise<Object>} Spotify artist object
-   */
-  const ensureSpotifyArtist = async (artist) => {
-    if (isDeezerArtist(artist)) {
-      console.log("Converting Deezer artist to Spotify for advanced search:", artist.name);
-      return await convertDeezerToSpotifyArtist(artist);
-    }
-    return artist;
-  };
-
-  /**
    * Analyze tours for an artist and show tour selection
    *
    * @param {Object} artist Artist object with name, id, and url
@@ -250,10 +222,7 @@ export const SetlistProvider = ({ children }) => {
     }));
 
     try {
-      // Convert Deezer artist to Spotify artist if needed
-      const spotifyArtist = await ensureSpotifyArtist(artist);
-      
-      const result = await analyzeTours(spotifyArtist);
+      const result = await analyzeTours(artist);
       console.log("Tour analysis result:", result);
 
       setState((prev) => ({
@@ -367,63 +336,7 @@ export const SetlistProvider = ({ children }) => {
     setState((prev) => ({
       ...prev,
       advancedSearchEnabled: !prev.advancedSearchEnabled,
-      // Reset year when toggling off advanced search
-      selectedYear: prev.advancedSearchEnabled ? null : prev.selectedYear,
     }));
-  }, []);
-
-  /**
-   * Set the selected year for filtering
-   * 
-   * @param {number|null} year Year to filter by, or null to clear
-   */
-  const setSelectedYear = useCallback((year) => {
-    setState((prev) => ({
-      ...prev,
-      selectedYear: year,
-    }));
-  }, []);
-
-  /**
-   * Fetch tour options for a specific year
-   *
-   * @param {Object} artist Artist object with name, id, and url
-   * @param {number} year Year to filter by
-   * @returns {Promise<void>}
-   */
-  const fetchTourOptionsForYear = useCallback(async (artist, year) => {
-    setState((prev) => ({
-      ...prev,
-      analysisLoading: true,
-      error: null,
-      selectedArtist: artist,
-      tourOptions: [],
-    }));
-
-    try {
-      // Convert Deezer artist to Spotify artist if needed
-      const spotifyArtist = await ensureSpotifyArtist(artist);
-      
-      const result = await analyzeToursForYear(spotifyArtist, year);
-      console.log("Tour analysis result for year:", result);
-
-      setState((prev) => ({
-        ...prev,
-        tourOptions: result.tourOptions,
-        selectedArtist: artist,
-        analysisLoading: false,
-      }));
-
-      return { success: true, data: result };
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        analysisLoading: false,
-        error: error.message || "Failed to analyze tours for the specified year",
-      }));
-
-      throw error;
-    }
   }, []);
 
   // Value provided to consumers
@@ -438,11 +351,9 @@ export const SetlistProvider = ({ children }) => {
     updateProgress,
     // New tour selection functions
     fetchTourOptions,
-    fetchTourOptionsForYear,
     selectTour,
     resetSearch,
     toggleAdvancedSearch,
-    setSelectedYear,
   };
 
   return (
