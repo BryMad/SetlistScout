@@ -5,7 +5,8 @@ const axios = require('axios');
 const {
   getTourName,
   getAllTourSongs, getArtistPageByName, getArtistPageByMBID, delay,
-  getAllTourSongsByMBID, getMultipleArtistPages, getMultipleArtistPagesByMBID
+  getAllTourSongsByMBID, getMultipleArtistPages, getMultipleArtistPagesByMBID,
+  getArtistPagesSmartPagination, getArtistPagesSmartPaginationByMBID
 } = require("../utils/setlistAPIRequests.js");
 const { getSongTally, getTour, chooseTour, analyzeTours } = require("../utils/setlistFormatData.js");
 const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/spotifyAPIRequests.js");
@@ -343,6 +344,112 @@ router.post('/analyze_tours', async (req, res) => {
   } catch (error) {
     console.error('Error in /analyze_tours route:', error);
     if (error.response && error.response.status === 504) {
+      res.status(504).json({ error: "Setlist.fm service is currently unavailable. Please try again later." });
+    } else if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error || "An error occurred while analyzing tours." });
+    } else {
+      res.status(500).json({ error: "Internal Server Error. Please try again later." });
+    }
+  }
+});
+
+/**
+ * Endpoint: POST /analyze_tours_by_year
+ * Analyzes tours for an artist in a specific year using smart pagination
+ * 
+ * @param {Object} req.body.artist Artist information object
+ * @param {number} req.body.year Year to filter by
+ * @returns {Object} Tour analysis with options for user selection
+ */
+router.post('/analyze_tours_by_year', async (req, res) => {
+  try {
+    const { artist, year } = req.body;
+
+    // Validate year parameter
+    if (!year || typeof year !== 'number' || year < 1950 || year > new Date().getFullYear()) {
+      return res.status(400).json({ error: 'Invalid year. Must be between 1950 and current year.' });
+    }
+
+    // Step 1: Get MusicBrainz information
+    const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+    const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+    const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+
+    // Step 2: Use smart pagination with year filtering
+    let smartPaginationResult;
+    let matched = false;
+
+    if (isArtistNameMatch(artist.name, mbArtistName)) {
+      matched = true;
+      // Use MBID-based smart pagination
+      smartPaginationResult = await getArtistPagesSmartPaginationByMBID(mbid, 10, year);
+    } else {
+      // Use name-based smart pagination
+      smartPaginationResult = await getArtistPagesSmartPagination(artist.name, 10, year);
+    }
+
+    // Check if any shows were found
+    if (!smartPaginationResult.allPages || smartPaginationResult.allPages.length === 0) {
+      return res.status(404).json({ 
+        error: `No setlists found for ${artist.name} in ${year}`,
+        year: year,
+        artistName: artist.name
+      });
+    }
+
+    // Step 3: Analyze tours from smart pagination results
+    const tourAnalysis = analyzeTours(smartPaginationResult.allPages, artist.name);
+
+    // Step 4: Filter and prepare tour options
+    const tourOptions = tourAnalysis.tours
+      .filter(tour => !tour.isVIPOrSoundcheck) // Remove VIP/soundcheck tours
+      .map(tour => ({
+        name: tour.name,
+        count: tour.count,
+        dateRange: tour.earliestDate && tour.latestDate ? {
+          earliest: tour.earliestDate,
+          latest: tour.latestDate
+        } : null,
+        isOrphan: tour.isOrphan,
+        isStale: tour.isStale
+      }));
+
+    // Step 5: Add "Individual Shows" option if there are orphan shows
+    if (tourAnalysis.orphanShows > 0) {
+      tourOptions.push({
+        name: `Individual Shows (${year})`,
+        count: tourAnalysis.orphanShows,
+        dateRange: null,
+        isOrphan: true,
+        isStale: false
+      });
+    }
+
+    const totalShows = smartPaginationResult.allPages.reduce((sum, page) => sum + (page.setlist ? page.setlist.length : 0), 0);
+
+    res.json({
+      success: true,
+      artist: {
+        name: artist.name,
+        matched: matched
+      },
+      year: year,
+      totalShows: totalShows,
+      pagesSearched: smartPaginationResult.allPages.length,
+      tourOptions: tourOptions,
+      summary: {
+        totalTours: tourOptions.filter(t => !t.isOrphan).length,
+        totalOrphanShows: tourAnalysis.orphanShows,
+        smartPaginationUsed: true,
+        tourNamesFound: Array.from(smartPaginationResult.tourNamesFound)
+      }
+    });
+
+  } catch (error) {
+    console.error('Error in /analyze_tours_by_year route:', error);
+    if (error.response && error.response.status === 404) {
+      res.status(404).json({ error: "No setlists found for this artist in the specified year." });
+    } else if (error.response && error.response.status === 504) {
       res.status(504).json({ error: "Setlist.fm service is currently unavailable. Please try again later." });
     } else if (error.response) {
       res.status(error.response.status).json({ error: error.response.data.error || "An error occurred while analyzing tours." });

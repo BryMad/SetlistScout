@@ -43,29 +43,42 @@ const axiosGetWithRetry = async (url, config, retries = 3, backoff = 1000) => {
 };
 
 // Raw functions for the artist page requests.
-const getArtistPageByNameRaw = async (artist) => {
-  logger.info('Requesting setlist artist page', { artist });
-  const encodedArtistName = encodeURIComponent(`"${artist.name}"`);
-  const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=1`; const response = await axiosGetWithRetry(url, {
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": process.env.SETLIST_API_KEY,
-    },
-  });
-  logger.info('Received setlist at artist page');
-  return response.data;
-};
-
-const getArtistPageByMBIDRaw = async (mbid) => {
-  logger.info('Requesting setlist artist page by MBID:', { mbid });
-  const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1`;
+const getArtistPageByNameRaw = async (artist, page = 1, year = null) => {
+  logger.info('Requesting setlist artist page', { artist, page, year });
+  const encodedArtistName = encodeURIComponent(artist.name || artist);
+  let url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=${page}`;
+  
+  // Add year parameter if provided
+  if (year) {
+    url += `&year=${year}`;
+  }
+  
   const response = await axiosGetWithRetry(url, {
     headers: {
       "Content-Type": "application/json",
       "x-api-key": process.env.SETLIST_API_KEY,
     },
   });
-  logger.info('Received setlist at artist page');
+  logger.info('Received setlist at artist page', { page, year, showCount: response.data.setlist?.length || 0 });
+  return response.data;
+};
+
+const getArtistPageByMBIDRaw = async (mbid, page = 1, year = null) => {
+  logger.info('Requesting setlist artist page by MBID', { mbid, page, year });
+  let url = `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=${page}`;
+  
+  // Add year parameter if provided
+  if (year) {
+    url += `&year=${year}`;
+  }
+  
+  const response = await axiosGetWithRetry(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.SETLIST_API_KEY,
+    },
+  });
+  logger.info('Received setlist at artist page by MBID', { page, year, showCount: response.data.setlist?.length || 0 });
   return response.data;
 };
 
@@ -257,6 +270,304 @@ const getMultipleArtistPagesByMBID = async (mbid, pageCount = 3) => {
 };
 
 /**
+ * Gets artist setlists using smart pagination strategy
+ * - Fetches first page, last page, then middle pages as needed
+ * - Stops early if tour names are consistent across pages
+ * - Continues searching if different tour names are found
+ * 
+ * @param {string} artist Artist name
+ * @param {number} maxPages Maximum pages to fetch (default: 10)
+ * @param {number} year Optional year to filter by (default: null)
+ * @returns {Object} Object containing allPages array and tourNamesFound set
+ * @async
+ */
+const getArtistPagesSmartPagination = async (artist, maxPages = 10, year = null) => {
+  logger.info('Fetching artist pages with smart pagination', { artist, maxPages, year });
+  
+  const allPages = [];
+  const tourNamesFound = new Set();
+  const pagesSearched = new Set();
+  
+  try {
+    // Step 1: Fetch first page to get total pages
+    const firstPageData = await getArtistPageByNameRaw(artist, 1, year);
+    if (!firstPageData || !firstPageData.setlist || firstPageData.setlist.length === 0) {
+      logger.info('No setlists found for artist', { artist, year });
+      return { allPages: [], tourNamesFound: new Set() };
+    }
+    
+    allPages.push(firstPageData);
+    pagesSearched.add(1);
+    
+    // Extract tour names from first page
+    firstPageData.setlist.forEach(setlist => {
+      if (setlist.tour && setlist.tour.name) {
+        tourNamesFound.add(setlist.tour.name);
+      }
+    });
+    
+    const totalPages = Math.min(firstPageData.total ? Math.ceil(firstPageData.total / 20) : 1, maxPages);
+    logger.info('Smart pagination: first page analysis', { 
+      artist, 
+      totalPages, 
+      tourNamesOnFirstPage: tourNamesFound.size,
+      firstPageTours: Array.from(tourNamesFound)
+    });
+    
+    // If only one page exists, return early
+    if (totalPages <= 1) {
+      return { allPages, tourNamesFound };
+    }
+    
+    // Step 2: Fetch last page if it exists and is different from first
+    if (totalPages > 1 && !pagesSearched.has(totalPages)) {
+      const lastPageData = await getArtistPageByNameRaw(artist, totalPages, year);
+      if (lastPageData && lastPageData.setlist && lastPageData.setlist.length > 0) {
+        allPages.push(lastPageData);
+        pagesSearched.add(totalPages);
+        
+        // Extract tour names from last page
+        const lastPageTours = new Set();
+        lastPageData.setlist.forEach(setlist => {
+          if (setlist.tour && setlist.tour.name) {
+            lastPageTours.add(setlist.tour.name);
+            tourNamesFound.add(setlist.tour.name);
+          }
+        });
+        
+        logger.info('Smart pagination: last page analysis', {
+          artist,
+          lastPageTours: Array.from(lastPageTours),
+          totalToursFound: tourNamesFound.size
+        });
+        
+        // Check if tour names are consistent between first and last page
+        const firstPageTours = new Set();
+        firstPageData.setlist.forEach(setlist => {
+          if (setlist.tour && setlist.tour.name) {
+            firstPageTours.add(setlist.tour.name);
+          }
+        });
+        
+        const toursMatch = firstPageTours.size === lastPageTours.size && 
+                          [...firstPageTours].every(tour => lastPageTours.has(tour));
+        
+        if (toursMatch && tourNamesFound.size === 1) {
+          logger.info('Smart pagination: early stopping - consistent tour names', {
+            artist,
+            tourName: Array.from(tourNamesFound)[0],
+            pagesSearched: Array.from(pagesSearched)
+          });
+          return { allPages, tourNamesFound };
+        }
+      }
+    }
+    
+    // Step 3: Search middle pages if we found different tour names
+    if (totalPages > 2 && tourNamesFound.size > 1) {
+      const middlePages = [];
+      for (let i = 2; i < totalPages; i++) {
+        if (!pagesSearched.has(i)) {
+          middlePages.push(i);
+        }
+      }
+      
+      logger.info('Smart pagination: searching middle pages', {
+        artist,
+        middlePages: middlePages.slice(0, 5), // Log first 5 middle pages
+        totalMiddlePages: middlePages.length
+      });
+      
+      // Search middle pages (limit to prevent excessive API calls)
+      const middlePagesToSearch = middlePages.slice(0, Math.min(5, maxPages - 2));
+      
+      for (const pageNum of middlePagesToSearch) {
+        const pageData = await getArtistPageByNameRaw(artist, pageNum, year);
+        if (pageData && pageData.setlist && pageData.setlist.length > 0) {
+          allPages.push(pageData);
+          pagesSearched.add(pageNum);
+          
+          // Extract tour names from this page
+          pageData.setlist.forEach(setlist => {
+            if (setlist.tour && setlist.tour.name) {
+              tourNamesFound.add(setlist.tour.name);
+            }
+          });
+        }
+      }
+    }
+    
+    const totalShows = allPages.reduce((sum, page) => sum + (page.setlist ? page.setlist.length : 0), 0);
+    logger.info('Smart pagination: completed', {
+      artist,
+      pagesSearched: Array.from(pagesSearched).sort((a, b) => a - b),
+      totalShows,
+      tourNamesFound: Array.from(tourNamesFound),
+      totalTours: tourNamesFound.size
+    });
+    
+    return { allPages, tourNamesFound };
+    
+  } catch (error) {
+    logger.error('Error in smart pagination', {
+      artist,
+      error: error.message,
+      pagesSearched: Array.from(pagesSearched)
+    });
+    throw error;
+  }
+};
+
+/**
+ * Gets artist setlists using smart pagination strategy with MBID
+ * - Fetches first page, last page, then middle pages as needed
+ * - Stops early if tour names are consistent across pages
+ * - Continues searching if different tour names are found
+ * 
+ * @param {string} mbid Artist MusicBrainz ID
+ * @param {number} maxPages Maximum pages to fetch (default: 10)
+ * @param {number} year Optional year to filter by (default: null)
+ * @returns {Object} Object containing allPages array and tourNamesFound set
+ * @async
+ */
+const getArtistPagesSmartPaginationByMBID = async (mbid, maxPages = 10, year = null) => {
+  logger.info('Fetching artist pages with smart pagination by MBID', { mbid, maxPages, year });
+  
+  const allPages = [];
+  const tourNamesFound = new Set();
+  const pagesSearched = new Set();
+  
+  try {
+    // Step 1: Fetch first page to get total pages
+    const firstPageData = await getArtistPageByMBIDRaw(mbid, 1, year);
+    if (!firstPageData || !firstPageData.setlist || firstPageData.setlist.length === 0) {
+      logger.info('No setlists found for artist by MBID', { mbid, year });
+      return { allPages: [], tourNamesFound: new Set() };
+    }
+    
+    allPages.push(firstPageData);
+    pagesSearched.add(1);
+    
+    // Extract tour names from first page
+    firstPageData.setlist.forEach(setlist => {
+      if (setlist.tour && setlist.tour.name) {
+        tourNamesFound.add(setlist.tour.name);
+      }
+    });
+    
+    const totalPages = Math.min(firstPageData.total ? Math.ceil(firstPageData.total / 20) : 1, maxPages);
+    logger.info('Smart pagination by MBID: first page analysis', { 
+      mbid, 
+      totalPages, 
+      tourNamesOnFirstPage: tourNamesFound.size,
+      firstPageTours: Array.from(tourNamesFound)
+    });
+    
+    // If only one page exists, return early
+    if (totalPages <= 1) {
+      return { allPages, tourNamesFound };
+    }
+    
+    // Step 2: Fetch last page if it exists and is different from first
+    if (totalPages > 1 && !pagesSearched.has(totalPages)) {
+      const lastPageData = await getArtistPageByMBIDRaw(mbid, totalPages, year);
+      if (lastPageData && lastPageData.setlist && lastPageData.setlist.length > 0) {
+        allPages.push(lastPageData);
+        pagesSearched.add(totalPages);
+        
+        // Extract tour names from last page
+        const lastPageTours = new Set();
+        lastPageData.setlist.forEach(setlist => {
+          if (setlist.tour && setlist.tour.name) {
+            lastPageTours.add(setlist.tour.name);
+            tourNamesFound.add(setlist.tour.name);
+          }
+        });
+        
+        logger.info('Smart pagination by MBID: last page analysis', {
+          mbid,
+          lastPageTours: Array.from(lastPageTours),
+          totalToursFound: tourNamesFound.size
+        });
+        
+        // Check if tour names are consistent between first and last page
+        const firstPageTours = new Set();
+        firstPageData.setlist.forEach(setlist => {
+          if (setlist.tour && setlist.tour.name) {
+            firstPageTours.add(setlist.tour.name);
+          }
+        });
+        
+        const toursMatch = firstPageTours.size === lastPageTours.size && 
+                          [...firstPageTours].every(tour => lastPageTours.has(tour));
+        
+        if (toursMatch && tourNamesFound.size === 1) {
+          logger.info('Smart pagination by MBID: early stopping - consistent tour names', {
+            mbid,
+            tourName: Array.from(tourNamesFound)[0],
+            pagesSearched: Array.from(pagesSearched)
+          });
+          return { allPages, tourNamesFound };
+        }
+      }
+    }
+    
+    // Step 3: Search middle pages if we found different tour names
+    if (totalPages > 2 && tourNamesFound.size > 1) {
+      const middlePages = [];
+      for (let i = 2; i < totalPages; i++) {
+        if (!pagesSearched.has(i)) {
+          middlePages.push(i);
+        }
+      }
+      
+      logger.info('Smart pagination by MBID: searching middle pages', {
+        mbid,
+        middlePages: middlePages.slice(0, 5), // Log first 5 middle pages
+        totalMiddlePages: middlePages.length
+      });
+      
+      // Search middle pages (limit to prevent excessive API calls)
+      const middlePagesToSearch = middlePages.slice(0, Math.min(5, maxPages - 2));
+      
+      for (const pageNum of middlePagesToSearch) {
+        const pageData = await getArtistPageByMBIDRaw(mbid, pageNum, year);
+        if (pageData && pageData.setlist && pageData.setlist.length > 0) {
+          allPages.push(pageData);
+          pagesSearched.add(pageNum);
+          
+          // Extract tour names from this page
+          pageData.setlist.forEach(setlist => {
+            if (setlist.tour && setlist.tour.name) {
+              tourNamesFound.add(setlist.tour.name);
+            }
+          });
+        }
+      }
+    }
+    
+    const totalShows = allPages.reduce((sum, page) => sum + (page.setlist ? page.setlist.length : 0), 0);
+    logger.info('Smart pagination by MBID: completed', {
+      mbid,
+      pagesSearched: Array.from(pagesSearched).sort((a, b) => a - b),
+      totalShows,
+      tourNamesFound: Array.from(tourNamesFound),
+      totalTours: tourNamesFound.size
+    });
+    
+    return { allPages, tourNamesFound };
+    
+  } catch (error) {
+    logger.error('Error in smart pagination by MBID', {
+      mbid,
+      error: error.message,
+      pagesSearched: Array.from(pagesSearched)
+    });
+    throw error;
+  }
+};
+
+/**
  * Gets tour name from a setlist
  * 
  * @param {string} listID Setlist ID
@@ -417,6 +728,8 @@ module.exports = {
   getArtistPageByName, 
   getMultipleArtistPages, 
   getMultipleArtistPagesByMBID,
+  getArtistPagesSmartPagination,
+  getArtistPagesSmartPaginationByMBID,
   getTourName, 
   getAllTourSongs, 
   getAllTourSongsByMBID, 

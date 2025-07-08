@@ -169,6 +169,82 @@ export const analyzeTours = async (artist) => {
 };
 
 /**
+ * Convert a Deezer artist to a Spotify artist by searching for the artist name
+ * 
+ * @param {Object} deezerArtist Deezer artist object with name and Deezer URL
+ * @returns {Promise<Object>} Promise resolving to Spotify artist object
+ */
+export const convertDeezerToSpotifyArtist = async (deezerArtist) => {
+  try {
+    // Search for the artist using Spotify
+    const spotifyResults = await searchArtists(deezerArtist.name);
+    
+    if (!spotifyResults || spotifyResults.length === 0) {
+      throw new Error(`No Spotify artist found for "${deezerArtist.name}"`);
+    }
+    
+    // Return the first (best) match from Spotify
+    const spotifyArtist = spotifyResults[0];
+    
+    console.log(`Converted Deezer artist "${deezerArtist.name}" to Spotify:`, {
+      deezer: deezerArtist.url,
+      spotify: spotifyArtist.url,
+      name: spotifyArtist.name
+    });
+    
+    return spotifyArtist;
+  } catch (error) {
+    console.error("Error converting Deezer artist to Spotify artist:", error);
+    throw new Error(`Failed to find Spotify equivalent for "${deezerArtist.name}". ${error.message}`);
+  }
+};
+
+/**
+ * Analyze tours for a specific year using smart pagination
+ * 
+ * @param {Object} artist Artist object with name, id, and url
+ * @param {number} year Year to filter by
+ * @returns {Promise<Object>} Promise resolving to tour analysis data
+ */
+export const analyzeToursForYear = async (artist, year) => {
+  try {
+    const response = await axios.post(
+      `${server_url}/setlist/analyze_tours_by_year`,
+      {
+        artist: {
+          name: artist.name,
+          spotifyId: artist.id,
+          url: artist.url
+        },
+        year: year
+      },
+      {
+        headers: { "Content-Type": "application/json" }
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error analyzing tours for year:", error);
+
+    // Handle specific error cases
+    if (error.response) {
+      if (error.response.status === 404) {
+        throw new Error(`No setlists found for ${artist.name} in ${year}. Try a different year or artist.`);
+      } else if (error.response.status === 429) {
+        throw new Error("Too many requests. Setlist.fm is rate-limiting us. Please try again later.");
+      } else if (error.response.status === 504) {
+        throw new Error("Setlist.fm service is currently unavailable. Please try again later.");
+      } else {
+        throw new Error(error.response.data.error || `An error occurred while analyzing tours for ${year}.`);
+      }
+    }
+
+    throw error;
+  }
+};
+
+/**
  * Process a selected tour with SSE progress updates
  * 
  * @param {Object} artist Artist object with name, id, and url
