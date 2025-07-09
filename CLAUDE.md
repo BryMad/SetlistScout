@@ -65,27 +65,17 @@ cd frontend && npm run lint
    - SSE manager utility handles connection lifecycle
 
 4. **Data Flow**
-   - **Original Mode**: User selects artist → Automatically processes most recent tour
-   - **Advanced Mode**: User selects artist → Analyzes tours → User selects specific tour
+   - User selects artist → Automatically processes most recent tour
    - MusicBrainz validates artist mapping
    - Setlists aggregated and songs tallied by frequency
    - Optional: Create Spotify playlist with auth
-
-5. **Feature Flag System**
-   - `advancedSearchEnabled` flag in SetlistContext controls search behavior
-   - Default: `false` (original user experience)
-   - When `true`: Shows advanced tour selection interface
-   - Toggle function available: `toggleAdvancedSearch()`
 
 ### API Endpoints
 
 - **Auth**: `/auth/login`, `/auth/callback`, `/auth/refresh`, `/auth/logout`
 - **Setlist**: 
-  - `/setlist/` (sync - original flow)
-  - `/setlist/search_with_updates` (streaming - original flow)
-  - `/setlist/analyze_tours` (advanced search - tour analysis)
-  - `/setlist/process_selected_tour_with_updates` (advanced search - with SSE)
-  - `/setlist/process_selected_tour` (advanced search - without SSE)
+  - `/setlist/` (sync - legacy endpoint)
+  - `/setlist/search_with_updates` (streaming with SSE)
   - `/setlist/artist_search` (Spotify artist search)
   - `/setlist/artist_search_deezer` (Deezer artist search)
 - **Playlist**: `/playlist/create_playlist` (requires auth)
@@ -129,6 +119,16 @@ cd frontend && npm run lint
 - `/middleware/` - Auth middleware
 - `/utils/` - API integrations, SSE manager, logger
 
+## User Flow
+
+The application provides a streamlined experience for discovering artist setlists:
+
+1. **Artist Search**: User types artist name → Deezer suggestions appear with artist images
+2. **Artist Selection**: User clicks artist → Immediate processing of most recent tour
+3. **Progress Updates**: Real-time SSE updates during setlist processing
+4. **Results**: Song data appears in TracksHUD with full setlist analysis
+5. **Playlist Creation**: Optional Spotify playlist creation with authentication
+
 ## Important Development Notes
 
 1. **No Test Suite**: Project currently lacks tests. Consider adding Jest/Vitest when implementing new features.
@@ -147,99 +147,33 @@ cd frontend && npm run lint
 
 8. **Deployment**: Configured for Render.com with build commands in root package.json.
 
-## Advanced Search Feature Implementation Status
+## Key Features
 
-### ✅ COMPLETED: Step 1 - Complete Advanced Search Infrastructure
+### Artist Discovery
+- **Deezer Integration**: Fast artist search with album artwork
+- **Smart Matching**: MusicBrainz validation for accurate artist mapping
+- **Recent Tours**: Automatically processes the most recent tour data
 
-**Implementation Date**: July 2025
+### Setlist Processing
+- **Real-time Updates**: SSE provides live feedback during data processing
+- **Song Frequency**: Songs ranked by how often they're played live
+- **Tour Metadata**: Band name, tour information, and show statistics
 
-**Current Status**: Feature flag system implemented - advanced search functionality built and preserved while maintaining original user experience.
+### Playlist Integration
+- **Spotify OAuth**: Secure server-side token management
+- **Automatic Creation**: One-click playlist generation from setlist data
+- **Session Management**: 24-hour authenticated sessions with Redis storage
 
-#### Backend Enhancements
-- **Enhanced Data Fetching**: Modified search to fetch up to 60 shows (3 API calls) instead of 20
-  - New functions: `getMultipleArtistPages()` and `getMultipleArtistPagesByMBID()`
-  - Added logging and show count validation to prevent data overflow
-- **Smart Tour Detection**: Added `analyzeTours()` function to process multiple pages and identify all tours
-  - Automatically detects multiple tours with metadata (date ranges, show counts, staleness indicators)
-  - Filters out VIP/soundcheck tours
-  - Identifies orphan shows (individual shows not part of named tours)
-- **Dual API Endpoints**:
-  - `/analyze_tours` - Returns tour options with metadata for user selection
-  - `/process_selected_tour_with_updates` - Processes selected tour with SSE progress updates
-  - `/process_selected_tour` - Non-SSE version for tour processing
-- **Fixed Deezer Integration**: Added missing `deezerApiCalls.js` utility with proper image format
+### Performance Optimizations
+- **API Rate Limiting**: Respectful interaction with external APIs
+- **Caching Strategy**: Redis session storage for user state
+- **Error Recovery**: Graceful handling of API timeouts and failures
 
-#### Frontend Enhancements
-- **Feature Flag System**: `advancedSearchEnabled` controls which search flow is used
-  - **Default (false)**: Original behavior - select artist → immediate results
-  - **Advanced (true)**: Enhanced flow - select artist → tour selection → results
-- **TourDropdown Component**: Complete tour selection interface
-  - Nested dropdown appears inline with artist search
-  - Shows "Checking tours..." during analysis
-  - Clean, compact tour selection with metadata
-  - "Recommended!" badges and staleness indicators
-- **Preserved Original Flow**: Complete backward compatibility
-  - Uses `fetchTourData()` for immediate processing
-  - No UI changes visible to users in default mode
-- **Mobile UI Refinements**: Enhanced TracksHUD component
-  - Consistent button sizing across all screen sizes
-  - Right-aligned stats section with vertical divider
-  - 2px border radius on album artwork (Spotify guidelines)
-  - Optimized spacing and layout for mobile devices
+## Technical Notes
 
-#### Key Implementation Features
-1. **Seamless Mode Switching**: Single flag controls entire user experience
-2. **Complete Infrastructure**: All advanced search functionality ready for activation
-3. **Zero User Impact**: Live site maintains original behavior and appearance
-4. **Development Ready**: Easy to toggle between modes for testing/development
-5. **SSE Integration**: Full real-time progress updates in both modes
-6. **Mobile Optimization**: Responsive design improvements across all components
-
-#### Current Live User Flow (Default Mode)
-1. **Artist Search**: User types artist name → Deezer suggestions appear
-2. **Artist Selection**: User clicks artist → Immediate processing of most recent tour
-3. **Progress Updates**: Real-time SSE updates during processing
-4. **Results**: Song data appears in TracksHUD with full setlist analysis
-
-#### Advanced Mode Flow (Available via Flag)
-1. **Artist Search**: User types artist name → Deezer suggestions appear
-2. **Artist Selection**: User clicks artist → Tour analysis begins ("Checking tours...")
-3. **Tour Selection**: Dropdown appears with tour options and metadata
-4. **Processing**: Real-time progress updates as selected tour is processed
-5. **Results**: Song data appears in TracksHUD with full setlist analysis
-
-### 🔄 NEXT STEPS: Future Development
-
-#### Immediate Options
-- **UI Toggle**: Add advanced search toggle button to interface
-- **Development Mode**: Change `advancedSearchEnabled: false` to `true` for testing
-
-#### Future Enhancements
-- **Year-based Filtering**: Add date range selection to advanced mode
-- **Tour Comparison**: Allow comparing setlists between different tours
-- **Advanced Analytics**: Show tour evolution and song popularity trends
-
-### Technical Implementation Details
-
-#### Feature Flag Location
-- **File**: `frontend/src/context/SetlistContext.jsx:38`
-- **Default**: `advancedSearchEnabled: false`
-- **Toggle Function**: `toggleAdvancedSearch()` available in context
-
-#### Flow Control Logic
-- **File**: `frontend/src/components/UserInput.jsx:112-121`
-- **Logic**: Conditional branch based on `advancedSearchEnabled` flag
-- **Fallback**: Original `fetchTourData()` maintains legacy behavior
-
-#### Key Components
-- **TourDropdown**: `frontend/src/components/TourDropdown.jsx`
-- **SetlistContext**: Enhanced with tour analysis state and methods
-- **API Services**: Dual endpoint support in `frontend/src/api/setlistService.js`
-
-### Technical Notes
-- All tour grouping uses `tour.name` property from Setlist.fm API
-- Show counting is capped at 60 to prevent data overflow
-- SSE integration maintained for real-time user feedback in both modes
-- Mobile-responsive design implemented for all components
-- Comprehensive error handling and fallback mechanisms in place
-- Zero breaking changes - complete backward compatibility maintained
+- All setlist data sourced from Setlist.fm API with proper rate limiting
+- MusicBrainz used for artist verification and matching
+- Spotify integration handles both search and playlist creation
+- SSE implementation provides smooth real-time user experience
+- Mobile-responsive design with Chakra UI components
+- Comprehensive error handling and fallback mechanisms

@@ -13,6 +13,8 @@ const { fetchMBIdFromSpotifyId } = require("../utils/musicBrainzAPIRequests.js")
 const { isArtistNameMatch } = require("../utils/musicBrainzChecks.js");
 const { searchDeezerArtists } = require("../utils/deezerApiCalls.js");
 const sseManager = require('../utils/sseManager');
+const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
+const { scrapeTours } = require('../utils/tourScraper');
 
 /**
  * Endpoint: POST /search_with_updates
@@ -268,6 +270,202 @@ router.post('/artist_search_deezer', async (req, res) => {
   } catch (error) {
     console.error('Error in /artist_search_deezer route:', error);
     res.status(500).json({ error: "Internal Server Error. Please try again later." });
+  }
+});
+
+/**
+ * Endpoint: POST /search_tour_with_updates
+ * Searches for setlists from a specific tour with real-time updates
+ * 
+ * @param {Object} req.body.artist - Artist information object
+ * @param {string} req.body.tourId - Tour ID from scraped tours
+ * @param {string} req.body.tourName - Tour name from scraped tours
+ * @param {string} req.body.clientId - SSE client ID for sending updates
+ * @returns {Object} Tour data and Spotify song information
+ */
+router.post('/search_tour_with_updates', async (req, res) => {
+  const { artist, tourId, tourName, clientId } = req.body;
+
+  if (!clientId) {
+    return res.status(400).json({ error: 'Missing clientId parameter' });
+  }
+
+  if (!tourId || !tourName) {
+    return res.status(400).json({ error: 'Missing tourId or tourName parameter' });
+  }
+
+  try {
+    // Start processing specific tour and send updates via SSE
+    processTourWithUpdates(artist, tourId, tourName, clientId);
+
+    // Immediately return success to the client
+    return res.status(202).json({
+      message: 'Tour search request accepted, processing started',
+      clientId,
+      tourName
+    });
+  } catch (error) {
+    console.error('Error setting up tour processing:', error);
+    return res.status(500).json({ error: 'Failed to start tour processing' });
+  }
+});
+
+/**
+ * Process specific tour data with real-time updates via SSE
+ * 
+ * @param {Object} artist - Artist information
+ * @param {string} tourId - Tour ID from scraped tours
+ * @param {string} tourName - Tour name from scraped tours
+ * @param {string} clientId - SSE client ID
+ */
+async function processTourWithUpdates(artist, tourId, tourName, clientId) {
+  try {
+    sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name} - ${tourName}`, 5);
+
+    // Step 1: Fetch MusicBrainz ID (same as regular search)
+    sseManager.sendUpdate(clientId, 'musicbrainz', 'Contacting MusicBrainz for artist identification', 15);
+    const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+    const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+    const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+
+    // Step 2: Get tour setlists directly (skip tour selection logic)
+    let allTourInfo = [];
+    let matched = false;
+
+    if (isArtistNameMatch(artist.name, mbArtistName)) {
+      sseManager.sendUpdate(clientId, 'setlist_fetch', `Found exact match for ${artist.name}, fetching ${tourName} setlists`, 40);
+      matched = true;
+      allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
+    } else {
+      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 40);
+      allTourInfo = await getAllTourSongs(artist.name, tourName);
+    }
+
+    // Handle errors in tour info
+    if (!allTourInfo || !Array.isArray(allTourInfo)) {
+      if (allTourInfo && allTourInfo.statusCode) {
+        sseManager.sendError(clientId, allTourInfo.message, allTourInfo.statusCode);
+      } else {
+        sseManager.sendError(clientId, "Server is busy. Please try again.", 400);
+      }
+      return;
+    }
+
+    // Check if we actually got setlists
+    const totalSetlists = allTourInfo.reduce((total, page) => total + (page.setlist?.length || 0), 0);
+    if (totalSetlists === 0) {
+      sseManager.sendError(clientId, `No setlists found for "${tourName}" tour. This tour may not have recorded setlists.`, 404);
+      return;
+    }
+
+    // Step 3: Process songs from setlists
+    sseManager.sendUpdate(clientId, 'song_processing', 'Analyzing setlists and counting song frequencies', 70);
+    const tourInfoOrdered = getSongTally(allTourInfo);
+
+    // Step 4: Get Spotify data for songs
+    const progressCallback = (progressData) => {
+      sseManager.sendUpdate(
+        clientId,
+        progressData.stage,
+        progressData.message,
+        progressData.progress
+      );
+    };
+
+    const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
+
+    // Final step: Return complete data
+    const tourData = {
+      bandName: artist.name,
+      tourName: tourName,
+      totalShows: tourInfoOrdered.totalShowsWithData,
+    };
+
+    sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
+
+  } catch (error) {
+    console.error('Error in processTourWithUpdates:', error);
+
+    // Handle specific error types
+    if (error.response && error.response.status === 504) {
+      sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
+    } else if (error.response) {
+      sseManager.sendError(clientId, error.response.data.error || "An error occurred while fetching tour setlists.", error.response.status);
+    } else {
+      sseManager.sendError(clientId, "Internal Server Error. Please try again later.", 500);
+    }
+  }
+}
+
+/**
+ * Endpoint: GET /artist/:artistId/tours
+ * Fetches all tours for a specific artist
+ * 
+ * @param {string} req.params.artistId - Can be either MusicBrainz ID or artist name
+ * @param {string} req.query.mbid - Optional MusicBrainz ID if not provided in artistId
+ * @returns {Object} { tours: Array, artistSlug: string }
+ */
+router.get('/artist/:artistId/tours', async (req, res) => {
+  try {
+    const { artistId } = req.params;
+    const { mbid } = req.query;
+    
+    // Check Redis cache first
+    const cacheKey = `tours:${mbid || artistId}`;
+    const cachedTours = req.session[cacheKey];
+    
+    if (cachedTours) {
+      console.log('Returning cached tours for:', artistId);
+      return res.json(cachedTours);
+    }
+    
+    // Get the setlist.fm slug
+    let artistSlug;
+    
+    try {
+      // Try with MBID first if available, otherwise use artist name
+      artistSlug = await getSetlistSlug(
+        { name: decodeURIComponent(artistId) }, 
+        mbid
+      );
+      
+      if (!artistSlug) {
+        return res.status(404).json({ 
+          error: 'Artist not found on setlist.fm',
+          message: 'This artist may not have any recorded setlists.'
+        });
+      }
+    } catch (error) {
+      console.error('Error getting artist slug:', error);
+      return res.status(500).json({ 
+        error: 'Failed to fetch artist information',
+        message: 'Unable to retrieve artist data from setlist.fm'
+      });
+    }
+    
+    // Scrape tours using the slug
+    try {
+      const tours = await scrapeTours(artistSlug);
+      
+      // Cache the result in session (24 hour expiration matches session expiration)
+      const result = { tours, artistSlug };
+      req.session[cacheKey] = result;
+      
+      return res.json(result);
+    } catch (error) {
+      console.error('Error scraping tours:', error);
+      return res.status(500).json({ 
+        error: 'Failed to fetch tour data',
+        message: 'Unable to retrieve tour information. Please try again later.'
+      });
+    }
+    
+  } catch (error) {
+    console.error('Error in /artist/:artistId/tours route:', error);
+    res.status(500).json({ 
+      error: 'Internal Server Error',
+      message: 'An unexpected error occurred. Please try again later.'
+    });
   }
 });
 

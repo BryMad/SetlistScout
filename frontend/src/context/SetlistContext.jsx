@@ -3,6 +3,7 @@ import {
   fetchArtistTour,
   fetchSetlistById,
   searchArtists,
+  fetchSpecificTourWithUpdates,
 } from "../api/setlistService";
 
 // Create the context
@@ -199,6 +200,66 @@ export const SetlistProvider = ({ children }) => {
   }, []);
 
   /**
+   * Fetches setlist data for a specific tour
+   *
+   * @param {Object} artist Artist information object
+   * @param {string} tourId Tour ID from scraped tours
+   * @param {string} tourName Tour name from scraped tours
+   * @returns {Promise<Object>} Promise resolving to search result
+   */
+  const fetchSpecificTourData = useCallback(
+    async (artist, tourId, tourName) => {
+      setState((prev) => ({
+        ...prev,
+        loading: true,
+        error: null,
+        progress: {
+          stage: "initializing",
+          message: `Getting setlist data for ${tourName}...`,
+          percent: null,
+        },
+      }));
+
+      try {
+        const { tourData, spotifyData } = await fetchSpecificTourWithUpdates(
+          artist,
+          tourId,
+          tourName,
+          updateProgress
+        );
+
+        setState((prev) => ({
+          ...prev,
+          spotifyData,
+          tourData,
+          loading: false,
+          progress: {
+            stage: "complete",
+            message: "Data loaded successfully!",
+            percent: 100,
+          },
+        }));
+
+        return { success: true };
+      } catch (error) {
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error: error.message || "Failed to fetch tour data",
+          progress: {
+            stage: "error",
+            message: error.message || "Failed to fetch tour data",
+            percent: null,
+          },
+        }));
+
+        return { success: false, error: error.message };
+      }
+    },
+    [updateProgress]
+  );
+
+  /**
    * Reset to initial state and hide tour selection
    */
   const resetSearch = useCallback(() => {
@@ -220,10 +281,12 @@ export const SetlistProvider = ({ children }) => {
   const contextValue = {
     ...state,
     fetchTourData,
+    fetchSpecificTourData,
     fetchSetlistData,
     setNotification,
     clearError,
     restoreData,
+    resetSearch,
     searchForArtists: searchArtists,
     updateProgress,
   };
