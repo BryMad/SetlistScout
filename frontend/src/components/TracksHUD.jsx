@@ -167,7 +167,6 @@ export default function TracksHUD() {
                       px={6}
                       py={3}
                       colorScheme="brand"
-                      colorScheme="brand"
                       onClick={handleLoginClick}
                     >
                       Login

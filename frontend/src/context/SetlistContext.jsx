@@ -3,8 +3,6 @@ import {
   fetchArtistTour,
   fetchSetlistById,
   searchArtists,
-  analyzeTours,
-  processSelectedTourWithUpdates,
 } from "../api/setlistService";
 
 // Create the context
@@ -30,12 +28,6 @@ export const SetlistProvider = ({ children }) => {
       message: "Getting setlist data...",
       percent: null,
     },
-    // New tour analysis state
-    tourOptions: [],
-    selectedArtist: null,
-    analysisLoading: false,
-    // Feature flag for advanced search mode
-    advancedSearchEnabled: false,
   });
 
   /**
@@ -207,135 +199,20 @@ export const SetlistProvider = ({ children }) => {
   }, []);
 
   /**
-   * Analyze tours for an artist and show tour selection
-   *
-   * @param {Object} artist Artist object with name, id, and url
-   * @returns {Promise<void>}
-   */
-  const fetchTourOptions = useCallback(async (artist) => {
-    setState((prev) => ({
-      ...prev,
-      analysisLoading: true,
-      error: null,
-      selectedArtist: artist,
-      tourOptions: [],
-    }));
-
-    try {
-      const result = await analyzeTours(artist);
-      console.log("Tour analysis result:", result);
-
-      setState((prev) => ({
-        ...prev,
-        tourOptions: result.tourOptions,
-        selectedArtist: artist,
-        analysisLoading: false,
-      }));
-
-      return { success: true, data: result };
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        analysisLoading: false,
-        error: error.message || "Failed to analyze tours",
-      }));
-
-      return { success: false, error: error.message };
-    }
-  }, []);
-
-  /**
-   * Process a selected tour and fetch song data
-   *
-   * @param {Object} tour Selected tour object
-   * @returns {Promise<void>}
-   */
-  const selectTour = useCallback(async (tour) => {
-    if (!state.selectedArtist) {
-      setState((prev) => ({
-        ...prev,
-        error: "No artist selected",
-      }));
-      return { success: false, error: "No artist selected" };
-    }
-
-    setState((prev) => ({
-      ...prev,
-      loading: true,
-      error: null,
-      progress: {
-        stage: "processing",
-        message: `Processing ${tour.name}...`,
-        percent: 0,
-      },
-    }));
-
-    try {
-      const result = await processSelectedTourWithUpdates(
-        state.selectedArtist,
-        tour.name,
-        tour.isIndividual,
-        updateProgress
-      );
-      console.log("Selected tour result:", result);
-
-      setState((prev) => ({
-        ...prev,
-        spotifyData: result.spotifyData,
-        tourData: result.tourData,
-        loading: false,
-        progress: {
-          stage: "complete",
-          message: "Tour data loaded successfully!",
-          percent: 100,
-        },
-      }));
-
-      return { success: true };
-    } catch (error) {
-      setState((prev) => ({
-        ...prev,
-        loading: false,
-        error: error.message || "Failed to process selected tour",
-        progress: {
-          stage: "error",
-          message: error.message || "Failed to process selected tour",
-          percent: null,
-        },
-      }));
-
-      return { success: false, error: error.message };
-    }
-  }, [state.selectedArtist]);
-
-  /**
    * Reset to initial state and hide tour selection
    */
   const resetSearch = useCallback(() => {
     setState((prev) => ({
       ...prev,
-      tourOptions: [],
-      selectedArtist: null,
       spotifyData: [],
       tourData: {},
       loading: false,
-      analysisLoading: false,
       error: null,
       progress: {
         stage: "",
         message: "Getting setlist data...",
         percent: null,
       },
-    }));
-  }, []);
-
-  /**
-   * Toggle advanced search mode
-   */
-  const toggleAdvancedSearch = useCallback(() => {
-    setState((prev) => ({
-      ...prev,
-      advancedSearchEnabled: !prev.advancedSearchEnabled,
     }));
   }, []);
 
@@ -349,11 +226,6 @@ export const SetlistProvider = ({ children }) => {
     restoreData,
     searchForArtists: searchArtists,
     updateProgress,
-    // New tour selection functions
-    fetchTourOptions,
-    selectTour,
-    resetSearch,
-    toggleAdvancedSearch,
   };
 
   return (

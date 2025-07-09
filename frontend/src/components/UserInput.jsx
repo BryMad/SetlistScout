@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
-import TourDropdown from "./TourDropdown";
 
 /**
  * Component for artist search input
@@ -21,23 +20,13 @@ import TourDropdown from "./TourDropdown";
  * - Uses Spotify API for setlist and playlist functionality
  */
 export default function UserInput() {
-  const { 
-    fetchTourOptions,
-    fetchTourData,
-    selectTour,
-    analysisLoading, 
-    loading, 
-    searchForArtistsDeezer,
-    tourOptions,
-    resetSearch,
-    advancedSearchEnabled
-  } = useSetlist();
+  const { fetchTourData, loading, searchForArtistsDeezer, resetSearch } =
+    useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [showTourDropdown, setShowTourDropdown] = useState(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -54,19 +43,10 @@ export default function UserInput() {
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
 
-  // Show tour dropdown when tour options are available (only in advanced mode)
-  useEffect(() => {
-    if (advancedSearchEnabled && tourOptions.length > 0) {
-      setShowTourDropdown(true);
-      setSuggestions([]); // Hide artist suggestions
-    }
-  }, [tourOptions, advancedSearchEnabled]);
-
   useEffect(() => {
     function handleClickOutside(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
         setSuggestions([]);
-        setShowTourDropdown(false);
       }
     }
 
@@ -108,28 +88,10 @@ export default function UserInput() {
     setArtistQuery(artist.name);
     setSuggestions([]);
     setSelectedArtist(artist);
-    
-    if (advancedSearchEnabled) {
-      // New flow: show tour selection dropdown
-      await fetchTourOptions(artist);
-    } else {
-      // Original flow: directly process the most recent tour
-      await fetchTourData(artist);
-      // Reset the form
-      setArtistQuery("");
-      setSelectedArtist(null);
-    }
-  };
 
-  /**
-   * Handles tour selection and processes the setlist data
-   * @param {Object} tour The selected tour object
-   * @async
-   */
-  const handleTourSelect = async (tour) => {
-    setShowTourDropdown(false);
-    await selectTour(tour);
-    // Reset the form after successful processing
+    // Original flow: directly process the most recent tour
+    await fetchTourData(artist);
+    // Reset the form
     setArtistQuery("");
     setSelectedArtist(null);
   };
@@ -138,7 +100,6 @@ export default function UserInput() {
    * Handles clicking outside or starting a new search
    */
   const handleReset = () => {
-    setShowTourDropdown(false);
     setArtistQuery("");
     setSelectedArtist(null);
     setSuggestions([]);
@@ -169,7 +130,7 @@ export default function UserInput() {
         bg="gray.800"
         borderRadius="xl"
         width="100%"
-        disabled={loading || analysisLoading}
+        disabled={loading}
         _hover={{ bg: "gray.700" }}
         _focus={{ bg: "gray.700", borderColor: "brand.400" }}
         transition="all 0.2s"
@@ -219,7 +180,7 @@ export default function UserInput() {
                         boxSize="40px"
                         alt={artist.name}
                         borderRadius="full"
-                        borderRadius={["2px", "2px", "4px"]}
+                        // borderRadius={["2px", "2px", "4px"]}
                       />
                       <Text>{artist.name}</Text>
                     </HStack>
@@ -230,14 +191,6 @@ export default function UserInput() {
           </List>
         </Box>
       )}
-
-      {/* Tour Dropdown */}
-      <TourDropdown
-        tourOptions={tourOptions}
-        onTourSelect={handleTourSelect}
-        isLoading={analysisLoading}
-        isVisible={showTourDropdown || analysisLoading}
-      />
     </Box>
   );
 }
