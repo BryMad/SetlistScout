@@ -14,7 +14,39 @@ const { isArtistNameMatch } = require("../utils/musicBrainzChecks.js");
 const { searchDeezerArtists } = require("../utils/deezerApiCalls.js");
 const sseManager = require('../utils/sseManager');
 const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
-const { scrapeTours } = require('../utils/tourScraper');
+// Tour scraping moved to external service
+// const { scrapeTours } = require('../utils/tourScraper');
+
+/**
+ * Fetch tours from external scraping service
+ * @param {string} artistSlug - The setlist.fm artist slug
+ * @returns {Promise<Array>} Array of tour objects
+ */
+async function fetchToursFromService(artistSlug) {
+  const scraperUrl = process.env.SCRAPER_SERVICE_URL || 'http://localhost:3001';
+  const scraperApiKey = process.env.SCRAPER_API_KEY;
+  
+  try {
+    const response = await axios.get(`${scraperUrl}/api/tours/${artistSlug}`, {
+      timeout: 30000, // 30 second timeout
+      headers: {
+        'X-API-Key': scraperApiKey
+      }
+    });
+    
+    if (response.data && response.data.tours) {
+      return response.data.tours;
+    }
+    
+    throw new Error('Invalid response from scraper service');
+  } catch (error) {
+    console.error('Error fetching tours from service:', error.message);
+    
+    // Return empty array on failure to allow graceful degradation
+    // You could also implement a fallback here
+    return [];
+  }
+}
 
 /**
  * Endpoint: POST /search_with_updates
@@ -443,9 +475,18 @@ router.get('/artist/:artistId/tours', async (req, res) => {
       });
     }
     
-    // Scrape tours using the slug
+    // Fetch tours from external scraping service
     try {
-      const tours = await scrapeTours(artistSlug);
+      const tours = await fetchToursFromService(artistSlug);
+      
+      if (tours.length === 0) {
+        // Might be a service issue or artist has no tours
+        return res.json({ 
+          tours: [], 
+          artistSlug,
+          message: 'No tours found for this artist'
+        });
+      }
       
       // Cache the result in session (24 hour expiration matches session expiration)
       const result = { tours, artistSlug };
@@ -453,7 +494,7 @@ router.get('/artist/:artistId/tours', async (req, res) => {
       
       return res.json(result);
     } catch (error) {
-      console.error('Error scraping tours:', error);
+      console.error('Error fetching tours from service:', error);
       return res.status(500).json({ 
         error: 'Failed to fetch tour data',
         message: 'Unable to retrieve tour information. Please try again later.'

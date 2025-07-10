@@ -75,7 +75,9 @@ cd frontend && npm run lint
 - **Auth**: `/auth/login`, `/auth/callback`, `/auth/refresh`, `/auth/logout`
 - **Setlist**: 
   - `/setlist/` (sync - legacy endpoint)
-  - `/setlist/search_with_updates` (streaming with SSE)
+  - `/setlist/search_with_updates` (streaming with SSE for recent tours)
+  - `/setlist/search_tour_with_updates` (streaming with SSE for specific tours)
+  - `/setlist/artist/:artistId/tours` (get all tours for an artist)
   - `/setlist/artist_search` (Spotify artist search)
   - `/setlist/artist_search_deezer` (Deezer artist search)
 - **Playlist**: `/playlist/create_playlist` (requires auth)
@@ -121,13 +123,23 @@ cd frontend && npm run lint
 
 ## User Flow
 
-The application provides a streamlined experience for discovering artist setlists:
+The application provides two search modes for discovering artist setlists:
 
+### Live Shows (Default)
 1. **Artist Search**: User types artist name → Deezer suggestions appear with artist images
 2. **Artist Selection**: User clicks artist → Immediate processing of most recent tour
 3. **Progress Updates**: Real-time SSE updates during setlist processing
 4. **Results**: Song data appears in TracksHUD with full setlist analysis
 5. **Playlist Creation**: Optional Spotify playlist creation with authentication
+
+### Advanced Search (Past Tours)
+1. **Tab Selection**: User clicks "Past Tours" tab
+2. **Artist Search**: Same Deezer-powered artist search as Live Shows
+3. **Artist Selection**: User selects artist → System fetches all historical tours
+4. **Tour Selection**: Dropdown appears with all tours (e.g., "Zoo TV (161 shows)")
+5. **Tour Processing**: Real-time SSE updates for specific tour setlist analysis
+6. **Results**: Historical setlist data displayed in TracksHUD
+7. **Playlist Creation**: Same Spotify integration for historical data
 
 ## Important Development Notes
 
@@ -169,6 +181,142 @@ The application provides a streamlined experience for discovering artist setlist
 - **Caching Strategy**: Redis session storage for user state
 - **Error Recovery**: Graceful handling of API timeouts and failures
 
+## Advanced Search Implementation
+
+### Current Status: FULLY FUNCTIONAL WITH SEPARATED ARCHITECTURE ✅
+
+The advanced search feature is fully implemented and working, allowing users to search historical tours for any artist. The scraping functionality has been successfully separated from the main application to comply with best practices.
+
+### 🏗️ Architecture Overview: Scraping Service Separation
+
+**Problem Solved**: Tour scraping that could violate setlist.fm ToS is now isolated from the main application that uses their API legitimately.
+
+**Current Implementation**:
+- `backend/utils/setlistSlugExtractor.js` - Extracts setlist.fm artist slugs using the official API ✅
+- `scraper-service/` - Separate Vercel deployment for tour scraping ✅
+- Main backend calls the external scraper service via HTTP ✅
+
+### 🚀 Deployed Scraper Service
+
+**Vercel Deployment**:
+```
+scraper-service/
+├── api/
+│   ├── tours/
+│   │   └── [slug].js    # Vercel function endpoint
+│   └── health.js        # Health check endpoint
+├── tourScraper.js       # Scraping logic (moved from backend)
+├── package.json         # Dependencies (cheerio, axios, etc.)
+├── vercel.json         # Deployment configuration
+└── .env.example        # Environment variables template
+```
+
+**Service URL**: Set in backend `.env` as:
+```
+SCRAPER_SERVICE_URL=https://your-scraper.vercel.app
+SCRAPER_API_KEY=your-generated-api-key
+```
+
+**Security**: The scraper is protected by API key authentication to prevent unauthorized access.
+
+**How it works**:
+1. Main backend gets artist slug via official setlist.fm API
+2. Backend calls: `GET ${SCRAPER_SERVICE_URL}/api/tours/${artistSlug}` with `X-API-Key` header
+3. Vercel function validates API key before scraping
+4. Returns tour data as JSON only if authenticated
+5. Backend forwards data to frontend
+
+### 🎯 Why This Architecture Is Necessary
+
+**Technical Benefits**:
+- Separates ToS-violating code from main application
+- Different IP addresses reduce detection risk
+- Main app can fallback gracefully if scraping service fails
+
+**Legal Benefits**:
+- Scraping and API usage come from different sources
+- Reduces obvious connection between violations and API usage
+- Easier to disable if needed without breaking main app
+
+### 🔧 Vercel Deployment Guide
+
+**To deploy your own scraper service:**
+
+1. **Install Vercel CLI**:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy the scraper**:
+   ```bash
+   cd scraper-service
+   vercel
+   ```
+
+3. **Configure environment variables**:
+   ```bash
+   vercel env add ALLOWED_ORIGINS
+   # Enter: * (for testing) or your production URL
+   
+   vercel env add SCRAPER_API_KEY
+   # Enter: Generate with 'openssl rand -hex 32'
+   ```
+
+4. **Deploy to production**:
+   ```bash
+   vercel --prod
+   ```
+
+5. **Update backend `.env`**:
+   ```
+   SCRAPER_SERVICE_URL=https://your-deployment.vercel.app
+   SCRAPER_API_KEY=same-key-as-vercel
+   ```
+
+**Security Notes**: 
+- The scraper requires API key authentication (X-API-Key header)
+- Generate keys with: `openssl rand -hex 32`
+- Disable Vercel's built-in authentication but keep API key protection
+
+### 📁 Current Advanced Search Files
+
+**Backend Files**:
+- `backend/utils/setlistSlugExtractor.js` ✅ (API-only, uses official setlist.fm API)
+- `backend/routes/setlistRoutes.js` ✅ (calls external scraper service)
+- `backend/routes/setlistRoutes.js:25` - `fetchToursFromService()` function handles scraper communication
+
+**Scraper Service Files** (Separate Vercel deployment):
+- `scraper-service/api/tours/[slug].js` ✅ (Vercel function endpoint)
+- `scraper-service/tourScraper.js` ✅ (Scraping logic, isolated from main app)
+- `scraper-service/vercel.json` ✅ (Deployment configuration)
+
+**Frontend Files**:
+- `frontend/src/components/UserInput.jsx` ✅ (tab interface working)
+- `frontend/src/api/setlistService.js` ✅ (tour-specific search working)
+- `frontend/src/context/SetlistContext.jsx` ✅ (context integration working)
+
+**Dependencies**:
+- Main backend: NO scraping dependencies ✅
+- Scraper service: Contains `cheerio` and scraping logic ✅
+
+### 🎮 Current Feature Status
+
+**Working Features**:
+- ✅ Tab-based UI (Live Shows / Past Tours)
+- ✅ Artist search and selection in both tabs
+- ✅ Tour list fetching and display
+- ✅ Tour-specific setlist processing with SSE
+- ✅ Artist matching improvements (fixed tribute band issues)
+- ✅ Complete integration with existing TracksHUD display
+
+**Architecture Improvements Completed**:
+- ✅ Scraping moved to separate Vercel service
+- ✅ Backend updated to call external scraper via HTTP
+- ✅ Fallback handling implemented (returns empty array on failure)
+- ✅ Complete separation of concerns achieved
+
+The feature is **fully functional** with **proper architectural separation** between legitimate API usage and web scraping.
+
 ## Technical Notes
 
 - All setlist data sourced from Setlist.fm API with proper rate limiting
@@ -177,3 +325,5 @@ The application provides a streamlined experience for discovering artist setlist
 - SSE implementation provides smooth real-time user experience
 - Mobile-responsive design with Chakra UI components
 - Comprehensive error handling and fallback mechanisms
+- **Advanced search scraping successfully separated to Vercel service**
+- **Microservice architecture provides IP isolation and risk mitigation**

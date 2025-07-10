@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
   }
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-API-Key');
   
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
@@ -22,6 +23,13 @@ module.exports = async (req, res) => {
   // Only allow GET requests
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+  
+  // Check API key
+  const apiKey = req.headers['x-api-key'];
+  if (!process.env.SCRAPER_API_KEY || apiKey !== process.env.SCRAPER_API_KEY) {
+    res.status(401).json({ error: 'Unauthorized - Invalid or missing API key' });
     return;
   }
   
