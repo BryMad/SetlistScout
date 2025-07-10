@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/tours/[slug].js": {
+      "maxDuration": 30
+    },
+    "api/health.js": {
+      "maxDuration": 10
+    }
+  },
+  "regions": ["iad1"],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
