@@ -18,7 +18,7 @@ const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
 // const { scrapeTours } = require('../utils/tourScraper');
 
 /**
- * Fetch tours from external scraping service
+ * Fetch tours from external scraping service using artist slug
  * @param {string} artistSlug - The setlist.fm artist slug
  * @returns {Promise<Array>} Array of tour objects
  */
@@ -26,8 +26,13 @@ async function fetchToursFromService(artistSlug) {
   const scraperUrl = process.env.SCRAPER_SERVICE_URL || 'http://localhost:3001';
   const scraperApiKey = process.env.SCRAPER_API_KEY;
   
+  if (!artistSlug) {
+    console.error('No artist slug provided to fetchToursFromService');
+    return [];
+  }
+  
   try {
-    const response = await axios.get(`${scraperUrl}/api/tours/${artistSlug}`, {
+    const response = await axios.get(`${scraperUrl}/api/tours/${encodeURIComponent(artistSlug)}`, {
       timeout: 30000, // 30 second timeout
       headers: {
         'X-API-Key': scraperApiKey
@@ -43,7 +48,6 @@ async function fetchToursFromService(artistSlug) {
     console.error('Error fetching tours from service:', error.message);
     
     // Return empty array on failure to allow graceful degradation
-    // You could also implement a fallback here
     return [];
   }
 }
@@ -433,49 +437,38 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
  * Endpoint: GET /artist/:artistId/tours
  * Fetches all tours for a specific artist
  * 
- * @param {string} req.params.artistId - Can be either MusicBrainz ID or artist name
- * @param {string} req.query.mbid - Optional MusicBrainz ID if not provided in artistId
+ * @param {string} req.params.artistId - Artist name (URL decoded)
+ * @param {string} req.query.mbid - Optional MusicBrainz ID (not used in new flow)
  * @returns {Object} { tours: Array, artistSlug: string }
  */
 router.get('/artist/:artistId/tours', async (req, res) => {
   try {
     const { artistId } = req.params;
+    const artistName = decodeURIComponent(artistId);
     const { mbid } = req.query;
     
     // Check Redis cache first
-    const cacheKey = `tours:${mbid || artistId}`;
+    const cacheKey = `tours:${artistName}`;
     const cachedTours = req.session[cacheKey];
     
     if (cachedTours) {
-      console.log('Returning cached tours for:', artistId);
+      console.log('Returning cached tours for:', artistName);
       return res.json(cachedTours);
     }
     
-    // Get the setlist.fm slug
-    let artistSlug;
+    // First, get the artist slug using the official setlist.fm API
+    const artistSlug = await getSetlistSlug({ name: artistName }, mbid);
     
-    try {
-      // Try with MBID first if available, otherwise use artist name
-      artistSlug = await getSetlistSlug(
-        { name: decodeURIComponent(artistId) }, 
-        mbid
-      );
-      
-      if (!artistSlug) {
-        return res.status(404).json({ 
-          error: 'Artist not found on setlist.fm',
-          message: 'This artist may not have any recorded setlists.'
-        });
-      }
-    } catch (error) {
-      console.error('Error getting artist slug:', error);
-      return res.status(500).json({ 
-        error: 'Failed to fetch artist information',
-        message: 'Unable to retrieve artist data from setlist.fm'
+    if (!artistSlug) {
+      console.log('Could not find setlist.fm slug for artist:', artistName);
+      return res.json({ 
+        tours: [], 
+        artistSlug: null,
+        message: 'Artist not found on setlist.fm'
       });
     }
     
-    // Fetch tours from external scraping service
+    // Fetch tours from external scraping service using the slug
     try {
       const tours = await fetchToursFromService(artistSlug);
       
@@ -483,7 +476,7 @@ router.get('/artist/:artistId/tours', async (req, res) => {
         // Might be a service issue or artist has no tours
         return res.json({ 
           tours: [], 
-          artistSlug,
+          artistSlug: artistSlug,
           message: 'No tours found for this artist'
         });
       }
