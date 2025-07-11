@@ -317,6 +317,125 @@ SCRAPER_API_KEY=your-generated-api-key
 
 The feature is **fully functional** with **proper architectural separation** between legitimate API usage and web scraping.
 
+## Intelligent Caching System Implementation
+
+**Status**: ✅ **FULLY IMPLEMENTED AND WORKING** - Intelligent caching system is now active and operational.
+
+### 🎯 Caching Strategy Overview
+
+The app now has a fully functional intelligent caching system that minimizes scraping and dramatically improves performance. The system intelligently manages tour data caching with smart update logic.
+
+**Files Implemented**:
+- `backend/utils/tourCache.js` - Core caching class ✅
+- `backend/utils/backgroundCacheUpdate.js` - Background cache updater ✅
+- `backend/scripts/warmCache.js` - Popular artist pre-warming script
+- `backend/routes/setlistRoutes.js` - Updated with full caching implementation ✅
+- `backend/server.js` - Updated to provide Redis client access ✅
+
+### ✅ Implementation Complete
+
+**COMPLETED: Advanced Search Caching**
+
+1. **✅ `/artist/:artistId/tours` endpoint updated in `setlistRoutes.js`**:
+   - TourCache initialized with Redis client
+   - Cache checked first before calling scraper service
+   - Smart update logic detects new tours
+   - Only scrapes when cache is missing or new tour detected
+
+2. **✅ Redis client available to routes**:
+   - `server.js` updated to make Redis client available as `req.app.locals.redisClient`
+   - TourCache class imported and used in routes
+
+**COMPLETED: Background Cache Updates**
+
+3. **✅ Live Shows workflow integration**:
+   - Background cache update added to `processArtistWithUpdates()` 
+   - `BackgroundCacheUpdater.triggerUpdate()` called AFTER user gets response
+   - Cache builds organically without slowing user experience
+
+**AVAILABLE: Cache Warming**
+
+4. **Popular artist pre-warming**:
+   - Run `node backend/scripts/warmCache.js` to cache popular artists
+   - Consider scheduling this periodically for high-traffic artists
+
+### 🎯 Caching Logic Details
+
+**Smart Update Frequency**:
+- New artists (< 7 days): Check API every 6 hours
+- Recent activity (< 30 days): Check daily  
+- Moderate activity (< 180 days): Check weekly
+- Old cache (> 180 days): Check monthly
+
+**Invalid Tour Filtering**:
+The cache automatically filters out invalid tour names like:
+- "No Tour Info" (exact string from live shows workflow)
+- Empty strings from failed tour detection
+- Patterns like "Unknown", "Miscellaneous", etc.
+
+**Data Flow**:
+1. User searches artist → Check cache first
+2. If cache exists and recent → Return cached data (instant response)
+3. If cache old or missing → Check setlist.fm API for new tours
+4. If new tour detected → Scrape all tours and update cache
+5. If no new tour → Just update "last checked" timestamp
+
+**Background Updates** (after live shows):
+1. User gets live shows response immediately (no delay)
+2. Background process checks if discovered tour exists in cache
+3. If not, scrapes all tours and caches them
+4. Popular artists build comprehensive cache over time
+
+### 🔍 Key Implementation Notes
+
+**Redis Keys**:
+- Artist slugs: `artist:slug:coldplay`
+- Tours: `artist:tours:coldplay-3d6bde3`
+
+**Cache Structure**:
+```javascript
+{
+  tours: [...], // Array of tour objects
+  lastUpdated: "2024-07-10T...", // When cache was updated
+  lastChecked: 1626123456789, // When we last checked API
+  cachedAt: 1626123456789, // Original cache time
+  originalCount: 25, // Tours before filtering
+  filteredCount: 20 // Valid tours after filtering
+}
+```
+
+**Integration Points**:
+- Advanced search: Use cache to avoid scraping
+- Live shows: Background updates to build cache
+- Popular artists: Pre-warm cache with script
+
+### 🚀 Benefits Now Active
+
+- **✅ Minimal Scraping**: Only scrapes when new tours detected
+- **✅ Fast Responses**: Cached results return instantly (confirmed working)
+- **✅ Organic Growth**: Cache builds through normal usage via background updates
+- **✅ Smart Updates**: More active artists checked more frequently based on usage patterns
+- **✅ Clean Data**: Invalid tour names automatically filtered out before caching
+- **✅ Graceful Fallbacks**: Returns cached data if scraper service fails
+- **✅ Popularity Tracking**: Tracks artist search frequency for optimization
+
+### 🔍 How to Verify Caching is Working
+
+**Test API Response**:
+```bash
+# First call - fetches and caches data
+curl "http://localhost:3000/setlist/artist/Artist%20Name/tours"
+
+# Second call - should return {"cached": true, ...}
+curl "http://localhost:3000/setlist/artist/Artist%20Name/tours"
+```
+
+**Server Console Logs to Look For**:
+- `Fetching fresh tours for: [Artist]` (first call)
+- `Cached X tours for [Artist] (Y total, Z filtered out)` (caching)
+- `Returning cached tours for: [Artist] (X tours)` (subsequent calls)
+- `Background cache update starting for [Artist]` (after live shows)
+
 ## Technical Notes
 
 - All setlist data sourced from Setlist.fm API with proper rate limiting
@@ -327,3 +446,4 @@ The feature is **fully functional** with **proper architectural separation** bet
 - Comprehensive error handling and fallback mechanisms
 - **Advanced search scraping successfully separated to Vercel service**
 - **Microservice architecture provides IP isolation and risk mitigation**
+- **✅ Intelligent caching system fully implemented and operational**

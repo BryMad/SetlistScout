@@ -52,6 +52,12 @@ redisClient.connect()
 // Make Redis client available to route handlers
 app.set('redisClient', redisClient);
 
+// Make Redis client available to routes via app.locals for caching system
+app.use((req, res, next) => {
+  req.app.locals.redisClient = redisClient;
+  next();
+});
+
 // Set trust proxy
 app.set('trust proxy', 1);
 

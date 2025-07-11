@@ -14,6 +14,8 @@ const { isArtistNameMatch } = require("../utils/musicBrainzChecks.js");
 const { searchDeezerArtists } = require("../utils/deezerApiCalls.js");
 const sseManager = require('../utils/sseManager');
 const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
+const TourCache = require('../utils/tourCache');
+const BackgroundCacheUpdater = require('../utils/backgroundCacheUpdate');
 // Tour scraping moved to external service
 // const { scrapeTours } = require('../utils/tourScraper');
 
@@ -69,7 +71,7 @@ router.post('/search_with_updates', async (req, res) => {
 
   try {
     // Start processing and send updates via SSE instead of waiting for completion
-    processArtistWithUpdates(artist, clientId);
+    processArtistWithUpdates(artist, clientId, req.app.locals.redisClient);
 
     // Immediately return success to the client
     return res.status(202).json({
@@ -87,8 +89,9 @@ router.post('/search_with_updates', async (req, res) => {
  * 
  * @param {Object} artist - Artist information
  * @param {string} clientId - SSE client ID
+ * @param {Object} redisClient - Redis client for caching
  */
-async function processArtistWithUpdates(artist, clientId) {
+async function processArtistWithUpdates(artist, clientId, redisClient = null) {
   try {
     sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`, 5);
 
@@ -171,6 +174,26 @@ async function processArtistWithUpdates(artist, clientId) {
     };
 
     sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
+
+    // Background cache update (runs after user gets response)
+    // Only cache if we have a valid tour name, artist info, and Redis client
+    if (tourName && tourName !== "No Tour Info" && artist.name && redisClient) {
+      try {
+        // Get artist slug for caching - try to get it via setlist API
+        const artistSlug = await getSetlistSlug({ name: artist.name }, mbid);
+        
+        // Trigger background cache update (non-blocking)
+        BackgroundCacheUpdater.triggerUpdate(
+          redisClient,
+          artist,
+          tourName,
+          artistSlug
+        );
+      } catch (error) {
+        // Don't let background cache errors affect the main response
+        console.error('Background cache trigger failed:', error.message);
+      }
+    }
 
   } catch (error) {
     console.error('Error in processArtistWithUpdates:', error);
@@ -435,7 +458,7 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
 
 /**
  * Endpoint: GET /artist/:artistId/tours
- * Fetches all tours for a specific artist
+ * Fetches all tours for a specific artist with intelligent caching
  * 
  * @param {string} req.params.artistId - Artist name (URL decoded)
  * @param {string} req.query.mbid - Optional MusicBrainz ID (not used in new flow)
@@ -447,33 +470,103 @@ router.get('/artist/:artistId/tours', async (req, res) => {
     const artistName = decodeURIComponent(artistId);
     const { mbid } = req.query;
     
-    // Check Redis cache first
-    const cacheKey = `tours:${artistName}`;
-    const cachedTours = req.session[cacheKey];
+    // Initialize TourCache with Redis client
+    const tourCache = new TourCache(req.app.locals.redisClient);
     
-    if (cachedTours) {
-      console.log('Returning cached tours for:', artistName);
-      return res.json(cachedTours);
-    }
+    // Track artist search for popularity stats
+    await tourCache.trackArtistSearch(artistName);
     
-    // First, get the artist slug using the official setlist.fm API
-    const artistSlug = await getSetlistSlug({ name: artistName }, mbid);
+    // First, get the artist slug using the official setlist.fm API or cache
+    let artistSlug = await tourCache.getCachedSlug(artistName);
     
     if (!artistSlug) {
-      console.log('Could not find setlist.fm slug for artist:', artistName);
+      artistSlug = await getSetlistSlug({ name: artistName }, mbid);
+      
+      if (!artistSlug) {
+        console.log('Could not find setlist.fm slug for artist:', artistName);
+        return res.json({ 
+          tours: [], 
+          artistSlug: null,
+          message: 'Artist not found on setlist.fm'
+        });
+      }
+      
+      // Cache the slug permanently (it doesn't change)
+      await tourCache.cacheArtistSlug(artistName, artistSlug);
+    }
+    
+    // Check if we have cached tours
+    const cachedTours = await tourCache.getCachedTours(artistSlug);
+    
+    // If we have cached tours and don't need to check API yet, return them
+    if (cachedTours && !tourCache.shouldCheckAPI(cachedTours)) {
+      console.log('Returning cached tours for:', artistName, `(${cachedTours.tours.length} tours)`);
       return res.json({ 
-        tours: [], 
-        artistSlug: null,
-        message: 'Artist not found on setlist.fm'
+        tours: cachedTours.tours, 
+        artistSlug: artistSlug,
+        cached: true,
+        lastUpdated: cachedTours.lastUpdated
       });
     }
     
-    // Fetch tours from external scraping service using the slug
+    // If we should check API, get recent tour info to see if we need to update
+    if (cachedTours && tourCache.shouldCheckAPI(cachedTours)) {
+      try {
+        // Get recent tour info from setlist.fm API to check for new tours
+        const artistPage = await getArtistPageByName({ name: artistName });
+        const tourInfo = getTour(artistPage);
+        const currentTour = chooseTour(tourInfo, artistName);
+        
+        // Check if we need to update tours based on what we found
+        const shouldUpdate = await tourCache.shouldUpdateTours(artistSlug, currentTour, cachedTours);
+        
+        if (!shouldUpdate) {
+          // No new tours detected, just update last checked time
+          await tourCache.updateLastChecked(artistSlug);
+          console.log('No new tours detected for:', artistName, '- returning cached data');
+          return res.json({ 
+            tours: cachedTours.tours, 
+            artistSlug: artistSlug,
+            cached: true,
+            lastUpdated: cachedTours.lastUpdated,
+            lastChecked: new Date().toISOString()
+          });
+        }
+        
+        console.log('New tour detected for:', artistName, '- updating cache');
+      } catch (error) {
+        console.error('Error checking for new tours:', error);
+        // If API check fails, return cached data if we have it
+        if (cachedTours) {
+          return res.json({ 
+            tours: cachedTours.tours, 
+            artistSlug: artistSlug,
+            cached: true,
+            lastUpdated: cachedTours.lastUpdated,
+            note: 'Using cached data due to API error'
+          });
+        }
+      }
+    }
+    
+    // We need to fetch fresh tours (either no cache or new tours detected)
+    console.log('Fetching fresh tours for:', artistName);
+    
     try {
       const tours = await fetchToursFromService(artistSlug);
       
       if (tours.length === 0) {
-        // Might be a service issue or artist has no tours
+        // If we have cached data, return it instead of empty
+        if (cachedTours) {
+          return res.json({ 
+            tours: cachedTours.tours, 
+            artistSlug: artistSlug,
+            cached: true,
+            lastUpdated: cachedTours.lastUpdated,
+            note: 'Using cached data - scraper returned no tours'
+          });
+        }
+        
         return res.json({ 
           tours: [], 
           artistSlug: artistSlug,
@@ -481,13 +574,35 @@ router.get('/artist/:artistId/tours', async (req, res) => {
         });
       }
       
-      // Cache the result in session (24 hour expiration matches session expiration)
-      const result = { tours, artistSlug };
-      req.session[cacheKey] = result;
+      // Cache the fresh tours
+      await tourCache.cacheTours(artistSlug, tours);
       
-      return res.json(result);
+      // Get the processed/filtered tours from cache
+      const freshCachedTours = await tourCache.getCachedTours(artistSlug);
+      
+      console.log(`Cached ${freshCachedTours.tours.length} tours for ${artistName} (${freshCachedTours.originalCount} total, ${freshCachedTours.originalCount - freshCachedTours.filteredCount} filtered out)`);
+      
+      return res.json({ 
+        tours: freshCachedTours.tours, 
+        artistSlug: artistSlug,
+        cached: false,
+        lastUpdated: freshCachedTours.lastUpdated
+      });
+      
     } catch (error) {
       console.error('Error fetching tours from service:', error);
+      
+      // If scraper fails but we have cached data, return it
+      if (cachedTours) {
+        return res.json({ 
+          tours: cachedTours.tours, 
+          artistSlug: artistSlug,
+          cached: true,
+          lastUpdated: cachedTours.lastUpdated,
+          note: 'Using cached data due to scraper error'
+        });
+      }
+      
       return res.status(500).json({ 
         error: 'Failed to fetch tour data',
         message: 'Unable to retrieve tour information. Please try again later.'
