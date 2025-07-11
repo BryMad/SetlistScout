@@ -17,6 +17,11 @@ import {
   TabPanel,
   Select,
   VStack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
@@ -28,8 +33,13 @@ import { server_url } from "../App";
  * - Uses Spotify API for setlist and playlist functionality
  */
 export default function UserInput() {
-  const { fetchTourData, fetchSpecificTourData, loading, searchForArtistsDeezer, resetSearch } =
-    useSetlist();
+  const {
+    fetchTourData,
+    fetchSpecificTourData,
+    loading,
+    searchForArtistsDeezer,
+    resetSearch,
+  } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -90,15 +100,15 @@ export default function UserInput() {
    */
   const fetchTours = async (artist) => {
     if (!artist) return;
-    
+
     setToursLoading(true);
     try {
       const response = await fetch(
         `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours`,
         {
-          method: 'GET',
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       );
@@ -110,7 +120,7 @@ export default function UserInput() {
       const data = await response.json();
       setTours(data.tours || []);
     } catch (error) {
-      console.error('Error fetching tours:', error);
+      console.error("Error fetching tours:", error);
       setTours([]);
     } finally {
       setToursLoading(false);
@@ -152,8 +162,11 @@ export default function UserInput() {
    * @param {string} tourId The selected tour ID
    */
   const handleTourSelect = async (tourId) => {
-    const tour = tours.find(t => t.id === tourId);
+    const tour = tours.find((t) => t.id === tourId);
     if (!tour || !selectedArtist) return;
+
+    // Set the selected tour to show in dropdown
+    setSelectedTour(tourId);
 
     // Dispatch an event to notify that a new search is starting
     window.dispatchEvent(new Event("new-search-started"));
@@ -163,12 +176,12 @@ export default function UserInput() {
       clearPlaylistUrl();
     }
 
-    console.log('Selected tour:', tour);
-    console.log('For artist:', selectedArtist);
-    
+    console.log("Selected tour:", tour);
+    console.log("For artist:", selectedArtist);
+
     // Fetch setlist data for the specific tour
     await fetchSpecificTourData(selectedArtist, tourId, tour.name);
-    
+
     // Reset the form after selection
     setArtistQuery("");
     setSelectedArtist(null);
@@ -199,25 +212,70 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      <Tabs 
-        index={tabIndex} 
-        onChange={setTabIndex} 
-        variant="soft-rounded" 
-        colorScheme="brand"
-        mb={4}
-      >
-        <TabList justifyContent="center" gap={2}>
-          <Tab 
-            _selected={{ color: "white", bg: "brand.500" }}
-            _hover={{ bg: "brand.600" }}
+      <Tabs index={tabIndex} onChange={setTabIndex} variant="unstyled" mb={4}>
+        <TabList
+          justifyContent="center"
+          gap={8}
+        >
+          <Tab
+            _selected={{
+              color: "brand.300",
+              _after: {
+                content: '""',
+                position: "absolute",
+                bottom: "-2px",
+                left: "0",
+                right: "0",
+                height: "2px",
+                bg: "brand.300",
+              }
+            }}
+            _hover={{ color: "brand.400" }}
+            _open={{ animation: "fadeIn 0.2s ease-in-out" }}
+            _close={{ animation: "fadeOut 0.2s ease-in-out" }}
             fontWeight="medium"
+            fontSize="sm"
+            color="gray.400"
+            pb={3}
+            px={2}
+            bg="transparent"
+            border="none"
+            borderRadius="0"
+            transition="all 0.3s ease"
+            position="relative"
+            minW="auto"
+            w="auto"
           >
-            Live Shows
+            Recent Tour
           </Tab>
-          <Tab 
-            _selected={{ color: "white", bg: "brand.500" }}
-            _hover={{ bg: "brand.600" }}
+          <Tab
+            _selected={{
+              color: "brand.300",
+              _after: {
+                content: '""',
+                position: "absolute",
+                bottom: "-2px",
+                left: "0",
+                right: "0",
+                height: "2px",
+                bg: "brand.300",
+              }
+            }}
+            _hover={{ color: "brand.400" }}
+            _open={{ animation: "fadeIn 0.2s ease-in-out" }}
+            _close={{ animation: "fadeOut 0.2s ease-in-out" }}
             fontWeight="medium"
+            fontSize="sm"
+            color="gray.400"
+            pb={3}
+            px={2}
+            bg="transparent"
+            border="none"
+            borderRadius="0"
+            transition="all 0.3s ease"
+            position="relative"
+            minW="auto"
+            w="auto"
           >
             Past Tours
           </Tab>
@@ -261,7 +319,7 @@ export default function UserInput() {
           <TabPanel px={0}>
             <VStack spacing={3}>
               <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                Advanced search for past concert data. Enter an Artist to see what they played on previous tours:
+                Enter an Artist to see what they played live:
               </Text>
 
               <Input
@@ -299,23 +357,44 @@ export default function UserInput() {
                       </Text>
                     </Box>
                   ) : tours.length > 0 ? (
-                    <Select
-                      placeholder="Select a tour..."
-                      value={selectedTour}
-                      onChange={(e) => handleTourSelect(e.target.value)}
-                      size="lg"
-                      variant="filled"
-                      bg="gray.800"
-                      borderRadius="xl"
-                      _hover={{ bg: "gray.700" }}
-                      _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                    >
-                      {tours.map((tour) => (
-                        <option key={tour.id} value={tour.id}>
-                          {tour.name} ({tour.showCount} shows)
-                        </option>
-                      ))}
-                    </Select>
+                    <Menu>
+                      <MenuButton
+                        as={Button}
+                        width="100%"
+                        size="lg"
+                        variant="filled"
+                        bg="gray.800"
+                        borderRadius="xl"
+                        _hover={{ bg: "gray.700" }}
+                        _active={{ bg: "gray.700", borderColor: "brand.400" }}
+                        textAlign="left"
+                        fontWeight="normal"
+                        rightIcon={<Text fontSize="xs">▼</Text>}
+                        isDisabled={loading}
+                      >
+                        {selectedTour ? tours.find(t => t.id === selectedTour)?.name + ` (${tours.find(t => t.id === selectedTour)?.showCount} shows)` : "Select a tour..."}
+                      </MenuButton>
+                      <MenuList
+                        bg="gray.800"
+                        borderRadius="lg"
+                        border="1px solid"
+                        borderColor="gray.700"
+                        boxShadow="xl"
+                        maxH="300px"
+                        overflowY="auto"
+                      >
+                        {tours.map((tour) => (
+                          <MenuItem
+                            key={tour.id}
+                            onClick={() => handleTourSelect(tour.id)}
+                            _hover={{ bg: "gray.700" }}
+                            transition="background-color 0.2s"
+                          >
+                            {tour.name} ({tour.showCount} shows)
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </Menu>
                   ) : (
                     <Text color="gray.400" textAlign="center">
                       No tours found for this artist
