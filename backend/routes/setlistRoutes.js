@@ -4,7 +4,7 @@ const router = express.Router();
 const axios = require('axios');
 const {
   getTourName,
-  getAllTourSongs, getArtistPageByName, getArtistPageByMBID, delay,
+  getAllTourSongs, getArtistPageByName, getArtistPageByMBID, getMultipleArtistPages, delay,
   getAllTourSongsByMBID
 } = require("../utils/setlistAPIRequests.js");
 const { getSongTally, getTour, chooseTour } = require("../utils/setlistFormatData.js");
@@ -16,6 +16,9 @@ const sseManager = require('../utils/sseManager');
 const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
 const TourCache = require('../utils/tourCache');
 const BackgroundCacheUpdater = require('../utils/backgroundCacheUpdate');
+const SetlistAnalyzer = require('../utils/setlistAnalyzer');
+const features = require('../config/features');
+const logger = require('../utils/logger');
 // Tour scraping moved to external service
 // const { scrapeTours } = require('../utils/tourScraper');
 
@@ -114,29 +117,77 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
       artistPage = await getArtistPageByName(artist);
     }
 
-    // Step 3: Process tour information
-    sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
-    const tourInfo = getTour(artistPage);
-    const tourName = chooseTour(tourInfo, artist.name);
-
-    if (!tourName) {
-      sseManager.sendError(clientId, "This artist doesn't have any setlist information", 404);
-      return;
+    // Step 3: Intelligent Workflow Analysis (if enabled)
+    let intelligentWorkflowOverride = null;
+    if (features.INTELLIGENT_WORKFLOW) {
+      sseManager.sendUpdate(clientId, 'analysis', 'Analyzing setlist data quality...', 35);
+      
+      // Analyze the shows we got back to determine optimal workflow
+      const { analysis, workflow } = SetlistAnalyzer.analyzeAndDetermineWorkflow(artistPage.setlist || []);
+      
+      // Handle different workflow types
+      if (workflow.workflow === 'AGGREGATE_ALL') {
+        // Override the normal flow - use all available shows instead of trying to find a tour
+        sseManager.sendWorkflowInfo(clientId, workflow.message, workflow.dataQualityWarning, 40);
+        intelligentWorkflowOverride = 'AGGREGATE_ALL';
+      } else if (workflow.workflow === 'RECENT_SHOWS') {
+        // Use recent non-tour shows instead of old tour
+        sseManager.sendWorkflowInfo(clientId, workflow.message, workflow.dataQualityWarning, 40);
+        intelligentWorkflowOverride = 'RECENT_SHOWS';
+      } else if (workflow.dataQualityWarning) {
+        // Send warning about data quality but continue with normal flow
+        sseManager.sendWorkflowInfo(clientId, 
+          `Proceeding with available data: ${workflow.dataQualityWarning}`, 
+          workflow.dataQualityWarning, 
+          40
+        );
+      } else if (workflow.message) {
+        // Send info about workflow decision
+        sseManager.sendWorkflowInfo(clientId, workflow.message, null, 40);
+      }
     }
 
-    // Step 4: Get all tour data
-    await delay(600);
+    // Step 4: Process tour information (with intelligent workflow overrides)
+    let tourName;
     let allTourInfo = [];
 
-    if (tourName === "No Tour Info") {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', 'No specific tour found, using recent performances', 55);
+    if (intelligentWorkflowOverride === 'AGGREGATE_ALL') {
+      // Skip tour detection entirely - fetch multiple pages for maximum data
+      sseManager.sendUpdate(clientId, 'setlist_fetch', 'Gathering all available setlist data (multiple pages)', 55);
+      tourName = "No Tour Info"; // This will trigger the correct display logic
+      
+      // Fetch 3 pages (up to 60 shows) for comprehensive data collection
+      const multiplePages = await getMultipleArtistPages(artist, 3);
+      allTourInfo.push(...multiplePages);
+    } else if (intelligentWorkflowOverride === 'RECENT_SHOWS') {
+      // Use recent shows instead of tour data
+      sseManager.sendUpdate(clientId, 'setlist_fetch', 'Using recent individual performances', 55);
+      tourName = "Recent Shows"; // Custom display name
       allTourInfo.push(artistPage);
-    } else if (matched) {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
-      allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
     } else {
-      sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
-      allTourInfo = await getAllTourSongs(artist.name, tourName);
+      // Normal tour processing
+      sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
+      const tourInfo = getTour(artistPage);
+      tourName = chooseTour(tourInfo, artist.name);
+
+      if (!tourName) {
+        sseManager.sendError(clientId, "This artist doesn't have any setlist information", 404);
+        return;
+      }
+
+      // Get all tour data
+      await delay(600);
+
+      if (tourName === "No Tour Info") {
+        sseManager.sendUpdate(clientId, 'setlist_fetch', 'No specific tour found, using recent performances', 55);
+        allTourInfo.push(artistPage);
+      } else if (matched) {
+        sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
+        allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
+      } else {
+        sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
+        allTourInfo = await getAllTourSongs(artist.name, tourName);
+      }
     }
 
     // Handle errors in tour info
@@ -173,6 +224,15 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
 
+    // Add data quality warning if intelligent workflow is enabled
+    if (features.INTELLIGENT_WORKFLOW) {
+      // Re-analyze to get warning (lightweight operation)
+      const { workflow } = SetlistAnalyzer.analyzeAndDetermineWorkflow(artistPage.setlist || []);
+      if (workflow.dataQualityWarning) {
+        tourData.dataQualityWarning = workflow.dataQualityWarning;
+      }
+    }
+
     sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
 
     // Background cache update (runs after user gets response)
@@ -198,7 +258,24 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
   } catch (error) {
     console.error('Error in processArtistWithUpdates:', error);
 
-    // Handle specific error types
+    // Handle no setlist data scenarios (non-performing artists)
+    if (error.isNoSetlistData) {
+      let message;
+      if (error.message === 'NO_SETLIST_DATA') {
+        message = `No live performance data found for this artist. They may be a studio/soundtrack artist rather than a touring performer.`;
+      } else if (error.message === 'ARTIST_NOT_FOUND_ON_SETLIST_FM') {
+        message = `This artist exists in music databases but has no recorded live performances on Setlist.fm. They may not perform live concerts.`;
+      } else if (error.message === 'INVALID_ARTIST_DATA') {
+        message = `Unable to find setlist data for this artist. They may not be a performing artist or may use a different name for live shows.`;
+      } else {
+        message = `No live performance data available for this artist.`;
+      }
+      
+      sseManager.sendError(clientId, message, error.httpStatus || 404);
+      return;
+    }
+
+    // Handle specific API error types
     if (error.response && error.response.status === 504) {
       sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
     } else if (error.response) {
@@ -278,6 +355,25 @@ router.post('/', async (req, res) => {
     res.json({ tourData, spotifySongsOrdered });
   } catch (error) {
     console.error('Error in /setlist route:', error);
+    
+    // Handle no setlist data scenarios (non-performing artists)
+    if (error.isNoSetlistData) {
+      let message;
+      if (error.message === 'NO_SETLIST_DATA') {
+        message = `No live performance data found for this artist. They may be a studio/soundtrack artist rather than a touring performer.`;
+      } else if (error.message === 'ARTIST_NOT_FOUND_ON_SETLIST_FM') {
+        message = `This artist exists in music databases but has no recorded live performances on Setlist.fm. They may not perform live concerts.`;
+      } else if (error.message === 'INVALID_ARTIST_DATA') {
+        message = `Unable to find setlist data for this artist. They may not be a performing artist or may use a different name for live shows.`;
+      } else {
+        message = `No live performance data available for this artist.`;
+      }
+      
+      return res.status(error.httpStatus || 404).json({ 
+        error: message,
+        type: 'NO_SETLIST_DATA'
+      });
+    }
 
     // Handle 504 Gateway Timeout specifically.
     if (error.response && error.response.status === 504) {
@@ -343,6 +439,11 @@ router.post('/artist_search_deezer', async (req, res) => {
  * @returns {Object} Tour data and Spotify song information
  */
 router.post('/search_tour_with_updates', async (req, res) => {
+  // Check if advanced search feature is enabled
+  if (!features.ADVANCED_SEARCH) {
+    return res.status(404).json({ error: 'Feature not available' });
+  }
+
   const { artist, tourId, tourName, clientId } = req.body;
 
   if (!clientId) {
@@ -465,6 +566,11 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
  * @returns {Object} { tours: Array, artistSlug: string }
  */
 router.get('/artist/:artistId/tours', async (req, res) => {
+  // Check if advanced search feature is enabled
+  if (!features.ADVANCED_SEARCH) {
+    return res.status(404).json({ error: 'Feature not available' });
+  }
+
   try {
     const { artistId } = req.params;
     const artistName = decodeURIComponent(artistId);
