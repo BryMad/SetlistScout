@@ -26,6 +26,7 @@ import {
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 import { server_url } from "../App";
+import { FEATURES } from "../config/features";
 
 /**
  * Component for artist search input
@@ -145,8 +146,8 @@ export default function UserInput() {
     setSuggestions([]);
     setSelectedArtist(artist);
 
-    if (tabIndex === 0) {
-      // Live Shows tab - Original flow: directly process the most recent tour
+    if (!FEATURES.ADVANCED_SEARCH || tabIndex === 0) {
+      // Live Shows tab OR feature disabled - Original flow: directly process the most recent tour
       await fetchTourData(artist);
       // Reset the form
       setArtistQuery("");
@@ -212,7 +213,8 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      <Tabs index={tabIndex} onChange={setTabIndex} variant="unstyled" mb={4}>
+      {FEATURES.ADVANCED_SEARCH ? (
+        <Tabs index={tabIndex} onChange={setTabIndex} variant="unstyled" mb={4}>
         <TabList
           justifyContent="center"
           gap={8}
@@ -406,6 +408,38 @@ export default function UserInput() {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      ) : (
+        /* No tabs - just show the live shows search */
+        <VStack spacing={3}>
+          <Text fontWeight="semibold" fontSize="md" color="gray.300">
+            Enter an Artist to see what they're playing live:
+          </Text>
+
+          <Input
+            placeholder="Search for an artist..."
+            value={artistQuery}
+            onChange={(e) => setArtistQuery(e.target.value)}
+            size="lg"
+            variant="filled"
+            bg="gray.800"
+            borderRadius="xl"
+            width="100%"
+            disabled={loading}
+            _hover={{ bg: "gray.700" }}
+            _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+            transition="all 0.2s"
+          />
+
+          {searchLoading && (
+            <Box>
+              <Spinner size="sm" />
+              <Text as="span" ml={2}>
+                Searching...
+              </Text>
+            </Box>
+          )}
+        </VStack>
+      )}
 
       {/* Artist suggestions dropdown - shown for both tabs */}
       {suggestions.length > 0 && (

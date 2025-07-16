@@ -14,6 +14,10 @@ class BackgroundCacheUpdater {
   /**
    * Check and update cache after live shows workflow completes
    * This runs asynchronously without blocking the user response
+   * 
+   * IMPORTANT: This only updates EXISTING caches. It does not create new caches
+   * to prevent incomplete cache entries (only current tour instead of all tours).
+   * New caches should only be created from advanced search with complete tour data.
    */
   async updateCacheAfterLiveShows(artist, tourName, artistSlug) {
     try {
@@ -42,9 +46,10 @@ class BackgroundCacheUpdater {
       const cachedTours = await this.tourCache.getCachedTours(useSlug);
       
       if (!cachedTours) {
-        // No cache exists, fetch and cache all tours
-        console.log(`  - No cache exists, fetching all tours for ${artist.name}`);
-        await this.fetchAndCacheAllTours(useSlug);
+        // No cache exists - DO NOT create from basic search
+        // Cache should only be created from advanced search with ALL tours
+        console.log(`  - No cache exists for ${artist.name}, skipping cache creation from basic search`);
+        return;
       } else {
         // Check if this tour exists in cache
         const tourExists = cachedTours.tours.some(tour => 

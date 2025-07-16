@@ -181,6 +181,21 @@ The application provides two search modes for discovering artist setlists:
 - **Caching Strategy**: Redis session storage for user state
 - **Error Recovery**: Graceful handling of API timeouts and failures
 
+## Feature Flags
+
+### Advanced Search Feature Flag
+
+The advanced search (Past Tours) feature can be enabled/disabled via environment variables:
+
+**Frontend**: Set `VITE_ENABLE_ADVANCED_SEARCH=true` in `.env` to enable the Past Tours tab
+**Backend**: No changes needed - routes remain available but frontend controls access
+
+When disabled:
+- Only the simple artist search appears (no tabs)
+- Users can still search for artists and see recent setlists
+- No access to historical tour data
+- No web scraping occurs
+
 ## Advanced Search Implementation
 
 ### Current Status: FULLY FUNCTIONAL WITH SEPARATED ARCHITECTURE ✅
@@ -361,11 +376,13 @@ The app now has a fully functional intelligent caching system that minimizes scr
 
 ### 🎯 Caching Logic Details
 
-**Smart Update Frequency**:
+**Smart Update Frequency** (for advanced search):
 - New artists (< 7 days): Check API every 6 hours
 - Recent activity (< 30 days): Check daily  
 - Moderate activity (< 180 days): Check weekly
 - Old cache (> 180 days): Check monthly
+
+Note: This timing only applies when someone performs an advanced search. The system checks if enough time has passed since the last API check before deciding whether to look for new tours.
 
 **Invalid Tour Filtering**:
 The cache automatically filters out invalid tour names like:
@@ -382,9 +399,12 @@ The cache automatically filters out invalid tour names like:
 
 **Background Updates** (after live shows):
 1. User gets live shows response immediately (no delay)
-2. Background process checks if discovered tour exists in cache
-3. If not, scrapes all tours and caches them
-4. Popular artists build comprehensive cache over time
+2. Background process ONLY updates existing cached artists
+3. If no cache exists, skip creation (prevents incomplete caches)
+4. If cache exists and new tour detected, refresh entire cache
+5. Cache is only created from advanced search with complete tour data
+
+**IMPORTANT BUG FIX**: Basic search no longer creates new cache entries. This prevents incomplete caches that would only contain the current tour instead of all historical tours.
 
 ### 🔍 Key Implementation Notes
 

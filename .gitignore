@@ -28,6 +28,9 @@ Thumbs.db
 *.sln
 *.sw?
 
+# Vercel deployment
+.vercel
+
 # Virtual environment
 venv/
 env/
