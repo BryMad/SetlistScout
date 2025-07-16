@@ -19,7 +19,7 @@ class BackgroundCacheUpdater {
    * to prevent incomplete cache entries (only current tour instead of all tours).
    * New caches should only be created from advanced search with complete tour data.
    */
-  async updateCacheAfterLiveShows(artist, tourName, artistSlug) {
+  async updateCacheAfterLiveShows(artist, tourName, artistSlug, mbid = null) {
     try {
       // Don't cache invalid tour names
       if (this.isInvalidTourName(tourName)) {
@@ -30,10 +30,10 @@ class BackgroundCacheUpdater {
       console.log(`Background cache update starting for ${artist.name} (${tourName})`);
 
       // Cache the artist slug if we don't have it
-      const cachedSlug = await this.tourCache.getCachedSlug(artist.name);
+      const cachedSlug = await this.tourCache.getCachedSlug(artist.name, mbid);
       if (!cachedSlug && artistSlug) {
-        await this.tourCache.cacheArtistSlug(artist.name, artistSlug);
-        console.log(`  - Cached new slug: ${artistSlug}`);
+        await this.tourCache.cacheArtistSlug(artist.name, artistSlug, mbid);
+        console.log(`  - Cached new slug: ${artistSlug} ${mbid ? `(MBID: ${mbid})` : '(name only)'}`);
       }
 
       // Check if we have tours cached for this artist
@@ -151,12 +151,12 @@ class BackgroundCacheUpdater {
   /**
    * Static method to easily trigger background update
    */
-  static async triggerUpdate(redisClient, artist, tourName, artistSlug) {
+  static async triggerUpdate(redisClient, artist, tourName, artistSlug, mbid = null) {
     const updater = new BackgroundCacheUpdater(redisClient);
     
     // Run asynchronously without blocking
     setImmediate(() => {
-      updater.updateCacheAfterLiveShows(artist, tourName, artistSlug);
+      updater.updateCacheAfterLiveShows(artist, tourName, artistSlug, mbid);
     });
   }
 }

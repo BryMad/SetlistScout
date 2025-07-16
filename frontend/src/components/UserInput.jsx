@@ -107,10 +107,19 @@ export default function UserInput() {
       const response = await fetch(
         `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours`,
         {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            artist: {
+              name: artist.name,
+              id: artist.id,
+              url: artist.url,
+              image: artist.image,
+              popularity: artist.popularity
+            }
+          })
         }
       );
 

@@ -6,19 +6,78 @@ class TourCache {
   }
 
   /**
-   * Cache an artist slug (permanent)
+   * Cache an artist slug with both name and MBID keys when available
+   * @param {string} artistName - Artist name
+   * @param {string} slug - Setlist.fm slug
+   * @param {string} mbid - MusicBrainz ID (optional)
    */
-  async cacheArtistSlug(artistName, slug) {
-    const key = `artist:slug:${artistName.toLowerCase()}`;
-    await this.redis.set(key, slug);
+  async cacheArtistSlug(artistName, slug, mbid = null) {
+    // Always cache by name for backward compatibility
+    const nameKey = `artist:slug:name:${artistName.toLowerCase()}`;
+    await this.redis.set(nameKey, slug);
+    
+    // If we have MBID, also cache by MBID (more reliable)
+    if (mbid) {
+      const mbidKey = `artist:slug:mbid:${mbid}`;
+      await this.redis.set(mbidKey, slug);
+      
+      console.log(`Cached slug for "${artistName}" with both name and MBID keys:`, {
+        nameKey,
+        mbidKey,
+        slug
+      });
+    } else {
+      console.log(`Cached slug for "${artistName}" with name key only:`, {
+        nameKey,
+        slug
+      });
+    }
   }
 
   /**
-   * Get cached artist slug
+   * Get cached artist slug with priority: MBID first, then name
+   * @param {string} artistName - Artist name
+   * @param {string} mbid - MusicBrainz ID (optional)
+   * @returns {Promise<string|null>} Cached slug or null
    */
-  async getCachedSlug(artistName) {
-    const key = `artist:slug:${artistName.toLowerCase()}`;
-    return await this.redis.get(key);
+  async getCachedSlug(artistName, mbid = null) {
+    // If we have MBID, check MBID cache first (most reliable)
+    if (mbid) {
+      const mbidKey = `artist:slug:mbid:${mbid}`;
+      const mbidSlug = await this.redis.get(mbidKey);
+      if (mbidSlug) {
+        console.log(`Found cached slug via MBID for "${artistName}":`, mbidSlug);
+        return mbidSlug;
+      }
+    }
+    
+    // Fallback to name-based cache
+    const nameKey = `artist:slug:name:${artistName.toLowerCase()}`;
+    const nameSlug = await this.redis.get(nameKey);
+    if (nameSlug) {
+      console.log(`Found cached slug via name for "${artistName}":`, nameSlug);
+      return nameSlug;
+    }
+    
+    // Also check old format for backward compatibility
+    const oldKey = `artist:slug:${artistName.toLowerCase()}`;
+    const oldSlug = await this.redis.get(oldKey);
+    if (oldSlug) {
+      console.log(`Found cached slug via old format for "${artistName}":`, oldSlug);
+      
+      // Migrate to new format if we have MBID
+      if (mbid) {
+        await this.cacheArtistSlug(artistName, oldSlug, mbid);
+        // Delete old key
+        await this.redis.del(oldKey);
+        console.log(`Migrated old cache key to new format for "${artistName}"`);
+      }
+      
+      return oldSlug;
+    }
+    
+    console.log(`No cached slug found for "${artistName}" (MBID: ${mbid || 'none'})`);
+    return null;
   }
 
   /**

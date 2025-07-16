@@ -187,7 +187,8 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
           redisClient,
           artist,
           tourName,
-          artistSlug
+          artistSlug,
+          mbid
         );
       } catch (error) {
         // Don't let background cache errors affect the main response
@@ -457,18 +458,45 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
 }
 
 /**
- * Endpoint: GET /artist/:artistId/tours
- * Fetches all tours for a specific artist with intelligent caching
+ * Endpoint: POST /artist/:artistId/tours
+ * Fetches all tours for a specific artist with intelligent caching and MusicBrainz validation
  * 
  * @param {string} req.params.artistId - Artist name (URL decoded)
- * @param {string} req.query.mbid - Optional MusicBrainz ID (not used in new flow)
+ * @param {Object} req.body.artist - Full artist object with name, id, url, etc.
  * @returns {Object} { tours: Array, artistSlug: string }
  */
-router.get('/artist/:artistId/tours', async (req, res) => {
+router.post('/artist/:artistId/tours', async (req, res) => {
   try {
     const { artistId } = req.params;
     const artistName = decodeURIComponent(artistId);
-    const { mbid } = req.query;
+    const { artist } = req.body;
+    
+    // Validate that we have the artist object
+    if (!artist || !artist.name || !artist.url) {
+      console.error('Invalid artist data received:', { artist });
+      return res.status(400).json({ 
+        error: 'Invalid artist data. Missing artist object with name and url.',
+        received: artist
+      });
+    }
+    
+    console.log('Processing tours request for artist:', {
+      name: artist.name,
+      id: artist.id,
+      url: artist.url,
+      hasImage: !!artist.image,
+      popularity: artist.popularity
+    });
+    
+    // Also log to file for debugging
+    const fs = require('fs');
+    const logData = {
+      timestamp: new Date().toISOString(),
+      artistName,
+      artist,
+      step: 'tour_request_start'
+    };
+    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify(logData) + '\n');
     
     // Initialize TourCache with Redis client
     const tourCache = new TourCache(req.app.locals.redisClient);
@@ -476,14 +504,126 @@ router.get('/artist/:artistId/tours', async (req, res) => {
     // Track artist search for popularity stats
     await tourCache.trackArtistSearch(artistName);
     
-    // First, get the artist slug using the official setlist.fm API or cache
-    let artistSlug = await tourCache.getCachedSlug(artistName);
+    // Apply MusicBrainz validation to get the correct artist identity
+    let mbid = null;
+    let validatedArtistName = artistName;
+    let useExactMatch = false;
+    
+    try {
+      console.log('Applying MusicBrainz validation for artist:', artistName, 'with URL:', artist.url);
+      
+      // Log this step
+      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+        timestamp: new Date().toISOString(),
+        step: 'musicbrainz_start',
+        artistName,
+        url: artist.url
+      }) + '\n');
+      
+      const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+      
+      // Log MusicBrainz response
+      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+        timestamp: new Date().toISOString(),
+        step: 'musicbrainz_response',
+        mbInfo
+      }) + '\n');
+      
+      const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+      mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+      
+      // Debug the matching
+      console.log('Extracted MusicBrainz data:', { mbArtistName, mbid });
+      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+        timestamp: new Date().toISOString(),
+        step: 'extracted_mb_data',
+        mbArtistName,
+        mbid,
+        artistName
+      }) + '\n');
+      
+      const nameMatch = isArtistNameMatch(artistName, mbArtistName);
+      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+        timestamp: new Date().toISOString(),
+        step: 'name_match_result',
+        nameMatch,
+        artistName,
+        mbArtistName
+      }) + '\n');
+      
+      if (mbArtistName && nameMatch) {
+        console.log(`MusicBrainz validation successful: "${artistName}" matches "${mbArtistName}"`);
+        validatedArtistName = mbArtistName; // Use the canonical MusicBrainz name
+        useExactMatch = true;
+        
+        fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+          timestamp: new Date().toISOString(),
+          step: 'validation_success',
+          validatedArtistName,
+          useExactMatch
+        }) + '\n');
+      } else {
+        console.log(`MusicBrainz validation failed or no match: "${artistName}" vs "${mbArtistName}"`);
+        
+        fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+          timestamp: new Date().toISOString(),
+          step: 'validation_failed',
+          artistName,
+          mbArtistName,
+          hasMbArtistName: !!mbArtistName,
+          nameMatch
+        }) + '\n');
+      }
+    } catch (error) {
+      console.error('MusicBrainz validation error:', error.message);
+      
+      // Log the error
+      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+        timestamp: new Date().toISOString(),
+        step: 'musicbrainz_error',
+        error: error.message
+      }) + '\n');
+      
+      // Continue with original artist name if MusicBrainz fails
+    }
+    
+    // Get the artist slug using validated information
+    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+      timestamp: new Date().toISOString(),
+      step: 'before_slug_lookup',
+      validatedArtistName,
+      useExactMatch,
+      mbid
+    }) + '\n');
+    
+    let artistSlug = await tourCache.getCachedSlug(validatedArtistName, mbid);
+    
+    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
+      timestamp: new Date().toISOString(),
+      step: 'cached_slug_result',
+      artistSlug
+    }) + '\n');
     
     if (!artistSlug) {
-      artistSlug = await getSetlistSlug({ name: artistName }, mbid);
+      if (useExactMatch && mbid) {
+        // Use MusicBrainz ID for more precise matching
+        console.log('Getting slug using MusicBrainz ID:', mbid);
+        const artistPage = await getArtistPageByMBID(mbid);
+        if (artistPage?.setlist?.length > 0) {
+          // Extract slug from the first setlist's artist URL
+          const firstArtist = artistPage.setlist[0].artist;
+          if (firstArtist?.url) {
+            const urlMatch = firstArtist.url.match(/setlists\/(.+)\.html/);
+            artistSlug = urlMatch ? urlMatch[1] : null;
+          }
+        }
+      } else {
+        // Use name-based search with improved filtering
+        artistSlug = await getSetlistSlug({ name: validatedArtistName }, mbid);
+      }
       
       if (!artistSlug) {
-        console.log('Could not find setlist.fm slug for artist:', artistName);
+        console.log('Could not find setlist.fm slug for artist:', validatedArtistName);
         return res.json({ 
           tours: [], 
           artistSlug: null,
@@ -491,8 +631,8 @@ router.get('/artist/:artistId/tours', async (req, res) => {
         });
       }
       
-      // Cache the slug permanently (it doesn't change)
-      await tourCache.cacheArtistSlug(artistName, artistSlug);
+      // Cache the slug permanently with MBID when available
+      await tourCache.cacheArtistSlug(validatedArtistName, artistSlug, mbid);
     }
     
     // Check if we have cached tours
@@ -500,12 +640,13 @@ router.get('/artist/:artistId/tours', async (req, res) => {
     
     // If we have cached tours and don't need to check API yet, return them
     if (cachedTours && !tourCache.shouldCheckAPI(cachedTours)) {
-      console.log('Returning cached tours for:', artistName, `(${cachedTours.tours.length} tours)`);
+      console.log('Returning cached tours for:', validatedArtistName, `(${cachedTours.tours.length} tours)`);
       return res.json({ 
         tours: cachedTours.tours, 
         artistSlug: artistSlug,
         cached: true,
-        lastUpdated: cachedTours.lastUpdated
+        lastUpdated: cachedTours.lastUpdated,
+        validatedArtistName: validatedArtistName
       });
     }
     
@@ -513,9 +654,16 @@ router.get('/artist/:artistId/tours', async (req, res) => {
     if (cachedTours && tourCache.shouldCheckAPI(cachedTours)) {
       try {
         // Get recent tour info from setlist.fm API to check for new tours
-        const artistPage = await getArtistPageByName({ name: artistName });
+        // Use the same validation logic as the main search flow
+        let artistPage;
+        if (useExactMatch && mbid) {
+          artistPage = await getArtistPageByMBID(mbid);
+        } else {
+          artistPage = await getArtistPageByName({ name: validatedArtistName });
+        }
+        
         const tourInfo = getTour(artistPage);
-        const currentTour = chooseTour(tourInfo, artistName);
+        const currentTour = chooseTour(tourInfo, validatedArtistName);
         
         // Check if we need to update tours based on what we found
         const shouldUpdate = await tourCache.shouldUpdateTours(artistSlug, currentTour, cachedTours);
@@ -523,17 +671,18 @@ router.get('/artist/:artistId/tours', async (req, res) => {
         if (!shouldUpdate) {
           // No new tours detected, just update last checked time
           await tourCache.updateLastChecked(artistSlug);
-          console.log('No new tours detected for:', artistName, '- returning cached data');
+          console.log('No new tours detected for:', validatedArtistName, '- returning cached data');
           return res.json({ 
             tours: cachedTours.tours, 
             artistSlug: artistSlug,
             cached: true,
             lastUpdated: cachedTours.lastUpdated,
-            lastChecked: new Date().toISOString()
+            lastChecked: new Date().toISOString(),
+            validatedArtistName: validatedArtistName
           });
         }
         
-        console.log('New tour detected for:', artistName, '- updating cache');
+        console.log('New tour detected for:', validatedArtistName, '- updating cache');
       } catch (error) {
         console.error('Error checking for new tours:', error);
         // If API check fails, return cached data if we have it
@@ -543,34 +692,49 @@ router.get('/artist/:artistId/tours', async (req, res) => {
             artistSlug: artistSlug,
             cached: true,
             lastUpdated: cachedTours.lastUpdated,
-            note: 'Using cached data due to API error'
+            note: 'Using cached data due to API error',
+            validatedArtistName: validatedArtistName
           });
         }
       }
     }
     
     // We need to fetch fresh tours (either no cache or new tours detected)
-    console.log('Fetching fresh tours for:', artistName);
+    console.log('Fetching fresh tours for:', validatedArtistName);
     
     try {
+      console.log('Calling scraper service with slug:', artistSlug);
       const tours = await fetchToursFromService(artistSlug);
+      console.log(`Scraper returned ${tours.length} tours for slug: ${artistSlug}`);
       
       if (tours.length === 0) {
+        console.log('No tours returned from scraper service');
+        
         // If we have cached data, return it instead of empty
         if (cachedTours) {
+          console.log('Returning cached data as fallback');
           return res.json({ 
             tours: cachedTours.tours, 
             artistSlug: artistSlug,
             cached: true,
             lastUpdated: cachedTours.lastUpdated,
-            note: 'Using cached data - scraper returned no tours'
+            note: 'Using cached data - scraper returned no tours',
+            validatedArtistName: validatedArtistName
           });
         }
         
+        console.log('No cached data available, returning empty');
         return res.json({ 
           tours: [], 
           artistSlug: artistSlug,
-          message: 'No tours found for this artist'
+          message: 'No tours found for this artist',
+          validatedArtistName: validatedArtistName,
+          debug: {
+            originalName: artistName,
+            validatedName: validatedArtistName,
+            slug: artistSlug,
+            hadCachedData: !!cachedTours
+          }
         });
       }
       
@@ -580,13 +744,14 @@ router.get('/artist/:artistId/tours', async (req, res) => {
       // Get the processed/filtered tours from cache
       const freshCachedTours = await tourCache.getCachedTours(artistSlug);
       
-      console.log(`Cached ${freshCachedTours.tours.length} tours for ${artistName} (${freshCachedTours.originalCount} total, ${freshCachedTours.originalCount - freshCachedTours.filteredCount} filtered out)`);
+      console.log(`Cached ${freshCachedTours.tours.length} tours for ${validatedArtistName} (${freshCachedTours.originalCount} total, ${freshCachedTours.originalCount - freshCachedTours.filteredCount} filtered out)`);
       
       return res.json({ 
         tours: freshCachedTours.tours, 
         artistSlug: artistSlug,
         cached: false,
-        lastUpdated: freshCachedTours.lastUpdated
+        lastUpdated: freshCachedTours.lastUpdated,
+        validatedArtistName: validatedArtistName
       });
       
     } catch (error) {
@@ -599,7 +764,8 @@ router.get('/artist/:artistId/tours', async (req, res) => {
           artistSlug: artistSlug,
           cached: true,
           lastUpdated: cachedTours.lastUpdated,
-          note: 'Using cached data due to scraper error'
+          note: 'Using cached data due to scraper error',
+          validatedArtistName: validatedArtistName
         });
       }
       
