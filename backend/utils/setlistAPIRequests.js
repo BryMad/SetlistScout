@@ -46,115 +46,27 @@ const axiosGetWithRetry = async (url, config, retries = 3, backoff = 1000) => {
 const getArtistPageByNameRaw = async (artist) => {
   logger.info('Requesting setlist artist page', { artist });
   const encodedArtistName = encodeURIComponent(`"${artist.name}"`);
-  const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=1`;
-  
-  try {
-    const response = await axiosGetWithRetry(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.SETLIST_API_KEY,
-      },
-    });
-    
-    logger.info('Received setlist at artist page');
-    
-    // Check if we got an empty response or no setlists
-    if (!response.data || !response.data.setlist || response.data.setlist.length === 0) {
-      const error = new Error('NO_SETLIST_DATA');
-      error.isNoSetlistData = true;
-      error.details = {
-        total: response.data?.total || 0,
-        itemsPerPage: response.data?.itemsPerPage || 0,
-        page: response.data?.page || 0,
-        artistName: artist.name
-      };
-      throw error;
-    }
-    
-    return response.data;
-  } catch (error) {
-    // If it's already our custom no-setlist-data error, re-throw it
-    if (error.isNoSetlistData) {
-      throw error;
-    }
-    
-    // Handle specific HTTP status codes
-    if (error.response) {
-      if (error.response.status === 404) {
-        const noDataError = new Error('ARTIST_NOT_FOUND_ON_SETLIST_FM');
-        noDataError.isNoSetlistData = true;
-        noDataError.httpStatus = 404;
-        noDataError.artistName = artist.name;
-        throw noDataError;
-      }
-      
-      if (error.response.status === 400) {
-        const noDataError = new Error('INVALID_ARTIST_DATA');
-        noDataError.isNoSetlistData = true;
-        noDataError.httpStatus = 400;
-        noDataError.artistName = artist.name;
-        throw noDataError;
-      }
-    }
-    
-    // Re-throw all other errors (network, API key, etc.)
-    throw error;
-  }
+  const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistName=${encodedArtistName}&p=1`; const response = await axiosGetWithRetry(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.SETLIST_API_KEY,
+    },
+  });
+  logger.info('Received setlist at artist page');
+  return response.data;
 };
 
 const getArtistPageByMBIDRaw = async (mbid) => {
   logger.info('Requesting setlist artist page by MBID:', { mbid });
   const url = `https://api.setlist.fm/rest/1.0/search/setlists?artistMbid=${mbid}&p=1`;
-  
-  try {
-    const response = await axiosGetWithRetry(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.SETLIST_API_KEY,
-      },
-    });
-    
-    logger.info('Received setlist at artist page');
-    
-    // Check if we got an empty response or no setlists
-    if (!response.data || !response.data.setlist || response.data.setlist.length === 0) {
-      const error = new Error('NO_SETLIST_DATA');
-      error.isNoSetlistData = true;
-      error.details = {
-        total: response.data?.total || 0,
-        itemsPerPage: response.data?.itemsPerPage || 0,
-        page: response.data?.page || 0
-      };
-      throw error;
-    }
-    
-    return response.data;
-  } catch (error) {
-    // If it's already our custom no-setlist-data error, re-throw it
-    if (error.isNoSetlistData) {
-      throw error;
-    }
-    
-    // Handle specific HTTP status codes
-    if (error.response) {
-      if (error.response.status === 404) {
-        const noDataError = new Error('ARTIST_NOT_FOUND_ON_SETLIST_FM');
-        noDataError.isNoSetlistData = true;
-        noDataError.httpStatus = 404;
-        throw noDataError;
-      }
-      
-      if (error.response.status === 400) {
-        const noDataError = new Error('INVALID_ARTIST_DATA');
-        noDataError.isNoSetlistData = true;
-        noDataError.httpStatus = 400;
-        throw noDataError;
-      }
-    }
-    
-    // Re-throw all other errors (network, API key, etc.)
-    throw error;
-  }
+  const response = await axiosGetWithRetry(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.SETLIST_API_KEY,
+    },
+  });
+  logger.info('Received setlist at artist page');
+  return response.data;
 };
 
 /**
@@ -421,7 +333,6 @@ const getAllTourSongsByMBID = async (artistName, mbid, tourName) => {
 module.exports = {
   getArtistPageByMBID,
   getArtistPageByName,
-  getMultipleArtistPages,
   getTourName,
   getAllTourSongs,
   getAllTourSongsByMBID,

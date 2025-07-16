@@ -133,62 +133,6 @@ class SSEManager {
     this.removeClient(clientId);
     logger.error(`Error sent to client ${clientId}: ${message}`);
   }
-
-  /**
-   * Send a workflow decision event that requires user choice
-   * @param {string} clientId - ID of client to send to
-   * @param {Object} workflowData - Workflow decision data
-   */
-  sendWorkflowChoice(clientId, workflowData) {
-    if (!this.clients.has(clientId)) {
-      logger.warn(`Attempted to send workflow choice to non-existent client: ${clientId}`);
-      return;
-    }
-
-    const res = this.clients.get(clientId);
-    const event = {
-      type: 'workflow_choice',
-      workflow: workflowData.workflow,
-      options: workflowData.options,
-      message: workflowData.message,
-      timestamp: new Date().toISOString()
-    };
-
-    res.write(`data: ${JSON.stringify(event)}\n\n`);
-    logger.info(`Workflow choice sent to client ${clientId}: ${workflowData.workflow}`);
-  }
-
-  /**
-   * Send a workflow decision/info message (no user action required)
-   * @param {string} clientId - ID of client to send to
-   * @param {string} message - Info message about workflow decision
-   * @param {string} [warning] - Optional data quality warning
-   * @param {number} [progress] - Optional progress percentage
-   */
-  sendWorkflowInfo(clientId, message, warning = null, progress = null) {
-    if (!this.clients.has(clientId)) {
-      logger.warn(`Attempted to send workflow info to non-existent client: ${clientId}`);
-      return;
-    }
-
-    const event = {
-      type: 'workflow_info',
-      message,
-      timestamp: new Date().toISOString()
-    };
-
-    if (warning) {
-      event.dataQualityWarning = warning;
-    }
-
-    if (progress !== null) {
-      event.progress = progress;
-    }
-
-    const res = this.clients.get(clientId);
-    res.write(`data: ${JSON.stringify(event)}\n\n`);
-    logger.info(`Workflow info sent to client ${clientId}: ${message}`);
-  }
 }
 
 // Create singleton instance

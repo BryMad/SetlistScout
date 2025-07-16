@@ -63,9 +63,9 @@ module.exports = {
 
   /**
    * Chooses the best tour name based on various criteria
-   * - Prefers tours with more shows when data quality varies significantly
+   * - Prefers actual tour names over "No Tour Info"
    * - Filters out VIP/soundcheck tours
-   * - Selects most recent tour if multiple options with similar data
+   * - Selects most recent tour if multiple options
    * 
    * @param {Object} tourInfo Tour information from getTour
    * @param {string} targetArtistName Target artist name for matching
@@ -74,7 +74,6 @@ module.exports = {
   chooseTour: (tourInfo, targetArtistName) => {
     const artistNames = Object.keys(tourInfo);
     let selectedArtist;
-    
     // If only one artist, select that one.
     if (artistNames.length === 1) {
       selectedArtist = artistNames[0];
@@ -92,12 +91,17 @@ module.exports = {
     if (tourNames.length === 0) {
       return ""; // No tour found.
     }
-    
+    // If multiple tours exist, prefer actual tour names over the placeholder.
+    if (tourNames.length > 1) {
+      const actualTours = tourNames.filter(name => name.toLowerCase() !== "no tour info");
+      if (actualTours.length > 0) {
+        tourNames = actualTours;
+      }
+    }
     // If there's only one tour option, return it.
     if (tourNames.length === 1) {
       return tours[tourNames[0]].tourName;
     }
-    
     // Filter out tours with exclusion keywords like VIP or sound check.
     const exclusionKeywords = ["vip", "v.i.p.", "sound check", "soundcheck"];
     let filteredTours = tourNames.filter(tourName => {
@@ -108,31 +112,6 @@ module.exports = {
     if (filteredTours.length === 0) {
       filteredTours = tourNames;
     }
-    
-    // Smart tour selection: prefer tours with significantly more shows
-    // Find the tour with the most shows
-    const toursByShows = filteredTours.map(tourName => ({
-      name: tourName,
-      count: tours[tourName].count,
-      years: tours[tourName].years
-    })).sort((a, b) => b.count - a.count);
-    
-    const maxShows = toursByShows[0].count;
-    
-    // If the top tour has significantly more shows than others (3+ more), prefer it
-    // This handles cases like Bhad Bhabie where "No Tour Info" has 4 shows vs others with 1
-    if (toursByShows.length > 1 && maxShows >= toursByShows[1].count + 3) {
-      return tours[toursByShows[0].name].tourName;
-    }
-    
-    // Otherwise, use the original logic: prefer actual tour names over "No Tour Info"
-    if (filteredTours.length > 1) {
-      const actualTours = filteredTours.filter(name => name.toLowerCase() !== "no tour info");
-      if (actualTours.length > 0) {
-        filteredTours = actualTours;
-      }
-    }
-    
     // Among the remaining tours, select the one with the most recent year.
     let chosenTourName = filteredTours[0];
     let latestYear = 0;

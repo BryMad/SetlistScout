@@ -13,24 +13,6 @@ const logger = winston.createLogger({
     new winston.transports.Console({
       format: winston.format.simple(),
     }),
-    // File logging only in development for troubleshooting
-    ...(NODE_ENV === 'development' ? [
-      new winston.transports.File({
-        filename: 'server.log',
-        format: winston.format.combine(
-          winston.format.timestamp(),
-          winston.format.json()
-        )
-      }),
-      new winston.transports.File({
-        filename: 'error.log',
-        level: 'error',
-        format: winston.format.combine(
-          winston.format.timestamp(),
-          winston.format.json()
-        )
-      })
-    ] : [])
   ],
 });
 
