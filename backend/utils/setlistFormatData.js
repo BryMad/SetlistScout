@@ -1,6 +1,7 @@
 const { all } = require("axios");
 const { getTourName } = require("./setlistAPIRequests");
 const { isArtistNameMatch } = require("./musicBrainzChecks");
+const devLogger = require('./devLogger');
 
 
 module.exports = {
@@ -139,6 +140,12 @@ module.exports = {
    * @returns {Object} Processed song data with counts and order
    */
   getSongTally: (allTourInfo) => {
+    devLogger.log('setlist', `Starting song tally processing`, {
+      totalDataPages: allTourInfo.length,
+      firstPageSetlistCount: allTourInfo[0]?.setlist?.length || 0,
+      firstPageTotal: allTourInfo[0]?.total || 0
+    });
+    
     const counts = new Map();
     // const totalShows = allTourInfo[0].total;
     let totalShowsWithData = 0
@@ -146,20 +153,42 @@ module.exports = {
 
     // log Artist
     const mainArtist = allTourInfo[0].setlist[0].artist.name;
+    
+    devLogger.log('setlist', `Processing setlists for artist: ${mainArtist}`);
 
-    allTourInfo.forEach((dataPage) => {
+    allTourInfo.forEach((dataPage, pageIndex) => {
       // dataPage is a group of 20 shows from a specific artist's tour
       // dataPage.setlist is an array, each item is an individual show
       // "for each show...""
-      dataPage.setlist.forEach((element) => {
+      
+      devLogger.log('setlist', `Processing data page ${pageIndex + 1}`, {
+        setlistCount: dataPage.setlist?.length || 0,
+        pageTotal: dataPage.total || 0
+      });
+      
+      dataPage.setlist.forEach((element, setlistIndex) => {
         // "sets" are different sections of a show ("main," "encore," etc.)
         // element.sets.set is an array of every section
         // so "for each section of the show..."
         // sometimes there are sets w/ no data. Log how mean
         if (!element.sets?.set?.length) {
           emptySetlistCount++;
+          devLogger.log('setlist', `Empty setlist found`, {
+            pageIndex: pageIndex + 1,
+            setlistIndex: setlistIndex + 1,
+            eventDate: element.eventDate,
+            venue: element.venue?.name,
+            city: element.venue?.city?.name
+          });
         } else {
           totalShowsWithData++;
+          devLogger.log('setlist', `Processing setlist with ${element.sets.set.length} sets`, {
+            pageIndex: pageIndex + 1,
+            setlistIndex: setlistIndex + 1,
+            eventDate: element.eventDate,
+            venue: element.venue?.name,
+            setsCount: element.sets.set.length
+          });
         }
         element.sets.set.forEach((setSection) => {
           setSection.song.forEach((song) => {
@@ -206,6 +235,18 @@ module.exports = {
     // console.log("totalshows: ", totalShows);
     // console.log("emptySetlistCount: ", emptySetlistCount);
     // console.log("totalShows w data: ", totalShowsWithData);
+    
+    devLogger.log('setlist', `Song tally processing completed`, {
+      totalSongsFound: countsOrdered.length,
+      totalShowsWithData: totalShowsWithData,
+      emptySetlistCount: emptySetlistCount,
+      topSongs: countsOrdered.slice(0, 10).map(song => ({
+        name: song.song,
+        artist: song.artist,
+        count: song.count
+      }))
+    });
+    
     return {
       songsOrdered: countsOrdered,
       totalShowsWithData: totalShowsWithData,

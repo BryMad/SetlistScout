@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require('../utils/logger');
+const devLogger = require('../utils/devLogger');
 
 /**
  * Fetches MusicBrainz ID from Spotify URL
@@ -13,6 +14,10 @@ const logger = require('../utils/logger');
  */
 const fetchMBIdFromSpotifyId = async (artistUrl) => {
   try {
+    devLogger.log('musicbrainz', `Fetching MusicBrainz ID from Spotify URL`, {
+      artistUrl: artistUrl
+    });
+    
     // Encode the artist URL to ensure it's safe for inclusion in a URL query parameter.
     const encodedUrl = encodeURIComponent(artistUrl);
     const apiUrl = `https://musicbrainz.org/ws/2/url/?query=url:${encodedUrl}&targettype=artist&fmt=json`;
@@ -25,9 +30,22 @@ const fetchMBIdFromSpotifyId = async (artistUrl) => {
       },
     });
 
+    const mbData = response.data;
+    const artistInfo = mbData?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist;
+    
+    devLogger.log('musicbrainz', `MusicBrainz lookup completed`, {
+      found: !!artistInfo,
+      artistName: artistInfo?.name,
+      artistId: artistInfo?.id,
+      sortName: artistInfo?.["sort-name"],
+      disambiguation: artistInfo?.disambiguation,
+      totalUrls: mbData?.urls?.length || 0
+    });
+    
     console.log('MusicBrainz data:', response.data);
     return response.data;
   } catch (error) {
+    devLogger.error('musicbrainz', 'Error querying MusicBrainz API', error);
     console.error('Error querying MusicBrainz API:', error);
     throw error;
   }

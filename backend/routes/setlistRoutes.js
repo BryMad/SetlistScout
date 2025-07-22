@@ -16,6 +16,7 @@ const sseManager = require('../utils/sseManager');
 const { getSetlistSlug } = require('../utils/setlistSlugExtractor');
 const TourCache = require('../utils/tourCache');
 const BackgroundCacheUpdater = require('../utils/backgroundCacheUpdate');
+const devLogger = require('../utils/devLogger');
 // Tour scraping moved to external service
 // const { scrapeTours } = require('../utils/tourScraper');
 
@@ -93,33 +94,76 @@ router.post('/search_with_updates', async (req, res) => {
  */
 async function processArtistWithUpdates(artist, clientId, redisClient = null) {
   try {
+    devLogger.log('sse', `Starting Live Shows search for artist`, {
+      artistName: artist.name,
+      artistId: artist.id || artist.spotifyId,
+      artistUrl: artist.url,
+      clientId: clientId
+    });
+    
     sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`, 5);
 
     // Step 1: Fetch MusicBrainz ID
     sseManager.sendUpdate(clientId, 'musicbrainz', 'Contacting MusicBrainz for artist identification', 15);
+    devLogger.log('musicbrainz', `Looking up artist on MusicBrainz`, {
+      artistName: artist.name,
+      artistUrl: artist.url
+    });
+    
     const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
     const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
     const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+    
+    devLogger.log('musicbrainz', `MusicBrainz lookup completed`, {
+      mbArtistName: mbArtistName,
+      mbid: mbid,
+      matched: !!mbid,
+      originalName: artist.name
+    });
 
     // Step 2: Get artist page from Setlist.fm
     let artistPage;
     let matched = false;
 
     if (isArtistNameMatch(artist.name, mbArtistName)) {
+      devLogger.log('setlist', `Exact artist match found, using MBID lookup`, {
+        artistName: artist.name,
+        mbArtistName: mbArtistName,
+        mbid: mbid
+      });
       sseManager.sendUpdate(clientId, 'setlist_search', `Found exact match for ${artist.name} on MusicBrainz, getting setlist data`, 30);
       matched = true;
       artistPage = await getArtistPageByMBID(mbid);
     } else {
+      devLogger.log('setlist', `No exact match, searching by name`, {
+        searchName: artist.name,
+        mbArtistName: mbArtistName
+      });
       sseManager.sendUpdate(clientId, 'setlist_search', `Searching Setlist.fm for ${artist.name}`, 30);
       artistPage = await getArtistPageByName(artist);
     }
+    
+    devLogger.log('setlist', `Setlist.fm query completed`, {
+      hasResults: !!(artistPage?.setlist?.length),
+      setlistCount: artistPage?.setlist?.length || 0
+    });
 
     // Step 3: Process tour information
     sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
     const tourInfo = getTour(artistPage);
     const tourName = chooseTour(tourInfo, artist.name);
+    
+    devLogger.log('setlist', `Tour information processed`, {
+      tourName: tourName,
+      availableTours: Object.keys(tourInfo || {}),
+      artistName: artist.name
+    });
 
     if (!tourName) {
+      devLogger.log('setlist', `No setlist information found for artist`, {
+        artistName: artist.name,
+        mbid: mbid
+      });
       sseManager.sendError(clientId, "This artist doesn't have any setlist information", 404);
       return;
     }
@@ -141,6 +185,10 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
 
     // Handle errors in tour info
     if (!allTourInfo || !Array.isArray(allTourInfo)) {
+      devLogger.log('setlist', `Invalid tour info received`, {
+        allTourInfo: allTourInfo,
+        isArray: Array.isArray(allTourInfo)
+      });
       if (allTourInfo && allTourInfo.statusCode) {
         sseManager.sendError(clientId, allTourInfo.message, allTourInfo.statusCode);
       } else {
@@ -163,8 +211,17 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
         progressData.progress
       );
     };
+    
+    devLogger.log('spotify', `Starting Spotify track lookup`, {
+      songCount: tourInfoOrdered.songsOrdered?.length || 0
+    });
 
     const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
+    
+    devLogger.log('spotify', `Spotify track lookup completed`, {
+      tracksFound: spotifySongsOrdered?.length || 0,
+      tracksSearched: tourInfoOrdered.songsOrdered?.length || 0
+    });
 
     // Final step: Return complete data
     const tourData = {
@@ -172,6 +229,13 @@ async function processArtistWithUpdates(artist, clientId, redisClient = null) {
       tourName: tourName,
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
+    
+    devLogger.log('sse', `Live Shows search completed successfully`, {
+      artistName: artist.name,
+      tourName: tourName,
+      totalShows: tourInfoOrdered.totalShowsWithData,
+      songsFound: spotifySongsOrdered?.length || 0
+    });
 
     sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
 
@@ -325,9 +389,23 @@ router.post('/artist_search', async (req, res) => {
 router.post('/artist_search_deezer', async (req, res) => {
   try {
     const search_query = req.body.artistName;
+    devLogger.log('deezer', `Artist search initiated for: "${search_query}"`);
+    
     const searchResults = await searchDeezerArtists(search_query);
+    
+    devLogger.log('deezer', `Found ${searchResults.length} results for "${search_query}"`, {
+      results: searchResults.map(artist => ({
+        id: artist.id,
+        name: artist.name,
+        url: artist.url,
+        popularity: artist.popularity,
+        hasImage: !!artist.image
+      }))
+    });
+    
     res.json(searchResults);
   } catch (error) {
+    devLogger.error('deezer', 'Error in artist search', error);
     console.error('Error in /artist_search_deezer route:', error);
     res.status(500).json({ error: "Internal Server Error. Please try again later." });
   }
@@ -403,6 +481,10 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
 
     // Handle errors in tour info
     if (!allTourInfo || !Array.isArray(allTourInfo)) {
+      devLogger.log('setlist', `Invalid tour info received`, {
+        allTourInfo: allTourInfo,
+        isArray: Array.isArray(allTourInfo)
+      });
       if (allTourInfo && allTourInfo.statusCode) {
         sseManager.sendError(clientId, allTourInfo.message, allTourInfo.statusCode);
       } else {
@@ -488,15 +570,11 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       popularity: artist.popularity
     });
     
-    // Also log to file for debugging
-    const fs = require('fs');
-    const logData = {
-      timestamp: new Date().toISOString(),
-      artistName,
-      artist,
-      step: 'tour_request_start'
-    };
-    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify(logData) + '\n');
+    // Log advanced search request
+    devLogger.log('cache', `Advanced search tour request started`, {
+      artistName: artistName,
+      artist: artist
+    });
     
     // Initialize TourCache with Redis client
     const tourCache = new TourCache(req.app.locals.redisClient);
@@ -512,56 +590,22 @@ router.post('/artist/:artistId/tours', async (req, res) => {
     try {
       console.log('Applying MusicBrainz validation for artist:', artistName, 'with URL:', artist.url);
       
-      // Log this step
-      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-        timestamp: new Date().toISOString(),
-        step: 'musicbrainz_start',
-        artistName,
-        url: artist.url
-      }) + '\n');
       
       const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
       
-      // Log MusicBrainz response
-      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-        timestamp: new Date().toISOString(),
-        step: 'musicbrainz_response',
-        mbInfo
-      }) + '\n');
       
       const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
       mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
       
       // Debug the matching
       console.log('Extracted MusicBrainz data:', { mbArtistName, mbid });
-      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-        timestamp: new Date().toISOString(),
-        step: 'extracted_mb_data',
-        mbArtistName,
-        mbid,
-        artistName
-      }) + '\n');
       
       const nameMatch = isArtistNameMatch(artistName, mbArtistName);
-      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-        timestamp: new Date().toISOString(),
-        step: 'name_match_result',
-        nameMatch,
-        artistName,
-        mbArtistName
-      }) + '\n');
       
       if (mbArtistName && nameMatch) {
         console.log(`MusicBrainz validation successful: "${artistName}" matches "${mbArtistName}"`);
         validatedArtistName = mbArtistName; // Use the canonical MusicBrainz name
         useExactMatch = true;
-        
-        fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-          timestamp: new Date().toISOString(),
-          step: 'validation_success',
-          validatedArtistName,
-          useExactMatch
-        }) + '\n');
       } else {
         console.log(`MusicBrainz validation failed or no match: "${artistName}" vs "${mbArtistName}"`);
         
@@ -578,31 +622,24 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       console.error('MusicBrainz validation error:', error.message);
       
       // Log the error
-      fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-        timestamp: new Date().toISOString(),
-        step: 'musicbrainz_error',
-        error: error.message
-      }) + '\n');
+      devLogger.error('musicbrainz', 'Error in MusicBrainz validation during advanced search', error);
       
       // Continue with original artist name if MusicBrainz fails
     }
     
     // Get the artist slug using validated information
-    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-      timestamp: new Date().toISOString(),
-      step: 'before_slug_lookup',
+    devLogger.log('cache', `Looking up artist slug`, {
       validatedArtistName,
       useExactMatch,
       mbid
-    }) + '\n');
+    });
     
     let artistSlug = await tourCache.getCachedSlug(validatedArtistName, mbid);
     
-    fs.appendFileSync('/Users/bryanmadole/SetlistScout/debug.log', JSON.stringify({
-      timestamp: new Date().toISOString(),
-      step: 'cached_slug_result',
-      artistSlug
-    }) + '\n');
+    devLogger.log('cache', `Slug lookup result`, {
+      artistSlug,
+      found: !!artistSlug
+    });
     
     if (!artistSlug) {
       if (useExactMatch && mbid) {

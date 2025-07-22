@@ -3,6 +3,7 @@ const axios = require("axios");
 const Bottleneck = require('bottleneck');
 const { v4: uuidv4 } = require('uuid');
 const logger = require('../utils/logger');
+const devLogger = require('../utils/devLogger');
 const limiter = new Bottleneck({
   minTime: 200,         // Minimum time (ms) between requests
   maxConcurrent: 5,     // Maximum number of concurrent requests
@@ -135,6 +136,16 @@ const limitedSearchSong = limiter.wrap(searchSong);
  */
 const getSpotifySongInfo = async (songList, progressCallback = null) => {
   logger.info("Compiling Spotify song information");
+  
+  devLogger.log('spotify', `Starting Spotify song lookup batch`, {
+    totalSongs: songList.length,
+    firstFewSongs: songList.slice(0, 5).map(song => ({
+      song: song.song,
+      artist: song.artist,
+      count: song.count
+    }))
+  });
+  
   try {
     const token = await getAccessToken();
 
@@ -203,9 +214,24 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
       });
     }
 
+    const foundCount = spotifyDataParsed.filter(song => song.songName).length;
+    const missingCount = spotifyDataParsed.length - foundCount;
+    
+    devLogger.log('spotify', `Spotify song lookup batch completed`, {
+      totalSongs: songList.length,
+      foundOnSpotify: foundCount,
+      notFoundOnSpotify: missingCount,
+      successRate: `${Math.round((foundCount / songList.length) * 100)}%`,
+      missingSongs: spotifyDataParsed.filter(song => !song.songName).slice(0, 5).map(song => ({
+        song: song.song,
+        artist: song.artist
+      }))
+    });
+
     logger.info("All songs retrieved from Spotify");
     return spotifyDataParsed;
   } catch (error) {
+    devLogger.error('spotify', 'Error getting Spotify song info', error);
     logger.error("Error getting Spotify song info", error.message);
     throw error;
   }
