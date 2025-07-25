@@ -27,6 +27,7 @@ import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 import { server_url } from "../App";
 import { FEATURES } from "../config/features";
+import eventSourceService from "../api/sseService";
 
 /**
  * Component for artist search input
@@ -50,6 +51,7 @@ export default function UserInput() {
   const [tours, setTours] = useState([]);
   const [selectedTour, setSelectedTour] = useState("");
   const [toursLoading, setToursLoading] = useState(false);
+  const [tourLoadingProgress, setTourLoadingProgress] = useState("");
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -77,6 +79,8 @@ export default function UserInput() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Cleanup will be handled by the SSE service
+
   /**
    * Fetches artist suggestions from Deezer
    * @param {string} query The artist search query
@@ -95,7 +99,7 @@ export default function UserInput() {
   };
 
   /**
-   * Fetches tour options for a selected artist
+   * Fetches tour options for a selected artist using SSE for live updates
    * @param {Object} artist The selected artist object
    * @async
    */
@@ -103,9 +107,82 @@ export default function UserInput() {
     if (!artist) return;
 
     setToursLoading(true);
+    setTours([]);
+    setTourLoadingProgress("Connecting...");
+    
     try {
+      // Connect to SSE using existing service
+      console.log('Connecting to SSE service...');
+      await eventSourceService.connect();
+      const clientId = eventSourceService.getClientId();
+      
+      if (!clientId) {
+        throw new Error("Failed to establish SSE connection");
+      }
+      
+      console.log('Got clientId:', clientId);
+      
+      const tourMap = new Map();
+      const listenerId = `tour-fetch-${Date.now()}`;
+      
+      // Set up listener for SSE events
+      eventSourceService.addListener(listenerId, (event) => {
+        console.log('Received SSE event:', event);
+        
+        if (event.type === 'update') {
+          switch (event.stage) {
+            case 'page_progress':
+              setTourLoadingProgress(event.message || "Loading...");
+              break;
+              
+            case 'tour_discovered':
+            case 'tour_updated':
+              console.log('Tour event received:', event);
+              if (event.data?.tour) {
+                const tour = event.data.tour;
+                console.log('Adding tour to map:', tour);
+                tourMap.set(tour.name, tour);
+                
+                // Update tours array with all tours, sorted by year (newest first)
+                const sortedTours = Array.from(tourMap.values())
+                  .sort((a, b) => {
+                    // Extract first year from display year (e.g., "2023" or "2019-2021")
+                    const getFirstYear = (yearStr) => {
+                      if (!yearStr) return 0;
+                      const match = yearStr.match(/\d{4}/);
+                      return match ? parseInt(match[0]) : 0;
+                    };
+                    
+                    const yearA = getFirstYear(b.year);
+                    const yearB = getFirstYear(a.year);
+                    
+                    if (yearA !== yearB) return yearA - yearB;
+                    return b.showCount - a.showCount;
+                  });
+                
+                console.log('Updating tours state with:', sortedTours.length, 'tours');
+                setTours([...sortedTours]);
+              }
+              break;
+              
+            case 'tour_search_complete':
+              setToursLoading(false);
+              setTourLoadingProgress("");
+              eventSourceService.removeListener(listenerId);
+              break;
+          }
+        } else if (event.type === 'error') {
+          console.error('SSE Error:', event.message);
+          setToursLoading(false);
+          setTourLoadingProgress("");
+          eventSourceService.removeListener(listenerId);
+        }
+      });
+      
+      // Start the tour streaming
+      console.log('Starting tour streaming for:', artist.name);
       const response = await fetch(
-        `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours`,
+        `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours_stream`,
         {
           method: "POST",
           headers: {
@@ -118,22 +195,24 @@ export default function UserInput() {
               url: artist.url,
               image: artist.image,
               popularity: artist.popularity
-            }
+            },
+            clientId
           })
         }
       );
 
       if (!response.ok) {
+        console.error('Tour streaming request failed:', response.status, response.statusText);
+        eventSourceService.removeListener(listenerId);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      const data = await response.json();
-      setTours(data.tours || []);
+      console.log('Tour streaming request successful');
+      
     } catch (error) {
       console.error("Error fetching tours:", error);
       setTours([]);
-    } finally {
       setToursLoading(false);
+      setTourLoadingProgress("");
     }
   };
 
@@ -173,9 +252,22 @@ export default function UserInput() {
    * Handles tour selection in advanced search
    * @param {string} tourName The selected tour name
    */
-  const handleTourSelect = async (tourName) => {
-    const tour = tours.find((t) => t.name === tourName);
-    if (!tour || !selectedArtist) return;
+  const handleTourSelect = async (tourName, selectedTourObject = null) => {
+    console.log("handleTourSelect called with tourName:", tourName);
+    console.log("Available tours:", tours);
+    console.log("Selected tour object:", selectedTourObject);
+    
+    // Use the passed tour object if available, otherwise find it
+    let tour = selectedTourObject;
+    if (!tour) {
+      tour = tours.find((t) => t.name === tourName);
+    }
+    console.log("Final tour:", tour);
+    
+    if (!tour || !selectedArtist) {
+      console.error("Tour not found or no selected artist", { tour, selectedArtist });
+      return;
+    }
 
     // Set the selected tour to show in dropdown
     setSelectedTour(tourName);
@@ -190,9 +282,13 @@ export default function UserInput() {
 
     console.log("Selected tour:", tour);
     console.log("For artist:", selectedArtist);
+    console.log("About to call fetchTourData with:");
+    console.log("  - Artist:", selectedArtist.name);
+    console.log("  - Tour name:", tour.name);
+    console.log("  - Tour display name:", tour.displayName);
 
     // Fetch setlist data for the specific tour
-    await fetchTourData(selectedArtist, tour.name);
+    await fetchSpecificTourData(selectedArtist, null, tour.name);
 
     // Reset the form after selection
     setArtistQuery("");
@@ -457,15 +553,29 @@ export default function UserInput() {
           border="1px solid"
           borderColor="gray.700"
         >
-          {toursLoading ? (
-            <Box textAlign="center" py={4}>
-              <Spinner size="sm" />
-              <Text ml={2} as="span" color="gray.400">
-                Loading tours...
-              </Text>
+          {/* Loading indicator - show when loading */}
+          {toursLoading && (
+            <Box textAlign="center" py={4} borderBottom={tours.length > 0 ? "1px solid" : "none"} borderColor="gray.700">
+              <VStack spacing={2}>
+                <HStack>
+                  <Spinner size="sm" color="brand.400" />
+                  <Text color="gray.300">
+                    {tourLoadingProgress || "Loading tours..."}
+                  </Text>
+                </HStack>
+                {tours.length > 0 && (
+                  <Text fontSize="sm" color="gray.500">
+                    {tours.length} tour{tours.length !== 1 ? 's' : ''} found so far...
+                  </Text>
+                )}
+              </VStack>
             </Box>
-          ) : tours.length > 0 ? (
+          )}
+          
+          {/* Tours list - show when tours are available */}
+          {tours.length > 0 && (
             <List spacing={0}>
+              {console.log('Rendering dropdown with', tours.length, 'tours:', tours.map(t => t.name))}
               {tours.map((tour) => (
                 <ListItem
                   key={tour.name + '_' + tour.year}
@@ -474,13 +584,16 @@ export default function UserInput() {
                   _hover={{ backgroundColor: "gray.700" }}
                   transition="background-color 0.2s"
                   cursor="pointer"
-                  onClick={() => handleTourSelect(tour.name)}
+                  onClick={() => handleTourSelect(tour.name, tour)}
                 >
-                  <Text>{tour.name} {tour.year ? `(${tour.year})` : ''} - {tour.showCount} shows</Text>
+                  <Text>{tour.displayName || tour.name} - {tour.showCount} show{tour.showCount !== 1 ? 's' : ''}</Text>
                 </ListItem>
               ))}
             </List>
-          ) : (
+          )}
+          
+          {/* No tours message - show only when not loading and no tours found */}
+          {!toursLoading && tours.length === 0 && (
             <Box textAlign="center" py={4}>
               <Text color="gray.400">No tours found for this artist</Text>
             </Box>

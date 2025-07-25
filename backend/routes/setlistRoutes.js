@@ -366,12 +366,24 @@ router.post('/artist_search_deezer', async (req, res) => {
 router.post('/search_tour_with_updates', async (req, res) => {
   const { artist, tourId, tourName, clientId } = req.body;
 
+  console.log('=== TOUR SEARCH REQUEST ===');
+  console.log('Artist:', artist?.name);
+  console.log('Tour ID:', tourId);
+  console.log('Tour Name:', tourName);
+  console.log('Client ID:', clientId);
+  console.log('========================');
+
   if (!clientId) {
     return res.status(400).json({ error: 'Missing clientId parameter' });
   }
 
-  if (!tourId || !tourName) {
-    return res.status(400).json({ error: 'Missing tourId or tourName parameter' });
+  if (!tourName) {
+    return res.status(400).json({ error: 'Missing tourName parameter' });
+  }
+
+  // Allow tourId to be null for new tour system
+  if (!tourId) {
+    console.log('No tourId provided, using tour name only:', tourName);
   }
 
   try {
@@ -579,5 +591,83 @@ router.post('/artist/:artistId/tours', async (req, res) => {
     });
   }
 });
+
+/**
+ * Endpoint: POST /artist/:artistId/tours_stream
+ * Streams tours for a specific artist via SSE as they are discovered
+ * 
+ * @param {string} req.params.artistId - Artist name (URL decoded)
+ * @param {Object} req.body.artist - Full artist object with name, id, url, etc.
+ * @param {string} req.body.clientId - SSE client ID for connection management
+ * @returns {EventStream} SSE stream with progressive tour updates
+ */
+router.post('/artist/:artistId/tours_stream', async (req, res) => {
+  const { artistId } = req.params;
+  const artistName = decodeURIComponent(artistId);
+  const { artist, clientId } = req.body;
+  
+  if (!clientId) {
+    return res.status(400).json({ error: 'Client ID is required for SSE streaming' });
+  }
+  
+  // Validate artist data
+  if (!artist || !artist.name || !artist.url) {
+    sseManager.sendError(clientId, 'Invalid artist data. Missing artist object with name and url.', 400);
+    return res.status(400).json({ error: 'Invalid artist data' });
+  }
+  
+  console.log('Starting SSE tour stream for artist:', {
+    name: artist.name,
+    id: artist.id,
+    clientId: clientId
+  });
+  
+  // Process tours in background
+  processTourStreamWithUpdates(clientId, artistName, artist);
+  
+  // Return success immediately
+  res.json({ message: 'Tour streaming started', clientId });
+});
+
+/**
+ * Background function to stream tour discoveries via SSE
+ * Emits tours progressively as they are found with song data
+ */
+async function processTourStreamWithUpdates(clientId, artistName, artist) {
+  try {
+    // Apply MusicBrainz validation
+    let mbid = null;
+    let validatedArtistName = artistName;
+    
+    sseManager.sendUpdate(clientId, 'artist_validation', 'Validating artist information...', 5);
+    
+    try {
+      const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+      const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+      mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+      
+      if (mbArtistName && isArtistNameMatch(artistName, mbArtistName)) {
+        validatedArtistName = mbArtistName;
+        sseManager.sendUpdate(clientId, 'artist_validated', `Artist validated: ${validatedArtistName}`, 10);
+      }
+    } catch (error) {
+      console.error('MusicBrainz validation error:', error.message);
+      // Continue with original name
+    }
+    
+    // Import the streaming version of tour fetching
+    const { fetchAllToursFromAPIStream } = require('../utils/tourExtractor');
+    
+    // Fetch tours with streaming updates
+    await fetchAllToursFromAPIStream(validatedArtistName, mbid, clientId);
+    
+    // Send completion
+    sseManager.completeProcess(clientId, { message: 'Tour discovery complete' });
+    
+  } catch (error) {
+    console.error('Error in processTourStreamWithUpdates:', error);
+    sseManager.sendError(clientId, 'Failed to fetch tour data. Please try again.', 500);
+  }
+}
 
 module.exports = router;

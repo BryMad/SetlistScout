@@ -157,6 +157,197 @@ function isInvalidTourName(tourName) {
   return invalidPatterns.some(pattern => pattern.test(tourName));
 }
 
+/**
+ * Streaming version that emits tours via SSE as they are discovered
+ * Only includes tours that have at least one show with song data
+ * @param {string} artistName - The artist name to search for
+ * @param {string} mbid - Optional MusicBrainz ID for more accurate matching
+ * @param {string} clientId - SSE client ID for sending updates
+ * @returns {Promise<void>} Resolves when all pages have been processed
+ */
+async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId) {
+  const sseManager = require('./sseManager');
+  const tours = new Map(); // Use Map to track unique tours by name only
+  const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
+  
+  if (!SETLIST_API_KEY) {
+    throw new Error('SETLIST_API_KEY environment variable is not set');
+  }
+  
+  const headers = {
+    'x-api-key': SETLIST_API_KEY,
+    'Accept': 'application/json'
+  };
+
+  let page = 1;
+  let totalPages = 1;
+  let processedShows = 0;
+  let showsWithSongs = 0;
+
+  try {
+    // Build query params
+    const params = mbid 
+      ? { artistMbid: mbid, p: page }
+      : { artistName: artistName, p: page };
+    
+    console.log(`Starting streaming tour extraction for ${artistName} with MBID: ${mbid}`);
+    
+    // Send initial progress
+    sseManager.sendUpdate(clientId, 'tour_search_start', 'Starting tour search...', 15);
+
+    do {
+      // Make rate-limited API call
+      const response = await limiter.schedule(async () => {
+        const url = 'https://api.setlist.fm/rest/1.0/search/setlists';
+        const requestParams = { ...params, p: page };
+        
+        // Send page progress
+        const progressMessage = totalPages > 1 
+          ? `Scanning page ${page} of ${totalPages}...`
+          : `Scanning page ${page}...`;
+        const progress = 15 + (page / Math.max(totalPages, 1)) * 70;
+        sseManager.sendUpdate(clientId, 'page_progress', progressMessage, Math.min(progress, 85));
+        
+        try {
+          return await axios.get(url, {
+            params: requestParams,
+            headers,
+            timeout: 30000
+          });
+        } catch (apiError) {
+          console.error(`API request failed for ${artistName} page ${page}:`, apiError.message);
+          throw apiError;
+        }
+      });
+
+      const data = response.data;
+      
+      // Check if response has expected structure
+      if (!data || typeof data.total === 'undefined' || typeof data.itemsPerPage === 'undefined') {
+        console.error(`Invalid API response structure for ${artistName}:`, data);
+        break;
+      }
+      
+      totalPages = Math.ceil(data.total / data.itemsPerPage);
+      
+      // Process setlists on this page
+      if (data.setlist && Array.isArray(data.setlist)) {
+        for (const setlist of data.setlist) {
+          processedShows++;
+          
+          // Check if this show has song data
+          const hasSongs = setlist.sets?.set?.length > 0;
+          
+          if (hasSongs && setlist.tour && setlist.tour.name && !isInvalidTourName(setlist.tour.name)) {
+            showsWithSongs++;
+            const tourName = setlist.tour.name;
+            const eventDate = setlist.eventDate;
+            const year = eventDate ? new Date(eventDate.split('-').reverse().join('-')).getFullYear() : null;
+            
+            // Use tour name as key (not tour+year)
+            if (!tours.has(tourName)) {
+              // New tour discovered
+              const newTour = {
+                name: tourName,
+                showCount: 1,
+                firstDate: eventDate,
+                lastDate: eventDate,
+                firstYear: year,
+                lastYear: year
+              };
+              
+              tours.set(tourName, newTour);
+              
+              // Emit new tour discovery
+              sseManager.sendUpdate(clientId, 'tour_discovered', `Found tour: ${newTour.name}`, null, {
+                type: 'new_tour',
+                tour: formatTourForDisplay(newTour)
+              });
+            } else {
+              // Update existing tour
+              const tour = tours.get(tourName);
+              tour.showCount++;
+              
+              let dateRangeChanged = false;
+              
+              // Update date range
+              if (eventDate) {
+                if (!tour.firstDate || eventDate < tour.firstDate) {
+                  tour.firstDate = eventDate;
+                  tour.firstYear = year;
+                  dateRangeChanged = true;
+                }
+                if (!tour.lastDate || eventDate > tour.lastDate) {
+                  tour.lastDate = eventDate;
+                  tour.lastYear = year;
+                  dateRangeChanged = true;
+                }
+              }
+              
+              // Emit tour update if date range changed or every 10 shows
+              if (dateRangeChanged || tour.showCount % 10 === 0) {
+                const updateMessage = dateRangeChanged 
+                  ? `Updated date range for ${tour.name}` 
+                  : `${tour.name} now has ${tour.showCount} shows`;
+                sseManager.sendUpdate(clientId, 'tour_updated', updateMessage, null, {
+                  type: 'tour_update',
+                  tour: formatTourForDisplay(tour)
+                });
+              }
+            }
+          }
+        }
+      }
+
+      page++;
+    } while (page <= totalPages);
+
+    // Send completion with summary
+    console.log(`Streaming complete: Found ${tours.size} tours with songs from ${showsWithSongs}/${processedShows} shows`);
+    
+    sseManager.sendUpdate(clientId, 'tour_search_complete', 
+      `Found ${tours.size} tours from ${showsWithSongs} shows with setlists`, 
+      100,
+      {
+        type: 'search_complete',
+        summary: {
+          toursFound: tours.size,
+          totalShows: processedShows,
+          showsWithSongs: showsWithSongs
+        }
+      }
+    );
+
+  } catch (error) {
+    console.error(`Error in streaming tour fetch for ${artistName}:`, error.message);
+    throw error;
+  }
+}
+
+/**
+ * Formats a tour object for display in the frontend
+ */
+function formatTourForDisplay(tour) {
+  let displayYear = '';
+  if (tour.firstYear && tour.lastYear) {
+    if (tour.firstYear === tour.lastYear) {
+      displayYear = tour.firstYear.toString();
+    } else {
+      displayYear = `${tour.firstYear}-${tour.lastYear}`;
+    }
+  }
+  
+  return {
+    name: tour.name,
+    displayName: displayYear ? `${tour.name} (${displayYear})` : tour.name,
+    showCount: tour.showCount,
+    year: displayYear,
+    firstDate: tour.firstDate,
+    lastDate: tour.lastDate
+  };
+}
+
 module.exports = {
-  fetchAllToursFromAPI
+  fetchAllToursFromAPI,
+  fetchAllToursFromAPIStream
 };
