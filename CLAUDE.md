@@ -178,8 +178,14 @@ The application provides two search modes for discovering artist setlists:
 
 ### Performance Optimizations
 - **API Rate Limiting**: Respectful interaction with external APIs
-- **Caching Strategy**: Redis session storage for user state
-- **Error Recovery**: Graceful handling of API timeouts and failures
+- **Caching Strategy**: 
+  - Redis session storage for user state
+  - Tour data caching with 7-day TTL (respects Setlist.fm caching policy)
+  - Cache key uses MusicBrainz ID for accurate artist matching
+- **Error Recovery**: 
+  - Graceful handling of API timeouts and failures
+  - Individual Spotify song lookup failures don't break entire process
+  - Better error attribution (Spotify vs Setlist.fm failures)
 
 ## Feature Flags
 
@@ -198,30 +204,50 @@ When disabled:
 
 ## Advanced Search Implementation
 
-### Current Status: ✅ **FULLY FUNCTIONAL WITH API-ONLY ARCHITECTURE**
+### Current Status: ✅ **FULLY FUNCTIONAL WITH REAL-TIME SSE UPDATES & REDIS CACHING**
 
-The advanced search feature is fully implemented using **only the official Setlist.fm API**, completely removing any scraping or ToS violations. This provides better data accuracy and respects the increased API rate limits (16 requests/second, 50k/day).
+The advanced search feature is fully implemented using **only the official Setlist.fm API** with **live streaming updates via Server-Sent Events (SSE)** and **Redis caching for improved performance**. This provides better data accuracy, respects API rate limits (16 requests/second), and delivers a superior user experience with real-time tour discovery.
 
-### 🏗️ New Architecture: Pure API Implementation
+### 🏗️ Live Streaming Architecture
 
-**Architecture Redesign**: All tour fetching now uses the official Setlist.fm API with proper pagination, providing more accurate data while staying within ToS.
+**Revolutionary Update**: Advanced search now features **real-time tour discovery** where tours appear in the dropdown immediately as they're found, not after all pages are processed.
 
 **Current Implementation**:
-- `backend/utils/tourExtractor.js` - Fetches all tours via Setlist.fm API pagination ✅
-- `backend/routes/setlistRoutes.js` - Updated to use API-only tour fetching ✅
+- `backend/utils/tourExtractor.js` - Streaming tour extraction with SSE updates & caching ✅
+- `backend/utils/tourCacheManager.js` - Redis caching for tour data (7-day TTL) ✅
+- `backend/routes/setlistRoutes.js` - New `/tours_stream` endpoint for live updates ✅
+- `frontend/src/components/UserInput.jsx` - Real-time dropdown population ✅
 - All scraping infrastructure **removed** ✅
 
-### 🚀 API-Based Tour Discovery
+### 🚀 Real-Time Tour Discovery
 
 **How it works**:
 1. User selects artist → MusicBrainz validation for accurate matching
-2. System paginates through **all** setlists for the artist via Setlist.fm API
-3. Extracts unique tours with years and show counts from actual setlist data
-4. Presents tours in dropdown: "Tour Name (2025) - 25 shows"
-5. User selects tour → Standard setlist processing workflow
+2. **CACHE CHECK**: Redis checked for cached tour data (7-day TTL)
+3. If cached, tours stream instantly from cache via SSE
+4. If not cached: SSE connection established for live API updates
+5. System paginates through setlists, **streaming tours as discovered**
+6. **Tours appear in dropdown immediately** with live progress updates
+7. Shows only tours with actual song data (filters out stub entries)
+8. Multi-year tours displayed as "Tour Name (2019-2021) - 127 shows"
+9. User can select tours **while search is still running**
+10. **Tour data cached in Redis** for future searches
 
-**API Endpoint Used**:
+**Live Features**:
+- **Progressive Loading**: Tours populate dropdown in real-time
+- **Live Progress**: "Scanning page X of Y..." with current status
+- **Song Validation**: Only includes tours with actual setlist data
+- **Multi-Year Support**: Tours spanning years shown with date ranges
+- **Immediate Selection**: Can click tours before search completes
+
+**API Endpoints Used**:
 ```
+# SSE Tour Streaming (NEW)
+POST /setlist/artist/:artistId/tours_stream
+- Real-time tour discovery via Server-Sent Events
+- Streams tours as found, not batch at end
+
+# Original Setlist API
 GET https://api.setlist.fm/rest/1.0/search/setlists
 Parameters:
 - artistMbid: {mbid} (when available) OR artistName: {name}
@@ -233,8 +259,9 @@ Parameters:
 ### 📁 Current Advanced Search Files
 
 **Backend Files**:
-- `backend/utils/tourExtractor.js` ✅ (New API-based tour fetching)
-- `backend/routes/setlistRoutes.js` ✅ (Updated to use tourExtractor)
+- `backend/utils/tourExtractor.js` ✅ (API-based tour fetching with caching)
+- `backend/utils/tourCacheManager.js` ✅ (Redis caching utility)
+- `backend/routes/setlistRoutes.js` ✅ (Updated to use tourExtractor with caching)
 - `backend/utils/musicBrainzAPIRequests.js` ✅ (Artist validation)
 
 **Frontend Files**:
@@ -253,35 +280,97 @@ Parameters:
 - ✅ Tab-based UI (Live Shows / Past Tours)
 - ✅ Artist search with Deezer suggestions
 - ✅ MusicBrainz validation for accurate artist matching
-- ✅ **NEW**: Tour dropdown appears immediately after artist selection
-- ✅ All tours fetched via official API with years and show counts
+- ✅ **NEW**: Real-time tour dropdown with live progressive loading
+- ✅ **NEW**: Tours appear immediately as discovered (no waiting!)
+- ✅ **NEW**: Live progress indicators ("Scanning page X of Y...")
+- ✅ **NEW**: Song data validation (only tours with actual setlists)
+- ✅ **NEW**: Multi-year tour support with date ranges
+- ✅ **NEW**: Click tours before search completes
+- ✅ **NEW**: Redis caching for instant repeat searches (7-day TTL)
 - ✅ Tour-specific setlist processing with SSE
 - ✅ Complete integration with existing TracksHUD display
 
+**User Experience Improvements**:
+- ✅ **Instant Feedback** - Tours appear as soon as found
+- ✅ **Progressive Discovery** - No waiting for all pages to load
+- ✅ **Live Status Updates** - Real-time progress and tour counts
+- ✅ **Smart Filtering** - Only shows tours with song data
+- ✅ **Better Tour Display** - "Tour Name (2019-2021) - 127 shows"
+- ✅ **Responsive UI** - Loading state + dropdown simultaneously
+
 **Architecture Improvements**:
 - ✅ **100% ToS Compliant** - Only uses official Setlist.fm API
-- ✅ **Better Data Quality** - Real setlist dates and accurate show counts
-- ✅ **Simplified Architecture** - No external services or caching complexity
-- ✅ **Faster Performance** - No external HTTP calls to scraper services
+- ✅ **Real-Time Streaming** - SSE-powered progressive loading
+- ✅ **Better Data Quality** - Validates song data, accurate show counts
+- ✅ **Redis Caching** - 7-day cache for tour data, instant repeat searches
+- ✅ **Superior UX** - Live updates eliminate waiting time
 - ✅ **More Reliable** - No dependency on external scraping infrastructure
 
-### 🔧 Benefits of API-Only Approach
+### 🔧 Benefits of Real-Time SSE Architecture
 
 - **✅ ToS Compliance**: Only uses official Setlist.fm API endpoints
-- **✅ Better Data**: Actual setlist dates, accurate show counts, real tour information
-- **✅ Higher Rate Limits**: 16 requests/second (increased from previous limits)
+- **✅ Live User Experience**: Tours appear immediately as discovered
+- **✅ Better Data Quality**: Validates song data, accurate show counts, real tour information
+- **✅ Progressive Loading**: No waiting for complete results before interaction
+- **✅ Higher Rate Limits**: 16 requests/second (respects API limits)
 - **✅ More Reliable**: No scraping failures or external service dependencies
-- **✅ Simpler Deployment**: No separate Vercel services or API keys to manage
-- **✅ Real-time Data**: Always gets the latest tour information directly from source
+- **✅ Simpler Deployment**: No separate services or complex caching to manage
+- **✅ Real-time Feedback**: Live progress updates and tour discovery
+- **✅ Smart Filtering**: Only includes tours with actual setlist data
+- **✅ Multi-Year Support**: Handles tours spanning multiple years correctly
 
 ## Technical Notes
 
 - All setlist data sourced from Setlist.fm API with proper rate limiting
 - MusicBrainz used for artist verification and matching
 - Spotify integration handles both search and playlist creation
-- SSE implementation provides smooth real-time user experience
+- **NEW**: Server-Sent Events (SSE) for real-time tour discovery and progress updates
+- **NEW**: Song data validation ensures only meaningful tours are displayed
+- **NEW**: Progressive UI updates allow interaction during data loading
 - Mobile-responsive design with Chakra UI components
 - Comprehensive error handling and fallback mechanisms
-- **✅ Advanced search now 100% API-based with no scraping**
-- **✅ Simplified architecture with no external dependencies**
-- **✅ Improved data quality and ToS compliance**
+- **✅ Advanced search now features live streaming with immediate tour discovery**
+- **✅ Superior user experience with real-time feedback and progressive loading**
+- **✅ 100% API-based architecture with enhanced data quality and ToS compliance**
+
+## Redis Cache Management
+
+### Tour Data Caching
+The application caches tour data in Redis to improve performance and reduce API calls:
+
+**Cache Details**:
+- **TTL**: 7 days (604,800 seconds) - respects Setlist.fm's minimal caching policy
+- **Key Format**: `tours:{mbid}` or `tours:{normalized_artist_name}`
+- **Storage**: JSON array of tour objects with name, showCount, dates
+
+### Cache Utilities
+
+**Node.js Cache Checker** (`backend/utils/checkTourCache.js`):
+```bash
+cd backend
+node utils/checkTourCache.js "Artist Name" [mbid]
+```
+
+**Redis CLI Access**:
+```bash
+# Connect to Redis Cloud instance
+redis-cli -h redis-14105.c13.us-west-2-mz.ec2.redns.redis-cloud.com -p 14105 -a TWDvNyhSQopqoF77y9E1numLAISWtt0h
+
+# Common commands
+KEYS tours:*                    # List all tour cache keys
+GET tours:{key}                 # Get cached tour data
+TTL tours:{key}                 # Check time to live
+DEL tours:{key}                 # Delete cache entry (force refresh)
+```
+
+**Shell Script** (`backend/check-redis-cache.sh`):
+```bash
+cd backend
+./check-redis-cache.sh
+```
+
+### Development Tips
+- Cache is checked before API calls to reduce load
+- Cached data streams instantly via SSE ("Loading cached tour data...")
+- Delete cache key to test fresh API fetching
+- MusicBrainz ID preferred as cache key for accuracy

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Bottleneck = require('bottleneck');
+const { getCachedTours, cacheTours } = require('./tourCacheManager');
 
 // Rate limiter for Setlist.fm API (16 requests per second)
 const limiter = new Bottleneck({
@@ -13,9 +14,18 @@ const limiter = new Bottleneck({
  * @param {string} artistName - The artist name to search for
  * @param {string} mbid - Optional MusicBrainz ID for more accurate matching
  * @param {function} onProgress - Optional callback for progress updates
+ * @param {Object} redisClient - Optional Redis client for caching
  * @returns {Promise<Array>} Array of tour objects with name, year, and show count
  */
-async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null) {
+async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, redisClient = null) {
+  // Check cache first if Redis client is provided
+  if (redisClient) {
+    const cachedTours = await getCachedTours(redisClient, artistName, mbid);
+    if (cachedTours) {
+      console.log(`Returning cached tours for ${artistName}`);
+      return cachedTours;
+    }
+  }
   const tours = new Map(); // Use Map to track unique tours
   const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
   
@@ -133,6 +143,12 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null) 
       });
 
     console.log(`Found ${tourArray.length} valid tours for ${artistName} from ${processedShows} shows`);
+    
+    // Cache the results if Redis client is provided
+    if (redisClient && tourArray.length > 0) {
+      await cacheTours(redisClient, artistName, mbid, tourArray);
+    }
+    
     return tourArray;
 
   } catch (error) {
@@ -163,10 +179,45 @@ function isInvalidTourName(tourName) {
  * @param {string} artistName - The artist name to search for
  * @param {string} mbid - Optional MusicBrainz ID for more accurate matching
  * @param {string} clientId - SSE client ID for sending updates
+ * @param {Object} redisClient - Optional Redis client for caching
  * @returns {Promise<void>} Resolves when all pages have been processed
  */
-async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId) {
+async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, redisClient = null) {
   const sseManager = require('./sseManager');
+  
+  // Check cache first if Redis client is provided
+  if (redisClient) {
+    const cachedTours = await getCachedTours(redisClient, artistName, mbid);
+    if (cachedTours && cachedTours.length > 0) {
+      console.log(`Streaming cached tours for ${artistName}`);
+      
+      // Stream cached tours immediately
+      sseManager.sendUpdate(clientId, 'tour_search_start', 'Loading cached tour data...', 15);
+      
+      // Send all cached tours at once
+      for (const tour of cachedTours) {
+        sseManager.sendUpdate(clientId, 'tour_discovered', `Found tour: ${tour.name}`, null, {
+          type: 'new_tour',
+          tour: formatTourForDisplay(tour)
+        });
+      }
+      
+      // Send completion
+      sseManager.sendUpdate(clientId, 'tour_search_complete', 
+        `Loaded ${cachedTours.length} tours from cache`, 
+        100,
+        {
+          type: 'search_complete',
+          summary: {
+            toursFound: cachedTours.length,
+            fromCache: true
+          }
+        }
+      );
+      
+      return; // Exit early with cached data
+    }
+  }
   const tours = new Map(); // Use Map to track unique tours by name only
   const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
   
@@ -302,6 +353,14 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId) {
       page++;
     } while (page <= totalPages);
 
+    // Convert tours Map to array for caching
+    const tourArray = Array.from(tours.values()).map(tour => formatTourForDisplay(tour));
+    
+    // Cache the results if Redis client is provided and we found tours
+    if (redisClient && tourArray.length > 0) {
+      await cacheTours(redisClient, artistName, mbid, tourArray);
+    }
+    
     // Send completion with summary
     console.log(`Streaming complete: Found ${tours.size} tours with songs from ${showsWithSongs}/${processedShows} shows`);
     

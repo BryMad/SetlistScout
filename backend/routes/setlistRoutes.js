@@ -207,7 +207,12 @@ async function processArtistWithUpdates(artist, clientId) {
 
     // Handle specific error types
     if (error.response && error.response.status === 504) {
-      sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
+      // Check if it's a Spotify error based on the URL
+      if (error.config && error.config.url && error.config.url.includes('api.spotify.com')) {
+        sseManager.sendError(clientId, "Spotify service is temporarily unavailable. The setlist data was processed successfully but some songs couldn't be matched.", 504);
+      } else {
+        sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
+      }
     } else if (error.response) {
       sseManager.sendError(clientId, error.response.data.error || "An error occurred while fetching setlists.", error.response.status);
     } else {
@@ -484,9 +489,14 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
 
     // Handle specific error types
     if (error.response && error.response.status === 504) {
-      sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
+      // Check if it's a Spotify error based on the URL
+      if (error.config && error.config.url && error.config.url.includes('api.spotify.com')) {
+        sseManager.sendError(clientId, "Spotify service is temporarily unavailable. The tour data was processed successfully but some songs couldn't be matched.", 504);
+      } else {
+        sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
+      }
     } else if (error.response) {
-      sseManager.sendError(clientId, error.response.data.error || "An error occurred while fetching tour setlists.", error.response.status);
+      sseManager.sendError(clientId, error.response.data.error || "An error occurred while processing tour data.", error.response.status);
     } else {
       sseManager.sendError(clientId, "Internal Server Error. Please try again later.", 500);
     }
@@ -555,8 +565,11 @@ router.post('/artist/:artistId/tours', async (req, res) => {
     console.log('Fetching all tours for:', validatedArtistName, 'with MBID:', mbid);
     
     try {
-      // Fetch all tours using the new API-based function
-      const tours = await fetchAllToursFromAPI(validatedArtistName, mbid);
+      // Get Redis client from app locals
+      const redisClient = req.app.locals.redisClient;
+      
+      // Fetch all tours using the new API-based function with Redis caching
+      const tours = await fetchAllToursFromAPI(validatedArtistName, mbid, null, redisClient);
       
       console.log(`Found ${tours.length} tours for ${validatedArtistName}`);
       
@@ -623,7 +636,7 @@ router.post('/artist/:artistId/tours_stream', async (req, res) => {
   });
   
   // Process tours in background
-  processTourStreamWithUpdates(clientId, artistName, artist);
+  processTourStreamWithUpdates(clientId, artistName, artist, req);
   
   // Return success immediately
   res.json({ message: 'Tour streaming started', clientId });
@@ -633,7 +646,7 @@ router.post('/artist/:artistId/tours_stream', async (req, res) => {
  * Background function to stream tour discoveries via SSE
  * Emits tours progressively as they are found with song data
  */
-async function processTourStreamWithUpdates(clientId, artistName, artist) {
+async function processTourStreamWithUpdates(clientId, artistName, artist, req) {
   try {
     // Apply MusicBrainz validation
     let mbid = null;
@@ -658,8 +671,11 @@ async function processTourStreamWithUpdates(clientId, artistName, artist) {
     // Import the streaming version of tour fetching
     const { fetchAllToursFromAPIStream } = require('../utils/tourExtractor');
     
-    // Fetch tours with streaming updates
-    await fetchAllToursFromAPIStream(validatedArtistName, mbid, clientId);
+    // Get Redis client from app locals
+    const redisClient = req.app.locals.redisClient;
+    
+    // Fetch tours with streaming updates and caching
+    await fetchAllToursFromAPIStream(validatedArtistName, mbid, clientId, redisClient);
     
     // Send completion
     sseManager.completeProcess(clientId, { message: 'Tour discovery complete' });

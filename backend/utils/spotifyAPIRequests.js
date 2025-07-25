@@ -186,22 +186,35 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
         return limitedSearchSong(token, song.artist, song.song);
       });
 
-      const batchResponses = await Promise.all(promises);
+      // Use allSettled to handle individual failures gracefully
+      const batchResponses = await Promise.allSettled(promises);
 
       // Process responses
-      batchResponses.forEach((data, idx) => {
+      batchResponses.forEach((result, idx) => {
         const songIndex = start + idx;
-        const obj = {
-          songName: data.tracks.items[0]?.name,
-          artistName: data.tracks.items[0]?.artists[0]?.name,
-          image: data.tracks.items[0]?.album?.images?.find((img) => img.height === 64),
-          imageMed: data.tracks.items[0]?.album?.images?.find((img) => img.height === 300),
-          albumName: data.tracks.items[0]?.album?.name,
-          albumReleaseDate: data.tracks.items[0]?.album?.release_date,
-          uri: data.tracks.items[0]?.uri,
-          id: uuidv4(),
-        };
-        spotifyDataParsed.push({ ...obj, ...songList[songIndex] });
+        if (result.status === 'fulfilled') {
+          const data = result.value;
+          const obj = {
+            songName: data.tracks.items[0]?.name,
+            artistName: data.tracks.items[0]?.artists[0]?.name,
+            image: data.tracks.items[0]?.album?.images?.find((img) => img.height === 64),
+            imageMed: data.tracks.items[0]?.album?.images?.find((img) => img.height === 300),
+            albumName: data.tracks.items[0]?.album?.name,
+            albumReleaseDate: data.tracks.items[0]?.album?.release_date,
+            uri: data.tracks.items[0]?.uri,
+            id: uuidv4(),
+          };
+          spotifyDataParsed.push({ ...obj, ...songList[songIndex] });
+        } else {
+          // Include failed songs without Spotify data
+          logger.warn(`Failed to fetch Spotify data for: ${songList[songIndex].song} by ${songList[songIndex].artist}`, result.reason?.message);
+          spotifyDataParsed.push({ 
+            ...songList[songIndex], 
+            id: uuidv4(),
+            spotifyError: true,
+            errorMessage: result.reason?.message || 'Unknown error'
+          });
+        }
       });
     }
 
