@@ -164,19 +164,21 @@ export default function UserInput() {
     } else {
       // Past Tours tab - Fetch tours for selection
       await fetchTours(artist);
+      // Keep the artist name but don't trigger new search
+      setArtistQuery(artist.name);
     }
   };
 
   /**
    * Handles tour selection in advanced search
-   * @param {string} tourId The selected tour ID
+   * @param {string} tourName The selected tour name
    */
-  const handleTourSelect = async (tourId) => {
-    const tour = tours.find((t) => t.id === tourId);
+  const handleTourSelect = async (tourName) => {
+    const tour = tours.find((t) => t.name === tourName);
     if (!tour || !selectedArtist) return;
 
     // Set the selected tour to show in dropdown
-    setSelectedTour(tourId);
+    setSelectedTour(tourName);
 
     // Dispatch an event to notify that a new search is starting
     window.dispatchEvent(new Event("new-search-started"));
@@ -190,13 +192,14 @@ export default function UserInput() {
     console.log("For artist:", selectedArtist);
 
     // Fetch setlist data for the specific tour
-    await fetchSpecificTourData(selectedArtist, tourId, tour.name);
+    await fetchTourData(selectedArtist, tour.name);
 
     // Reset the form after selection
     setArtistQuery("");
     setSelectedArtist(null);
     setTours([]);
     setSelectedTour("");
+    setToursLoading(false);
   };
 
   /**
@@ -357,62 +360,6 @@ export default function UserInput() {
                 </Box>
               )}
 
-              {/* Tour Selection Dropdown */}
-              {selectedArtist && tabIndex === 1 && (
-                <Box width="100%">
-                  {toursLoading ? (
-                    <Box textAlign="center" py={4}>
-                      <Spinner size="sm" />
-                      <Text ml={2} as="span">
-                        Loading past tours...
-                      </Text>
-                    </Box>
-                  ) : tours.length > 0 ? (
-                    <Menu>
-                      <MenuButton
-                        as={Button}
-                        width="100%"
-                        size="lg"
-                        variant="filled"
-                        bg="gray.800"
-                        borderRadius="xl"
-                        _hover={{ bg: "gray.700" }}
-                        _active={{ bg: "gray.700", borderColor: "brand.400" }}
-                        textAlign="left"
-                        fontWeight="normal"
-                        rightIcon={<Text fontSize="xs">▼</Text>}
-                        isDisabled={loading}
-                      >
-                        {selectedTour ? tours.find(t => t.id === selectedTour)?.name + ` (${tours.find(t => t.id === selectedTour)?.showCount} shows)` : "Select a tour..."}
-                      </MenuButton>
-                      <MenuList
-                        bg="gray.800"
-                        borderRadius="lg"
-                        border="1px solid"
-                        borderColor="gray.700"
-                        boxShadow="xl"
-                        maxH="300px"
-                        overflowY="auto"
-                      >
-                        {tours.map((tour) => (
-                          <MenuItem
-                            key={tour.id}
-                            onClick={() => handleTourSelect(tour.id)}
-                            _hover={{ bg: "gray.700" }}
-                            transition="background-color 0.2s"
-                          >
-                            {tour.name} ({tour.showCount} shows)
-                          </MenuItem>
-                        ))}
-                      </MenuList>
-                    </Menu>
-                  ) : (
-                    <Text color="gray.400" textAlign="center">
-                      No tours found for this artist
-                    </Text>
-                  )}
-                </Box>
-              )}
             </VStack>
           </TabPanel>
         </TabPanels>
@@ -450,8 +397,8 @@ export default function UserInput() {
         </VStack>
       )}
 
-      {/* Artist suggestions dropdown - shown for both tabs */}
-      {suggestions.length > 0 && (
+      {/* Artist suggestions dropdown - shown for both tabs (but not when artist is selected in Past Tours) */}
+      {suggestions.length > 0 && !(selectedArtist && tabIndex === 1) && (
         <Box
           position="absolute"
           zIndex="10"
@@ -493,6 +440,51 @@ export default function UserInput() {
               </ListItem>
             ))}
           </List>
+        </Box>
+      )}
+
+      {/* Tour dropdown - shown immediately after artist selection in Past Tours tab */}
+      {selectedArtist && tabIndex === 1 && !selectedTour && (
+        <Box
+          position="absolute"
+          zIndex="10"
+          bg="gray.800"
+          mt={2}
+          width="100%"
+          borderRadius="lg"
+          overflow="hidden"
+          boxShadow="xl"
+          border="1px solid"
+          borderColor="gray.700"
+        >
+          {toursLoading ? (
+            <Box textAlign="center" py={4}>
+              <Spinner size="sm" />
+              <Text ml={2} as="span" color="gray.400">
+                Loading tours...
+              </Text>
+            </Box>
+          ) : tours.length > 0 ? (
+            <List spacing={0}>
+              {tours.map((tour) => (
+                <ListItem
+                  key={tour.name + '_' + tour.year}
+                  px={4}
+                  py={3}
+                  _hover={{ backgroundColor: "gray.700" }}
+                  transition="background-color 0.2s"
+                  cursor="pointer"
+                  onClick={() => handleTourSelect(tour.name)}
+                >
+                  <Text>{tour.name} {tour.year ? `(${tour.year})` : ''} - {tour.showCount} shows</Text>
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <Box textAlign="center" py={4}>
+              <Text color="gray.400">No tours found for this artist</Text>
+            </Box>
+          )}
         </Box>
       )}
     </Box>

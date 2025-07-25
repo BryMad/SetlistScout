@@ -198,263 +198,81 @@ When disabled:
 
 ## Advanced Search Implementation
 
-### Current Status: FULLY FUNCTIONAL WITH SEPARATED ARCHITECTURE ✅
+### Current Status: ✅ **FULLY FUNCTIONAL WITH API-ONLY ARCHITECTURE**
 
-The advanced search feature is fully implemented and working, allowing users to search historical tours for any artist. The scraping functionality has been successfully separated from the main application to comply with best practices.
+The advanced search feature is fully implemented using **only the official Setlist.fm API**, completely removing any scraping or ToS violations. This provides better data accuracy and respects the increased API rate limits (16 requests/second, 50k/day).
 
-### 🏗️ Architecture Overview: Scraping Service Separation
+### 🏗️ New Architecture: Pure API Implementation
 
-**Problem Solved**: Tour scraping that could violate setlist.fm ToS is now isolated from the main application that uses their API legitimately.
+**Architecture Redesign**: All tour fetching now uses the official Setlist.fm API with proper pagination, providing more accurate data while staying within ToS.
 
 **Current Implementation**:
-- `backend/utils/setlistSlugExtractor.js` - Extracts setlist.fm artist slugs using the official API ✅
-- `scraper-service/` - Separate Vercel deployment for tour scraping ✅
-- Main backend calls the external scraper service via HTTP ✅
+- `backend/utils/tourExtractor.js` - Fetches all tours via Setlist.fm API pagination ✅
+- `backend/routes/setlistRoutes.js` - Updated to use API-only tour fetching ✅
+- All scraping infrastructure **removed** ✅
 
-### 🚀 Deployed Scraper Service
-
-**Vercel Deployment**:
-```
-scraper-service/
-├── api/
-│   ├── tours/
-│   │   └── [slug].js    # Vercel function endpoint
-│   └── health.js        # Health check endpoint
-├── tourScraper.js       # Scraping logic (moved from backend)
-├── package.json         # Dependencies (cheerio, axios, etc.)
-├── vercel.json         # Deployment configuration
-└── .env.example        # Environment variables template
-```
-
-**Service URL**: Set in backend `.env` as:
-```
-SCRAPER_SERVICE_URL=https://your-scraper.vercel.app
-SCRAPER_API_KEY=your-generated-api-key
-```
-
-**Security**: The scraper is protected by API key authentication to prevent unauthorized access.
+### 🚀 API-Based Tour Discovery
 
 **How it works**:
-1. Main backend gets artist slug via official setlist.fm API
-2. Backend calls: `GET ${SCRAPER_SERVICE_URL}/api/tours/${artistSlug}` with `X-API-Key` header
-3. Vercel function validates API key before scraping
-4. Returns tour data as JSON only if authenticated
-5. Backend forwards data to frontend
+1. User selects artist → MusicBrainz validation for accurate matching
+2. System paginates through **all** setlists for the artist via Setlist.fm API
+3. Extracts unique tours with years and show counts from actual setlist data
+4. Presents tours in dropdown: "Tour Name (2025) - 25 shows"
+5. User selects tour → Standard setlist processing workflow
 
-### 🎯 Why This Architecture Is Necessary
+**API Endpoint Used**:
+```
+GET https://api.setlist.fm/rest/1.0/search/setlists
+Parameters:
+- artistMbid: {mbid} (when available) OR artistName: {name}
+- p: {page} (for pagination)
+```
 
-**Technical Benefits**:
-- Separates ToS-violating code from main application
-- Different IP addresses reduce detection risk
-- Main app can fallback gracefully if scraping service fails
-
-**Legal Benefits**:
-- Scraping and API usage come from different sources
-- Reduces obvious connection between violations and API usage
-- Easier to disable if needed without breaking main app
-
-### 🔧 Vercel Deployment Guide
-
-**To deploy your own scraper service:**
-
-1. **Install Vercel CLI**:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Deploy the scraper**:
-   ```bash
-   cd scraper-service
-   vercel
-   ```
-
-3. **Configure environment variables**:
-   ```bash
-   vercel env add ALLOWED_ORIGINS
-   # Enter: * (for testing) or your production URL
-   
-   vercel env add SCRAPER_API_KEY
-   # Enter: Generate with 'openssl rand -hex 32'
-   ```
-
-4. **Deploy to production**:
-   ```bash
-   vercel --prod
-   ```
-
-5. **Update backend `.env`**:
-   ```
-   SCRAPER_SERVICE_URL=https://your-deployment.vercel.app
-   SCRAPER_API_KEY=same-key-as-vercel
-   ```
-
-**Security Notes**: 
-- The scraper requires API key authentication (X-API-Key header)
-- Generate keys with: `openssl rand -hex 32`
-- Disable Vercel's built-in authentication but keep API key protection
+**Rate Limiting**: 16 requests/second using Bottleneck library
 
 ### 📁 Current Advanced Search Files
 
 **Backend Files**:
-- `backend/utils/setlistSlugExtractor.js` ✅ (API-only, uses official setlist.fm API)
-- `backend/routes/setlistRoutes.js` ✅ (calls external scraper service)
-- `backend/routes/setlistRoutes.js:25` - `fetchToursFromService()` function handles scraper communication
-
-**Scraper Service Files** (Separate Vercel deployment):
-- `scraper-service/api/tours/[slug].js` ✅ (Vercel function endpoint)
-- `scraper-service/tourScraper.js` ✅ (Scraping logic, isolated from main app)
-- `scraper-service/vercel.json` ✅ (Deployment configuration)
+- `backend/utils/tourExtractor.js` ✅ (New API-based tour fetching)
+- `backend/routes/setlistRoutes.js` ✅ (Updated to use tourExtractor)
+- `backend/utils/musicBrainzAPIRequests.js` ✅ (Artist validation)
 
 **Frontend Files**:
-- `frontend/src/components/UserInput.jsx` ✅ (tab interface working)
-- `frontend/src/api/setlistService.js` ✅ (tour-specific search working)
-- `frontend/src/context/SetlistContext.jsx` ✅ (context integration working)
+- `frontend/src/components/UserInput.jsx` ✅ (Tour dropdown after artist selection)
+- `frontend/src/api/setlistService.js` ✅ (API integration)
+- `frontend/src/context/SetlistContext.jsx` ✅ (Context integration)
 
-**Dependencies**:
-- Main backend: NO scraping dependencies ✅
-- Scraper service: Contains `cheerio` and scraping logic ✅
+**Removed Files**:
+- ~~`scraper-service/`~~ - **Deleted** (no longer needed)
+- ~~`backend/utils/tourCache.js`~~ - **Deleted** (no caching needed)
+- ~~`backend/utils/backgroundCacheUpdate.js`~~ - **Deleted** (no caching needed)
 
 ### 🎮 Current Feature Status
 
 **Working Features**:
 - ✅ Tab-based UI (Live Shows / Past Tours)
-- ✅ Artist search and selection in both tabs
-- ✅ Tour list fetching and display
+- ✅ Artist search with Deezer suggestions
+- ✅ MusicBrainz validation for accurate artist matching
+- ✅ **NEW**: Tour dropdown appears immediately after artist selection
+- ✅ All tours fetched via official API with years and show counts
 - ✅ Tour-specific setlist processing with SSE
-- ✅ Artist matching improvements (fixed tribute band issues)
 - ✅ Complete integration with existing TracksHUD display
 
-**Architecture Improvements Completed**:
-- ✅ Scraping moved to separate Vercel service
-- ✅ Backend updated to call external scraper via HTTP
-- ✅ Fallback handling implemented (returns empty array on failure)
-- ✅ Complete separation of concerns achieved
+**Architecture Improvements**:
+- ✅ **100% ToS Compliant** - Only uses official Setlist.fm API
+- ✅ **Better Data Quality** - Real setlist dates and accurate show counts
+- ✅ **Simplified Architecture** - No external services or caching complexity
+- ✅ **Faster Performance** - No external HTTP calls to scraper services
+- ✅ **More Reliable** - No dependency on external scraping infrastructure
 
-The feature is **fully functional** with **proper architectural separation** between legitimate API usage and web scraping.
+### 🔧 Benefits of API-Only Approach
 
-## Intelligent Caching System Implementation
-
-**Status**: ✅ **FULLY IMPLEMENTED AND WORKING** - Intelligent caching system is now active and operational.
-
-### 🎯 Caching Strategy Overview
-
-The app now has a fully functional intelligent caching system that minimizes scraping and dramatically improves performance. The system intelligently manages tour data caching with smart update logic.
-
-**Files Implemented**:
-- `backend/utils/tourCache.js` - Core caching class ✅
-- `backend/utils/backgroundCacheUpdate.js` - Background cache updater ✅
-- `backend/scripts/warmCache.js` - Popular artist pre-warming script
-- `backend/routes/setlistRoutes.js` - Updated with full caching implementation ✅
-- `backend/server.js` - Updated to provide Redis client access ✅
-
-### ✅ Implementation Complete
-
-**COMPLETED: Advanced Search Caching**
-
-1. **✅ `/artist/:artistId/tours` endpoint updated in `setlistRoutes.js`**:
-   - TourCache initialized with Redis client
-   - Cache checked first before calling scraper service
-   - Smart update logic detects new tours
-   - Only scrapes when cache is missing or new tour detected
-
-2. **✅ Redis client available to routes**:
-   - `server.js` updated to make Redis client available as `req.app.locals.redisClient`
-   - TourCache class imported and used in routes
-
-**COMPLETED: Background Cache Updates**
-
-3. **✅ Live Shows workflow integration**:
-   - Background cache update added to `processArtistWithUpdates()` 
-   - `BackgroundCacheUpdater.triggerUpdate()` called AFTER user gets response
-   - Cache builds organically without slowing user experience
-
-**AVAILABLE: Cache Warming**
-
-4. **Popular artist pre-warming**:
-   - Run `node backend/scripts/warmCache.js` to cache popular artists
-   - Consider scheduling this periodically for high-traffic artists
-
-### 🎯 Caching Logic Details
-
-**Smart Update Frequency** (for advanced search):
-- New artists (< 7 days): Check API every 6 hours
-- Recent activity (< 30 days): Check daily  
-- Moderate activity (< 180 days): Check weekly
-- Old cache (> 180 days): Check monthly
-
-Note: This timing only applies when someone performs an advanced search. The system checks if enough time has passed since the last API check before deciding whether to look for new tours.
-
-**Invalid Tour Filtering**:
-The cache automatically filters out invalid tour names like:
-- "No Tour Info" (exact string from live shows workflow)
-- Empty strings from failed tour detection
-- Patterns like "Unknown", "Miscellaneous", etc.
-
-**Data Flow**:
-1. User searches artist → Check cache first
-2. If cache exists and recent → Return cached data (instant response)
-3. If cache old or missing → Check setlist.fm API for new tours
-4. If new tour detected → Scrape all tours and update cache
-5. If no new tour → Just update "last checked" timestamp
-
-**Background Updates** (after live shows):
-1. User gets live shows response immediately (no delay)
-2. Background process ONLY updates existing cached artists
-3. If no cache exists, skip creation (prevents incomplete caches)
-4. If cache exists and new tour detected, refresh entire cache
-5. Cache is only created from advanced search with complete tour data
-
-**IMPORTANT BUG FIX**: Basic search no longer creates new cache entries. This prevents incomplete caches that would only contain the current tour instead of all historical tours.
-
-### 🔍 Key Implementation Notes
-
-**Redis Keys**:
-- Artist slugs: `artist:slug:coldplay`
-- Tours: `artist:tours:coldplay-3d6bde3`
-
-**Cache Structure**:
-```javascript
-{
-  tours: [...], // Array of tour objects
-  lastUpdated: "2024-07-10T...", // When cache was updated
-  lastChecked: 1626123456789, // When we last checked API
-  cachedAt: 1626123456789, // Original cache time
-  originalCount: 25, // Tours before filtering
-  filteredCount: 20 // Valid tours after filtering
-}
-```
-
-**Integration Points**:
-- Advanced search: Use cache to avoid scraping
-- Live shows: Background updates to build cache
-- Popular artists: Pre-warm cache with script
-
-### 🚀 Benefits Now Active
-
-- **✅ Minimal Scraping**: Only scrapes when new tours detected
-- **✅ Fast Responses**: Cached results return instantly (confirmed working)
-- **✅ Organic Growth**: Cache builds through normal usage via background updates
-- **✅ Smart Updates**: More active artists checked more frequently based on usage patterns
-- **✅ Clean Data**: Invalid tour names automatically filtered out before caching
-- **✅ Graceful Fallbacks**: Returns cached data if scraper service fails
-- **✅ Popularity Tracking**: Tracks artist search frequency for optimization
-
-### 🔍 How to Verify Caching is Working
-
-**Test API Response**:
-```bash
-# First call - fetches and caches data
-curl "http://localhost:3000/setlist/artist/Artist%20Name/tours"
-
-# Second call - should return {"cached": true, ...}
-curl "http://localhost:3000/setlist/artist/Artist%20Name/tours"
-```
-
-**Server Console Logs to Look For**:
-- `Fetching fresh tours for: [Artist]` (first call)
-- `Cached X tours for [Artist] (Y total, Z filtered out)` (caching)
-- `Returning cached tours for: [Artist] (X tours)` (subsequent calls)
-- `Background cache update starting for [Artist]` (after live shows)
+- **✅ ToS Compliance**: Only uses official Setlist.fm API endpoints
+- **✅ Better Data**: Actual setlist dates, accurate show counts, real tour information
+- **✅ Higher Rate Limits**: 16 requests/second (increased from previous limits)
+- **✅ More Reliable**: No scraping failures or external service dependencies
+- **✅ Simpler Deployment**: No separate Vercel services or API keys to manage
+- **✅ Real-time Data**: Always gets the latest tour information directly from source
 
 ## Technical Notes
 
@@ -464,6 +282,6 @@ curl "http://localhost:3000/setlist/artist/Artist%20Name/tours"
 - SSE implementation provides smooth real-time user experience
 - Mobile-responsive design with Chakra UI components
 - Comprehensive error handling and fallback mechanisms
-- **Advanced search scraping successfully separated to Vercel service**
-- **Microservice architecture provides IP isolation and risk mitigation**
-- **✅ Intelligent caching system fully implemented and operational**
+- **✅ Advanced search now 100% API-based with no scraping**
+- **✅ Simplified architecture with no external dependencies**
+- **✅ Improved data quality and ToS compliance**
