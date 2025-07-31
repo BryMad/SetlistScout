@@ -18,6 +18,28 @@ const devLogger = require('../utils/devLogger');
 const { fetchAllToursFromAPI } = require('../utils/tourExtractor');
 
 /**
+ * Helper function to execute async operations with cancellation checking
+ * @param {AbortSignal} signal - The abort signal to check
+ * @param {Function} operation - The async operation to execute
+ * @param {string} operationName - Name of operation for logging
+ * @returns {Promise} Result of the operation
+ * @throws {Error} If the operation was cancelled
+ */
+async function withCancellation(signal, operation, operationName = 'operation') {
+  if (signal.aborted) {
+    throw new Error(`Cancelled before ${operationName}`);
+  }
+
+  const result = await operation();
+
+  if (signal.aborted) {
+    throw new Error(`Cancelled after ${operationName}`);
+  }
+
+  return result;
+}
+
+/**
  * Endpoint: POST /search_with_updates
  * Streamed version of setlist search that sends progress updates
  * 
@@ -34,7 +56,7 @@ router.post('/search_with_updates', async (req, res) => {
 
   try {
     // Start processing and send updates via SSE instead of waiting for completion
-    processArtistWithUpdates(artist, clientId);
+    processArtistWithUpdates(artist, clientId, req);
 
     // Immediately return success to the client
     return res.status(202).json({
@@ -52,8 +74,29 @@ router.post('/search_with_updates', async (req, res) => {
  * 
  * @param {Object} artist - Artist information
  * @param {string} clientId - SSE client ID
+ * @param {Object} req - Express request object (optional, for session access)
  */
-async function processArtistWithUpdates(artist, clientId) {
+async function processArtistWithUpdates(artist, clientId, req = null) {
+  // Create AbortController for this process
+  const abortController = new AbortController();
+  sseManager.setActiveProcess(clientId, abortController);
+  const signal = abortController.signal;
+
+  // Set 5-minute timeout
+  const SEARCH_TIMEOUT = 5 * 60 * 1000; // 5 minutes
+  // const SEARCH_TIMEOUT = 10 * 1000; // 10 seconds for testing
+  const timeoutId = setTimeout(() => {
+    if (sseManager.isProcessActive(clientId)) {
+      devLogger.log('sse', `Search timed out after 5 minutes`, {
+        clientId,
+        artistName: artist.name
+      });
+      abortController.abort();
+      sseManager.sendError(clientId, 'Search timed out after 5 minutes. Please try again with a smaller request or check your connection.', 408);
+      sseManager.clearActiveProcess(clientId);
+    }
+  }, SEARCH_TIMEOUT);
+
   try {
     devLogger.log('sse', `Starting Live Shows search for artist`, {
       artistName: artist.name,
@@ -61,7 +104,7 @@ async function processArtistWithUpdates(artist, clientId) {
       artistUrl: artist.url,
       clientId: clientId
     });
-    
+
     sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`, 5);
 
     // Step 1: Fetch MusicBrainz ID
@@ -70,11 +113,16 @@ async function processArtistWithUpdates(artist, clientId) {
       artistName: artist.name,
       artistUrl: artist.url
     });
-    
-    const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+
+    const mbInfo = await withCancellation(
+      signal,
+      () => fetchMBIdFromSpotifyId(artist.url),
+      'MusicBrainz lookup'
+    );
+
     const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
     const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-    
+
     devLogger.log('musicbrainz', `MusicBrainz lookup completed`, {
       mbArtistName: mbArtistName,
       mbid: mbid,
@@ -94,16 +142,24 @@ async function processArtistWithUpdates(artist, clientId) {
       });
       sseManager.sendUpdate(clientId, 'setlist_search', `Found exact match for ${artist.name} on MusicBrainz, getting setlist data`, 30);
       matched = true;
-      artistPage = await getArtistPageByMBID(mbid);
+      artistPage = await withCancellation(
+        signal,
+        () => getArtistPageByMBID(mbid),
+        'Setlist.fm MBID lookup'
+      );
     } else {
       devLogger.log('setlist', `No exact match, searching by name`, {
         searchName: artist.name,
         mbArtistName: mbArtistName
       });
       sseManager.sendUpdate(clientId, 'setlist_search', `Searching Setlist.fm for ${artist.name}`, 30);
-      artistPage = await getArtistPageByName(artist);
+      artistPage = await withCancellation(
+        signal,
+        () => getArtistPageByName(artist),
+        'Setlist.fm name search'
+      );
     }
-    
+
     devLogger.log('setlist', `Setlist.fm query completed`, {
       hasResults: !!(artistPage?.setlist?.length),
       setlistCount: artistPage?.setlist?.length || 0
@@ -113,7 +169,7 @@ async function processArtistWithUpdates(artist, clientId) {
     sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
     const tourInfo = getTour(artistPage);
     const tourName = chooseTour(tourInfo, artist.name);
-    
+
     devLogger.log('setlist', `Tour information processed`, {
       tourName: tourName,
       availableTours: Object.keys(tourInfo || {}),
@@ -138,10 +194,18 @@ async function processArtistWithUpdates(artist, clientId) {
       allTourInfo.push(artistPage);
     } else if (matched) {
       sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
-      allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
+      allTourInfo = await withCancellation(
+        signal,
+        () => getAllTourSongsByMBID(artist.name, mbid, tourName),
+        'fetching tour setlists'
+      );
     } else {
       sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 55);
-      allTourInfo = await getAllTourSongs(artist.name, tourName);
+      allTourInfo = await withCancellation(
+        signal,
+        () => getAllTourSongs(artist.name, tourName),
+        'fetching tour setlists'
+      );
     }
 
     // Handle errors in tour info
@@ -172,13 +236,17 @@ async function processArtistWithUpdates(artist, clientId) {
         progressData.progress
       );
     };
-    
+
     devLogger.log('spotify', `Starting Spotify track lookup`, {
       songCount: tourInfoOrdered.songsOrdered?.length || 0
     });
 
-    const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
-    
+    const spotifySongsOrdered = await withCancellation(
+      signal,
+      () => getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback, signal),
+      'Spotify song lookup'
+    );
+
     devLogger.log('spotify', `Spotify track lookup completed`, {
       tracksFound: spotifySongsOrdered?.length || 0,
       tracksSearched: tourInfoOrdered.songsOrdered?.length || 0
@@ -190,7 +258,7 @@ async function processArtistWithUpdates(artist, clientId) {
       tourName: tourName,
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
-    
+
     devLogger.log('sse', `Live Shows search completed successfully`, {
       artistName: artist.name,
       tourName: tourName,
@@ -201,8 +269,18 @@ async function processArtistWithUpdates(artist, clientId) {
     sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
 
     // All processing complete
+    clearTimeout(timeoutId); // Clear timeout on successful completion
 
   } catch (error) {
+    clearTimeout(timeoutId); // Clear timeout on error
+
+    // Check if it's a cancellation
+    if (error.message && error.message.includes('Cancelled')) {
+      devLogger.log('sse', `Process cancelled: ${error.message}`, { clientId });
+      // Don't send error to client - they initiated the cancellation
+      return;
+    }
+
     console.error('Error in processArtistWithUpdates:', error);
 
     // Handle specific error types
@@ -337,9 +415,9 @@ router.post('/artist_search_deezer', async (req, res) => {
   try {
     const search_query = req.body.artistName;
     devLogger.log('deezer', `Artist search initiated for: "${search_query}"`);
-    
+
     const searchResults = await searchDeezerArtists(search_query);
-    
+
     devLogger.log('deezer', `Found ${searchResults.length} results for "${search_query}"`, {
       results: searchResults.map(artist => ({
         id: artist.id,
@@ -349,7 +427,7 @@ router.post('/artist_search_deezer', async (req, res) => {
         hasImage: !!artist.image
       }))
     });
-    
+
     res.json(searchResults);
   } catch (error) {
     devLogger.error('deezer', 'Error in artist search', error);
@@ -416,12 +494,36 @@ router.post('/search_tour_with_updates', async (req, res) => {
  * @param {string} clientId - SSE client ID
  */
 async function processTourWithUpdates(artist, tourId, tourName, clientId) {
+  // Create AbortController for this process
+  const abortController = new AbortController();
+  sseManager.setActiveProcess(clientId, abortController);
+  const signal = abortController.signal;
+
+  // Set 5-minute timeout
+  const SEARCH_TIMEOUT = 5 * 60 * 1000; // 5 minutes
+  const timeoutId = setTimeout(() => {
+    if (sseManager.isProcessActive(clientId)) {
+      devLogger.log('sse', `Tour search timed out after 5 minutes`, {
+        clientId,
+        artistName: artist.name,
+        tourName: tourName
+      });
+      abortController.abort();
+      sseManager.sendError(clientId, 'Search timed out after 5 minutes. Please try again with a smaller request or check your connection.', 408);
+      sseManager.clearActiveProcess(clientId);
+    }
+  }, SEARCH_TIMEOUT);
+
   try {
     sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name} - ${tourName}`, 5);
 
     // Step 1: Fetch MusicBrainz ID (same as regular search)
     sseManager.sendUpdate(clientId, 'musicbrainz', 'Contacting MusicBrainz for artist identification', 15);
-    const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+    const mbInfo = await withCancellation(
+      signal,
+      () => fetchMBIdFromSpotifyId(artist.url),
+      'MusicBrainz lookup'
+    );
     const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
     const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
 
@@ -432,10 +534,18 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
     if (isArtistNameMatch(artist.name, mbArtistName)) {
       sseManager.sendUpdate(clientId, 'setlist_fetch', `Found exact match for ${artist.name}, fetching ${tourName} setlists`, 40);
       matched = true;
-      allTourInfo = await getAllTourSongsByMBID(artist.name, mbid, tourName);
+      allTourInfo = await withCancellation(
+        signal,
+        () => getAllTourSongsByMBID(artist.name, mbid, tourName),
+        'fetching tour setlists'
+      );
     } else {
       sseManager.sendUpdate(clientId, 'setlist_fetch', `Fetching setlists for "${tourName}" tour`, 40);
-      allTourInfo = await getAllTourSongs(artist.name, tourName);
+      allTourInfo = await withCancellation(
+        signal,
+        () => getAllTourSongs(artist.name, tourName),
+        'fetching tour setlists'
+      );
     }
 
     // Handle errors in tour info
@@ -473,7 +583,11 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
       );
     };
 
-    const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
+    const spotifySongsOrdered = await withCancellation(
+      signal,
+      () => getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback, signal),
+      'Spotify song lookup'
+    );
 
     // Final step: Return complete data
     const tourData = {
@@ -483,8 +597,18 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
     };
 
     sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
+    clearTimeout(timeoutId); // Clear timeout on successful completion
 
   } catch (error) {
+    clearTimeout(timeoutId); // Clear timeout on error
+
+    // Check if it's a cancellation
+    if (error.message && error.message.includes('Cancelled')) {
+      devLogger.log('sse', `Process cancelled: ${error.message}`, { clientId });
+      // Don't send error to client - they initiated the cancellation
+      return;
+    }
+
     console.error('Error in processTourWithUpdates:', error);
 
     // Handle specific error types
@@ -516,16 +640,16 @@ router.post('/artist/:artistId/tours', async (req, res) => {
     const { artistId } = req.params;
     const artistName = decodeURIComponent(artistId);
     const { artist } = req.body;
-    
+
     // Validate that we have the artist object
     if (!artist || !artist.name || !artist.url) {
       console.error('Invalid artist data received:', { artist });
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Invalid artist data. Missing artist object with name and url.',
         received: artist
       });
     }
-    
+
     console.log('Processing tours request for artist:', {
       name: artist.name,
       id: artist.id,
@@ -533,23 +657,23 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       hasImage: !!artist.image,
       popularity: artist.popularity
     });
-    
+
     // Apply MusicBrainz validation to get the correct artist identity
     let mbid = null;
     let validatedArtistName = artistName;
-    
+
     try {
       console.log('Applying MusicBrainz validation for artist:', artistName, 'with URL:', artist.url);
-      
+
       const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
-      
+
       const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
       mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-      
+
       console.log('Extracted MusicBrainz data:', { mbArtistName, mbid });
-      
+
       const nameMatch = isArtistNameMatch(artistName, mbArtistName);
-      
+
       if (mbArtistName && nameMatch) {
         console.log(`MusicBrainz validation successful: "${artistName}" matches "${mbArtistName}"`);
         validatedArtistName = mbArtistName; // Use the canonical MusicBrainz name
@@ -561,47 +685,68 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       devLogger.error('musicbrainz', 'Error in MusicBrainz validation during advanced search', error);
       // Continue with original artist name if MusicBrainz fails
     }
-    
+
     console.log('Fetching all tours for:', validatedArtistName, 'with MBID:', mbid);
-    
+
     try {
       // Get Redis client from app locals
       const redisClient = req.app.locals.redisClient;
-      
+
       // Fetch all tours using the new API-based function with Redis caching
       const tours = await fetchAllToursFromAPI(validatedArtistName, mbid, null, redisClient);
-      
+
       console.log(`Found ${tours.length} tours for ${validatedArtistName}`);
-      
+
       if (tours.length === 0) {
-        return res.json({ 
-          tours: [], 
+        return res.json({
+          tours: [],
           message: 'No tours found for this artist',
           validatedArtistName: validatedArtistName
         });
       }
-      
-      return res.json({ 
+
+      return res.json({
         tours: tours,
         validatedArtistName: validatedArtistName,
         totalTours: tours.length
       });
-      
+
     } catch (error) {
       console.error('Error fetching tours from API:', error);
-      
-      return res.status(500).json({ 
+
+      return res.status(500).json({
         error: 'Failed to fetch tour data',
         message: 'Unable to retrieve tour information. Please try again later.'
       });
     }
-    
+
   } catch (error) {
     console.error('Error in /artist/:artistId/tours route:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Internal Server Error',
       message: 'An unexpected error occurred. Please try again later.'
     });
+  }
+});
+
+/**
+ * Endpoint: POST /cancel/:clientId
+ * Cancels an active search process for a specific client
+ * 
+ * @param {string} req.params.clientId - SSE client ID to cancel
+ * @returns {Object} Success or error message
+ */
+router.post('/cancel/:clientId', (req, res) => {
+  const { clientId } = req.params;
+
+  devLogger.log('sse', `Cancel request received for client`, { clientId });
+
+  if (sseManager.cancelActiveProcess(clientId)) {
+    devLogger.log('sse', `Successfully cancelled process for client`, { clientId });
+    res.json({ message: 'Process cancelled successfully', clientId });
+  } else {
+    devLogger.log('sse', `No active process found to cancel for client`, { clientId });
+    res.status(404).json({ error: 'No active process found for this client', clientId });
   }
 });
 
@@ -618,26 +763,26 @@ router.post('/artist/:artistId/tours_stream', async (req, res) => {
   const { artistId } = req.params;
   const artistName = decodeURIComponent(artistId);
   const { artist, clientId } = req.body;
-  
+
   if (!clientId) {
     return res.status(400).json({ error: 'Client ID is required for SSE streaming' });
   }
-  
+
   // Validate artist data
   if (!artist || !artist.name || !artist.url) {
     sseManager.sendError(clientId, 'Invalid artist data. Missing artist object with name and url.', 400);
     return res.status(400).json({ error: 'Invalid artist data' });
   }
-  
+
   console.log('Starting SSE tour stream for artist:', {
     name: artist.name,
     id: artist.id,
     clientId: clientId
   });
-  
+
   // Process tours in background
   processTourStreamWithUpdates(clientId, artistName, artist, req);
-  
+
   // Return success immediately
   res.json({ message: 'Tour streaming started', clientId });
 });
@@ -651,14 +796,14 @@ async function processTourStreamWithUpdates(clientId, artistName, artist, req) {
     // Apply MusicBrainz validation
     let mbid = null;
     let validatedArtistName = artistName;
-    
+
     sseManager.sendUpdate(clientId, 'artist_validation', 'Validating artist information...', 5);
-    
+
     try {
       const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
       const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
       mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-      
+
       if (mbArtistName && isArtistNameMatch(artistName, mbArtistName)) {
         validatedArtistName = mbArtistName;
         sseManager.sendUpdate(clientId, 'artist_validated', `Artist validated: ${validatedArtistName}`, 10);
@@ -667,19 +812,19 @@ async function processTourStreamWithUpdates(clientId, artistName, artist, req) {
       console.error('MusicBrainz validation error:', error.message);
       // Continue with original name
     }
-    
+
     // Import the streaming version of tour fetching
     const { fetchAllToursFromAPIStream } = require('../utils/tourExtractor');
-    
+
     // Get Redis client from app locals
     const redisClient = req.app.locals.redisClient;
-    
+
     // Fetch tours with streaming updates and caching
     await fetchAllToursFromAPIStream(validatedArtistName, mbid, clientId, redisClient);
-    
+
     // Send completion
     sseManager.completeProcess(clientId, { message: 'Tour discovery complete' });
-    
+
   } catch (error) {
     console.error('Error in processTourStreamWithUpdates:', error);
     sseManager.sendError(clientId, 'Failed to fetch tour data. Please try again.', 500);
