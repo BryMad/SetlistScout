@@ -84,7 +84,21 @@ export default function UserInput() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Cleanup will be handled by the SSE service
+  // Cleanup SSE connection when component unmounts or tab changes
+  useEffect(() => {
+    return () => {
+      // Disconnect SSE when component unmounts
+      eventSourceService.disconnect();
+    };
+  }, []);
+
+  // Cleanup SSE connection when switching tabs
+  useEffect(() => {
+    return () => {
+      // Disconnect SSE when switching tabs
+      eventSourceService.disconnect();
+    };
+  }, [tabIndex]);
 
   /**
    * Fetches artist suggestions from Deezer
@@ -116,6 +130,9 @@ export default function UserInput() {
     setTourLoadingProgress("Connecting...");
     
     try {
+      // Disconnect any existing connection first
+      eventSourceService.disconnect();
+      
       // Connect to SSE using existing service
       console.log('Connecting to SSE service...');
       await eventSourceService.connect();
@@ -227,6 +244,9 @@ export default function UserInput() {
    * @async
    */
   const handleArtistSelect = async (artist) => {
+    // Disconnect any existing SSE connection before starting a new search
+    eventSourceService.disconnect();
+    
     // Dispatch an event to notify that a new search is starting
     window.dispatchEvent(new Event("new-search-started"));
     
@@ -312,6 +332,9 @@ export default function UserInput() {
    * Handles clicking outside or starting a new search
    */
   const handleReset = () => {
+    // Disconnect SSE connection
+    eventSourceService.disconnect();
+    
     setArtistQuery("");
     setSelectedArtist(null);
     setSuggestions([]);

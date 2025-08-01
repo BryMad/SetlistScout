@@ -20,7 +20,7 @@ const tokenRateLimiter = rateLimit({
 // Rate limiter for SSE connections
 const sseConnectionLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 SSE connections per window
+  max: 20, // Limit each IP to 20 SSE connections per window (increased for development)
   message: 'Too many SSE connections',
   standardHeaders: true,
   legacyHeaders: false,
