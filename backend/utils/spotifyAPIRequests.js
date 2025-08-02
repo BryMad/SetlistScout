@@ -134,7 +134,7 @@ const limitedSearchSong = limiter.wrap(searchSong);
  * @returns {Array} Songs with Spotify data
  * @async
  */
-const getSpotifySongInfo = async (songList, progressCallback = null, signal = null) => {
+const getSpotifySongInfo = async (songList, progressCallback = null) => {
   logger.info("Compiling Spotify song information");
   
   devLogger.log('spotify', `Starting Spotify song lookup batch`, {
@@ -165,15 +165,6 @@ const getSpotifySongInfo = async (songList, progressCallback = null, signal = nu
 
     // Process songs in batches with progress updates
     for (let i = 0; i < batches; i++) {
-      // Check for cancellation before processing each batch
-      if (signal?.aborted) {
-        devLogger.log('spotify', 'Spotify lookup cancelled by user', { 
-          songsProcessed: i * batchSize,
-          totalSongs 
-        });
-        throw new Error('Cancelled during Spotify song lookup');
-      }
-      
       // Calculate start and end indices for current batch
       const start = i * batchSize;
       const end = Math.min(start + batchSize, totalSongs);

@@ -23,26 +23,13 @@ class EventSourceService {
       return this.connectionPromise;
     }
 
-    this.connectionPromise = new Promise(async (resolve, reject) => {
+    this.connectionPromise = new Promise((resolve, reject) => {
       try {
         // Close any existing connection
         this.disconnect();
 
-        // Step 1: Request a token
-        const tokenResponse = await fetch(`${server_url}/sse/request-token`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include'
-        });
-
-        if (!tokenResponse.ok) {
-          throw new Error(`Failed to get SSE token: ${tokenResponse.status}`);
-        }
-
-        const { token } = await tokenResponse.json();
-
-        // Step 2: Create new EventSource connection with token
-        this.eventSource = new EventSource(`${server_url}/sse/connect?token=${token}`);
+        // Create new EventSource connection
+        this.eventSource = new EventSource(`${server_url}/sse/connect`);
 
         // Handle connection open
         this.eventSource.onopen = () => {

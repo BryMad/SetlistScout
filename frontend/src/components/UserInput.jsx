@@ -1,13 +1,8 @@
 // src/components/UserInput.jsx
 import React, { useEffect, useState, useRef } from "react";
-import { CloseIcon } from "@chakra-ui/icons";
 import {
   HStack,
   Input,
-  InputGroup,
-  InputRightElement,
-  IconButton,
-  Tooltip,
   Image,
   Box,
   List,
@@ -84,21 +79,7 @@ export default function UserInput() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Cleanup SSE connection when component unmounts or tab changes
-  useEffect(() => {
-    return () => {
-      // Disconnect SSE when component unmounts
-      eventSourceService.disconnect();
-    };
-  }, []);
-
-  // Cleanup SSE connection when switching tabs
-  useEffect(() => {
-    return () => {
-      // Disconnect SSE when switching tabs
-      eventSourceService.disconnect();
-    };
-  }, [tabIndex]);
+  // Cleanup will be handled by the SSE service
 
   /**
    * Fetches artist suggestions from Deezer
@@ -130,9 +111,6 @@ export default function UserInput() {
     setTourLoadingProgress("Connecting...");
     
     try {
-      // Disconnect any existing connection first
-      eventSourceService.disconnect();
-      
       // Connect to SSE using existing service
       console.log('Connecting to SSE service...');
       await eventSourceService.connect();
@@ -244,16 +222,8 @@ export default function UserInput() {
    * @async
    */
   const handleArtistSelect = async (artist) => {
-    // Disconnect any existing SSE connection before starting a new search
-    eventSourceService.disconnect();
-    
     // Dispatch an event to notify that a new search is starting
     window.dispatchEvent(new Event("new-search-started"));
-    
-    // Emit search started event for incomplete search tracking
-    window.dispatchEvent(new CustomEvent("search-started", { 
-      detail: { artist } 
-    }));
 
     // Clear the playlist URL when a new artist is selected
     if (clearPlaylistUrl) {
@@ -332,40 +302,12 @@ export default function UserInput() {
    * Handles clicking outside or starting a new search
    */
   const handleReset = () => {
-    // Disconnect SSE connection
-    eventSourceService.disconnect();
-    
     setArtistQuery("");
     setSelectedArtist(null);
     setSuggestions([]);
     setTours([]);
     setSelectedTour("");
     resetSearch();
-  };
-
-  /**
-   * Cancels the current search operation
-   */
-  const handleCancelSearch = async () => {
-    const clientId = eventSourceService.getClientId();
-    if (clientId) {
-      try {
-        const response = await fetch(`${server_url}/setlist/cancel/${clientId}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        
-        if (response.ok) {
-          console.log('Search cancelled successfully');
-          // Reset UI state
-          eventSourceService.disconnect();
-          resetSearch();
-          setArtistQuery("");
-        }
-      } catch (error) {
-        console.error('Error cancelling search:', error);
-      }
-    }
   };
 
   return (
@@ -457,36 +399,20 @@ export default function UserInput() {
                 Enter an Artist to see what they're playing live:
               </Text>
 
-              <InputGroup size="lg">
-                <Input
-                  placeholder="Search for an artist..."
-                  value={artistQuery}
-                  onChange={(e) => setArtistQuery(e.target.value)}
-                  variant="filled"
-                  bg="gray.800"
-                  borderRadius="xl"
-                  width="100%"
-                  disabled={loading}
-                  _hover={{ bg: "gray.700" }}
-                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                  transition="all 0.2s"
-                />
-                {loading && (
-                  <InputRightElement>
-                    <Tooltip label="Cancel current search" placement="left">
-                      <IconButton
-                        aria-label="Cancel search"
-                        icon={<CloseIcon />}
-                        size="sm"
-                        variant="ghost"
-                        colorScheme="gray"
-                        onClick={handleCancelSearch}
-                        _hover={{ bg: "gray.600" }}
-                      />
-                    </Tooltip>
-                  </InputRightElement>
-                )}
-              </InputGroup>
+              <Input
+                placeholder="Search for an artist..."
+                value={artistQuery}
+                onChange={(e) => setArtistQuery(e.target.value)}
+                size="lg"
+                variant="filled"
+                bg="gray.800"
+                borderRadius="xl"
+                width="100%"
+                disabled={loading}
+                _hover={{ bg: "gray.700" }}
+                _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+                transition="all 0.2s"
+              />
 
               {searchLoading && (
                 <Box>
@@ -506,36 +432,20 @@ export default function UserInput() {
                 Enter an Artist to see what they played live:
               </Text>
 
-              <InputGroup size="lg">
-                <Input
-                  placeholder="Search for an artist..."
-                  value={artistQuery}
-                  onChange={(e) => setArtistQuery(e.target.value)}
-                  variant="filled"
-                  bg="gray.800"
-                  borderRadius="xl"
-                  width="100%"
-                  disabled={loading || toursLoading}
-                  _hover={{ bg: "gray.700" }}
-                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                  transition="all 0.2s"
-                />
-                {(loading || toursLoading) && (
-                  <InputRightElement>
-                    <Tooltip label="Cancel current search" placement="left">
-                      <IconButton
-                        aria-label="Cancel search"
-                        icon={<CloseIcon />}
-                        size="sm"
-                        variant="ghost"
-                        colorScheme="gray"
-                        onClick={handleCancelSearch}
-                        _hover={{ bg: "gray.600" }}
-                      />
-                    </Tooltip>
-                  </InputRightElement>
-                )}
-              </InputGroup>
+              <Input
+                placeholder="Search for an artist..."
+                value={artistQuery}
+                onChange={(e) => setArtistQuery(e.target.value)}
+                size="lg"
+                variant="filled"
+                bg="gray.800"
+                borderRadius="xl"
+                width="100%"
+                disabled={loading || toursLoading}
+                _hover={{ bg: "gray.700" }}
+                _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+                transition="all 0.2s"
+              />
 
               {searchLoading && (
                 <Box>
@@ -557,36 +467,20 @@ export default function UserInput() {
             Enter an Artist to see what they're playing live:
           </Text>
 
-          <InputGroup size="lg">
-            <Input
-              placeholder="Search for an artist..."
-              value={artistQuery}
-              onChange={(e) => setArtistQuery(e.target.value)}
-              variant="filled"
-              bg="gray.800"
-              borderRadius="xl"
-              width="100%"
-              disabled={loading}
-              _hover={{ bg: "gray.700" }}
-              _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-              transition="all 0.2s"
-            />
-            {loading && (
-              <InputRightElement>
-                <Tooltip label="Cancel current search" placement="left">
-                  <IconButton
-                    aria-label="Cancel search"
-                    icon={<CloseIcon />}
-                    size="sm"
-                    variant="ghost"
-                    colorScheme="gray"
-                    onClick={handleCancelSearch}
-                    _hover={{ bg: "gray.600" }}
-                  />
-                </Tooltip>
-              </InputRightElement>
-            )}
-          </InputGroup>
+          <Input
+            placeholder="Search for an artist..."
+            value={artistQuery}
+            onChange={(e) => setArtistQuery(e.target.value)}
+            size="lg"
+            variant="filled"
+            bg="gray.800"
+            borderRadius="xl"
+            width="100%"
+            disabled={loading}
+            _hover={{ bg: "gray.700" }}
+            _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+            transition="all 0.2s"
+          />
 
           {searchLoading && (
             <Box>

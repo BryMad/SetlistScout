@@ -9,7 +9,6 @@ class SSEManager {
   constructor() {
     this.clients = new Map();
     this.clientIdCounter = 0;
-    this.activeProcesses = new Map(); // Maps clientId to AbortController
     logger.info('SSE Manager initialized');
   }
 
@@ -106,7 +105,6 @@ class SSEManager {
     res.write(`data: ${JSON.stringify(event)}\n\n`);
     res.end();
     this.removeClient(clientId);
-    this.clearActiveProcess(clientId); // Clean up active process
     logger.info(`Process completed for client: ${clientId}`);
   }
 
@@ -133,63 +131,7 @@ class SSEManager {
     res.write(`data: ${JSON.stringify(event)}\n\n`);
     res.end();
     this.removeClient(clientId);
-    this.clearActiveProcess(clientId); // Clean up active process on error
     logger.error(`Error sent to client ${clientId}: ${message}`);
-  }
-
-  /**
-   * Set an active process for a client with an AbortController
-   * @param {string} clientId - ID of client
-   * @param {AbortController} abortController - AbortController for the process
-   */
-  setActiveProcess(clientId, abortController) {
-    this.activeProcesses.set(clientId, abortController);
-    logger.debug(`Active process set for client ${clientId}`);
-  }
-
-  /**
-   * Cancel an active process for a client
-   * @param {string} clientId - ID of client
-   * @returns {boolean} - True if process was cancelled, false if no process found
-   */
-  cancelActiveProcess(clientId) {
-    const abortController = this.activeProcesses.get(clientId);
-    if (abortController) {
-      abortController.abort();
-      this.activeProcesses.delete(clientId);
-      logger.info(`Active process cancelled for client ${clientId}`);
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * Check if a process is active (not cancelled) for a client
-   * @param {string} clientId - ID of client
-   * @returns {boolean} - True if process is active and not aborted
-   */
-  isProcessActive(clientId) {
-    const abortController = this.activeProcesses.get(clientId);
-    return abortController && !abortController.signal.aborted;
-  }
-
-  /**
-   * Clean up active process when complete
-   * @param {string} clientId - ID of client
-   */
-  clearActiveProcess(clientId) {
-    if (this.activeProcesses.has(clientId)) {
-      this.activeProcesses.delete(clientId);
-      logger.debug(`Active process cleared for client ${clientId}`);
-    }
-  }
-
-  /**
-   * Get the current number of active connections
-   * @returns {number} Number of active SSE connections
-   */
-  getConnectionCount() {
-    return this.clients.size;
   }
 }
 
