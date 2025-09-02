@@ -131,14 +131,45 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
       page++;
     } while (page <= totalPages);
 
-    // Convert Map to sorted array
+    // Convert Map to sorted array and format for display
     const tourArray = Array.from(tours.values())
       .filter(tour => tour.name && !isInvalidTourName(tour.name))
+      .map(tour => {
+        // Format tour for display (similar to streaming version)
+        let displayYear = '';
+        if (tour.firstDate && tour.lastDate) {
+          const firstYear = new Date(tour.firstDate.split('-').reverse().join('-')).getFullYear();
+          const lastYear = new Date(tour.lastDate.split('-').reverse().join('-')).getFullYear();
+          if (firstYear === lastYear) {
+            displayYear = firstYear.toString();
+          } else {
+            displayYear = `${firstYear}-${lastYear}`;
+          }
+        } else if (tour.year) {
+          displayYear = tour.year.toString();
+        }
+        
+        return {
+          name: tour.name,
+          displayName: displayYear ? `${tour.name} (${displayYear})` : tour.name,
+          showCount: tour.showCount,
+          year: displayYear,
+          firstDate: tour.firstDate,
+          lastDate: tour.lastDate
+        };
+      })
       .sort((a, b) => {
         // Sort by year descending, then by show count
-        if (a.year && b.year && a.year !== b.year) {
-          return b.year - a.year;
-        }
+        const getFirstYear = (yearStr) => {
+          if (!yearStr) return 0;
+          const match = yearStr.match(/\d{4}/);
+          return match ? parseInt(match[0]) : 0;
+        };
+        
+        const yearA = getFirstYear(b.year);
+        const yearB = getFirstYear(a.year);
+        
+        if (yearA !== yearB) return yearA - yearB;
         return b.showCount - a.showCount;
       });
 

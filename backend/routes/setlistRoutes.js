@@ -686,4 +686,71 @@ async function processTourStreamWithUpdates(clientId, artistName, artist, req) {
   }
 }
 
+/**
+ * Endpoint: POST /artist/:artistId/tours
+ * Fetches all tours for an artist (non-streaming version)
+ * 
+ * @param {string} req.params.artistId - Artist name or ID
+ * @param {Object} req.body.artist - Artist information object
+ * @returns {Object} Array of tours with name, year, and show count
+ */
+router.post('/artist/:artistId/tours', async (req, res) => {
+  const { artistId } = req.params;
+  const artistName = decodeURIComponent(artistId);
+  const { artist } = req.body;
+  
+  if (!artist) {
+    return res.status(400).json({ error: 'Missing artist data' });
+  }
+  
+  console.log('Fetching tours for artist (non-SSE):', {
+    name: artist.name,
+    id: artist.id,
+    url: artist.url
+  });
+  
+  try {
+    // Fetch MusicBrainz ID for accurate matching
+    let mbid = null;
+    let validatedArtistName = artist.name;
+    
+    if (artist.url && artist.url.includes('spotify.com')) {
+      try {
+        const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+        const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+        mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+        
+        if (isArtistNameMatch(artist.name, mbArtistName)) {
+          validatedArtistName = mbArtistName || artist.name;
+          console.log(`Using MusicBrainz validated name: ${validatedArtistName} (MBID: ${mbid})`);
+        }
+      } catch (mbError) {
+        console.log('MusicBrainz lookup failed, continuing with artist name only:', mbError.message);
+      }
+    }
+    
+    // Get Redis client if available
+    const redisClient = req.app.locals.redisClient;
+    
+    // Fetch tours using the non-streaming version
+    const tours = await fetchAllToursFromAPI(validatedArtistName, mbid, null, redisClient);
+    
+    // Return the tours as JSON
+    res.json({
+      success: true,
+      tours: tours,
+      artistName: validatedArtistName,
+      mbid: mbid
+    });
+    
+  } catch (error) {
+    console.error('Error fetching tours:', error);
+    res.status(500).json({ 
+      success: false,
+      error: 'Failed to fetch tour data',
+      message: error.message 
+    });
+  }
+});
+
 module.exports = router;

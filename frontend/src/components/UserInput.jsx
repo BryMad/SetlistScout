@@ -27,7 +27,6 @@ import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 import { server_url } from "../App";
 import { FEATURES } from "../config/features";
-import eventSourceService from "../api/sseService";
 
 /**
  * Component for artist search input
@@ -51,11 +50,18 @@ export default function UserInput() {
   const [tours, setTours] = useState([]);
   const [selectedTour, setSelectedTour] = useState("");
   const [toursLoading, setToursLoading] = useState(false);
-  const [tourLoadingProgress, setTourLoadingProgress] = useState("");
   const containerRef = useRef(null);
 
+  // new artist search
   useEffect(() => {
     if (selectedArtist && selectedArtist.name === artistQuery) return;
+
+    // Clear selectedArtist if user is typing a different name
+    if (selectedArtist && artistQuery && selectedArtist.name !== artistQuery) {
+      setSelectedArtist(null);
+      setTours([]);
+      setSelectedTour("");
+    }
 
     const debounceTimeout = setTimeout(() => {
       if (artistQuery.length >= 1) {
@@ -79,8 +85,6 @@ export default function UserInput() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Cleanup will be handled by the SSE service
-
   /**
    * Fetches artist suggestions from Deezer
    * @param {string} query The artist search query
@@ -99,7 +103,7 @@ export default function UserInput() {
   };
 
   /**
-   * Fetches tour options for a selected artist using SSE for live updates
+   * Fetches tour options for a selected artist (non-SSE version)
    * @param {Object} artist The selected artist object
    * @async
    */
@@ -108,81 +112,13 @@ export default function UserInput() {
 
     setToursLoading(true);
     setTours([]);
-    setTourLoadingProgress("Connecting...");
-    
+
     try {
-      // Connect to SSE using existing service
-      console.log('Connecting to SSE service...');
-      await eventSourceService.connect();
-      const clientId = eventSourceService.getClientId();
-      
-      if (!clientId) {
-        throw new Error("Failed to establish SSE connection");
-      }
-      
-      console.log('Got clientId:', clientId);
-      
-      const tourMap = new Map();
-      const listenerId = `tour-fetch-${Date.now()}`;
-      
-      // Set up listener for SSE events
-      eventSourceService.addListener(listenerId, (event) => {
-        console.log('Received SSE event:', event);
-        
-        if (event.type === 'update') {
-          switch (event.stage) {
-            case 'page_progress':
-              setTourLoadingProgress(event.message || "Loading...");
-              break;
-              
-            case 'tour_discovered':
-            case 'tour_updated':
-              console.log('Tour event received:', event);
-              if (event.data?.tour) {
-                const tour = event.data.tour;
-                console.log('Adding tour to map:', tour);
-                tourMap.set(tour.name, tour);
-                
-                // Update tours array with all tours, sorted by year (newest first)
-                const sortedTours = Array.from(tourMap.values())
-                  .sort((a, b) => {
-                    // Extract first year from display year (e.g., "2023" or "2019-2021")
-                    const getFirstYear = (yearStr) => {
-                      if (!yearStr) return 0;
-                      const match = yearStr.match(/\d{4}/);
-                      return match ? parseInt(match[0]) : 0;
-                    };
-                    
-                    const yearA = getFirstYear(b.year);
-                    const yearB = getFirstYear(a.year);
-                    
-                    if (yearA !== yearB) return yearA - yearB;
-                    return b.showCount - a.showCount;
-                  });
-                
-                console.log('Updating tours state with:', sortedTours.length, 'tours');
-                setTours([...sortedTours]);
-              }
-              break;
-              
-            case 'tour_search_complete':
-              setToursLoading(false);
-              setTourLoadingProgress("");
-              eventSourceService.removeListener(listenerId);
-              break;
-          }
-        } else if (event.type === 'error') {
-          console.error('SSE Error:', event.message);
-          setToursLoading(false);
-          setTourLoadingProgress("");
-          eventSourceService.removeListener(listenerId);
-        }
-      });
-      
-      // Start the tour streaming
-      console.log('Starting tour streaming for:', artist.name);
+      console.log("Fetching tours for:", artist.name);
+
+      // Make simple fetch request to the new non-SSE endpoint
       const response = await fetch(
-        `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours_stream`,
+        `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours`,
         {
           method: "POST",
           headers: {
@@ -194,25 +130,52 @@ export default function UserInput() {
               id: artist.id,
               url: artist.url,
               image: artist.image,
-              popularity: artist.popularity
+              popularity: artist.popularity,
             },
-            clientId
-          })
+          }),
         }
       );
 
       if (!response.ok) {
-        console.error('Tour streaming request failed:', response.status, response.statusText);
-        eventSourceService.removeListener(listenerId);
+        console.error(
+          "Tour fetch request failed:",
+          response.status,
+          response.statusText
+        );
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log('Tour streaming request successful');
-      
+
+      const data = await response.json();
+      console.log("Tour fetch response:", data);
+
+      if (data.tours && Array.isArray(data.tours)) {
+        // Sort tours by year (newest first) then by show count
+        const sortedTours = data.tours.sort((a, b) => {
+          // Extract first year from display year (e.g., "2023" or "2019-2021")
+          const getFirstYear = (yearStr) => {
+            if (!yearStr) return 0;
+            const match = yearStr.match(/\d{4}/);
+            return match ? parseInt(match[0]) : 0;
+          };
+
+          const yearA = getFirstYear(b.year);
+          const yearB = getFirstYear(a.year);
+
+          if (yearA !== yearB) return yearA - yearB;
+          return b.showCount - a.showCount;
+        });
+
+        console.log("Setting tours:", sortedTours.length, "tours found");
+        setTours(sortedTours);
+      } else {
+        console.error("Invalid response format:", data);
+        setTours([]);
+      }
     } catch (error) {
       console.error("Error fetching tours:", error);
       setTours([]);
+    } finally {
       setToursLoading(false);
-      setTourLoadingProgress("");
     }
   };
 
@@ -256,16 +219,19 @@ export default function UserInput() {
     console.log("handleTourSelect called with tourName:", tourName);
     console.log("Available tours:", tours);
     console.log("Selected tour object:", selectedTourObject);
-    
+
     // Use the passed tour object if available, otherwise find it
     let tour = selectedTourObject;
     if (!tour) {
       tour = tours.find((t) => t.name === tourName);
     }
     console.log("Final tour:", tour);
-    
+
     if (!tour || !selectedArtist) {
-      console.error("Tour not found or no selected artist", { tour, selectedArtist });
+      console.error("Tour not found or no selected artist", {
+        tour,
+        selectedArtist,
+      });
       return;
     }
 
@@ -323,143 +289,139 @@ export default function UserInput() {
     >
       {FEATURES.ADVANCED_SEARCH ? (
         <Tabs index={tabIndex} onChange={setTabIndex} variant="unstyled" mb={4}>
-        <TabList
-          justifyContent="center"
-          gap={8}
-        >
-          <Tab
-            _selected={{
-              color: "brand.300",
-              _after: {
-                content: '""',
-                position: "absolute",
-                bottom: "-2px",
-                left: "0",
-                right: "0",
-                height: "2px",
-                bg: "brand.300",
-              }
-            }}
-            _hover={{ color: "brand.400" }}
-            _open={{ animation: "fadeIn 0.2s ease-in-out" }}
-            _close={{ animation: "fadeOut 0.2s ease-in-out" }}
-            fontWeight="medium"
-            fontSize="sm"
-            color="gray.400"
-            pb={3}
-            px={2}
-            bg="transparent"
-            border="none"
-            borderRadius="0"
-            transition="all 0.3s ease"
-            position="relative"
-            minW="auto"
-            w="auto"
-          >
-            Recent Tour
-          </Tab>
-          <Tab
-            _selected={{
-              color: "brand.300",
-              _after: {
-                content: '""',
-                position: "absolute",
-                bottom: "-2px",
-                left: "0",
-                right: "0",
-                height: "2px",
-                bg: "brand.300",
-              }
-            }}
-            _hover={{ color: "brand.400" }}
-            _open={{ animation: "fadeIn 0.2s ease-in-out" }}
-            _close={{ animation: "fadeOut 0.2s ease-in-out" }}
-            fontWeight="medium"
-            fontSize="sm"
-            color="gray.400"
-            pb={3}
-            px={2}
-            bg="transparent"
-            border="none"
-            borderRadius="0"
-            transition="all 0.3s ease"
-            position="relative"
-            minW="auto"
-            w="auto"
-          >
-            Past Tours
-          </Tab>
-        </TabList>
+          <TabList justifyContent="center" gap={8}>
+            <Tab
+              _selected={{
+                color: "brand.300",
+                _after: {
+                  content: '""',
+                  position: "absolute",
+                  bottom: "-2px",
+                  left: "0",
+                  right: "0",
+                  height: "2px",
+                  bg: "brand.300",
+                },
+              }}
+              _hover={{ color: "brand.400" }}
+              _open={{ animation: "fadeIn 0.2s ease-in-out" }}
+              _close={{ animation: "fadeOut 0.2s ease-in-out" }}
+              fontWeight="medium"
+              fontSize="sm"
+              color="gray.400"
+              pb={3}
+              px={2}
+              bg="transparent"
+              border="none"
+              borderRadius="0"
+              transition="all 0.3s ease"
+              position="relative"
+              minW="auto"
+              w="auto"
+            >
+              Basic Search
+            </Tab>
+            <Tab
+              _selected={{
+                color: "brand.300",
+                _after: {
+                  content: '""',
+                  position: "absolute",
+                  bottom: "-2px",
+                  left: "0",
+                  right: "0",
+                  height: "2px",
+                  bg: "brand.300",
+                },
+              }}
+              _hover={{ color: "brand.400" }}
+              _open={{ animation: "fadeIn 0.2s ease-in-out" }}
+              _close={{ animation: "fadeOut 0.2s ease-in-out" }}
+              fontWeight="medium"
+              fontSize="sm"
+              color="gray.400"
+              pb={3}
+              px={2}
+              bg="transparent"
+              border="none"
+              borderRadius="0"
+              transition="all 0.3s ease"
+              position="relative"
+              minW="auto"
+              w="auto"
+            >
+              Past Tours
+            </Tab>
+          </TabList>
 
-        <TabPanels>
-          {/* Live Shows Tab */}
-          <TabPanel px={0}>
-            <VStack spacing={3}>
-              <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                Enter an Artist to see what they're playing live:
-              </Text>
+          <TabPanels>
+            {/* Live Shows Tab */}
+            <TabPanel px={0}>
+              <VStack spacing={3}>
+                <Text fontWeight="semibold" fontSize="md" color="gray.300">
+                  Enter an Artist to see what they're playing live:
+                </Text>
 
-              <Input
-                placeholder="Search for an artist..."
-                value={artistQuery}
-                onChange={(e) => setArtistQuery(e.target.value)}
-                size="lg"
-                variant="filled"
-                bg="gray.800"
-                borderRadius="xl"
-                width="100%"
-                disabled={loading}
-                _hover={{ bg: "gray.700" }}
-                _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                transition="all 0.2s"
-              />
+                <Input
+                  placeholder="Search for an artist..."
+                  value={artistQuery}
+                  onChange={(e) => setArtistQuery(e.target.value)}
+                  size="lg"
+                  variant="filled"
+                  bg="gray.800"
+                  borderRadius="xl"
+                  width="100%"
+                  disabled={loading}
+                  _hover={{ bg: "gray.700" }}
+                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+                  transition="all 0.2s"
+                />
 
-              {searchLoading && (
-                <Box>
-                  <Spinner size="sm" />
-                  <Text as="span" ml={2}>
-                    Searching...
-                  </Text>
-                </Box>
-              )}
-            </VStack>
-          </TabPanel>
+                {searchLoading && (
+                  <Box>
+                    <Spinner size="sm" />
+                    <Text as="span" ml={2}>
+                      Searching...
+                    </Text>
+                  </Box>
+                )}
+              </VStack>
+            </TabPanel>
 
-          {/* Past Tours Tab */}
-          <TabPanel px={0}>
-            <VStack spacing={3}>
-              <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                Enter an Artist to see what they played live:
-              </Text>
+            {/* Past Tours Tab */}
+            <TabPanel px={0}>
+              <VStack spacing={3}>
+                <Text fontWeight="semibold" fontSize="md" color="gray.300">
+                  Enter an Artist to see what they played on past tours:
+                </Text>
 
-              <Input
-                placeholder="Search for an artist..."
-                value={artistQuery}
-                onChange={(e) => setArtistQuery(e.target.value)}
-                size="lg"
-                variant="filled"
-                bg="gray.800"
-                borderRadius="xl"
-                width="100%"
-                disabled={loading || toursLoading}
-                _hover={{ bg: "gray.700" }}
-                _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                transition="all 0.2s"
-              />
+                <Input
+                  placeholder="Search for an artist..."
+                  value={artistQuery}
+                  onChange={(e) => setArtistQuery(e.target.value)}
+                  size="lg"
+                  variant="filled"
+                  bg="gray.800"
+                  borderRadius="xl"
+                  width="100%"
+                  disabled={loading || toursLoading}
+                  _hover={{ bg: "gray.700" }}
+                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+                  transition="all 0.2s"
+                />
 
-              {searchLoading && (
-                <Box>
-                  <Spinner size="sm" />
-                  <Text as="span" ml={2}>
-                    Searching...
-                  </Text>
-                </Box>
-              )}
-
-            </VStack>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+                {searchLoading && (
+                  <Box>
+                    <Spinner size="sm" />
+                    <Text as="span" ml={2}>
+                      Searching...
+                    </Text>
+                  </Box>
+                )}
+              </VStack>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       ) : (
         /* No tabs - just show the live shows search */
         <VStack spacing={3}>
@@ -493,8 +455,8 @@ export default function UserInput() {
         </VStack>
       )}
 
-      {/* Artist suggestions dropdown - shown for both tabs (but not when artist is selected in Past Tours) */}
-      {suggestions.length > 0 && !(selectedArtist && tabIndex === 1) && (
+      {/* Artist suggestions dropdown - shown when there are suggestions and no artist is selected for tours */}
+      {suggestions.length > 0 && !selectedArtist && (
         <Box
           position="absolute"
           zIndex="10"
@@ -555,30 +517,26 @@ export default function UserInput() {
         >
           {/* Loading indicator - show when loading */}
           {toursLoading && (
-            <Box textAlign="center" py={4} borderBottom={tours.length > 0 ? "1px solid" : "none"} borderColor="gray.700">
-              <VStack spacing={2}>
-                <HStack>
-                  <Spinner size="sm" color="brand.400" />
-                  <Text color="gray.300">
-                    {tourLoadingProgress || "Loading tours..."}
-                  </Text>
-                </HStack>
-                {tours.length > 0 && (
-                  <Text fontSize="sm" color="gray.500">
-                    {tours.length} tour{tours.length !== 1 ? 's' : ''} found so far...
-                  </Text>
-                )}
-              </VStack>
+            <Box textAlign="center" py={4}>
+              <HStack justify="center">
+                <Spinner size="sm" color="brand.400" />
+                <Text color="gray.300">Loading tours...</Text>
+              </HStack>
             </Box>
           )}
-          
+
           {/* Tours list - show when tours are available */}
           {tours.length > 0 && (
             <List spacing={0}>
-              {console.log('Rendering dropdown with', tours.length, 'tours:', tours.map(t => t.name))}
+              {console.log(
+                "Rendering dropdown with",
+                tours.length,
+                "tours:",
+                tours.map((t) => t.name)
+              )}
               {tours.map((tour) => (
                 <ListItem
-                  key={tour.name + '_' + tour.year}
+                  key={tour.name + "_" + tour.year}
                   px={4}
                   py={3}
                   _hover={{ backgroundColor: "gray.700" }}
@@ -586,12 +544,15 @@ export default function UserInput() {
                   cursor="pointer"
                   onClick={() => handleTourSelect(tour.name, tour)}
                 >
-                  <Text>{tour.displayName || tour.name} - {tour.showCount} show{tour.showCount !== 1 ? 's' : ''}</Text>
+                  <Text>
+                    {tour.displayName || tour.name} - {tour.showCount} show
+                    {tour.showCount !== 1 ? "s" : ""}
+                  </Text>
                 </ListItem>
               ))}
             </List>
           )}
-          
+
           {/* No tours message - show only when not loading and no tours found */}
           {!toursLoading && tours.length === 0 && (
             <Box textAlign="center" py={4}>
