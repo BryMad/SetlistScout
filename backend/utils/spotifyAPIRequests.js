@@ -70,8 +70,120 @@ const searchArtist = async (token, artistName) => {
 }
 
 /**
+ * Selects the best track from Spotify search results
+ * - Prioritizes original studio albums over live/compilation albums
+ * - Respects Spotify's relevance ranking while applying smart filtering
+ * 
+ * @param {Array} tracks Array of track objects from Spotify
+ * @param {string} originalTrackName Original track name from setlist
+ * @returns {Object|null} Best matching track or null
+ */
+const selectBestTrack = (tracks, originalTrackName) => {
+  if (!tracks || tracks.length === 0) return null;
+
+  // Only consider top 7 results to respect Spotify's relevance ranking
+  const topResults = tracks.slice(0, 7);
+
+  const scoredTracks = topResults.map((track, index) => ({
+    track,
+    score: calculateTrackScore(track, originalTrackName, index)
+  }));
+
+  scoredTracks.sort((a, b) => b.score - a.score);
+  return scoredTracks[0].track;
+};
+
+/**
+ * Calculates a score for track selection priority
+ * 
+ * @param {Object} track Spotify track object
+ * @param {string} originalTrackName Original track name
+ * @param {number} spotifyRank Position in Spotify's results (0-based)
+ * @returns {number} Track score (higher is better)
+ */
+const calculateTrackScore = (track, originalTrackName, spotifyRank) => {
+  let score = 0;
+  const album = track.album;
+  const albumName = album.name.toLowerCase();
+  const trackName = track.name.toLowerCase();
+  const originalLower = originalTrackName.toLowerCase();
+
+  // 1. Spotify's ranking matters - higher ranked results get bonus
+  score += (7 - spotifyRank) * 10; // #1 gets +60, #2 gets +50, etc.
+
+  // 2. Prioritize album_type = "album" (original studio albums)
+  if (album.album_type === 'album') {
+    score += 100;
+  } else if (album.album_type === 'single') {
+    score += 50;
+  } else if (album.album_type === 'compilation') {
+    score -= 30;
+  }
+
+  // 3. Penalize live albums (but allow songs with "live" in title)
+  if (isLiveAlbum(albumName) && !isLiveSongTitle(originalLower)) {
+    score -= 50;
+  }
+
+  // 4. Penalize greatest hits/compilation albums
+  if (isCompilationAlbum(albumName)) {
+    score -= 40;
+  }
+
+  // 5. Prioritize exact track name matches
+  if (trackName === originalLower) {
+    score += 30;
+  }
+
+  return score;
+};
+
+/**
+ * Checks if an album name indicates a live recording
+ * 
+ * @param {string} albumName Album name to check
+ * @returns {boolean} True if likely a live album
+ */
+const isLiveAlbum = (albumName) => {
+  const liveIndicators = [
+    'live', 'concert', 'tour', 'unplugged', 'acoustic session',
+    'live at', 'live from', 'in concert', 'live recordings'
+  ];
+  return liveIndicators.some(indicator => albumName.includes(indicator));
+};
+
+/**
+ * Checks if a track name legitimately contains "live" as part of the song title
+ * 
+ * @param {string} trackName Track name to check
+ * @returns {boolean} True if "live" is part of the actual song title
+ */
+const isLiveSongTitle = (trackName) => {
+  const liveSongs = [
+    'live forever', 'live and let die', 'live to tell', 'live wire',
+    'live it up', 'live your life', 'live like you were dying'
+  ];
+  return liveSongs.some(song => trackName.includes(song));
+};
+
+/**
+ * Checks if an album name indicates a compilation/greatest hits album
+ * 
+ * @param {string} albumName Album name to check
+ * @returns {boolean} True if likely a compilation album
+ */
+const isCompilationAlbum = (albumName) => {
+  const compilationIndicators = [
+    'greatest hits', 'best of', 'collection', 'anthology', 'essentials',
+    'complete', 'ultimate', 'definitive', 'selected', 'hits'
+  ];
+  return compilationIndicators.some(indicator => albumName.includes(indicator));
+};
+
+/**
  * Searches for a specific song on Spotify
  * - Handles special cases like "ultraviolet"/"ultra violet"
+ * - Uses smart track selection to prioritize original album versions
  * 
  * @param {string} token Spotify access token
  * @param {string} artistName Artist name
@@ -112,6 +224,22 @@ const searchSong = async (token, artistName, trackName) => {
         });
       }
     }
+
+    // Apply smart track selection if we have results
+    if (response.data.tracks.items.length > 0) {
+      const bestTrack = selectBestTrack(response.data.tracks.items, trackName);
+      if (bestTrack) {
+        logger.info("Song search successful with smart filtering", {
+          artistName,
+          trackName,
+          selectedAlbum: bestTrack.album.name,
+          albumType: bestTrack.album.album_type
+        });
+        // Return the best track as the first (and only) result
+        response.data.tracks.items = [bestTrack];
+      }
+    }
+
     logger.info("Song search successful", { artistName, trackName });
     return response.data;
   } catch (error) {
@@ -136,7 +264,7 @@ const limitedSearchSong = limiter.wrap(searchSong);
  */
 const getSpotifySongInfo = async (songList, progressCallback = null) => {
   logger.info("Compiling Spotify song information");
-  
+
   devLogger.log('spotify', `Starting Spotify song lookup batch`, {
     totalSongs: songList.length,
     firstFewSongs: songList.slice(0, 5).map(song => ({
@@ -145,7 +273,7 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
       count: song.count
     }))
   });
-  
+
   try {
     const token = await getAccessToken();
 
@@ -208,8 +336,8 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
         } else {
           // Include failed songs without Spotify data
           logger.warn(`Failed to fetch Spotify data for: ${songList[songIndex].song} by ${songList[songIndex].artist}`, result.reason?.message);
-          spotifyDataParsed.push({ 
-            ...songList[songIndex], 
+          spotifyDataParsed.push({
+            ...songList[songIndex],
             id: uuidv4(),
             spotifyError: true,
             errorMessage: result.reason?.message || 'Unknown error'
@@ -229,7 +357,7 @@ const getSpotifySongInfo = async (songList, progressCallback = null) => {
 
     const foundCount = spotifyDataParsed.filter(song => song.songName).length;
     const missingCount = spotifyDataParsed.length - foundCount;
-    
+
     devLogger.log('spotify', `Spotify song lookup batch completed`, {
       totalSongs: songList.length,
       foundOnSpotify: foundCount,
