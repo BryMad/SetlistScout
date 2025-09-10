@@ -4,6 +4,44 @@ const qs = require('qs');
 const axios = require('axios');
 const querystring = require('querystring');
 const crypto = require('crypto');
+const Bottleneck = require('bottleneck');
+
+// Rate limiter for Spotify API calls (extended quota mode - auth operations)
+const spotifyLimiter = new Bottleneck({
+  minTime: 500,                     // 2 requests per second for auth
+  maxConcurrent: 2,                 // Max 2 concurrent auth requests
+});
+
+/**
+ * Introduces a delay between API calls
+ * @param {number} ms Milliseconds to delay
+ * @returns {Promise} Promise that resolves after the delay
+ */
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Wrapper for axios calls with 429 retry logic
+ * @param {Function} apiCall - Function that returns axios promise
+ * @param {number} retries - Number of retry attempts (default 3)
+ * @param {number} backoff - Initial backoff delay in ms (default 1000)
+ */
+const axiosWithRetry = async (apiCall, retries = 3, backoff = 1000) => {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await apiCall();
+    } catch (error) {
+      // Check if the error is a 429 (Too Many Requests)
+      if (error.response && error.response.status === 429 && attempt < retries) {
+        console.warn(`429 error received, retrying attempt ${attempt + 1}`);
+        await delay(backoff);
+        backoff *= 2; // Exponential backoff
+        continue;
+      } else {
+        throw error;
+      }
+    }
+  }
+};
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -99,16 +137,16 @@ router.get('/callback', async (req, res) => {
     };
 
     console.log('Requesting token from Spotify');
-    const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers: headers });
+    const tokenResponse = await spotifyLimiter.schedule(() => axiosWithRetry(() => axios.post('https://accounts.spotify.com/api/token', data, { headers: headers })));
 
     if (tokenResponse.status === 200) {
       const access_token = tokenResponse.data.access_token;
       const refresh_token = tokenResponse.data.refresh_token;
 
       // Get user information
-      const userResponse = await axios.get('https://api.spotify.com/v1/me', {
+      const userResponse = await spotifyLimiter.schedule(() => axiosWithRetry(() => axios.get('https://api.spotify.com/v1/me', {
         headers: { 'Authorization': `Bearer ${access_token}` }
-      });
+      })));
       const user_id = userResponse.data.id;
       console.log('User ID:', user_id);
 
@@ -198,7 +236,7 @@ router.post('/refresh', async (req, res) => {
       'Authorization': 'Basic ' + Buffer.from(`${client_id}:${client_secret}`).toString('base64')
     };
 
-    const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', data, { headers });
+    const tokenResponse = await spotifyLimiter.schedule(() => axiosWithRetry(() => axios.post('https://accounts.spotify.com/api/token', data, { headers })));
 
     if (tokenResponse.status === 200) {
       // Sometimes Spotify doesn't return a new refresh token

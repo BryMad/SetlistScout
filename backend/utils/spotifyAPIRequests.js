@@ -5,9 +5,40 @@ const { v4: uuidv4 } = require('uuid');
 const logger = require('../utils/logger');
 const devLogger = require('../utils/devLogger');
 const limiter = new Bottleneck({
-  minTime: 200,         // Minimum time (ms) between requests
-  maxConcurrent: 5,     // Maximum number of concurrent requests
+  minTime: 100,         // 10 requests per second (extended quota mode)
+  maxConcurrent: 8,     // Higher concurrent requests for song searches
 });
+
+/**
+ * Introduces a delay between API calls
+ * @param {number} ms Milliseconds to delay
+ * @returns {Promise} Promise that resolves after the delay
+ */
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Wrapper for axios calls with 429 retry logic
+ * @param {Function} apiCall - Function that returns axios promise
+ * @param {number} retries - Number of retry attempts (default 3)
+ * @param {number} backoff - Initial backoff delay in ms (default 1000)
+ */
+const axiosWithRetry = async (apiCall, retries = 3, backoff = 1000) => {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await apiCall();
+    } catch (error) {
+      // Check if the error is a 429 (Too Many Requests)
+      if (error.response && error.response.status === 429 && attempt < retries) {
+        logger.warn(`429 error received, retrying attempt ${attempt + 1} for Spotify API`);
+        await delay(backoff);
+        backoff *= 2; // Exponential backoff
+        continue;
+      } else {
+        throw error;
+      }
+    }
+  }
+};
 
 /**
  * Gets Spotify API access token
@@ -19,11 +50,11 @@ const limiter = new Bottleneck({
 const getAccessToken = async () => {
   logger.info("Requesting Spotify access token");
   try {
-    const response = await axios.post("https://accounts.spotify.com/api/token", {
+    const response = await axiosWithRetry(() => axios.post("https://accounts.spotify.com/api/token", {
       grant_type: "client_credentials", client_id: process.env.CLIENT_ID, client_secret: process.env.CLIENT_SECRET
     }, {
       headers: { "Content-Type": "application/x-www-form-urlencoded" }
-    });
+    }));
     logger.info("Access token received");
     return response.data.access_token;
   } catch (error) {
@@ -50,11 +81,11 @@ const searchArtist = async (token, artistName) => {
   });
   const url = `https://api.spotify.com/v1/search?${queryParams.toString()}`;
   try {
-    const response = await axios.get(url, {
+    const response = await axiosWithRetry(() => axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    });
+    }));
     logger.info("Artist search successful", { artistName });
 
     return response.data.artists.items.map((artist) => ({
@@ -200,9 +231,9 @@ const searchSong = async (token, artistName, trackName) => {
       type: 'track',
     });
     const url = `https://api.spotify.com/v1/search?${queryParams.toString()}`;
-    let response = await axios.get(url, {
+    let response = await axiosWithRetry(() => axios.get(url, {
       headers: { Authorization: `Bearer ${token}` }
-    });
+    }));
 
     // If no results, check for specific cases (e.g., "ultraviolet")
     if (!response.data.tracks.items.length) {
@@ -219,9 +250,9 @@ const searchSong = async (token, artistName, trackName) => {
           type: 'track',
         });
         const modifiedUrl = `https://api.spotify.com/v1/search?${modifiedQueryParams.toString()}`;
-        response = await axios.get(modifiedUrl, {
+        response = await axiosWithRetry(() => axios.get(modifiedUrl, {
           headers: { Authorization: `Bearer ${token}` }
-        });
+        }));
       }
     }
 

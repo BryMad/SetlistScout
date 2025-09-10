@@ -2,8 +2,11 @@ const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require('../utils/logger');
 const limiter = new Bottleneck({
-  minTime: 600, // minimum time (ms) between requests
-  maxConcurrent: 1, // maximum concurrent requests
+  minTime: 63,                      // 16 requests per second (62.5ms rounded up)
+  maxConcurrent: 7,                 // Stay under the 8 concurrent limit
+  reservoir: 16,                    // Allow 16 requests per interval
+  reservoirRefreshInterval: 1000,   // Refill every 1 second
+  reservoirRefreshAmount: 16        // Refill to 16 requests
 });
 
 /**

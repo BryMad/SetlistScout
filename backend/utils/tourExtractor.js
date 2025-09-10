@@ -2,10 +2,13 @@ const axios = require('axios');
 const Bottleneck = require('bottleneck');
 const { getCachedTours, cacheTours } = require('./tourCacheManager');
 
-// Rate limiter for Setlist.fm API (16 requests per second)
+// Rate limiter for Setlist.fm API (16 requests per second with burst control)
 const limiter = new Bottleneck({
-  minTime: 63, // ~16 requests per second
-  maxConcurrent: 5
+  minTime: 63,                      // 16 requests per second (62.5ms rounded up)
+  maxConcurrent: 7,                 // Stay under the 8 concurrent limit
+  reservoir: 16,                    // Allow 16 requests per interval
+  reservoirRefreshInterval: 1000,   // Refill every 1 second
+  reservoirRefreshAmount: 16        // Refill to 16 requests
 });
 
 /**
@@ -28,11 +31,11 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
   }
   const tours = new Map(); // Use Map to track unique tours
   const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
-  
+
   if (!SETLIST_API_KEY) {
     throw new Error('SETLIST_API_KEY environment variable is not set');
   }
-  
+
   const headers = {
     'x-api-key': SETLIST_API_KEY,
     'Accept': 'application/json'
@@ -44,10 +47,10 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
 
   try {
     // Build query params - use artistMbid when available for more accurate results
-    const params = mbid 
+    const params = mbid
       ? { artistMbid: mbid, p: page }
       : { artistName: artistName, p: page }; // Don't double-encode, axios will handle it
-    
+
     console.log(`Starting tour extraction for ${artistName} with MBID: ${mbid}`);
 
     do {
@@ -56,7 +59,7 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
         const url = 'https://api.setlist.fm/rest/1.0/search/setlists';
         const requestParams = { ...params, p: page };
         console.log(`Fetching page ${page}/${totalPages || '?'} for ${artistName}`);
-        
+
         try {
           return await axios.get(url, {
             params: requestParams,
@@ -70,27 +73,27 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
       });
 
       const data = response.data;
-      
+
       // Check if response has expected structure
       if (!data || typeof data.total === 'undefined' || typeof data.itemsPerPage === 'undefined') {
         console.error(`Invalid API response structure for ${artistName}:`, data);
         break; // Exit pagination loop
       }
-      
+
       totalPages = Math.ceil(data.total / data.itemsPerPage);
-      
+
       // Process setlists on this page
       if (data.setlist && Array.isArray(data.setlist)) {
         for (const setlist of data.setlist) {
           processedShows++;
-          
+
           if (setlist.tour && setlist.tour.name) {
             const tourName = setlist.tour.name;
             const year = setlist.eventDate ? new Date(setlist.eventDate.split('-').reverse().join('-')).getFullYear() : null;
-            
+
             // Create unique key for tour+year combination
             const tourKey = `${tourName}_${year || 'unknown'}`;
-            
+
             if (!tours.has(tourKey)) {
               tours.set(tourKey, {
                 name: tourName,
@@ -100,11 +103,11 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
                 lastDate: setlist.eventDate
               });
             }
-            
+
             // Update tour info
             const tour = tours.get(tourKey);
             tour.showCount++;
-            
+
             // Update date range
             if (setlist.eventDate) {
               if (setlist.eventDate < tour.firstDate) {
@@ -148,7 +151,7 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
         } else if (tour.year) {
           displayYear = tour.year.toString();
         }
-        
+
         return {
           name: tour.name,
           displayName: displayYear ? `${tour.name} (${displayYear})` : tour.name,
@@ -165,21 +168,21 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
           const match = yearStr.match(/\d{4}/);
           return match ? parseInt(match[0]) : 0;
         };
-        
+
         const yearA = getFirstYear(b.year);
         const yearB = getFirstYear(a.year);
-        
+
         if (yearA !== yearB) return yearA - yearB;
         return b.showCount - a.showCount;
       });
 
     console.log(`Found ${tourArray.length} valid tours for ${artistName} from ${processedShows} shows`);
-    
+
     // Cache the results if Redis client is provided
     if (redisClient && tourArray.length > 0) {
       await cacheTours(redisClient, artistName, mbid, tourArray);
     }
-    
+
     return tourArray;
 
   } catch (error) {
@@ -215,16 +218,16 @@ function isInvalidTourName(tourName) {
  */
 async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, redisClient = null) {
   const sseManager = require('./sseManager');
-  
+
   // Check cache first if Redis client is provided
   if (redisClient) {
     const cachedTours = await getCachedTours(redisClient, artistName, mbid);
     if (cachedTours && cachedTours.length > 0) {
       console.log(`Streaming cached tours for ${artistName}`);
-      
+
       // Stream cached tours immediately
       sseManager.sendUpdate(clientId, 'tour_search_start', 'Loading cached tour data...', 15);
-      
+
       // Send all cached tours at once
       for (const tour of cachedTours) {
         sseManager.sendUpdate(clientId, 'tour_discovered', `Found tour: ${tour.name}`, null, {
@@ -232,10 +235,10 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
           tour: formatTourForDisplay(tour)
         });
       }
-      
+
       // Send completion
-      sseManager.sendUpdate(clientId, 'tour_search_complete', 
-        `Loaded ${cachedTours.length} tours from cache`, 
+      sseManager.sendUpdate(clientId, 'tour_search_complete',
+        `Loaded ${cachedTours.length} tours from cache`,
         100,
         {
           type: 'search_complete',
@@ -245,17 +248,17 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
           }
         }
       );
-      
+
       return; // Exit early with cached data
     }
   }
   const tours = new Map(); // Use Map to track unique tours by name only
   const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
-  
+
   if (!SETLIST_API_KEY) {
     throw new Error('SETLIST_API_KEY environment variable is not set');
   }
-  
+
   const headers = {
     'x-api-key': SETLIST_API_KEY,
     'Accept': 'application/json'
@@ -268,12 +271,12 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
 
   try {
     // Build query params
-    const params = mbid 
+    const params = mbid
       ? { artistMbid: mbid, p: page }
       : { artistName: artistName, p: page };
-    
+
     console.log(`Starting streaming tour extraction for ${artistName} with MBID: ${mbid}`);
-    
+
     // Send initial progress
     sseManager.sendUpdate(clientId, 'tour_search_start', 'Starting tour search...', 15);
 
@@ -282,14 +285,14 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
       const response = await limiter.schedule(async () => {
         const url = 'https://api.setlist.fm/rest/1.0/search/setlists';
         const requestParams = { ...params, p: page };
-        
+
         // Send page progress
-        const progressMessage = totalPages > 1 
+        const progressMessage = totalPages > 1
           ? `Scanning page ${page} of ${totalPages}...`
           : `Scanning page ${page}...`;
         const progress = 15 + (page / Math.max(totalPages, 1)) * 70;
         sseManager.sendUpdate(clientId, 'page_progress', progressMessage, Math.min(progress, 85));
-        
+
         try {
           return await axios.get(url, {
             params: requestParams,
@@ -303,29 +306,29 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
       });
 
       const data = response.data;
-      
+
       // Check if response has expected structure
       if (!data || typeof data.total === 'undefined' || typeof data.itemsPerPage === 'undefined') {
         console.error(`Invalid API response structure for ${artistName}:`, data);
         break;
       }
-      
+
       totalPages = Math.ceil(data.total / data.itemsPerPage);
-      
+
       // Process setlists on this page
       if (data.setlist && Array.isArray(data.setlist)) {
         for (const setlist of data.setlist) {
           processedShows++;
-          
+
           // Check if this show has song data
           const hasSongs = setlist.sets?.set?.length > 0;
-          
+
           if (hasSongs && setlist.tour && setlist.tour.name && !isInvalidTourName(setlist.tour.name)) {
             showsWithSongs++;
             const tourName = setlist.tour.name;
             const eventDate = setlist.eventDate;
             const year = eventDate ? new Date(eventDate.split('-').reverse().join('-')).getFullYear() : null;
-            
+
             // Use tour name as key (not tour+year)
             if (!tours.has(tourName)) {
               // New tour discovered
@@ -337,9 +340,9 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
                 firstYear: year,
                 lastYear: year
               };
-              
+
               tours.set(tourName, newTour);
-              
+
               // Emit new tour discovery
               sseManager.sendUpdate(clientId, 'tour_discovered', `Found tour: ${newTour.name}`, null, {
                 type: 'new_tour',
@@ -349,9 +352,9 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
               // Update existing tour
               const tour = tours.get(tourName);
               tour.showCount++;
-              
+
               let dateRangeChanged = false;
-              
+
               // Update date range
               if (eventDate) {
                 if (!tour.firstDate || eventDate < tour.firstDate) {
@@ -365,11 +368,11 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
                   dateRangeChanged = true;
                 }
               }
-              
+
               // Emit tour update if date range changed or every 10 shows
               if (dateRangeChanged || tour.showCount % 10 === 0) {
-                const updateMessage = dateRangeChanged 
-                  ? `Updated date range for ${tour.name}` 
+                const updateMessage = dateRangeChanged
+                  ? `Updated date range for ${tour.name}`
                   : `${tour.name} now has ${tour.showCount} shows`;
                 sseManager.sendUpdate(clientId, 'tour_updated', updateMessage, null, {
                   type: 'tour_update',
@@ -386,17 +389,17 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
 
     // Convert tours Map to array for caching
     const tourArray = Array.from(tours.values()).map(tour => formatTourForDisplay(tour));
-    
+
     // Cache the results if Redis client is provided and we found tours
     if (redisClient && tourArray.length > 0) {
       await cacheTours(redisClient, artistName, mbid, tourArray);
     }
-    
+
     // Send completion with summary
     console.log(`Streaming complete: Found ${tours.size} tours with songs from ${showsWithSongs}/${processedShows} shows`);
-    
-    sseManager.sendUpdate(clientId, 'tour_search_complete', 
-      `Found ${tours.size} tours from ${showsWithSongs} shows with setlists`, 
+
+    sseManager.sendUpdate(clientId, 'tour_search_complete',
+      `Found ${tours.size} tours from ${showsWithSongs} shows with setlists`,
       100,
       {
         type: 'search_complete',
@@ -426,7 +429,7 @@ function formatTourForDisplay(tour) {
       displayYear = `${tour.firstYear}-${tour.lastYear}`;
     }
   }
-  
+
   return {
     name: tour.name,
     displayName: displayYear ? `${tour.name} (${displayYear})` : tour.name,
