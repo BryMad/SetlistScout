@@ -52,6 +52,7 @@ export default function UserInput() {
   const [selectedTour, setSelectedTour] = useState("");
   const [toursLoading, setToursLoading] = useState(false);
   const containerRef = useRef(null);
+  const [shouldAutoSelect, setShouldAutoSelect] = useState(false);
 
   // new artist search
   useEffect(() => {
@@ -85,6 +86,14 @@ export default function UserInput() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Add useEffect to auto-select top suggestion when loading finishes
+  useEffect(() => {
+    if (shouldAutoSelect && !searchLoading && suggestions.length > 0) {
+      handleArtistSelect(suggestions[0]); // Select the first (top) suggestion
+      setShouldAutoSelect(false); // Reset the flag
+    }
+  }, [shouldAutoSelect, searchLoading, suggestions]);
 
   /**
    * Fetches artist suggestions from Deezer
@@ -311,6 +320,21 @@ export default function UserInput() {
             _hover: { bg: "gray.700" },
             _focus: { bg: "gray.700", borderColor: "brand.400" },
             transition: "all 0.2s",
+            onKeyDown: (event) => {
+              if (event.key === "Enter") {
+                if (highlightedIndex === -1 && artistQuery.trim() !== "") {
+                  event.preventDefault();
+                  if (!searchLoading && suggestions.length > 0) {
+                    // If already loaded, select top immediately
+                    handleArtistSelect(suggestions[0]);
+                  } else {
+                    // If loading or no suggestions yet, set flag to auto-select when ready
+                    setShouldAutoSelect(true);
+                  }
+                }
+                // Downshift handles Enter for highlighted items
+              }
+            },
           })}
         />
 
