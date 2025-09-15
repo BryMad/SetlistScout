@@ -27,6 +27,7 @@ import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
 import { server_url } from "../App";
 import { FEATURES } from "../config/features";
+import { useCombobox } from "downshift";
 
 /**
  * Component for artist search input
@@ -276,6 +277,97 @@ export default function UserInput() {
     resetSearch();
   };
 
+  const renderArtistInput = () => {
+    const {
+      isOpen,
+      getInputProps,
+      getMenuProps,
+      getItemProps,
+      highlightedIndex,
+    } = useCombobox({
+      items: suggestions,
+      itemToString: (item) => item?.name || "",
+      inputValue: artistQuery,
+      onInputValueChange: ({ inputValue }) => {
+        setArtistQuery(inputValue);
+      },
+      onSelectedItemChange: ({ selectedItem }) => {
+        if (selectedItem) {
+          handleArtistSelect(selectedItem);
+        }
+      },
+    });
+
+    return (
+      <Box position="relative" width="100%">
+        <Input
+          {...getInputProps({
+            placeholder: "Search for an artist...",
+            size: "lg",
+            variant: "filled",
+            bg: "gray.800",
+            borderRadius: "xl",
+            disabled: loading || toursLoading,
+            _hover: { bg: "gray.700" },
+            _focus: { bg: "gray.700", borderColor: "brand.400" },
+            transition: "all 0.2s",
+          })}
+        />
+
+        <Box
+          {...getMenuProps()}
+          position="absolute"
+          top="100%"
+          left="0"
+          right="0"
+          mt={0}
+          bg="gray.800"
+          borderRadius="0 0 xl xl"
+          zIndex="10"
+          overflow="hidden"
+          boxShadow="xl"
+          border="1px solid"
+          borderColor="gray.700"
+          borderTop="none"
+          display={isOpen && suggestions.length > 0 ? "block" : "none"}
+        >
+          {searchLoading ? (
+            <Flex justify="center" p={3}>
+              <Spinner size="sm" />
+              <Text as="span" ml={2} color="gray.300">
+                Searching...
+              </Text>
+            </Flex>
+          ) : (
+            <List spacing={0}>
+              {suggestions.map((artist, index) => (
+                <ListItem
+                  key={artist.id}
+                  {...getItemProps({ item: artist, index })}
+                  px={4}
+                  py={3}
+                  bg={highlightedIndex === index ? "gray.700" : "transparent"}
+                  _hover={{ bg: "gray.700" }}
+                  transition="background-color 0.2s"
+                >
+                  <HStack spacing={3}>
+                    <Image
+                      src={artist.image?.url || "https://placehold.co/40"}
+                      boxSize="40px"
+                      alt={artist.name}
+                      borderRadius="full"
+                    />
+                    <Text color="white">{artist.name}</Text>
+                  </HStack>
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </Box>
+      </Box>
+    );
+  };
+
   return (
     <Box
       ref={containerRef}
@@ -361,30 +453,7 @@ export default function UserInput() {
                 <Text fontWeight="semibold" fontSize="md" color="gray.300">
                   Enter an Artist to see what they're playing live:
                 </Text>
-
-                <Input
-                  placeholder="Search for an artist..."
-                  value={artistQuery}
-                  onChange={(e) => setArtistQuery(e.target.value)}
-                  size="lg"
-                  variant="filled"
-                  bg="gray.800"
-                  borderRadius="xl"
-                  width="100%"
-                  disabled={loading}
-                  _hover={{ bg: "gray.700" }}
-                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                  transition="all 0.2s"
-                />
-
-                {searchLoading && (
-                  <Box>
-                    <Spinner size="sm" />
-                    <Text as="span" ml={2}>
-                      Searching...
-                    </Text>
-                  </Box>
-                )}
+                {renderArtistInput()}
               </VStack>
             </TabPanel>
 
@@ -394,30 +463,7 @@ export default function UserInput() {
                 <Text fontWeight="semibold" fontSize="md" color="gray.300">
                   Enter an Artist to see what they played on past tours:
                 </Text>
-
-                <Input
-                  placeholder="Search for an artist..."
-                  value={artistQuery}
-                  onChange={(e) => setArtistQuery(e.target.value)}
-                  size="lg"
-                  variant="filled"
-                  bg="gray.800"
-                  borderRadius="xl"
-                  width="100%"
-                  disabled={loading || toursLoading}
-                  _hover={{ bg: "gray.700" }}
-                  _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-                  transition="all 0.2s"
-                />
-
-                {searchLoading && (
-                  <Box>
-                    <Spinner size="sm" />
-                    <Text as="span" ml={2}>
-                      Searching...
-                    </Text>
-                  </Box>
-                )}
+                {renderArtistInput()}
               </VStack>
             </TabPanel>
           </TabPanels>
@@ -428,77 +474,8 @@ export default function UserInput() {
           <Text fontWeight="semibold" fontSize="md" color="gray.300">
             Enter an Artist to see what they're playing live:
           </Text>
-
-          <Input
-            placeholder="Search for an artist..."
-            value={artistQuery}
-            onChange={(e) => setArtistQuery(e.target.value)}
-            size="lg"
-            variant="filled"
-            bg="gray.800"
-            borderRadius="xl"
-            width="100%"
-            disabled={loading}
-            _hover={{ bg: "gray.700" }}
-            _focus={{ bg: "gray.700", borderColor: "brand.400" }}
-            transition="all 0.2s"
-          />
-
-          {searchLoading && (
-            <Box>
-              <Spinner size="sm" />
-              <Text as="span" ml={2}>
-                Searching...
-              </Text>
-            </Box>
-          )}
+          {renderArtistInput()}
         </VStack>
-      )}
-
-      {/* Artist suggestions dropdown - shown when there are suggestions and no artist is selected for tours */}
-      {suggestions.length > 0 && !selectedArtist && (
-        <Box
-          position="absolute"
-          zIndex="10"
-          bg="gray.800"
-          mt={2}
-          width="100%"
-          borderRadius="lg"
-          overflow="hidden"
-          boxShadow="xl"
-          border="1px solid"
-          borderColor="gray.700"
-        >
-          <List spacing={0}>
-            {suggestions.map((artist) => (
-              <ListItem
-                key={artist.id}
-                px={4}
-                py={3}
-                _hover={{ backgroundColor: "gray.700" }}
-                transition="background-color 0.2s"
-              >
-                <Flex width="100%" justify="space-between" align="center">
-                  <Box
-                    onClick={() => handleArtistSelect(artist)}
-                    flex="1"
-                    _hover={{ cursor: "pointer" }}
-                  >
-                    <HStack spacing={3}>
-                      <Image
-                        src={artist.image?.url || "https://placehold.co/40"}
-                        boxSize="40px"
-                        alt={artist.name}
-                        borderRadius="full"
-                      />
-                      <Text>{artist.name}</Text>
-                    </HStack>
-                  </Box>
-                </Flex>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
       )}
 
       {/* Tour dropdown - shown immediately after artist selection in Past Tours tab */}
@@ -522,6 +499,9 @@ export default function UserInput() {
                 <Spinner size="sm" color="brand.400" />
                 <Text color="gray.300">Loading tours...</Text>
               </HStack>
+              <Text size="2xs" color="gray.400">
+                (warning: this can take a while)
+              </Text>
             </Box>
           )}
 
