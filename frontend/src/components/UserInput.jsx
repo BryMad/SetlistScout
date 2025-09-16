@@ -44,7 +44,8 @@ export default function UserInput() {
   } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
   const [artistQuery, setArtistQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState([]); // Artist search API results
+  const [displaySuggestions, setDisplaySuggestions] = useState([]); // Artist search results displayed
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
   const [tabIndex, setTabIndex] = useState(0); // 0 = Live Shows, 1 = Past Tours
@@ -70,8 +71,9 @@ export default function UserInput() {
         fetchArtistSuggestions(artistQuery);
       } else {
         setSuggestions([]);
+        setDisplaySuggestions([]);
       }
-    }, 300);
+    }, 500); // Increased debounce to reduce API rate limiting
 
     return () => clearTimeout(debounceTimeout);
   }, [artistQuery]);
@@ -103,10 +105,13 @@ export default function UserInput() {
   const fetchArtistSuggestions = async (query) => {
     try {
       setSearchLoading(true);
+      // Don't clear displaySuggestions - keep showing previous results while loading
       const results = await searchForArtistsDeezer(query);
       setSuggestions(results || []);
+      setDisplaySuggestions(results || []);
     } catch (error) {
       console.error("Error fetching artist suggestions:", error);
+      // On error, don't change displaySuggestions
     } finally {
       setSearchLoading(false);
     }
@@ -281,6 +286,7 @@ export default function UserInput() {
     setArtistQuery("");
     setSelectedArtist(null);
     setSuggestions([]);
+    setDisplaySuggestions([]);
     setTours([]);
     setSelectedTour("");
     resetSearch();
@@ -294,7 +300,7 @@ export default function UserInput() {
       getItemProps,
       highlightedIndex,
     } = useCombobox({
-      items: suggestions,
+      items: displaySuggestions,
       itemToString: (item) => item?.name || "",
       inputValue: artistQuery,
       onInputValueChange: ({ inputValue }) => {
@@ -346,25 +352,33 @@ export default function UserInput() {
           right="0"
           mt={0}
           bg="gray.800"
-          borderRadius="0 0 xl xl"
+          borderRadius="0 0 1rem 1rem"
           zIndex="10"
           overflow="hidden"
           boxShadow="xl"
           border="1px solid"
           borderColor="gray.700"
           borderTop="none"
-          display={isOpen && suggestions.length > 0 ? "block" : "none"}
+          display={isOpen && artistQuery.length > 0 ? "block" : "none"}
         >
-          {searchLoading ? (
-            <Flex justify="center" p={3}>
+          {searchLoading && (
+            <Flex
+              justify="center"
+              p={3}
+              bg="gray.750"
+              borderBottom="1px solid"
+              borderBottomColor="gray.700"
+            >
               <Spinner size="sm" />
               <Text as="span" ml={2} color="gray.300">
                 Searching...
               </Text>
             </Flex>
-          ) : (
+          )}
+
+          {displaySuggestions.length > 0 ? (
             <List spacing={0}>
-              {suggestions.map((artist, index) => (
+              {displaySuggestions.map((artist, index) => (
                 <ListItem
                   key={artist.id}
                   {...getItemProps({ item: artist, index })}
@@ -386,6 +400,14 @@ export default function UserInput() {
                 </ListItem>
               ))}
             </List>
+          ) : (
+            !searchLoading && (
+              <Flex justify="center" p={3}>
+                <Text color="gray.400" fontSize="sm">
+                  No artists found
+                </Text>
+              </Flex>
+            )
           )}
         </Box>
       </Box>

@@ -153,46 +153,25 @@ export default function TracksHUD() {
             {/* Login/Create Playlist Button */}
             <Flex direction="column" alignItems="center" mb={6} width="full">
               {!isLoggedIn ? (
-                <VStack spacing={0} width="auto" maxW="md">
-                  <Flex
-                    align="center"
-                    flexWrap="wrap"
-                    justifyContent="center"
-                    gap={2}
-                    my={2}
+                <Flex
+                  align="center"
+                  flexWrap="wrap"
+                  justifyContent="center"
+                  gap={2}
+                  my={2}
+                >
+                  <Button
+                    size="md"
+                    width="auto"
+                    px={6}
+                    py={3}
+                    colorScheme="brand"
+                    onClick={handleLoginClick}
                   >
-                    <Button
-                      size="md"
-                      width="auto"
-                      px={6}
-                      py={3}
-                      colorScheme="brand"
-                      onClick={handleLoginClick}
-                    >
-                      Login
-                    </Button>
-                    <Text textAlign="center">to create playlist</Text>
-                  </Flex>
-                  <Text
-                    textAlign="left"
-                    fontSize="sm"
-                    color="gray.500"
-                    mt={2}
-                    mb={4}
-                  >
-                    note: pending Spotify approval for public login. Please
-                    email{" "}
-                    <Box as="span" display="inline" whiteSpace="nowrap">
-                      <Link
-                        href="mailto:setlistscout@gmail.com"
-                        color="accent.400"
-                      >
-                        setlistscout@gmail.com
-                      </Link>
-                    </Box>{" "}
-                    to be a pre-approved beta user.
-                  </Text>
-                </VStack>
+                    Login
+                  </Button>
+                  <Text textAlign="center">to create playlist</Text>
+                </Flex>
               ) : (
                 <>
                   <VStack spacing={0} width="auto" maxW="md">
