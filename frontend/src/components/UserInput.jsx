@@ -54,6 +54,7 @@ export default function UserInput() {
   const [toursLoading, setToursLoading] = useState(false);
   const containerRef = useRef(null);
   const [shouldAutoSelect, setShouldAutoSelect] = useState(false);
+  const [searchAttempted, setSearchAttempted] = useState(false);
 
   // new artist search
   useEffect(() => {
@@ -65,6 +66,8 @@ export default function UserInput() {
       setTours([]);
       setSelectedTour("");
     }
+
+    setSearchAttempted(false); // Reset for new query
 
     const debounceTimeout = setTimeout(() => {
       if (artistQuery.length >= 1) {
@@ -114,6 +117,7 @@ export default function UserInput() {
       // On error, don't change displaySuggestions
     } finally {
       setSearchLoading(false);
+      setSearchAttempted(true); // Mark as attempted regardless of success
     }
   };
 
@@ -363,7 +367,13 @@ export default function UserInput() {
           borderColor="gray.700"
           borderTop="none"
           pt={5}
-          display={isOpen && artistQuery.length > 0 ? "block" : "none"}
+          display={
+            isOpen &&
+            artistQuery.length > 0 &&
+            (searchLoading || displaySuggestions.length > 0 || searchAttempted)
+              ? "block"
+              : "none"
+          }
         >
           {searchLoading && (
             <Flex
@@ -405,7 +415,8 @@ export default function UserInput() {
               ))}
             </List>
           ) : (
-            !searchLoading && (
+            !searchLoading &&
+            searchAttempted && (
               <Flex justify="center" p={3}>
                 <Text color="gray.400" fontSize="sm">
                   No artists found
