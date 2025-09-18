@@ -315,17 +315,20 @@ export default function UserInput() {
 
     return (
       <Box position="relative" width="100%">
+        {/* Artist search input bar */}
         <Input
+          placeholder="Search for an artist..."
+          size="lg"
+          variant="filled"
+          bg="gray.800"
+          borderRadius="xl"
+          disabled={loading || toursLoading}
+          _hover={{ bg: "gray.700" }}
+          _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+          transition="all 0.2s"
+          position="relative"
+          zIndex={1001}
           {...getInputProps({
-            placeholder: "Search for an artist...",
-            size: "lg",
-            variant: "filled",
-            bg: "gray.800",
-            borderRadius: "xl",
-            disabled: loading || toursLoading,
-            _hover: { bg: "gray.700" },
-            _focus: { bg: "gray.700", borderColor: "brand.400" },
-            transition: "all 0.2s",
             onKeyDown: (event) => {
               if (event.key === "Enter") {
                 if (highlightedIndex === -1 && artistQuery.trim() !== "") {
@@ -343,22 +346,23 @@ export default function UserInput() {
             },
           })}
         />
-
+        {/* Artist Select Dropdown menu */}
         <Box
           {...getMenuProps()}
           position="absolute"
           top="100%"
           left="0"
           right="0"
-          mt={0}
+          zIndex={1000}
+          mt={-3}
           bg="gray.800"
           borderRadius="0 0 1rem 1rem"
-          zIndex="10"
           overflow="hidden"
           boxShadow="xl"
           border="1px solid"
           borderColor="gray.700"
           borderTop="none"
+          pt={5}
           display={isOpen && artistQuery.length > 0 ? "block" : "none"}
         >
           {searchLoading && (
