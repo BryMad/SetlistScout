@@ -31,15 +31,14 @@ import { useCombobox } from "downshift";
 
 /**
  * Component for artist search input
- * - Uses Deezer API for artist search
- * - Uses Spotify API for setlist and playlist functionality
+ * - Uses Spotify API for artist search, setlist, and playlist functionality
  */
 export default function UserInput() {
   const {
     fetchTourData,
     fetchSpecificTourData,
     loading,
-    searchForArtistsDeezer,
+    searchForArtists,
     resetSearch,
   } = useSetlist();
   const { clearPlaylistUrl } = useSpotify();
@@ -109,7 +108,7 @@ export default function UserInput() {
     try {
       setSearchLoading(true);
       // Don't clear displaySuggestions - keep showing previous results while loading
-      const results = await searchForArtistsDeezer(query);
+      const results = await searchForArtists(query);
       setSuggestions(results || []);
       setDisplaySuggestions(results || []);
     } catch (error) {
