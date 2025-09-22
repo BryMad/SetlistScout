@@ -25,6 +25,7 @@ export const searchArtists = async (artistName) => {
 };
 
 /**
+ * DEPRECATED use searchArtists instead
  * Search for artists by name using Deezer
  * 
  * @param {string} artistName Artist name to search for
@@ -191,7 +192,7 @@ export const fetchSpecificTourWithUpdates = async (artist, tourId, tourName, pro
     const resultPromise = new Promise((resolve, reject) => {
       eventSourceService.addListener(listenerId, (event) => {
         console.log('Tour search SSE event:', event);
-        
+
         // Pass progress updates to the callback
         if (event.type === 'update' && progressCallback) {
           progressCallback({
@@ -236,11 +237,69 @@ export const fetchSpecificTourWithUpdates = async (artist, tourId, tourName, pro
 
     // Clean up the listener
     eventSourceService.removeListener(listenerId);
-    
+
     console.log('Tour search completed successfully:', result);
     return { tourData: result.tourData, spotifyData: result.spotifySongsOrdered };
   } catch (error) {
     console.error("Error fetching specific tour with updates:", error);
     throw error;
+  }
+};
+
+/**
+ * Fetch all past tours with SSE progress updates (page-based)
+ *
+ * @param {Object} artist Artist object with name, id, url
+ * @param {Function} progressCallback Receives { stage, message, progress }
+ * @returns {Promise<{tours: Array, validatedArtistName: string, totalTours: number}>}
+ */
+export const fetchAdvancedToursWithUpdates = async (artist, progressCallback) => {
+  // Establish SSE connection (one-at-a-time model)
+  await eventSourceService.connect();
+  const clientId = eventSourceService.getClientId();
+  if (!clientId) {
+    throw new Error('Failed to establish SSE connection');
+  }
+
+  const listenerId = `advanced-search-${Date.now()}`;
+
+  const resultPromise = new Promise((resolve, reject) => {
+    eventSourceService.addListener(listenerId, (event) => {
+      if (event.type === 'update' && progressCallback) {
+        progressCallback({
+          stage: event.stage,
+          message: event.message,
+          progress: event.progress,
+        });
+      }
+
+      if (event.type === 'complete') {
+        resolve(event.data);
+      }
+
+      if (event.type === 'error') {
+        reject(new Error(event.message));
+      }
+    });
+  });
+
+  await axios.post(
+    `${server_url}/setlist/advanced_with_updates`,
+    {
+      artist: {
+        name: artist.name,
+        id: artist.id,
+        url: artist.url,
+      },
+      clientId,
+    },
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+
+  try {
+    const result = await resultPromise;
+    return result;
+  } finally {
+    eventSourceService.removeListener(listenerId);
   }
 };

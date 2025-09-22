@@ -28,6 +28,9 @@ import { useSpotify } from "../hooks/useSpotify";
 import { server_url } from "../App";
 import { FEATURES } from "../config/features";
 import { useCombobox } from "downshift";
+import { fetchAdvancedToursWithUpdates } from "../api/setlistService";
+import eventSourceService from "../api/sseService";
+import ProgressIndicator from "./ProgressIndicator";
 
 /**
  * Component for artist search input
@@ -51,6 +54,8 @@ export default function UserInput() {
   const [tours, setTours] = useState([]);
   const [selectedTour, setSelectedTour] = useState("");
   const [toursLoading, setToursLoading] = useState(false);
+  const [advancedProgressPercent, setAdvancedProgressPercent] = useState(null);
+  const [advancedProgressMessage, setAdvancedProgressMessage] = useState("");
   const containerRef = useRef(null);
   const [shouldAutoSelect, setShouldAutoSelect] = useState(false);
   const [searchAttempted, setSearchAttempted] = useState(false);
@@ -130,46 +135,24 @@ export default function UserInput() {
 
     setToursLoading(true);
     setTours([]);
+    setAdvancedProgressPercent(5);
+    setAdvancedProgressMessage("Starting past tours search...");
 
     try {
-      console.log("Fetching tours for:", artist.name);
+      console.log("Fetching tours with SSE for:", artist.name);
 
-      // Make simple fetch request to the new non-SSE endpoint
-      const response = await fetch(
-        `${server_url}/setlist/artist/${encodeURIComponent(artist.name)}/tours`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            artist: {
-              name: artist.name,
-              id: artist.id,
-              url: artist.url,
-              image: artist.image,
-              popularity: artist.popularity,
-            },
-          }),
+      // Use SSE-based advanced fetch for page-progress updates
+      const data = await fetchAdvancedToursWithUpdates(
+        artist,
+        ({ stage, message, progress }) => {
+          if (typeof progress === "number")
+            setAdvancedProgressPercent(progress);
+          if (typeof message === "string") setAdvancedProgressMessage(message);
         }
       );
 
-      if (!response.ok) {
-        console.error(
-          "Tour fetch request failed:",
-          response.status,
-          response.statusText
-        );
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Tour fetch response:", data);
-
       if (data.tours && Array.isArray(data.tours)) {
-        // Sort tours by year (newest first) then by show count
         const sortedTours = data.tours.sort((a, b) => {
-          // Extract first year from display year (e.g., "2023" or "2019-2021")
           const getFirstYear = (yearStr) => {
             if (!yearStr) return 0;
             const match = yearStr.match(/\d{4}/);
@@ -194,6 +177,8 @@ export default function UserInput() {
       setTours([]);
     } finally {
       setToursLoading(false);
+      setAdvancedProgressPercent(null);
+      setAdvancedProgressMessage("");
     }
   };
 
@@ -263,6 +248,11 @@ export default function UserInput() {
     if (clearPlaylistUrl) {
       clearPlaylistUrl();
     }
+
+    // Ensure any previous SSE stream is closed before starting the tour-specific search
+    try {
+      eventSourceService.disconnect();
+    } catch (e) {}
 
     console.log("Selected tour:", tour);
     console.log("For artist:", selectedArtist);
@@ -520,9 +510,14 @@ export default function UserInput() {
             {/* Past Tours Tab */}
             <TabPanel px={0}>
               <VStack spacing={3}>
-                <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                  Enter an Artist to see what they played on past tours:
-                </Text>
+                <Box>
+                  <Text fontWeight="semibold" fontSize="md" color="gray.300">
+                    Enter an Artist to see what they played on past tours{" "}
+                    <Text as="span" fontSize="md" ml={2} color="gray.400">
+                      (warning: this can take a while):
+                    </Text>
+                  </Text>
+                </Box>
                 {renderArtistInput()}
               </VStack>
             </TabPanel>
@@ -554,14 +549,18 @@ export default function UserInput() {
         >
           {/* Loading indicator - show when loading */}
           {toursLoading && (
-            <Box textAlign="center" py={4}>
-              <HStack justify="center">
-                <Spinner size="sm" color="brand.400" />
-                <Text color="gray.300">Loading tours...</Text>
-              </HStack>
-              <Text size="2xs" color="gray.400">
-                (warning: this can take a while)
-              </Text>
+            <Box textAlign="center" py={4} px={4}>
+              <ProgressIndicator
+                isLoading={true}
+                progress={{
+                  stage: "advanced",
+                  message: advancedProgressMessage || "Loading tours...",
+                  percent:
+                    typeof advancedProgressPercent === "number"
+                      ? advancedProgressPercent
+                      : 0,
+                }}
+              />
             </Box>
           )}
 

@@ -61,7 +61,7 @@ async function processArtistWithUpdates(artist, clientId) {
       artistUrl: artist.url,
       clientId: clientId
     });
-    
+
     sseManager.sendUpdate(clientId, 'start', `Starting search for ${artist.name}`, 5);
 
     // Step 1: Fetch MusicBrainz ID
@@ -70,11 +70,11 @@ async function processArtistWithUpdates(artist, clientId) {
       artistName: artist.name,
       artistUrl: artist.url
     });
-    
+
     const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
     const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
     const mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-    
+
     devLogger.log('musicbrainz', `MusicBrainz lookup completed`, {
       mbArtistName: mbArtistName,
       mbid: mbid,
@@ -103,7 +103,7 @@ async function processArtistWithUpdates(artist, clientId) {
       sseManager.sendUpdate(clientId, 'setlist_search', `Searching Setlist.fm for ${artist.name}`, 30);
       artistPage = await getArtistPageByName(artist);
     }
-    
+
     devLogger.log('setlist', `Setlist.fm query completed`, {
       hasResults: !!(artistPage?.setlist?.length),
       setlistCount: artistPage?.setlist?.length || 0
@@ -113,7 +113,7 @@ async function processArtistWithUpdates(artist, clientId) {
     sseManager.sendUpdate(clientId, 'tour_processing', 'Processing tour information', 45);
     const tourInfo = getTour(artistPage);
     const tourName = chooseTour(tourInfo, artist.name);
-    
+
     devLogger.log('setlist', `Tour information processed`, {
       tourName: tourName,
       availableTours: Object.keys(tourInfo || {}),
@@ -172,13 +172,13 @@ async function processArtistWithUpdates(artist, clientId) {
         progressData.progress
       );
     };
-    
+
     devLogger.log('spotify', `Starting Spotify track lookup`, {
       songCount: tourInfoOrdered.songsOrdered?.length || 0
     });
 
     const spotifySongsOrdered = await getSpotifySongInfo(tourInfoOrdered.songsOrdered, progressCallback);
-    
+
     devLogger.log('spotify', `Spotify track lookup completed`, {
       tracksFound: spotifySongsOrdered?.length || 0,
       tracksSearched: tourInfoOrdered.songsOrdered?.length || 0
@@ -190,7 +190,7 @@ async function processArtistWithUpdates(artist, clientId) {
       tourName: tourName,
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
-    
+
     devLogger.log('sse', `Live Shows search completed successfully`, {
       artistName: artist.name,
       tourName: tourName,
@@ -337,9 +337,9 @@ router.post('/artist_search_deezer', async (req, res) => {
   try {
     const search_query = req.body.artistName;
     devLogger.log('deezer', `Artist search initiated for: "${search_query}"`);
-    
+
     const searchResults = await searchDeezerArtists(search_query);
-    
+
     devLogger.log('deezer', `Found ${searchResults.length} results for "${search_query}"`, {
       results: searchResults.map(artist => ({
         id: artist.id,
@@ -349,7 +349,7 @@ router.post('/artist_search_deezer', async (req, res) => {
         hasImage: !!artist.image
       }))
     });
-    
+
     res.json(searchResults);
   } catch (error) {
     devLogger.error('deezer', 'Error in artist search', error);
@@ -516,16 +516,16 @@ router.post('/artist/:artistId/tours', async (req, res) => {
     const { artistId } = req.params;
     const artistName = decodeURIComponent(artistId);
     const { artist } = req.body;
-    
+
     // Validate that we have the artist object
     if (!artist || !artist.name || !artist.url) {
       console.error('Invalid artist data received:', { artist });
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Invalid artist data. Missing artist object with name and url.',
         received: artist
       });
     }
-    
+
     console.log('Processing tours request for artist:', {
       name: artist.name,
       id: artist.id,
@@ -533,23 +533,23 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       hasImage: !!artist.image,
       popularity: artist.popularity
     });
-    
+
     // Apply MusicBrainz validation to get the correct artist identity
     let mbid = null;
     let validatedArtistName = artistName;
-    
+
     try {
       console.log('Applying MusicBrainz validation for artist:', artistName, 'with URL:', artist.url);
-      
+
       const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
-      
+
       const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
       mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-      
+
       console.log('Extracted MusicBrainz data:', { mbArtistName, mbid });
-      
+
       const nameMatch = isArtistNameMatch(artistName, mbArtistName);
-      
+
       if (mbArtistName && nameMatch) {
         console.log(`MusicBrainz validation successful: "${artistName}" matches "${mbArtistName}"`);
         validatedArtistName = mbArtistName; // Use the canonical MusicBrainz name
@@ -561,44 +561,44 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       devLogger.error('musicbrainz', 'Error in MusicBrainz validation during advanced search', error);
       // Continue with original artist name if MusicBrainz fails
     }
-    
+
     console.log('Fetching all tours for:', validatedArtistName, 'with MBID:', mbid);
-    
+
     try {
       // Get Redis client from app locals
       const redisClient = req.app.locals.redisClient;
-      
+
       // Fetch all tours using the new API-based function with Redis caching
       const tours = await fetchAllToursFromAPI(validatedArtistName, mbid, null, redisClient);
-      
+
       console.log(`Found ${tours.length} tours for ${validatedArtistName}`);
-      
+
       if (tours.length === 0) {
-        return res.json({ 
-          tours: [], 
+        return res.json({
+          tours: [],
           message: 'No tours found for this artist',
           validatedArtistName: validatedArtistName
         });
       }
-      
-      return res.json({ 
+
+      return res.json({
         tours: tours,
         validatedArtistName: validatedArtistName,
         totalTours: tours.length
       });
-      
+
     } catch (error) {
       console.error('Error fetching tours from API:', error);
-      
-      return res.status(500).json({ 
+
+      return res.status(500).json({
         error: 'Failed to fetch tour data',
         message: 'Unable to retrieve tour information. Please try again later.'
       });
     }
-    
+
   } catch (error) {
     console.error('Error in /artist/:artistId/tours route:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Internal Server Error',
       message: 'An unexpected error occurred. Please try again later.'
     });
@@ -606,87 +606,7 @@ router.post('/artist/:artistId/tours', async (req, res) => {
 });
 
 /**
- * Endpoint: POST /artist/:artistId/tours_stream
- * Streams tours for a specific artist via SSE as they are discovered
- * 
- * @param {string} req.params.artistId - Artist name (URL decoded)
- * @param {Object} req.body.artist - Full artist object with name, id, url, etc.
- * @param {string} req.body.clientId - SSE client ID for connection management
- * @returns {EventStream} SSE stream with progressive tour updates
- */
-router.post('/artist/:artistId/tours_stream', async (req, res) => {
-  const { artistId } = req.params;
-  const artistName = decodeURIComponent(artistId);
-  const { artist, clientId } = req.body;
-  
-  if (!clientId) {
-    return res.status(400).json({ error: 'Client ID is required for SSE streaming' });
-  }
-  
-  // Validate artist data
-  if (!artist || !artist.name || !artist.url) {
-    sseManager.sendError(clientId, 'Invalid artist data. Missing artist object with name and url.', 400);
-    return res.status(400).json({ error: 'Invalid artist data' });
-  }
-  
-  console.log('Starting SSE tour stream for artist:', {
-    name: artist.name,
-    id: artist.id,
-    clientId: clientId
-  });
-  
-  // Process tours in background
-  processTourStreamWithUpdates(clientId, artistName, artist, req);
-  
-  // Return success immediately
-  res.json({ message: 'Tour streaming started', clientId });
-});
-
-/**
- * Background function to stream tour discoveries via SSE
- * Emits tours progressively as they are found with song data
- */
-async function processTourStreamWithUpdates(clientId, artistName, artist, req) {
-  try {
-    // Apply MusicBrainz validation
-    let mbid = null;
-    let validatedArtistName = artistName;
-    
-    sseManager.sendUpdate(clientId, 'artist_validation', 'Validating artist information...', 5);
-    
-    try {
-      const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
-      const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
-      mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-      
-      if (mbArtistName && isArtistNameMatch(artistName, mbArtistName)) {
-        validatedArtistName = mbArtistName;
-        sseManager.sendUpdate(clientId, 'artist_validated', `Artist validated: ${validatedArtistName}`, 10);
-      }
-    } catch (error) {
-      console.error('MusicBrainz validation error:', error.message);
-      // Continue with original name
-    }
-    
-    // Import the streaming version of tour fetching
-    const { fetchAllToursFromAPIStream } = require('../utils/tourExtractor');
-    
-    // Get Redis client from app locals
-    const redisClient = req.app.locals.redisClient;
-    
-    // Fetch tours with streaming updates and caching
-    await fetchAllToursFromAPIStream(validatedArtistName, mbid, clientId, redisClient);
-    
-    // Send completion
-    sseManager.completeProcess(clientId, { message: 'Tour discovery complete' });
-    
-  } catch (error) {
-    console.error('Error in processTourStreamWithUpdates:', error);
-    sseManager.sendError(clientId, 'Failed to fetch tour data. Please try again.', 500);
-  }
-}
-
-/**
+ * DEPRECATED use /advanced_with_updates instead
  * Endpoint: POST /artist/:artistId/tours
  * Fetches all tours for an artist (non-streaming version)
  * 
@@ -698,28 +618,28 @@ router.post('/artist/:artistId/tours', async (req, res) => {
   const { artistId } = req.params;
   const artistName = decodeURIComponent(artistId);
   const { artist } = req.body;
-  
+
   if (!artist) {
     return res.status(400).json({ error: 'Missing artist data' });
   }
-  
+
   console.log('Fetching tours for artist (non-SSE):', {
     name: artist.name,
     id: artist.id,
     url: artist.url
   });
-  
+
   try {
     // Fetch MusicBrainz ID for accurate matching
     let mbid = null;
     let validatedArtistName = artist.name;
-    
+
     if (artist.url && artist.url.includes('spotify.com')) {
       try {
         const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
         const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
         mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
-        
+
         if (isArtistNameMatch(artist.name, mbArtistName)) {
           validatedArtistName = mbArtistName || artist.name;
           console.log(`Using MusicBrainz validated name: ${validatedArtistName} (MBID: ${mbid})`);
@@ -728,13 +648,13 @@ router.post('/artist/:artistId/tours', async (req, res) => {
         console.log('MusicBrainz lookup failed, continuing with artist name only:', mbError.message);
       }
     }
-    
+
     // Get Redis client if available
     const redisClient = req.app.locals.redisClient;
-    
+
     // Fetch tours using the non-streaming version
     const tours = await fetchAllToursFromAPI(validatedArtistName, mbid, null, redisClient);
-    
+
     // Return the tours as JSON
     res.json({
       success: true,
@@ -742,15 +662,124 @@ router.post('/artist/:artistId/tours', async (req, res) => {
       artistName: validatedArtistName,
       mbid: mbid
     });
-    
+
   } catch (error) {
     console.error('Error fetching tours:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
       error: 'Failed to fetch tour data',
-      message: error.message 
+      message: error.message
     });
   }
 });
+
+/**
+ * Endpoint: POST /advanced_with_updates
+ * Advanced search that discovers all past tours with page-based SSE progress
+ *
+ * @param {Object} req.body.artist - Artist information object { name, id, url }
+ * @param {string} req.body.clientId - SSE client ID for sending updates
+ * @returns {202} Accepted with clientId, progress sent over SSE, final data on complete
+ */
+router.post('/advanced_with_updates', async (req, res) => {
+  const { artist, clientId } = req.body;
+
+  if (!clientId) {
+    return res.status(400).json({ error: 'Missing clientId parameter' });
+  }
+
+  if (!artist || !artist.name || !artist.url) {
+    sseManager.sendError(clientId, 'Invalid artist data. Missing artist object with name and url.', 400);
+    return res.status(400).json({ error: 'Invalid artist data' });
+  }
+
+  try {
+    // Start background processing and stream progress via SSE
+    processAdvancedWithUpdates(artist, clientId, req);
+
+    // Immediately acknowledge
+    return res.status(202).json({
+      message: 'Advanced search started',
+      clientId
+    });
+  } catch (error) {
+    console.error('Error setting up advanced processing:', error);
+    return res.status(500).json({ error: 'Failed to start advanced processing' });
+  }
+});
+
+/**
+ * Background processor for advanced tours search with SSE progress
+ * - Progress is computed by pages of artist setlists scanned
+ */
+async function processAdvancedWithUpdates(artist, clientId, req) {
+  try {
+    sseManager.sendUpdate(clientId, 'start', `Starting past tours search for ${artist.name}`, 5);
+
+    // Validate/resolve artist via MusicBrainz
+    sseManager.sendUpdate(clientId, 'artist_validation', 'Validating artist identity...', 10);
+
+    let mbid = null;
+    let validatedArtistName = artist.name;
+    try {
+      const mbInfo = await fetchMBIdFromSpotifyId(artist.url);
+      const mbArtistName = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.name;
+      mbid = mbInfo?.urls?.[0]?.["relation-list"]?.[0]?.relations?.[0]?.artist?.id;
+      if (mbArtistName && isArtistNameMatch(artist.name, mbArtistName)) {
+        validatedArtistName = mbArtistName;
+      }
+    } catch (mbError) {
+      console.log('MusicBrainz validation failed, continuing with provided name:', mbError.message);
+    }
+
+    // Prepare progress callback (page-based)
+    const progressCallback = ({ currentPage, totalPages }) => {
+      const total = Math.max(totalPages || 1, 1);
+      const percent = Math.min(85, Math.round(15 + (currentPage / total) * 70));
+      const msg = totalPages
+        ? `Processing tour page ${currentPage} of ${totalPages}...`
+        : `Processing tour page ${currentPage}...`;
+      sseManager.sendUpdate(clientId, 'page_progress', msg, percent, {
+        currentPage,
+        totalPages
+      });
+    };
+
+    // Fetch Redis client if available
+    const redisClient = req.app?.locals?.redisClient || null;
+
+    // Fetch all tours with streaming-like progress (but return final list at end)
+    const tours = await fetchAllToursFromAPI(
+      validatedArtistName,
+      mbid,
+      progressCallback,
+      redisClient
+    );
+
+    // Finalization + complete
+    sseManager.sendUpdate(
+      clientId,
+      'finalize',
+      `Found ${tours.length} tours. Finalizing...`,
+      95
+    );
+
+    sseManager.completeProcess(clientId, {
+      tours,
+      validatedArtistName,
+      totalTours: tours.length
+    });
+
+  } catch (error) {
+    console.error('Error in processAdvancedWithUpdates:', error);
+    if (error.response && error.response.status === 504) {
+      sseManager.sendError(clientId, 'Setlist.fm service is currently unavailable. Please try again later.', 504);
+    } else if (error.response) {
+      sseManager.sendError(clientId, error.response.data?.error || 'An error occurred while fetching tours.', error.response.status);
+    } else {
+      sseManager.sendError(clientId, 'Internal Server Error. Please try again later.', 500);
+    }
+  }
+}
 
 module.exports = router;
