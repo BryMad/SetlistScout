@@ -286,6 +286,8 @@ export default function UserInput() {
   };
 
   const renderArtistInput = () => {
+    const showPersistentOutline =
+      selectedArtist && tabIndex === 1 && !selectedTour;
     const {
       isOpen,
       getInputProps,
@@ -307,17 +309,25 @@ export default function UserInput() {
     });
 
     return (
-      <Box position="relative" width="100%">
+      <Box
+        position="relative"
+        width="100%"
+        borderRadius="xl"
+        boxShadow="none"
+        transition="box-shadow 0.2s ease"
+      >
         {/* Artist search input bar */}
         <Input
           placeholder="Search for an artist..."
           size="lg"
           variant="filled"
-          bg="gray.800"
+          bg={showPersistentOutline ? "gray.700" : "gray.800"}
           borderRadius="xl"
           disabled={loading || toursLoading}
           _hover={{ bg: "gray.700" }}
           _focus={{ bg: "gray.700", borderColor: "brand.400" }}
+          borderColor={showPersistentOutline ? "brand.400" : "transparent"}
+          boxShadow="none"
           transition="all 0.2s"
           position="relative"
           zIndex={1001}
@@ -414,6 +424,67 @@ export default function UserInput() {
             )
           )}
         </Box>
+        {selectedArtist && tabIndex === 1 && !selectedTour && (
+          <Box
+            position="absolute"
+            top="100%"
+            left="0"
+            right="0"
+            zIndex={999}
+            mt={-3}
+            bg="gray.800"
+            borderRadius="0 0 1rem 1rem"
+            overflow="hidden"
+            boxShadow="xl"
+            border="1px solid"
+            borderColor="gray.700"
+            borderTop="none"
+            pt={5}
+          >
+            {toursLoading && (
+              <Box textAlign="center" py={4} px={4}>
+                <ProgressIndicator
+                  isLoading={true}
+                  progress={{
+                    stage: "advanced",
+                    message: advancedProgressMessage || "Loading tours...",
+                    percent:
+                      typeof advancedProgressPercent === "number"
+                        ? advancedProgressPercent
+                        : 0,
+                  }}
+                />
+              </Box>
+            )}
+
+            {tours.length > 0 && (
+              <List spacing={0}>
+                {tours.map((tour) => (
+                  <ListItem
+                    key={tour.name + "_" + tour.year}
+                    px={4}
+                    py={3}
+                    _hover={{ backgroundColor: "gray.700" }}
+                    transition="background-color 0.2s"
+                    cursor="pointer"
+                    onClick={() => handleTourSelect(tour.name, tour)}
+                  >
+                    <Text>
+                      {tour.displayName || tour.name} - {tour.showCount} show
+                      {tour.showCount !== 1 ? "s" : ""}
+                    </Text>
+                  </ListItem>
+                ))}
+              </List>
+            )}
+
+            {!toursLoading && tours.length === 0 && (
+              <Box textAlign="center" py={4}>
+                <Text color="gray.400">No tours found for this artist</Text>
+              </Box>
+            )}
+          </Box>
+        )}
       </Box>
     );
   };
@@ -533,73 +604,7 @@ export default function UserInput() {
         </VStack>
       )}
 
-      {/* Tour dropdown - shown immediately after artist selection in Past Tours tab */}
-      {selectedArtist && tabIndex === 1 && !selectedTour && (
-        <Box
-          position="absolute"
-          zIndex="10"
-          bg="gray.800"
-          mt={2}
-          width="100%"
-          borderRadius="lg"
-          overflow="hidden"
-          boxShadow="xl"
-          border="1px solid"
-          borderColor="gray.700"
-        >
-          {/* Loading indicator - show when loading */}
-          {toursLoading && (
-            <Box textAlign="center" py={4} px={4}>
-              <ProgressIndicator
-                isLoading={true}
-                progress={{
-                  stage: "advanced",
-                  message: advancedProgressMessage || "Loading tours...",
-                  percent:
-                    typeof advancedProgressPercent === "number"
-                      ? advancedProgressPercent
-                      : 0,
-                }}
-              />
-            </Box>
-          )}
-
-          {/* Tours list - show when tours are available */}
-          {tours.length > 0 && (
-            <List spacing={0}>
-              {console.log(
-                "Rendering dropdown with",
-                tours.length,
-                "tours:",
-                tours.map((t) => t.name)
-              )}
-              {tours.map((tour) => (
-                <ListItem
-                  key={tour.name + "_" + tour.year}
-                  px={4}
-                  py={3}
-                  _hover={{ backgroundColor: "gray.700" }}
-                  transition="background-color 0.2s"
-                  cursor="pointer"
-                  onClick={() => handleTourSelect(tour.name, tour)}
-                >
-                  <Text>
-                    {tour.displayName || tour.name} - {tour.showCount} show
-                    {tour.showCount !== 1 ? "s" : ""}
-                  </Text>
-                </ListItem>
-              ))}
-            </List>
-          )}
-
-          {/* No tours message - show only when not loading and no tours found */}
-          {!toursLoading && tours.length === 0 && (
-            <Box textAlign="center" py={4}>
-              <Text color="gray.400">No tours found for this artist</Text>
-            </Box>
-          )}
-        </Box>
-      )}
+      {/* Tour dropdown moved inside the artist input container for proper anchoring */}
     </Box>
   );
 }
