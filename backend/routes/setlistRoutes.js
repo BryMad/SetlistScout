@@ -94,7 +94,22 @@ async function processArtistWithUpdates(artist, clientId) {
       });
       sseManager.sendUpdate(clientId, 'setlist_search', `Found exact match for ${artist.name} on MusicBrainz, getting setlist data`, 30);
       matched = true;
-      artistPage = await getArtistPageByMBID(mbid);
+      try {
+        artistPage = await getArtistPageByMBID(mbid);
+      } catch (err) {
+        if (err.response && err.response.status === 404 && err.config && err.config.url && err.config.url.includes('api.setlist.fm')) {
+          // Fallback to name-based search if MBID lookup returns 404 (no setlists found)
+          devLogger.log('setlist', `MBID lookup returned 404, falling back to name search`, {
+            artistName: artist.name,
+            mbid: mbid
+          });
+          sseManager.sendUpdate(clientId, 'setlist_search', `No setlists found by ID; searching by name...`, 30);
+          matched = false;
+          artistPage = await getArtistPageByName(artist);
+        } else {
+          throw err;
+        }
+      }
     } else {
       devLogger.log('setlist', `No exact match, searching by name`, {
         searchName: artist.name,
@@ -214,7 +229,12 @@ async function processArtistWithUpdates(artist, clientId) {
         sseManager.sendError(clientId, "Setlist.fm service is currently unavailable. Please try again later.", 504);
       }
     } else if (error.response) {
-      sseManager.sendError(clientId, error.response.data.error || "An error occurred while fetching setlists.", error.response.status);
+      // Provide clearer messaging for Setlist.fm 404s
+      if (error.config && error.config.url && error.config.url.includes('api.setlist.fm') && error.response.status === 404) {
+        sseManager.sendError(clientId, "No setlists found for this artist on Setlist.fm.", 404);
+      } else {
+        sseManager.sendError(clientId, error.response.data?.error || error.response.data?.message || "An error occurred while fetching setlists.", error.response.status);
+      }
     } else {
       sseManager.sendError(clientId, "Internal Server Error. Please try again later.", 500);
     }

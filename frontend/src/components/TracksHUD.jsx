@@ -93,7 +93,7 @@ export default function TracksHUD() {
               fontSize="sm"
               textAlign="left"
             >
-              Track lookup and playlist creation powered by:
+              Artist search, track lookup, and playlist creation powered by:
             </Text>
           </Flex>
           <Flex>
