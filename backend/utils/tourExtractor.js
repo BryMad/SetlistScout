@@ -29,7 +29,7 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
       return cachedTours;
     }
   }
-  const tours = new Map(); // Use Map to track unique tours
+  const tours = new Map(); // Use Map to track unique tours by name (aggregate across years)
   const SETLIST_API_KEY = process.env.SETLIST_API_KEY;
 
   if (!SETLIST_API_KEY) {
@@ -89,32 +89,56 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
 
           if (setlist.tour && setlist.tour.name) {
             const tourName = setlist.tour.name;
-            const year = setlist.eventDate ? new Date(setlist.eventDate.split('-').reverse().join('-')).getFullYear() : null;
+            const eventDate = setlist.eventDate; // format DD-MM-YYYY
 
-            // Create unique key for tour+year combination
-            const tourKey = `${tourName}_${year || 'unknown'}`;
+            // Parse to comparable components
+            let year = null;
+            let dateStamp = null; // YYYYMMDD numeric for comparison
+            if (eventDate) {
+              const parts = eventDate.split('-');
+              if (parts.length === 3) {
+                const [dd, mm, yyyy] = parts;
+                year = parseInt(yyyy, 10);
+                dateStamp = parseInt(`${yyyy}${mm}${dd}`, 10);
+              }
+            }
 
-            if (!tours.has(tourKey)) {
-              tours.set(tourKey, {
+            // Use tour name as unique key (aggregate across years)
+            if (!tours.has(tourName)) {
+              tours.set(tourName, {
                 name: tourName,
-                year: year,
                 showCount: 0,
-                firstDate: setlist.eventDate,
-                lastDate: setlist.eventDate
+                firstDate: eventDate || null,
+                lastDate: eventDate || null,
+                firstYear: year || null,
+                lastYear: year || null,
+                _firstStamp: dateStamp, // internal comparison helpers
+                _lastStamp: dateStamp
               });
             }
 
             // Update tour info
-            const tour = tours.get(tourKey);
+            const tour = tours.get(tourName);
             tour.showCount++;
 
-            // Update date range
-            if (setlist.eventDate) {
-              if (setlist.eventDate < tour.firstDate) {
-                tour.firstDate = setlist.eventDate;
+            if (dateStamp !== null) {
+              // Initialize stamps if missing
+              if (tour._firstStamp === null || typeof tour._firstStamp === 'undefined') {
+                tour._firstStamp = dateStamp;
               }
-              if (setlist.eventDate > tour.lastDate) {
-                tour.lastDate = setlist.eventDate;
+              if (tour._lastStamp === null || typeof tour._lastStamp === 'undefined') {
+                tour._lastStamp = dateStamp;
+              }
+
+              if (dateStamp < tour._firstStamp) {
+                tour._firstStamp = dateStamp;
+                tour.firstDate = eventDate;
+                tour.firstYear = year;
+              }
+              if (dateStamp > tour._lastStamp) {
+                tour._lastStamp = dateStamp;
+                tour.lastDate = eventDate;
+                tour.lastYear = year;
               }
             }
           }
@@ -137,30 +161,7 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
     // Convert Map to sorted array and format for display
     const tourArray = Array.from(tours.values())
       .filter(tour => tour.name && !isInvalidTourName(tour.name))
-      .map(tour => {
-        // Format tour for display (similar to streaming version)
-        let displayYear = '';
-        if (tour.firstDate && tour.lastDate) {
-          const firstYear = new Date(tour.firstDate.split('-').reverse().join('-')).getFullYear();
-          const lastYear = new Date(tour.lastDate.split('-').reverse().join('-')).getFullYear();
-          if (firstYear === lastYear) {
-            displayYear = firstYear.toString();
-          } else {
-            displayYear = `${firstYear}-${lastYear}`;
-          }
-        } else if (tour.year) {
-          displayYear = tour.year.toString();
-        }
-
-        return {
-          name: tour.name,
-          displayName: displayYear ? `${tour.name} (${displayYear})` : tour.name,
-          showCount: tour.showCount,
-          year: displayYear,
-          firstDate: tour.firstDate,
-          lastDate: tour.lastDate
-        };
-      })
+      .map(tour => formatTourForDisplay(tour))
       .sort((a, b) => {
         // Sort by year descending, then by show count
         const getFirstYear = (yearStr) => {

@@ -4,6 +4,7 @@
  */
 
 const CACHE_PREFIX = 'tours:';
+const CACHE_VERSION = 'v2'; // bump when cached schema/aggregation changes
 const DEFAULT_TTL = 7 * 24 * 60 * 60; // 7 days in seconds (reasonable for tour data that doesn't change frequently)
 
 /**
@@ -14,7 +15,7 @@ const DEFAULT_TTL = 7 * 24 * 60 * 60; // 7 days in seconds (reasonable for tour 
  */
 function generateCacheKey(artistName, mbid = null) {
   const baseKey = mbid || artistName.toLowerCase().replace(/\s+/g, '_');
-  return `${CACHE_PREFIX}${baseKey}`;
+  return `${CACHE_PREFIX}${CACHE_VERSION}:${baseKey}`;
 }
 
 /**
@@ -28,12 +29,12 @@ async function getCachedTours(redisClient, artistName, mbid = null) {
   try {
     const cacheKey = generateCacheKey(artistName, mbid);
     const cachedData = await redisClient.get(cacheKey);
-    
+
     if (cachedData) {
       console.log(`Cache hit for artist tours: ${artistName} (${mbid || 'no mbid'})`);
       return JSON.parse(cachedData);
     }
-    
+
     console.log(`Cache miss for artist tours: ${artistName} (${mbid || 'no mbid'})`);
     return null;
   } catch (error) {
@@ -55,10 +56,10 @@ async function cacheTours(redisClient, artistName, mbid = null, tours, ttl = DEF
   try {
     const cacheKey = generateCacheKey(artistName, mbid);
     const dataToCache = JSON.stringify(tours);
-    
+
     // Store with expiration (Redis v4 syntax)
     await redisClient.setEx(cacheKey, ttl, dataToCache);
-    
+
     console.log(`Cached tour data for ${artistName} (${mbid || 'no mbid'}) with TTL ${ttl}s`);
     return true;
   } catch (error) {
@@ -78,7 +79,7 @@ async function invalidateTourCache(redisClient, artistName, mbid = null) {
   try {
     const cacheKey = generateCacheKey(artistName, mbid);
     const result = await redisClient.del(cacheKey);
-    
+
     if (result === 1) {
       console.log(`Invalidated cache for ${artistName} (${mbid || 'no mbid'})`);
       return true;
