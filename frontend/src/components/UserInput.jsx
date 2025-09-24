@@ -532,7 +532,7 @@ export default function UserInput() {
               minW="auto"
               w="auto"
             >
-              Basic Search
+              Most Recent Tour
             </Tab>
             <Tab
               _selected={{
