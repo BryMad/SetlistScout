@@ -294,35 +294,29 @@ export default function Track({ item, tourData }) {
             {getLikelihoodText()}
           </Badge>
 
-          <Text 
-            fontSize="xs" 
-            color={mutedColor} 
-            mb={1}
-            textAlign="right"
-          >
+          <Text fontSize="xs" color={mutedColor} mb={1} textAlign="right">
             {getDisplayCount()} of {tourData.totalShows} shows
           </Text>
 
-          {/* Spotify Button - consistent size across all screen sizes */}
-          {item.uri && (
-            <Button
-              as="a"
-              href={getSpotifyLink(item.uri)}
-              size="xs"
-              variant="spotify"
-              width="auto"
-              maxW="120px"
-              height="24px"
-              mt={1}
-              fontWeight="medium"
-              fontSize="xs"
-              target="_blank"
-              rel="noopener noreferrer"
-              alignSelf="flex-end"
-            >
-              OPEN SPOTIFY
-            </Button>
-          )}
+          {/* Spotify Button - consistent size for both states */}
+          <Button
+            as={item.uri ? "a" : "button"}
+            href={item.uri ? getSpotifyLink(item.uri) : undefined}
+            size="xs"
+            variant={item.uri ? "spotify" : "outline"}
+            width="110px"
+            height="24px"
+            mt={1}
+            fontWeight="medium"
+            fontSize="xs"
+            target={item.uri ? "_blank" : undefined}
+            rel={item.uri ? "noopener noreferrer" : undefined}
+            alignSelf="flex-end"
+            isDisabled={!item.uri}
+            opacity={item.uri ? 1 : 0.6}
+          >
+            {item.uri ? "OPEN SPOTIFY" : "NO MATCH"}
+          </Button>
         </Flex>
       </MotionFlex>
     </MotionFlex>
