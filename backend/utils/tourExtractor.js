@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Bottleneck = require('bottleneck');
+const { axiosRequestWithRetry } = require('./httpRetry');
 const { getCachedTours, cacheTours } = require('./tourCacheManager');
 
 // Rate limiter for Setlist.fm API (16 requests per second with burst control)
@@ -61,11 +62,11 @@ async function fetchAllToursFromAPI(artistName, mbid = null, onProgress = null, 
         console.log(`Fetching page ${page}/${totalPages || '?'} for ${artistName}`);
 
         try {
-          return await axios.get(url, {
+          return await axiosRequestWithRetry(() => axios.get(url, {
             params: requestParams,
             headers,
             timeout: 30000
-          });
+          }));
         } catch (apiError) {
           console.error(`API request failed for ${artistName} page ${page}:`, apiError.message);
           throw apiError;
@@ -295,11 +296,11 @@ async function fetchAllToursFromAPIStream(artistName, mbid = null, clientId, red
         sseManager.sendUpdate(clientId, 'page_progress', progressMessage, Math.min(progress, 85));
 
         try {
-          return await axios.get(url, {
+          return await axiosRequestWithRetry(() => axios.get(url, {
             params: requestParams,
             headers,
             timeout: 30000
-          });
+          }));
         } catch (apiError) {
           console.error(`API request failed for ${artistName} page ${page}:`, apiError.message);
           throw apiError;

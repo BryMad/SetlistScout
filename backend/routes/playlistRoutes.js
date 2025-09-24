@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const Bottleneck = require('bottleneck');
+const { axiosWithRetry } = require('../utils/httpRetry');
 const ensureAuthenticated = require('../middleware/authMiddleware');
 
 // Rate limiter for Spotify API calls (extended quota mode)
@@ -10,36 +11,6 @@ const spotifyLimiter = new Bottleneck({
   maxConcurrent: 5,                 // Max 5 concurrent across all users
 });
 
-/**
- * Introduces a delay between API calls
- * @param {number} ms Milliseconds to delay
- * @returns {Promise} Promise that resolves after the delay
- */
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-/**
- * Wrapper for axios calls with 429 retry logic
- * @param {Function} apiCall - Function that returns axios promise
- * @param {number} retries - Number of retry attempts (default 3)
- * @param {number} backoff - Initial backoff delay in ms (default 1000)
- */
-const axiosWithRetry = async (apiCall, retries = 3, backoff = 1000) => {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      return await apiCall();
-    } catch (error) {
-      // Check if the error is a 429 (Too Many Requests)
-      if (error.response && error.response.status === 429 && attempt < retries) {
-        console.warn(`429 error received, retrying attempt ${attempt + 1}`);
-        await delay(backoff);
-        backoff *= 2; // Exponential backoff
-        continue;
-      } else {
-        throw error;
-      }
-    }
-  }
-};
 
 /**
  * Processes tracks in batches for large playlists

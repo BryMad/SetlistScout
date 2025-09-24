@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require('../utils/logger');
+const { axiosGetWithRetry } = require('./httpRetry');
 const limiter = new Bottleneck({
   minTime: 63,                      // 16 requests per second (62.5ms rounded up)
   maxConcurrent: 5,                 // Stay under the 8 concurrent limit
@@ -18,32 +19,6 @@ const limiter = new Bottleneck({
  */
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/**
- * A helper function that wraps axios.get with retry logic.
- * If a 429 (Too Many Requests) error is encountered, it will wait (with exponential backoff) and retry.
- *
- * @param {string} url - The URL to request.
- * @param {object} config - The axios configuration object.
- * @param {number} retries - Number of retry attempts (default 3).
- * @param {number} backoff - Initial backoff delay in ms (default 1000).
- */
-const axiosGetWithRetry = async (url, config, retries = 3, backoff = 1000) => {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      return await axios.get(url, config);
-    } catch (error) {
-      // Check if the error is a 429 (Too Many Requests)
-      if (error.response && error.response.status === 429 && attempt < retries) {
-        logger.warn(`429 error received, retrying attempt ${attempt + 1} for URL: ${url}`);
-        await delay(backoff);
-        backoff *= 2; // Exponential backoff
-        continue;
-      } else {
-        throw error;
-      }
-    }
-  }
-};
 
 // Raw functions for the artist page requests.
 const getArtistPageByNameRaw = async (artist) => {

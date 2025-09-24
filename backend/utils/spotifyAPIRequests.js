@@ -4,41 +4,12 @@ const Bottleneck = require('bottleneck');
 const { v4: uuidv4 } = require('uuid');
 const logger = require('../utils/logger');
 const devLogger = require('../utils/devLogger');
+const { axiosWithRetry } = require('./httpRetry');
 const limiter = new Bottleneck({
   minTime: 100,         // 10 requests per second (extended quota mode)
   maxConcurrent: 8,     // Higher concurrent requests for song searches
 });
 
-/**
- * Introduces a delay between API calls
- * @param {number} ms Milliseconds to delay
- * @returns {Promise} Promise that resolves after the delay
- */
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-/**
- * Wrapper for axios calls with 429 retry logic
- * @param {Function} apiCall - Function that returns axios promise
- * @param {number} retries - Number of retry attempts (default 3)
- * @param {number} backoff - Initial backoff delay in ms (default 1000)
- */
-const axiosWithRetry = async (apiCall, retries = 3, backoff = 1000) => {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      return await apiCall();
-    } catch (error) {
-      // Check if the error is a 429 (Too Many Requests)
-      if (error.response && error.response.status === 429 && attempt < retries) {
-        logger.warn(`429 error received, retrying attempt ${attempt + 1} for Spotify API`);
-        await delay(backoff);
-        backoff *= 2; // Exponential backoff
-        continue;
-      } else {
-        throw error;
-      }
-    }
-  }
-};
 
 /**
  * Gets Spotify API access token
