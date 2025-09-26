@@ -1,4 +1,5 @@
 const axios = require('axios');
+const devLogger = require('../utils/devLogger');
 
 /**
  * Sleep helper
@@ -60,6 +61,39 @@ async function axiosRequestWithRetry(makeRequest, options = {}) {
       if (status === 429 && !isLastAttempt) {
         const retryAfter = parseRetryAfterMs(error);
         const delay = (retryAfter !== null ? retryAfter : backoff) + jitterMs();
+
+        // Derive context for logging
+        const url = error?.config?.url;
+        const method = (error?.config?.method || 'GET').toUpperCase();
+        const category = url?.includes('api.spotify.com')
+          ? 'spotify'
+          : url?.includes('api.setlist.fm')
+            ? 'setlist'
+            : url?.includes('musicbrainz')
+              ? 'musicbrainz'
+              : 'http';
+
+        // Extract common rate limit headers if present
+        const headers = error?.response?.headers || {};
+        const rateLimit = {
+          limit: headers['x-ratelimit-limit'] || headers['X-RateLimit-Limit'],
+          remaining: headers['x-ratelimit-remaining'] || headers['X-RateLimit-Remaining'],
+          reset: headers['x-ratelimit-reset'] || headers['X-RateLimit-Reset']
+        };
+
+        // Log the backoff details to dev log for observability
+        devLogger.log(category, '429 rate limit encountered. Backing off before retry', {
+          method,
+          url,
+          status,
+          attempt: attempt + 1,
+          remainingAttempts: retries - attempt,
+          delayMs: delay,
+          retryAfterMs: retryAfter ?? null,
+          nextBackoffMs: backoff * 2,
+          rateLimit
+        });
+
         await wait(delay);
         backoff *= 2;
         continue;
