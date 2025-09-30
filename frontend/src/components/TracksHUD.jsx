@@ -353,6 +353,26 @@ export default function TracksHUD() {
       .length;
   }, [showTracks]);
 
+  // Calculate tour years from showsList dates
+  const tourYears = React.useMemo(() => {
+    if (!showsList || showsList.length === 0) return null;
+
+    const years = showsList
+      .map((show) => {
+        if (!show.date) return null;
+        const [day, month, year] = show.date.split("-");
+        return parseInt(year, 10);
+      })
+      .filter((year) => year && !isNaN(year));
+
+    if (years.length === 0) return null;
+
+    const minYear = Math.min(...years);
+    const maxYear = Math.max(...years);
+
+    return minYear === maxYear ? minYear.toString() : `${minYear}-${maxYear}`;
+  }, [showsList]);
+
   // Clears prev playlist URL when a new search is initiated
   React.useEffect(() => {
     // Keep track of previous spotifyData length to detect new searches
@@ -514,28 +534,76 @@ export default function TracksHUD() {
               <TabPanels>
                 {/* Tab 1: All Tour Songs */}
                 <TabPanel px={0}>
-                  {/* Track heading */}
-                  <Box mb={6} width="full">
-                    {tourData.tourName === "No Tour Info" ? (
-                      <Text size="md" fontWeight="semibold">
-                        Tracks <Text as="strong">{tourData.bandName}</Text> has
-                        played in last {tourData.totalShows} shows:
-                      </Text>
-                    ) : (
-                      <Text as="h4" size="md">
-                        These are the tracks{" "}
-                        <Text as="strong">{tourData.bandName}</Text> has played
-                        on the "
-                        <Text as="strong">
-                          {tourData.tourName}
+                  {/* Tour Info Header */}
+                  <Box mb={6} p={4} bg="gray.700" borderRadius="md">
+                    <Text
+                      fontSize="lg"
+                      fontWeight="bold"
+                      color="brand.300"
+                      mb={2}
+                    >
+                      {tourData.bandName}
+                      {tourData.tourName !== "No Tour Info" && (
+                        <Text
+                          as="span"
+                          fontSize="lg"
+                          fontWeight="bold"
+                          color="brand.300"
+                          ml={2}
+                        >
+                          - {tourData.tourName}
                           {!tourData.tourName
                             .trim()
                             .toLowerCase()
-                            .endsWith("tour") && " Tour"}
+                            .includes("tour") && " Tour"}
                         </Text>
-                        ":
+                      )}
+                    </Text>
+                    <VStack
+                      align="flex-start"
+                      spacing={1}
+                      color="gray.500"
+                      fontSize="sm"
+                      mt={2}
+                    >
+                      <Text>
+                        <Text as="span" fontWeight="semibold" color="gray.400">
+                          total shows:
+                        </Text>{" "}
+                        {tourData.totalShows}
                       </Text>
-                    )}
+                      <Text>
+                        <Text as="span" fontWeight="semibold" color="gray.400">
+                          total songs:
+                        </Text>{" "}
+                        {spotifyData.length}
+                      </Text>
+                      <Text>
+                        <Text as="span" fontWeight="semibold" color="gray.400">
+                          avg songs per show:
+                        </Text>{" "}
+                        {tourData.totalShows > 0
+                          ? Math.round(
+                              spotifyData.reduce(
+                                (sum, track) => sum + track.count,
+                                0
+                              ) / tourData.totalShows
+                            )
+                          : 0}
+                      </Text>
+                      {tourYears && (
+                        <Text>
+                          <Text
+                            as="span"
+                            fontWeight="semibold"
+                            color="gray.400"
+                          >
+                            years:
+                          </Text>{" "}
+                          {tourYears}
+                        </Text>
+                      )}
+                    </VStack>
                   </Box>
 
                   {/* Login/Create Playlist Button */}
