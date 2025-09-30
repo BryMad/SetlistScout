@@ -303,3 +303,22 @@ export const fetchAdvancedToursWithUpdates = async (artist, progressCallback) =>
     eventSourceService.removeListener(listenerId);
   }
 };
+
+/**
+ * Fetch individual show data from setlist.fm for "pick a show" feature
+ * 
+ * @param {string} showId Setlist.fm show ID
+ * @returns {Promise<Object>} Promise resolving to show data with songs
+ */
+export const fetchIndividualShow = async (showId) => {
+  try {
+    const response = await axios.get(
+      `${server_url}/setlist/show/${showId}`,
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching show ${showId}:`, error);
+    throw new Error(error.response?.data?.error || 'Failed to fetch show data');
+  }
+};

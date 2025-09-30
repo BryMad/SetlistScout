@@ -10,22 +10,30 @@ import { server_url } from "../App";
  * 
  * @param {Object} params Parameters for playlist creation
  * @param {Array<string>} params.trackIds List of Spotify track URIs
- * @param {string} params.bandName Band name for the playlist title
- * @param {string} params.tourName Tour name for the playlist title
+ * @param {string} params.bandName Band name for the playlist title (used if no customName)
+ * @param {string} params.tourName Tour name for the playlist title (used if no customName)
+ * @param {string} params.customName Optional custom playlist name
  * @returns {Promise<Object>} Promise resolving to playlist creation result
  */
-export const createPlaylist = async ({ trackIds, bandName, tourName }) => {
+export const createPlaylist = async ({ trackIds, bandName, tourName, customName }) => {
   try {
     // Add timeout for large playlists as they'll take longer to process
     const timeout = trackIds.length > 100 ? 60000 : 30000; // 60 seconds for large playlists
 
+    const requestBody = {
+      track_ids: trackIds,
+      band: bandName,
+      tour: tourName,
+    };
+
+    // Add custom name if provided
+    if (customName) {
+      requestBody.customName = customName;
+    }
+
     const response = await axios.post(
       `${server_url}/playlist/create_playlist`,
-      {
-        track_ids: trackIds,
-        band: bandName,
-        tour: tourName,
-      },
+      requestBody,
       {
         headers: { "Content-Type": "application/json" },
         withCredentials: true, // Include cookies for session

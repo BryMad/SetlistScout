@@ -7,6 +7,7 @@ const {
   getAllTourSongs, getArtistPageByName, getArtistPageByMBID, delay,
   getAllTourSongsByMBID
 } = require("../utils/setlistAPIRequests.js");
+const { axiosGetWithRetry } = require("../utils/httpRetry.js");
 const { getSongTally, getTour, chooseTour } = require("../utils/setlistFormatData.js");
 const { getSpotifySongInfo, getAccessToken, searchArtist } = require("../utils/spotifyAPIRequests.js");
 const { fetchMBIdFromSpotifyId } = require("../utils/musicBrainzAPIRequests.js");
@@ -213,7 +214,11 @@ async function processArtistWithUpdates(artist, clientId) {
       songsFound: spotifySongsOrdered?.length || 0
     });
 
-    sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
+    sseManager.completeProcess(clientId, {
+      tourData,
+      spotifySongsOrdered,
+      showsList: tourInfoOrdered.showsList // NEW: Include shows metadata
+    });
 
     // All processing complete
 
@@ -307,7 +312,11 @@ router.post('/', async (req, res) => {
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
 
-    res.json({ tourData, spotifySongsOrdered });
+    res.json({
+      tourData,
+      spotifySongsOrdered,
+      showsList: tourInfoOrdered.showsList // NEW: Include shows metadata
+    });
   } catch (error) {
     console.error('Error in /setlist route:', error);
 
@@ -375,6 +384,90 @@ router.post('/artist_search_deezer', async (req, res) => {
     devLogger.error('deezer', 'Error in artist search', error);
     console.error('Error in /artist_search_deezer route:', error);
     res.status(500).json({ error: "Internal Server Error. Please try again later." });
+  }
+});
+
+/**
+ * Endpoint: GET /show/:id
+ * Fetches individual show data from setlist.fm for "pick a show" feature
+ * 
+ * @param {string} req.params.id - Setlist.fm show ID
+ * @returns {Object} Individual show song data
+ */
+router.get('/show/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    devLogger.log('setlist', `Fetching individual show data`, { showId: id });
+
+    // Fetch individual setlist from setlist.fm API
+    const url = `https://api.setlist.fm/rest/1.0/setlist/${id}`;
+    const response = await axiosGetWithRetry(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": process.env.SETLIST_API_KEY,
+      },
+    });
+
+    const setlistData = response.data;
+    const songs = [];
+
+    // Extract songs from the setlist (similar to getSongTally logic)
+    if (setlistData.sets && setlistData.sets.set) {
+      setlistData.sets.set.forEach((setSection) => {
+        if (setSection.song) {
+          setSection.song.forEach((song) => {
+            // Skip "Tape" songs (songs played before show starts)
+            if (song.tape === true) {
+              return;
+            }
+
+            // Handle covers vs original songs
+            const artist = song.cover ? song.cover.name : setlistData.artist.name;
+
+            songs.push({
+              name: song.name,
+              artist: artist,
+              isCover: !!song.cover
+            });
+          });
+        }
+      });
+    }
+
+    devLogger.log('setlist', `Individual show data fetched successfully`, {
+      showId: id,
+      songsFound: songs.length,
+      venue: setlistData.venue?.name,
+      date: setlistData.eventDate
+    });
+
+    res.json({
+      showId: id,
+      songs: songs,
+      showInfo: {
+        venue: setlistData.venue?.name,
+        city: setlistData.venue?.city?.name,
+        country: setlistData.venue?.city?.country?.name,
+        date: setlistData.eventDate,
+        artist: setlistData.artist?.name,
+        tour: setlistData.tour?.name
+      }
+    });
+
+  } catch (error) {
+    devLogger.error('setlist', 'Error fetching individual show data', {
+      showId: id,
+      error: error.message
+    });
+
+    console.error(`Error fetching show ${id}:`, error);
+
+    if (error.response && error.response.status === 404) {
+      return res.status(404).json({ error: 'Show not found' });
+    }
+
+    res.status(500).json({ error: 'Failed to fetch show data' });
   }
 });
 
@@ -502,7 +595,11 @@ async function processTourWithUpdates(artist, tourId, tourName, clientId) {
       totalShows: tourInfoOrdered.totalShowsWithData,
     };
 
-    sseManager.completeProcess(clientId, { tourData, spotifySongsOrdered });
+    sseManager.completeProcess(clientId, {
+      tourData,
+      spotifySongsOrdered,
+      showsList: tourInfoOrdered.showsList // NEW: Include shows metadata
+    });
 
   } catch (error) {
     console.error('Error in processTourWithUpdates:', error);

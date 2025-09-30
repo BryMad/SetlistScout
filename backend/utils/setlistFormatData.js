@@ -145,28 +145,41 @@ module.exports = {
       firstPageSetlistCount: allTourInfo[0]?.setlist?.length || 0,
       firstPageTotal: allTourInfo[0]?.total || 0
     });
-    
+
     const counts = new Map();
+    const showsList = []; // NEW: Collect show metadata for dropdown
     // const totalShows = allTourInfo[0].total;
     let totalShowsWithData = 0
     let emptySetlistCount = 0; // Counter for setlists with no data
 
     // log Artist
     const mainArtist = allTourInfo[0].setlist[0].artist.name;
-    
+
     devLogger.log('setlist', `Processing setlists for artist: ${mainArtist}`);
 
     allTourInfo.forEach((dataPage, pageIndex) => {
       // dataPage is a group of 20 shows from a specific artist's tour
       // dataPage.setlist is an array, each item is an individual show
       // "for each show...""
-      
+
       devLogger.log('setlist', `Processing data page ${pageIndex + 1}`, {
         setlistCount: dataPage.setlist?.length || 0,
         pageTotal: dataPage.total || 0
       });
-      
+
       dataPage.setlist.forEach((element, setlistIndex) => {
+        // NEW: Collect show metadata regardless of whether it has song data
+        if (element.id && element.eventDate) {
+          const showMetadata = {
+            id: element.id,
+            date: element.eventDate, // DD-MM-YYYY format
+            venue: element.venue?.name || 'Unknown Venue',
+            city: element.venue?.city?.name || 'Unknown City',
+            country: element.venue?.city?.country?.name || 'Unknown Country'
+          };
+          showsList.push(showMetadata);
+        }
+
         // "sets" are different sections of a show ("main," "encore," etc.)
         // element.sets.set is an array of every section
         // so "for each section of the show..."
@@ -235,21 +248,23 @@ module.exports = {
     // console.log("totalshows: ", totalShows);
     // console.log("emptySetlistCount: ", emptySetlistCount);
     // console.log("totalShows w data: ", totalShowsWithData);
-    
+
     devLogger.log('setlist', `Song tally processing completed`, {
       totalSongsFound: countsOrdered.length,
       totalShowsWithData: totalShowsWithData,
       emptySetlistCount: emptySetlistCount,
+      totalShows: showsList.length, // NEW: Log total shows including empty ones
       topSongs: countsOrdered.slice(0, 10).map(song => ({
         name: song.song,
         artist: song.artist,
         count: song.count
       }))
     });
-    
+
     return {
       songsOrdered: countsOrdered,
       totalShowsWithData: totalShowsWithData,
+      showsList: showsList, // NEW: Include shows metadata
     };;
 
   },

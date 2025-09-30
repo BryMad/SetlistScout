@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback } from "react";
+import { createContext, useState, useCallback, useRef, useMemo } from "react";
 import {
   fetchArtistTour,
   fetchSetlistById,
@@ -18,6 +18,8 @@ export const SetlistProvider = ({ children }) => {
   const [state, setState] = useState({
     spotifyData: [],
     tourData: {},
+    showsList: [], // NEW: List of shows for "pick a show" feature
+    selectedShowId: null, // NEW: Currently selected show ID
     loading: false,
     error: null,
     playlistNotification: {
@@ -30,6 +32,27 @@ export const SetlistProvider = ({ children }) => {
       percent: null,
     },
   });
+
+  // NEW: Ref to store Spotify track mapping for efficient lookups
+  const spotifyTrackMap = useRef(new Map());
+
+  /**
+   * NEW: Build Spotify track map from spotifyData for efficient lookups
+   *
+   * @param {Array} spotifyData Array of Spotify track data
+   */
+  const buildSpotifyTrackMap = useCallback((spotifyData) => {
+    const map = new Map();
+    if (Array.isArray(spotifyData)) {
+      spotifyData.forEach((track) => {
+        if (track.song && track.artist) {
+          const key = `${track.artist}|${track.song}`;
+          map.set(key, track);
+        }
+      });
+    }
+    spotifyTrackMap.current = map;
+  }, []);
 
   /**
    * Update progress information
@@ -74,10 +97,15 @@ export const SetlistProvider = ({ children }) => {
         const result = await fetchArtistTour(artist, updateProgress);
         console.log("Artist tour data:", result);
 
+        // Build Spotify track map for efficient lookups
+        buildSpotifyTrackMap(result.spotifySongsOrdered);
+
         setState((prev) => ({
           ...prev,
           spotifyData: result.spotifySongsOrdered,
           tourData: result.tourData,
+          showsList: result.showsList || [], // NEW: Store shows list
+          selectedShowId: null, // NEW: Reset selected show
           loading: false,
           progress: {
             stage: "complete",
@@ -221,17 +249,22 @@ export const SetlistProvider = ({ children }) => {
       }));
 
       try {
-        const { tourData, spotifyData } = await fetchSpecificTourWithUpdates(
+        const result = await fetchSpecificTourWithUpdates(
           artist,
           tourId,
           tourName,
           updateProgress
         );
 
+        // Build Spotify track map for efficient lookups
+        buildSpotifyTrackMap(result.spotifyData || result.spotifySongsOrdered);
+
         setState((prev) => ({
           ...prev,
-          spotifyData,
-          tourData,
+          spotifyData: result.spotifyData || result.spotifySongsOrdered,
+          tourData: result.tourData,
+          showsList: result.showsList || [], // NEW: Store shows list
+          selectedShowId: null, // NEW: Reset selected show
           loading: false,
           progress: {
             stage: "complete",
@@ -260,13 +293,30 @@ export const SetlistProvider = ({ children }) => {
   );
 
   /**
+   * NEW: Set the selected show ID for "pick a show" feature
+   *
+   * @param {string|null} showId Show ID to select, or null to clear selection
+   */
+  const setSelectedShow = useCallback((showId) => {
+    setState((prev) => ({
+      ...prev,
+      selectedShowId: showId,
+    }));
+  }, []);
+
+  /**
    * Reset to initial state and hide tour selection
    */
   const resetSearch = useCallback(() => {
+    // Clear the Spotify track map
+    spotifyTrackMap.current.clear();
+
     setState((prev) => ({
       ...prev,
       spotifyData: [],
       tourData: {},
+      showsList: [], // NEW: Clear shows list
+      selectedShowId: null, // NEW: Clear selected show
       loading: false,
       error: null,
       progress: {
@@ -275,6 +325,18 @@ export const SetlistProvider = ({ children }) => {
         percent: null,
       },
     }));
+  }, []);
+
+  /**
+   * NEW: Get Spotify track by song and artist using the track map
+   *
+   * @param {string} song Song name
+   * @param {string} artist Artist name
+   * @returns {Object|null} Spotify track data or null if not found
+   */
+  const getSpotifyTrack = useCallback((song, artist) => {
+    const key = `${artist}|${song}`;
+    return spotifyTrackMap.current.get(key) || null;
   }, []);
 
   // Value provided to consumers
@@ -289,6 +351,9 @@ export const SetlistProvider = ({ children }) => {
     resetSearch,
     searchForArtists: searchArtists,
     updateProgress,
+    setSelectedShow, // NEW: Function to set selected show
+    getSpotifyTrack, // NEW: Function to get Spotify track data
+    spotifyTrackMap: spotifyTrackMap.current, // NEW: Expose track map for debugging
   };
 
   return (

@@ -67,12 +67,13 @@ async function addTracksInBatches(playlistId, accessToken, trackIds) {
  * Endpoint: POST /create_playlist
  * Creates a Spotify playlist with selected tracks
  * - Handles large track lists using batch processing
- * - Creates playlist with tour-specific name
+ * - Creates playlist with tour-specific name or custom name
  * - Adds tracks to the playlist in batches of 100
  * 
  * @param {Array<string>} req.body.track_ids Spotify track URIs
- * @param {string} req.body.band Band name
- * @param {string} req.body.tour Tour name
+ * @param {string} req.body.band Band name (used if no customName provided)
+ * @param {string} req.body.tour Tour name (used if no customName provided)
+ * @param {string} req.body.customName Optional custom playlist name
  * @returns {Object} Success message and playlist ID
  */
 router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
@@ -83,14 +84,18 @@ router.post('/create_playlist', ensureAuthenticated, async (req, res) => {
     const track_ids = req.body.track_ids;
     const band = req.body.band;
     const tour = req.body.tour;
+    const customName = req.body.customName;
 
     console.log(`Creating playlist with ${track_ids.length} tracks`);
+
+    // Determine playlist name - use custom name if provided, otherwise default format
+    const playlistName = customName || `${band} - ${tour} songs`;
 
     // Create a new playlist
     const createPlaylistResponse = await spotifyLimiter.schedule(() => axiosWithRetry(() => axios.post(
       `https://api.spotify.com/v1/users/${user_id}/playlists`,
       {
-        name: `${band} - ${tour} songs`,
+        name: playlistName,
         description: 'Created by SetlistScout',
         public: true,
       },
