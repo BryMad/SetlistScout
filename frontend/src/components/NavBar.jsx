@@ -203,7 +203,13 @@ const MobileNavItem = ({ label, href, isActive }) => {
 
 const MobileNav = ({ location, isLoggedIn, handleLogin, logout }) => {
   return (
-    <Stack bg={"gray.800"} p={4} display={{ md: "none" }} borderTop="1px solid" borderColor="gray.700">
+    <Stack
+      bg={"gray.800"}
+      p={4}
+      display={{ md: "none" }}
+      borderTop="1px solid"
+      borderColor="gray.700"
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
           key={navItem.label}

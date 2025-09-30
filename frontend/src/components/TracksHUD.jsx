@@ -18,8 +18,12 @@ import {
   Tab,
   TabPanel,
   Select,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon, EmailIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, EmailIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
@@ -89,16 +93,15 @@ export default function TracksHUD() {
 
   /**
    * Format show display text for dropdown
-   * @param {Object} show Show object with date, venue, city, country
-   * @returns {string} Formatted display like "Sep 26, 2024 - Madison Square Garden, New York, US"
+   * @param {Object} show Show object with date, venue, city
+   * @returns {string} Formatted display like "Sep 26, 2024 - Madison Square Garden, New York"
    */
   const formatShowDisplay = (show) => {
     const date = formatShowDate(show.date);
     const venue = show.venue || "Unknown Venue";
     const city = show.city || "Unknown City";
-    const country = show.country || "Unknown Country";
 
-    return `${date} - ${venue}, ${city}, ${country}`;
+    return `${date} - ${venue}, ${city}`;
   };
 
   /**
@@ -123,12 +126,17 @@ export default function TracksHUD() {
     });
   }, [showsList]);
 
+  // Get the currently selected show for display
+  const selectedShow = React.useMemo(() => {
+    if (!selectedShowId || !sortedShows.length) return null;
+    return sortedShows.find((show) => show.id === selectedShowId);
+  }, [selectedShowId, sortedShows]);
+
   /**
-   * Handle show selection from dropdown
-   * @param {Event} event Select change event
+   * Handle show selection from menu
+   * @param {string} showId Selected show ID
    */
-  const handleShowSelection = (event) => {
-    const showId = event.target.value;
+  const handleShowSelection = (showId) => {
     setSelectedShow(showId || null);
   };
 
@@ -284,12 +292,46 @@ export default function TracksHUD() {
       setShowLoading(true);
       setShowError(null);
 
+      // Set up a timeout to handle hanging requests (30 seconds for individual show)
+      const timeoutId = setTimeout(() => {
+        setShowLoading(false);
+        setShowError("Request timed out"); // Set error state for inline retry button
+        setNotification({
+          message:
+            "Request timed out while loading show data. Please try selecting the show again.",
+          status: "error",
+        });
+      }, 30000); // 30 second timeout
+
       try {
         const data = await fetchIndividualShow(selectedShowId);
+        clearTimeout(timeoutId);
         setShowData(data);
       } catch (error) {
+        clearTimeout(timeoutId);
         console.error("Error fetching show:", error);
-        setShowError(error.message);
+
+        // Provide user-friendly error messages and display at top
+        let errorMessage = "Failed to load show data. Please try again.";
+        if (
+          error.message.includes("ENOTFOUND") ||
+          error.message.includes("network")
+        ) {
+          errorMessage =
+            "Network error. Please check your connection and try selecting the show again.";
+        } else if (error.message.includes("timeout")) {
+          errorMessage =
+            "Request timed out. Please try selecting the show again.";
+        } else if (error.message.includes("429")) {
+          errorMessage =
+            "Too many requests. Please wait a moment and try again.";
+        }
+
+        setNotification({
+          message: errorMessage,
+          status: "error",
+        });
+        setShowError("Error occurred"); // Set error state for inline retry button
         setShowData(null);
       } finally {
         setShowLoading(false);
@@ -297,7 +339,7 @@ export default function TracksHUD() {
     };
 
     fetchShow();
-  }, [selectedShowId]);
+  }, [selectedShowId, setNotification]);
 
   // Process show tracks with Spotify data
   const showTracks = React.useMemo(() => {
@@ -594,33 +636,61 @@ export default function TracksHUD() {
                 <TabPanel px={0}>
                   {/* Show Selection Dropdown */}
                   <Box mb={6} width="full" maxW="600px" mx="auto">
-                    <Select
-                      placeholder={
-                        hasShows
+                    <Menu>
+                      <MenuButton
+                        as={Button}
+                        rightIcon={<ChevronDownIcon />}
+                        width="full"
+                        textAlign="left"
+                        justifyContent="space-between"
+                        bg="gray.800"
+                        color="gray.100"
+                        borderColor="gray.600"
+                        border="1px solid"
+                        _hover={{
+                          borderColor: "gray.500",
+                          bg: "gray.700",
+                        }}
+                        _active={{
+                          borderColor: "brand.300",
+                          bg: "gray.800",
+                        }}
+                        _focus={{
+                          borderColor: "brand.300",
+                          boxShadow: "0 0 0 1px var(--chakra-colors-brand-300)",
+                        }}
+                        isDisabled={!hasShows}
+                        fontWeight="normal"
+                        fontSize="md"
+                        h="40px"
+                      >
+                        {selectedShow
+                          ? formatShowDisplay(selectedShow)
+                          : hasShows
                           ? `Select a show (${sortedShows.length} available)`
-                          : "No shows available"
-                      }
-                      value={selectedShowId || ""}
-                      onChange={handleShowSelection}
-                      isDisabled={!hasShows}
-                      bg="gray.700"
-                      borderColor="gray.600"
-                      _hover={{ borderColor: "gray.500" }}
-                      _focus={{
-                        borderColor: "brand.300",
-                        boxShadow: "0 0 0 1px var(--chakra-colors-brand-300)",
-                      }}
-                    >
-                      {sortedShows.map((show) => (
-                        <option
-                          key={show.id}
-                          value={show.id}
-                          style={{ backgroundColor: "#2D3748", color: "white" }}
-                        >
-                          {formatShowDisplay(show)}
-                        </option>
-                      ))}
-                    </Select>
+                          : "No shows available"}
+                      </MenuButton>
+                      <MenuList
+                        bg="gray.800"
+                        borderColor="gray.600"
+                        maxH="300px"
+                        overflowY="auto"
+                      >
+                        {sortedShows.map((show) => (
+                          <MenuItem
+                            key={show.id}
+                            onClick={() => handleShowSelection(show.id)}
+                            bg="gray.800"
+                            color="gray.100"
+                            _hover={{ bg: "gray.700" }}
+                            _focus={{ bg: "gray.700" }}
+                            fontSize="sm"
+                          >
+                            {formatShowDisplay(show)}
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </Menu>
                   </Box>
 
                   {/* Selected Show Tracks */}
@@ -635,12 +705,17 @@ export default function TracksHUD() {
 
                       {showError && (
                         <Box textAlign="center" py={8}>
-                          <Text color="red.400" mb={2}>
-                            Error loading show data
+                          <Text color="gray.400" mb={3}>
+                            Unable to load show data
                           </Text>
-                          <Text color="gray.500" fontSize="sm">
-                            {showError}
-                          </Text>
+                          <Button
+                            size="sm"
+                            colorScheme="brand"
+                            variant="outline"
+                            onClick={() => handleShowSelection(selectedShowId)}
+                          >
+                            Try Again
+                          </Button>
                         </Box>
                       )}
 
@@ -655,18 +730,21 @@ export default function TracksHUD() {
                               mb={2}
                             >
                               {formatShowDate(showData.showInfo?.date)} -{" "}
-                              {showData.showInfo?.venue}
-                            </Text>
-                            <Text color="gray.400" fontSize="sm">
-                              {showData.showInfo?.city},{" "}
-                              {showData.showInfo?.country}
+                              <Text
+                                as="span"
+                                color="gray.400"
+                                fontWeight="semibold"
+                              >
+                                {showData.showInfo?.venue},{" "}
+                                {showData.showInfo?.city}
+                              </Text>
                             </Text>
                             <Text color="gray.500" fontSize="sm" mt={1}>
                               {showTracks.length} songs played
                               {availableForPlaylist < showTracks.length && (
                                 <Text as="span" color="yellow.400" ml={2}>
                                   ({showTracks.length - availableForPlaylist}{" "}
-                                  not on Spotify)
+                                  not found on Spotify)
                                 </Text>
                               )}
                             </Text>
