@@ -239,7 +239,11 @@ export const fetchSpecificTourWithUpdates = async (artist, tourId, tourName, pro
     eventSourceService.removeListener(listenerId);
 
     console.log('Tour search completed successfully:', result);
-    return { tourData: result.tourData, spotifyData: result.spotifySongsOrdered };
+    return {
+      tourData: result.tourData,
+      spotifyData: result.spotifySongsOrdered,
+      showsList: result.showsList
+    };
   } catch (error) {
     console.error("Error fetching specific tour with updates:", error);
     throw error;

@@ -263,8 +263,8 @@ export const SetlistProvider = ({ children }) => {
           ...prev,
           spotifyData: result.spotifyData || result.spotifySongsOrdered,
           tourData: result.tourData,
-          showsList: result.showsList || [], // NEW: Store shows list
-          selectedShowId: null, // NEW: Reset selected show
+          showsList: result.showsList || [],
+          selectedShowId: null,
           loading: false,
           progress: {
             stage: "complete",
