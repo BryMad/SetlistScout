@@ -1,38 +1,29 @@
 import React, { useState } from "react";
 import {
-  Button,
-  Flex,
   Box,
-  Divider,
-  Heading,
   Image,
   Text,
   Link,
-  Icon,
   VStack,
-  Spinner,
-  Fade,
+  Flex,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
-  Select,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon, EmailIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import Track from "./Track";
 import AlertMessage from "./AlertMessage";
 import ProgressIndicator from "./ProgressIndicator";
+import TracksHUDTourHeader from "./TracksHUDTourHeader";
+import TracksHUDPlaylistControls from "./TracksHUDPlaylistControls";
+import TracksHUDShowSelector from "./TracksHUDShowSelector";
+import TracksHUDShowDisplay from "./TracksHUDShowDisplay";
+import TracksHUDTracksList from "./TracksHUDTracksList";
 import { useAuth } from "../hooks/useAuth";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
-import { getFromLocalStorage } from "../utils/storage";
-import { fetchIndividualShow } from "../api/setlistService";
-import { createPlaylist as createPlaylistAPI } from "../api/playlistService";
+import useTracksHud from "../hooks/useTracksHud";
+import { formatShowDate, formatShowDisplay } from "../utils/tracksHudHelpers";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
 
 export default function TracksHUD() {
@@ -52,361 +43,45 @@ export default function TracksHUD() {
     progress,
   } = useSetlist();
 
-  // Tab state for switching between "All Songs" and "Pick a Show"
-  const [tabIndex, setTabIndex] = useState(0);
+  // Comprehensive TracksHUD business logic
+  const tracksHudState = useTracksHud({
+    selectedShowId,
+    setSelectedShow,
+    setNotification,
+    showsList,
+    spotifyData,
+    getSpotifyTrack,
+    logout,
+    playlistUrl,
+    clearPlaylistUrl,
+    login,
+    tourData,
+  });
 
-  // State for individual show data
-  const [showData, setShowData] = useState(null);
-  const [showLoading, setShowLoading] = useState(false);
-  const [showError, setShowError] = useState(null);
-
-  // State for show playlist creation (separate from tour playlist)
-  const [showPlaylistUrl, setShowPlaylistUrl] = useState(null);
-  const [isCreatingShowPlaylist, setIsCreatingShowPlaylist] = useState(false);
+  const {
+    tabIndex,
+    setTabIndex,
+    sortedShows,
+    selectedShow,
+    handleShowSelection,
+    tourYears,
+    showData,
+    showLoading,
+    showError,
+    showTracks,
+    availableForPlaylist,
+    showPlaylistUrl,
+    isCreatingShowPlaylist,
+    createShowPlaylist: handleCreateShowPlaylist,
+    clearShowPlaylistUrl,
+    handleLoginClick,
+  } = tracksHudState;
 
   // Determine if we should show the tracks section
   const shouldShowTracks = spotifyData?.length > 0 && !loading;
 
   // Check if we have shows available for "Pick a Show" feature
   const hasShows = showsList && showsList.length > 0;
-
-  /**
-   * Format date from DD-MM-YYYY to readable format
-   * @param {string} dateStr Date in DD-MM-YYYY format
-   * @returns {string} Formatted date like "Sep 26, 2024"
-   */
-  const formatShowDate = (dateStr) => {
-    if (!dateStr) return "Unknown Date";
-
-    try {
-      const [day, month, year] = dateStr.split("-");
-      const date = new Date(year, month - 1, day); // month is 0-indexed
-      return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-    } catch (error) {
-      return dateStr; // Return original if parsing fails
-    }
-  };
-
-  /**
-   * Format show display text for dropdown
-   * @param {Object} show Show object with date, venue, city
-   * @returns {string} Formatted display like "Sep 26, 2024 - Madison Square Garden, New York"
-   */
-  const formatShowDisplay = (show) => {
-    const date = formatShowDate(show.date);
-    const venue = show.venue || "Unknown Venue";
-    const city = show.city || "Unknown City";
-
-    return `${date} - ${venue}, ${city}`;
-  };
-
-  /**
-   * Get sorted shows list (newest first)
-   * @returns {Array} Sorted shows array
-   */
-  const sortedShows = React.useMemo(() => {
-    if (!showsList || showsList.length === 0) return [];
-
-    return [...showsList].sort((a, b) => {
-      // Convert DD-MM-YYYY to comparable format
-      const parseDate = (dateStr) => {
-        if (!dateStr) return new Date(0);
-        const [day, month, year] = dateStr.split("-");
-        return new Date(year, month - 1, day);
-      };
-
-      const dateA = parseDate(a.date);
-      const dateB = parseDate(b.date);
-
-      return dateB - dateA; // Newest first
-    });
-  }, [showsList]);
-
-  // Get the currently selected show for display
-  const selectedShow = React.useMemo(() => {
-    if (!selectedShowId || !sortedShows.length) return null;
-    return sortedShows.find((show) => show.id === selectedShowId);
-  }, [selectedShowId, sortedShows]);
-
-  /**
-   * Handle show selection from menu
-   * @param {string} showId Selected show ID
-   */
-  const handleShowSelection = (showId) => {
-    setSelectedShow(showId || null);
-  };
-
-  /**
-   * Create a playlist specifically for the selected show
-   * Uses show-specific naming and track order
-   */
-  const handleCreateShowPlaylist = async () => {
-    if (!showData || !showTracks.length) return;
-
-    // Filter tracks to only include those with Spotify URIs (exclude songs not found on Spotify)
-    const tracksWithSpotify = showTracks.filter(
-      (track) => track.uri && !track.spotifyError
-    );
-
-    if (tracksWithSpotify.length === 0) {
-      setNotification({
-        message: "No valid tracks to add to playlist",
-        status: "warning",
-      });
-      return;
-    }
-
-    // Set creating playlist state to true
-    setIsCreatingShowPlaylist(true);
-
-    try {
-      // Extract track URIs for playlist creation
-      const trackIds = tracksWithSpotify.map((track) => track.uri);
-
-      // Format date for playlist name: MM/DD/YYYY format as requested
-      const formatDateForPlaylist = (dateStr) => {
-        if (!dateStr) return "Unknown Date";
-        try {
-          const [day, month, year] = dateStr.split("-");
-          return `${month.padStart(2, "0")}/${day.padStart(2, "0")}/${year}`;
-        } catch (error) {
-          return dateStr;
-        }
-      };
-
-      // Generate show-specific playlist name: "Artist: Date (MM/DD/YYYY format) - Venue Name"
-      const playlistName = `${
-        showData.showInfo?.artist || tourData.bandName
-      }: ${formatDateForPlaylist(showData.showInfo?.date)} - ${
-        showData.showInfo?.venue || "Unknown Venue"
-      }`;
-
-      // Create the playlist using the playlist service directly
-      const result = await createPlaylistAPI({
-        trackIds,
-        bandName: showData.showInfo?.artist || tourData.bandName,
-        tourName: "Show Playlist", // Fallback tour name for show playlists
-        customName: playlistName,
-      });
-
-      if (result.success) {
-        // Store the playlist URL if it was returned
-        if (result.playlistUrl) {
-          setShowPlaylistUrl(result.playlistUrl);
-        }
-
-        setNotification({
-          message: result.message,
-          status: "success",
-        });
-      } else {
-        // Handle auth errors by logging out
-        if (result.authError) {
-          logout();
-        }
-
-        setNotification({
-          message: result.message,
-          status: "error",
-        });
-      }
-    } catch (error) {
-      console.error("Error creating show playlist:", error);
-      setNotification({
-        message: "Failed to create show playlist. Please try again.",
-        status: "error",
-      });
-    } finally {
-      // Always set creating playlist state to false when done
-      setIsCreatingShowPlaylist(false);
-    }
-  };
-
-  /**
-   * Process show songs with Spotify data from track map
-   * @param {Array} showSongs Array of songs from individual show
-   * @returns {Array} Array of songs with Spotify data
-   */
-  const processShowTracks = React.useCallback(
-    (showSongs) => {
-      if (!showSongs || !Array.isArray(showSongs)) return [];
-
-      return showSongs.map((song, index) => {
-        const spotifyTrack = getSpotifyTrack(song.name, song.artist);
-
-        if (spotifyTrack) {
-          // Return track with original show order
-          return {
-            ...spotifyTrack,
-            showOrder: index + 1, // Track position in show
-            isCover: song.isCover,
-          };
-        } else {
-          // Create placeholder for songs not found on Spotify
-          return {
-            id: `show-${index}`,
-            song: song.name,
-            artist: song.artist,
-            count: 1, // Always played once in this show
-            showOrder: index + 1,
-            isCover: song.isCover,
-            spotifyError: true,
-          };
-        }
-      });
-    },
-    [getSpotifyTrack]
-  );
-
-  // Reset tab to "All Tour Songs" when new data loads
-  React.useEffect(() => {
-    if (spotifyData?.length > 0) {
-      setTabIndex(0);
-    }
-  }, [spotifyData]);
-
-  // Reset selected show when switching to tab 2
-  React.useEffect(() => {
-    if (tabIndex === 1) {
-      setSelectedShow(null);
-    }
-  }, [tabIndex, setSelectedShow]);
-
-  // Fetch individual show data when a show is selected
-  React.useEffect(() => {
-    if (!selectedShowId) {
-      setShowData(null);
-      setShowError(null);
-      setShowPlaylistUrl(null); // Clear previous show playlist URL
-      return;
-    }
-
-    // Clear previous show playlist URL when selecting a new show
-    setShowPlaylistUrl(null);
-
-    const fetchShow = async () => {
-      setShowLoading(true);
-      setShowError(null);
-
-      // Set up a timeout to handle hanging requests (30 seconds for individual show)
-      const timeoutId = setTimeout(() => {
-        setShowLoading(false);
-        setShowError("Request timed out"); // Set error state for inline retry button
-        setNotification({
-          message:
-            "Request timed out while loading show data. Please try selecting the show again.",
-          status: "error",
-        });
-      }, 30000); // 30 second timeout
-
-      try {
-        const data = await fetchIndividualShow(selectedShowId);
-        clearTimeout(timeoutId);
-        setShowData(data);
-      } catch (error) {
-        clearTimeout(timeoutId);
-        console.error("Error fetching show:", error);
-
-        // Provide user-friendly error messages and display at top
-        let errorMessage = "Failed to load show data. Please try again.";
-        if (
-          error.message.includes("ENOTFOUND") ||
-          error.message.includes("network")
-        ) {
-          errorMessage =
-            "Network error. Please check your connection and try selecting the show again.";
-        } else if (error.message.includes("timeout")) {
-          errorMessage =
-            "Request timed out. Please try selecting the show again.";
-        } else if (error.message.includes("429")) {
-          errorMessage =
-            "Too many requests. Please wait a moment and try again.";
-        }
-
-        setNotification({
-          message: errorMessage,
-          status: "error",
-        });
-        setShowError("Error occurred"); // Set error state for inline retry button
-        setShowData(null);
-      } finally {
-        setShowLoading(false);
-      }
-    };
-
-    fetchShow();
-  }, [selectedShowId, setNotification]);
-
-  // Process show tracks with Spotify data
-  const showTracks = React.useMemo(() => {
-    if (!showData?.songs) return [];
-    return processShowTracks(showData.songs);
-  }, [showData?.songs, processShowTracks]);
-
-  // Count tracks that have Spotify data (can be added to playlist)
-  const availableForPlaylist = React.useMemo(() => {
-    return showTracks.filter((track) => track.uri && !track.spotifyError)
-      .length;
-  }, [showTracks]);
-
-  // Calculate tour years from showsList dates
-  const tourYears = React.useMemo(() => {
-    if (!showsList || showsList.length === 0) return null;
-
-    const years = showsList
-      .map((show) => {
-        if (!show.date) return null;
-        const [day, month, year] = show.date.split("-");
-        return parseInt(year, 10);
-      })
-      .filter((year) => year && !isNaN(year));
-
-    if (years.length === 0) return null;
-
-    const minYear = Math.min(...years);
-    const maxYear = Math.max(...years);
-
-    return minYear === maxYear ? minYear.toString() : `${minYear}-${maxYear}`;
-  }, [showsList]);
-
-  // Clears prev playlist URL when a new search is initiated
-  React.useEffect(() => {
-    // Keep track of previous spotifyData length to detect new searches
-    const handleNewSearch = () => {
-      if (playlistUrl) {
-        clearPlaylistUrl();
-      }
-    };
-    // Add an event listener to clear playlistUrl when a new search starts
-    window.addEventListener("new-search-started", handleNewSearch);
-    // Clean up the event listener
-    return () => {
-      window.removeEventListener("new-search-started", handleNewSearch);
-    };
-  }, [clearPlaylistUrl, playlistUrl]);
-
-  // Handle login button click
-  const handleLoginClick = () => {
-    // Check if user has already consented
-    const hasConsented = getFromLocalStorage("setlistScoutConsent");
-
-    if (hasConsented) {
-      // If they have consented, proceed with login
-      login({ spotifyData, tourData });
-    } else {
-      // We no longer need to open the consent modal here
-      // The app-level modal will handle this
-      // Just inform the user they need to accept terms first
-      setNotification({
-        message: "Please accept the Terms & Privacy Policy to continue",
-        status: "info",
-      });
-    }
-  };
 
   return (
     <Box width="full" maxW="100%">
@@ -448,512 +123,172 @@ export default function TracksHUD() {
         </VStack>
       )}
 
-      {/* Divider - Only shown when there are tracks to display */}
-      {showTracks && (
-        <Box width="full">
-          <Divider mb={6} mt={4} />
-        </Box>
-      )}
-
-      {loading ? (
+      {/* Loading State */}
+      {loading && (
         <Box width="full" mb={{ base: 3, md: 6 }}>
           <ProgressIndicator isLoading={loading} progress={progress} />
         </Box>
-      ) : (
-        shouldShowTracks && (
-          <Box width="full">
-            {/* Tabs for "All Songs" vs "Pick a Show" */}
-            <Tabs
-              index={tabIndex}
-              onChange={setTabIndex}
-              variant="unstyled"
-              mb={4}
-            >
-              <TabList justifyContent="center" gap={8}>
-                <Tab
-                  _selected={{
-                    color: "brand.300",
-                    _after: {
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      right: "0",
-                      height: "2px",
-                      bg: "brand.300",
-                    },
-                  }}
-                  _hover={{ color: "brand.400" }}
-                  fontWeight="medium"
-                  fontSize="sm"
-                  color="gray.400"
-                  pb={3}
-                  px={2}
-                  bg="transparent"
-                  border="none"
-                  borderRadius="0"
-                  transition="all 0.3s ease"
-                  position="relative"
-                  minW="auto"
-                  w="auto"
-                >
-                  All Tour Songs
-                </Tab>
-                <Tab
-                  _selected={{
-                    color: "brand.300",
-                    _after: {
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      right: "0",
-                      height: "2px",
-                      bg: "brand.300",
-                    },
-                  }}
-                  _hover={{ color: "brand.400" }}
-                  fontWeight="medium"
-                  fontSize="sm"
-                  color="gray.400"
-                  pb={3}
-                  px={2}
-                  bg="transparent"
-                  border="none"
-                  borderRadius="0"
-                  transition="all 0.3s ease"
-                  position="relative"
-                  minW="auto"
-                  w="auto"
-                  isDisabled={!hasShows}
-                >
-                  Pick a Show
-                </Tab>
-              </TabList>
+      )}
 
-              <TabPanels>
-                {/* Tab 1: All Tour Songs */}
-                <TabPanel px={0}>
-                  {/* Tour Info Header */}
-                  <Box mb={6} p={4} bg="gray.700" borderRadius="md">
-                    <Text
-                      fontSize="lg"
-                      fontWeight="bold"
-                      color="brand.300"
-                      mb={2}
+      {/* Main Tracks Interface */}
+      {shouldShowTracks && (
+        <Box width="full">
+          {/* Tabs for "All Songs" vs "Pick a Show" */}
+          <Tabs
+            index={tabIndex}
+            onChange={setTabIndex}
+            variant="unstyled"
+            mb={4}
+          >
+            <TabList justifyContent="center" gap={8}>
+              <Tab
+                _selected={{
+                  color: "brand.300",
+                  _after: {
+                    content: '""',
+                    position: "absolute",
+                    bottom: "-2px",
+                    left: "0",
+                    right: "0",
+                    height: "2px",
+                    bg: "brand.300",
+                  },
+                }}
+                _hover={{ color: "brand.400" }}
+                fontWeight="medium"
+                fontSize="sm"
+                color="gray.400"
+                pb={3}
+                px={2}
+                bg="transparent"
+                border="none"
+                borderRadius="0"
+                transition="all 0.3s ease"
+                position="relative"
+                minW="auto"
+                w="auto"
+              >
+                All Tour Songs
+              </Tab>
+              <Tab
+                _selected={{
+                  color: "brand.300",
+                  _after: {
+                    content: '""',
+                    position: "absolute",
+                    bottom: "-2px",
+                    left: "0",
+                    right: "0",
+                    height: "2px",
+                    bg: "brand.300",
+                  },
+                }}
+                _hover={{ color: "brand.400" }}
+                fontWeight="medium"
+                fontSize="sm"
+                color="gray.400"
+                pb={3}
+                px={2}
+                bg="transparent"
+                border="none"
+                borderRadius="0"
+                transition="all 0.3s ease"
+                position="relative"
+                minW="auto"
+                w="auto"
+                isDisabled={!hasShows}
+              >
+                Pick a Show
+              </Tab>
+            </TabList>
+
+            <TabPanels>
+              {/* Tab 1: All Tour Songs */}
+              <TabPanel px={0}>
+                <TracksHUDTourHeader
+                  tourData={tourData}
+                  spotifyData={spotifyData}
+                  tourYears={tourYears}
+                />
+
+                <TracksHUDPlaylistControls
+                  isLoggedIn={isLoggedIn}
+                  onLogin={handleLoginClick}
+                  onCreatePlaylist={createPlaylist}
+                  isCreatingPlaylist={isCreatingPlaylist}
+                  playlistUrl={playlistUrl}
+                />
+
+                <TracksHUDTracksList tracks={spotifyData} tourData={tourData} />
+              </TabPanel>
+
+              {/* Tab 2: Pick a Show */}
+              <TabPanel px={0}>
+                <TracksHUDShowSelector
+                  shows={sortedShows}
+                  selectedShow={selectedShow}
+                  onShowSelect={handleShowSelection}
+                  formatShowDisplay={formatShowDisplay}
+                />
+
+                {/* Selected Show Tracks */}
+                {selectedShowId && (
+                  <Box width="full">
+                    <TracksHUDShowDisplay
+                      showData={showData}
+                      showLoading={showLoading}
+                      showError={showError}
+                      onRetry={() => handleShowSelection(selectedShowId)}
+                      formatShowDate={formatShowDate}
                     >
-                      {tourData.bandName}
-                      {tourData.tourName !== "No Tour Info" && (
-                        <Text
-                          as="span"
-                          fontSize="lg"
-                          fontWeight="bold"
-                          color="brand.300"
-                          ml={2}
-                        >
-                          - {tourData.tourName}
-                          {!tourData.tourName
-                            .trim()
-                            .toLowerCase()
-                            .includes("tour") && " Tour"}
+                      {showTracks.length} songs played
+                      {availableForPlaylist < showTracks.length && (
+                        <Text as="span" color="yellow.400" ml={2}>
+                          ({showTracks.length - availableForPlaylist} not found
+                          on Spotify)
                         </Text>
                       )}
-                    </Text>
-                    <VStack
-                      align="flex-start"
-                      spacing={0}
-                      color="gray.500"
-                      fontSize="sm"
-                      mt={2}
-                    >
-                      <Text>
-                        <Text as="span" fontWeight="semibold" color="gray.400">
-                          total shows:
-                        </Text>{" "}
-                        {tourData.totalShows}
-                      </Text>
-                      <Text>
-                        <Text as="span" fontWeight="semibold" color="gray.400">
-                          total songs:
-                        </Text>{" "}
-                        {spotifyData.length}
-                      </Text>
-                      <Text>
-                        <Text as="span" fontWeight="semibold" color="gray.400">
-                          avg songs per show:
-                        </Text>{" "}
-                        {tourData.totalShows > 0
-                          ? Math.round(
-                              spotifyData.reduce(
-                                (sum, track) => sum + track.count,
-                                0
-                              ) / tourData.totalShows
-                            )
-                          : 0}
-                      </Text>
-                      {tourYears && (
-                        <Text>
-                          <Text
-                            as="span"
-                            fontWeight="semibold"
-                            color="gray.400"
-                          >
-                            years:
-                          </Text>{" "}
-                          {tourYears}
-                        </Text>
-                      )}
-                    </VStack>
-                  </Box>
+                    </TracksHUDShowDisplay>
 
-                  {/* Login/Create Playlist Button */}
-                  <Flex
-                    direction="column"
-                    alignItems="center"
-                    mb={6}
-                    width="full"
-                  >
-                    {!isLoggedIn ? (
-                      <Flex
-                        align="center"
-                        flexWrap="wrap"
-                        justifyContent="center"
-                        gap={2}
-                        my={2}
-                      >
-                        <Button
-                          size="md"
-                          width="auto"
-                          px={6}
-                          py={3}
-                          colorScheme="brand"
-                          onClick={handleLoginClick}
-                        >
-                          Login
-                        </Button>
-                        <Text textAlign="center">to create playlist</Text>
-                      </Flex>
-                    ) : (
+                    {showData && !showLoading && !showError && (
                       <>
-                        <VStack spacing={0} width="auto" maxW="md">
-                          <Flex
-                            align="center"
-                            flexWrap="wrap"
-                            justifyContent="center"
-                            gap={2}
-                            my={2}
-                          >
-                            <Button
-                              size="md"
-                              width="auto"
-                              px={6}
-                              py={3}
-                              colorScheme="brand"
-                              onClick={createPlaylist}
-                              isDisabled={isCreatingPlaylist}
-                            >
-                              Create Playlist
-                            </Button>
-                          </Flex>
-                        </VStack>
+                        <TracksHUDPlaylistControls
+                          isLoggedIn={isLoggedIn}
+                          onLogin={handleLoginClick}
+                          onCreatePlaylist={() =>
+                            handleCreateShowPlaylist(
+                              showData,
+                              showTracks,
+                              tourData
+                            )
+                          }
+                          isCreatingPlaylist={isCreatingShowPlaylist}
+                          playlistUrl={showPlaylistUrl}
+                          buttonText="Create Show Playlist"
+                          loginText="to create show playlist"
+                          playlistLinkText="View your show playlist on Spotify"
+                          trackCount={availableForPlaylist}
+                        />
 
-                        {/* Simple creating playlist indicator */}
-                        {isCreatingPlaylist && (
-                          <Flex
-                            align="center"
-                            mt={2}
-                            p={2}
-                            bg="gray.700"
-                            borderRadius="md"
-                          >
-                            <Spinner size="sm" color="spotify.green" mr={2} />
-                            <Text>Creating playlist...</Text>
-                          </Flex>
+                        {showTracks.length > 0 ? (
+                          <TracksHUDTracksList
+                            tracks={showTracks}
+                            tourData={tourData}
+                            showOrder={true}
+                          />
+                        ) : (
+                          <Text color="gray.500" textAlign="center" py={8}>
+                            No songs found for this show
+                          </Text>
                         )}
                       </>
                     )}
-
-                    {/* Playlist URL Link - Show if available */}
-                    {playlistUrl && (
-                      <Link
-                        href={playlistUrl}
-                        isExternal
-                        mt={4}
-                        color="spotify.green"
-                        fontWeight="bold"
-                        display="flex"
-                        alignItems="center"
-                        _hover={{ color: "#1ed760" }}
-                        transition="color 0.2s"
-                      >
-                        View your playlist on Spotify{" "}
-                        <ExternalLinkIcon ml={1} />
-                      </Link>
-                    )}
-                  </Flex>
-
-                  {/* Tracks list */}
-                  <Box width="full">
-                    {spotifyData.map((item) => (
-                      <Track key={item.id} item={item} tourData={tourData} />
-                    ))}
                   </Box>
-                </TabPanel>
-
-                {/* Tab 2: Pick a Show */}
-                <TabPanel px={0}>
-                  {/* Show Selection Dropdown */}
-                  <Box mb={6} width="full" maxW="600px" mx="auto">
-                    <Menu>
-                      <MenuButton
-                        as={Button}
-                        rightIcon={<ChevronDownIcon />}
-                        width="full"
-                        textAlign="left"
-                        justifyContent="space-between"
-                        bg="gray.800"
-                        color="gray.100"
-                        borderColor="gray.600"
-                        border="1px solid"
-                        _hover={{
-                          borderColor: "gray.500",
-                          bg: "gray.700",
-                        }}
-                        _active={{
-                          borderColor: "brand.300",
-                          bg: "gray.800",
-                        }}
-                        _focus={{
-                          borderColor: "brand.300",
-                          boxShadow: "0 0 0 1px var(--chakra-colors-brand-300)",
-                        }}
-                        isDisabled={!hasShows}
-                        fontWeight="normal"
-                        fontSize="md"
-                        h="40px"
-                      >
-                        {selectedShow
-                          ? formatShowDisplay(selectedShow)
-                          : hasShows
-                          ? `Select a show (${sortedShows.length} available)`
-                          : "No shows available"}
-                      </MenuButton>
-                      <MenuList
-                        bg="gray.800"
-                        borderColor="gray.600"
-                        maxH="300px"
-                        overflowY="auto"
-                      >
-                        {sortedShows.map((show) => (
-                          <MenuItem
-                            key={show.id}
-                            onClick={() => handleShowSelection(show.id)}
-                            bg="gray.800"
-                            color="gray.100"
-                            _hover={{ bg: "gray.700" }}
-                            _focus={{ bg: "gray.700" }}
-                            fontSize="sm"
-                          >
-                            {formatShowDisplay(show)}
-                          </MenuItem>
-                        ))}
-                      </MenuList>
-                    </Menu>
-                  </Box>
-
-                  {/* Selected Show Tracks */}
-                  {selectedShowId && (
-                    <Box width="full">
-                      {showLoading && (
-                        <Box textAlign="center" py={8}>
-                          <Spinner size="lg" color="brand.300" mb={4} />
-                          <Text color="gray.400">Loading show tracks...</Text>
-                        </Box>
-                      )}
-
-                      {showError && (
-                        <Box textAlign="center" py={8}>
-                          <Text color="gray.400" mb={3}>
-                            Unable to load show data
-                          </Text>
-                          <Button
-                            size="sm"
-                            colorScheme="brand"
-                            variant="outline"
-                            onClick={() => handleShowSelection(selectedShowId)}
-                          >
-                            Try Again
-                          </Button>
-                        </Box>
-                      )}
-
-                      {showData && !showLoading && !showError && (
-                        <>
-                          {/* Show Info Header */}
-                          <Box mb={6} p={4} bg="gray.700" borderRadius="md">
-                            <Text
-                              fontSize="lg"
-                              fontWeight="bold"
-                              color="brand.300"
-                              mb={2}
-                            >
-                              {formatShowDate(showData.showInfo?.date)} -{" "}
-                              <Text
-                                as="span"
-                                color="gray.400"
-                                fontWeight="semibold"
-                              >
-                                {showData.showInfo?.venue},{" "}
-                                {showData.showInfo?.city}
-                              </Text>
-                            </Text>
-                            <Text color="gray.500" fontSize="sm" mt={1}>
-                              {showTracks.length} songs played
-                              {availableForPlaylist < showTracks.length && (
-                                <Text as="span" color="yellow.400" ml={2}>
-                                  ({showTracks.length - availableForPlaylist}{" "}
-                                  not found on Spotify)
-                                </Text>
-                              )}
-                            </Text>
-                          </Box>
-
-                          {/* Show-specific Login/Create Playlist Button */}
-                          <Flex
-                            direction="column"
-                            alignItems="center"
-                            mb={6}
-                            width="full"
-                          >
-                            {!isLoggedIn ? (
-                              <Flex
-                                align="center"
-                                flexWrap="wrap"
-                                justifyContent="center"
-                                gap={2}
-                                my={2}
-                              >
-                                <Button
-                                  size="md"
-                                  width="auto"
-                                  px={6}
-                                  py={3}
-                                  colorScheme="brand"
-                                  onClick={handleLoginClick}
-                                >
-                                  Login
-                                </Button>
-                                <Text textAlign="center">
-                                  to create show playlist
-                                </Text>
-                              </Flex>
-                            ) : (
-                              <>
-                                <VStack spacing={0} width="auto" maxW="md">
-                                  <Flex
-                                    align="center"
-                                    flexWrap="wrap"
-                                    justifyContent="center"
-                                    gap={2}
-                                    my={2}
-                                  >
-                                    <Button
-                                      size="md"
-                                      width="auto"
-                                      px={6}
-                                      py={3}
-                                      colorScheme="brand"
-                                      onClick={() => handleCreateShowPlaylist()}
-                                      isDisabled={
-                                        isCreatingShowPlaylist ||
-                                        availableForPlaylist === 0
-                                      }
-                                    >
-                                      Create Show Playlist (
-                                      {availableForPlaylist} tracks)
-                                    </Button>
-                                  </Flex>
-                                </VStack>
-
-                                {/* Show playlist creation indicator */}
-                                {isCreatingShowPlaylist && (
-                                  <Flex
-                                    align="center"
-                                    mt={2}
-                                    p={2}
-                                    bg="gray.700"
-                                    borderRadius="md"
-                                  >
-                                    <Spinner
-                                      size="sm"
-                                      color="spotify.green"
-                                      mr={2}
-                                    />
-                                    <Text>Creating show playlist...</Text>
-                                  </Flex>
-                                )}
-                              </>
-                            )}
-
-                            {/* Playlist URL Link for show playlist */}
-                            {showPlaylistUrl && (
-                              <Link
-                                href={showPlaylistUrl}
-                                isExternal
-                                mt={4}
-                                color="spotify.green"
-                                fontWeight="bold"
-                                display="flex"
-                                alignItems="center"
-                                _hover={{ color: "#1ed760" }}
-                                transition="color 0.2s"
-                              >
-                                View your show playlist on Spotify{" "}
-                                <ExternalLinkIcon ml={1} />
-                              </Link>
-                            )}
-                          </Flex>
-
-                          {/* Show Tracks List */}
-                          {showTracks.length > 0 ? (
-                            <Box width="full">
-                              {showTracks.map((track, index) => (
-                                <Box
-                                  key={track.id || `track-${index}`}
-                                  position="relative"
-                                >
-                                  {/* Show track order number */}
-                                  <Box
-                                    position="absolute"
-                                    left="-30px"
-                                    top="50%"
-                                    transform="translateY(-50%)"
-                                    color="gray.500"
-                                    fontSize="sm"
-                                    fontWeight="bold"
-                                    width="20px"
-                                    textAlign="right"
-                                  >
-                                    {track.showOrder}
-                                  </Box>
-                                  <Track item={track} tourData={tourData} />
-                                </Box>
-                              ))}
-                            </Box>
-                          ) : (
-                            <Text color="gray.500" textAlign="center" py={8}>
-                              No songs found for this show
-                            </Text>
-                          )}
-                        </>
-                      )}
-                    </Box>
-                  )}
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Box>
-        )
+                )}
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
       )}
 
       {/* Playlist Notification Message - Keep outside the main section for visibility */}
