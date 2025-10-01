@@ -561,7 +561,7 @@ export default function TracksHUD() {
                     </Text>
                     <VStack
                       align="flex-start"
-                      spacing={1}
+                      spacing={0}
                       color="gray.500"
                       fontSize="sm"
                       mt={2}
