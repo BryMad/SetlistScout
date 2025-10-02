@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { fetchIndividualShow } from "../api/setlistService";
 import { createPlaylist as createPlaylistAPI } from "../api/playlistService";
 import { processShowTracks } from "../utils/tracksHudHelpers";
@@ -32,6 +32,9 @@ export default function useTracksHud({
   // Show playlist creation state (separate from tour playlist)
   const [showPlaylistUrl, setShowPlaylistUrl] = useState(null);
   const [isCreatingShowPlaylist, setIsCreatingShowPlaylist] = useState(false);
+
+  // Ref to track previous show ID to avoid clearing playlist URL unnecessarily
+  const prevShowIdRef = useRef(null);
 
   /**
    * Handle show selection from dropdown
@@ -222,11 +225,13 @@ export default function useTracksHud({
     }
   }, [tabIndex, setSelectedShow]);
 
-  // Clear show playlist URL when selecting a new show
+  // Clear show playlist URL when switching to a different show (not when re-selecting the same show)
   useEffect(() => {
-    if (selectedShowId) {
+    if (selectedShowId && selectedShowId !== prevShowIdRef.current) {
       clearShowPlaylistUrl();
     }
+
+    prevShowIdRef.current = selectedShowId;
   }, [selectedShowId, clearShowPlaylistUrl]);
 
   // Fetch individual show data when a show is selected
@@ -290,11 +295,14 @@ export default function useTracksHud({
     fetchShow();
   }, [selectedShowId, setNotification]);
 
-  // Clear playlist URL when a new search is initiated
+  // Clear playlist URLs when a new search is initiated
   useEffect(() => {
     const handleNewSearch = () => {
       if (playlistUrl) {
         clearPlaylistUrl();
+      }
+      if (showPlaylistUrl) {
+        clearShowPlaylistUrl();
       }
     };
 
@@ -303,7 +311,7 @@ export default function useTracksHud({
     return () => {
       window.removeEventListener("new-search-started", handleNewSearch);
     };
-  }, [clearPlaylistUrl, playlistUrl]);
+  }, [clearPlaylistUrl, playlistUrl, showPlaylistUrl, clearShowPlaylistUrl]);
 
   return {
     // Tab management

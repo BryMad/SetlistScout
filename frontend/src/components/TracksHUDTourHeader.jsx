@@ -7,7 +7,7 @@ export default function TracksHUDTourHeader({
   tourYears,
 }) {
   return (
-    <Box mb={6} p={4} bg="gray.700" borderRadius="md">
+    <Box mb={6} p={4} bg="gray.800" borderRadius="md">
       <Text fontSize="lg" fontWeight="bold" color="brand.300" mb={2}>
         {tourData.bandName}
         {tourData.tourName !== "No Tour Info" && (

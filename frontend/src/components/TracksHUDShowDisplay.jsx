@@ -43,7 +43,7 @@ export default function TracksHUDShowDisplay({
   return (
     <>
       {/* Show Info Header */}
-      <Box mb={6} p={4} bg="gray.700" borderRadius="md">
+      <Box mb={6} p={4} bg="gray.800" borderRadius="md">
         <Text fontSize="lg" fontWeight="bold" color="brand.300" mb={2}>
           {formatShowDate(showData.showInfo?.date)} -{" "}
           <Text as="span" color="gray.400" fontWeight="semibold">

@@ -25,6 +25,7 @@ import { useSpotify } from "../hooks/useSpotify";
 import useTracksHud from "../hooks/useTracksHud";
 import { formatShowDate, formatShowDisplay } from "../utils/tracksHudHelpers";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Green.png";
+import setlistLogo from "../assets/setlist_logosvg.svg";
 
 export default function TracksHUD() {
   const { isLoggedIn, login, logout } = useAuth();
@@ -85,44 +86,6 @@ export default function TracksHUD() {
 
   return (
     <Box width="full" maxW="100%">
-      {/* Spotify Attribution - Visible initially and after loading is complete */}
-      {!loading && (
-        <VStack width="full">
-          <Flex
-            align="left"
-            justify="left"
-            flexWrap="wrap"
-            gap={2}
-            // mt={4}
-            px={2}
-          >
-            <Text
-              color="gray.400"
-              fontWeight="medium"
-              fontSize="sm"
-              textAlign="left"
-            >
-              Artist search, track lookup, and playlist creation powered by:
-            </Text>
-          </Flex>
-          <Flex>
-            <Link href="https://open.spotify.com" isExternal display="block">
-              <Image
-                mt={9}
-                mb={9}
-                src={spotifyLogo}
-                alt="Spotify Logo"
-                height="auto"
-                width="160px"
-                flexShrink={0}
-                style={{ cursor: "pointer !important" }}
-                _hover={{ cursor: "pointer !important" }}
-              />
-            </Link>
-          </Flex>
-        </VStack>
-      )}
-
       {/* Loading State */}
       {loading && (
         <Box width="full" mb={{ base: 3, md: 6 }}>
@@ -299,6 +262,80 @@ export default function TracksHUD() {
           onClose={() => setNotification({ message: "", status: "" })}
           width="full"
         />
+      )}
+      {/* Spotify and Setlist Attribution - Visible initially and after loading is complete */}
+      {!loading && (
+        <Box
+          width="full"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          {/* Spotify Attribution Block */}
+          <Box
+            width="full"
+            maxWidth="500px"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <Text
+              color="gray.400"
+              fontWeight="medium"
+              fontSize="sm"
+              textAlign="left"
+              alignSelf="flex-start"
+              mb={2}
+            >
+              artist search, track lookup, and playlist creation powered by:
+            </Text>
+            <Link href="https://open.spotify.com" isExternal display="block">
+              <Image
+                mt={7}
+                mb={9}
+                src={spotifyLogo}
+                alt="Spotify Logo"
+                height="auto"
+                width="160px"
+                style={{ cursor: "pointer !important" }}
+                _hover={{ cursor: "pointer !important" }}
+              />
+            </Link>
+          </Box>
+
+          {/* Setlist Attribution Block */}
+          <Box
+            width="full"
+            maxWidth="500px"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <Text
+              color="gray.400"
+              fontWeight="medium"
+              fontSize="sm"
+              textAlign="left"
+              alignSelf="flex-start"
+              mt={3}
+              mb={2}
+            >
+              setlist and tour data powered by:
+            </Text>
+            <Link href="https://setlist.fm" isExternal display="block">
+              <Image
+                mt={7}
+                mb={9}
+                src={setlistLogo}
+                alt="Setlist.fm Logo"
+                height="auto"
+                width="200px"
+                style={{ cursor: "pointer !important" }}
+                _hover={{ cursor: "pointer !important" }}
+              />
+            </Link>
+          </Box>
+        </Box>
       )}
     </Box>
   );
