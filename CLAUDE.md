@@ -18,7 +18,7 @@ cd backend
 npm install  # First time only
 npm start    # Runs on port 5001
 
-# Terminal 2 - Frontend  
+# Terminal 2 - Frontend
 cd frontend
 npm install  # First time only
 npm run dev  # Runs on port 5173
@@ -45,7 +45,7 @@ cd frontend && npm run lint
 ### Tech Stack
 - **Frontend**: React 18 + Vite, Chakra UI, React Router v7, Axios
 - **Backend**: Express.js, Redis (sessions), Winston (logging)
-- **APIs**: Spotify OAuth 2.0, Setlist.fm, MusicBrainz, Deezer
+- **APIs**: Spotify OAuth 2.0, Setlist.fm, MusicBrainz
 
 ### Key Architectural Patterns
 
@@ -73,13 +73,15 @@ cd frontend && npm run lint
 ### API Endpoints
 
 - **Auth**: `/auth/login`, `/auth/callback`, `/auth/refresh`, `/auth/logout`
-- **Setlist**: 
+- **Setlist**:
   - `/setlist/` (sync - legacy endpoint)
   - `/setlist/search_with_updates` (streaming with SSE for recent tours)
   - `/setlist/search_tour_with_updates` (streaming with SSE for specific tours)
+  - `/setlist/advanced_with_updates` (streaming with SSE for past tours discovery)
   - `/setlist/artist/:artistId/tours` (get all tours for an artist)
-  - `/setlist/artist_search` (Spotify artist search)
-  - `/setlist/artist_search_deezer` (Deezer artist search)
+  - `/setlist/artist_search` (Spotify artist search - **primary**)
+  - `/setlist/artist_search_deezer` (Deezer artist search - **deprecated**)
+  - `/setlist/show/:id` (fetch individual show data for "Pick a Show" feature)
 - **Playlist**: `/playlist/create_playlist` (requires auth)
 - **SSE**: `/sse/connect` (real-time updates)
 - **Consent**: `/consent/log`, `/consent/verify/:id`
@@ -88,7 +90,17 @@ cd frontend && npm run lint
 
 - `/src/pages/` - Main app pages (Home, Privacy, Terms)
 - `/src/components/` - Reusable UI components
+  - `UserInput.jsx` - Artist search with progressive disclosure for advanced options
+  - `TracksHUD.jsx` - Main results display container
+  - `TracksHUDTourHeader.jsx` - Tour metadata header
+  - `TracksHUDTracksList.jsx` - Song list display
+  - `TracksHUDPlaylistControls.jsx` - Spotify playlist creation
+  - `TracksHUDShowSelector.jsx` - Individual show picker ("Pick a Show" feature)
+  - `TracksHUDShowDisplay.jsx` - Individual show details
+  - `Track.jsx` - Individual track component
+  - `ProgressIndicator.jsx` - Loading state with progress
 - `/src/context/` - Auth and Setlist React contexts
+- `/src/hooks/` - Custom React hooks (useSetlist, useSpotify, useAuth, useTracksHud)
 - `/src/api/` - API service layer
 - `/src/utils/` - Helper functions
 - `/src/theme.js` - Chakra UI theme configuration
@@ -123,23 +135,24 @@ cd frontend && npm run lint
 
 ## User Flow
 
-The application provides two search modes for discovering artist setlists:
-
-### Live Shows (Default)
-1. **Artist Search**: User types artist name → Deezer suggestions appear with artist images
+### Default Flow (Most Recent Tour)
+1. **Artist Search**: User types artist name → Spotify API provides suggestions with artist images
 2. **Artist Selection**: User clicks artist → Immediate processing of most recent tour
 3. **Progress Updates**: Real-time SSE updates during setlist processing
 4. **Results**: Song data appears in TracksHUD with full setlist analysis
-5. **Playlist Creation**: Optional Spotify playlist creation with authentication
+5. **Pick a Show**: User can select individual shows to view specific setlist
+6. **Playlist Creation**: Optional Spotify playlist creation with authentication
 
-### Advanced Search (Past Tours)
-1. **Tab Selection**: User clicks "Past Tours" tab
-2. **Artist Search**: Same Deezer-powered artist search as Live Shows
-3. **Artist Selection**: User selects artist → System fetches all historical tours
-4. **Tour Selection**: Dropdown appears with all tours (e.g., "Zoo TV (161 shows)")
-5. **Tour Processing**: Real-time SSE updates for specific tour setlist analysis
-6. **Results**: Historical setlist data displayed in TracksHUD
-7. **Playlist Creation**: Same Spotify integration for historical data
+### Advanced Search (Work in Progress)
+The advanced search UI exists but is **partially disabled** in the current build:
+
+- **UI State**: "More search options" button reveals radio buttons for search modes
+- **Search Modes Defined**:
+  - "0" = Most Recent Tour (default, functional)
+  - "1" = Past Tours (UI exists, dropdown disabled)
+  - "2" = Last 60 Shows (UI exists, not yet implemented)
+- **Tour Dropdown**: Code exists but is wrapped in `{false && (...)}` - intentionally hidden
+- **Backend**: Fully functional `/advanced_with_updates` endpoint with SSE streaming
 
 ## Important Development Notes
 
@@ -162,7 +175,7 @@ The application provides two search modes for discovering artist setlists:
 ## Key Features
 
 ### Artist Discovery
-- **Deezer Integration**: Fast artist search with album artwork
+- **Spotify Search**: Artist search with album artwork (primary)
 - **Smart Matching**: MusicBrainz validation for accurate artist mapping
 - **Recent Tours**: Automatically processes the most recent tour data
 
@@ -171,6 +184,11 @@ The application provides two search modes for discovering artist setlists:
 - **Song Frequency**: Songs ranked by how often they're played live
 - **Tour Metadata**: Band name, tour information, and show statistics
 
+### Pick a Show Feature
+- **Individual Show Selection**: After search completes, users can pick specific shows
+- **Show Details**: View the exact setlist from any show in the tour
+- **Endpoint**: `/setlist/show/:id` fetches individual show data
+
 ### Playlist Integration
 - **Spotify OAuth**: Secure server-side token management
 - **Automatic Creation**: One-click playlist generation from setlist data
@@ -178,160 +196,51 @@ The application provides two search modes for discovering artist setlists:
 
 ### Performance Optimizations
 - **API Rate Limiting**: Respectful interaction with external APIs
-- **Caching Strategy**: 
+- **Caching Strategy**:
   - Redis session storage for user state
   - Tour data caching with 7-day TTL (respects Setlist.fm caching policy)
   - Cache key uses MusicBrainz ID for accurate artist matching
-- **Error Recovery**: 
+- **Error Recovery**:
   - Graceful handling of API timeouts and failures
   - Individual Spotify song lookup failures don't break entire process
   - Better error attribution (Spotify vs Setlist.fm failures)
 
-## Feature Flags
-
-### Advanced Search Feature Flag
-
-The advanced search (Past Tours) feature can be enabled/disabled via environment variables:
-
-**Frontend**: Set `VITE_ENABLE_ADVANCED_SEARCH=true` in `.env` to enable the Past Tours tab
-**Backend**: No changes needed - routes remain available but frontend controls access
-
-When disabled:
-- Only the simple artist search appears (no tabs)
-- Users can still search for artists and see recent setlists
-- No access to historical tour data
-- No web scraping occurs
-
 ## Advanced Search Implementation
 
-### Current Status: ✅ **FULLY FUNCTIONAL WITH REAL-TIME SSE UPDATES & REDIS CACHING**
+### Current Status: Backend Complete, Frontend Partially Disabled
 
-The advanced search feature is fully implemented using **only the official Setlist.fm API** with **live streaming updates via Server-Sent Events (SSE)** and **Redis caching for improved performance**. This provides better data accuracy, respects API rate limits (16 requests/second), and delivers a superior user experience with real-time tour discovery.
+The advanced search feature has a **fully functional backend** but the **frontend tour selection dropdown is disabled**.
 
-### 🏗️ Live Streaming Architecture
+### Backend (Fully Implemented)
+- `backend/routes/setlistRoutes.js` - `/advanced_with_updates` endpoint with SSE
+- `backend/utils/tourExtractor.js` - Streaming tour extraction with caching
+- `backend/utils/tourCacheManager.js` - Redis caching for tour data (7-day TTL)
+- `backend/utils/musicBrainzAPIRequests.js` - Artist validation
 
-**Revolutionary Update**: Advanced search now features **real-time tour discovery** where tours appear in the dropdown immediately as they're found, not after all pages are processed.
+### Frontend (Partially Disabled)
+- `frontend/src/components/UserInput.jsx`:
+  - Progressive disclosure UI with "More search options" button
+  - Radio buttons for search modes (visible but modes 1 & 2 not wired up)
+  - Tour dropdown code exists but wrapped in `{false && (...)}` on line 423
+  - `fetchTours()` function ready for use
+  - `handleTourSelect()` function ready for use
+- `frontend/src/api/setlistService.js`:
+  - `fetchAdvancedToursWithUpdates()` - SSE-based tour discovery (implemented)
+  - `fetchSpecificTourWithUpdates()` - Tour-specific setlist fetch (implemented)
 
-**Current Implementation**:
-- `backend/utils/tourExtractor.js` - Streaming tour extraction with SSE updates & caching ✅
-- `backend/utils/tourCacheManager.js` - Redis caching for tour data (7-day TTL) ✅
-- `backend/routes/setlistRoutes.js` - New `/tours_stream` endpoint for live updates ✅
-- `frontend/src/components/UserInput.jsx` - Real-time dropdown population ✅
-- All scraping infrastructure **removed** ✅
+### What Needs Work
+1. **Enable Tour Dropdown**: Remove `{false && (...)}` wrapper in UserInput.jsx
+2. **Wire Up Search Modes**: Connect radio button selection to different behaviors
+3. **Test End-to-End**: Verify advanced search flow works with enabled UI
+4. **Implement "Last 60 Shows"**: Mode 2 has no implementation yet
 
-### 🚀 Real-Time Tour Discovery
-
-**How it works**:
-1. User selects artist → MusicBrainz validation for accurate matching
-2. **CACHE CHECK**: Redis checked for cached tour data (7-day TTL)
-3. If cached, tours stream instantly from cache via SSE
-4. If not cached: SSE connection established for live API updates
-5. System paginates through setlists, **streaming tours as discovered**
-6. **Tours appear in dropdown immediately** with live progress updates
-7. Shows only tours with actual song data (filters out stub entries)
-8. Multi-year tours displayed as "Tour Name (2019-2021) - 127 shows"
-9. User can select tours **while search is still running**
-10. **Tour data cached in Redis** for future searches
-
-**Live Features**:
-- **Progressive Loading**: Tours populate dropdown in real-time
-- **Live Progress**: "Scanning page X of Y..." with current status
-- **Song Validation**: Only includes tours with actual setlist data
-- **Multi-Year Support**: Tours spanning years shown with date ranges
-- **Immediate Selection**: Can click tours before search completes
-
-**API Endpoints Used**:
-```
-# SSE Tour Streaming (NEW)
-POST /setlist/artist/:artistId/tours_stream
-- Real-time tour discovery via Server-Sent Events
-- Streams tours as found, not batch at end
-
-# Original Setlist API
-GET https://api.setlist.fm/rest/1.0/search/setlists
-Parameters:
-- artistMbid: {mbid} (when available) OR artistName: {name}
-- p: {page} (for pagination)
-```
-
-**Rate Limiting**: 16 requests/second using Bottleneck library
-
-### 📁 Current Advanced Search Files
-
-**Backend Files**:
-- `backend/utils/tourExtractor.js` ✅ (API-based tour fetching with caching)
-- `backend/utils/tourCacheManager.js` ✅ (Redis caching utility)
-- `backend/routes/setlistRoutes.js` ✅ (Updated to use tourExtractor with caching)
-- `backend/utils/musicBrainzAPIRequests.js` ✅ (Artist validation)
-
-**Frontend Files**:
-- `frontend/src/components/UserInput.jsx` ✅ (Tour dropdown after artist selection)
-- `frontend/src/api/setlistService.js` ✅ (API integration)
-- `frontend/src/context/SetlistContext.jsx` ✅ (Context integration)
-
-**Removed Files**:
-- ~~`scraper-service/`~~ - **Deleted** (no longer needed)
-- ~~`backend/utils/tourCache.js`~~ - **Deleted** (no caching needed)
-- ~~`backend/utils/backgroundCacheUpdate.js`~~ - **Deleted** (no caching needed)
-
-### 🎮 Current Feature Status
-
-**Working Features**:
-- ✅ Tab-based UI (Live Shows / Past Tours)
-- ✅ Artist search with Deezer suggestions
-- ✅ MusicBrainz validation for accurate artist matching
-- ✅ **NEW**: Real-time tour dropdown with live progressive loading
-- ✅ **NEW**: Tours appear immediately as discovered (no waiting!)
-- ✅ **NEW**: Live progress indicators ("Scanning page X of Y...")
-- ✅ **NEW**: Song data validation (only tours with actual setlists)
-- ✅ **NEW**: Multi-year tour support with date ranges
-- ✅ **NEW**: Click tours before search completes
-- ✅ **NEW**: Redis caching for instant repeat searches (7-day TTL)
-- ✅ Tour-specific setlist processing with SSE
-- ✅ Complete integration with existing TracksHUD display
-
-**User Experience Improvements**:
-- ✅ **Instant Feedback** - Tours appear as soon as found
-- ✅ **Progressive Discovery** - No waiting for all pages to load
-- ✅ **Live Status Updates** - Real-time progress and tour counts
-- ✅ **Smart Filtering** - Only shows tours with song data
-- ✅ **Better Tour Display** - "Tour Name (2019-2021) - 127 shows"
-- ✅ **Responsive UI** - Loading state + dropdown simultaneously
-
-**Architecture Improvements**:
-- ✅ **100% ToS Compliant** - Only uses official Setlist.fm API
-- ✅ **Real-Time Streaming** - SSE-powered progressive loading
-- ✅ **Better Data Quality** - Validates song data, accurate show counts
-- ✅ **Redis Caching** - 7-day cache for tour data, instant repeat searches
-- ✅ **Superior UX** - Live updates eliminate waiting time
-- ✅ **More Reliable** - No dependency on external scraping infrastructure
-
-### 🔧 Benefits of Real-Time SSE Architecture
-
-- **✅ ToS Compliance**: Only uses official Setlist.fm API endpoints
-- **✅ Live User Experience**: Tours appear immediately as discovered
-- **✅ Better Data Quality**: Validates song data, accurate show counts, real tour information
-- **✅ Progressive Loading**: No waiting for complete results before interaction
-- **✅ Higher Rate Limits**: 16 requests/second (respects API limits)
-- **✅ More Reliable**: No scraping failures or external service dependencies
-- **✅ Simpler Deployment**: No separate services or complex caching to manage
-- **✅ Real-time Feedback**: Live progress updates and tour discovery
-- **✅ Smart Filtering**: Only includes tours with actual setlist data
-- **✅ Multi-Year Support**: Handles tours spanning multiple years correctly
-
-## Technical Notes
-
-- All setlist data sourced from Setlist.fm API with proper rate limiting
-- MusicBrainz used for artist verification and matching
-- Spotify integration handles both search and playlist creation
-- **NEW**: Server-Sent Events (SSE) for real-time tour discovery and progress updates
-- **NEW**: Song data validation ensures only meaningful tours are displayed
-- **NEW**: Progressive UI updates allow interaction during data loading
-- Mobile-responsive design with Chakra UI components
-- Comprehensive error handling and fallback mechanisms
-- **✅ Advanced search now features live streaming with immediate tour discovery**
-- **✅ Superior user experience with real-time feedback and progressive loading**
-- **✅ 100% API-based architecture with enhanced data quality and ToS compliance**
+### API Flow (When Enabled)
+1. User selects "Past Tours" search mode
+2. User searches for artist → Spotify suggestions appear
+3. User selects artist → `fetchAdvancedToursWithUpdates()` called
+4. SSE streams tours as discovered with progress updates
+5. User selects tour from dropdown → `fetchSpecificTourWithUpdates()` called
+6. Results displayed in TracksHUD
 
 ## Redis Cache Management
 
@@ -351,26 +260,17 @@ cd backend
 node utils/checkTourCache.js "Artist Name" [mbid]
 ```
 
-**Redis CLI Access**:
-```bash
-# Connect to Redis Cloud instance
-redis-cli -h redis-14105.c13.us-west-2-mz.ec2.redns.redis-cloud.com -p 14105 -a TWDvNyhSQopqoF77y9E1numLAISWtt0h
-
-# Common commands
-KEYS tours:*                    # List all tour cache keys
-GET tours:{key}                 # Get cached tour data
-TTL tours:{key}                 # Check time to live
-DEL tours:{key}                 # Delete cache entry (force refresh)
-```
-
-**Shell Script** (`backend/check-redis-cache.sh`):
-```bash
-cd backend
-./check-redis-cache.sh
-```
-
 ### Development Tips
 - Cache is checked before API calls to reduce load
 - Cached data streams instantly via SSE ("Loading cached tour data...")
 - Delete cache key to test fresh API fetching
 - MusicBrainz ID preferred as cache key for accuracy
+
+## Technical Notes
+
+- All setlist data sourced from Setlist.fm API with proper rate limiting
+- MusicBrainz used for artist verification and matching
+- Spotify integration handles both artist search and playlist creation
+- Server-Sent Events (SSE) for real-time progress updates
+- Mobile-responsive design with Chakra UI components
+- Comprehensive error handling and fallback mechanisms

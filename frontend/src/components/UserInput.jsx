@@ -10,11 +10,6 @@ import {
   Text,
   Spinner,
   Flex,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   Select,
   VStack,
   Menu,
@@ -22,6 +17,10 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Collapse,
+  RadioGroup,
+  Radio,
+  Stack,
 } from "@chakra-ui/react";
 import { useSetlist } from "../hooks/useSetlist";
 import { useSpotify } from "../hooks/useSpotify";
@@ -50,6 +49,11 @@ export default function UserInput() {
   const [displaySuggestions, setDisplaySuggestions] = useState([]); // Artist search results displayed
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [searchLoading, setSearchLoading] = useState(false);
+  // Progressive disclosure state
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+  const [searchMode, setSearchMode] = useState("0"); // "0" = Most Recent Tour, "1" = Past Tours, "2" = Last 60 Shows
+
+  // Legacy state (will be cleaned up later)
   const [tabIndex, setTabIndex] = useState(0); // 0 = Live Shows, 1 = Past Tours
   const [tours, setTours] = useState([]);
   const [selectedTour, setSelectedTour] = useState("");
@@ -200,18 +204,11 @@ export default function UserInput() {
     setSuggestions([]);
     setSelectedArtist(artist);
 
-    if (!FEATURES.ADVANCED_SEARCH || tabIndex === 0) {
-      // Live Shows tab OR feature disabled - Original flow: directly process the most recent tour
-      await fetchTourData(artist);
-      // Reset the form
-      setArtistQuery("");
-      setSelectedArtist(null);
-    } else {
-      // Past Tours tab - Fetch tours for selection
-      await fetchTours(artist);
-      // Keep the artist name but don't trigger new search
-      setArtistQuery(artist.name);
-    }
+    // Default behavior: directly process the most recent tour
+    await fetchTourData(artist);
+    // Reset the form
+    setArtistQuery("");
+    setSelectedArtist(null);
   };
 
   /**
@@ -286,8 +283,7 @@ export default function UserInput() {
   };
 
   const renderArtistInput = () => {
-    const showPersistentOutline =
-      selectedArtist && tabIndex === 1 && !selectedTour;
+    const showPersistentOutline = false; // No persistent outline needed without tabs
     const {
       isOpen,
       getInputProps,
@@ -424,7 +420,7 @@ export default function UserInput() {
             )
           )}
         </Box>
-        {selectedArtist && tabIndex === 1 && !selectedTour && (
+        {false && ( // Temporarily disable tour selection dropdown
           <Box
             position="absolute"
             top="100%"
@@ -500,109 +496,60 @@ export default function UserInput() {
       alignItems="center"
       justifyContent="center"
     >
-      {FEATURES.ADVANCED_SEARCH ? (
-        <Tabs index={tabIndex} onChange={setTabIndex} variant="unstyled" mb={4}>
-          <TabList justifyContent="center" gap={8}>
-            <Tab
-              _selected={{
-                color: "brand.300",
-                _after: {
-                  content: '""',
-                  position: "absolute",
-                  bottom: "-2px",
-                  left: "0",
-                  right: "0",
-                  height: "2px",
-                  bg: "brand.300",
-                },
-              }}
-              _hover={{ color: "brand.400" }}
-              _open={{ animation: "fadeIn 0.2s ease-in-out" }}
-              _close={{ animation: "fadeOut 0.2s ease-in-out" }}
-              fontWeight="medium"
-              fontSize="sm"
-              color="gray.400"
-              pb={3}
-              px={2}
-              bg="transparent"
-              border="none"
-              borderRadius="0"
-              transition="all 0.3s ease"
-              position="relative"
-              minW="auto"
-              w="auto"
-            >
-              Most Recent Tour
-            </Tab>
-            <Tab
-              _selected={{
-                color: "brand.300",
-                _after: {
-                  content: '""',
-                  position: "absolute",
-                  bottom: "-2px",
-                  left: "0",
-                  right: "0",
-                  height: "2px",
-                  bg: "brand.300",
-                },
-              }}
-              _hover={{ color: "brand.400" }}
-              _open={{ animation: "fadeIn 0.2s ease-in-out" }}
-              _close={{ animation: "fadeOut 0.2s ease-in-out" }}
-              fontWeight="medium"
-              fontSize="sm"
-              color="gray.400"
-              pb={3}
-              px={2}
-              bg="transparent"
-              border="none"
-              borderRadius="0"
-              transition="all 0.3s ease"
-              position="relative"
-              minW="auto"
-              w="auto"
-            >
-              Past Tours
-            </Tab>
-          </TabList>
+      {/* Default search interface - no tabs */}
+      <VStack spacing={3}>
+        <Text fontWeight="semibold" fontSize="md" color="gray.300">
+          Enter an Artist to see what they're playing live:
+        </Text>
+        {renderArtistInput()}
 
-          <TabPanels>
-            {/* Live Shows Tab */}
-            <TabPanel px={0}>
-              <VStack spacing={3}>
-                <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                  Enter an Artist to see what they're playing live:
-                </Text>
-                {renderArtistInput()}
-              </VStack>
-            </TabPanel>
+        {/* Progressive disclosure for advanced search options */}
+        <Button
+          variant="ghost"
+          size="sm"
+          color="gray.400"
+          _hover={{ color: "brand.400" }}
+          onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
+          fontWeight="normal"
+          fontSize="sm"
+        >
+          {isAdvancedOpen ? "Hide" : "More"} search options
+        </Button>
 
-            {/* Past Tours Tab */}
-            <TabPanel px={0}>
-              <VStack spacing={3}>
-                <Box>
-                  <Text fontWeight="semibold" fontSize="md" color="gray.300">
-                    Enter an Artist to see what they played on past tours{" "}
-                    <Text as="span" fontSize="md" ml={2} color="gray.400">
-                      (warning: this can take a while):
-                    </Text>
+        <Collapse in={isAdvancedOpen} animateOpacity>
+          <Box
+            p={4}
+            bg="gray.800"
+            borderRadius="lg"
+            border="1px solid"
+            borderColor="gray.700"
+            mt={2}
+          >
+            <Text fontSize="sm" color="gray.300" mb={3}>
+              Search Mode:
+            </Text>
+            <RadioGroup value={searchMode} onChange={setSearchMode}>
+              <Stack spacing={2}>
+                <Radio value="0" colorScheme="brand">
+                  <Text fontSize="sm" color="gray.300">
+                    Most Recent Tour (default)
                   </Text>
-                </Box>
-                {renderArtistInput()}
-              </VStack>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      ) : (
-        /* No tabs - just show the live shows search */
-        <VStack spacing={3}>
-          <Text fontWeight="semibold" fontSize="md" color="gray.300">
-            Enter an Artist to see what they're playing live:
-          </Text>
-          {renderArtistInput()}
-        </VStack>
-      )}
+                </Radio>
+                <Radio value="1" colorScheme="brand">
+                  <Text fontSize="sm" color="gray.300">
+                    Past Tours
+                  </Text>
+                </Radio>
+                <Radio value="2" colorScheme="brand">
+                  <Text fontSize="sm" color="gray.300">
+                    Last 60 Shows
+                  </Text>
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          </Box>
+        </Collapse>
+      </VStack>
 
       {/* Tour dropdown moved inside the artist input container for proper anchoring */}
     </Box>
