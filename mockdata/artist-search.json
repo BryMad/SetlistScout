@@ -1,0 +1,112 @@
+[
+    {
+        "name": "RADWIMPS",
+        "id": "1EowJ1WwkMzkCkRomFhui7",
+        "url": "https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7",
+        "image": {
+            "url": "/mock-data/images/1EowJ1WwkMzkCkRomFhui7.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f178f7374b42bee7c71b9649ac83",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "Radiohead",
+        "id": "4Z8W4fKeB5YxbusRsdQVPb",
+        "url": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb",
+        "image": {
+            "url": "/mock-data/images/4Z8W4fKeB5YxbusRsdQVPb.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f1784104fbd80f1f795728abbd59",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "Radio Company",
+        "id": "3qBdT7NKSOBogHhGiUVLiV",
+        "url": "https://open.spotify.com/artist/3qBdT7NKSOBogHhGiUVLiV",
+        "image": {
+            "url": "/mock-data/images/3qBdT7NKSOBogHhGiUVLiV.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab67616d00004851d322f73e0d23621cdc9c9aee",
+            "height": 64,
+            "width": 64
+        }
+    },
+    {
+        "name": "Rad Cat",
+        "id": "4wrWMxa1wnZX5ZDhV6qk6f",
+        "url": "https://open.spotify.com/artist/4wrWMxa1wnZX5ZDhV6qk6f",
+        "image": {
+            "url": "/mock-data/images/4wrWMxa1wnZX5ZDhV6qk6f.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f178953c0a6b1c03983232034672",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "The Radio Dept.",
+        "id": "0utS63XytOEVN1EtzWhJpG",
+        "url": "https://open.spotify.com/artist/0utS63XytOEVN1EtzWhJpG",
+        "image": {
+            "url": "/mock-data/images/0utS63XytOEVN1EtzWhJpG.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f178761a16ffa877c8086e28c5b0",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "Radical Face",
+        "id": "5EM6xJN2QNk0cL7EEm9HR9",
+        "url": "https://open.spotify.com/artist/5EM6xJN2QNk0cL7EEm9HR9",
+        "image": {
+            "url": "/mock-data/images/5EM6xJN2QNk0cL7EEm9HR9.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f17887eaaabcb2bf631817380188",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "Radiator Hospital",
+        "id": "0HMLp79IAd9Z8zMgxqpyxn",
+        "url": "https://open.spotify.com/artist/0HMLp79IAd9Z8zMgxqpyxn",
+        "image": {
+            "url": "/mock-data/images/0HMLp79IAd9Z8zMgxqpyxn.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f17892d7cfdbbb7cca476a9700d6",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "Radical For Christ",
+        "id": "5IasY9qIMVuTssFl6ECzKA",
+        "url": "https://open.spotify.com/artist/5IasY9qIMVuTssFl6ECzKA",
+        "image": {
+            "url": "/mock-data/images/5IasY9qIMVuTssFl6ECzKA.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab67616d000048517ea59a38a40063c530c6799e",
+            "height": 64,
+            "width": 64
+        }
+    },
+    {
+        "name": "Radio Free Alice",
+        "id": "4cCA6V2DRIDqeYDyGIcEoj",
+        "url": "https://open.spotify.com/artist/4cCA6V2DRIDqeYDyGIcEoj",
+        "image": {
+            "url": "/mock-data/images/4cCA6V2DRIDqeYDyGIcEoj.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f1783c962edcee32ef23ddbb83fc",
+            "height": 160,
+            "width": 160
+        }
+    },
+    {
+        "name": "White Noise Radiance",
+        "id": "0QUBaF6Rtta4TTmxYYfzux",
+        "url": "https://open.spotify.com/artist/0QUBaF6Rtta4TTmxYYfzux",
+        "image": {
+            "url": "/mock-data/images/0QUBaF6Rtta4TTmxYYfzux.jpg",
+            "originalUrl": "https://i.scdn.co/image/ab6761610000f178a9ee173e9fbacd3273fe5381",
+            "height": 160,
+            "width": 160
+        }
+    }
+]

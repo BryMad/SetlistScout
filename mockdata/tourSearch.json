@@ -1,0 +1,1096 @@
+{
+    "tourData": {
+        "bandName": "Radiohead",
+        "tourName": "European Tour 2025",
+        "totalShows": 20
+    },
+    "spotifySongsOrdered": [
+        {
+            "songName": "2 + 2 = 5",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:4xkcGfpM9RwB4IiQ7yx2dB",
+            "id": "8c0fdfe8-bf27-44ff-91ec-b7455ac7305b",
+            "count": 20,
+            "song": "2 + 2 = 5",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Weird Fishes / Arpeggi",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:4wajJ1o7jWIg62YqpkHC7S",
+            "id": "eb11b821-e1fa-4aee-9a46-575eb2141dd4",
+            "count": 20,
+            "song": "Weird Fishes/Arpeggi",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "You And Whose Army?",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851863e0e305637100311c91aa7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02863e0e305637100311c91aa7"
+            },
+            "albumName": "Amnesiac",
+            "albumReleaseDate": "2001-03-12",
+            "uri": "spotify:track:7Hg6a7tZsVTkXnBUepjZU6",
+            "id": "7885fca2-df1a-406a-a953-f6dd4a27860d",
+            "count": 20,
+            "song": "You and Whose Army?",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Paranoid Android",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:6LgJvl0Xdtc73RJ1mmpotq",
+            "id": "7c8d255c-8803-47a3-8cfd-bafd60042244",
+            "count": 20,
+            "song": "Paranoid Android",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Let Down",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:2fuYa3Lx06QQJAm0MjztKr",
+            "id": "ab1df27c-1a0b-42df-a6c5-55d8a366763c",
+            "count": 20,
+            "song": "Let Down",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "No Surprises",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:10nyNJ6zNy2YVYLrcwLccB",
+            "id": "8e8ea2fa-ec87-4c32-9620-9a233930642f",
+            "count": 19,
+            "song": "No Surprises",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Sit Down. Stand Up",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:6MKWCO8g2W05UcaFyfQ6Cl",
+            "id": "bd956339-bc87-470f-8628-3efe270ffdba",
+            "count": 18,
+            "song": "Sit Down. Stand Up.",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Idioteque",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048516c7112082b63beefffe40151"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151"
+            },
+            "albumName": "Kid A",
+            "albumReleaseDate": "2000-10-02",
+            "uri": "spotify:track:1W5XugQJGhnSATMI5n002M",
+            "id": "1dd66454-a9eb-4fd3-bb6f-43fd3fe75c44",
+            "count": 18,
+            "song": "Idioteque",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Bodysnatchers",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:4pWIwnnqx8k01fuF95UMIg",
+            "id": "afd56d9c-cb1d-4dbd-8ed2-6080b96fe28c",
+            "count": 17,
+            "song": "Bodysnatchers",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Jigsaw Falling Into Place",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:0YJ9FWWHn9EfnN0lHwbzvV",
+            "id": "983de534-dab5-462a-a877-6c119985dc40",
+            "count": 16,
+            "song": "Jigsaw Falling Into Place",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Ful Stop",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d0000485145643f5cf119cbc9d2811c22"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e0245643f5cf119cbc9d2811c22"
+            },
+            "albumName": "A Moon Shaped Pool",
+            "albumReleaseDate": "2016-05-08",
+            "uri": "spotify:track:6nOsTV3cMjLh3k6Wpk468L",
+            "id": "d8eeee9f-f9ad-4d65-a143-7962dcf68bdb",
+            "count": 15,
+            "song": "Ful Stop",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Everything In Its Right Place",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048516c7112082b63beefffe40151"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151"
+            },
+            "albumName": "Kid A",
+            "albumReleaseDate": "2000-10-02",
+            "uri": "spotify:track:2kRFrWaLWiKq48YYVdGcm8",
+            "id": "1372748c-ddb4-4d3f-8c79-1982d470945d",
+            "count": 15,
+            "song": "Everything in Its Right Place",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "All I Need",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:5Qv2Nby1xTr9pQyjkrc94J",
+            "id": "33af6659-d72e-4509-b4b6-df4d88f09292",
+            "count": 13,
+            "song": "All I Need",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "There, There",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:5h4y42RUKwYKYWgutNwvKP",
+            "id": "3884a448-2770-42cb-bbc3-c0f26e9f848f",
+            "count": 13,
+            "song": "There There",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Nude",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:35YyxFpE0ZTOoqFx5bADW8",
+            "id": "5c06c765-4dd5-4c49-a6d1-b479f740a0b4",
+            "count": 12,
+            "song": "Nude",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "The Gloaming",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:3qhLTNphwAepIyHJF9ZMv0",
+            "id": "b9355461-8533-4290-8b0f-379cde3331ce",
+            "count": 12,
+            "song": "The Gloaming",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Exit Music (For A Film)",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:0z1o5L7HJx562xZSATcIpY",
+            "id": "c3212100-98ac-4025-b91f-08217450b98b",
+            "count": 12,
+            "song": "Exit Music (for a Film)",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Fake Plastic Trees",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:73CKjW3vsUXRpy3NnX4H7F",
+            "id": "11e13705-5cdb-4dd0-83fd-f004ab40b96d",
+            "count": 11,
+            "song": "Fake Plastic Trees",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Airbag",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:7c378mlmubSu7NGkLFa4sN",
+            "id": "2af44606-7170-47d1-92cd-ea8e7d3f1954",
+            "count": 10,
+            "song": "Airbag",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "The Bends",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:7oDFvnqXkXuiZa1sACXobj",
+            "id": "9b47ca65-c943-4d22-a9fd-d0906384aed0",
+            "count": 10,
+            "song": "The Bends",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Reckoner",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:02ppMPbg1OtEdHgoPqoqju",
+            "id": "74841add-965c-4e34-af45-fe8e96b5ce90",
+            "count": 10,
+            "song": "Reckoner",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Separator",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851a9be6a9b8b5831a4c431ab9f"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02a9be6a9b8b5831a4c431ab9f"
+            },
+            "albumName": "The King Of Limbs",
+            "albumReleaseDate": "2011-02-18",
+            "uri": "spotify:track:2fV57qob1dYMJKEfTwHOt1",
+            "id": "9758da66-d405-47b5-9994-a30842842a1f",
+            "count": 10,
+            "song": "Separator",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Pyramid Song",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851863e0e305637100311c91aa7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02863e0e305637100311c91aa7"
+            },
+            "albumName": "Amnesiac",
+            "albumReleaseDate": "2001-03-12",
+            "uri": "spotify:track:55q3Ro66yXWi9rsEddeEN4",
+            "id": "decab03e-1aee-4b69-8f50-5a7734ab5f6d",
+            "count": 10,
+            "song": "Pyramid Song",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Street Spirit (Fade Out)",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:2QwObYJWyJTiozvs0RI7CF",
+            "id": "dfc37856-488b-465f-a4c6-2837ca9fc384",
+            "count": 10,
+            "song": "Street Spirit (Fade Out)",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Myxomatosis",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:3MW7yZK3kKtjsmJpsvBwyf",
+            "id": "c6f88d0a-04e3-4ba1-b9a2-018ab19bf660",
+            "count": 10,
+            "song": "Myxomatosis",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Present Tense",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d0000485145643f5cf119cbc9d2811c22"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e0245643f5cf119cbc9d2811c22"
+            },
+            "albumName": "A Moon Shaped Pool",
+            "albumReleaseDate": "2016-05-08",
+            "uri": "spotify:track:7KHQtpLpoIV3Wfu22YQT8y",
+            "id": "59d034d7-6ab4-46a6-858c-a457c6ec4c7f",
+            "count": 10,
+            "song": "Present Tense",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Karma Police",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:63OQupATfueTdZMWTxW03A",
+            "id": "d2725b30-e59d-4f02-bed7-9cb98ad413a3",
+            "count": 10,
+            "song": "Karma Police",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Planet Telex",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:37JISltgxizbDAyNEEqkTY",
+            "id": "f6f8e177-8018-498d-837c-cdadaaf28759",
+            "count": 10,
+            "song": "Planet Telex",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Lucky",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:14xj58ZexBaEaHARb11Cqs",
+            "id": "b332c782-7916-4904-bb18-fbd2baaf71b9",
+            "count": 10,
+            "song": "Lucky",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "15 Step",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:4oXg7xT4ksBxHTx8PcmSXw",
+            "id": "d87305e3-ec54-405d-a8a9-a29c24dc2983",
+            "count": 10,
+            "song": "15 Step",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Videotape",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851de3c04b5fc750b68899b20a9"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02de3c04b5fc750b68899b20a9"
+            },
+            "albumName": "In Rainbows",
+            "albumReleaseDate": "2007-12-28",
+            "uri": "spotify:track:4T1iiabe7G0UjWQJCY6NE2",
+            "id": "eeaebdc0-6848-49b8-a2a6-ff84d052defb",
+            "count": 10,
+            "song": "Videotape",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Bloom",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851a9be6a9b8b5831a4c431ab9f"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02a9be6a9b8b5831a4c431ab9f"
+            },
+            "albumName": "The King Of Limbs",
+            "albumReleaseDate": "2011-02-18",
+            "uri": "spotify:track:2HO0MwfNYxJa2zwo6vrQMT",
+            "id": "22ef6ad4-6dd8-46f8-b86e-ed8ad7fb731d",
+            "count": 10,
+            "song": "Bloom",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Daydreaming",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d0000485145643f5cf119cbc9d2811c22"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e0245643f5cf119cbc9d2811c22"
+            },
+            "albumName": "A Moon Shaped Pool",
+            "albumReleaseDate": "2016-05-08",
+            "uri": "spotify:track:1Rd5OVjqDAr5xC96MHt448",
+            "id": "526dd2f2-6dbd-4f76-a179-fda46099c584",
+            "count": 10,
+            "song": "Daydreaming",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Just",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:1dyTcli07c77mtQK3ahUZR",
+            "id": "d56ae4eb-a8fa-48b5-9a54-cc85c7824324",
+            "count": 10,
+            "song": "Just",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "The National Anthem",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048516c7112082b63beefffe40151"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151"
+            },
+            "albumName": "Kid A",
+            "albumReleaseDate": "2000-10-02",
+            "uri": "spotify:track:4Wgj6jzoI2gYlumXdYAB8U",
+            "id": "89b5ca8e-6bcc-4692-95d6-d217400bd5ee",
+            "count": 9,
+            "song": "The National Anthem",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Kid A",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851bbaaa8bf9aedb07135d2c6d3"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02bbaaa8bf9aedb07135d2c6d3"
+            },
+            "albumName": "KID A MNESIA",
+            "albumReleaseDate": "2021-11-05",
+            "uri": "spotify:track:797AyTQcqoQgqWQ1Qz184Y",
+            "id": "1b1714ec-a52a-46d2-8b04-f31923c17dba",
+            "count": 7,
+            "song": "Kid A",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "A Wolf At the Door",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048510da53e8f58e59f28a79c10c7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e020da53e8f58e59f28a79c10c7"
+            },
+            "albumName": "Hail To the Thief",
+            "albumReleaseDate": "2003-06-09",
+            "uri": "spotify:track:3OHevW2cUT176DXWV0lHg9",
+            "id": "aa96d1f4-28e4-43ee-a54f-108826987dbf",
+            "count": 7,
+            "song": "A Wolf at the Door",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Optimistic",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048516c7112082b63beefffe40151"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151"
+            },
+            "albumName": "Kid A",
+            "albumReleaseDate": "2000-10-02",
+            "uri": "spotify:track:1FoUsSi9BCTlNt2Vd7V8XA",
+            "id": "12a66ed3-efb8-427f-9009-ee3ab3d41837",
+            "count": 7,
+            "song": "Optimistic",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "The Daily Mail",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851e10d5e8fe2fcf59ddbc92fc2"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02e10d5e8fe2fcf59ddbc92fc2"
+            },
+            "albumName": "The Daily Mail / Staircase",
+            "albumReleaseDate": "2011-12-19",
+            "uri": "spotify:track:0Kwg1epDRFLyXFq09t7MtB",
+            "id": "f4ea01fc-3176-41eb-ab69-b6803be2ce60",
+            "count": 5,
+            "song": "The Daily Mail",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "(Nice Dream)",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048519293c743fa542094336c5e12"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e029293c743fa542094336c5e12"
+            },
+            "albumName": "The Bends",
+            "albumReleaseDate": "1995-03-13",
+            "uri": "spotify:track:1tZcw7GtIqviL32bzaKdSo",
+            "id": "a92a0971-1a55-4457-8792-1680a3b3c483",
+            "count": 4,
+            "song": "(Nice Dream)",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "How to Disappear Completely",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048516c7112082b63beefffe40151"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e026c7112082b63beefffe40151"
+            },
+            "albumName": "Kid A",
+            "albumReleaseDate": "2000-10-02",
+            "uri": "spotify:track:2rtGaCAeYtmcIvuZsvgTf6",
+            "id": "e22dd816-fb63-4db5-9fdd-cd943e9f34dd",
+            "count": 3,
+            "song": "How to Disappear Completely",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Subterranean Homesick Alien",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:2CVV8PtUYYsux8XOzWkCP0",
+            "id": "632020fa-a5a2-40fc-b71c-0effcd5d53c6",
+            "count": 3,
+            "song": "Subterranean Homesick Alien",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Like Spinning Plates",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851863e0e305637100311c91aa7"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02863e0e305637100311c91aa7"
+            },
+            "albumName": "Amnesiac",
+            "albumReleaseDate": "2001-03-12",
+            "uri": "spotify:track:1irS6wtXCUUF5ytfPqOzpM",
+            "id": "782e4f59-b64a-4b3c-95c1-2b337080d95e",
+            "count": 2,
+            "song": "Like Spinning Plates",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Climbing Up the Walls",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d00004851c8b444df094279e70d0ed856"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e02c8b444df094279e70d0ed856"
+            },
+            "albumName": "OK Computer",
+            "albumReleaseDate": "1997-05-28",
+            "uri": "spotify:track:2PDQReEXBViVwkrbQ34vd7",
+            "id": "c57b7724-cdab-48f0-8f8d-d54c4306a29e",
+            "count": 1,
+            "song": "Climbing Up the Walls",
+            "artist": "Radiohead"
+        },
+        {
+            "songName": "Talk Show Host",
+            "artistName": "Radiohead",
+            "image": {
+                "height": 64,
+                "width": 64,
+                "url": "https://i.scdn.co/image/ab67616d000048514bb2cf6071587079e3d74947"
+            },
+            "imageMed": {
+                "height": 300,
+                "width": 300,
+                "url": "https://i.scdn.co/image/ab67616d00001e024bb2cf6071587079e3d74947"
+            },
+            "albumName": "Street Spirit (Fade Out)",
+            "albumReleaseDate": "1996-01-22",
+            "uri": "spotify:track:3cMuGOGSaTWbwOurTS4b3Y",
+            "id": "48675a32-e00b-4b3b-bad6-d3e6f7855b98",
+            "count": 1,
+            "song": "Talk Show Host",
+            "artist": "Radiohead"
+        }
+    ],
+    "showsList": [
+        {
+            "id": "34cc517",
+            "date": "16-12-2025",
+            "venue": "Royal Arena",
+            "city": "Copenhagen",
+            "country": "Denmark"
+        },
+        {
+            "id": "1b4cc51c",
+            "date": "15-12-2025",
+            "venue": "Royal Arena",
+            "city": "Copenhagen",
+            "country": "Denmark"
+        },
+        {
+            "id": "1340c9c5",
+            "date": "12-12-2025",
+            "venue": "Uber Arena",
+            "city": "Berlin",
+            "country": "Germany"
+        },
+        {
+            "id": "b40c9c6",
+            "date": "11-12-2025",
+            "venue": "Uber Arena",
+            "city": "Berlin",
+            "country": "Germany"
+        },
+        {
+            "id": "340c9c7",
+            "date": "09-12-2025",
+            "venue": "Uber Arena",
+            "city": "Berlin",
+            "country": "Germany"
+        },
+        {
+            "id": "1340c9c1",
+            "date": "08-12-2025",
+            "venue": "Uber Arena",
+            "city": "Berlin",
+            "country": "Germany"
+        },
+        {
+            "id": "b40c9c2",
+            "date": "05-12-2025",
+            "venue": "Royal Arena",
+            "city": "Copenhagen",
+            "country": "Denmark"
+        },
+        {
+            "id": "340c9c3",
+            "date": "04-12-2025",
+            "venue": "Royal Arena",
+            "city": "Copenhagen",
+            "country": "Denmark"
+        },
+        {
+            "id": "b40c9ce",
+            "date": "25-11-2025",
+            "venue": "The O2 Arena",
+            "city": "London",
+            "country": "United Kingdom"
+        },
+        {
+            "id": "340c9cf",
+            "date": "24-11-2025",
+            "venue": "The O2 Arena",
+            "city": "London",
+            "country": "United Kingdom"
+        },
+        {
+            "id": "1b40c9c8",
+            "date": "22-11-2025",
+            "venue": "The O2 Arena",
+            "city": "London",
+            "country": "United Kingdom"
+        },
+        {
+            "id": "1340c9c9",
+            "date": "21-11-2025",
+            "venue": "The O2 Arena",
+            "city": "London",
+            "country": "United Kingdom"
+        },
+        {
+            "id": "340c9cb",
+            "date": "18-11-2025",
+            "venue": "Unipol Arena",
+            "city": "Casalecchio di Reno",
+            "country": "Italy"
+        },
+        {
+            "id": "1340c9d5",
+            "date": "17-11-2025",
+            "venue": "Unipol Arena",
+            "city": "Casalecchio di Reno",
+            "country": "Italy"
+        },
+        {
+            "id": "340c9d7",
+            "date": "15-11-2025",
+            "venue": "Unipol Arena",
+            "city": "Casalecchio di Reno",
+            "country": "Italy"
+        },
+        {
+            "id": "1b40c9d0",
+            "date": "14-11-2025",
+            "venue": "Unipol Arena",
+            "city": "Casalecchio di Reno",
+            "country": "Italy"
+        },
+        {
+            "id": "b40c9d2",
+            "date": "08-11-2025",
+            "venue": "Movistar Arena",
+            "city": "Madrid",
+            "country": "Spain"
+        },
+        {
+            "id": "1340c9dd",
+            "date": "07-11-2025",
+            "venue": "Movistar Arena",
+            "city": "Madrid",
+            "country": "Spain"
+        },
+        {
+            "id": "b40c9de",
+            "date": "05-11-2025",
+            "venue": "Movistar Arena",
+            "city": "Madrid",
+            "country": "Spain"
+        },
+        {
+            "id": "340c9df",
+            "date": "04-11-2025",
+            "venue": "Movistar Arena",
+            "city": "Madrid",
+            "country": "Spain"
+        }
+    ]
+}

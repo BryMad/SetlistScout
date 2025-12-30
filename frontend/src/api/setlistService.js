@@ -110,7 +110,7 @@ export const fetchArtistTour = async (artist, progressCallback) => {
 
     // Clean up the listener
     eventSourceService.removeListener(listenerId);
-
+    console.log(result)
     return result;
   } catch (error) {
     console.error("Error fetching artist tour:", error);
