@@ -134,7 +134,7 @@ export interface AutoOptions {
   rotationPeakShare?: number;
 }
 
-const AUTO_DEFAULTS = {
+export const AUTO_DEFAULTS = {
   minTourSample: 8,
   widenTo: 60,
   staleAfterDays: 540, // ~18 months
