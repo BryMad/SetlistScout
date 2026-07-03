@@ -34,8 +34,52 @@ const HISTORY_TTL_S = 7 * 24 * 60 * 60; // full back catalogs move slowly
 const SHOW_TTL_S = 7 * 24 * 60 * 60; // a single past show is near-immutable
 const TRACK_TTL_S = 90 * 24 * 60 * 60; // song→track mappings basically never change
 
-export async function searchArtists(query: string) {
-  return client.searchArtists(query);
+export interface ArtistSuggestion {
+  mbid: string;
+  name: string;
+  disambiguation: string | null;
+  image: string | null;
+}
+
+const normName = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim();
+
+/**
+ * Suggestions merge two sources: setlist.fm provides identity (mbid — the
+ * source of truth for all our routes), Spotify decorates with artist images.
+ * A Spotify miss just means no thumbnail; it can never change who you get.
+ */
+export async function searchArtistsWithImages(
+  query: string
+): Promise<ArtistSuggestion[]> {
+  const cacheKey = `v2:artistsearch:${normName(query)}`;
+  const cached = await cacheGet<ArtistSuggestion[]>(cacheKey);
+  if (cached) return cached;
+
+  const [setlistFm, spotifyHits] = await Promise.all([
+    client.searchArtists(query),
+    spotify.searchArtists(query, 10).catch(() => []),
+  ]);
+
+  const imageByName = new Map<string, string | null>();
+  for (const hit of spotifyHits) {
+    const key = normName(hit.name);
+    if (!imageByName.has(key)) imageByName.set(key, hit.imageUrl);
+  }
+
+  const suggestions = setlistFm.artists.slice(0, 8).map((artist) => ({
+    mbid: artist.mbid,
+    name: artist.name,
+    disambiguation: artist.disambiguation ?? null,
+    image: imageByName.get(normName(artist.name)) ?? null,
+  }));
+
+  await cacheSet(cacheKey, suggestions, 7 * 24 * 60 * 60);
+  return suggestions;
 }
 
 /** Last ~100 shows — the Predict half's data. */

@@ -54,10 +54,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-300">
-        ← New search
-      </Link>
-      <h1 className="mt-2 text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
       <SectionNav mbid={mbid} name={name} active="predict" />
 
       <nav className="mt-6 flex flex-wrap items-center gap-2">

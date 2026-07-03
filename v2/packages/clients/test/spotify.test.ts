@@ -129,6 +129,28 @@ describe("SpotifyClient matching", () => {
   });
 });
 
+describe("SpotifyClient artist search", () => {
+  it("returns thumbnail-sized artist images", async () => {
+    const items = [
+      {
+        id: "a1",
+        name: "Pearl Jam",
+        images: [
+          { url: "https://img/640", width: 640 },
+          { url: "https://img/160", width: 160 },
+        ],
+        popularity: 82,
+      },
+      { id: "a2", name: "Pearl Jam UK", images: [], popularity: 12 },
+    ];
+    const { client, calls } = makeClient([{ body: TOKEN }, { body: { artists: { items } } }]);
+    const hits = await client.searchArtists("Pearl Jam");
+    expect(hits[0]).toMatchObject({ id: "a1", imageUrl: "https://img/160", popularity: 82 });
+    expect(hits[1]!.imageUrl).toBeNull();
+    expect(calls[1]!.url).toContain("type=artist");
+  });
+});
+
 describe("SpotifyClient OAuth + playlists", () => {
   it("builds a correct authorize URL", () => {
     const { client } = makeClient([]);

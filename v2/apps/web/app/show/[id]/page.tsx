@@ -1,4 +1,3 @@
-import Link from "next/link";
 import SavePlaylist from "@/components/SavePlaylist";
 import SongList from "@/components/SongList";
 import { getSetlistById, matchTracks } from "@/lib/data";
@@ -17,9 +16,6 @@ export default async function ShowPage({ params, searchParams }: PageProps) {
   if (!show) {
     return (
       <main className="mx-auto max-w-3xl px-6 py-10">
-        <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-300">
-          ← New search
-        </Link>
         <p className="mt-10 text-zinc-400">Show not found on setlist.fm.</p>
       </main>
     );
@@ -47,10 +43,7 @@ export default async function ShowPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-300">
-        ← New search
-      </Link>
-      <h1 className="mt-2 text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
       <p className="mt-1 text-lg text-zinc-400">
         {place || "Unknown venue"} · {show.date}
       </p>

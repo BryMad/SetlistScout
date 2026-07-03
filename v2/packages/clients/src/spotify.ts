@@ -38,10 +38,31 @@ const searchResponseSchema = z.object({
   tracks: z.object({ items: z.array(trackSchema).default([]) }).optional(),
 });
 
+const artistItemSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  images: z
+    .array(z.object({ url: z.string(), width: z.number().nullish() }))
+    .default([]),
+  popularity: z.number().optional(),
+});
+
+const artistSearchSchema = z.object({
+  artists: z.object({ items: z.array(artistItemSchema).default([]) }).optional(),
+});
+
 const playlistSchema = z.object({
   id: z.string(),
   external_urls: z.object({ spotify: z.string().optional() }).optional(),
 });
+
+export interface SpotifyArtistHit {
+  id: string;
+  name: string;
+  /** Smallish artist image (~160-320px) suitable for a 40px thumbnail. */
+  imageUrl: string | null;
+  popularity: number;
+}
 
 export interface MatchedTrack {
   id: string;
@@ -136,6 +157,28 @@ export class SpotifyClient {
     this.fetchFn = options.fetchFn ?? fetch;
     this.sleepFn = options.sleepFn ?? defaultSleep;
     this.nowFn = options.nowFn ?? Date.now;
+  }
+
+  // --- artist search (app token) ------------------------------------------
+
+  /** Artist search — used to decorate suggestions with artist images. */
+  async searchArtists(name: string, limit = 10): Promise<SpotifyArtistHit[]> {
+    const data = await this.apiRequest(
+      `/search?type=artist&limit=${limit}&q=${encodeURIComponent(name)}`
+    );
+    const items = artistSearchSchema.parse(data).artists?.items ?? [];
+    return items.map((artist) => {
+      const images = artist.images;
+      const image =
+        images.find((img) => (img.width ?? 0) <= 320 && (img.width ?? 0) >= 64) ??
+        images[images.length - 1];
+      return {
+        id: artist.id,
+        name: artist.name,
+        imageUrl: image?.url ?? null,
+        popularity: artist.popularity ?? 0,
+      };
+    });
   }
 
   // --- track matching (app token) ----------------------------------------
