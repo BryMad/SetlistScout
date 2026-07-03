@@ -35,10 +35,11 @@ const SHOW_TTL_S = 7 * 24 * 60 * 60; // a single past show is near-immutable
 const TRACK_TTL_S = 90 * 24 * 60 * 60; // song→track mappings basically never change
 
 export interface ArtistSuggestion {
-  mbid: string;
   name: string;
-  disambiguation: string | null;
   image: string | null;
+  disambiguation: string | null;
+  /** Known for setlist.fm-fallback results; Spotify results resolve on selection. */
+  mbid: string | null;
 }
 
 const normName = (value: string) =>
@@ -49,37 +50,64 @@ const normName = (value: string) =>
     .trim();
 
 /**
- * Suggestions merge two sources: setlist.fm provides identity (mbid — the
- * source of truth for all our routes), Spotify decorates with artist images.
- * A Spotify miss just means no thumbnail; it can never change who you get.
+ * Spotify drives the suggestion list — its partial-query ranking is what made
+ * the old site's dropdown good ("david b" → Bowie, Byrne), and every result
+ * has artwork. setlist.fm search only backs it up when Spotify has nothing
+ * (tiny/legacy acts). Identity (mbid) is resolved at selection time.
  */
-export async function searchArtistsWithImages(
-  query: string
-): Promise<ArtistSuggestion[]> {
-  const cacheKey = `v2:artistsearch:${normName(query)}`;
+export async function suggestArtists(query: string): Promise<ArtistSuggestion[]> {
+  const cacheKey = `v2:suggest:${normName(query)}`;
   const cached = await cacheGet<ArtistSuggestion[]>(cacheKey);
   if (cached) return cached;
 
-  const [setlistFm, spotifyHits] = await Promise.all([
-    client.searchArtists(query),
-    spotify.searchArtists(query, 10).catch(() => []),
-  ]);
-
-  const imageByName = new Map<string, string | null>();
-  for (const hit of spotifyHits) {
-    const key = normName(hit.name);
-    if (!imageByName.has(key)) imageByName.set(key, hit.imageUrl);
+  const spotifyHits = await spotify.searchArtists(query, 8).catch(() => []);
+  let suggestions: ArtistSuggestion[];
+  if (spotifyHits.length > 0) {
+    suggestions = spotifyHits.map((hit) => ({
+      name: hit.name,
+      image: hit.imageUrl,
+      disambiguation: null,
+      mbid: null,
+    }));
+  } else {
+    const fallback = await client
+      .searchArtists(query)
+      .catch(() => ({ artists: [], total: 0 }));
+    suggestions = fallback.artists.slice(0, 8).map((artist) => ({
+      name: artist.name,
+      image: null,
+      disambiguation: artist.disambiguation ?? null,
+      mbid: artist.mbid,
+    }));
   }
-
-  const suggestions = setlistFm.artists.slice(0, 8).map((artist) => ({
-    mbid: artist.mbid,
-    name: artist.name,
-    disambiguation: artist.disambiguation ?? null,
-    image: imageByName.get(normName(artist.name)) ?? null,
-  }));
 
   await cacheSet(cacheKey, suggestions, 7 * 24 * 60 * 60);
   return suggestions;
+}
+
+/**
+ * Name → setlist.fm mbid, at selection time. setlist.fm is good at
+ * exact-name search even though its partial-query ranking is poor.
+ */
+export async function resolveArtistMbid(name: string): Promise<string | null> {
+  const cacheKey = `v2:resolve:${normName(name)}`;
+  const cached = await cacheGet<string | null>(cacheKey);
+  if (cached !== undefined) return cached;
+
+  const { artists } = await client.searchArtists(name);
+  const target = normName(name);
+  const best =
+    artists.find((artist) => normName(artist.name) === target) ??
+    artists.find((artist) => {
+      const candidate = normName(artist.name);
+      return candidate.includes(target) || target.includes(candidate);
+    }) ??
+    artists[0] ??
+    null;
+
+  const mbid = best?.mbid ?? null;
+  await cacheSet(cacheKey, mbid, 30 * 24 * 60 * 60);
+  return mbid;
 }
 
 /** Last ~100 shows — the Predict half's data. */

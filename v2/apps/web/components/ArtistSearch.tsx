@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 interface Suggestion {
-  mbid: string;
   name: string;
-  disambiguation: string | null;
   image: string | null;
+  disambiguation: string | null;
+  /** Present on setlist.fm-fallback results; Spotify results resolve on click. */
+  mbid: string | null;
 }
 
 interface ArtistSearchProps {
@@ -30,11 +31,14 @@ export default function ArtistSearch({
   const [searching, setSearching] = useState(false);
   const [attempted, setAttempted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [resolvingName, setResolvingName] = useState<string | null>(null);
+  const [resolveError, setResolveError] = useState<string | null>(null);
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const trimmed = query.trim();
+    setResolveError(null);
     if (trimmed.length < 2) {
       setSuggestions([]);
       setAttempted(false);
@@ -70,12 +74,32 @@ export default function ArtistSearch({
     };
   }, []);
 
-  function select(artist: Suggestion) {
+  async function select(artist: Suggestion) {
+    setResolveError(null);
+
+    let mbid = artist.mbid;
+    if (!mbid) {
+      // Spotify suggestion: find its setlist.fm identity now
+      setResolvingName(artist.name);
+      try {
+        const res = await fetch(`/api/resolve?name=${encodeURIComponent(artist.name)}`);
+        if (res.ok) mbid = ((await res.json()) as { mbid: string }).mbid;
+      } catch {
+        /* handled below */
+      }
+      setResolvingName(null);
+    }
+
+    if (!mbid) {
+      setResolveError(`No setlist data found for “${artist.name}”.`);
+      return;
+    }
+
     setOpen(false);
     setQuery("");
     setSuggestions([]);
     setAttempted(false);
-    router.push(`/artist/${artist.mbid}?name=${encodeURIComponent(artist.name)}`);
+    router.push(`/artist/${mbid}?name=${encodeURIComponent(artist.name)}`);
   }
 
   const isHero = variant === "hero";
@@ -105,10 +129,11 @@ export default function ArtistSearch({
           )}
           <ul className="max-h-96 overflow-y-auto">
             {suggestions.map((artist) => (
-              <li key={artist.mbid}>
+              <li key={artist.mbid ?? artist.name}>
                 <button
                   onClick={() => select(artist)}
-                  className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-zinc-800"
+                  disabled={resolvingName !== null}
+                  className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-zinc-800 disabled:opacity-60"
                 >
                   {artist.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -124,16 +149,27 @@ export default function ArtistSearch({
                   )}
                   <span className="min-w-0">
                     <span className="block truncate text-white">{artist.name}</span>
-                    {artist.disambiguation && (
-                      <span className="block truncate text-xs text-zinc-500">
-                        {artist.disambiguation}
+                    {resolvingName === artist.name ? (
+                      <span className="block text-xs text-indigo-400">
+                        finding setlists…
                       </span>
+                    ) : (
+                      artist.disambiguation && (
+                        <span className="block truncate text-xs text-zinc-500">
+                          {artist.disambiguation}
+                        </span>
+                      )
                     )}
                   </span>
                 </button>
               </li>
             ))}
           </ul>
+          {resolveError && (
+            <p className="border-t border-zinc-800 px-4 py-2.5 text-sm text-rose-400">
+              {resolveError}
+            </p>
+          )}
           <a
             href="https://open.spotify.com"
             target="_blank"
