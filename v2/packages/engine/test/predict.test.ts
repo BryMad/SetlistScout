@@ -11,10 +11,12 @@ describe("predict — auto mode", () => {
     expect(prediction.tourName).toBe("Oasis Live ’25");
     expect(prediction.confidence).toBe("high");
     expect(prediction.showsAnalyzed).toBe(41);
-    expect(prediction.showsExcluded).toBe(4);
+    // the 4 junk listings in the dataset are 2009 promos — irrelevant to a
+    // 2025 tour window, so they must NOT be mentioned here
+    expect(prediction.showsExcluded).toBe(0);
     expect(prediction.songs[0]!.likelihood).toBe(1);
     expect(prediction.explanation[0]).toBe('Based on 41 shows from "Oasis Live ’25".');
-    expect(prediction.explanation.some((l) => l.includes("set aside 4"))).toBe(true);
+    expect(prediction.explanation.some((l) => l.includes("set aside"))).toBe(false);
     expect(prediction.dateRange.from < prediction.dateRange.to).toBe(true);
   });
 
@@ -24,6 +26,22 @@ describe("predict — auto mode", () => {
     const stale = prediction.explanation.find((l) => l.includes("most recent real show"));
     expect(stale).toContain("about 2 years ago");
     expect(stale).toContain("2024-03-02");
+    // the 2025-26 promo one-offs NEWER than the Sphere window still count
+    // here — they're the reason the data isn't fresher. (The 2018 short sets
+    // and the pre-tour video shoot fall outside and don't.)
+    expect(prediction.showsExcluded).toBe(3);
+    expect(prediction.explanation.some((l) => l.includes("set aside 3"))).toBe(true);
+  });
+
+  it("historical tour views ignore junk from outside their window entirely", () => {
+    const prediction = predict(loadShows("u2"), {
+      asOf: TODAY,
+      mode: { kind: "named-tour", tourName: "The Joshua Tree Tour 2019" },
+    })!;
+    // U2's excluded listings are 2024-26 promos and a short 2018 set —
+    // none inside the 2019 tour window
+    expect(prediction.showsExcluded).toBe(0);
+    expect(prediction.explanation.some((l) => l.includes("set aside"))).toBe(false);
   });
 
   it("Phish: rotation widens the window and the recency weighting kicks in", () => {

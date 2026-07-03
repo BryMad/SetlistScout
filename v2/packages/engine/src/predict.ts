@@ -61,7 +61,12 @@ export interface Prediction {
   /** Plain sentences describing what was analyzed and why. */
   explanation: string[];
   showsAnalyzed: number;
-  /** Shows dropped by the quality filter across the whole dataset. */
+  /**
+   * Quality-filtered listings RELEVANT to this analysis — within the analyzed
+   * window (plus anything newer, for predictive modes, since recent promo
+   * junk explains why the window isn't fresher). Never the whole-history
+   * count: a 2017 tour page shouldn't mention 459 empty listings from 1980.
+   */
   showsExcluded: number;
   dateRange: { from: string; to: string };
 }
@@ -115,10 +120,22 @@ function assessManualSelection(
   return { signals, confidence };
 }
 
+function relevantExclusionCount(
+  selection: Selection,
+  quality: QualityReport,
+  includeNewer: boolean
+): number {
+  const newest = selection.shows[0]!.date;
+  const oldest = selection.shows[selection.shows.length - 1]!.date;
+  return quality.excluded.filter(
+    ({ show }) => show.date >= oldest && (includeNewer || show.date <= newest)
+  ).length;
+}
+
 function buildExplanation(
   selection: Selection,
   signals: PredictionSignal[],
-  quality: QualityReport
+  excludedCount: number
 ): string[] {
   const lines: string[] = [];
   const count = selection.shows.length;
@@ -179,10 +196,9 @@ function buildExplanation(
     }
   }
 
-  if (selection.strategy !== "single-show" && quality.excluded.length > 0) {
-    const n = quality.excluded.length;
+  if (selection.strategy !== "single-show" && excludedCount > 0) {
     lines.push(
-      `We set aside ${n} listing${n === 1 ? "" : "s"} that don't look like real setlists (promo spots or empty entries).`
+      `We set aside ${excludedCount} listing${excludedCount === 1 ? "" : "s"} from this period that don't look like real setlists (promo spots or empty entries).`
     );
   }
 
@@ -237,15 +253,23 @@ export function predict(shows: Show[], options: PredictOptions): Prediction | nu
     asOf: options.asOf,
   });
 
+  // Historical views only care about junk inside their window; predictive
+  // views also count newer junk (it explains why the data isn't fresher).
+  const includeNewer = mode.kind !== "named-tour" && mode.kind !== "single-show";
+  const showsExcluded =
+    mode.kind === "single-show"
+      ? 0
+      : relevantExclusionCount(selection, quality, includeNewer);
+
   return {
     songs,
     strategy: selection.strategy,
     tourName: selection.tourName,
     confidence,
     signals,
-    explanation: buildExplanation(selection, signals, quality),
+    explanation: buildExplanation(selection, signals, showsExcluded),
     showsAnalyzed: selection.shows.length,
-    showsExcluded: quality.excluded.length,
+    showsExcluded,
     dateRange: {
       from: selection.shows[selection.shows.length - 1]!.date,
       to: selection.shows[0]!.date,
