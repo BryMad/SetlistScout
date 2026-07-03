@@ -23,17 +23,29 @@ export const setSchema = z.object({
   song: z.array(songSchema).default([]),
 });
 
+export const artistSchema = z.object({
+  mbid: z.string(),
+  name: z.string(),
+  sortName: z.string().optional(),
+  disambiguation: z.string().optional(),
+  url: z.string().optional(),
+});
+
+/** Response shape of GET /search/artists. */
+export const artistsSearchSchema = z.object({
+  type: z.string().optional(),
+  itemsPerPage: z.number(),
+  page: z.number(),
+  total: z.number(),
+  artist: z.array(artistSchema).default([]),
+});
+
 export const setlistSchema = z.object({
   id: z.string(),
   versionId: z.string().optional(),
   eventDate: z.string(), // DD-MM-YYYY
   lastUpdated: z.string().optional(),
-  artist: z.object({
-    mbid: z.string(),
-    name: z.string(),
-    sortName: z.string().optional(),
-    url: z.string().optional(),
-  }),
+  artist: artistSchema,
   venue: z
     .object({
       id: z.string().optional(),
@@ -65,6 +77,8 @@ export const setlistPageSchema = z.object({
   setlist: z.array(setlistSchema).default([]),
 });
 
+export type Artist = z.infer<typeof artistSchema>;
+export type ArtistsSearchPage = z.infer<typeof artistsSearchSchema>;
 export type Song = z.infer<typeof songSchema>;
 export type SetlistSet = z.infer<typeof setSchema>;
 export type Setlist = z.infer<typeof setlistSchema>;

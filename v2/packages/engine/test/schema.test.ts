@@ -1,6 +1,8 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { setlistPageSchema } from "../src/schema.ts";
-import { fixtureArtists, loadRawPages } from "./helpers.ts";
+import { artistsSearchSchema, setlistPageSchema } from "../src/schema.ts";
+import { FIXTURES_DIR, fixtureArtists, loadRawPages } from "./helpers.ts";
 
 describe("setlist.fm schemas against captured fixtures", () => {
   const artists = fixtureArtists();
@@ -15,6 +17,15 @@ describe("setlist.fm schemas against captured fixtures", () => {
         const page = setlistPageSchema.parse(raw);
         expect(page.setlist.length).toBeGreaterThan(0);
       }
+    });
+
+    it(`parses the artist-search response for ${artist}`, () => {
+      const raw = JSON.parse(
+        readFileSync(join(FIXTURES_DIR, artist, "artist-search.json"), "utf8")
+      );
+      const search = artistsSearchSchema.parse(raw);
+      expect(search.artist.length).toBeGreaterThan(0);
+      expect(search.artist[0]!.mbid).toBeTruthy();
     });
   }
 });
