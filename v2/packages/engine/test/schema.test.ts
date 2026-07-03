@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { setlistPageSchema } from "../src/schema";
-import { fixtureArtists, loadRawPages } from "./helpers";
+import { setlistPageSchema } from "../src/schema.ts";
+import { fixtureArtists, loadRawPages } from "./helpers.ts";
 
 describe("setlist.fm schemas against captured fixtures", () => {
   const artists = fixtureArtists();

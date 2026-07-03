@@ -1,4 +1,4 @@
-import type { Show } from "./normalize";
+import type { Show } from "./normalize.ts";
 
 /**
  * Quality filter: separates real setlists from data that would skew predictions.

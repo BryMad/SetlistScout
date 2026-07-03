@@ -1,5 +1,5 @@
-import type { Show } from "./normalize";
-import { daysBetween } from "./select";
+import type { Show } from "./normalize.ts";
+import { daysBetween } from "./select.ts";
 
 /**
  * Scoring: turn a selection of shows into a ranked song list.

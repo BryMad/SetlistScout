@@ -1,4 +1,4 @@
-import type { Show } from "./normalize";
+import type { Show } from "./normalize.ts";
 
 /**
  * Selectors: given quality-filtered shows, pick the subset a prediction is based on.

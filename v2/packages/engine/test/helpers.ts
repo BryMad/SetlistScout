@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { setlistPageSchema, type Setlist } from "../src/schema";
-import { toShow, type Show } from "../src/normalize";
+import { setlistPageSchema, type Setlist } from "../src/schema.ts";
+import { toShow, type Show } from "../src/normalize.ts";
 
 export const FIXTURES_DIR = join(import.meta.dirname, "../__fixtures__");
 

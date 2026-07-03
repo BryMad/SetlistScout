@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { scoreSongs, songKey } from "../src/score";
-import { assessQuality } from "../src/quality";
-import { selectLastNShows, selectLatestTour } from "../src/select";
-import type { Show } from "../src/normalize";
-import { loadShows, makeShow } from "./helpers";
+import { scoreSongs, songKey } from "../src/score.ts";
+import { assessQuality } from "../src/quality.ts";
+import { selectLastNShows, selectLatestTour } from "../src/select.ts";
+import type { Show } from "../src/normalize.ts";
+import { loadShows, makeShow } from "./helpers.ts";
 
 const kept = (artist: string) => assessQuality(loadShows(artist)).kept;
 

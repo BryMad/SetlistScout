@@ -6,9 +6,9 @@ import {
   selectLatestTour,
   selectNamedTour,
   selectShow,
-} from "../src/select";
-import { assessQuality } from "../src/quality";
-import { loadShows, makeShow } from "./helpers";
+} from "../src/select.ts";
+import { assessQuality } from "../src/quality.ts";
+import { loadShows, makeShow } from "./helpers.ts";
 
 const TODAY = "2026-07-02";
 const kept = (artist: string) => assessQuality(loadShows(artist)).kept;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { toIsoDate } from "../src/normalize";
-import { fixtureArtists, loadShows } from "./helpers";
+import { toIsoDate } from "../src/normalize.ts";
+import { fixtureArtists, loadShows } from "./helpers.ts";
 
 describe("toIsoDate", () => {
   it("converts setlist.fm DD-MM-YYYY to ISO", () => {

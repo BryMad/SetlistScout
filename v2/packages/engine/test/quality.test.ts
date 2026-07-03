@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { assessQuality, median } from "../src/quality";
-import type { Show } from "../src/normalize";
-import { loadShows } from "./helpers";
+import { assessQuality, median } from "../src/quality.ts";
+import type { Show } from "../src/normalize.ts";
+import { loadShows } from "./helpers.ts";
 
 function makeShow(songCount: number, overrides: Partial<Show> = {}): Show {
   return {

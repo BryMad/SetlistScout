@@ -1,4 +1,4 @@
-import type { Setlist } from "./schema";
+import type { Setlist } from "./schema.ts";
 
 /** A song as performed at one show, flattened out of setlist.fm's sets/encores nesting. */
 export interface ShowSong {
