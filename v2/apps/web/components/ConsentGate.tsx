@@ -112,7 +112,8 @@ export default function ConsentGate() {
             ))}
           </div>
 
-          <div className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950/60 p-4">
+          {/* capped height so the checkboxes stay in view on phones (v1 did the same) */}
+          <div className="mt-3 max-h-36 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950/60 p-4 sm:max-h-64">
             <p className="text-sm font-semibold">
               {tab === 0 ? "End User Agreement (Summary)" : "Privacy Policy (Summary)"}
             </p>
