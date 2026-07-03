@@ -64,6 +64,20 @@ against the dark surface. The cool→hot spectrum is the product story: cool col
 
 ---
 
+## 2b. Spotify-guideline gaps in the track rows
+
+- **"Open Spotify" button per track** — v1 had an explicit per-track Spotify
+  button; the guidelines want labeled links ("OPEN SPOTIFY" / "LISTEN ON
+  SPOTIFY"), not just a hyperlinked title. Add a small labeled control to each
+  matched row.
+
+## 2c. Spectrum palette cleanup
+
+- The v1-inherited five colors (violet/sky/yellow/orange/rose) clash against
+  the quiet Geist chrome. Redesign as a cleaner, gradient-coherent ramp once
+  the main design settles — fewer hues, ordered lightness, validated against
+  the dark surface. Keep the five labels; they're the product story.
+
 ## 3. Cram-mode features
 
 - **Gap stat for rotation artists** — "last played 14 shows ago." Jam-band fans
