@@ -19,7 +19,7 @@ export default async function ToursPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="font-display text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
       <SectionNav mbid={mbid} name={name} active="relive" />
 
       <p className="mt-6 text-sm text-zinc-500">

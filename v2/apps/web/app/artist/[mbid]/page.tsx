@@ -56,7 +56,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="font-display text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
       <SectionNav mbid={mbid} name={name} active="predict" />
 
       <nav className="mt-6 flex flex-wrap items-center gap-2">
@@ -64,10 +64,10 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
           <Link
             key={tab.key}
             href={tab.href}
-            className={`rounded-full border px-4 py-1.5 text-sm ${
+            className={`rounded-md border px-3 py-1.5 text-sm font-medium ${
               modeParam === tab.key
-                ? "border-indigo-500 bg-indigo-950 text-indigo-200"
-                : "border-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200"
+                ? "border-indigo-500/60 bg-indigo-500/10 text-indigo-300"
+                : "border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
             }`}
           >
             {tab.label}
@@ -89,7 +89,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
           <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`rounded-full border px-3 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
+                className={`rounded-md border px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
               >
                 {prediction.confidence} confidence
               </span>

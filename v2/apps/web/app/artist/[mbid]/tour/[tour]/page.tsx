@@ -47,7 +47,7 @@ export default async function TourPage({ params, searchParams }: PageProps) {
       >
         ← All tours
       </Link>
-      <h1 className="mt-2 font-display text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight">{name}</h1>
       <p className="mt-1 text-lg text-zinc-400">{tourName}</p>
       <SectionNav mbid={mbid} name={name} active="relive" />
 
@@ -66,7 +66,7 @@ export default async function TourPage({ params, searchParams }: PageProps) {
           <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`rounded-full border px-3 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
+                className={`rounded-md border px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
               >
                 {prediction.confidence} confidence
               </span>

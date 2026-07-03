@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import "./globals.css";
 
-// SetlistScout's own voice: techy display + mono for data. Spotify content
-// zones (track rows, search results) deliberately stay on the platform
-// sans-serif per Spotify's design guidelines — the contrast is the point.
-const display = Space_Grotesk({
+const sans = Geist({
   subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-display-face",
+  variable: "--font-geist-sans",
 });
 
-const mono = JetBrains_Mono({
+const mono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${mono.variable} flex min-h-screen flex-col bg-zinc-950 text-zinc-100 antialiased`}
+        className={`${sans.variable} ${mono.variable} flex min-h-screen flex-col bg-zinc-950 font-sans text-zinc-100 antialiased`}
       >
         <SiteHeader />
         <div className="flex-1">{children}</div>

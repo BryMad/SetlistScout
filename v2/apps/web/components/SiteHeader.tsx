@@ -10,12 +10,9 @@ export default function SiteHeader() {
   const isHome = pathname === "/";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-indigo-500/15 bg-zinc-950/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-zinc-800 bg-zinc-950/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between gap-4 px-6">
-        <Link
-          href="/"
-          className="shrink-0 bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text font-display text-lg font-bold uppercase tracking-[0.15em] text-transparent drop-shadow-[0_0_12px_rgba(99,102,241,0.45)]"
-        >
+        <Link href="/" className="shrink-0 text-base font-semibold tracking-tight">
           Setlist Scout
         </Link>
         {!isHome && <ArtistSearch variant="header" />}

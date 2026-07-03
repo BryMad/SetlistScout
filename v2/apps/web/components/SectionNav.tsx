@@ -15,15 +15,15 @@ export default function SectionNav({ mbid, name, active }: SectionNavProps) {
   ] as const;
 
   return (
-    <nav className="mt-5 inline-flex rounded-xl border border-zinc-800 bg-zinc-900/60 p-1">
+    <nav className="mt-5 inline-flex rounded-lg border border-zinc-800 bg-zinc-900 p-1">
       {sections.map((section) => (
         <Link
           key={section.key}
           href={section.href}
-          className={`rounded-lg px-5 py-2 font-display text-sm font-semibold uppercase tracking-wider ${
+          className={`rounded-md px-4 py-1.5 text-sm font-medium ${
             active === section.key
-              ? "bg-indigo-600 text-white shadow-[0_0_16px_rgba(99,102,241,0.45)]"
-              : "text-zinc-400 hover:text-zinc-200"
+              ? "bg-indigo-600 text-white"
+              : "text-zinc-400 hover:text-zinc-100"
           }`}
         >
           {section.label}
