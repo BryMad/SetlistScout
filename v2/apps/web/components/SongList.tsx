@@ -124,7 +124,7 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
                     href={match.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-full bg-[#1DB954] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-black hover:brightness-110"
+                    className="rounded-full bg-[#1DB954] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white hover:brightness-110"
                   >
                     OPEN SPOTIFY
                   </a>

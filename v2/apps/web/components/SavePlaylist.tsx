@@ -43,7 +43,7 @@ export default function SavePlaylist({ playlistName, description, uris }: SavePl
             href={playlistUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-[#1DB954] px-5 py-2 text-sm font-semibold text-black hover:brightness-110"
+            className="rounded-full bg-[#1DB954] px-5 py-2 text-sm font-semibold text-white hover:brightness-110"
           >
             Open in Spotify ↗
           </a>
@@ -57,7 +57,7 @@ export default function SavePlaylist({ playlistName, description, uris }: SavePl
       <button
         onClick={save}
         disabled={state === "saving" || uris.length === 0}
-        className="rounded-full bg-[#1DB954] px-5 py-2 text-sm font-semibold text-black hover:brightness-110 disabled:opacity-50"
+        className="rounded-full bg-[#1DB954] px-5 py-2 text-sm font-semibold text-white hover:brightness-110 disabled:opacity-50"
       >
         {state === "saving"
           ? "Saving…"
