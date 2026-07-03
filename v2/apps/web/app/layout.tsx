@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Chakra_Petch, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import "./globals.css";
@@ -7,10 +7,10 @@ import "./globals.css";
 // SetlistScout's own voice: techy display + mono for data. Spotify content
 // zones (track rows, search results) deliberately stay on the platform
 // sans-serif per Spotify's design guidelines — the contrast is the point.
-const display = Chakra_Petch({
+const display = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "700"],
-  variable: "--font-chakra-petch",
+  variable: "--font-display-face",
 });
 
 const mono = JetBrains_Mono({

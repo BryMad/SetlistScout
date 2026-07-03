@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: var(--font-chakra-petch);
+  --font-display: var(--font-display-face);
   --font-mono: var(--font-jetbrains);
 }
 
