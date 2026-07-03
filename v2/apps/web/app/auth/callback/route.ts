@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { spotify } from "@/lib/data";
-import { redirectUriFor, writeSession } from "@/lib/session";
+import { appOrigin, redirectUriFor, writeSession } from "@/lib/session";
 
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code");
@@ -14,12 +14,12 @@ export async function GET(request: NextRequest) {
   }
 
   if (!code || !saved?.state || saved.state !== state) {
-    return NextResponse.redirect(new URL("/?auth=failed", request.nextUrl.origin));
+    return NextResponse.redirect(new URL("/?auth=failed", appOrigin(request)));
   }
 
   const tokens = await spotify.exchangeCode(code, redirectUriFor(request));
   const response = NextResponse.redirect(
-    new URL(saved.returnTo ?? "/", request.nextUrl.origin)
+    new URL(saved.returnTo ?? "/", appOrigin(request))
   );
   writeSession(response, {
     access: tokens.access_token,

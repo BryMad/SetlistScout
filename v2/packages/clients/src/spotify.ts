@@ -277,7 +277,8 @@ export class SpotifyClient {
       client_id: this.clientId,
       redirect_uri: options.redirectUri,
       state: options.state,
-      scope: (options.scopes ?? ["playlist-modify-private", "playlist-modify-public"]).join(" "),
+      // the registered Spotify app is only authorized for the public scope
+      scope: (options.scopes ?? ["playlist-modify-public"]).join(" "),
     });
     return `${this.accountsUrl}/authorize?${params}`;
   }
@@ -297,7 +298,7 @@ export class SpotifyClient {
     });
   }
 
-  /** Create a private playlist and fill it. Returns the playlist URL. */
+  /** Create a playlist and fill it. Returns the playlist URL. */
   async createPlaylist(
     accessToken: string,
     options: { name: string; description?: string; uris: string[] }
@@ -306,7 +307,7 @@ export class SpotifyClient {
       await this.userRequest(accessToken, "/me/playlists", {
         name: options.name,
         description: options.description ?? "",
-        public: false,
+        public: true, // playlist-modify-public is the app's only granted scope
       })
     );
     for (let i = 0; i < options.uris.length; i += 100) {

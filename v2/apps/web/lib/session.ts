@@ -37,3 +37,13 @@ export function redirectUriFor(request: NextRequest): string {
     new URL("/auth/callback", request.nextUrl.origin).toString()
   );
 }
+
+/**
+ * Origin to send users back to after OAuth. Derived from the registered
+ * redirect URI, NOT request.nextUrl.origin — Next dev reports "localhost"
+ * there even when the browser is on 127.0.0.1, and cookies don't cross
+ * between the two hosts.
+ */
+export function appOrigin(request: NextRequest): string {
+  return new URL(redirectUriFor(request)).origin;
+}

@@ -138,7 +138,7 @@ describe("SpotifyClient OAuth + playlists", () => {
     expect(url.origin).toBe("https://accounts.spotify.com");
     expect(url.searchParams.get("client_id")).toBe("id");
     expect(url.searchParams.get("state")).toBe("xyz");
-    expect(url.searchParams.get("scope")).toContain("playlist-modify-private");
+    expect(url.searchParams.get("scope")).toBe("playlist-modify-public");
   });
 
   it("exchangeCode posts the authorization-code grant", async () => {
