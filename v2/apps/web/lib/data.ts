@@ -113,7 +113,8 @@ const INCARNATION_SEPARATOR = /^\s*(?:&|and|\+|with|y|feat\.?|featuring)\s+/i;
 export async function resolveArtistIncarnations(
   name: string
 ): Promise<ArtistIncarnation[]> {
-  const cacheKey = `v2:incarnations:${normName(name)}`;
+  // "2": pruning logic changed with the same-name-duplicate handling
+  const cacheKey = `v2:incarnations2:${normName(name)}`;
   const cached = await cacheGet<ArtistIncarnation[]>(cacheKey);
   if (cached) return cached;
 
@@ -146,10 +147,27 @@ export async function resolveArtistIncarnations(
     })
   );
 
-  const incarnations = probed
+  let incarnations = probed
     .filter((candidate) => candidate.totalShows > 0)
     .sort((a, b) => ((a.lastShow ?? "") > (b.lastShow ?? "") ? -1 : 1))
     .slice(0, 6);
+
+  // Same-name duplicates are DIFFERENT artists (setlist.fm has a 70s band
+  // also called "Oasis"). When the evidence is overwhelming — a minnow with
+  // <10% of the leader's shows, dormant 10+ years longer — drop it rather
+  // than asking the user to tell two identical labels apart. Two genuinely
+  // active same-name artists still both surface.
+  const exactDupes = incarnations.filter((c) => normName(c.name) === normName(name));
+  if (exactDupes.length > 1) {
+    const leader = exactDupes.reduce((a, b) => (b.totalShows > a.totalShows ? b : a));
+    const year = (iso: string | null) => Number(iso?.slice(0, 4) ?? 0);
+    incarnations = incarnations.filter((candidate) => {
+      if (candidate === leader || normName(candidate.name) !== normName(name)) return true;
+      const minnow = candidate.totalShows < leader.totalShows * 0.1;
+      const longDormant = year(leader.lastShow) - year(candidate.lastShow) >= 10;
+      return !(minnow && longDormant);
+    });
+  }
 
   await cacheSet(cacheKey, incarnations, 7 * 24 * 60 * 60);
   return incarnations;

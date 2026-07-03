@@ -153,7 +153,9 @@ export default function ArtistSearch({
           {incarnations ? (
             <div>
               <p className="border-b border-zinc-800 px-4 py-2.5 text-xs text-zinc-400">
-                They play under a few names on setlist.fm — pick the lineup:
+                {new Set(incarnations.map((inc) => inc.name)).size < incarnations.length
+                  ? "More than one artist goes by this name — pick yours:"
+                  : "They play under a few names on setlist.fm — pick the lineup:"}
               </p>
               <ul className="max-h-96 overflow-y-auto">
                 {incarnations.map((inc) => (
@@ -162,8 +164,15 @@ export default function ArtistSearch({
                       onClick={() => navigateTo(inc.mbid, inc.name)}
                       className="w-full px-4 py-3 text-left transition-colors hover:bg-zinc-800"
                     >
-                      <span className="block truncate text-white">{inc.name}</span>
-                      <span className="block text-xs text-zinc-500">
+                      <span className="block truncate text-white">
+                        {inc.name}
+                        {inc.disambiguation && (
+                          <span className="ml-2 text-xs text-zinc-400">
+                            {inc.disambiguation}
+                          </span>
+                        )}
+                      </span>
+                      <span className="block font-mono text-xs text-zinc-500">
                         {inc.totalShows.toLocaleString()} show
                         {inc.totalShows === 1 ? "" : "s"}
                         {inc.lastShow && ` · last played ${inc.lastShow}`}

@@ -94,8 +94,11 @@ against the dark surface. The cool→hot spectrum is the product story: cool col
   mid-tour *right now*, an artist with same-name collisions.
 - Combined incarnation view — "Neil Young (all lineups)" merged analysis as an
   option alongside the per-incarnation pages.
-- MusicBrainz cross-check in resolve for same-name artist collisions, if they
-  show up in practice.
+- Same-name disambiguation, further rungs (dominance pruning + disambiguation
+  text shipped 2026-07): cross-check the clicked Spotify artist's
+  popularity/genres against setlist.fm candidates; full MusicBrainz linkage
+  (Spotify URL → MBID) as the definitive resolver; a "wrong artist?" escape
+  hatch on artist pages so pruning can never trap anyone.
 
 ---
 
