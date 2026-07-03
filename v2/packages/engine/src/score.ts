@@ -1,4 +1,4 @@
-import type { Show } from "./normalize.ts";
+import { songKey, type Show } from "./normalize.ts";
 import { daysBetween } from "./select.ts";
 
 /**
@@ -36,9 +36,6 @@ export interface ScoredSong {
   isCover: boolean;
   coverArtist: string | null;
 }
-
-export const songKey = (name: string): string =>
-  name.trim().toLowerCase().replace(/\s+/g, " ");
 
 interface SongStats {
   weight: number;

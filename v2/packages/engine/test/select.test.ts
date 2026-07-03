@@ -6,6 +6,7 @@ import {
   selectLatestTour,
   selectNamedTour,
   selectShow,
+  peakShowShare,
 } from "../src/select.ts";
 import { assessQuality } from "../src/quality.ts";
 import { loadShows, makeShow } from "./helpers.ts";
@@ -82,6 +83,28 @@ describe("selectors against captured fixtures", () => {
   });
 });
 
+describe("peakShowShare", () => {
+  it("is 1 when a song plays every show, and low for disjoint setlists", () => {
+    const stable = [
+      makeShow(["Staple", "Filler A"]),
+      makeShow(["Staple", "Filler B"]),
+    ];
+    expect(peakShowShare(stable)).toBe(1);
+
+    const rotating = [makeShow(["A", "B"]), makeShow(["C", "D"]), makeShow(["E", "F"])];
+    expect(peakShowShare(rotating)).toBeCloseTo(1 / 3);
+    expect(peakShowShare([])).toBe(0);
+  });
+
+  it("ignores tape entries", () => {
+    const shows = [makeShow(["Real A"]), makeShow(["Real B"])];
+    for (const show of shows) {
+      show.songs.push({ name: "Intro Tape", isTape: true, isCover: false, coverArtist: null });
+    }
+    expect(peakShowShare(shows)).toBe(0.5);
+  });
+});
+
 describe("selectAuto route-picker", () => {
   it("returns null with no data", () => {
     expect(selectAuto([], { asOf: TODAY })).toBeNull();
@@ -98,10 +121,24 @@ describe("selectAuto route-picker", () => {
     ]);
   });
 
-  it("Phish: 9-show residency clears the sample threshold → latest-tour", () => {
+  it("Phish: healthy tour but total rotation → widens to last-n, medium confidence", () => {
     const decision = selectAuto(kept("phish"), { asOf: TODAY })!;
+    expect(decision.selection.strategy).toBe("last-n-shows");
+    expect(decision.selection.shows).toHaveLength(60);
+    expect(decision.confidence).toBe("medium");
+    const rotation = decision.signals.find((s) => s.kind === "high-rotation")!;
+    expect(rotation).toMatchObject({
+      tourName: "Sphere Las Vegas 2026",
+      widenedTo: 60,
+    });
+    expect((rotation as { peakShowShare: number }).peakShowShare).toBeLessThan(0.2);
+  });
+
+  it("Metallica: no-repeat-weekend format still reads as stable, no widening", () => {
+    const decision = selectAuto(kept("metallica"), { asOf: TODAY })!;
     expect(decision.selection.strategy).toBe("latest-tour");
-    expect(decision.selection.tourName).toBe("Sphere Las Vegas 2026");
+    expect(decision.selection.tourName).toBe("M72 World Tour");
+    expect(decision.signals.some((s) => s.kind === "high-rotation")).toBe(false);
     expect(decision.confidence).toBe("high");
   });
 
@@ -137,6 +174,24 @@ describe("selectAuto route-picker", () => {
       kind: "thin-latest-tour",
       tourName: "Brand New Tour",
       showCount: 3,
+    });
+    expect(decision.confidence).toBe("medium");
+  });
+
+  it("rotation with nothing to widen into keeps the tour but flags it", () => {
+    // one long tour of fully disjoint setlists and no older history
+    const shows = Array.from({ length: 10 }, (_, i) =>
+      makeShow([`Unique ${i}A`, `Unique ${i}B`], {
+        date: `2026-06-${String(i + 1).padStart(2, "0")}`,
+        tourName: "Endless Tour",
+      })
+    );
+    const decision = selectAuto(shows, { asOf: TODAY })!;
+    expect(decision.selection.strategy).toBe("latest-tour");
+    expect(decision.signals[0]).toMatchObject({
+      kind: "high-rotation",
+      tourName: "Endless Tour",
+      widenedTo: null,
     });
     expect(decision.confidence).toBe("medium");
   });

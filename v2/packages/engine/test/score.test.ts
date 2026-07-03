@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { scoreSongs, songKey } from "../src/score.ts";
+import { scoreSongs } from "../src/score.ts";
+import { songKey } from "../src/normalize.ts";
 import { assessQuality } from "../src/quality.ts";
 import { selectLastNShows, selectLatestTour } from "../src/select.ts";
 import type { Show } from "../src/normalize.ts";

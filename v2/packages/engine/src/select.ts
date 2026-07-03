@@ -1,4 +1,4 @@
-import type { Show } from "./normalize.ts";
+import { songKey, type Show } from "./normalize.ts";
 
 /**
  * Selectors: given quality-filtered shows, pick the subset a prediction is based on.
@@ -64,6 +64,30 @@ export function selectShow(shows: Show[], id: string): Selection | null {
   return { strategy: "single-show", tourName: show.tourName, shows: [show] };
 }
 
+/**
+ * Share of shows containing the single most-played song (tapes excluded).
+ * Rotation gauge: 1.0 means some song plays every night; Phish's no-repeat
+ * Sphere run measures 0.11 while every stable-setlist fixture artist —
+ * including Metallica's "no repeat weekend" format — sits at 0.94+.
+ */
+export function peakShowShare(shows: Show[]): number {
+  if (shows.length === 0) return 0;
+  const counts = new Map<string, number>();
+  for (const show of shows) {
+    const seenThisShow = new Set<string>();
+    for (const song of show.songs) {
+      if (song.isTape) continue;
+      const key = songKey(song.name);
+      if (key.length === 0 || seenThisShow.has(key)) continue;
+      seenThisShow.add(key);
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+  }
+  let max = 0;
+  for (const count of counts.values()) if (count > max) max = count;
+  return max / shows.length;
+}
+
 // --- auto route-picker ---------------------------------------------------
 
 export type Confidence = "high" | "medium" | "low";
@@ -76,7 +100,15 @@ export type AutoSignal =
   | { kind: "healthy-latest-tour"; tourName: string; showCount: number }
   | { kind: "thin-latest-tour"; tourName: string; showCount: number; widenedTo: number }
   | { kind: "no-tour-attribution"; widenedTo: number }
-  | { kind: "stale-data"; newestShowDate: string; daysSinceLastShow: number };
+  | { kind: "stale-data"; newestShowDate: string; daysSinceLastShow: number }
+  /** Healthy tour, but songs rotate so heavily no per-song prediction holds.
+   *  widenedTo is null when the tour already covers the whole widened window. */
+  | {
+      kind: "high-rotation";
+      tourName: string;
+      peakShowShare: number;
+      widenedTo: number | null;
+    };
 
 export interface AutoDecision {
   selection: Selection;
@@ -95,6 +127,11 @@ export interface AutoOptions {
   staleAfterDays?: number;
   /** Newest show older than this drops confidence to low. */
   dormantAfterDays?: number;
+  /**
+   * A tour whose most reliable song still plays in fewer than this share of
+   * shows is a rotation artist; widen the window instead of trusting the tour.
+   */
+  rotationPeakShare?: number;
 }
 
 const AUTO_DEFAULTS = {
@@ -102,6 +139,7 @@ const AUTO_DEFAULTS = {
   widenTo: 60,
   staleAfterDays: 540, // ~18 months
   dormantAfterDays: 1095, // ~3 years
+  rotationPeakShare: 0.5,
 };
 
 const CONFIDENCE_RANK: Record<Confidence, number> = { high: 2, medium: 1, low: 0 };
@@ -120,12 +158,31 @@ export function selectAuto(shows: Show[], options: AutoOptions): AutoDecision | 
   let selection: Selection;
 
   if (latestTour && latestTour.shows.length >= opts.minTourSample) {
-    selection = latestTour;
-    signals.push({
-      kind: "healthy-latest-tour",
-      tourName: latestTour.tourName!,
-      showCount: latestTour.shows.length,
-    });
+    const peak = peakShowShare(latestTour.shows);
+    if (peak < opts.rotationPeakShare) {
+      // Rotation artist: the tour is healthy but per-song certainty is low.
+      // Widen for more signal — unless the widened window wouldn't reach
+      // beyond this tour anyway (a long tour IS the whole recent history).
+      const widened = selectLastNShows(shows, opts.widenTo);
+      const addsOtherShows = widened.shows.some(
+        (show) => show.tourName !== latestTour.tourName
+      );
+      selection = addsOtherShows ? widened : latestTour;
+      signals.push({
+        kind: "high-rotation",
+        tourName: latestTour.tourName!,
+        peakShowShare: peak,
+        widenedTo: addsOtherShows ? selection.shows.length : null,
+      });
+      cap("medium");
+    } else {
+      selection = latestTour;
+      signals.push({
+        kind: "healthy-latest-tour",
+        tourName: latestTour.tourName!,
+        showCount: latestTour.shows.length,
+      });
+    }
   } else {
     selection = selectLastNShows(shows, opts.widenTo);
     if (latestTour) {

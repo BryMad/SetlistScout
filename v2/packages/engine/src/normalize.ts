@@ -25,6 +25,10 @@ export interface Show {
   songCount: number;
 }
 
+/** Normalized song identity for grouping (lowercased, whitespace collapsed). */
+export const songKey = (name: string): string =>
+  name.trim().toLowerCase().replace(/\s+/g, " ");
+
 /** "12-05-2026" → "2026-05-12" */
 export function toIsoDate(eventDate: string): string {
   const [day, month, year] = eventDate.split("-");
