@@ -45,11 +45,7 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
           return (
             <li
               key={song.key}
-              className={`group grid items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900 ${
-                showLikelihood
-                  ? "grid-cols-[1.75rem_4rem_1fr_4.5rem]"
-                  : "grid-cols-[1.75rem_4rem_1fr]"
-              }`}
+              className="group grid grid-cols-[1.75rem_4rem_1fr_auto] items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900"
             >
               <span className="text-right font-mono text-sm text-zinc-600">
                 {index + 1}
@@ -105,19 +101,39 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
                   </div>
                 )}
               </div>
-              {showLikelihood && (
-                <div className="text-right">
-                  <span
-                    title={band.label}
-                    className={`block font-mono text-sm font-semibold ${band.text}`}
+              <div className="flex flex-col items-end gap-1">
+                {showLikelihood && (
+                  <>
+                    <span
+                      title={band.label}
+                      className={`font-mono text-sm font-semibold ${band.text}`}
+                    >
+                      {pct}%
+                    </span>
+                    <span className="font-mono text-[10px] text-zinc-600">
+                      {song.showsPlayed}/{song.totalShows}
+                    </span>
+                  </>
+                )}
+                {/* Spotify attribution: an explicit labeled link per matched
+                    track (a Spotify design-guideline requirement, ported from
+                    v1's Track button). null = Spotify had no match; undefined =
+                    beyond the match budget, never looked up — show nothing. */}
+                {match?.url ? (
+                  <a
+                    href={match.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-[#1DB954] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-black hover:brightness-110"
                   >
-                    {pct}%
+                    OPEN SPOTIFY
+                  </a>
+                ) : match === null ? (
+                  <span className="rounded-full border border-zinc-800 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-zinc-600">
+                    NO MATCH
                   </span>
-                  <span className="block font-mono text-[10px] text-zinc-600">
-                    {song.showsPlayed}/{song.totalShows}
-                  </span>
-                </div>
-              )}
+                ) : null}
+              </div>
             </li>
           );
         })}
