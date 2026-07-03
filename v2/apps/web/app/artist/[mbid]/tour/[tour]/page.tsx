@@ -3,36 +3,25 @@ import SavePlaylist from "@/components/SavePlaylist";
 import SectionNav from "@/components/SectionNav";
 import SongList from "@/components/SongList";
 import { CONFIDENCE_STYLE } from "@/components/confidence";
-import { getShows, matchTracks, runPrediction } from "@/lib/data";
+import { getAllShows, matchTracks, runPrediction } from "@/lib/data";
 import type { MatchedTrack } from "@setlistscout/clients";
-import type { PredictMode } from "@setlistscout/engine";
 
-/** How many top songs get Spotify matching and go into the playlist. */
 const PLAYLIST_SIZE = 30;
 
 interface PageProps {
-  params: Promise<{ mbid: string }>;
+  params: Promise<{ mbid: string; tour: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function ArtistPage({ params, searchParams }: PageProps) {
-  const { mbid } = await params;
+export default async function TourPage({ params, searchParams }: PageProps) {
+  const { mbid, tour } = await params;
+  const tourName = decodeURIComponent(tour);
   const sp = await searchParams;
-  const str = (v: string | string[] | undefined) => (typeof v === "string" ? v : null);
+  const name = typeof sp.name === "string" ? sp.name : "Artist";
+  const query = `?name=${encodeURIComponent(name)}`;
 
-  const name = str(sp.name) ?? "Artist";
-  const modeParam = str(sp.mode) ?? "auto";
-
-  const shows = await getShows(mbid);
-
-  const mode: PredictMode =
-    modeParam === "latest"
-      ? { kind: "latest-tour" }
-      : modeParam === "last60"
-        ? { kind: "last-n-shows", n: 60 }
-        : { kind: "auto" };
-
-  const prediction = runPrediction(shows, mode);
+  const shows = await getAllShows(mbid);
+  const prediction = runPrediction(shows, { kind: "named-tour", tourName });
 
   let matches = new Map<string, MatchedTrack | null>();
   if (prediction) {
@@ -45,40 +34,25 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
         .filter((uri): uri is string => Boolean(uri))
     : [];
 
-  const base = `/artist/${mbid}?name=${encodeURIComponent(name)}`;
-  const tabs = [
-    { key: "auto", label: "Auto", href: base },
-    { key: "latest", label: "Latest tour", href: `${base}&mode=latest` },
-    { key: "last60", label: "Last 60 shows", href: `${base}&mode=last60` },
-  ];
+  const tourShows = shows.filter(
+    (show) => show.tourName === tourName && show.songCount > 0
+  );
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-300">
-        ← New search
+      <Link
+        href={`/artist/${mbid}/tours${query}`}
+        className="text-sm text-zinc-500 hover:text-zinc-300"
+      >
+        ← All tours
       </Link>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">{name}</h1>
-      <SectionNav mbid={mbid} name={name} active="predict" />
-
-      <nav className="mt-6 flex flex-wrap items-center gap-2">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.key}
-            href={tab.href}
-            className={`rounded-full border px-4 py-1.5 text-sm ${
-              modeParam === tab.key
-                ? "border-indigo-500 bg-indigo-950 text-indigo-200"
-                : "border-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200"
-            }`}
-          >
-            {tab.label}
-          </Link>
-        ))}
-      </nav>
+      <p className="mt-1 text-lg text-zinc-400">{tourName}</p>
+      <SectionNav mbid={mbid} name={name} active="relive" />
 
       {!prediction ? (
         <p className="mt-10 text-zinc-400">
-          Not enough usable setlist data for this view. Try another mode.
+          No usable setlists recorded for this tour.
         </p>
       ) : (
         <>
@@ -101,14 +75,36 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
             </ul>
             <div className="mt-4 border-t border-zinc-800 pt-4">
               <SavePlaylist
-                playlistName={`${name} — predicted setlist`}
-                description={`Made with SetlistScout from ${prediction.showsAnalyzed} shows (${prediction.dateRange.from} to ${prediction.dateRange.to}).`}
+                playlistName={`${name} — ${tourName} setlist`}
+                description={`Made with SetlistScout from ${prediction.showsAnalyzed} shows on ${tourName}.`}
                 uris={playlistUris}
               />
             </div>
           </section>
 
           <SongList songs={prediction.songs} matches={matches} />
+
+          <section className="mt-12">
+            <h2 className="text-xl font-semibold">Pick a show</h2>
+            <p className="mt-1 text-sm text-zinc-500">
+              The exact setlist from one night of this tour.
+            </p>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {tourShows.map((show) => (
+                <li key={show.id}>
+                  <Link
+                    href={`/show/${show.id}${query}`}
+                    className="block rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 hover:border-indigo-600 hover:bg-zinc-900"
+                  >
+                    <span className="block text-sm font-medium">{show.date}</span>
+                    <span className="block truncate text-sm text-zinc-500">
+                      {[show.venue, show.city].filter(Boolean).join(", ") || "Unknown venue"}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         </>
       )}
     </main>

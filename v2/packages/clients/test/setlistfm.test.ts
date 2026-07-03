@@ -151,6 +151,50 @@ describe("SetlistFmClient", () => {
     expect(calls).toHaveLength(2);
   });
 
+  it("paces request starts by the gap even when running concurrently", async () => {
+    const page = fixture("oasis/setlists-page-1.json");
+    const { client, clock } = makeClient(
+      [{ body: page }, { body: page }, { body: page }],
+      { maxConcurrent: 3, minRequestGapMs: 100 }
+    );
+    await Promise.all([
+      client.getArtistSetlistsPage("mbid", 1),
+      client.getArtistSetlistsPage("mbid", 2),
+      client.getArtistSetlistsPage("mbid", 3),
+    ]);
+    // start slots are t=0, 100, 200; each later request sleeps from "now"
+    // to its slot (the fake clock advances as earlier sleeps run)
+    expect(clock.sleeps).toEqual([100, 100]);
+  });
+
+  it("fetchAllSetlists crawls every page of a full history", async () => {
+    // doctor the fixture totals so 5 pages == the whole history
+    const pages = [1, 2, 3, 4, 5].map((p) => ({
+      body: { ...fixture(`phish/setlists-page-${p}.json`), total: 100 },
+    }));
+    const { client, calls } = makeClient(pages, { maxConcurrent: 4, minRequestGapMs: 10 });
+    const progress: Array<[number, number]> = [];
+    const setlists = await client.fetchAllSetlists("mbid", {
+      onProgress: (donePages, totalPages) => progress.push([donePages, totalPages]),
+    });
+    expect(setlists).toHaveLength(100);
+    expect(calls).toHaveLength(5);
+    // page 1 fetched first (to learn the total), rest concurrently, order preserved
+    expect(setlists[0]!.id).toBe(fixture("phish/setlists-page-1.json").setlist[0].id);
+    expect(progress[0]).toEqual([1, 5]);
+    expect(progress.at(-1)).toEqual([5, 5]);
+  });
+
+  it("fetchAllSetlists respects maxShows without fetching extra pages", async () => {
+    const pages = [1, 2].map((p) => ({
+      body: { ...fixture(`phish/setlists-page-${p}.json`), total: 2000 },
+    }));
+    const { client, calls } = makeClient(pages);
+    const setlists = await client.fetchAllSetlists("mbid", { maxShows: 40 });
+    expect(setlists).toHaveLength(40);
+    expect(calls).toHaveLength(2);
+  });
+
   it("fetchRecentSetlists stops cleanly when history runs out (404)", async () => {
     const { client } = makeClient([
       { body: fixture("talking-heads/setlists-page-1.json") },

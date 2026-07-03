@@ -4,3 +4,4 @@ export * from "./quality.ts";
 export * from "./select.ts";
 export * from "./score.ts";
 export * from "./predict.ts";
+export * from "./tours.ts";
