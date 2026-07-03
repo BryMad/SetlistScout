@@ -5,6 +5,28 @@ the point is that each idea is written down with enough context to pick it up la
 
 ---
 
+## 0. NEXT UP — Vercel deploy (repo is ready; ~10 min of dashboard clicks)
+
+Repo-side prep is done: `maxDuration = 60` on crawl-heavy routes, no SSE, no
+server-held sessions, Redis Cloud reachable from anywhere. Steps (owner-only):
+
+1. vercel.com → Add New Project → import `BryMad/SetlistScout` (Hobby tier fine).
+2. **Root Directory: `v2/apps/web`** — the one setting that matters; Next.js +
+   npm workspace detected automatically.
+3. Production branch: `v2` (Settings → Git) — every push becomes a deploy.
+4. Env vars (values in `v2/apps/web/.env.local`): `SETLIST_API_KEY`,
+   `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `REDIS_URL`, and
+   `SPOTIFY_REDIRECT_URI=https://<domain>/auth/callback`.
+5. Spotify dashboard: add that HTTPS `/auth/callback` redirect URI.
+6. Domain: buy via Vercel Domains (or Cloudflare/Namecheap) — check
+   setlistscout.com / .app — then update redirect URI + dashboard to match.
+
+Notes: first visit per artist on prod is a cold crawl (shared Redis means
+already-tested artists are instant); Hobby tier is non-commercial; do the
+real-device phone pass once live.
+
+---
+
 ## 1. True predicted setlist (the big one)
 
 **The tension:** today's "Predict my set" doesn't predict a *set* — it ranks songs
