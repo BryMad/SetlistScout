@@ -11,6 +11,14 @@ interface Suggestion {
   mbid: string | null;
 }
 
+interface Incarnation {
+  mbid: string;
+  name: string;
+  disambiguation: string | null;
+  lastShow: string | null;
+  totalShows: number;
+}
+
 interface ArtistSearchProps {
   variant?: "hero" | "header";
   autoFocus?: boolean;
@@ -33,12 +41,14 @@ export default function ArtistSearch({
   const [open, setOpen] = useState(false);
   const [resolvingName, setResolvingName] = useState<string | null>(null);
   const [resolveError, setResolveError] = useState<string | null>(null);
+  const [incarnations, setIncarnations] = useState<Incarnation[] | null>(null);
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const trimmed = query.trim();
     setResolveError(null);
+    setIncarnations(null);
     if (trimmed.length < 2) {
       setSuggestions([]);
       setAttempted(false);
@@ -74,32 +84,44 @@ export default function ArtistSearch({
     };
   }, []);
 
-  async function select(artist: Suggestion) {
-    setResolveError(null);
-
-    let mbid = artist.mbid;
-    if (!mbid) {
-      // Spotify suggestion: find its setlist.fm identity now
-      setResolvingName(artist.name);
-      try {
-        const res = await fetch(`/api/resolve?name=${encodeURIComponent(artist.name)}`);
-        if (res.ok) mbid = ((await res.json()) as { mbid: string }).mbid;
-      } catch {
-        /* handled below */
-      }
-      setResolvingName(null);
-    }
-
-    if (!mbid) {
-      setResolveError(`No setlist data found for “${artist.name}”.`);
-      return;
-    }
-
+  function navigateTo(mbid: string, name: string) {
     setOpen(false);
     setQuery("");
     setSuggestions([]);
     setAttempted(false);
-    router.push(`/artist/${mbid}?name=${encodeURIComponent(artist.name)}`);
+    setIncarnations(null);
+    router.push(`/artist/${mbid}?name=${encodeURIComponent(name)}`);
+  }
+
+  async function select(artist: Suggestion) {
+    setResolveError(null);
+
+    if (artist.mbid) {
+      navigateTo(artist.mbid, artist.name);
+      return;
+    }
+
+    // Spotify suggestion: find its setlist.fm identity — possibly several
+    // (solo vs. touring-band incarnations like "Neil Young & Crazy Horse")
+    setResolvingName(artist.name);
+    let found: Incarnation[] = [];
+    try {
+      const res = await fetch(`/api/resolve?name=${encodeURIComponent(artist.name)}`);
+      if (res.ok) {
+        found = ((await res.json()) as { incarnations: Incarnation[] }).incarnations;
+      }
+    } catch {
+      /* handled below */
+    }
+    setResolvingName(null);
+
+    if (found.length === 0) {
+      setResolveError(`No setlist data found for “${artist.name}”.`);
+    } else if (found.length === 1) {
+      navigateTo(found[0]!.mbid, found[0]!.name);
+    } else {
+      setIncarnations(found);
+    }
   }
 
   const isHero = variant === "hero";
@@ -127,6 +149,31 @@ export default function ArtistSearch({
           {!searching && attempted && suggestions.length === 0 && (
             <div className="px-4 py-3 text-sm text-zinc-400">No artists found</div>
           )}
+
+          {incarnations ? (
+            <div>
+              <p className="border-b border-zinc-800 px-4 py-2.5 text-xs text-zinc-400">
+                They play under a few names on setlist.fm — pick the lineup:
+              </p>
+              <ul className="max-h-96 overflow-y-auto">
+                {incarnations.map((inc) => (
+                  <li key={inc.mbid}>
+                    <button
+                      onClick={() => navigateTo(inc.mbid, inc.name)}
+                      className="w-full px-4 py-3 text-left transition-colors hover:bg-zinc-800"
+                    >
+                      <span className="block truncate text-white">{inc.name}</span>
+                      <span className="block text-xs text-zinc-500">
+                        {inc.totalShows.toLocaleString()} show
+                        {inc.totalShows === 1 ? "" : "s"}
+                        {inc.lastShow && ` · last played ${inc.lastShow}`}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
           <ul className="max-h-96 overflow-y-auto">
             {suggestions.map((artist) => (
               <li key={artist.mbid ?? artist.name}>
@@ -165,6 +212,7 @@ export default function ArtistSearch({
               </li>
             ))}
           </ul>
+          )}
           {resolveError && (
             <p className="border-t border-zinc-800 px-4 py-2.5 text-sm text-rose-400">
               {resolveError}

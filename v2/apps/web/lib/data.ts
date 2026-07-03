@@ -5,6 +5,7 @@ import {
 } from "@setlistscout/clients";
 import {
   predict,
+  toIsoDate,
   toShow,
   type PredictMode,
   type ScoredSong,
@@ -85,29 +86,73 @@ export async function suggestArtists(query: string): Promise<ArtistSuggestion[]>
   return suggestions;
 }
 
+export interface ArtistIncarnation {
+  mbid: string;
+  name: string;
+  disambiguation: string | null;
+  /** ISO date of their most recent show on setlist.fm. */
+  lastShow: string | null;
+  /** Career show count in the setlist.fm database. */
+  totalShows: number;
+}
+
+const isTribute = (disambiguation: string | null | undefined) =>
+  /tribute|cover band/i.test(disambiguation ?? "");
+
+/** "neil young & crazy horse" is an incarnation of "neil young"; "pearl jam uk" is not. */
+const INCARNATION_SEPARATOR = /^\s*(?:&|and|\+|with|y|feat\.?|featuring)\s+/i;
+
 /**
- * Name → setlist.fm mbid, at selection time. setlist.fm is good at
- * exact-name search even though its partial-query ranking is poor.
+ * Name → setlist.fm identity, at selection time. Spotify groups an artist's
+ * every lineup under one name, but setlist.fm splits them ("Neil Young",
+ * "Neil Young & Crazy Horse", "Neil Young + Promise of the Real") — and the
+ * touring incarnation is usually the setlist you actually want. So we return
+ * ALL plausible incarnations, probed for activity (last show, career show
+ * count) so the UI can offer an informed choice when it's genuinely ambiguous.
  */
-export async function resolveArtistMbid(name: string): Promise<string | null> {
-  const cacheKey = `v2:resolve:${normName(name)}`;
-  const cached = await cacheGet<string | null>(cacheKey);
-  if (cached !== undefined) return cached;
+export async function resolveArtistIncarnations(
+  name: string
+): Promise<ArtistIncarnation[]> {
+  const cacheKey = `v2:incarnations:${normName(name)}`;
+  const cached = await cacheGet<ArtistIncarnation[]>(cacheKey);
+  if (cached) return cached;
 
   const { artists } = await client.searchArtists(name);
   const target = normName(name);
-  const best =
-    artists.find((artist) => normName(artist.name) === target) ??
-    artists.find((artist) => {
-      const candidate = normName(artist.name);
-      return candidate.includes(target) || target.includes(candidate);
-    }) ??
-    artists[0] ??
-    null;
 
-  const mbid = best?.mbid ?? null;
-  await cacheSet(cacheKey, mbid, 30 * 24 * 60 * 60);
-  return mbid;
+  const candidates = artists
+    .filter((artist) => {
+      if (isTribute(artist.disambiguation)) return false;
+      const candidate = normName(artist.name);
+      if (candidate === target) return true;
+      return (
+        candidate.startsWith(target) &&
+        INCARNATION_SEPARATOR.test(candidate.slice(target.length))
+      );
+    })
+    .slice(0, 8);
+
+  const probed = await Promise.all(
+    candidates.map(async (artist): Promise<ArtistIncarnation> => {
+      const page = await client.getArtistSetlistsPage(artist.mbid, 1).catch(() => null);
+      const newest = page?.setlist[0]?.eventDate ?? null;
+      return {
+        mbid: artist.mbid,
+        name: artist.name,
+        disambiguation: artist.disambiguation ?? null,
+        lastShow: newest ? toIsoDate(newest) : null,
+        totalShows: page?.total ?? 0,
+      };
+    })
+  );
+
+  const incarnations = probed
+    .filter((candidate) => candidate.totalShows > 0)
+    .sort((a, b) => ((a.lastShow ?? "") > (b.lastShow ?? "") ? -1 : 1))
+    .slice(0, 6);
+
+  await cacheSet(cacheKey, incarnations, 7 * 24 * 60 * 60);
+  return incarnations;
 }
 
 /** Last ~100 shows — the Predict half's data. */

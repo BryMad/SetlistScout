@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
-import { resolveArtistMbid } from "@/lib/data";
+import { resolveArtistIncarnations } from "@/lib/data";
 
-/** Resolve a selected artist name to its setlist.fm mbid. */
+/**
+ * Resolve a selected artist name to setlist.fm identities. Returns every
+ * plausible incarnation (solo, & Crazy Horse, …) with activity stats so the
+ * client can navigate directly when unambiguous or offer a choice when not.
+ */
 export async function GET(request: Request) {
   const name = new URL(request.url).searchParams.get("name")?.trim() ?? "";
   if (!name) {
     return NextResponse.json({ error: "name required" }, { status: 400 });
   }
-  const mbid = await resolveArtistMbid(name);
-  if (!mbid) {
-    return NextResponse.json({ error: "not found" }, { status: 404 });
-  }
-  return NextResponse.json({ mbid });
+  const incarnations = await resolveArtistIncarnations(name);
+  return NextResponse.json({ incarnations });
 }
