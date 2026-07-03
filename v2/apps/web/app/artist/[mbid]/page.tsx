@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { getShows, runPrediction } from "@/lib/data";
+import SavePlaylist from "@/components/SavePlaylist";
+import { getShows, matchTracks, runPrediction } from "@/lib/data";
+import type { MatchedTrack } from "@setlistscout/clients";
 import type { Confidence, PredictMode } from "@setlistscout/engine";
+
+/** How many top songs get Spotify matching and go into the playlist. */
+const PLAYLIST_SIZE = 30;
 
 const CONFIDENCE_STYLE: Record<Confidence, string> = {
   high: "bg-emerald-950 text-emerald-300 border-emerald-800",
@@ -34,6 +39,25 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
           : { kind: "auto" };
 
   const prediction = runPrediction(shows, mode);
+
+  // Spotify matching for the songs that make the playlist (top of the ranking)
+  let matches = new Map<string, MatchedTrack | null>();
+  if (prediction) {
+    matches = await matchTracks(name, prediction.songs.slice(0, PLAYLIST_SIZE));
+  }
+  const playlistUris = prediction
+    ? prediction.songs
+        .slice(0, PLAYLIST_SIZE)
+        .map((song) => matches.get(song.key)?.uri)
+        .filter((uri): uri is string => Boolean(uri))
+    : [];
+  const playlistName =
+    mode.kind === "named-tour" && tourParam
+      ? `${name} — ${tourParam} setlist`
+      : `${name} — predicted setlist`;
+  const playlistDescription = prediction
+    ? `Made with SetlistScout from ${prediction.showsAnalyzed} shows (${prediction.dateRange.from} to ${prediction.dateRange.to}).`
+    : "";
 
   // distinct tours, newest first, for the past-tours picker
   const tourCounts = new Map<string, number>();
@@ -127,22 +151,52 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
                 <li key={line}>{line}</li>
               ))}
             </ul>
+            <div className="mt-4 border-t border-zinc-800 pt-4">
+              <SavePlaylist
+                playlistName={playlistName}
+                description={playlistDescription}
+                uris={playlistUris}
+              />
+            </div>
           </section>
 
           <ol className="mt-8 space-y-1">
             {prediction.songs.map((song, index) => {
               const pct = Math.round(song.likelihood * 100);
+              const match = matches.get(song.key);
               return (
                 <li
                   key={song.key}
-                  className="group grid grid-cols-[2rem_1fr_3.5rem] items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900"
+                  className="group grid grid-cols-[2rem_2.75rem_1fr_3.5rem] items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900"
                 >
                   <span className="text-right text-sm tabular-nums text-zinc-600">
                     {index + 1}
                   </span>
+                  {match?.albumArt ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={match.albumArt}
+                      alt=""
+                      loading="lazy"
+                      className="h-11 w-11 rounded object-cover"
+                    />
+                  ) : (
+                    <div className="h-11 w-11 rounded bg-zinc-900" />
+                  )}
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
-                      <span className="truncate font-medium">{song.name}</span>
+                      {match?.url ? (
+                        <a
+                          href={match.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="truncate font-medium hover:underline"
+                        >
+                          {song.name}
+                        </a>
+                      ) : (
+                        <span className="truncate font-medium">{song.name}</span>
+                      )}
                       {song.isCover && (
                         <span className="shrink-0 rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400">
                           {song.coverArtist} cover
