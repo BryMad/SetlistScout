@@ -1,5 +1,10 @@
 import type { Show } from "./normalize.ts";
-import { assessQuality, type QualityOptions, type QualityReport } from "./quality.ts";
+import {
+  assessQuality,
+  median,
+  type QualityOptions,
+  type QualityReport,
+} from "./quality.ts";
 import {
   AUTO_DEFAULTS,
   daysBetween,
@@ -61,6 +66,8 @@ export interface Prediction {
   /** Plain sentences describing what was analyzed and why. */
   explanation: string[];
   showsAnalyzed: number;
+  /** Median performed-song count per show in the analyzed window — "they play ~24 songs a night". */
+  typicalSetLength: number;
   /**
    * Quality-filtered listings RELEVANT to this analysis — within the analyzed
    * window (plus anything newer, for predictive modes, since recent promo
@@ -269,6 +276,9 @@ export function predict(shows: Show[], options: PredictOptions): Prediction | nu
     signals,
     explanation: buildExplanation(selection, signals, showsExcluded),
     showsAnalyzed: selection.shows.length,
+    typicalSetLength: Math.round(
+      median(selection.shows.map((show) => show.songCount))
+    ),
     showsExcluded,
     dateRange: {
       from: selection.shows[selection.shows.length - 1]!.date,

@@ -56,7 +56,13 @@ export default async function TourPage({ params, searchParams }: PageProps) {
         </p>
       ) : (
         <>
-          <section className="mt-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+          <p className="mt-6 text-sm leading-relaxed text-zinc-400">
+            They played about {prediction.typicalSetLength} songs a night on this
+            tour — below is everything they pulled out, ranked by how often it
+            came up.
+          </p>
+
+          <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <div className="flex flex-wrap items-center gap-3">
               <span
                 className={`rounded-full border px-3 py-0.5 text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}

@@ -1,6 +1,22 @@
 import type { MatchedTrack } from "@setlistscout/clients";
 import type { ScoredSong } from "@setlistscout/engine";
 
+/**
+ * The likelihood spectrum, carried over from v1: cool colors are locks, hot
+ * colors are deep-cut lottery tickets. Percentages stay as text so color is
+ * never the only signal.
+ */
+const BANDS = [
+  { min: 80, bar: "bg-violet-500", text: "text-violet-300", label: "Very likely" },
+  { min: 60, bar: "bg-sky-500", text: "text-sky-300", label: "Likely" },
+  { min: 40, bar: "bg-yellow-500", text: "text-yellow-300", label: "Possible" },
+  { min: 20, bar: "bg-orange-500", text: "text-orange-300", label: "Rare" },
+  { min: 0, bar: "bg-rose-600", text: "text-rose-300", label: "Very rare" },
+];
+
+const bandFor = (pct: number) =>
+  BANDS.find((band) => pct >= band.min) ?? BANDS[BANDS.length - 1]!;
+
 interface SongListProps {
   songs: ScoredSong[];
   matches: Map<string, MatchedTrack | null>;
@@ -10,9 +26,21 @@ interface SongListProps {
 
 export default function SongList({ songs, matches, showLikelihood = true }: SongListProps) {
   return (
-    <ol className="mt-8 space-y-1">
+    <>
+    {showLikelihood && (
+      <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500">
+        {BANDS.map((band) => (
+          <span key={band.label} className="flex items-center gap-1.5">
+            <span className={`h-2 w-2 rounded-full ${band.bar}`} />
+            {band.label}
+          </span>
+        ))}
+      </div>
+    )}
+    <ol className={`${showLikelihood ? "mt-3" : "mt-8"} space-y-1`}>
       {songs.map((song, index) => {
         const pct = Math.round(song.likelihood * 100);
+        const band = bandFor(pct);
         const match = matches.get(song.key);
         return (
           <li
@@ -65,14 +93,17 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
               {showLikelihood && (
                 <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
                   <div
-                    className="h-full rounded-full bg-indigo-500"
+                    className={`h-full rounded-full ${band.bar}`}
                     style={{ width: `${Math.max(pct, 1)}%` }}
                   />
                 </div>
               )}
             </div>
             {showLikelihood && (
-              <span className="text-right text-sm font-semibold tabular-nums text-zinc-300">
+              <span
+                title={band.label}
+                className={`text-right text-sm font-semibold tabular-nums ${band.text}`}
+              >
                 {pct}%
               </span>
             )}
@@ -80,5 +111,6 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
         );
       })}
     </ol>
+    </>
   );
 }

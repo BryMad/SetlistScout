@@ -79,7 +79,12 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
         </p>
       ) : (
         <>
-          <section className="mt-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+          <p className="mt-6 text-sm leading-relaxed text-zinc-400">
+            They play about {prediction.typicalSetLength} songs a night — below is
+            every song they might pull out, ranked by the odds you&apos;ll hear it.
+          </p>
+
+          <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <div className="flex flex-wrap items-center gap-3">
               <span
                 className={`rounded-full border px-3 py-0.5 text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}

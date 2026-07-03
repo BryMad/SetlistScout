@@ -15,6 +15,8 @@ describe("predict — auto mode", () => {
     // 2025 tour window, so they must NOT be mentioned here
     expect(prediction.showsExcluded).toBe(0);
     expect(prediction.songs[0]!.likelihood).toBe(1);
+    // 23 performed songs — tape intros don't count toward the set length
+    expect(prediction.typicalSetLength).toBe(23);
     expect(prediction.explanation[0]).toBe('Based on 41 shows from "Oasis Live ’25".');
     expect(prediction.explanation.some((l) => l.includes("set aside"))).toBe(false);
     expect(prediction.dateRange.from < prediction.dateRange.to).toBe(true);
