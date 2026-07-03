@@ -3,6 +3,9 @@ import SectionNav from "@/components/SectionNav";
 import { getAllShows } from "@/lib/data";
 import { summarizeTours } from "@setlistscout/engine";
 
+// serverless budget: a cold full-history crawl of a legacy act takes ~15-25s
+export const maxDuration = 60;
+
 interface PageProps {
   params: Promise<{ mbid: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;

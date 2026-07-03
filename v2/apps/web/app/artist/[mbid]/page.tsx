@@ -7,6 +7,9 @@ import { getShows, matchTracks, runPrediction } from "@/lib/data";
 import type { MatchedTrack } from "@setlistscout/clients";
 import type { PredictMode } from "@setlistscout/engine";
 
+// serverless budget: cold fetch of 100 shows + spotify matching can take ~15s
+export const maxDuration = 60;
+
 /** How many top songs go into the playlist. */
 const PLAYLIST_SIZE = 30;
 /** How many songs get Spotify matching (art, links) — deeper than the playlist. */

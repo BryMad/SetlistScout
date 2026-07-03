@@ -6,6 +6,9 @@ import { CONFIDENCE_STYLE } from "@/components/confidence";
 import { getAllShows, matchTracks, runPrediction } from "@/lib/data";
 import type { MatchedTrack } from "@setlistscout/clients";
 
+// serverless budget: may trigger the full-history crawl when the cache is cold
+export const maxDuration = 60;
+
 const PLAYLIST_SIZE = 30;
 const MATCH_SIZE = 60;
 

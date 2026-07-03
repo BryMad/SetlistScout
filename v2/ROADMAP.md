@@ -118,8 +118,14 @@ against the dark surface. The cool→hot spectrum is the product story: cool col
 
 ## 6. Production readiness
 
-- Render staging deploy (`v2` branch service), prod redirect URI in Spotify
-  dashboard (`https://<domain>/auth/callback`).
+- **Vercel deploy** (decided 2026-07 — v2 has no SSE and no server-held
+  sessions, so serverless fits): import repo, Root Directory
+  `v2/apps/web`, copy env vars, add the prod redirect URI in the Spotify
+  dashboard (`https://<domain>/auth/callback`), custom domain. Old site stays
+  on Render until cutover; Redis Cloud serves both.
+- Serverless hardening: move the setlist.fm rate limiter into Redis (the
+  in-process limiter is per-invocation on Vercel — fine at small scale,
+  wrong at large).
 - Redis quota watch — gzip is in place (~18× smaller); consider an LRU cap if the
   shared instance gets tight.
 - Port Privacy / Terms / EUA consent flow from the old site (Spotify integration
