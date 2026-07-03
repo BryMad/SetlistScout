@@ -1,0 +1,3190 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 3,
+  "total": 1875,
+  "setlist": [
+    {
+      "id": "13a331d9",
+      "versionId": "g53b603c1",
+      "eventDate": "05-10-2023",
+      "lastUpdated": "2024-02-03T21:25:30.829+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "with Led Zeppelin's ''Black Dog'' snippet"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer's ''I Feel Love'' and (possibly) ''Mofo'' snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis' ''Love Me Tender'' snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with Edith Piaf's ''Non, je ne regrette rien'' snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses",
+                "info": "with ''Jacob's Ladder'' added lyrics"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed's ''Walk on the Wild Side'' snippet, dedicated to Eddie Vedder"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Elvis Presley's  ''Suspicious Minds'' snippet"
+              },
+              {
+                "name": "Love Rescue Me",
+                "info": "Bono and The Edge only; The Edge on bass"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation Influx Mix",
+                "tape": true
+              },
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘  \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" intro and The Beatles' \"All You Need Is Love\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louis Armstrong's \"What a Wonderful World\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"So Cruel\", \"Atomic City\", \"Zoo Station\", \"Bad\" (Songs of Surrender version), and \"Pride (In the Name of Love)\" (Songs of Surrender version).",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-13a331d9.html"
+    },
+    {
+      "id": "73a3eee5",
+      "versionId": "g538dab71",
+      "eventDate": "30-09-2023",
+      "lastUpdated": "2023-12-08T05:56:17.423+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer's “I Feel Love” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with Édith Piaf's “Non, je ne regrette rien” snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "Songs of Surrender version – with Lou Reed's  “Walk on the Wild Side” snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "followed by Claude François‘ “My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You",
+                "info": "with Prince's “Nothing Compares 2 U” snippet"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louis Armstrong's “What a Wonderful World” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-73a3eee5.html"
+    },
+    {
+      "id": "63a3fadb",
+      "versionId": "g4b8dab76",
+      "eventDate": "29-09-2023",
+      "lastUpdated": "2023-12-08T05:58:23.779+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with elements of Donna Summer’s “I Feel Love\""
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "first time since 2017"
+              },
+              {
+                "name": "One",
+                "info": "with Prince’s “Purple Rain\" and Elvis Presley’s “Love Me Tender\" snippets"
+              },
+              {
+                "name": "Until the End of the World"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "first time since 1993; brought audience member up to dance & use the fabric swing"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "dedicated to Larry Mullen, Jr.; first time since 2017"
+              },
+              {
+                "name": "Desire",
+                "info": "dedicated to Paul McCartney; with The Beatles’ \"Love Me Do\" snippet"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Into The Mystic\" & \"Dancing in the Moonlight (It's Caught Me in Its Spotlight)\" snippets"
+              },
+              {
+                "name": "Love Rescue Me",
+                "info": "only Bono & The Edge; Edge on bass; dedicated to Jimmy Buffett; first time since 2011"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel",
+                "info": "first time since 1992; first time in full band arrangement"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "first time since 2006; with \"Viva Las Vegas\" by Elvis Presley snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "followed by Claude François‘ “My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "w/ \"Moment of Surrender\" & The Beatles’ “All You Need Is Love\" snippets"
+              },
+              {
+                "name": "With or Without You",
+                "info": "followed by \"thanks\" to colleagues, friends, family, crew"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles’ “Sgt. Pepper’s Lonely Hearts Club Band” and “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "First U2 show without Larry Mullen, Jr., Bram van den Berg on drums; first time 'Achtung Baby' performed in full at a show; first performance held at the Sphere; “Angel of Harlem” snippets were covers of Van Morrison and Thin Lizzy",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-63a3fadb.html"
+    },
+    {
+      "id": "5ba26794",
+      "versionId": "g2b84c8ba",
+      "eventDate": "17-09-2023",
+      "lastUpdated": "2023-09-30T04:32:27.112+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd644cc",
+        "name": "Fremont Street Experience",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/fremont-street-experience-las-vegas-nv-usa-3bd644cc.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Atomic City",
+                "info": "Live debut"
+              },
+              {
+                "name": "Atomic City",
+                "info": "Reprise"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "Acoustic; 1 verse"
+              },
+              {
+                "name": "Atomic City",
+                "info": "Reprise"
+              },
+              {
+                "name": "Atomic City",
+                "info": "Reprise"
+              },
+              {
+                "name": "Atomic City",
+                "info": "Reprise"
+              },
+              {
+                "name": "Atomic City",
+                "tape": true
+              }
+            ]
+          }
+        ]
+      },
+      "info": "U2 film a music video for new song \"Atomic City\". They are filmed miming to the song three times on a flatbed truck throughout Las Vegas.  It is done twice more in front of the Plaza Hotel, in front of hired extras, only Bono's vocals are live.",
+      "url": "https://www.setlist.fm/setlist/u2/2023/fremont-street-experience-las-vegas-nv-5ba26794.html"
+    },
+    {
+      "id": "239bac43",
+      "versionId": "g6b81ae86",
+      "eventDate": "15-12-2019",
+      "lastUpdated": "2023-11-05T02:38:32.043+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "5bd55370",
+        "name": "D.Y. Patil Stadium",
+        "city": {
+          "id": "1275339",
+          "name": "Mumbai",
+          "state": "Maharashtra",
+          "stateCode": "16",
+          "coords": {
+            "lat": 19.014,
+            "long": 72.848
+          },
+          "country": {
+            "code": "IN",
+            "name": "India"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/dy-patil-stadium-mumbai-india-5bd55370.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Give Peace a Chance\" snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You",
+                "info": "with \"Shine Like Stars\" coda"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with Leonard Bernstein\"s \"America\" from 'West Side Story' snippet"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with Flannery O'Connor's \"Wise Blood\", and \"Eeny, meeny, miny, moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire",
+                "with": {
+                  "mbid": "6493ed80-8b44-49fa-91de-e7b0a0b57d6d",
+                  "name": "Noel Gallagher",
+                  "sortName": "Gallagher, Noel",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallagher-13d6bd75.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Live Forever\" and \"I Love Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Mix"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Ahimsa",
+                "cover": {
+                  "mbid": "e0bba708-bdd3-478d-84ea-c706413bedab",
+                  "name": "A. R. Rahman",
+                  "sortName": "Rahman, A. R.",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/a-r-rahman-4bd61b5e.html"
+                },
+                "info": "live debut by U2",
+                "with": {
+                  "mbid": "e0bba708-bdd3-478d-84ea-c706413bedab",
+                  "name": "A. R. Rahman",
+                  "sortName": "Rahman, A. R.",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/a-r-rahman-4bd61b5e.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "also with A. R. Rahman",
+                "with": {
+                  "mbid": "6493ed80-8b44-49fa-91de-e7b0a0b57d6d",
+                  "name": "Noel Gallagher",
+                  "sortName": "Gallagher, Noel",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallagher-13d6bd75.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: \"Ahimsa\" (x2) and \"One\"",
+      "url": "https://www.setlist.fm/setlist/u2/2019/dy-patil-stadium-mumbai-india-239bac43.html"
+    },
+    {
+      "id": "439a4fb3",
+      "versionId": "g23ed70b7",
+      "eventDate": "11-12-2019",
+      "lastUpdated": "2023-03-11T01:35:49.258+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "33d5bc81",
+        "name": "Philippine Arena",
+        "city": {
+          "id": "1688042",
+          "name": "Santa Maria",
+          "state": "Bulacan",
+          "stateCode": "13",
+          "coords": {
+            "lat": 14.8208333,
+            "long": 120.9636111
+          },
+          "country": {
+            "code": "PH",
+            "name": "Philippines"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/philippine-arena-santa-maria-philippines-33d5bc81.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "Gloria",
+                "info": "with Van Morrison's \"Gloria\" snippet"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with “Heroes” snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"America (West Side Story)\" snippet"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe\" snippet"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"She Loves You\" and \"I Love Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "First U2 concert in the Philippines",
+      "url": "https://www.setlist.fm/setlist/u2/2019/philippine-arena-santa-maria-philippines-439a4fb3.html"
+    },
+    {
+      "id": "b9a618e",
+      "versionId": "gbd3659a",
+      "eventDate": "08-12-2019",
+      "lastUpdated": "2021-04-13T06:34:50.198+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "23d50c1b",
+        "name": "Gocheok Sky Dome",
+        "city": {
+          "id": "1835848",
+          "name": "Seoul",
+          "state": "Seoul",
+          "stateCode": "11",
+          "coords": {
+            "lat": 37.5663889,
+            "long": 126.9997222
+          },
+          "country": {
+            "code": "KR",
+            "name": "South Korea"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/gocheok-sky-dome-seoul-south-korea-23d50c1b.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "dedicated to John Lennon"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with \"Stand By Me\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe” snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"She Loves You\" and \"Love Me Do\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Every Breaking Wave"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way",
+                "info": "with \"All You Need Is Love\" snippet"
+              },
+              {
+                "name": "One"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "The Whole of the Moon intro was skipped due to issues with the PA system. Bono \"introduced\" the band instead. Bad was fourth on the setlist, but was not played.",
+      "url": "https://www.setlist.fm/setlist/u2/2019/gocheok-sky-dome-seoul-south-korea-b9a618e.html"
+    },
+    {
+      "id": "2b9a7882",
+      "versionId": "g5b8dc734",
+      "eventDate": "05-12-2019",
+      "lastUpdated": "2023-12-11T04:22:53.951+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "13d639f5",
+        "name": "Saitama Super Arena",
+        "city": {
+          "id": "6940394",
+          "name": "Saitama",
+          "state": "Saitama",
+          "stateCode": "34",
+          "coords": {
+            "lat": 35.9080659046769,
+            "long": 139.656572341919
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/saitama-super-arena-saitama-japan-13d639f5.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "Gloria",
+                "info": "tour debut; with Van Morrison's \"Gloria\" and Patti Smith's \"Gloria\" snippets"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"The Boxer\" snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "Bono referred to Humanitarian aid Dr. Tetsu Nakamura, died after being shot in a targeted attack"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with \"Take Me to the River\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"America\" (Simon and Garfunkel) snippet"
+              },
+              {
+                "name": "Running to Stand Still",
+                "info": "with \"Hallelujah\" snippet"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe” snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire",
+                "info": "with \"Mannish Boy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Never Tear Us Apart",
+                "tape": true,
+                "cover": {
+                  "mbid": "481bf5f9-2e7c-4c44-b08a-05b32bc7c00d",
+                  "name": "INXS",
+                  "sortName": "INXS",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/inxs-6bd6ea0e.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2019/saitama-super-arena-saitama-japan-2b9a7882.html"
+    },
+    {
+      "id": "3b9a000c",
+      "versionId": "g13d191c9",
+      "eventDate": "04-12-2019",
+      "lastUpdated": "2021-05-15T04:58:23.344+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "13d639f5",
+        "name": "Saitama Super Arena",
+        "city": {
+          "id": "6940394",
+          "name": "Saitama",
+          "state": "Saitama",
+          "stateCode": "34",
+          "coords": {
+            "lat": 35.9080659046769,
+            "long": 139.656572341919
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/saitama-super-arena-saitama-japan-13d639f5.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Heroes\" by David Bowie snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America\" (Simon and Garfunkel) snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe” snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared",
+                "info": "with \"El Pueblo Vencerá\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"It's Only Rock 'n' Roll (But I Like It)\" and \"I Love Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"One\" snippet"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              },
+              {
+                "name": "Never Tear Us Apart",
+                "tape": true,
+                "cover": {
+                  "mbid": "481bf5f9-2e7c-4c44-b08a-05b32bc7c00d",
+                  "name": "INXS",
+                  "sortName": "INXS",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/inxs-6bd6ea0e.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "13 years to the day since U2's last performance in Japan. U2 announce 2020 launch of \"U2X Radio\" before \"Elevation.\"",
+      "url": "https://www.setlist.fm/setlist/u2/2019/saitama-super-arena-saitama-japan-3b9a000c.html"
+    },
+    {
+      "id": "339a1471",
+      "versionId": "g3d191df",
+      "eventDate": "01-12-2019",
+      "lastUpdated": "2021-05-15T04:46:43.956+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "4bd6cf22",
+        "name": "National Stadium",
+        "city": {
+          "id": "1880252",
+          "name": "Singapore",
+          "state": "Central Singapore",
+          "stateCode": "01",
+          "coords": {
+            "lat": 1.293,
+            "long": 103.856
+          },
+          "country": {
+            "code": "SG",
+            "name": "Singapore"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/national-stadium-singapore-singapore-4bd6cf22.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with “Heroes” snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe” snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared",
+                "info": "with \"El Pueblo Vencerá\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire",
+                "info": "with “Not Fade Away” snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Take Me to the River\" and \"Rebel Rebel\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"One\" snippet"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way",
+                "info": "with \"All You Need is Love\" and \"One\" snippets"
+              },
+              {
+                "name": "One"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2019/national-stadium-singapore-singapore-339a1471.html"
+    },
+    {
+      "id": "639a22e3",
+      "versionId": "gbd191ee",
+      "eventDate": "30-11-2019",
+      "lastUpdated": "2021-05-15T04:38:52.559+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "4bd6cf22",
+        "name": "National Stadium",
+        "city": {
+          "id": "1880252",
+          "name": "Singapore",
+          "state": "Central Singapore",
+          "stateCode": "01",
+          "coords": {
+            "lat": 1.293,
+            "long": 103.856
+          },
+          "country": {
+            "code": "SG",
+            "name": "Singapore"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/national-stadium-singapore-singapore-4bd6cf22.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "with \"The Magnificent Seven\" snippet"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"New Year's Day\" and \"Run\" (Snow Patrol) snippets"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America\" ( Simon and Garfunkel) snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\", \"Eeny Meeny Miny Moe\" and Van Morrison's \"Gloria\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"It's Only Rock 'n' Roll (But I Like It)\" and \"I Love Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              },
+              {
+                "name": "Never Tear Us Apart",
+                "tape": true,
+                "cover": {
+                  "mbid": "481bf5f9-2e7c-4c44-b08a-05b32bc7c00d",
+                  "name": "INXS",
+                  "sortName": "INXS",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/inxs-6bd6ea0e.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Ahimsa\".",
+      "url": "https://www.setlist.fm/setlist/u2/2019/national-stadium-singapore-singapore-639a22e3.html"
+    },
+    {
+      "id": "339a38a1",
+      "versionId": "gbd191fe",
+      "eventDate": "27-11-2019",
+      "lastUpdated": "2021-05-15T04:32:55.232+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "33d2e481",
+        "name": "Optus Stadium",
+        "city": {
+          "id": "2063523",
+          "name": "Perth",
+          "state": "Western Australia",
+          "stateCode": "WA",
+          "coords": {
+            "lat": -31.9333333,
+            "long": 115.8333333
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/optus-stadium-perth-australia-33d2e481.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Heroes\" (David Bowie) snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America\" (Simon and Garfunkel) snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Daddy's Gonna Pay for Your Crashed Car\", \"Rebel Rebel\" and \"It's Only Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2019/optus-stadium-perth-australia-339a38a1.html"
+    },
+    {
+      "id": "5b9adf30",
+      "versionId": "g33d194d5",
+      "eventDate": "23-11-2019",
+      "lastUpdated": "2021-05-14T18:45:04.612+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "63d626d7",
+        "name": "Sydney Cricket Ground",
+        "city": {
+          "id": "2147714",
+          "name": "Sydney",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.8678499639382,
+            "long": 151.207323074341
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sydney-cricket-ground-sydney-australia-63d626d7.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Waltzing Matilda\" snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with \"Many Rivers to Cross\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Desire",
+                "info": "tour debut; with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"It's Only Rock 'n' Roll (But I Like It)\" and \"I Love Rock 'n' Roll\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Stuck in a Moment You Can't Get Out Of"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              },
+              {
+                "name": "Never Tear Us Apart",
+                "tape": true,
+                "cover": {
+                  "mbid": "481bf5f9-2e7c-4c44-b08a-05b32bc7c00d",
+                  "name": "INXS",
+                  "sortName": "INXS",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/inxs-6bd6ea0e.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2019/sydney-cricket-ground-sydney-australia-5b9adf30.html"
+    },
+    {
+      "id": "1b9ae5c0",
+      "versionId": "g43d06f77",
+      "eventDate": "22-11-2019",
+      "lastUpdated": "2021-05-06T02:30:28.765+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "63d626d7",
+        "name": "Sydney Cricket Ground",
+        "city": {
+          "id": "2147714",
+          "name": "Sydney",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.8678499639382,
+            "long": 151.207323074341
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sydney-cricket-ground-sydney-australia-63d626d7.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Never Tear Us Apart\" snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" \"Singin' in the Rain\", \"Raindrops Keep Fallin' on My Hea"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"War\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Devil Inside\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Stuck in a Moment You Can't Get Out Of",
+                "info": "tour debut - 360 tour acoustic version into full band after 1st chorus"
+              },
+              {
+                "name": "One"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck: \"Stuck in a Moment\", “Love Rescue Me”, & \"Desire\"",
+      "url": "https://www.setlist.fm/setlist/u2/2019/sydney-cricket-ground-sydney-australia-1b9ae5c0.html"
+    },
+    {
+      "id": "4b9a8316",
+      "versionId": "g53d073b9",
+      "eventDate": "19-11-2019",
+      "lastUpdated": "2021-05-05T18:03:22.462+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "53d6cf45",
+        "name": "Adelaide Oval",
+        "city": {
+          "id": "2078025",
+          "name": "Adelaide",
+          "state": "South Australia",
+          "stateCode": "SA",
+          "coords": {
+            "lat": -34.9333333,
+            "long": 138.6
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/adelaide-oval-adelaide-australia-53d6cf45.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" snippet"
+              },
+              {
+                "name": "Running to Stand Still",
+                "info": "with \"Hallelujah\" snippet"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny Meeny Miny Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem",
+                "info": "with \"Sunday Bloody Sunday\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Daddy's Gonna Pay for Your Crashed Car\" and \"It's Only Rock 'n' Roll (But I Like It)\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge only"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Bad\" was on the setlist but was not played. Soundcheck included “Stuck in a Moment You Can't Get Out Of”",
+      "url": "https://www.setlist.fm/setlist/u2/2019/adelaide-oval-adelaide-australia-4b9a8316.html"
+    },
+    {
+      "id": "1b9aa198",
+      "versionId": "g13d07531",
+      "eventDate": "15-11-2019",
+      "lastUpdated": "2021-05-05T03:30:26.406+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "33d2745d",
+        "name": "Marvel Stadium",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/marvel-stadium-melbourne-australia-33d2745d.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "I Will Follow",
+                "info": "tour debut"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Into My Arms\" (Nick Cave and The Bad Seeds) snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with \"Here Comes the Rain Again\" and \"Singing in the Rain\" snippets"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America (West Side Story)\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny, meeny, miny, moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Devil Inside\" (INXS) snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: \"Bad\", \"Pride (In the Name of Love)\", \"I Still Haven't Found What I'm Looking\", \"Bullet the Blue Sky\", \"I Will Follow\" and \"Desire\".",
+      "url": "https://www.setlist.fm/setlist/u2/2019/marvel-stadium-melbourne-australia-1b9aa198.html"
+    },
+    {
+      "id": "39abd77",
+      "versionId": "g3d0753f",
+      "eventDate": "12-11-2019",
+      "lastUpdated": "2021-05-05T03:25:08.627+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "63d67e4f",
+        "name": "Suncorp Stadium",
+        "city": {
+          "id": "2174003",
+          "name": "Brisbane",
+          "state": "Queensland",
+          "stateCode": "QLD",
+          "coords": {
+            "lat": -27.4679357321901,
+            "long": 153.028092384338
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/suncorp-stadium-brisbane-australia-63d67e4f.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Beds Are Burning\" by Midnight Oil snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America (West Side Story)\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood\" and \"Eeny, Meeny, Miny, Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Devil Inside\" (INXS) snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "Bono and The Edge acoustic; full band joins during bridge"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Fall at Your Feet",
+                "tape": true,
+                "cover": {
+                  "mbid": "9854d99f-d954-4c0f-9ae5-58a0cdd885f5",
+                  "name": "Crowded House",
+                  "sortName": "Crowded House",
+                  "disambiguation": "Australian rock group",
+                  "url": "https://www.setlist.fm/setlists/crowded-house-6bd6ae3a.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2019/suncorp-stadium-brisbane-australia-39abd77.html"
+    },
+    {
+      "id": "2b9d5826",
+      "versionId": "532933f5",
+      "eventDate": "09-11-2019",
+      "lastUpdated": "2020-11-25T20:16:27.305+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "43d6c743",
+        "name": "Mount Smart Stadium",
+        "city": {
+          "id": "2193733",
+          "name": "Auckland",
+          "state": "Auckland",
+          "stateCode": "E7",
+          "coords": {
+            "lat": -36.8666667,
+            "long": 174.7666667
+          },
+          "country": {
+            "code": "NZ",
+            "name": "New Zealand"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mount-smart-stadium-auckland-new-zealand-43d6c743.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"Fall at Your Feet\" by Crowded House snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"The Star-Spangled Banner\" and \"America (West Side Story)\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with \"Wise Blood and \"Eeny, Meeny, Miny, Moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "tour debut; acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: \"Even Better Than The Real Thing\" (x2), \"You’re the Best Thing About Me\" & \"Angel of Harlem\"",
+      "url": "https://www.setlist.fm/setlist/u2/2019/mount-smart-stadium-auckland-new-zealand-2b9d5826.html"
+    },
+    {
+      "id": "1b9d6128",
+      "versionId": "g1bd07544",
+      "eventDate": "08-11-2019",
+      "lastUpdated": "2021-05-05T03:20:44.569+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "43d6c743",
+        "name": "Mount Smart Stadium",
+        "city": {
+          "id": "2193733",
+          "name": "Auckland",
+          "state": "Auckland",
+          "stateCode": "E7",
+          "coords": {
+            "lat": -36.8666667,
+            "long": 174.7666667
+          },
+          "country": {
+            "code": "NZ",
+            "name": "New Zealand"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mount-smart-stadium-auckland-new-zealand-43d6c743.html"
+      },
+      "tour": {
+        "name": "The Joshua Tree Tour 2019"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Whole of the Moon",
+                "tape": true,
+                "cover": {
+                  "mbid": "21666405-49f8-44f6-94bb-e064f202f7ba",
+                  "name": "The Waterboys",
+                  "sortName": "Waterboys, The",
+                  "disambiguation": "folk-rock",
+                  "url": "https://www.setlist.fm/setlists/the-waterboys-73d6ae1d.html"
+                }
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              },
+              {
+                "name": "New Year's Day"
+              },
+              {
+                "name": "Bad",
+                "info": "with \"America\" (Simon and Garfunkel) snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)"
+              }
+            ]
+          },
+          {
+            "name": "The Joshua Tree",
+            "song": [
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"California (There Is No End to Love)\" snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Bullet the Blue Sky",
+                "info": "with \"Black Dog\" and \"America (West Side Story)\" snippets"
+              },
+              {
+                "name": "Running to Stand Still"
+              },
+              {
+                "name": "Red Hill Mining Town"
+              },
+              {
+                "name": "In God's Country"
+              },
+              {
+                "name": "Trip Through Your Wires"
+              },
+              {
+                "name": "One Tree Hill"
+              },
+              {
+                "name": "Exit",
+                "info": "with Trump video intro; with \"Wise Blood” & \"Eeny, meeny, miny, moe\" snippets"
+              },
+              {
+                "name": "Mothers of the Disappeared"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Angel of Harlem"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rock & Roll\" and \"It's Only Rock 'n' Roll (But I Like It)\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Every Breaking Wave",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: \"Every Breaking Wave\", \"Elevation\", \"Even Better Than the Real Thing\", \"Bullet the Blue Sky\" & \"Red Hill Mining Town\"",
+      "url": "https://www.setlist.fm/setlist/u2/2019/mount-smart-stadium-auckland-new-zealand-1b9d6128.html"
+    },
+    {
+      "id": "13979941",
+      "versionId": "g6383325b",
+      "eventDate": "13-11-2018",
+      "lastUpdated": "2023-10-25T18:31:22.733+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd45448",
+        "name": "Mercedes-Benz Arena",
+        "city": {
+          "id": "2950159",
+          "name": "Berlin",
+          "state": "Berlin",
+          "stateCode": "16",
+          "coords": {
+            "lat": 52.5166667,
+            "long": 13.4
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mercedes-benz-arena-berlin-germany-3bd45448.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Gloria",
+                "info": "with Van Morrison's \"Gloria\" and Patti Smith's \"Gloria\" snippets"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "Dirty Day"
+              },
+              {
+                "name": "Zoo Station"
+              },
+              {
+                "name": "The Fly"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Stay (Faraway, So Close!)"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Walking Spanish\" and The Jean Genie\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro; with \"Vertigo\" snippet"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" and \"So Long, Farewell\" snippets"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge Only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Final show of eXPERIENCE + iNNOCENCE tour. Filmed for an exclusive DVD \"eXPERIENCE + iNNOCENCE: Live in Berlin\". Soundcheck included parts of \"I Will Follow\", \"Beautiful Day\", \"One\", \"City of Blinding Lights\", \"The Fly\", \"Stay\", \"Who's Gonna Ride Your Wild Horses\", \"Stay (Faraway, So Close!), parts of \"Vertigo\", \"Acrobat\", \"Summer of Love\", \"Pride (In the Name of Love)\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/mercedes-benz-arena-berlin-germany-13979941.html"
+    }
+  ]
+}

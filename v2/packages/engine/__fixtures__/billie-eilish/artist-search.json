@@ -1,0 +1,218 @@
+{
+  "type": "artists",
+  "itemsPerPage": 30,
+  "page": 1,
+  "total": 34,
+  "artist": [
+    {
+      "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+      "name": "Billie Eilish",
+      "sortName": "Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+    },
+    {
+      "mbid": "2b631c21-1bd8-488d-b265-1fc4a387f3dc",
+      "name": "Charli xcx feat billie eilish",
+      "sortName": "Charli xcx feat Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/charli-xcx-feat-billie-eilish-5becc39c.html"
+    },
+    {
+      "mbid": "d4379004-a58e-4802-b280-645b7ab485a6",
+      "name": "Billie Eilish & Khalid",
+      "sortName": "Eilish, Billie & Khalid",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-khalid-3bcbe8e0.html"
+    },
+    {
+      "mbid": "bacf7edc-956a-4b89-a968-d07f9bbc7888",
+      "name": "Houz, Billie Eilish",
+      "sortName": "Houz, Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/houz-billie-eilish-63ecc26b.html"
+    },
+    {
+      "mbid": "c9b63553-2202-4cd6-822e-777827fd54dd",
+      "name": "Jay 626, Billie Eilish & Khalid",
+      "sortName": "Jay 626, Eilish, Billie & Khalid",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/jay-626-billie-eilish-and-khalid-23ecd8f3.html"
+    },
+    {
+      "mbid": "8a13d813-72c4-460f-b508-6cf034fe118d",
+      "name": "Billie Eilish & FINNEAS",
+      "sortName": "Eilish, Billie & FINNEAS",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-finneas-33e4d4ad.html"
+    },
+    {
+      "mbid": "4a85b6ae-5a9d-45d8-b85e-c1efd74efd77",
+      "name": "Charli xcx featuring billie eilish",
+      "sortName": "Charli xcx featuring Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/charli-xcx-featuring-billie-eilish-be3fdf2.html"
+    },
+    {
+      "mbid": "9ef4cc12-f14a-4c38-9c4a-1f67f29769eb",
+      "name": "Denzel Curry feat. J.I.D & Billie Eilish",
+      "sortName": "Curry, Denzel feat. JID & Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/denzel-curry-feat-jid-and-billie-eilish-73c8f285.html"
+    },
+    {
+      "mbid": "f07ccf2e-4d0d-4f67-b642-77f1101c0a57",
+      "name": "deejay billie eilish",
+      "sortName": "deejay billie eilish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/deejay-billie-eilish-1bff6d94.html"
+    },
+    {
+      "mbid": "619714f5-9136-4fb9-9eb1-d9af7d9b6a73",
+      "name": "Billie Eilish & Drake",
+      "sortName": "Eilish, Billie & Drake",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-drake-2be4d4ae.html"
+    },
+    {
+      "mbid": "0b9a5103-8a06-43c8-9f63-e76288d84895",
+      "name": "Billie Eilish & Lana Del Rey",
+      "sortName": "Eilish, Billie & Del Rey, Lana",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-lana-del-rey-5be44bb8.html"
+    },
+    {
+      "mbid": "a3ab328e-018d-4420-bb88-1eb476de0ff7",
+      "name": "Charli xcx feat. billie eilish",
+      "sortName": "Charli xcx feat. Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/charli-xcx-feat-billie-eilish-2b931c62.html"
+    },
+    {
+      "mbid": "e2707ac9-253a-44ad-9608-0ec0e0e4b9da",
+      "name": "Billie Eilish & Ugg'A",
+      "sortName": "Eilish, Billie & Ugg'A",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-ugga-5386af1d.html"
+    },
+    {
+      "mbid": "55ba47d1-1097-48fe-9e96-7933f528fde9",
+      "name": "Billie Eilish & Justin Bieber",
+      "sortName": "Eilish, Billie & Bieber, Justin",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-justin-bieber-6bf87e2a.html"
+    },
+    {
+      "mbid": "9396a52d-f05b-4c3b-a9e4-387a10761a36",
+      "name": "Billie Eilish, Valee & 10k.Caash",
+      "sortName": "Eilish, Billie Valee & 10k.Caash",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-valee-and-10kcaash-3be4d4ac.html"
+    },
+    {
+      "mbid": "79a5d485-cee4-45fd-9daa-67ee4939ada6",
+      "name": "Billie Eilish & MELVV",
+      "sortName": "Eilish, Billie & MELVV",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-melvv-23e4d4af.html"
+    },
+    {
+      "mbid": "ab1fba62-d444-4124-b36a-6124607cb05e",
+      "name": "Billie Eilish, Kate Mckinnon & Ego Nwodim",
+      "sortName": "Eilish, Billie, McKinnon, Kate & Nwodim, Ego",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-kate-mckinnon-and-ego-nwodim-43e4cb63.html"
+    },
+    {
+      "mbid": "4dbca0f7-2d75-48b2-b7b4-c09139297cab",
+      "name": "Lana Del Rey & Billie Eilish",
+      "sortName": "Del Rey, Lana & Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/lana-del-rey-and-billie-eilish-43e44bbf.html"
+    },
+    {
+      "mbid": "0b220b0f-b35e-42a5-9638-d03f535c374f",
+      "name": "Lana Del Rey with Billie Eilish",
+      "sortName": "Del Rey, Lana with Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/lana-del-rey-with-billie-eilish-4bee4fce.html"
+    },
+    {
+      "mbid": "475756b2-375d-4304-b94f-328c0414c162",
+      "name": "Ariana Grande ft. Demi Lovato, Katy Perry & Billie Eilish",
+      "sortName": "Grande, Ariana ft. Lovato, Demi, Perry, Katy & Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/ariana-grande-ft-demi-lovato-katy-perry-and-billie-eilish-bf3315a.html"
+    },
+    {
+      "mbid": "5d062de3-f0f9-447b-adb1-aef0a2336e0a",
+      "name": "Billie Eilish feat. Khalid",
+      "sortName": "Eilish, Billie feat. Khalid",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-feat-khalid-2becd81e.html"
+    },
+    {
+      "mbid": "e2b93be0-a3cc-42d6-bf47-13f610b346f1",
+      "name": "Billie Eilish | ROSALÍA",
+      "sortName": "Eilish, Billie | ROSALÍA",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-rosalia-23f0e0cb.html"
+    },
+    {
+      "mbid": "40958b25-15f2-47f1-90b8-5d1a47f9a071",
+      "name": "Billie Eilish, Traumtherapie",
+      "sortName": "Eilish, Billie, Traumtherapie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-traumtherapie-33860c6d.html"
+    },
+    {
+      "mbid": "4b73dc26-bfeb-4047-86d9-58452db9dc08",
+      "name": "Billie Eilish, Khalid",
+      "sortName": "Billie Eilish, Khalid",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-khalid-2bf314d2.html"
+    },
+    {
+      "mbid": "18f5500d-0881-41c7-9171-ac358c276a3a",
+      "name": "Billie Eilish & Hayley Williams",
+      "sortName": "Eilish, Billie & Williams, Hayley",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-hayley-williams-5be4cb6c.html"
+    },
+    {
+      "mbid": "99bf20cf-fa5a-4839-82a8-4758ce65416a",
+      "name": "Billie Eilish & Phrva",
+      "sortName": "Eilish, Billie & Phrva",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-and-phrva-7be32210.html"
+    },
+    {
+      "mbid": "c440c545-abb6-47aa-88bb-59bb212e0551",
+      "name": "Billie Eilish feat. Vince Staples",
+      "sortName": "Eilish, Billie feat. Staples, Vince",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-feat-vince-staples-63ecc26f.html"
+    },
+    {
+      "mbid": "deb3d18d-97f1-4a2b-946b-11d042711fd8",
+      "name": "Billie Eilish feat. boygenius",
+      "sortName": "Eilish, Billie feat. boygenius",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/billie-eilish-feat-boygenius-339b4455.html"
+    },
+    {
+      "mbid": "f015540e-8509-4a98-b69a-6534b5ba470b",
+      "name": "Charli xcx & Billie Eilish",
+      "sortName": "Charli xcx & Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/charli-xcx-and-billie-eilish-43e373ff.html"
+    },
+    {
+      "mbid": "3a09fe1e-b656-4d99-a055-fdbd68e8911d",
+      "name": "FINNEAS & Billie Eilish",
+      "sortName": "FINNEAS & Eilish, Billie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/finneas-and-billie-eilish-5b9a8f8c.html"
+    }
+  ]
+}

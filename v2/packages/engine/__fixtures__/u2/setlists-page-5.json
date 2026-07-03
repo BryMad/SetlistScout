@@ -1,0 +1,3732 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 5,
+  "total": 1875,
+  "setlist": [
+    {
+      "id": "7be9e68c",
+      "versionId": "g438333a7",
+      "eventDate": "21-09-2018",
+      "lastUpdated": "2023-10-25T18:22:20.467+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5009a",
+        "name": "WiZink Center",
+        "city": {
+          "id": "3117735",
+          "name": "Madrid",
+          "state": "Autonomous Region of Madrid",
+          "stateCode": "29",
+          "coords": {
+            "lat": 40.4165020941502,
+            "long": -3.70256423950195
+          },
+          "country": {
+            "code": "ES",
+            "name": "Spain"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wizink-center-madrid-spain-2bd5009a.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Daddy's Gonna Pay For Your Crashed Car\", \"Rebel Rebel\", and \"The Jean Genie\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirror” snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" intro"
+              },
+              {
+                "name": "Spanish Eyes",
+                "info": "tour debut"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                },
+                "with": {
+                  "mbid": "fd352180-b8c4-4ca3-a8e8-af21d2648372",
+                  "name": "Amaia",
+                  "sortName": "Amaia",
+                  "disambiguation": "Spanish singer and pianist",
+                  "url": "https://www.setlist.fm/setlists/amaia-2bcbf42a.html"
+                }
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/wizink-center-madrid-spain-7be9e68c.html"
+    },
+    {
+      "id": "6be9eeb2",
+      "versionId": "g5b8333a0",
+      "eventDate": "20-09-2018",
+      "lastUpdated": "2023-10-25T18:21:54.494+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5009a",
+        "name": "WiZink Center",
+        "city": {
+          "id": "3117735",
+          "name": "Madrid",
+          "state": "Autonomous Region of Madrid",
+          "stateCode": "29",
+          "coords": {
+            "lat": 40.4165020941502,
+            "long": -3.70256423950195
+          },
+          "country": {
+            "code": "ES",
+            "name": "Spain"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wizink-center-madrid-spain-2bd5009a.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirror” snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/wizink-center-madrid-spain-6be9eeb2.html"
+    },
+    {
+      "id": "13e98111",
+      "versionId": "g4b8333a2",
+      "eventDate": "17-09-2018",
+      "lastUpdated": "2023-10-25T18:21:28.177+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd28810",
+        "name": "Altice Arena",
+        "city": {
+          "id": "2267057",
+          "name": "Lisbon",
+          "state": "Lisbon",
+          "stateCode": "14",
+          "coords": {
+            "lat": 38.7166667,
+            "long": -9.1333333
+          },
+          "country": {
+            "code": "PT",
+            "name": "Portugal"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/altice-arena-lisbon-portugal-3bd28810.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"It's Only Rock 'n' Roll (But I Like It)\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirror” snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/altice-arena-lisbon-portugal-13e98111.html"
+    },
+    {
+      "id": "3be98448",
+      "versionId": "g538333ad",
+      "eventDate": "16-09-2018",
+      "lastUpdated": "2023-10-25T18:20:57.430+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd28810",
+        "name": "Altice Arena",
+        "city": {
+          "id": "2267057",
+          "name": "Lisbon",
+          "state": "Lisbon",
+          "stateCode": "14",
+          "coords": {
+            "lat": 38.7166667,
+            "long": -9.1333333
+          },
+          "country": {
+            "code": "PT",
+            "name": "Portugal"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/altice-arena-lisbon-portugal-3bd28810.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirror” snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" intro"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Lights of Home\", \"The Unforgettable Fire\", \"Stay (Faraway, So Close!)\", and \"Who's Gonna Ride Your Wild Horses\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/altice-arena-lisbon-portugal-3be98448.html"
+    },
+    {
+      "id": "13e99d01",
+      "versionId": "g438333ab",
+      "eventDate": "13-09-2018",
+      "lastUpdated": "2023-10-25T18:20:20.692+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5f872",
+        "name": "AccorHotels Arena",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accorhotels-arena-paris-france-2bd5f872.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Ça plane pour moi\", \"Are You Gonna Go My Way\" and \"The Jean Genie\" snippets"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)",
+                "info": "with \"Streets of Surrender (S.O.S.)\" snippet"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/accorhotels-arena-paris-france-13e99d01.html"
+    },
+    {
+      "id": "13e9a59d",
+      "versionId": "g5b8333b4",
+      "eventDate": "12-09-2018",
+      "lastUpdated": "2023-10-25T18:19:55.950+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5f872",
+        "name": "AccorHotels Arena",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accorhotels-arena-paris-france-2bd5f872.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Ça plane pour moi\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/accorhotels-arena-paris-france-13e9a59d.html"
+    },
+    {
+      "id": "33e994c1",
+      "versionId": "1b65d510",
+      "eventDate": "11-09-2018",
+      "lastUpdated": "2018-09-12T13:13:56.157+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "33d5085d",
+        "name": "Place de la Madeleine",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/place-de-la-madeleine-paris-france-33d5085d.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Stuck in a Moment You Can't Get Out Of",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "One",
+                "info": "full band acoustic"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/place-de-la-madeleine-paris-france-33e994c1.html"
+    },
+    {
+      "id": "4be9bfae",
+      "versionId": "g438333b3",
+      "eventDate": "09-09-2018",
+      "lastUpdated": "2023-10-25T18:19:19.232+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5f872",
+        "name": "AccorHotels Arena",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accorhotels-arena-paris-france-2bd5f872.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow",
+                "info": "with \"Mother\" snippet"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro; with \"Vertigo\" snippet"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"The Jean Genie\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" intro"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"The Unforgettable Fire\", \"Landlady\", and \"Stay (Faraway, So Close!)\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/accorhotels-arena-paris-france-4be9bfae.html"
+    },
+    {
+      "id": "3be9bc84",
+      "versionId": "g4b8333be",
+      "eventDate": "08-09-2018",
+      "lastUpdated": "2023-10-25T18:18:48.309+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "2bd5f872",
+        "name": "AccorHotels Arena",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accorhotels-arena-paris-france-2bd5f872.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro; with \"Vertigo\" snippet"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Daddy's Gonna Pay For Your Crashed Car and Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"The Blackout\" (The Edge Only), \"The Unforgettable Fire\" (The Edge Only), \"Stay (Faraway, So Close!)\" (The Edge Only), \"The Unforgettable Fire\" (The Edge Only), \"Who's Gonna Ride Your Wild Horses\" (No Bono), \"The Unforgettable Fire\" (No Bono), \"Landlady\" (No Bono), \"Who's Gonna Ride Your Wild Horses\" (No Bono), \"Stay (Faraway, So Close!)\" (No Bono), \"Stay (Faraway, So Close!)\" (full band), and \"Who's Gonna Ride Your Wild Horses\" (full band).",
+      "url": "https://www.setlist.fm/setlist/u2/2018/accorhotels-arena-paris-france-3be9bc84.html"
+    },
+    {
+      "id": "53e86305",
+      "versionId": "g538333b9",
+      "eventDate": "05-09-2018",
+      "lastUpdated": "2023-10-25T18:18:19.556+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "53d6cb49",
+        "name": "Lanxess Arena",
+        "city": {
+          "id": "2886242",
+          "name": "Cologne",
+          "state": "North Rhine-Westphalia",
+          "stateCode": "07",
+          "coords": {
+            "lat": 50.9333333,
+            "long": 6.95
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/lanxess-arena-cologne-germany-53d6cb49.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "i+e semi-acoustic version"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro; with \"Vertigo\" snippet"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"The Jean Genie\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Red Flag Day\" and \"The Unforgettable Fire\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/lanxess-arena-cologne-germany-53e86305.html"
+    },
+    {
+      "id": "5be86b60",
+      "versionId": "g538333c5",
+      "eventDate": "04-09-2018",
+      "lastUpdated": "2023-10-25T18:17:41.168+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "53d6cb49",
+        "name": "Lanxess Arena",
+        "city": {
+          "id": "2886242",
+          "name": "Cologne",
+          "state": "North Rhine-Westphalia",
+          "stateCode": "07",
+          "coords": {
+            "lat": 50.9333333,
+            "long": 6.95
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/lanxess-arena-cologne-germany-53d6cb49.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "i+e semi-acoustic version"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro; with \"Vertigo\" snippet"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Hall of Mirrors\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Even Better Than the Real Thing\" and \"The Unforgettable Fire\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/lanxess-arena-cologne-germany-5be86b60.html"
+    },
+    {
+      "id": "23e800af",
+      "versionId": "7b62b2b0",
+      "eventDate": "01-09-2018",
+      "lastUpdated": "2018-09-18T17:23:38.614+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd45448",
+        "name": "Mercedes-Benz Arena",
+        "city": {
+          "id": "2950159",
+          "name": "Berlin",
+          "state": "Berlin",
+          "stateCode": "16",
+          "coords": {
+            "lat": 52.5166667,
+            "long": 13.4
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mercedes-benz-arena-berlin-germany-3bd45448.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "The gig was stopped after \"Beautiful Day\" and could not be continued due to Bono losing his voice. New date: Tuesday, November 13th, 2018",
+      "url": "https://www.setlist.fm/setlist/u2/2018/mercedes-benz-arena-berlin-germany-23e800af.html"
+    },
+    {
+      "id": "6be80e5a",
+      "versionId": "g4b8333c2",
+      "eventDate": "31-08-2018",
+      "lastUpdated": "2023-10-25T18:17:10.510+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd45448",
+        "name": "Mercedes-Benz Arena",
+        "city": {
+          "id": "2950159",
+          "name": "Berlin",
+          "state": "Berlin",
+          "stateCode": "16",
+          "coords": {
+            "lat": 52.5166667,
+            "long": 13.4
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mercedes-benz-arena-berlin-germany-3bd45448.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Love Is All We Have Left / Zooropa",
+                "tape": true,
+                "info": "extended intro with Charlie Chaplin speech from \"The Great Dictator\""
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Red Flag Day"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic; without final verse"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Files\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "E-Stage",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              },
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "Fish Out of Water Remix; tour debut, no guitar solo in intro"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Summer of Love",
+                "info": "Bono and The Edge only; live concert debut"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "New Year's Day",
+                "info": "St Francis Hotel Remix, with final chorus"
+              },
+              {
+                "name": "City of Blinding Lights",
+                "info": "with \"Ode to Joy\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/mercedes-benz-arena-berlin-germany-6be80e5a.html"
+    },
+    {
+      "id": "43ea7b1f",
+      "versionId": "g3bd2286c",
+      "eventDate": "03-07-2018",
+      "lastUpdated": "2021-03-19T20:48:16.777+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "53d61fb1",
+        "name": "Mohegan Sun Arena",
+        "city": {
+          "id": "4844602",
+          "name": "Uncasville",
+          "state": "Connecticut",
+          "stateCode": "CT",
+          "coords": {
+            "lat": 41.4345426,
+            "long": -72.1097996
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mohegan-sun-arena-uncasville-ct-usa-53d61fb1.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Gloria",
+                "info": "with \"Gloria\" by Van Morrison snippet"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "E+I Tour semi-acoustic version; with \"Johnny Was\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "album version intro; with \"Lord of the Flies\" and \"Introduction\" snippets"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "E Stage",
+            "song": [
+              {
+                "name": "Elevation"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"It's Only Rock'n'Roll (But I Like It)\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix; preceded by band introductions"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Sympathy for the Devil\" snippet and MacPhisto's speech"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "Full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              },
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "with \"This Is Not America\" snippet; The Edge and Adam Clayton on side stages in the crowd"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Show started 45 minutes late; Total time: 2h 22min (20:45 - 23:07).",
+      "url": "https://www.setlist.fm/setlist/u2/2018/mohegan-sun-arena-uncasville-ct-43ea7b1f.html"
+    },
+    {
+      "id": "3bea0460",
+      "versionId": "432d5be7",
+      "eventDate": "01-07-2018",
+      "lastUpdated": "2020-10-29T07:19:21.929+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "23d63cc7",
+        "name": "Madison Square Garden",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/madison-square-garden-new-york-ny-usa-23d63cc7.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic, shortened, with \"Johnny Was\" and \"When Johnny Comes Marching Home\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "album version intro"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women Of The World\" and \"Invisible\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way",
+                "info": "dedicated to Capital Gazette survivors and Salmon Rushdie"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/madison-square-garden-new-york-ny-3bea0460.html"
+    },
+    {
+      "id": "4bea1706",
+      "versionId": "g13d22921",
+      "eventDate": "29-06-2018",
+      "lastUpdated": "2021-03-19T19:37:02.901+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "23d63823",
+        "name": "Prudential Center",
+        "city": {
+          "id": "5101798",
+          "name": "Newark",
+          "state": "New Jersey",
+          "stateCode": "NJ",
+          "coords": {
+            "lat": 40.735657,
+            "long": -74.1723667
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/prudential-center-newark-nj-usa-23d63823.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "with \"When Johnny Comes Marching Home\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Lord of the Flies\" and \"Introduction\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix"
+              },
+              {
+                "name": "Acrobat",
+                "info": "began with Bono talk-singing The Rolling Stones' \"Sympathy for the Devil\""
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "The Edge and Adam Clayton on side stages in crowd"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Summer of Love\" (x2) and \"Every Breaking Wave\".",
+      "url": "https://www.setlist.fm/setlist/u2/2018/prudential-center-newark-nj-4bea1706.html"
+    },
+    {
+      "id": "4bea2f06",
+      "versionId": "3b2d58d4",
+      "eventDate": "26-06-2018",
+      "lastUpdated": "2020-10-29T07:19:03.001+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "23d63cc7",
+        "name": "Madison Square Garden",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/madison-square-garden-new-york-ny-usa-23d63cc7.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout",
+                "info": "with MRI sequence intro"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Gloria",
+                "info": "Van Morrison's Gloria snippet"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic, shortened"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "album version intro"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix"
+              },
+              {
+                "name": "Acrobat",
+                "info": "Sympathy For The Devil snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "Landlady snippet, full acoustic band"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Invisible\" snippet"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/madison-square-garden-new-york-ny-4bea2f06.html"
+    },
+    {
+      "id": "63ea36a7",
+      "versionId": "g1bd355b4",
+      "eventDate": "25-06-2018",
+      "lastUpdated": "2021-04-15T06:34:50.355+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "23d63cc7",
+        "name": "Madison Square Garden",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/madison-square-garden-new-york-ny-usa-23d63cc7.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                },
+                "info": "Noel Gallagher's High Flying Birds song"
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout",
+                "info": "with MRI sequence intro"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "acoustic, with \"When Johnny Comes Marching Home\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "album version intro"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Born This Way\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix; with \"Can I Get a Witness\" snippet"
+              },
+              {
+                "name": "Acrobat",
+                "info": "with \"Sympathy for the Devil\" snippet"
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/madison-square-garden-new-york-ny-63ea36a7.html"
+    },
+    {
+      "id": "beac9ba",
+      "versionId": "g23d7bc87",
+      "eventDate": "22-06-2018",
+      "lastUpdated": "2021-01-26T00:23:25.106+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd61414",
+        "name": "TD Garden",
+        "city": {
+          "id": "4930956",
+          "name": "Boston",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.3584308,
+            "long": -71.0597732
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/td-garden-boston-ma-usa-3bd61414.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                }
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "All Because of You"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "\"When Johnny Comes Marching Home\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "\"The Garden of Love\" and \"Introduction\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix"
+              },
+              {
+                "name": "Acrobat",
+                "info": "Started with snippet of Bono talking the lyrics to \"Sympathy for the Devil\""
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "The Edge and Adam Clayton on side stages in crowd"
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/td-garden-boston-ma-beac9ba.html"
+    },
+    {
+      "id": "2bead01e",
+      "versionId": "g2bd7bc82",
+      "eventDate": "21-06-2018",
+      "lastUpdated": "2021-01-26T00:13:34.756+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "3bd61414",
+        "name": "TD Garden",
+        "city": {
+          "id": "4930956",
+          "name": "Boston",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.3584308,
+            "long": -71.0597732
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/td-garden-boston-ma-usa-3bd61414.html"
+      },
+      "tour": {
+        "name": "eXPERIENCE + iNNOCENCE Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Beautiful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "d5f54887-117b-42a1-9aee-8780b84ebaba",
+                  "name": "Noel Gallagher’s High Flying Birds",
+                  "sortName": "Noel Gallagher’s High Flying Birds",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/noel-gallaghers-high-flying-birds-13d241d5.html"
+                },
+                "info": "Noel Gallagher's High Flying Birds song"
+              },
+              {
+                "name": "Rain",
+                "tape": true,
+                "cover": {
+                  "mbid": "b24f24bc-bb13-4c87-906b-27ee113a9def",
+                  "name": "Hans Zimmer & Benjamin Wallfisch",
+                  "sortName": "Zimmer, Hans & Wallfisch, Benjamin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hans-zimmer-and-benjamin-wallfisch-23cc1477.html"
+                },
+                "info": "from Blade Runner 2049; used for MRI sequence"
+              }
+            ]
+          },
+          {
+            "name": "Inside Screen",
+            "song": [
+              {
+                "name": "Love Is All We Have Left"
+              },
+              {
+                "name": "The Blackout"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Lights of Home",
+                "info": "St. Peter's String Version"
+              },
+              {
+                "name": "I Will Follow"
+              },
+              {
+                "name": "Gloria",
+                "info": "with Van Morrison's \"Gloria\" snippet"
+              },
+              {
+                "name": "Beautiful Day"
+              },
+              {
+                "name": "The Ocean"
+              },
+              {
+                "name": "Iris (Hold Me Close)"
+              },
+              {
+                "name": "Cedarwood Road"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "When Johnny Comes Marching Home snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "The Garden Of Love and Introduction snippet"
+              }
+            ]
+          },
+          {
+            "name": "Intermission",
+            "song": [
+              {
+                "name": "Hold Me, Thrill Me, Kiss Me, Kill Me",
+                "tape": true,
+                "info": "Gavin Friday Remix"
+              }
+            ]
+          },
+          {
+            "name": "\"E\" Stage",
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "Influx Remix Intro"
+              },
+              {
+                "name": "Vertigo",
+                "info": "with \"Rebel Rebel\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "Hollywood Mix"
+              },
+              {
+                "name": "Acrobat",
+                "info": "Started with snippet of Bono talking the lyrics to \"Sympathy for the Devil\""
+              },
+              {
+                "name": "You're the Best Thing About Me",
+                "info": "full band acoustic"
+              },
+              {
+                "name": "Staring at the Sun",
+                "info": "Bono and The Edge acoustic"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "The Edge and Adam Clayton on side stages in crowd "
+              },
+              {
+                "name": "Get Out of Your Own Way"
+              },
+              {
+                "name": "American Soul"
+              },
+              {
+                "name": "City of Blinding Lights"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Women of the World",
+                "tape": true,
+                "cover": {
+                  "mbid": "172aab84-4c01-4dc0-b2ad-e723033e10ec",
+                  "name": "Jim O’Rourke",
+                  "sortName": "O’Rourke, Jim",
+                  "disambiguation": "US musician & producer, b. 1969",
+                  "url": "https://www.setlist.fm/setlists/jim-orourke-43d6ebc7.html"
+                }
+              },
+              {
+                "name": "One",
+                "info": "with \"Women of the World\" and \"Invisible\" snippets"
+              },
+              {
+                "name": "Love Is Bigger Than Anything in Its Way"
+              },
+              {
+                "name": "Hedgehog",
+                "cover": {
+                  "mbid": "c0c992b9-7e7a-4220-bda1-102b622c96a8",
+                  "name": "Rainer Maria Rilke, translated by Paul Muldoon",
+                  "sortName": "Rilke, Rainer Maria",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/rainer-maria-rilke-translated-by-paul-muldoon-43d0ff6b.html"
+                },
+                "info": "Bono recites Irish poet Paul Muldoon's poem"
+              },
+              {
+                "name": "13 (There Is a Light)"
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)",
+                "tape": true,
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2018/td-garden-boston-ma-2bead01e.html"
+    }
+  ]
+}

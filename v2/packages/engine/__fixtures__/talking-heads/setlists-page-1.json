@@ -1,0 +1,2529 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 679,
+  "setlist": [
+    {
+      "id": "1bd46d1c",
+      "versionId": "g1b1c297c",
+      "eventDate": "18-03-2002",
+      "lastUpdated": "2026-05-15T02:41:20.227+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "3dff97f",
+        "name": "Waldorf Astoria",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/waldorf-astoria-new-york-ny-usa-3dff97f.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                },
+                "info": "All-Star Jam"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "First billed live performance since 1984.",
+      "url": "https://www.setlist.fm/setlist/talking-heads/2002/waldorf-astoria-new-york-ny-1bd46d1c.html"
+    },
+    {
+      "id": "7bc70ebc",
+      "versionId": "g139a598d",
+      "eventDate": "06-02-1984",
+      "lastUpdated": "2023-08-17T06:59:31.849+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "bd305ee",
+        "name": "Queen Elizabeth II Park",
+        "city": {
+          "id": "2192362",
+          "name": "Christchurch",
+          "state": "Canterbury",
+          "stateCode": "E9",
+          "coords": {
+            "lat": -43.5333333,
+            "long": 172.6333333
+          },
+          "country": {
+            "code": "NZ",
+            "name": "New Zealand"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/queen-elizabeth-ii-park-christchurch-new-zealand-bd305ee.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                },
+                "with": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "During Naive Melody, David Byrne’s lamp was having technical problems. Angered by that and also the people who they were playing for, he stormed off the stage and did not return. Tom Tom Club performed the encore.",
+      "url": "https://www.setlist.fm/setlist/talking-heads/1984/queen-elizabeth-ii-park-christchurch-new-zealand-7bc70ebc.html"
+    },
+    {
+      "id": "33c52c7d",
+      "versionId": "g63123ed3",
+      "eventDate": "04-02-1984",
+      "lastUpdated": "2026-03-30T18:15:21.512+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "bd4c5ce",
+        "name": "Festival Farm",
+        "city": {
+          "id": "2184166",
+          "name": "Pukekawa",
+          "state": "Waikato",
+          "stateCode": "G1",
+          "coords": {
+            "lat": -37.333,
+            "long": 174.983
+          },
+          "country": {
+            "code": "NZ",
+            "name": "New Zealand"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/festival-farm-pukekawa-new-zealand-bd4c5ce.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "It is uncertain whether Houses In Motion was played between I Zimbra and Genius of Love but is missing from the tape or if the song wasn't played due to time constraints.",
+      "url": "https://www.setlist.fm/setlist/talking-heads/1984/festival-farm-pukekawa-new-zealand-33c52c7d.html"
+    },
+    {
+      "id": "33ef6c61",
+      "versionId": "g6b123ed2",
+      "eventDate": "31-01-1984",
+      "lastUpdated": "2026-03-30T18:15:21.521+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "73d64e6d",
+        "name": "Sports & Entertainment Centre",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sports-and-entertainment-centre-melbourne-australia-73d64e6d.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1984/sports-and-entertainment-centre-melbourne-australia-33ef6c61.html"
+    },
+    {
+      "id": "2be7b45e",
+      "versionId": "g73123ed1",
+      "eventDate": "30-01-1984",
+      "lastUpdated": "2026-03-30T18:15:21.529+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "73d64e6d",
+        "name": "Sports & Entertainment Centre",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sports-and-entertainment-centre-melbourne-australia-73d64e6d.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1984/sports-and-entertainment-centre-melbourne-australia-2be7b45e.html"
+    },
+    {
+      "id": "6bc38262",
+      "versionId": "g7b123ed0",
+      "eventDate": "28-01-1984",
+      "lastUpdated": "2026-03-30T18:15:21.538+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "43d4c7eb",
+        "name": "Festival Site",
+        "city": {
+          "id": "2149141",
+          "name": "Somersby",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.3666667,
+            "long": 151.2833333
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/festival-site-somersby-australia-43d4c7eb.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Interlude",
+                "tape": true,
+                "info": "includes snippet of Rolf Harris \"Tie Me Kangaroo Down, Sport\", Culture Club \"Karma Chameleon\""
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1984/festival-site-somersby-australia-6bc38262.html"
+    },
+    {
+      "id": "6bf3b6e6",
+      "versionId": "g7b1e9a20",
+      "eventDate": "16-12-1983",
+      "lastUpdated": "2026-04-27T13:18:35.819+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d62afb",
+        "name": "Pantages Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pantages-theatre-los-angeles-ca-usa-63d62afb.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/pantages-theatre-los-angeles-ca-6bf3b6e6.html"
+    },
+    {
+      "id": "63f3b6e7",
+      "versionId": "g731e9a25",
+      "eventDate": "15-12-1983",
+      "lastUpdated": "2026-04-27T13:19:08.287+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d62afb",
+        "name": "Pantages Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pantages-theatre-los-angeles-ca-usa-63d62afb.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/pantages-theatre-los-angeles-ca-63f3b6e7.html"
+    },
+    {
+      "id": "73c66259",
+      "versionId": "g631e9a1b",
+      "eventDate": "14-12-1983",
+      "lastUpdated": "2026-04-27T13:19:31.636+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d62afb",
+        "name": "Pantages Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pantages-theatre-los-angeles-ca-usa-63d62afb.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Found a Job"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/pantages-theatre-los-angeles-ca-73c66259.html"
+    },
+    {
+      "id": "73b76a1d",
+      "versionId": "g5b1d9b10",
+      "eventDate": "13-12-1983",
+      "lastUpdated": "2026-05-19T16:56:56.508+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d62afb",
+        "name": "Pantages Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pantages-theatre-los-angeles-ca-usa-63d62afb.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": []
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/pantages-theatre-los-angeles-ca-73b76a1d.html"
+    },
+    {
+      "id": "7bf3b6e0",
+      "versionId": "g63123ed7",
+      "eventDate": "08-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.547+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "bd63982",
+        "name": "Long Beach Arena",
+        "city": {
+          "id": "5367929",
+          "name": "Long Beach",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 33.7669623,
+            "long": -118.1892348
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/long-beach-arena-long-beach-ca-usa-bd63982.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/long-beach-arena-long-beach-ca-7bf3b6e0.html"
+    },
+    {
+      "id": "73f3b6e1",
+      "versionId": "g6b123ed6",
+      "eventDate": "06-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.557+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d28fdd",
+        "name": "San Francisco  Civic Auditorium",
+        "city": {
+          "id": "5391959",
+          "name": "San Francisco",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 37.775,
+            "long": -122.419
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/san-francisco-civic-auditorium-san-francisco-ca-usa-53d28fdd.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/san-francisco-civic-auditorium-san-francisco-ca-73f3b6e1.html"
+    },
+    {
+      "id": "63f3b6e3",
+      "versionId": "g73123ed5",
+      "eventDate": "05-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.567+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d3a78d",
+        "name": "Recreation Hall",
+        "city": {
+          "id": "5341704",
+          "name": "Davis",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 38.5449065,
+            "long": -121.7405167
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/recreation-hall-davis-ca-usa-53d3a78d.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/recreation-hall-davis-ca-63f3b6e3.html"
+    },
+    {
+      "id": "bc8755e",
+      "versionId": "g7b123ed4",
+      "eventDate": "03-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.579+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d6c705",
+        "name": "Pacific Coliseum",
+        "city": {
+          "id": "6173331",
+          "name": "Vancouver",
+          "state": "British Columbia",
+          "stateCode": "BC",
+          "coords": {
+            "lat": 49.249657393,
+            "long": -123.119340403
+          },
+          "country": {
+            "code": "CA",
+            "name": "Canada"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pacific-coliseum-vancouver-bc-canada-53d6c705.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/pacific-coliseum-vancouver-bc-canada-bc8755e.html"
+    },
+    {
+      "id": "7bf3b6ec",
+      "versionId": "g63123ecb",
+      "eventDate": "02-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.591+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "33d6d415",
+        "name": "Seattle Center Arena",
+        "city": {
+          "id": "5809844",
+          "name": "Seattle",
+          "state": "Washington",
+          "stateCode": "WA",
+          "coords": {
+            "lat": 47.6062095,
+            "long": -122.3320708
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/seattle-center-arena-seattle-wa-usa-33d6d415.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/seattle-center-arena-seattle-wa-7bf3b6ec.html"
+    },
+    {
+      "id": "7bd3c2f8",
+      "versionId": "g6b123eca",
+      "eventDate": "01-12-1983",
+      "lastUpdated": "2026-03-30T18:15:21.657+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "7bd626bc",
+        "name": "Civic Auditorium",
+        "city": {
+          "id": "5746545",
+          "name": "Portland",
+          "state": "Oregon",
+          "stateCode": "OR",
+          "coords": {
+            "lat": 45.5234515,
+            "long": -122.6762071
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/civic-auditorium-portland-or-usa-7bd626bc.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/civic-auditorium-portland-or-7bd3c2f8.html"
+    },
+    {
+      "id": "73f3b6ed",
+      "versionId": "g6b1e9a1e",
+      "eventDate": "29-11-1983",
+      "lastUpdated": "2026-04-27T13:20:33.274+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "7bd74204",
+        "name": "Silva Concert Hall",
+        "city": {
+          "id": "5725846",
+          "name": "Eugene",
+          "state": "Oregon",
+          "stateCode": "OR",
+          "coords": {
+            "lat": 44.0520691,
+            "long": -123.0867536
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/silva-concert-hall-eugene-or-usa-7bd74204.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/silva-concert-hall-eugene-or-73f3b6ed.html"
+    },
+    {
+      "id": "6bf3b606",
+      "versionId": "g731e9a1d",
+      "eventDate": "25-10-1983",
+      "lastUpdated": "2026-04-27T13:20:57.017+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d64e4f",
+        "name": "Palmer Auditorium",
+        "city": {
+          "id": "4671654",
+          "name": "Austin",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 30.267153,
+            "long": -97.7430608
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/palmer-auditorium-austin-tx-usa-63d64e4f.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/palmer-auditorium-austin-tx-6bf3b606.html"
+    },
+    {
+      "id": "33c7d43d",
+      "versionId": "g63123ecf",
+      "eventDate": "24-10-1983",
+      "lastUpdated": "2026-03-30T18:15:21.694+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d6c9f1",
+        "name": "Dallas Convention Center",
+        "city": {
+          "id": "4684888",
+          "name": "Dallas",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 32.7830556,
+            "long": -96.8066667
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/dallas-convention-center-dallas-tx-usa-13d6c9f1.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/dallas-convention-center-dallas-tx-33c7d43d.html"
+    },
+    {
+      "id": "1bdee164",
+      "versionId": "g731e9a11",
+      "eventDate": "22-10-1983",
+      "lastUpdated": "2026-04-27T13:21:27.358+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "5bd63f54",
+        "name": "Sam Houston Coliseum",
+        "city": {
+          "id": "4699066",
+          "name": "Houston",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 29.7632836,
+            "long": -95.3632715
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sam-houston-coliseum-houston-tx-usa-5bd63f54.html"
+      },
+      "tour": {
+        "name": "Speaking In Tongues"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Heaven"
+              },
+              {
+                "name": "Thank You for Sending Me an Angel"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "The Book I Read"
+              },
+              {
+                "name": "Slippery People"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Burning Down the House"
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Making Flippy Floppy"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "This Must Be the Place (Naive Melody)"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "Genius of Love",
+                "cover": {
+                  "mbid": "3dc66525-d359-406d-9cdf-cdd3a7de289c",
+                  "name": "Tom Tom Club",
+                  "sortName": "Tom Tom Club",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-tom-club-4bd68b22.html"
+                }
+              },
+              {
+                "name": "Girlfriend Is Better"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1983/sam-houston-coliseum-houston-tx-1bdee164.html"
+    }
+  ]
+}

@@ -1,0 +1,2299 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 2191,
+  "setlist": [
+    {
+      "id": "7b47367c",
+      "versionId": "g63066af7",
+      "eventDate": "03-07-2026",
+      "lastUpdated": "2026-07-02T23:16:53.212+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "7bd576d0",
+        "name": "London Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/london-stadium-london-england-7bd576d0.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": []
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/london-stadium-london-england-7b47367c.html"
+    },
+    {
+      "id": "6b47365a",
+      "versionId": "g3b06e070",
+      "eventDate": "28-06-2026",
+      "lastUpdated": "2026-06-28T21:26:25.646+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "4bd54b5e",
+        "name": "Principality Stadium",
+        "city": {
+          "id": "2653822",
+          "name": "Cardiff",
+          "state": "Wales",
+          "stateCode": "WLS",
+          "coords": {
+            "lat": 51.48,
+            "long": -3.18
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/principality-stadium-cardiff-wales-4bd54b5e.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "The Memory Remains"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Tom Jones' \"Delilah\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/principality-stadium-cardiff-wales-6b47365a.html"
+    },
+    {
+      "id": "6b473646",
+      "versionId": "g5306bf4d",
+      "eventDate": "25-06-2026",
+      "lastUpdated": "2026-06-26T10:05:59.413+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "1bd62540",
+        "name": "Hampden Park",
+        "city": {
+          "id": "2648579",
+          "name": "Glasgow",
+          "state": "Scotland",
+          "stateCode": "SCT",
+          "coords": {
+            "lat": 55.8333333,
+            "long": -4.25
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hampden-park-glasgow-scotland-1bd62540.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Hit the Lights"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Nazareth's \"Hair of the Dog\" and The Proclaimers' \"I’m Gonna Be (500 Miles)\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/hampden-park-glasgow-scotland-6b473646.html"
+    },
+    {
+      "id": "6b47364a",
+      "versionId": "g4319c7eb",
+      "eventDate": "21-06-2026",
+      "lastUpdated": "2026-06-21T23:28:24.828+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "3d74d83",
+        "name": "Aviva Stadium",
+        "city": {
+          "id": "2964574",
+          "name": "Dublin",
+          "state": "Dublin",
+          "stateCode": "07",
+          "coords": {
+            "lat": 53.3330556,
+            "long": -6.2488889
+          },
+          "country": {
+            "code": "IE",
+            "name": "Ireland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/aviva-stadium-dublin-ireland-3d74d83.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Whiplash"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Ride the Lightning"
+              },
+              {
+                "name": "Until It Sleeps"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Screaming Suicide"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Ewan MacColl‘s “Dirty Old Town”"
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "The Call of Ktulu"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Whiskey in the Jar",
+                "cover": {
+                  "mbid": "9be7f096-97ec-4615-8957-8d40b5dcbc41",
+                  "name": "[traditional]",
+                  "sortName": "[traditional]",
+                  "disambiguation": "special purpose artist",
+                  "url": "https://www.setlist.fm/setlists/traditional-5bd2f7e4.html"
+                },
+                "info": "preceded by \"...And Justice For All\" tease"
+              },
+              {
+                "name": "Blackened"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/aviva-stadium-dublin-ireland-6b47364a.html"
+    },
+    {
+      "id": "6347364f",
+      "versionId": "g4319effb",
+      "eventDate": "19-06-2026",
+      "lastUpdated": "2026-06-20T23:20:13.430+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "3d74d83",
+        "name": "Aviva Stadium",
+        "city": {
+          "id": "2964574",
+          "name": "Dublin",
+          "state": "Dublin",
+          "stateCode": "07",
+          "coords": {
+            "lat": 53.3330556,
+            "long": -6.2488889
+          },
+          "country": {
+            "code": "IE",
+            "name": "Ireland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/aviva-stadium-dublin-ireland-3d74d83.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "Leper Messiah"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "If Darkness Had a Son"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Thin Lizzy's \"Black Rose\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "Orion"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Battery"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Seek & Destroy",
+                "info": "During the song, Kirk Hammett placed his foot on a stage cover that unexpectedly made him fall"
+              },
+              {
+                "name": "Master of Puppets"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/aviva-stadium-dublin-ireland-6347364f.html"
+    },
+    {
+      "id": "4b47379e",
+      "versionId": "g3b18dc80",
+      "eventDate": "13-06-2026",
+      "lastUpdated": "2026-06-13T21:34:54.404+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "6bd01a46",
+        "name": "Puskás Aréna",
+        "city": {
+          "id": "3054638",
+          "name": "Budapest",
+          "state": "Budapest",
+          "stateCode": "05",
+          "coords": {
+            "lat": 47.5,
+            "long": 19.08333
+          },
+          "country": {
+            "code": "HU",
+            "name": "Hungary"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/puskas-arena-budapest-hungary-6bd01a46.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Whiplash"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Ride the Lightning"
+              },
+              {
+                "name": "Until It Sleeps"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Screaming Suicide"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Quimby's \"Hoppá\""
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "The Call of Ktulu"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Whiskey in the Jar",
+                "cover": {
+                  "mbid": "9be7f096-97ec-4615-8957-8d40b5dcbc41",
+                  "name": "[traditional]",
+                  "sortName": "[traditional]",
+                  "disambiguation": "special purpose artist",
+                  "url": "https://www.setlist.fm/setlists/traditional-5bd2f7e4.html"
+                },
+                "info": "preceded by \"...And Justice For All\" tease"
+              },
+              {
+                "name": "Fight Fire With Fire"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/puskas-arena-budapest-hungary-4b47379e.html"
+    },
+    {
+      "id": "5b473798",
+      "versionId": "g2318d8df",
+      "eventDate": "11-06-2026",
+      "lastUpdated": "2026-06-13T23:51:44.442+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "6bd01a46",
+        "name": "Puskás Aréna",
+        "city": {
+          "id": "3054638",
+          "name": "Budapest",
+          "state": "Budapest",
+          "stateCode": "05",
+          "coords": {
+            "lat": 47.5,
+            "long": 19.08333
+          },
+          "country": {
+            "code": "HU",
+            "name": "Hungary"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/puskas-arena-budapest-hungary-6bd01a46.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "Of Wolf and Man"
+              },
+              {
+                "name": "The Memory Remains",
+                "info": "with extended band outro"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "If Darkness Had a Son"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Pokolgép's \"Totális Metál\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "Orion"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Battery"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/puskas-arena-budapest-hungary-5b473798.html"
+    },
+    {
+      "id": "4b4737b2",
+      "versionId": "g318a12b",
+      "eventDate": "03-06-2026",
+      "lastUpdated": "2026-06-11T18:57:16.917+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "73d62631",
+        "name": "Stadio Renato Dall'Ara",
+        "city": {
+          "id": "3181928",
+          "name": "Bologna",
+          "state": "Emilia-Romagna",
+          "stateCode": "05",
+          "coords": {
+            "lat": 44.4938114812334,
+            "long": 11.3387489318848
+          },
+          "country": {
+            "code": "IT",
+            "name": "Italy"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/stadio-renato-dallara-bologna-italy-73d62631.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "\"Ken il Guerriero\" by Spectra"
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/stadio-renato-dallara-bologna-italy-4b4737b2.html"
+    },
+    {
+      "id": "7347364d",
+      "versionId": "g131a6d2d",
+      "eventDate": "30-05-2026",
+      "lastUpdated": "2026-06-01T14:16:00.992+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "43d6379f",
+        "name": "Olympiastadion",
+        "city": {
+          "id": "2950159",
+          "name": "Berlin",
+          "state": "Berlin",
+          "stateCode": "16",
+          "coords": {
+            "lat": 52.5166667,
+            "long": 13.4
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/olympiastadion-berlin-germany-43d6379f.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Of Wolf and Man"
+              },
+              {
+                "name": "The Memory Remains"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Covering \"Sonne\" by Rammstein"
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Broke the record for the biggest concert in a stadium in Germany with an attendance of 94,000 attendants. The prior record was held by U2 since 2009 with 90,000 people. This was celebrated with fireworks.",
+      "url": "https://www.setlist.fm/setlist/metallica/2026/olympiastadion-berlin-germany-7347364d.html"
+    },
+    {
+      "id": "73473649",
+      "versionId": "g431a8f9f",
+      "eventDate": "27-05-2026",
+      "lastUpdated": "2026-05-27T22:00:16.843+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "23d61c2f",
+        "name": "Letzigrund Stadion",
+        "city": {
+          "id": "2657896",
+          "name": "Zurich",
+          "state": "Zürich",
+          "stateCode": "ZH",
+          "coords": {
+            "lat": 47.3666667,
+            "long": 8.55
+          },
+          "country": {
+            "code": "CH",
+            "name": "Switzerland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/letzigrund-stadion-zurich-switzerland-23d61c2f.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Polo Hofer's \"Alperose\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/letzigrund-stadion-zurich-switzerland-73473649.html"
+    },
+    {
+      "id": "6347365f",
+      "versionId": "g7318f6f9",
+      "eventDate": "24-05-2026",
+      "lastUpdated": "2026-06-13T04:49:26.526+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "3d021bb",
+        "name": "Deutsche Bank Park",
+        "city": {
+          "id": "2925533",
+          "name": "Frankfurt",
+          "state": "Hesse",
+          "stateCode": "05",
+          "coords": {
+            "lat": 50.1166667,
+            "long": 8.6833333
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/deutsche-bank-park-frankfurt-germany-3d021bb.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Whiplash"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "The Shortest Straw"
+              },
+              {
+                "name": "Until It Sleeps"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Leper Messiah"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Accept's \"Fast as a Shark\""
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "The Call of Ktulu"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Whiskey in the Jar",
+                "cover": {
+                  "mbid": "9be7f096-97ec-4615-8957-8d40b5dcbc41",
+                  "name": "[traditional]",
+                  "sortName": "[traditional]",
+                  "disambiguation": "special purpose artist",
+                  "url": "https://www.setlist.fm/setlists/traditional-5bd2f7e4.html"
+                }
+              },
+              {
+                "name": "Blackened"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman"
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                },
+                "info": "Metallica version; outro video"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "The band performed the two shows at Deutsche Bank Park in front of over 62,000 fans, making them the largest concerts ever to take place at the venue.",
+      "url": "https://www.setlist.fm/setlist/metallica/2026/deutsche-bank-park-frankfurt-germany-6347365f.html"
+    },
+    {
+      "id": "7b473664",
+      "versionId": "g6318f6fb",
+      "eventDate": "22-05-2026",
+      "lastUpdated": "2026-06-13T04:49:22.288+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "3d021bb",
+        "name": "Deutsche Bank Park",
+        "city": {
+          "id": "2925533",
+          "name": "Frankfurt",
+          "state": "Hesse",
+          "stateCode": "05",
+          "coords": {
+            "lat": 50.1166667,
+            "long": 8.6833333
+          },
+          "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/deutsche-bank-park-frankfurt-germany-3d021bb.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "Holier Than Thou"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "72 Seasons"
+              },
+              {
+                "name": "Ride the Lightning"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Tankard's \"Schwarz-Weiß wie Schnee\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "Orion"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Battery"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                },
+                "info": "Metallica version; outro video"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "The band performed the two shows at Deutsche Bank Park in front of over 62,000 fans, making them the largest concerts ever to take place at the venue.",
+      "url": "https://www.setlist.fm/setlist/metallica/2026/deutsche-bank-park-frankfurt-germany-7b473664.html"
+    },
+    {
+      "id": "7b473668",
+      "versionId": "g6318f607",
+      "eventDate": "19-05-2026",
+      "lastUpdated": "2026-06-13T04:48:08.246+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "1bd47524",
+        "name": "Stadion Śląski",
+        "city": {
+          "id": "3101619",
+          "name": "Chorzów",
+          "state": "Silesian Voivodeship",
+          "stateCode": "83",
+          "coords": {
+            "lat": 50.3,
+            "long": 18.9666667
+          },
+          "country": {
+            "code": "PL",
+            "name": "Poland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/stadion-lski-chorzow-poland-1bd47524.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Of Wolf and Man"
+              },
+              {
+                "name": "The Memory Remains",
+                "info": "With extended band outro"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Perfect's \"Chcemy być sobą\""
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Metallica broke all-time attendance record at Stadion Śląski",
+      "url": "https://www.setlist.fm/setlist/metallica/2026/stadion-lski-chorzow-poland-7b473668.html"
+    },
+    {
+      "id": "6b47367a",
+      "versionId": "g431c3397",
+      "eventDate": "13-05-2026",
+      "lastUpdated": "2026-05-14T22:15:57.829+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "23d01887",
+        "name": "Arena Națională",
+        "city": {
+          "id": "683506",
+          "name": "Bucharest",
+          "state": "Bucureşti",
+          "stateCode": "10",
+          "coords": {
+            "lat": 44.433,
+            "long": 26.1
+          },
+          "country": {
+            "code": "RO",
+            "name": "Romania"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/arena-naional-bucharest-romania-23d01887.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Holier Than Thou"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "Compact's \"Cine Ești Tu, Oare?”"
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Seek & Destroy",
+                "info": "A kid started off the song on Lars's drum kit"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2026/arena-naional-bucharest-romania-6b47367a.html"
+    },
+    {
+      "id": "434737ab",
+      "versionId": "g6b1f5202",
+      "eventDate": "09-05-2026",
+      "lastUpdated": "2026-05-10T11:02:13.080+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "6bd49ada",
+        "name": "Olympic Stadium",
+        "city": {
+          "id": "264371",
+          "name": "Athens",
+          "state": "Attica",
+          "stateCode": "ESYE31",
+          "coords": {
+            "lat": 37.9833333,
+            "long": 23.7333333
+          },
+          "country": {
+            "code": "GR",
+            "name": "Greece"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/olympic-stadium-athens-greece-6bd49ada.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "\"Zorba's Dance\" and Trypes' \"Den Choras Pouthena\""
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "One",
+                "info": "Drum technical difficulties at the start"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                },
+                "info": "Metallica version; outro video"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: \"For Whom The Bell Tolls\", \"King Nothing,\" \"Lux Æterna,\" \"The Unforgiven\", \"Fuel,\" \"Wherever I May Roam,\" \"Sad But True,\" \"One\"",
+      "url": "https://www.setlist.fm/setlist/metallica/2026/olympic-stadium-athens-greece-434737ab.html"
+    },
+    {
+      "id": "5b46a714",
+      "versionId": "g36e259b",
+      "eventDate": "06-12-2025",
+      "lastUpdated": "2025-12-18T05:42:50.816+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "73d1267d",
+        "name": "Etihad Park",
+        "city": {
+          "id": "292968",
+          "name": "Abu Dhabi",
+          "state": "Abu Dhabi",
+          "stateCode": "01",
+          "coords": {
+            "lat": 24.4666667,
+            "long": 54.3666667
+          },
+          "country": {
+            "code": "AE",
+            "name": "United Arab Emirates"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/etihad-park-abu-dhabi-united-arab-emirates-73d1267d.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Fuel",
+                "info": "with James intro"
+              },
+              {
+                "name": "The Memory Remains",
+                "info": "with extended band outro"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2025/etihad-park-abu-dhabi-united-arab-emirates-5b46a714.html"
+    },
+    {
+      "id": "4346a713",
+      "versionId": "g2b6ff8c2",
+      "eventDate": "03-12-2025",
+      "lastUpdated": "2025-12-25T19:01:56.892+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "7bdefa38",
+        "name": "Beyon Al Dana Amphitheatre",
+        "city": {
+          "id": "290303",
+          "name": "Aş Şakhīr",
+          "state": "Southern Governorate",
+          "stateCode": "17",
+          "coords": {
+            "lat": 26.0625,
+            "long": 50.52722
+          },
+          "country": {
+            "code": "BH",
+            "name": "Bahrain"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/beyon-al-dana-amphitheatre-a-akhr-bahrain-7bdefa38.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Fuel",
+                "info": "with James intro"
+              },
+              {
+                "name": "King Nothing"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "\"Rose Avenue\""
+              },
+              {
+                "name": "The Day That Never Comes",
+                "info": "Extended Outro"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/metallica/2025/beyon-al-dana-amphitheatre-a-akhr-bahrain-4346a713.html"
+    },
+    {
+      "id": "6b414ace",
+      "versionId": "g3361a0b1",
+      "eventDate": "30-11-2025",
+      "lastUpdated": "2025-12-06T13:43:18.448+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "3bde64d8",
+        "name": "Lusail International Circuit",
+        "city": {
+          "id": "290030",
+          "name": "Doha",
+          "state": "Baladīyat ad Dawḩah",
+          "stateCode": "01",
+          "coords": {
+            "lat": 25.2866667,
+            "long": 51.5333333
+          },
+          "country": {
+            "code": "QA",
+            "name": "Qatar"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/lusail-international-circuit-doha-qatar-3bde64d8.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "The Memory Remains"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Fade to Black"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "Enter Sandman"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "F1 Qatar Grand Prix post-race concert. First ever show in Qatar.",
+      "url": "https://www.setlist.fm/setlist/metallica/2025/lusail-international-circuit-doha-qatar-6b414ace.html"
+    },
+    {
+      "id": "b519d6a",
+      "versionId": "g3b626810",
+      "eventDate": "19-11-2025",
+      "lastUpdated": "2025-11-19T19:13:48.086+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "33d78421",
+        "name": "Eden Park",
+        "city": {
+          "id": "2193733",
+          "name": "Auckland",
+          "state": "Auckland",
+          "stateCode": "E7",
+          "coords": {
+            "lat": -36.8666667,
+            "long": 174.7666667
+          },
+          "country": {
+            "code": "NZ",
+            "name": "New Zealand"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/eden-park-auckland-new-zealand-33d78421.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Harvester of Sorrow"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "“I Got You” by Split Enz & “Don't Forget Your Roots” by Six60"
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman",
+                "info": "Ending with the band and crowd singing Happy Birthday to Kirk and him being sprayed"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2025/eden-park-auckland-new-zealand-b519d6a.html"
+    },
+    {
+      "id": "13519d75",
+      "versionId": "g3b62303c",
+      "eventDate": "15-11-2025",
+      "lastUpdated": "2025-11-17T12:30:51.988+0000",
+      "artist": {
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "name": "Metallica",
+        "sortName": "Metallica",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+      },
+      "venue": {
+        "id": "1bd04570",
+        "name": "Accor Stadium",
+        "city": {
+          "id": "2147714",
+          "name": "Sydney",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.8678499639382,
+            "long": 151.207323074341
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accor-stadium-sydney-australia-1bd04570.html"
+      },
+      "tour": {
+        "name": "M72 World Tour"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)",
+                "tape": true,
+                "cover": {
+                  "mbid": "66c662b6-6e2f-4930-8610-912e24c63ed1",
+                  "name": "AC/DC",
+                  "sortName": "AC/DC",
+                  "disambiguation": "Australian hard rock band",
+                  "url": "https://www.setlist.fm/setlists/acdc-23d6807b.html"
+                }
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              },
+              {
+                "name": "Creeping Death"
+              },
+              {
+                "name": "For Whom the Bell Tolls"
+              },
+              {
+                "name": "Fuel"
+              },
+              {
+                "name": "Cyanide"
+              },
+              {
+                "name": "The Unforgiven"
+              },
+              {
+                "name": "Wherever I May Roam"
+              },
+              {
+                "name": "Kirk and Rob Doodle",
+                "info": "\"For Those About to Rock\" by AC/DC & \"Nice Boys Don't Play Rock 'n' Roll\" by Rose Tattoo"
+              },
+              {
+                "name": "The Day That Never Comes"
+              },
+              {
+                "name": "Moth Into Flame"
+              },
+              {
+                "name": "Sad but True"
+              },
+              {
+                "name": "Nothing Else Matters"
+              },
+              {
+                "name": "Seek & Destroy"
+              },
+              {
+                "name": "Lux Æterna"
+              },
+              {
+                "name": "Master of Puppets"
+              },
+              {
+                "name": "One"
+              },
+              {
+                "name": "Enter Sandman"
+              },
+              {
+                "name": "The Ecstasy of Gold",
+                "tape": true,
+                "cover": {
+                  "mbid": "a16e47f5-aa54-47fe-87e4-bb8af91a9fdd",
+                  "name": "Ennio Morricone",
+                  "sortName": "Morricone, Ennio",
+                  "disambiguation": "Italian classical and score composer",
+                  "url": "https://www.setlist.fm/setlists/ennio-morricone-23d6a833.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/metallica/2025/accor-stadium-sydney-australia-13519d75.html"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-07-03T01:00:01.571Z",
+  "query": "Billie Eilish",
+  "matchedName": "Billie Eilish",
+  "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "23-11-2025",
+  "oldestDate": "19-10-2024",
+  "tours": {
+    "HIT ME HARD AND SOFT": {
+      "shows": 94,
+      "medianSongs": 26,
+      "minSongs": 22,
+      "maxSongs": 27
+    },
+    "(no tour)": {
+      "shows": 6,
+      "medianSongs": 3,
+      "minSongs": 1,
+      "maxSongs": 4
+    }
+  }
+}

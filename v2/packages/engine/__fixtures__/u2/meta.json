@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2026-07-03T00:59:30.222Z",
+  "query": "U2",
+  "matchedName": "U2",
+  "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "12-05-2026",
+  "oldestDate": "21-06-2018",
+  "tours": {
+    "(no tour)": {
+      "shows": 5,
+      "medianSongs": 3,
+      "minSongs": 2,
+      "maxSongs": 7
+    },
+    "U2:UV Achtung Baby Live at Sphere": {
+      "shows": 40,
+      "medianSongs": 26,
+      "minSongs": 25,
+      "maxSongs": 29
+    },
+    "The Joshua Tree Tour 2019": {
+      "shows": 15,
+      "medianSongs": 26,
+      "minSongs": 24,
+      "maxSongs": 27
+    },
+    "eXPERIENCE + iNNOCENCE Tour": {
+      "shows": 40,
+      "medianSongs": 28,
+      "minSongs": 7,
+      "maxSongs": 30
+    }
+  }
+}

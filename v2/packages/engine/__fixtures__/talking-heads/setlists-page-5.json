@@ -1,0 +1,2558 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 5,
+  "total": 679,
+  "setlist": [
+    {
+      "id": "23da888f",
+      "versionId": "g63123e8b",
+      "eventDate": "29-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.618+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d73181",
+        "name": "Calderone Concert Hall",
+        "city": {
+          "id": "5120479",
+          "name": "Hempstead",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 41.1498175,
+            "long": -74.0337521
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/calderone-concert-hall-hempstead-ny-usa-13d73181.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/calderone-concert-hall-hempstead-ny-23da888f.html"
+    },
+    {
+      "id": "5bdf77d4",
+      "versionId": "g6b123e8a",
+      "eventDate": "28-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.625+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d63981",
+        "name": "Orpheum Theatre",
+        "city": {
+          "id": "4930956",
+          "name": "Boston",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.3584308,
+            "long": -71.0597732
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/orpheum-theatre-boston-ma-usa-13d63981.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                },
+                "info": "incl. band intros"
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/orpheum-theatre-boston-ma-5bdf77d4.html"
+    },
+    {
+      "id": "3b868494",
+      "versionId": "g73123e89",
+      "eventDate": "27-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.634+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d63981",
+        "name": "Orpheum Theatre",
+        "city": {
+          "id": "4930956",
+          "name": "Boston",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.3584308,
+            "long": -71.0597732
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/orpheum-theatre-boston-ma-usa-13d63981.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/orpheum-theatre-boston-ma-3b868494.html"
+    },
+    {
+      "id": "3b972894",
+      "versionId": "g7b123e88",
+      "eventDate": "25-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.643+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "6bd2fabe",
+        "name": "Agora Ballroom",
+        "city": {
+          "id": "4845411",
+          "name": "West Hartford",
+          "state": "Connecticut",
+          "stateCode": "CT",
+          "coords": {
+            "lat": 41.7620447,
+            "long": -72.7420399
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/agora-ballroom-west-hartford-ct-usa-6bd2fabe.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/agora-ballroom-west-hartford-ct-3b972894.html"
+    },
+    {
+      "id": "43c54787",
+      "versionId": "g63123e8f",
+      "eventDate": "24-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.650+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d61ff5",
+        "name": "Merriweather Post Pavilion",
+        "city": {
+          "id": "4352053",
+          "name": "Columbia",
+          "state": "Maryland",
+          "stateCode": "MD",
+          "coords": {
+            "lat": 39.2403841,
+            "long": -76.8394184
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/merriweather-post-pavilion-columbia-md-usa-53d61ff5.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              },
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/merriweather-post-pavilion-columbia-md-43c54787.html"
+    },
+    {
+      "id": "1bfb3574",
+      "versionId": "g6b123e8e",
+      "eventDate": "23-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.659+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "4bd63b2e",
+        "name": "Saratoga Performing Arts Center",
+        "city": {
+          "id": "5136334",
+          "name": "Saratoga Springs",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 43.0831301,
+            "long": -73.7845651
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/saratoga-performing-arts-center-saratoga-springs-ny-usa-4bd63b2e.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/saratoga-performing-arts-center-saratoga-springs-ny-1bfb3574.html"
+    },
+    {
+      "id": "5bf08790",
+      "versionId": "g73123e8d",
+      "eventDate": "21-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.667+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d26df1",
+        "name": "Forest Hills Tennis Stadium",
+        "city": {
+          "id": "5133266",
+          "name": "Queens",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7498243,
+            "long": -73.7976337
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/forest-hills-tennis-stadium-queens-ny-usa-13d26df1.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/forest-hills-tennis-stadium-queens-ny-5bf08790.html"
+    },
+    {
+      "id": "33eae0c5",
+      "versionId": "g7b123e8c",
+      "eventDate": "20-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.675+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "43d52bcf",
+        "name": "Paramount Theatre",
+        "city": {
+          "id": "5139568",
+          "name": "Staten Island",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.5623272,
+            "long": -74.1398649
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/paramount-theatre-staten-island-ny-usa-43d52bcf.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/paramount-theatre-staten-island-ny-33eae0c5.html"
+    },
+    {
+      "id": "53dc6b81",
+      "versionId": "g63123e83",
+      "eventDate": "18-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.682+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "5bd6c3f4",
+        "name": "Northrop Auditorium",
+        "city": {
+          "id": "5037649",
+          "name": "Minneapolis",
+          "state": "Minnesota",
+          "stateCode": "MN",
+          "coords": {
+            "lat": 44.9799654,
+            "long": -93.2638361
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/northrop-auditorium-minneapolis-mn-usa-5bd6c3f4.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/northrop-auditorium-minneapolis-mn-53dc6b81.html"
+    },
+    {
+      "id": "73df1661",
+      "versionId": "g6b123e82",
+      "eventDate": "17-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.690+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "13d6c90d",
+        "name": "Des Moines Civic Center",
+        "city": {
+          "id": "4853828",
+          "name": "Des Moines",
+          "state": "Iowa",
+          "stateCode": "IA",
+          "coords": {
+            "lat": 41.6005448,
+            "long": -93.6091064
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/des-moines-civic-center-des-moines-ia-usa-13d6c90d.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/des-moines-civic-center-des-moines-ia-73df1661.html"
+    },
+    {
+      "id": "be9692a",
+      "versionId": "g73123e81",
+      "eventDate": "16-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.697+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "bd6c142",
+        "name": "Poplar Creek Music Theater",
+        "city": {
+          "id": "4896075",
+          "name": "Hoffman Estates",
+          "state": "Illinois",
+          "stateCode": "IL",
+          "coords": {
+            "lat": 42.0428052,
+            "long": -88.079795
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/poplar-creek-music-theater-hoffman-estates-il-usa-bd6c142.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/poplar-creek-music-theater-hoffman-estates-il-be9692a.html"
+    },
+    {
+      "id": "7befda70",
+      "versionId": "g7b123e80",
+      "eventDate": "15-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.704+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "3d6c953",
+        "name": "Pine Knob Music Theatre",
+        "city": {
+          "id": "4988998",
+          "name": "Clarkston",
+          "state": "Michigan",
+          "stateCode": "MI",
+          "coords": {
+            "lat": 42.7086411,
+            "long": -83.4396633
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/pine-knob-music-theatre-clarkston-mi-usa-3d6c953.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/pine-knob-music-theatre-clarkston-mi-7befda70.html"
+    },
+    {
+      "id": "7bdf1660",
+      "versionId": "g63123e87",
+      "eventDate": "13-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.709+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "1bd6255c",
+        "name": "CNE Stadium",
+        "city": {
+          "id": "6167865",
+          "name": "Toronto",
+          "state": "Ontario",
+          "stateCode": "ON",
+          "coords": {
+            "lat": 43.700113788,
+            "long": -79.416304194
+          },
+          "country": {
+            "code": "CA",
+            "name": "Canada"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/cne-stadium-toronto-on-canada-1bd6255c.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Talking Heads opened for The Police",
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/cne-stadium-toronto-on-canada-7bdf1660.html"
+    },
+    {
+      "id": "639516e3",
+      "versionId": "133b2919",
+      "eventDate": "12-08-1982",
+      "lastUpdated": "2020-06-02T08:54:54.136+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "1bd625ec",
+        "name": "Perkins Palace",
+        "city": {
+          "id": "5381396",
+          "name": "Pasadena",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.1477849,
+            "long": -118.1445155
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/perkins-palace-pasadena-ca-usa-1bd625ec.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": []
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/perkins-palace-pasadena-ca-639516e3.html"
+    },
+    {
+      "id": "3f045fb",
+      "versionId": "g6b123e86",
+      "eventDate": "11-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.717+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "73d63a75",
+        "name": "Hollywood Palladium",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hollywood-palladium-los-angeles-ca-usa-73d63a75.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/hollywood-palladium-los-angeles-ca-3f045fb.html"
+    },
+    {
+      "id": "1bd3adc4",
+      "versionId": "g434afb2f",
+      "eventDate": "09-08-1982",
+      "lastUpdated": "2025-05-16T14:28:54.386+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d28fdd",
+        "name": "San Francisco  Civic Auditorium",
+        "city": {
+          "id": "5391959",
+          "name": "San Francisco",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 37.775,
+            "long": -122.419
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/san-francisco-civic-auditorium-san-francisco-ca-usa-53d28fdd.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              },
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/san-francisco-civic-auditorium-san-francisco-ca-1bd3adc4.html"
+    },
+    {
+      "id": "6b9b52fe",
+      "versionId": "g73123e85",
+      "eventDate": "08-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.724+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "4bd61ff2",
+        "name": "Greek Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/greek-theatre-los-angeles-ca-usa-4bd61ff2.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/greek-theatre-los-angeles-ca-6b9b52fe.html"
+    },
+    {
+      "id": "2be66caa",
+      "versionId": "g7b123e84",
+      "eventDate": "07-08-1982",
+      "lastUpdated": "2026-03-30T18:15:22.733+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "53d63781",
+        "name": "Santa Barbara Bowl",
+        "city": {
+          "id": "5392952",
+          "name": "Santa Barbara",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.4208305,
+            "long": -119.6981901
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/santa-barbara-bowl-santa-barbara-ca-usa-53d63781.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/santa-barbara-bowl-santa-barbara-ca-2be66caa.html"
+    },
+    {
+      "id": "43ccf767",
+      "versionId": "g312397b",
+      "eventDate": "27-07-1982",
+      "lastUpdated": "2026-03-30T18:15:22.766+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "63d63adf",
+        "name": "Dom Sportova",
+        "city": {
+          "id": "3186886",
+          "name": "Zagreb",
+          "state": "Zagreb",
+          "stateCode": "20",
+          "coords": {
+            "lat": 45.8,
+            "long": 16
+          },
+          "country": {
+            "code": "HR",
+            "name": "Croatia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/dom-sportova-zagreb-croatia-63d63adf.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/dom-sportova-zagreb-croatia-43ccf767.html"
+    },
+    {
+      "id": "23868483",
+      "versionId": "gb12397a",
+      "eventDate": "26-07-1982",
+      "lastUpdated": "2026-03-30T18:15:22.795+0000",
+      "artist": {
+        "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+        "name": "Talking Heads",
+        "sortName": "Talking Heads",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+      },
+      "venue": {
+        "id": "bd7e9da",
+        "name": "Hala Pionir",
+        "city": {
+          "id": "792680",
+          "name": "Belgrade",
+          "state": "Beograd",
+          "stateCode": "00",
+          "coords": {
+            "lat": 44.819,
+            "long": 20.468
+          },
+          "country": {
+            "code": "RS",
+            "name": "Serbia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hala-pionir-belgrade-serbia-bd7e9da.html"
+      },
+      "tour": {
+        "name": "The Name of This Band Is Talking Heads"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Psycho Killer"
+              },
+              {
+                "name": "Love-> Building on Fire"
+              },
+              {
+                "name": "Cities"
+              },
+              {
+                "name": "Big Blue Plymouth (Eyes Wide Open)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Once in a Lifetime"
+              },
+              {
+                "name": "Mind"
+              },
+              {
+                "name": "My Big Hands (Fall Through the Cracks)",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Big Business / I Zimbra"
+              },
+              {
+                "name": "Swamp"
+              },
+              {
+                "name": "Slink",
+                "cover": {
+                  "mbid": "675f9fe6-7e2c-4ce7-b3dc-147169c64d31",
+                  "name": "Jerry Harrison",
+                  "sortName": "Harrison, Jerry",
+                  "disambiguation": "Talking Heads & producer",
+                  "url": "https://www.setlist.fm/setlists/jerry-harrison-7bd6de24.html"
+                }
+              },
+              {
+                "name": "Houses in Motion"
+              },
+              {
+                "name": "What a Day That Was",
+                "cover": {
+                  "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                  "name": "David Byrne",
+                  "sortName": "Byrne, David",
+                  "disambiguation": "Talking Heads",
+                  "url": "https://www.setlist.fm/setlists/david-byrne-63d68a97.html"
+                }
+              },
+              {
+                "name": "Life During Wartime"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Take Me to the River",
+                "cover": {
+                  "mbid": "fb7272ba-f130-4f0a-934d-6eeea4c18c9a",
+                  "name": "Al Green",
+                  "sortName": "Green, Al",
+                  "disambiguation": "US soul singer, songwriter, pastor and record producer",
+                  "url": "https://www.setlist.fm/setlists/al-green-bd6b9a6.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "Crosseyed and Painless"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/talking-heads/1982/hala-pionir-belgrade-serbia-23868483.html"
+    }
+  ]
+}

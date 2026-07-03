@@ -1,0 +1,2810 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 959,
+  "setlist": [
+    {
+      "id": "435f27c7",
+      "versionId": "g6360c26b",
+      "eventDate": "23-11-2025",
+      "lastUpdated": "2025-12-02T13:21:26.872+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "13d17139",
+        "name": "MorumBIS",
+        "city": {
+          "id": "3448439",
+          "name": "São Paulo",
+          "state": "São Paulo",
+          "stateCode": "SP",
+          "coords": {
+            "lat": -23.5475,
+            "long": -46.63611111
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/morumbis-sao-paulo-brazil-13d17139.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Germans"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ \"Octopus’s Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to Gary “Mani” Mounfield"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "also dedicated to Gary “Mani” Mounfield"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introduction"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Last concert of the Oasis \"Live '25\" Tour",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/morumbis-sao-paulo-brazil-435f27c7.html"
+    },
+    {
+      "id": "4b516f82",
+      "versionId": "g536f0301",
+      "eventDate": "22-11-2025",
+      "lastUpdated": "2025-12-31T05:04:30.648+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "13d17139",
+        "name": "MorumBIS",
+        "city": {
+          "id": "3448439",
+          "name": "São Paulo",
+          "state": "São Paulo",
+          "stateCode": "SP",
+          "coords": {
+            "lat": -23.5475,
+            "long": -46.63611111
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/morumbis-sao-paulo-brazil-13d17139.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to all the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ \"Octopus’s Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to Gary \"Mani\" Mounfield"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introduction"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "dedicated to Sally"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/morumbis-sao-paulo-brazil-4b516f82.html"
+    },
+    {
+      "id": "53516f8d",
+      "versionId": "g7b63fee4",
+      "eventDate": "19-11-2025",
+      "lastUpdated": "2025-11-23T02:41:39.858+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "63d622c3",
+        "name": "Estadio Nacional",
+        "city": {
+          "id": "3871336",
+          "name": "Santiago",
+          "state": "Región Metropolitana",
+          "stateCode": "12",
+          "coords": {
+            "lat": -33.426,
+            "long": -70.567
+          },
+          "country": {
+            "code": "CL",
+            "name": "Chile"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-nacional-santiago-chile-63d622c3.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ “Octopus’s Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "dedicated to everyone who had never seen Oasis live before"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/estadio-nacional-santiago-chile-53516f8d.html"
+    },
+    {
+      "id": "43516f8b",
+      "versionId": "g1363f5d9",
+      "eventDate": "16-11-2025",
+      "lastUpdated": "2025-11-23T05:53:25.550+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "7bd62eb4",
+        "name": "Estadio River Plate",
+        "city": {
+          "id": "3435910",
+          "name": "Buenos Aires",
+          "state": "Autonomous City of Buenos Aires",
+          "stateCode": "07",
+          "coords": {
+            "lat": -34.576,
+            "long": -58.409
+          },
+          "country": {
+            "code": "AR",
+            "name": "Argentina"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-river-plate-buenos-aires-argentina-7bd62eb4.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ \"Octopus’s Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "a picture of Diego Maradona was displayed in the background"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Sergio Kun Agüero"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Start time delayed one hour due to strong winds",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/estadio-river-plate-buenos-aires-argentina-43516f8b.html"
+    },
+    {
+      "id": "5b516f94",
+      "versionId": "g131a1161",
+      "eventDate": "15-11-2025",
+      "lastUpdated": "2026-05-31T15:59:41.818+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "7bd62eb4",
+        "name": "Estadio River Plate",
+        "city": {
+          "id": "3435910",
+          "name": "Buenos Aires",
+          "state": "Autonomous City of Buenos Aires",
+          "stateCode": "07",
+          "coords": {
+            "lat": -34.576,
+            "long": -58.409
+          },
+          "country": {
+            "code": "AR",
+            "name": "Argentina"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-river-plate-buenos-aires-argentina-7bd62eb4.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ \"Octopus’s Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "a picture of Diego Maradona was displayed in the background"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Diego Maradona"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/estadio-river-plate-buenos-aires-argentina-5b516f94.html"
+    },
+    {
+      "id": "5b50e324",
+      "versionId": "g63657aef",
+      "eventDate": "08-11-2025",
+      "lastUpdated": "2025-11-12T03:13:58.737+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd04570",
+        "name": "Accor Stadium",
+        "city": {
+          "id": "2147714",
+          "name": "Sydney",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.8678499639382,
+            "long": 151.207323074341
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accor-stadium-sydney-australia-1bd04570.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to “all the professional didgeridoo players”"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "Dedicated to “the ladies”"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to “The Irish\""
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "Dedicated to Ray Shoesmith"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to “the love birds”"
+              },
+              {
+                "name": "Whatever",
+                "info": "with The Beatles’ “Octopus’s Garden” snippet"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "Preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "Followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/accor-stadium-sydney-australia-5b50e324.html"
+    },
+    {
+      "id": "5350a3c9",
+      "versionId": "g6362aa93",
+      "eventDate": "07-11-2025",
+      "lastUpdated": "2025-11-14T11:48:56.406+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd04570",
+        "name": "Accor Stadium",
+        "city": {
+          "id": "2147714",
+          "name": "Sydney",
+          "state": "New South Wales",
+          "stateCode": "NSW",
+          "coords": {
+            "lat": -33.8678499639382,
+            "long": 151.207323074341
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/accor-stadium-sydney-australia-1bd04570.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "Dedicated to Mork & Mindy"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to the Irish in the crowd"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "Dedicated to Ray Shoesmith"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ “Octopus’s Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by Band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "Followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/accor-stadium-sydney-australia-5350a3c9.html"
+    },
+    {
+      "id": "7b501e84",
+      "versionId": "g236030c3",
+      "eventDate": "04-11-2025",
+      "lastUpdated": "2025-12-02T22:31:26.453+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d2745d",
+        "name": "Marvel Stadium",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/marvel-stadium-melbourne-australia-33d2745d.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "Dedicated to Woody Woodpecker"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to all the genuine glue sniffers"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Preceded by Liam berating a Manchester United fan in the front"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "Dedicated to the sheilas"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to the Irish in the crowd"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to \"the lovebirds\""
+              },
+              {
+                "name": "Whatever",
+                "info": "with The Beatles' \"Octopus's Garden\" snippet in outro"
+              },
+              {
+                "name": "Live Forever",
+                "info": "Dedicated to \"the people that can't be here\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "Preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/marvel-stadium-melbourne-australia-7b501e84.html"
+    },
+    {
+      "id": "4b50e326",
+      "versionId": "g364c1eb",
+      "eventDate": "01-11-2025",
+      "lastUpdated": "2025-11-02T20:06:41.333+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d2745d",
+        "name": "Marvel Stadium",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/marvel-stadium-melbourne-australia-33d2745d.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish"
+              },
+              {
+                "name": "Little by Little",
+                "info": "dedicated to the lads, and anyone called Bruce or Sheila"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds"
+              },
+              {
+                "name": "Whatever",
+                "info": "with The Beatles' \"Octopus’s Garden\" snippet"
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to \"the people that can't be here\""
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Jimmy Barnes"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/marvel-stadium-melbourne-australia-4b50e326.html"
+    },
+    {
+      "id": "4b50a3ca",
+      "versionId": "g73653605",
+      "eventDate": "31-10-2025",
+      "lastUpdated": "2025-11-10T06:25:50.619+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d2745d",
+        "name": "Marvel Stadium",
+        "city": {
+          "id": "2158177",
+          "name": "Melbourne",
+          "state": "Victoria",
+          "stateCode": "VIC",
+          "coords": {
+            "lat": -37.8139965641595,
+            "long": 144.963322877884
+          },
+          "country": {
+            "code": "AU",
+            "name": "Australia"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/marvel-stadium-melbourne-australia-33d2745d.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to the 'glue sniffers'"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Restarted due to an issue with Noel's guitar"
+              },
+              {
+                "name": "Whatever",
+                "info": "with snippet of “Octopus’s Garden” by The Beatles"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall",
+                "info": "Liam saying happy birthday to Wonderwall before playing song"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "Flare got thrown in the crowd, with Liam saying “naughty, naughty, naughty”"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/marvel-stadium-melbourne-australia-4b50a3ca.html"
+    },
+    {
+      "id": "235e7c23",
+      "versionId": "g1b6711f0",
+      "eventDate": "26-10-2025",
+      "lastUpdated": "2025-10-26T22:27:57.710+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "4bd6370a",
+        "name": "Tokyo Dome",
+        "city": {
+          "id": "1850147",
+          "name": "Tokyo",
+          "state": "Tokyo",
+          "stateCode": "40",
+          "coords": {
+            "lat": 35.69,
+            "long": 139.692
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/tokyo-dome-tokyo-japan-4bd6370a.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ “Octopus’ Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/tokyo-dome-tokyo-japan-235e7c23.html"
+    },
+    {
+      "id": "3b5e7c2c",
+      "versionId": "g43670f47",
+      "eventDate": "25-10-2025",
+      "lastUpdated": "2025-10-27T02:29:20.485+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "4bd6370a",
+        "name": "Tokyo Dome",
+        "city": {
+          "id": "1850147",
+          "name": "Tokyo",
+          "state": "Tokyo",
+          "stateCode": "40",
+          "coords": {
+            "lat": 35.69,
+            "long": 139.692
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/tokyo-dome-tokyo-japan-4bd6370a.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ “Octopus’ Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/tokyo-dome-tokyo-japan-3b5e7c2c.html"
+    },
+    {
+      "id": "7b5e7e2c",
+      "versionId": "g6367b267",
+      "eventDate": "21-10-2025",
+      "lastUpdated": "2025-10-22T00:09:23.719+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "23d050b7",
+        "name": "Goyang Stadium",
+        "city": {
+          "id": "1842485",
+          "name": "Goyang-si",
+          "state": "Gyeonggi",
+          "stateCode": "13",
+          "coords": {
+            "lat": 37.65639,
+            "long": 126.835
+          },
+          "country": {
+            "code": "KR",
+            "name": "South Korea"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/goyang-stadium-goyang-si-south-korea-23d050b7.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of The Beatles’ “Octopus’ Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Mike Moore on rhythm guitar, subbing in for Bonehead",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/goyang-stadium-goyang-si-south-korea-7b5e7e2c.html"
+    },
+    {
+      "id": "335204ed",
+      "versionId": "g7b123234",
+      "eventDate": "28-09-2025",
+      "lastUpdated": "2026-03-31T01:42:57.779+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with snippet of “Octopus’ Garden” by The Beatles"
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to Ricky Hatton"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show, Liam said \"see you next year\" when introducing the song"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Acquiesce featured as an exclusive track on the War Child charity album HELP(2), released in March 2026.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-335204ed.html"
+    },
+    {
+      "id": "2b5204ee",
+      "versionId": "g378a157",
+      "eventDate": "27-09-2025",
+      "lastUpdated": "2025-09-29T21:02:20.480+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Noel dedicated to \"the Irish\""
+              },
+              {
+                "name": "Little by Little",
+                "info": "Noel dedicated to \"the mandem\""
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "Noel dedicated to “the warriors”"
+              },
+              {
+                "name": "Stand by Me",
+                "info": "Liam dedicated to Paul Gallagher (brother) and the back screen had a montage of family photos"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Liam dedicated to \"the love birds\""
+              },
+              {
+                "name": "Whatever",
+                "info": "with outro snippet of “Octopus’ Garden” by The Beatles"
+              },
+              {
+                "name": "Live Forever",
+                "info": "Dedicated to Ricky Hatton"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "Preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Dedicated to Sally"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "Preceded with speech by Liam including \"see you next year” and followed by fireworks display"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-2b5204ee.html"
+    },
+    {
+      "id": "b5345ea",
+      "versionId": "g6361f257",
+      "eventDate": "13-09-2025",
+      "lastUpdated": "2025-12-07T21:35:24.920+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "3bd14c44",
+        "name": "Estadio GNP Seguros",
+        "city": {
+          "id": "3530597",
+          "name": "Mexico City",
+          "state": "Distrito Federal",
+          "stateCode": "DIF",
+          "coords": {
+            "lat": 19.434,
+            "long": -99.139
+          },
+          "country": {
+            "code": "MX",
+            "name": "Mexico"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-gnp-seguros-mexico-city-mexico-3bd14c44.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to all the fans who travelled the world to see the gig"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' “Octopus’s Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Lennon Gallagher for his birthday"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall",
+                "info": "Liam wore a sombrero"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/estadio-gnp-seguros-mexico-city-mexico-b5345ea.html"
+    },
+    {
+      "id": "1b5361a4",
+      "versionId": "gb79a90a",
+      "eventDate": "12-09-2025",
+      "lastUpdated": "2025-10-06T11:36:34.397+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "3bd14c44",
+        "name": "Estadio GNP Seguros",
+        "city": {
+          "id": "3530597",
+          "name": "Mexico City",
+          "state": "Distrito Federal",
+          "stateCode": "DIF",
+          "coords": {
+            "lat": 19.434,
+            "long": -99.139
+          },
+          "country": {
+            "code": "MX",
+            "name": "Mexico"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-gnp-seguros-mexico-city-mexico-3bd14c44.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little",
+                "info": "dedicated to the \"Mandem\""
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of \"Octopus's Garden\" by The Beatles"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/estadio-gnp-seguros-mexico-city-mexico-1b5361a4.html"
+    },
+    {
+      "id": "135345e9",
+      "versionId": "g4366a323",
+      "eventDate": "07-09-2025",
+      "lastUpdated": "2025-10-14T22:21:29.541+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd62178",
+        "name": "Rose Bowl",
+        "city": {
+          "id": "5381396",
+          "name": "Pasadena",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.1477849,
+            "long": -118.1445155
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/rose-bowl-pasadena-ca-usa-1bd62178.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "dedicated to Woody Woodpecker"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to the sword swallowers in the audience"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish in the audience"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds in the house"
+              },
+              {
+                "name": "Whatever",
+                "info": "included a snippet of the Beatles’ “Octopus’ Garden”"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions by Noel"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "with fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/rose-bowl-pasadena-ca-135345e9.html"
+    },
+    {
+      "id": "1b536198",
+      "versionId": "g63794a3b",
+      "eventDate": "06-09-2025",
+      "lastUpdated": "2025-10-13T14:56:45.481+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd62178",
+        "name": "Rose Bowl",
+        "city": {
+          "id": "5381396",
+          "name": "Pasadena",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.1477849,
+            "long": -118.1445155
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/rose-bowl-pasadena-ca-usa-1bd62178.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Love to Burn",
+                "tape": true,
+                "cover": {
+                  "mbid": "0f3515b0-75c9-46c9-b26c-4cd05d26eae7",
+                  "name": "Neil Young & Crazy Horse",
+                  "sortName": "Young, Neil & Crazy Horse",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/neil-young-and-crazy-horse-73d6b661.html"
+                }
+              },
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "dedicated to Woody Woodpecker"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to the sword swallowers in the audience"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish in the audience"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the lovebirds in the house “we don't have any snidey cameras like that Coldplay lot”"
+              },
+              {
+                "name": "Whatever",
+                "info": "includes a snippet of the Beatles’ “Octopus’ Garden”"
+              },
+              {
+                "name": "Live Forever",
+                "info": "Liam handed his mic to a fan during the end of the song"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions by Noel"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Noel dedicated to Kylie (a woman up front who had been weeping the entire show"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/rose-bowl-pasadena-ca-1b536198.html"
+    },
+    {
+      "id": "1b5345e8",
+      "versionId": "g1b7da928",
+      "eventDate": "01-09-2025",
+      "lastUpdated": "2025-09-06T06:49:59.336+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd72160",
+        "name": "MetLife Stadium",
+        "city": {
+          "id": "5097459",
+          "name": "East Rutherford",
+          "state": "New Jersey",
+          "stateCode": "NJ",
+          "coords": {
+            "lat": 40.833989,
+            "long": -74.0970865
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/metlife-stadium-east-rutherford-nj-usa-1bd72160.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the 'naughty Mancunians'"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish in the crowd"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to the \"love birds\" in the crowd"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's  Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to John McEnroe"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks | quotes a line from Jimi Hendrix’s “Are You Experienced”"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/metlife-stadium-east-rutherford-nj-1b5345e8.html"
+    }
+  ]
+}

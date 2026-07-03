@@ -1,0 +1,3485 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 2,
+  "total": 1875,
+  "setlist": [
+    {
+      "id": "33ae0839",
+      "versionId": "g738a8a15",
+      "eventDate": "13-12-2023",
+      "lastUpdated": "2023-12-17T10:32:20.402+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer's \"I Feel Love\" snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint It Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison's \"Into the Mystic\" snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with Primal Scream's \"Movin' on Up\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François' \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" & The Beatles’ “All You Need Is Love” snippets"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"Gloria\" & The Beatles’ “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Brittany Howard vocals; Bono sings along during exit"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-33ae0839.html"
+    },
+    {
+      "id": "1bae3538",
+      "versionId": "gbb6bd2a",
+      "eventDate": "09-12-2023",
+      "lastUpdated": "2024-01-27T06:44:42.891+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison’s “Into the Mystic” and The Crickets' “Not Fade Away” snippets"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with Primal Scream's \"Movin' on Up\" snippet; dedicated to Gary “Mani” Mounfield"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François' \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"Gloria\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Brittany Howard vocals; Bono sings along during exit"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-1bae3538.html"
+    },
+    {
+      "id": "baec1aa",
+      "versionId": "g638d326f",
+      "eventDate": "08-12-2023",
+      "lastUpdated": "2023-12-11T16:56:53.592+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer’s “I Feel Love” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "with \"Landlady\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed's \"Walk on the Wild Side\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "with Mungo Jerry’s “The Pushbike Song” snippet"
+              },
+              {
+                "name": "When Love Comes to Town"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François' \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles’ “Blackbird” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Brittany Howard vocals; Bono sings along during exit"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-baec1aa.html"
+    },
+    {
+      "id": "baed5ba",
+      "versionId": "g3b6bd23",
+      "eventDate": "06-12-2023",
+      "lastUpdated": "2024-01-27T06:45:54.681+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" & Frankie Goes to Hollywood's \"Two Tribes\" snippets"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "with \"Landlady\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Elton John’s “Cold Heart\" snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Bob Dylan’s “Like a Rolling Stone” snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François' \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"Gloria\" and The Beatles’ “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Brittany Howard vocals; Bono sings along"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-baed5ba.html"
+    },
+    {
+      "id": "2bae807a",
+      "versionId": "gb8c1d6a",
+      "eventDate": "02-12-2023",
+      "lastUpdated": "2023-12-04T01:09:40.665+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer's \"I Feel Love\" snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison's \"Into the Mystic\" snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "When Love Comes to Town",
+                "info": "with Depeche Mode's \"Personal Jesus\" snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François' \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles' \"Blackbird\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Brittany Howard vocals"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-2bae807a.html"
+    },
+    {
+      "id": "33ae8c3d",
+      "versionId": "g6b8d6a6a",
+      "eventDate": "01-12-2023",
+      "lastUpdated": "2023-12-14T07:12:54.909+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles’ “Drive My Car” snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with George Harrison’s “My Sweet Lord” & David Bowie's \"Young Americans\" snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Prince's \"Purple Rain\" & Elvis Presley's \"Love Me Tender\" snippets"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You"
+              },
+              {
+                "name": "A Rainy Night in Soho",
+                "cover": {
+                  "mbid": "d41a6875-b626-4c0f-89a1-aecb643d29ff",
+                  "name": "The Pogues",
+                  "sortName": "Pogues, The",
+                  "disambiguation": "Irish‐British Celtic punk band",
+                  "url": "https://www.setlist.fm/setlists/the-pogues-23d6dcbf.html"
+                },
+                "info": "dedicated to Shane MacGowan who died the day before; with Terry Lawless on keys"
+              },
+              {
+                "name": "Desire",
+                "info": "with The Beatles' \"Love Me Do\" snippet"
+              },
+              {
+                "name": "Two Hearts Beat as One",
+                "info": "with Echo & The Bunnymen's \"Rescue\" snippet"
+              },
+              {
+                "name": "Sunday Bloody Sunday"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with “Gloria” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-33ae8c3d.html"
+    },
+    {
+      "id": "53a0474d",
+      "versionId": "g638c4297",
+      "eventDate": "04-11-2023",
+      "lastUpdated": "2023-12-07T14:43:13.245+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles’ “Drive My Car” snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "with \"Landlady\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison’s “Into the Mystic” snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "When Love Comes to Town"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" intro"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with \"Gloria\" and The Beatles’ “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "With their residency taking 3.5 weeks off so Las Vegas can be taken over by the upcoming F1 race, Bono introduces the band as: Max Verstappen (Bram), Lewis Hamilton (Adam), Charles Leclerc (The Edge), and Daniel Ricciardo (“on vocals”). Soundcheck without Bono included \"I Will Follow\" (The Edge on vocals), the rest with recorded vocals: \"Beautiful Day\", \"Zoo Station\", and \"All I Want Is You\".",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-53a0474d.html"
+    },
+    {
+      "id": "2ba05056",
+      "versionId": "g3b8db4f8",
+      "eventDate": "03-11-2023",
+      "lastUpdated": "2023-12-07T21:33:41.904+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "wtih Donna Summer’s “I Feel Love” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Prince's \"Purple Rain\" & Elvis Presley's \"Love Me Tender\" snippets"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint it Black\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "with \"Landlady\" snippet"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed's \"Walk on the Wild Side\" snippet"
+              },
+              {
+                "name": "Two Hearts Beat as One",
+                "info": "first time since 2015; with Echo & the Bunnymen's \"Rescue\" snippet"
+              },
+              {
+                "name": "Seconds",
+                "info": "first time since 1985"
+              },
+              {
+                "name": "Sunday Bloody Sunday",
+                "info": "first time performed during Sphere residency"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with “Gloria” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-2ba05056.html"
+    },
+    {
+      "id": "43a06bab",
+      "versionId": "g5b5aa3b4",
+      "eventDate": "01-11-2023",
+      "lastUpdated": "2025-01-08T06:59:41.474+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "w/ Simple Minds’ “New Gold Dream 81-82-83-84” & Donna Summer’s “I Feel Love” snippets"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with “Paint It Black” by The Rolling Stones snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World",
+                "info": "with “Landlady” snippet"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison's \"Into the Mystic\" snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Bob Dylan's \"Like a Rolling Stone\" snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with “Gloria” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-43a06bab.html"
+    },
+    {
+      "id": "23a0189b",
+      "versionId": "g338db4fd",
+      "eventDate": "28-10-2023",
+      "lastUpdated": "2023-12-07T21:34:53.856+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer’s “I Feel Love” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Prince’s “Purple Rain” & Elvis Presley's \"Love Me Tender\" snippets"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint It Black\" and Frankie Goes to Hollywood's \"Two Tribes\" snippets"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Van Morrison's \"Into the Mystic\" snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "When Love Comes to Town"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Lou Reed's \"Satellite of Love\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-23a0189b.html"
+    },
+    {
+      "id": "1ba0253c",
+      "versionId": "g3b8db4fc",
+      "eventDate": "27-10-2023",
+      "lastUpdated": "2023-12-07T21:35:40.358+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles \"Drive My Car\" snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "With Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with The Rolling Stones' \"Paint It Black\" and Frankie Goes to Hollywood's \"Two Tribes\" snippets"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with snippets of Lou Reed's \"Take a Walk on the Wild Side\" and \"Satellite of Love\""
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Mildred J. Hill & Patty Hill cover \"Happy Birthday to You\" snippet for Arthur Fogel"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louis Armstrong's \"What a Wonderful World\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-1ba0253c.html"
+    },
+    {
+      "id": "7ba0c274",
+      "versionId": "gbb6bd5e",
+      "eventDate": "25-10-2023",
+      "lastUpdated": "2024-01-27T06:32:33.892+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "first time performed live as a duet by U2",
+                "with": {
+                  "mbid": "650e7db6-b795-4eb5-a702-5ea2fc46c848",
+                  "name": "Lady Gaga",
+                  "sortName": "Lady Gaga",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/lady-gaga-1bd665bc.html"
+                }
+              },
+              {
+                "name": "Shallow",
+                "cover": {
+                  "mbid": "25c0b25e-db3c-4acf-be77-ed3b1b02e4fc",
+                  "name": "Lady Gaga & Bradley Cooper",
+                  "sortName": "Lady Gaga & Cooper, Bradley",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/lady-gaga-and-bradley-cooper-4bc9af46.html"
+                },
+                "info": "first time live by U2",
+                "with": {
+                  "mbid": "650e7db6-b795-4eb5-a702-5ea2fc46c848",
+                  "name": "Lady Gaga",
+                  "sortName": "Lady Gaga",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/lady-gaga-1bd665bc.html"
+                }
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "on vocals, with Primal Scream's “Movin on Up” snippet outro; dedicated to promoter Arthur Fogel",
+                "with": {
+                  "mbid": "650e7db6-b795-4eb5-a702-5ea2fc46c848",
+                  "name": "Lady Gaga",
+                  "sortName": "Lady Gaga",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/lady-gaga-1bd665bc.html"
+                }
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles' \"Blackbird\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Lady Gaga is the first guest artist to appear onstage during U2's residency at Sphere",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-7ba0c274.html"
+    },
+    {
+      "id": "ba0f59e",
+      "versionId": "g6b5e4292",
+      "eventDate": "21-10-2023",
+      "lastUpdated": "2024-12-11T03:47:09.200+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with the Beatles' \"Drive My Car\" intro snippet"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with “Hear Us Coming” verse (first time since 2018) & Elvis Presley's \"Love Me Tender\" snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with Frankie Goes to Hollywood's \"Two Tribes\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed's \"Walk on the Wild Side\" snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "with Ed Sheeran's \"Shape of You\" snippet"
+              },
+              {
+                "name": "When Love Comes to Town"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with Primal Scream’s “Movin' On Up” and Bruce Springsteen's \"The Promised Land\" snippets"
+              },
+              {
+                "name": "Love Rescue Me",
+                "info": "Bono and The Edge only; The Edge on bass"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley's \"Viva Las Vegas\" snippet"
+              },
+              {
+                "name": "Elevation Remix",
+                "tape": true
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet intro"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles' \"Sgt. Pepper's Lonely Hearts Club Band\" and \"Blackbird\" snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard; with Bono singing a few lines over the tape"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Sound issues during the first half of the set",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-ba0f59e.html"
+    },
+    {
+      "id": "2ba0804e",
+      "versionId": "g35e618b",
+      "eventDate": "20-10-2023",
+      "lastUpdated": "2024-12-09T22:20:49.049+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly",
+                "info": "with The Beatles' \"Drive My Car\" snippet intro"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer's \"I Feel Love\" snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley's \"Love Me Tender\" & Prince's \"Purple Rain\" snippets"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "w/ Edith Piaf's \"Non, je ne regrette rien\" & The Doors' \"Break On Through (to the Other Side)\" snips"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Kylie Minogue's \"Can't Get You Out of My Head” snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "with Muse's \"Supermassive Black Hole\" snippet"
+              },
+              {
+                "name": "When Love Comes to Town",
+                "info": "first performance since 2018"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with \"Moment of Surrender\" snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles' \"Blackbird\" snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard; with Bono singing along for a portion"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-2ba0804e.html"
+    },
+    {
+      "id": "63a09aeb",
+      "versionId": "g3b6bd1b",
+      "eventDate": "18-10-2023",
+      "lastUpdated": "2024-01-27T06:49:17.191+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              },
+              {
+                "name": "Happy Birthday to You",
+                "cover": {
+                  "mbid": "af522e56-fe5a-4607-b70a-a22ed35acdd0",
+                  "name": "Mildred J. Hill & Patty Hill",
+                  "sortName": "Hill, Mildred J. & Hill, Patty",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/mildred-j-hill-and-patty-hill-3d3fd73.html"
+                },
+                "info": "sung to Morleigh Evans"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed’s “Walk on the Wild Side” snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Mark James' “Suspicious Minds\" snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "With Elvis Presley’s “Viva Las Vegas” snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louis Armstrong’s “What a Wonderful World” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-63a09aeb.html"
+    },
+    {
+      "id": "5ba34ff0",
+      "versionId": "g3b8da898",
+      "eventDate": "14-10-2023",
+      "lastUpdated": "2023-12-08T05:49:04.068+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with Frankie Goes to Hollywood's \"Two Tribes\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed’s “Walk on the Wild Side” snippet"
+              },
+              {
+                "name": "Desire",
+                "info": "with The Crickets’ “Not Fade Away” snippet"
+              },
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with Primal Scream’s “Movin' On Up ” snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley’s “Viva Las Vegas” snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” & The Beatles’ “All You Need Is Love” snippets"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with The Beatles’ “Sgt. Pepper’s Lonely Hearts Club Band” and “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-5ba34ff0.html"
+    },
+    {
+      "id": "73a35aa1",
+      "versionId": "g3b8da890",
+      "eventDate": "13-10-2023",
+      "lastUpdated": "2023-12-08T05:50:18.872+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with Lou Reed’s “Walk on the Wild Side” snippet"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "with Oasis’ “Don’t Look Back in Anger” snippet"
+              },
+              {
+                "name": "Love Rescue Me"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "with Elvis Presley’s “Viva Las Vegas” snippet"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louis Armstrong’s “What a Wonderful World” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard; with Bono singing along for a portion"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-73a35aa1.html"
+    },
+    {
+      "id": "4ba36fce",
+      "versionId": "g4bb603b6",
+      "eventDate": "11-10-2023",
+      "lastUpdated": "2024-02-03T21:29:16.657+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways"
+              },
+              {
+                "name": "One",
+                "info": "With Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with \"Two Tribes\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "All I Want Is You",
+                "info": "with \"In the Garden\" and Van Morrison’s “Into the Mystic” snippets"
+              },
+              {
+                "name": "Desire"
+              },
+              {
+                "name": "Angel of Harlem",
+                "info": "With Bob Dylan’s “Like a Rolling Stone snippet"
+              },
+              {
+                "name": "Love Rescue Me",
+                "info": "Bono and The Edge only; The Edge on bass"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness",
+                "info": "With The Police’s “Invisible Sun” & Elvis Presley’s “Viva Las Vegas” snippets"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "With “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "With The Police’s “Can’t Stand Losing You” & The Beatles’ “Blackbird” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard; Bono singing along for a portion of the song"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-4ba36fce.html"
+    },
+    {
+      "id": "33a30c4d",
+      "versionId": "g338da881",
+      "eventDate": "08-10-2023",
+      "lastUpdated": "2023-12-08T05:53:15.422+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing",
+                "info": "with Joy Division's \"Transmission\" snippet"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with Donna Summer’s “I Feel Love” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World",
+                "info": "with Frankie Goes to Hollywood's \"Two Tribes\" snippet"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "with Jimmy Cliff's \"Many Rivers to Cross\" snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "“Early morning, Oct 7 as the sun is rising in a desert sky, Stars of David they took your life….”"
+              },
+              {
+                "name": "MLK"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Louie Armstrong’s “What a Wonderful World” snippet"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Before \"Pride (In the Name of Love)\" Bono said \"In the light of what’s happened in Israel and Gaza, a song about non-violence seems somewhat ridiculous, even laughable, but our prayers have always been for peace and for non-violence so. But our hearts and our anger, you know where that’s pointed. So sing with us, and those beautiful kids at that music festival.\", referencing the casualties at Israel's Nova Festival",
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-33a30c4d.html"
+    },
+    {
+      "id": "63a31e77",
+      "versionId": "g438dab7b",
+      "eventDate": "07-10-2023",
+      "lastUpdated": "2023-12-08T05:54:19.244+0000",
+      "artist": {
+        "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+        "name": "U2",
+        "sortName": "U2",
+        "disambiguation": "Irish rock band",
+        "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "U2:UV Achtung Baby Live at Sphere"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Lemon Remix",
+                "tape": true,
+                "info": "with vocal by Gavin Friday"
+              },
+              {
+                "name": "Choral Intro",
+                "tape": true,
+                "cover": {
+                  "mbid": "ff95eb47-41c4-4f7f-a104-cdc30f02e872",
+                  "name": "Brian Eno",
+                  "sortName": "Eno, Brian",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brian-eno-3bd6a03c.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "Zoo Station",
+                "info": "with \"I Couldn't Find You\" intro"
+              },
+              {
+                "name": "The Fly"
+              },
+              {
+                "name": "Even Better Than the Real Thing"
+              },
+              {
+                "name": "Mysterious Ways",
+                "info": "with David Bowie's \"Young Americans” snippet"
+              },
+              {
+                "name": "One",
+                "info": "with Elvis Presley’s “Love Me Tender” snippet"
+              },
+              {
+                "name": "Until the End of the World"
+              },
+              {
+                "name": "Who's Gonna Ride Your Wild Horses"
+              },
+              {
+                "name": "Tryin' to Throw Your Arms Around the World"
+              }
+            ]
+          },
+          {
+            "name": "Turntable",
+            "song": [
+              {
+                "name": "I Still Haven't Found What I'm Looking For",
+                "info": "residency debut, with Primal Scream’s “'Movin On Up'' snippet"
+              },
+              {
+                "name": "Pride (In the Name of Love)",
+                "info": "residency debut"
+              },
+              {
+                "name": "Angel of Harlem"
+              },
+              {
+                "name": "MLK",
+                "info": "residency debut; a cappella; first time played since 2017"
+              }
+            ]
+          },
+          {
+            "name": "Achtung Baby",
+            "song": [
+              {
+                "name": "So Cruel"
+              },
+              {
+                "name": "Acrobat"
+              },
+              {
+                "name": "Ultraviolet (Light My Way)"
+              },
+              {
+                "name": "Love Is Blindness"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Elevation",
+                "info": "with Claude François‘ \"My Way\" snippet"
+              },
+              {
+                "name": "Atomic City"
+              },
+              {
+                "name": "Vertigo"
+              },
+              {
+                "name": "Where the Streets Have No Name",
+                "info": "with “Moment of Surrender” snippet"
+              },
+              {
+                "name": "With or Without You"
+              },
+              {
+                "name": "Beautiful Day",
+                "info": "with Pearl Jam’s “Alive” and Louis Armstrong’s “What a Wonderful World” snippets"
+              },
+              {
+                "name": "Glorify",
+                "tape": true,
+                "info": "Vocals: Brittany Howard"
+              },
+              {
+                "name": "What a Wonderful World",
+                "tape": true,
+                "cover": {
+                  "mbid": "eea8a864-fcda-4602-9569-38ab446decd6",
+                  "name": "Louis Armstrong",
+                  "sortName": "Armstrong, Louis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/louis-armstrong-bd6b5d6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/u2/2023/sphere-at-the-venetian-resort-las-vegas-nv-63a31e77.html"
+    }
+  ]
+}

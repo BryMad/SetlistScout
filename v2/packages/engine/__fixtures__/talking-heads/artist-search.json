@@ -1,0 +1,113 @@
+{
+  "type": "artists",
+  "itemsPerPage": 30,
+  "page": 1,
+  "total": 15,
+  "artist": [
+    {
+      "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+      "name": "Talking Heads",
+      "sortName": "Talking Heads",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+    },
+    {
+      "mbid": "4e9605ca-c623-4352-90eb-1b81ad90e7ef",
+      "name": "Heads In Motion - a Talking Heads tribute",
+      "sortName": "Motion, Heads In",
+      "disambiguation": "a Quad Cities–based Talking Heads tribute band",
+      "url": "https://www.setlist.fm/setlists/heads-in-motion-a-talking-heads-tribute-3996db3.html"
+    },
+    {
+      "mbid": "1cc2a960-4d20-458f-9f9b-13ea8393ba2b",
+      "name": "Found A Job - A Tribute to Talking Heads",
+      "sortName": "Found A Job - A Tribute to Talking Heads",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/found-a-job-a-tribute-to-talking-heads-2b86b84e.html"
+    },
+    {
+      "mbid": "918a58de-42b4-4f2b-b3ca-10afa376dce0",
+      "name": "We Are Not",
+      "sortName": "We Are Not",
+      "disambiguation": "Belgian tribute band for Bowie, Talking Heads,…",
+      "url": "https://www.setlist.fm/setlists/we-are-not-13caf5a1.html"
+    },
+    {
+      "mbid": "0dff873f-8e82-40b3-b07f-2e76d2103532",
+      "name": "Heads Up!",
+      "sortName": "Heads Up!",
+      "disambiguation": "Talking Heads tribute band",
+      "url": "https://www.setlist.fm/setlists/heads-up-1bff9508.html"
+    },
+    {
+      "mbid": "fdd38dad-1945-4e50-a0e3-9708b76a6cd0",
+      "name": "Psycho Killers - A Talking Heads Tribute",
+      "sortName": "Psycho Killers - A Talking Heads Tribute",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/psycho-killers-a-talking-heads-tribute-6386b2d7.html"
+    },
+    {
+      "mbid": "94c426c0-7e9f-4e15-9911-2ce4597e0924",
+      "name": "Slippery People - The Music Of The Talking Heads",
+      "sortName": "People, Slippery",
+      "disambiguation": "Minnesota's Premier Talking Heads Tribute",
+      "url": "https://www.setlist.fm/setlists/slippery-people-the-music-of-the-talking-heads-2b994c0e.html"
+    },
+    {
+      "mbid": "d924af79-99c5-4ef0-bed5-69ab71ad27ed",
+      "name": "Talking Heads vs. Freeez",
+      "sortName": "Talking Heads vs. Freeez",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/talking-heads-vs-freeez-39dddcf.html"
+    },
+    {
+      "mbid": "29412f10-d5db-44e4-8a2d-b17fdba7e4f8",
+      "name": "Talking Heads & Smashing Pumpkins",
+      "sortName": "Talking Heads & Smashing Pumpkins, The",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/talking-heads-and-smashing-pumpkins-6b9946aa.html"
+    },
+    {
+      "mbid": "abac9dc5-f509-472a-a2be-b49d57643758",
+      "name": "Klatsch! / Talking Heads",
+      "sortName": "Klatsch! / Talking Heads",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/klatsch-talking-heads-73e10235.html"
+    },
+    {
+      "mbid": "01c53001-5e3e-49f5-979a-f7af259c76f3",
+      "name": "Talking Heads feat. Arthur Russell",
+      "sortName": "Talking Heads feat. Russell, Arthur",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/talking-heads-feat-arthur-russell-53e36f19.html"
+    },
+    {
+      "mbid": "457a2969-2ee2-4510-b097-af95cb2747a4",
+      "name": "Talking Heads remixed by The Reflex",
+      "sortName": "Talking Heads remixed by Reflex, The",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/talking-heads-remixed-by-the-reflex-33f7b831.html"
+    },
+    {
+      "mbid": "4454a629-3a50-4865-9008-563b9b038e51",
+      "name": "Stay Hungry: Talking Heads Experience",
+      "sortName": "Stay Hungry: Talking Heads Experience",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/stay-hungry-talking-heads-experience-6b9ffefa.html"
+    },
+    {
+      "mbid": "1917a2c3-c4ad-4e0d-a875-e1b3105fceab",
+      "name": "Stop Making Sense - A Tribute To Talking Heads",
+      "sortName": "Stop Making Sense - A Tribute To Talking Heads",
+      "disambiguation": "Talking Heads tribute band from Finland",
+      "url": "https://www.setlist.fm/setlists/stop-making-sense-a-tribute-to-talking-heads-7b87d260.html"
+    },
+    {
+      "mbid": "315715b2-3fff-421a-bdbf-0bcc6346d00d",
+      "name": "Undercoversessie: Talking Heads",
+      "sortName": "Undercoversessie: Talking Heads",
+      "disambiguation": "Talking Heads tribute",
+      "url": "https://www.setlist.fm/setlists/undercoversessie-talking-heads-5b901ffc.html"
+    }
+  ]
+}

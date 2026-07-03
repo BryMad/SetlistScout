@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-07-03T00:59:55.551Z",
+  "query": "Metallica",
+  "matchedName": "Metallica",
+  "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "03-07-2026",
+  "oldestDate": "26-05-2023",
+  "tours": {
+    "M72 World Tour": {
+      "shows": 94,
+      "medianSongs": 18,
+      "minSongs": 0,
+      "maxSongs": 20
+    },
+    "(no tour)": {
+      "shows": 6,
+      "medianSongs": 13,
+      "minSongs": 1,
+      "maxSongs": 15
+    }
+  }
+}

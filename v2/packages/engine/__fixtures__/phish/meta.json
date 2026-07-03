@@ -1,0 +1,72 @@
+{
+  "capturedAt": "2026-07-03T00:59:43.303Z",
+  "query": "Phish",
+  "matchedName": "Phish",
+  "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "02-05-2026",
+  "oldestDate": "18-04-2024",
+  "tours": {
+    "Sphere Las Vegas 2026": {
+      "shows": 9,
+      "medianSongs": 18,
+      "minSongs": 16,
+      "maxSongs": 21
+    },
+    "Riviera Maya 2026": {
+      "shows": 4,
+      "medianSongs": 17,
+      "minSongs": 15,
+      "maxSongs": 18
+    },
+    "New Year's Run 2025": {
+      "shows": 4,
+      "medianSongs": 18,
+      "minSongs": 17,
+      "maxSongs": 27
+    },
+    "Summer Tour 2025": {
+      "shows": 31,
+      "medianSongs": 18,
+      "minSongs": 15,
+      "maxSongs": 21
+    },
+    "Spring Tour 2025": {
+      "shows": 8,
+      "medianSongs": 17,
+      "minSongs": 15,
+      "maxSongs": 18
+    },
+    "Riviera Maya 2025": {
+      "shows": 4,
+      "medianSongs": 18,
+      "minSongs": 17,
+      "maxSongs": 20
+    },
+    "New Year's Run 2024": {
+      "shows": 4,
+      "medianSongs": 23,
+      "minSongs": 15,
+      "maxSongs": 29
+    },
+    "(no tour)": {
+      "shows": 6,
+      "medianSongs": 18,
+      "minSongs": 2,
+      "maxSongs": 21
+    },
+    "Summer Tour 2024": {
+      "shows": 26,
+      "medianSongs": 18,
+      "minSongs": 16,
+      "maxSongs": 24
+    },
+    "Sphere Las Vegas 2024": {
+      "shows": 4,
+      "medianSongs": 17,
+      "minSongs": 16,
+      "maxSongs": 18
+    }
+  }
+}

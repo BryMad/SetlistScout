@@ -1,0 +1,218 @@
+{
+  "type": "artists",
+  "itemsPerPage": 30,
+  "page": 1,
+  "total": 71,
+  "artist": [
+    {
+      "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432",
+      "name": "U2",
+      "sortName": "U2",
+      "disambiguation": "Irish rock band",
+      "url": "https://www.setlist.fm/setlists/u2-23d6b80f.html"
+    },
+    {
+      "mbid": "b613c677-42e5-47e8-abcd-820c48f17447",
+      "name": "U2 Zoo",
+      "sortName": "U2 Zoo",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-zoo-13d9e1ed.html"
+    },
+    {
+      "mbid": "3f522bed-8db6-4ec5-bfad-223d285d3a52",
+      "name": "U2 : The Tribute",
+      "sortName": "U2 : The Tribute",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-the-tribute-5bc573b8.html"
+    },
+    {
+      "mbid": "b873b7ba-625e-4545-85c6-76679f4e345b",
+      "name": "U2 Tribe",
+      "sortName": "U2 tribute band",
+      "disambiguation": "tribute band to U2",
+      "url": "https://www.setlist.fm/setlists/u2-tribe-13cc0549.html"
+    },
+    {
+      "mbid": "e665fc94-2ce8-4179-9e44-494b7ab3588c",
+      "name": "UDUE – U2 Forever",
+      "sortName": "UDUE – U2 Forever",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/udue--u2-forever-139ca921.html"
+    },
+    {
+      "mbid": "61c26be7-bf91-4f60-b0b8-9c8d5e835c1c",
+      "name": "U2 EXPERIENCE",
+      "sortName": "U2 EXPERIENCE",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-experience-7bc00678.html"
+    },
+    {
+      "mbid": "a83702eb-4482-41ec-bc52-d5b73f9f8066",
+      "name": "U2-2U",
+      "sortName": "U2-2U",
+      "disambiguation": "the premiere U2 tribute band",
+      "url": "https://www.setlist.fm/setlists/u2-2u-43e4df5f.html"
+    },
+    {
+      "mbid": "883abd45-6bfa-4041-bf6a-fc60cd5a5a26",
+      "name": "Without U2",
+      "sortName": "Without U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/without-u2-23faf04b.html"
+    },
+    {
+      "mbid": "e3f8a5fc-1601-43a8-8cb5-8718d62d60a5",
+      "name": "U2 2",
+      "sortName": "U2 2",
+      "disambiguation": "British U2 tribute – fka Achtung Baby",
+      "url": "https://www.setlist.fm/setlists/u2-2-4bf763f6.html"
+    },
+    {
+      "mbid": "34a813bc-dc7b-476f-92f2-0fdfa5b51ef2",
+      "name": "Hollywood U2",
+      "sortName": "Hollywood U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/hollywood-u2-4be2131e.html"
+    },
+    {
+      "mbid": "665635f4-547a-410f-b06d-470eb593205e",
+      "name": "U2 feat. Willie Nelson",
+      "sortName": "U2 feat. Nelson, Willie",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-willie-nelson-13db5571.html"
+    },
+    {
+      "mbid": "6110618d-c4b4-4eb5-a78d-e8c67ce28e7e",
+      "name": "Cheat Codes & U2",
+      "sortName": "Cheat Codes & U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/cheat-codes-and-u2-3be68c18.html"
+    },
+    {
+      "mbid": "e0eae876-68bb-40d6-9932-e66ea3d77e0b",
+      "name": "Musique Vs U2",
+      "sortName": "Musique Vs U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/musique-vs-u2-53eb8355.html"
+    },
+    {
+      "mbid": "2c2e751e-7cde-4359-bf9a-4796c36cd820",
+      "name": "U2 feat. Bruce Springsteen & Patti Smith",
+      "sortName": "U2 feat. Springsteen, Bruce & Smith, Patti",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-bruce-springsteen-and-patti-smith-139a3d1d.html"
+    },
+    {
+      "mbid": "ba817327-25e7-4762-849f-6ec05f6de81b",
+      "name": "U2 feat. Mick Jagger",
+      "sortName": "U2 feat. Jagger, Mick",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-mick-jagger-3d31937.html"
+    },
+    {
+      "mbid": "286e3e5b-a578-4f38-be24-0391ba6cfae9",
+      "name": "U2 starring Johnny Cash",
+      "sortName": "U2 starring Cash, Johnny",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-starring-johnny-cash-63cdba5f.html"
+    },
+    {
+      "mbid": "2ea666c6-62d5-4d77-b77c-6d90a5a5f475",
+      "name": "The U2 Tribute",
+      "sortName": "The U2 Tribute",
+      "disambiguation": "Dutch tribute to U2",
+      "url": "https://www.setlist.fm/setlists/the-u2-tribute-13fda995.html"
+    },
+    {
+      "mbid": "900508cc-e92a-4c9e-b043-6bf626c678a3",
+      "name": "Kendrick Lamar feat. U2",
+      "sortName": "Lamar, Kendrick feat. U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/kendrick-lamar-feat-u2-6bcf3e76.html"
+    },
+    {
+      "mbid": "33c62b34-c2dd-437a-ad32-d11902c73269",
+      "name": "Zoo Station – The Complete U2 Experience",
+      "sortName": "Zoo Station – The Complete U2 Experience",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/zoo-station--the-complete-u2-experience-3bdeb4ec.html"
+    },
+    {
+      "mbid": "e1ba4cc1-e552-4dbe-99c5-495cc17aaec5",
+      "name": "U2 and the New Voices of Freedom",
+      "sortName": "U2 and the New Voices of Freedom",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-and-the-new-voices-of-freedom-bf14156.html"
+    },
+    {
+      "mbid": "441ff762-f251-44e0-b74f-12ec303e742b",
+      "name": "U2, Rollo & Rob D",
+      "sortName": "U2, Rollo & Dougan, Rob",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-rollo-and-rob-d-73fbeec9.html"
+    },
+    {
+      "mbid": "770be0a0-baef-4c6e-97e4-34d7ff1bf21c",
+      "name": "U2 feat. Keith Richards",
+      "sortName": "U2 feat. Richards, Keith",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-keith-richards-bdeb9b6.html"
+    },
+    {
+      "mbid": "37d53758-6506-4486-a4fa-6148cacac233",
+      "name": "U2 with Daniel Lanois",
+      "sortName": "U2 with Lanois, Daniel",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-with-daniel-lanois-73f756f5.html"
+    },
+    {
+      "mbid": "f70b0860-2f5c-41ea-baeb-03c48168ddc1",
+      "name": "U2 with Maria McKee",
+      "sortName": "U2 with McKee, Maria",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-with-maria-mckee-53f4e77d.html"
+    },
+    {
+      "mbid": "1b7594d1-6e5b-4f50-9f49-1db0f1a46f53",
+      "name": "U2 feat. Mary J",
+      "sortName": "U2 feat. Blige, Mary J.",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-mary-j-7bf756fc.html"
+    },
+    {
+      "mbid": "ae27cc04-7ee1-4c13-8624-98ebaab7fa7f",
+      "name": "U2 remixed by Paul Oakenfold",
+      "sortName": "U2 remixed by Oakenfold, Paul",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-remixed-by-paul-oakenfold-3bfed4dc.html"
+    },
+    {
+      "mbid": "2e689a84-dc26-476d-b51e-17f3fc2761f8",
+      "name": "U2 feat. Lykke Li",
+      "sortName": "U2 feat. Li, Lykke",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-lykke-li-63f756ff.html"
+    },
+    {
+      "mbid": "45d6695b-91b1-44f1-9393-86e3807dc36f",
+      "name": "Bono & U2",
+      "sortName": "Bono & U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/bono-and-u2-6393e697.html"
+    },
+    {
+      "mbid": "30a8db5c-54d2-480c-b0a5-768292e74c67",
+      "name": "Kendrick Lamar ft. U2",
+      "sortName": "Lamar, Kendrick ft. U2",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/kendrick-lamar-ft-u2-2bedbcca.html"
+    },
+    {
+      "mbid": "ce4b3d21-02e9-4078-88f6-b7ff4c08973b",
+      "name": "U2 feat. will.i.am, Fergie & Mick Jagger",
+      "sortName": "U2 feat. will.i.am, Fergie & Jagger, Mick",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/u2-feat-william-fergie-and-mick-jagger-1b9a3d1c.html"
+    }
+  ]
+}

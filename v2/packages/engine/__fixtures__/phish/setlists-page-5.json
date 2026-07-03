@@ -1,0 +1,2713 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 5,
+  "total": 2121,
+  "setlist": [
+    {
+      "id": "4babbb56",
+      "versionId": "g7b4f8e80",
+      "eventDate": "06-08-2024",
+      "lastUpdated": "2025-04-23T12:27:28.387+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "2bd6d012",
+        "name": "Van Andel Arena",
+        "city": {
+          "id": "4994358",
+          "name": "Grand Rapids",
+          "state": "Michigan",
+          "stateCode": "MI",
+          "coords": {
+            "lat": 42.9633599,
+            "long": -85.6680863
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/van-andel-arena-grand-rapids-mi-usa-2bd6d012.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Strawberry Letter 23",
+                "cover": {
+                  "mbid": "ff9542ca-7859-4db2-8796-c1e3c39b9c0a",
+                  "name": "Shuggie Otis",
+                  "sortName": "Otis, Shuggie",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/shuggie-otis-3d651cf.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Sigma Oasis"
+              },
+              {
+                "name": "Peaches en Regalia",
+                "cover": {
+                  "mbid": "e20747e7-55a4-452e-8766-7b985585082d",
+                  "name": "Frank Zappa",
+                  "sortName": "Zappa, Frank",
+                  "disambiguation": "US musician, composer, activist & filmmaker",
+                  "url": "https://www.setlist.fm/setlists/frank-zappa-3d6b52b.html"
+                }
+              },
+              {
+                "name": "Tube"
+              },
+              {
+                "name": "Theme From the Bottom",
+                "info": ">"
+              },
+              {
+                "name": "Stash"
+              },
+              {
+                "name": "Train Song"
+              },
+              {
+                "name": "Steam",
+                "info": ">"
+              },
+              {
+                "name": "Rift",
+                "info": ">"
+              },
+              {
+                "name": "Bathtub Gin"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Free"
+              },
+              {
+                "name": "Sand",
+                "info": ">"
+              },
+              {
+                "name": "Ruby Waves",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Harry Hood"
+              },
+              {
+                "name": "The Moma Dance",
+                "info": ">",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              },
+              {
+                "name": "Possum",
+                "info": "Billy on lead vocals",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              },
+              {
+                "name": "Everything's Right",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Nellie Kane",
+                "cover": {
+                  "mbid": "ce76c736-07db-4503-b771-0ee2c981a144",
+                  "name": "Hot Rize",
+                  "sortName": "Hot Rize",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/hot-rize-3d6b12b.html"
+                },
+                "info": "Billy on lead vocals) (Trey and Billy on acoustic guitar",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              },
+              {
+                "name": "Beauty of My Dreams",
+                "cover": {
+                  "mbid": "7e5a0c3f-339a-4e5d-aed0-1946112b4a66",
+                  "name": "The Del McCoury Band",
+                  "sortName": "McCoury, Del, Band, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-del-mccoury-band-63d6aa4b.html"
+                },
+                "info": "Billy and Trey trading verses) (Trey and Billy on acoustic guitar",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              },
+              {
+                "name": "Carini",
+                "with": {
+                  "mbid": "640db492-34c4-47df-be14-96e2cd4b9fe4",
+                  "name": "Billy Strings",
+                  "sortName": "Strings, Billy",
+                  "disambiguation": "US bluegrass",
+                  "url": "https://www.setlist.fm/setlists/billy-strings-73c3fe21.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/van-andel-arena-grand-rapids-mi-4babbb56.html"
+    },
+    {
+      "id": "4babbb52",
+      "versionId": "g3b6c9064",
+      "eventDate": "04-08-2024",
+      "lastUpdated": "2026-01-05T01:19:19.199+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "73d04a59",
+        "name": "Ruoff Music Center",
+        "city": {
+          "id": "4924198",
+          "name": "Noblesville",
+          "state": "Indiana",
+          "stateCode": "IN",
+          "coords": {
+            "lat": 40.0455918,
+            "long": -86.0085955
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ruoff-music-center-noblesville-in-usa-73d04a59.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Party Time"
+              },
+              {
+                "name": "The Final Hurrah"
+              },
+              {
+                "name": "Knuckle Bone Broth Avenue"
+              },
+              {
+                "name": "Stealing Time From the Faulty Plan"
+              },
+              {
+                "name": "The Dogs",
+                "cover": {
+                  "mbid": "65385b49-1998-4e0d-a260-6ffd8b062268",
+                  "name": "Walt Disney Music Co.",
+                  "sortName": "Disney, Walt, Music Co.",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/walt-disney-music-co-bc31d0a.html"
+                }
+              },
+              {
+                "name": "Destiny Unbound",
+                "info": ">"
+              },
+              {
+                "name": "46 Days"
+              },
+              {
+                "name": "McGrupp and the Watchful Hosemasters"
+              },
+              {
+                "name": "Wingsuit"
+              },
+              {
+                "name": "Meatstick",
+                "info": ">"
+              },
+              {
+                "name": "Run Like an Antelope"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Ghost"
+              },
+              {
+                "name": "Soul Planet",
+                "cover": {
+                  "mbid": "822b1e81-d1a0-47fb-b7f9-ef614b913603",
+                  "name": "Trey Anastasio Band",
+                  "sortName": "Trey Anastasio Band",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-band-53d6d729.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Billy Breathes"
+              },
+              {
+                "name": "Split Open and Melt"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Slave to the Traffic Light"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/ruoff-music-center-noblesville-in-4babbb52.html"
+    },
+    {
+      "id": "43abbb53",
+      "versionId": "g4b6eef7e",
+      "eventDate": "03-08-2024",
+      "lastUpdated": "2025-12-15T10:25:26.656+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "73d04a59",
+        "name": "Ruoff Music Center",
+        "city": {
+          "id": "4924198",
+          "name": "Noblesville",
+          "state": "Indiana",
+          "stateCode": "IN",
+          "coords": {
+            "lat": 40.0455918,
+            "long": -86.0085955
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ruoff-music-center-noblesville-in-usa-73d04a59.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Mike's Song",
+                "info": ">"
+              },
+              {
+                "name": "I Am Hydrogen",
+                "info": ">"
+              },
+              {
+                "name": "Weekapaug Groove"
+              },
+              {
+                "name": "Character Zero"
+              },
+              {
+                "name": "Drift While You're Sleeping",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Maze"
+              },
+              {
+                "name": "I Didn't Know",
+                "cover": {
+                  "mbid": "e373d952-adbe-40ad-8f47-b4f1c0c8be8f",
+                  "name": "Richard Wright",
+                  "sortName": "Wright, Richard",
+                  "disambiguation": "Also known as Nancy Taube",
+                  "url": "https://www.setlist.fm/setlists/richard-wright-7bc4f2d4.html"
+                }
+              },
+              {
+                "name": "Reba",
+                "info": "without whistling ending"
+              },
+              {
+                "name": "Izabella",
+                "cover": {
+                  "mbid": "06fb1c8b-566e-4cb2-985b-b467c90781d4",
+                  "name": "Jimi Hendrix",
+                  "sortName": "Hendrix, Jimi",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/jimi-hendrix-bd6ad56.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Chalk Dust Torture",
+                "info": ">"
+              },
+              {
+                "name": "Plasma",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Monsters"
+              },
+              {
+                "name": "Crosseyed and Painless",
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Guy Forget",
+                "info": ">"
+              },
+              {
+                "name": "Fuego"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Rock & Roll",
+                "cover": {
+                  "mbid": "94b0fb9d-a066-4823-b2ec-af1d324bcfcf",
+                  "name": "The Velvet Underground",
+                  "sortName": "Velvet Underground, The",
+                  "disambiguation": "Lou Reed’s seminal rock band",
+                  "url": "https://www.setlist.fm/setlists/the-velvet-underground-3bd6a894.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/ruoff-music-center-noblesville-in-43abbb53.html"
+    },
+    {
+      "id": "43abbb5f",
+      "versionId": "g3baef0c4",
+      "eventDate": "02-08-2024",
+      "lastUpdated": "2024-08-03T05:13:33.785+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "73d04a59",
+        "name": "Ruoff Music Center",
+        "city": {
+          "id": "4924198",
+          "name": "Noblesville",
+          "state": "Indiana",
+          "stateCode": "IN",
+          "coords": {
+            "lat": 40.0455918,
+            "long": -86.0085955
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ruoff-music-center-noblesville-in-usa-73d04a59.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Punch You in the Eye"
+              },
+              {
+                "name": "Kill Devil Falls"
+              },
+              {
+                "name": "Halfway to the Moon"
+              },
+              {
+                "name": "Heavy Things"
+              },
+              {
+                "name": "Life Saving Gun",
+                "cover": {
+                  "mbid": "066a4f51-4230-4784-a2ca-daae7219e675",
+                  "name": "Page McConnell & Trey Anastasio",
+                  "sortName": "Page McConnell & Trey Anastasio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/page-mcconnell-and-trey-anastasio-1bf1d138.html"
+                }
+              },
+              {
+                "name": "Shade",
+                "info": ">"
+              },
+              {
+                "name": "Scent of a Mule"
+              },
+              {
+                "name": "Pillow Jets",
+                "info": ">"
+              },
+              {
+                "name": "Runaway Jim"
+              },
+              {
+                "name": "A Day in the Life",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                },
+                "info": "First time since 2019"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "The Oh Kee Pa Ceremony",
+                "info": ">"
+              },
+              {
+                "name": "Axilla, Part II",
+                "info": ">"
+              },
+              {
+                "name": "Down With Disease"
+              },
+              {
+                "name": "Scents and Subtle Sounds",
+                "info": "-> 'Down With Disease' >"
+              },
+              {
+                "name": "What's the Use?"
+              },
+              {
+                "name": "Golden Age",
+                "cover": {
+                  "mbid": "eb872766-98f6-453d-883f-2ae908a18315",
+                  "name": "TV on the Radio",
+                  "sortName": "TV on the Radio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tv-on-the-radio-4bd6ab1e.html"
+                }
+              },
+              {
+                "name": "I Always Wanted It This Way",
+                "info": "-> 'Down With Disease'"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "You Enjoy Myself",
+                "info": "-> ‘Down with Disease’"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/ruoff-music-center-noblesville-in-43abbb5f.html"
+    },
+    {
+      "id": "5babbb64",
+      "versionId": "g336b48b1",
+      "eventDate": "31-07-2024",
+      "lastUpdated": "2026-02-08T14:05:10.313+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "bd7bdc2",
+        "name": "Chaifetz Arena",
+        "city": {
+          "id": "4407066",
+          "name": "St. Louis",
+          "state": "Missouri",
+          "stateCode": "MO",
+          "coords": {
+            "lat": 38.6272733,
+            "long": -90.1978889
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/chaifetz-arena-st-louis-mo-usa-bd7bdc2.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Turtle in the Clouds"
+              },
+              {
+                "name": "Hey Stranger",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Back on the Train"
+              },
+              {
+                "name": "Lawn Boy"
+              },
+              {
+                "name": "Backwards Down the Number Line"
+              },
+              {
+                "name": "Horn"
+              },
+              {
+                "name": "Pebbles and Marbles"
+              },
+              {
+                "name": "Bouncing Around the Room"
+              },
+              {
+                "name": "Boogie on Reggae Woman",
+                "cover": {
+                  "mbid": "1ee18fb3-18a6-4c7f-8ba0-bc41cdd0462e",
+                  "name": "Stevie Wonder",
+                  "sortName": "Wonder, Stevie",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/stevie-wonder-13d6b955.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "The Squirming Coil"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Free"
+              },
+              {
+                "name": "Mr. Completely",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "If I Could",
+                "info": ">"
+              },
+              {
+                "name": "Twist",
+                "info": ">"
+              },
+              {
+                "name": "Ruby Waves",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "No Men in No Man's Land",
+                "info": ">"
+              },
+              {
+                "name": "First Tube"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Grind"
+              },
+              {
+                "name": "Miss You",
+                "info": ">"
+              },
+              {
+                "name": "Harry Hood"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/chaifetz-arena-st-louis-mo-5babbb64.html"
+    },
+    {
+      "id": "43abbb67",
+      "versionId": "g53a1679d",
+      "eventDate": "30-07-2024",
+      "lastUpdated": "2024-07-31T06:24:31.744+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "bd7bdc2",
+        "name": "Chaifetz Arena",
+        "city": {
+          "id": "4407066",
+          "name": "St. Louis",
+          "state": "Missouri",
+          "stateCode": "MO",
+          "coords": {
+            "lat": 38.6272733,
+            "long": -90.1978889
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/chaifetz-arena-st-louis-mo-usa-bd7bdc2.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Cars Trucks Buses"
+              },
+              {
+                "name": "Gotta Jibboo"
+              },
+              {
+                "name": "NICU"
+              },
+              {
+                "name": "Ocelot"
+              },
+              {
+                "name": "Evolve",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Theme From the Bottom"
+              },
+              {
+                "name": "Vultures",
+                "cover": {
+                  "mbid": "6c8ec74f-253f-4a72-98fa-eb47b13ce5ae",
+                  "name": "Trey Anastasio and Tom Marshall",
+                  "sortName": "Anastasio, Trey and Marshall, Tom",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-and-tom-marshall-13d4e1cd.html"
+                }
+              },
+              {
+                "name": "Timber",
+                "cover": {
+                  "mbid": "f0b3af36-a38b-4e5e-bf9a-d25ae11ca741",
+                  "name": "Josh White",
+                  "sortName": "White, Josh",
+                  "disambiguation": "American folk-blues singer/songwriter",
+                  "url": "https://www.setlist.fm/setlists/josh-white-73d66605.html"
+                }
+              },
+              {
+                "name": "Everything's Right"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "I Never Needed You Like This Before",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Tweezer"
+              },
+              {
+                "name": "Ether Edge",
+                "info": "->"
+              },
+              {
+                "name": "Piper"
+              },
+              {
+                "name": "Meat"
+              },
+              {
+                "name": "Blaze On"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Saw It Again",
+                "cover": {
+                  "mbid": "7917b587-98ca-4321-9400-656e515b6ffd",
+                  "name": "Trey Anastasio & Tom Marshall",
+                  "sortName": "Anastasio, Trey & Marshall, Tom",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-and-tom-marshall-53da7b61.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Tweezer Reprise"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/chaifetz-arena-st-louis-mo-43abbb67.html"
+    },
+    {
+      "id": "5babbb6c",
+      "versionId": "g236088b3",
+      "eventDate": "28-07-2024",
+      "lastUpdated": "2025-11-30T02:27:55.826+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "23d63cf7",
+        "name": "Alpine Valley Music Theatre",
+        "city": {
+          "id": "5251390",
+          "name": "East Troy",
+          "state": "Wisconsin",
+          "stateCode": "WI",
+          "coords": {
+            "lat": 42.7852922,
+            "long": -88.405096
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/alpine-valley-music-theatre-east-troy-wi-usa-23d63cf7.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "A Song I Heard the Ocean Sing"
+              },
+              {
+                "name": "Tube"
+              },
+              {
+                "name": "555",
+                "info": ">"
+              },
+              {
+                "name": "The Divided Sky"
+              },
+              {
+                "name": "Wolfman's Brother"
+              },
+              {
+                "name": "Bathtub Gin"
+              },
+              {
+                "name": "Bug",
+                "info": ">"
+              },
+              {
+                "name": "Possum"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Set Your Soul Free",
+                "cover": {
+                  "mbid": "822b1e81-d1a0-47fb-b7f9-ef614b913603",
+                  "name": "Trey Anastasio Band",
+                  "sortName": "Trey Anastasio Band",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-band-53d6d729.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Prince Caspian",
+                "info": ">"
+              },
+              {
+                "name": "Chalk Dust Torture",
+                "info": ">"
+              },
+              {
+                "name": "Dirt"
+              },
+              {
+                "name": "Oblivion",
+                "info": ">"
+              },
+              {
+                "name": "Light",
+                "info": "->"
+              },
+              {
+                "name": "Twenty Years Later",
+                "info": ">"
+              },
+              {
+                "name": "Also sprach Zarathustra, op. 30",
+                "cover": {
+                  "mbid": "4cb43d82-824e-4034-b03d-1a98f36f6e16",
+                  "name": "Richard Strauss",
+                  "sortName": "Strauss, Richard",
+                  "disambiguation": "German composer",
+                  "url": "https://www.setlist.fm/setlists/richard-strauss-3d4ddcb.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Split Open and Melt"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Wedge"
+              },
+              {
+                "name": "Carini"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/alpine-valley-music-theatre-east-troy-wi-5babbb6c.html"
+    },
+    {
+      "id": "4babbb6e",
+      "versionId": "g13a1d1ed",
+      "eventDate": "27-07-2024",
+      "lastUpdated": "2024-07-28T12:50:10.872+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "23d63cf7",
+        "name": "Alpine Valley Music Theatre",
+        "city": {
+          "id": "5251390",
+          "name": "East Troy",
+          "state": "Wisconsin",
+          "stateCode": "WI",
+          "coords": {
+            "lat": 42.7852922,
+            "long": -88.405096
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/alpine-valley-music-theatre-east-troy-wi-usa-23d63cf7.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Sample in a Jar"
+              },
+              {
+                "name": "Halley's Comet",
+                "info": ">"
+              },
+              {
+                "name": "Birds of a Feather"
+              },
+              {
+                "name": "Mountains in the Mist"
+              },
+              {
+                "name": "Foam"
+              },
+              {
+                "name": "Moonage Daydream",
+                "cover": {
+                  "mbid": "5441c29d-3602-4898-b1a1-b77fa23b8e50",
+                  "name": "David Bowie",
+                  "sortName": "Bowie, David",
+                  "disambiguation": "English singer‐songwriter",
+                  "url": "https://www.setlist.fm/setlists/david-bowie-6bd6ee66.html"
+                }
+              },
+              {
+                "name": "My Soul",
+                "cover": {
+                  "mbid": "db1a3066-1586-495d-a09c-1312cabab5be",
+                  "name": "Clifton Chenier",
+                  "sortName": "Chenier, Clifton",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/clifton-chenier-73d6329d.html"
+                }
+              },
+              {
+                "name": "The Lizards"
+              },
+              {
+                "name": "David Bowie",
+                "info": "with 'Birds of a Feather' tease by Trey"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Sigma Oasis",
+                "info": ">"
+              },
+              {
+                "name": "Simple"
+              },
+              {
+                "name": "The Howling",
+                "info": ">"
+              },
+              {
+                "name": "A Wave of Hope",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Lifeboy"
+              },
+              {
+                "name": "Sand",
+                "info": ">"
+              },
+              {
+                "name": "Golgi Apparatus"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Esther"
+              },
+              {
+                "name": "Character Zero"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/alpine-valley-music-theatre-east-troy-wi-4babbb6e.html"
+    },
+    {
+      "id": "4babbb6a",
+      "versionId": "g7ba19624",
+      "eventDate": "26-07-2024",
+      "lastUpdated": "2024-07-27T06:02:38.217+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "23d63cf7",
+        "name": "Alpine Valley Music Theatre",
+        "city": {
+          "id": "5251390",
+          "name": "East Troy",
+          "state": "Wisconsin",
+          "stateCode": "WI",
+          "coords": {
+            "lat": 42.7852922,
+            "long": -88.405096
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/alpine-valley-music-theatre-east-troy-wi-usa-23d63cf7.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "46 Days"
+              },
+              {
+                "name": "The Moma Dance"
+              },
+              {
+                "name": "The Well"
+              },
+              {
+                "name": "My Friend, My Friend",
+                "info": "No \"Myfe\" ending) (->"
+              },
+              {
+                "name": "Brian and Robert"
+              },
+              {
+                "name": "Llama"
+              },
+              {
+                "name": "Cities",
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Ya Mar",
+                "cover": {
+                  "mbid": "11ebdf8f-b3ec-47a7-8e9f-c340b64ba762",
+                  "name": "Cyril Ferguson",
+                  "sortName": "Ferguson, Cyril",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/cyril-ferguson-6bd61eba.html"
+                }
+              },
+              {
+                "name": "Stash"
+              },
+              {
+                "name": "Cavern"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Axilla, Part II",
+                "info": "contained \"Happy Birthday\" tease for Chris Kuroda) (>"
+              },
+              {
+                "name": "Down With Disease",
+                "info": "Unfinished) (>"
+              },
+              {
+                "name": "Mercury",
+                "info": ">"
+              },
+              {
+                "name": "Taste",
+                "info": ">"
+              },
+              {
+                "name": "Ghost",
+                "info": ">"
+              },
+              {
+                "name": "Limb by Limb"
+              },
+              {
+                "name": "The Horse",
+                "info": ">"
+              },
+              {
+                "name": "Silent in the Morning"
+              },
+              {
+                "name": "Good Times Bad Times",
+                "cover": {
+                  "mbid": "678d88b2-87b0-403b-b63d-5da7465aecc3",
+                  "name": "Led Zeppelin",
+                  "sortName": "Led Zeppelin",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/led-zeppelin-13d6b509.html"
+                }
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Contact",
+                "info": ">"
+              },
+              {
+                "name": "Run Like an Antelope"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/alpine-valley-music-theatre-east-troy-wi-4babbb6a.html"
+    },
+    {
+      "id": "53abbb75",
+      "versionId": "g73a07651",
+      "eventDate": "24-07-2024",
+      "lastUpdated": "2024-07-25T03:30:33.565+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "53d61fb1",
+        "name": "Mohegan Sun Arena",
+        "city": {
+          "id": "4844602",
+          "name": "Uncasville",
+          "state": "Connecticut",
+          "stateCode": "CT",
+          "coords": {
+            "lat": 41.4345426,
+            "long": -72.1097996
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mohegan-sun-arena-uncasville-ct-usa-53d61fb1.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "AC/DC Bag",
+                "info": ">"
+              },
+              {
+                "name": "The Curtain",
+                "info": ">"
+              },
+              {
+                "name": "Steam"
+              },
+              {
+                "name": "Maze"
+              },
+              {
+                "name": "Farmhouse"
+              },
+              {
+                "name": "Mull",
+                "cover": {
+                  "mbid": "c172276a-fcbf-4477-894a-f37d1582557e",
+                  "name": "Mike Gordon",
+                  "sortName": "Gordon, Mike",
+                  "disambiguation": "member of Phish",
+                  "url": "https://www.setlist.fm/setlists/mike-gordon-1bd6adf8.html"
+                }
+              },
+              {
+                "name": "Reba"
+              },
+              {
+                "name": "Most Events Aren't Planned",
+                "cover": {
+                  "mbid": "5c659d69-43f8-4f74-9505-4fb6076d4d3a",
+                  "name": "Vida Blue",
+                  "sortName": "Vida Blue",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/vida-blue-23d660ef.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Blaze On",
+                "info": ">"
+              },
+              {
+                "name": "Mike's Song",
+                "info": ">"
+              },
+              {
+                "name": "The Curtain With",
+                "info": "'With' section only) (>"
+              },
+              {
+                "name": "Weekapaug Groove"
+              },
+              {
+                "name": "Leaves"
+              },
+              {
+                "name": "Fuego",
+                "info": ">"
+              },
+              {
+                "name": "Lonely Trip",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "More"
+              },
+              {
+                "name": "Fluffhead"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "A Life Beyond the Dream"
+              },
+              {
+                "name": "First Tube"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/mohegan-sun-arena-uncasville-ct-53abbb75.html"
+    },
+    {
+      "id": "5babbb70",
+      "versionId": "g336c9035",
+      "eventDate": "23-07-2024",
+      "lastUpdated": "2026-01-05T01:20:50.672+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "53d61fb1",
+        "name": "Mohegan Sun Arena",
+        "city": {
+          "id": "4844602",
+          "name": "Uncasville",
+          "state": "Connecticut",
+          "stateCode": "CT",
+          "coords": {
+            "lat": 41.4345426,
+            "long": -72.1097996
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mohegan-sun-arena-uncasville-ct-usa-53d61fb1.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Martian Monster",
+                "cover": {
+                  "mbid": "65385b49-1998-4e0d-a260-6ffd8b062268",
+                  "name": "Walt Disney Music Co.",
+                  "sortName": "Disney, Walt, Music Co.",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/walt-disney-music-co-bc31d0a.html"
+                }
+              },
+              {
+                "name": "Rift",
+                "info": ">"
+              },
+              {
+                "name": "Golden Age",
+                "cover": {
+                  "mbid": "eb872766-98f6-453d-883f-2ae908a18315",
+                  "name": "TV on the Radio",
+                  "sortName": "TV on the Radio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tv-on-the-radio-4bd6ab1e.html"
+                }
+              },
+              {
+                "name": "Gumbo"
+              },
+              {
+                "name": "Funky Bitch",
+                "cover": {
+                  "mbid": "d2728d68-26f6-42b6-a490-ddae85b65d6d",
+                  "name": "Son Seals",
+                  "sortName": "Seals, Son",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/son-seals-3bd61020.html"
+                }
+              },
+              {
+                "name": "Guyute"
+              },
+              {
+                "name": "Undermind"
+              },
+              {
+                "name": "Evolve",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Waste",
+                "info": ">"
+              },
+              {
+                "name": "Walls of the Cave"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Plasma",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Kill Devil Falls",
+                "info": ">"
+              },
+              {
+                "name": "Carini",
+                "info": ">"
+              },
+              {
+                "name": "Ruby Waves",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Piper",
+                "info": ">"
+              },
+              {
+                "name": "Mercy",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Everything's Right"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Julius"
+              },
+              {
+                "name": "About to Run",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/mohegan-sun-arena-uncasville-ct-5babbb70.html"
+    },
+    {
+      "id": "43abbb7f",
+      "versionId": "g13a07dd9",
+      "eventDate": "21-07-2024",
+      "lastUpdated": "2024-07-24T19:19:33.262+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "4bd4e71a",
+        "name": "Xfinity Center",
+        "city": {
+          "id": "4943021",
+          "name": "Mansfield",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.0334326,
+            "long": -71.2189405
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/xfinity-center-mansfield-ma-usa-4bd4e71a.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Free"
+              },
+              {
+                "name": "A Wave of Hope",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Bathtub Gin",
+                "info": ">"
+              },
+              {
+                "name": "Wilson"
+              },
+              {
+                "name": "The Connection",
+                "info": "LTP 12/7/19"
+              },
+              {
+                "name": "Thread"
+              },
+              {
+                "name": "Joy"
+              },
+              {
+                "name": "Runaway Jim",
+                "info": ">"
+              },
+              {
+                "name": "Life Saving Gun",
+                "cover": {
+                  "mbid": "066a4f51-4230-4784-a2ca-daae7219e675",
+                  "name": "Page McConnell & Trey Anastasio",
+                  "sortName": "Page McConnell & Trey Anastasio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/page-mcconnell-and-trey-anastasio-1bf1d138.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "The Squirming Coil",
+                "info": ">"
+              },
+              {
+                "name": "Tweezer",
+                "info": ">"
+              },
+              {
+                "name": "Scents and Subtle Sounds",
+                "info": ">"
+              },
+              {
+                "name": "Twist",
+                "info": ">"
+              },
+              {
+                "name": "Crosseyed and Painless",
+                "cover": {
+                  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+                  "name": "Talking Heads",
+                  "sortName": "Talking Heads",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/talking-heads-3bd6b808.html"
+                }
+              },
+              {
+                "name": "Slave to the Traffic Light"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Possum",
+                "info": ">"
+              },
+              {
+                "name": "Tweezer Reprise"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/xfinity-center-mansfield-ma-43abbb7f.html"
+    },
+    {
+      "id": "33abb885",
+      "versionId": "g536eef7d",
+      "eventDate": "20-07-2024",
+      "lastUpdated": "2025-12-15T10:25:26.687+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "4bd4e71a",
+        "name": "Xfinity Center",
+        "city": {
+          "id": "4943021",
+          "name": "Mansfield",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.0334326,
+            "long": -71.2189405
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/xfinity-center-mansfield-ma-usa-4bd4e71a.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Theme From the Bottom",
+                "info": ">"
+              },
+              {
+                "name": "Back on the Train"
+              },
+              {
+                "name": "Sand",
+                "info": ">"
+              },
+              {
+                "name": "Bouncing Around the Room"
+              },
+              {
+                "name": "Backwards Down the Number Line"
+              },
+              {
+                "name": "Human Nature",
+                "info": "live debut) (>"
+              },
+              {
+                "name": "It's Ice",
+                "info": ">"
+              },
+              {
+                "name": "Wolfman's Brother"
+              },
+              {
+                "name": "Drift While You're Sleeping",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "You Enjoy Myself",
+                "info": ">"
+              },
+              {
+                "name": "Oblivion",
+                "info": ">"
+              },
+              {
+                "name": "No Men in No Man's Land",
+                "info": ">"
+              },
+              {
+                "name": "Monsters"
+              },
+              {
+                "name": "Also sprach Zarathustra, op. 30",
+                "cover": {
+                  "mbid": "4cb43d82-824e-4034-b03d-1a98f36f6e16",
+                  "name": "Richard Strauss",
+                  "sortName": "Strauss, Richard",
+                  "disambiguation": "German composer",
+                  "url": "https://www.setlist.fm/setlists/richard-strauss-3d4ddcb.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Chalk Dust Torture"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "When the Circus Comes",
+                "cover": {
+                  "mbid": "2b9967c7-3246-4658-a561-ded5408dd9af",
+                  "name": "Los Lobos",
+                  "sortName": "Lobos, Los",
+                  "disambiguation": "Chicano rock band",
+                  "url": "https://www.setlist.fm/setlists/los-lobos-4bd6b3c6.html"
+                }
+              },
+              {
+                "name": "David Bowie",
+                "info": ">"
+              },
+              {
+                "name": "Say It to Me S.A.N.T.O.S."
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/xfinity-center-mansfield-ma-33abb885.html"
+    },
+    {
+      "id": "2babb88a",
+      "versionId": "g2b43e4be",
+      "eventDate": "19-07-2024",
+      "lastUpdated": "2025-03-24T00:53:50.414+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "4bd4e71a",
+        "name": "Xfinity Center",
+        "city": {
+          "id": "4943021",
+          "name": "Mansfield",
+          "state": "Massachusetts",
+          "stateCode": "MA",
+          "coords": {
+            "lat": 42.0334326,
+            "long": -71.2189405
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/xfinity-center-mansfield-ma-usa-4bd4e71a.html"
+      },
+      "tour": {
+        "name": "Summer Tour 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Buried Alive",
+                "info": ">"
+              },
+              {
+                "name": "Character Zero"
+              },
+              {
+                "name": "Hey Stranger",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Down With Disease"
+              },
+              {
+                "name": "Roggae",
+                "info": ">"
+              },
+              {
+                "name": "NICU"
+              },
+              {
+                "name": "Stash"
+              },
+              {
+                "name": "46 Days"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Suzy Greenberg",
+                "info": ">"
+              },
+              {
+                "name": "Run Like an Antelope",
+                "info": ">"
+              },
+              {
+                "name": "Ghost",
+                "info": ">"
+              },
+              {
+                "name": "Light",
+                "info": ">"
+              },
+              {
+                "name": "Pillow Jets",
+                "info": ">"
+              },
+              {
+                "name": "Beneath a Sea of Stars Part 1",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Split Open and Melt"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Harry Hood"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: 'Thread', 'Mountains in the Mist' & 'Funky Bitch'",
+      "url": "https://www.setlist.fm/setlist/phish/2024/xfinity-center-mansfield-ma-2babb88a.html"
+    },
+    {
+      "id": "7b548af8",
+      "versionId": "g1ba07df4",
+      "eventDate": "11-07-2024",
+      "lastUpdated": "2024-07-24T19:19:32.452+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "13d4dd51",
+        "name": "The Tonight Show Starring Jimmy Fallon",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/the-tonight-show-starring-jimmy-fallon-new-york-ny-usa-13d4dd51.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Love in an Elevator",
+                "cover": {
+                  "mbid": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb",
+                  "name": "Aerosmith",
+                  "sortName": "Aerosmith",
+                  "disambiguation": "American hard rock band",
+                  "url": "https://www.setlist.fm/setlists/aerosmith-3bd6b8fc.html"
+                },
+                "info": "a cappella; sung as 'Phish in an Elevator'; snippet",
+                "with": {
+                  "mbid": "78b7c31c-97cb-4f06-be5c-5c2e5a7c87bc",
+                  "name": "Jimmy Fallon",
+                  "sortName": "Fallon, Jimmy",
+                  "disambiguation": "comedian",
+                  "url": "https://www.setlist.fm/setlists/jimmy-fallon-bd7f996.html"
+                }
+              },
+              {
+                "name": "Evolve",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/the-tonight-show-starring-jimmy-fallon-new-york-ny-7b548af8.html"
+    },
+    {
+      "id": "7b548a04",
+      "versionId": "g13a07df5",
+      "eventDate": "09-07-2024",
+      "lastUpdated": "2024-07-24T19:19:32.430+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "23d104f7",
+        "name": "Tiny Desk Concerts",
+        "city": {
+          "id": "4140963",
+          "name": "Washington",
+          "state": "Washington, D.C.",
+          "stateCode": "DC",
+          "coords": {
+            "lat": 38.895,
+            "long": -77.036
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/tiny-desk-concerts-washington-dc-usa-23d104f7.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Sigma Oasis"
+              },
+              {
+                "name": "Evolve",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "You Enjoy Myself"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Sample in a Jar"
+              },
+              {
+                "name": "Chalk Dust Torture"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included: You Enjoy Myself",
+      "url": "https://www.setlist.fm/setlist/phish/2024/tiny-desk-concerts-washington-dc-7b548a04.html"
+    },
+    {
+      "id": "33abb815",
+      "versionId": "g3b43e4b8",
+      "eventDate": "21-04-2024",
+      "lastUpdated": "2025-03-24T00:53:41.839+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "Sphere Las Vegas 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Plasma",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Evolve",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Ghost"
+              },
+              {
+                "name": "The Divided Sky"
+              },
+              {
+                "name": "Shade",
+                "info": "began with Trey on acoustic guitar"
+              },
+              {
+                "name": "Hey Stranger",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Character Zero"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Oblivion",
+                "info": ">"
+              },
+              {
+                "name": "Down With Disease"
+              },
+              {
+                "name": "Beneath a Sea of Stars Part 1",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Also sprach Zarathustra, op. 30",
+                "cover": {
+                  "mbid": "4cb43d82-824e-4034-b03d-1a98f36f6e16",
+                  "name": "Richard Strauss",
+                  "sortName": "Strauss, Richard",
+                  "disambiguation": "German composer",
+                  "url": "https://www.setlist.fm/setlists/richard-strauss-3d4ddcb.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Light",
+                "info": ">"
+              },
+              {
+                "name": "Ether Edge",
+                "info": ">"
+              },
+              {
+                "name": "Piper"
+              },
+              {
+                "name": "First Tube"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "More",
+                "info": ">"
+              },
+              {
+                "name": "Slave to the Traffic Light"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/sphere-at-the-venetian-resort-las-vegas-nv-33abb815.html"
+    },
+    {
+      "id": "3babb810",
+      "versionId": "g336088b1",
+      "eventDate": "20-04-2024",
+      "lastUpdated": "2025-11-30T02:28:06.251+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "Sphere Las Vegas 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Set Your Soul Free",
+                "cover": {
+                  "mbid": "822b1e81-d1a0-47fb-b7f9-ef614b913603",
+                  "name": "Trey Anastasio Band",
+                  "sortName": "Trey Anastasio Band",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-band-53d6d729.html"
+                }
+              },
+              {
+                "name": "Tube"
+              },
+              {
+                "name": "Stash"
+              },
+              {
+                "name": "Pillow Jets"
+              },
+              {
+                "name": "Steam"
+              },
+              {
+                "name": "Mountains in the Mist"
+              },
+              {
+                "name": "Taste"
+              },
+              {
+                "name": "46 Days"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Sigma Oasis",
+                "info": ">"
+              },
+              {
+                "name": "Fuego",
+                "info": ">"
+              },
+              {
+                "name": "Golden Age",
+                "cover": {
+                  "mbid": "eb872766-98f6-453d-883f-2ae908a18315",
+                  "name": "TV on the Radio",
+                  "sortName": "TV on the Radio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tv-on-the-radio-4bd6ab1e.html"
+                },
+                "info": ">"
+              },
+              {
+                "name": "Twist"
+              },
+              {
+                "name": "I Am Hydrogen",
+                "info": ">"
+              },
+              {
+                "name": "Chalk Dust Torture",
+                "info": ">"
+              },
+              {
+                "name": "Say It to Me S.A.N.T.O.S."
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "A Life Beyond the Dream",
+                "info": "Began with Trey on acoustic guitar"
+              },
+              {
+                "name": "Tweezer Reprise"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/sphere-at-the-venetian-resort-las-vegas-nv-3babb810.html"
+    },
+    {
+      "id": "3babb81c",
+      "versionId": "g634f8ec3",
+      "eventDate": "19-04-2024",
+      "lastUpdated": "2025-04-23T12:11:25.390+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "Sphere Las Vegas 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Free"
+              },
+              {
+                "name": "The Moma Dance"
+              },
+              {
+                "name": "Axilla, Part II"
+              },
+              {
+                "name": "Mercy",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "Bathtub Gin"
+              },
+              {
+                "name": "Theme From the Bottom",
+                "info": ">"
+              },
+              {
+                "name": "Split Open and Melt"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "A Wave of Hope",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "What's the Use?",
+                "info": ">"
+              },
+              {
+                "name": "Ruby Waves",
+                "cover": {
+                  "mbid": "7a901645-171b-45f7-9c2f-4e68c797394d",
+                  "name": "Ghosts of The Forest",
+                  "sortName": "Ghosts of The Forest",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/ghosts-of-the-forest-43f67fe3.html"
+                }
+              },
+              {
+                "name": "Lonely Trip",
+                "cover": {
+                  "mbid": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+                  "name": "Trey Anastasio",
+                  "sortName": "Anastasio, Trey",
+                  "disambiguation": "US jam band Phish lead singer",
+                  "url": "https://www.setlist.fm/setlists/trey-anastasio-bd6adfa.html"
+                }
+              },
+              {
+                "name": "A Song I Heard the Ocean Sing",
+                "info": ">"
+              },
+              {
+                "name": "Prince Caspian"
+              },
+              {
+                "name": "You Enjoy Myself"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Wading in the Velvet Sea"
+              },
+              {
+                "name": "Harry Hood"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/sphere-at-the-venetian-resort-las-vegas-nv-3babb81c.html"
+    },
+    {
+      "id": "2babb81a",
+      "versionId": "g53a063b1",
+      "eventDate": "18-04-2024",
+      "lastUpdated": "2024-07-25T19:44:59.500+0000",
+      "artist": {
+        "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+        "name": "Phish",
+        "sortName": "Phish",
+        "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+        "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+      },
+      "venue": {
+        "id": "7bd1c264",
+        "name": "Sphere at The Venetian Resort",
+        "city": {
+          "id": "5506956",
+          "name": "Las Vegas",
+          "state": "Nevada",
+          "stateCode": "NV",
+          "coords": {
+            "lat": 36.1749705,
+            "long": -115.137223
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/sphere-at-the-venetian-resort-las-vegas-nv-usa-7bd1c264.html"
+      },
+      "tour": {
+        "name": "Sphere Las Vegas 2024"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Set 1:",
+            "song": [
+              {
+                "name": "Everything's Right"
+              },
+              {
+                "name": "Back on the Train"
+              },
+              {
+                "name": "Wolfman's Brother"
+              },
+              {
+                "name": "Maze"
+              },
+              {
+                "name": "Leaves"
+              },
+              {
+                "name": "Life Saving Gun",
+                "cover": {
+                  "mbid": "066a4f51-4230-4784-a2ca-daae7219e675",
+                  "name": "Page McConnell & Trey Anastasio",
+                  "sortName": "Page McConnell & Trey Anastasio",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/page-mcconnell-and-trey-anastasio-1bf1d138.html"
+                }
+              },
+              {
+                "name": "Dirt"
+              },
+              {
+                "name": "Carini"
+              }
+            ]
+          },
+          {
+            "name": "Set 2:",
+            "song": [
+              {
+                "name": "Sand",
+                "info": ">"
+              },
+              {
+                "name": "Tweezer",
+                "info": ">"
+              },
+              {
+                "name": "My Friend, My Friend",
+                "info": ">"
+              },
+              {
+                "name": "Mike's Song",
+                "info": ">"
+              },
+              {
+                "name": "Lifeboy"
+              },
+              {
+                "name": "Weekapaug Groove"
+              },
+              {
+                "name": "Blaze On",
+                "info": ">"
+              },
+              {
+                "name": "Fluffhead"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Farmhouse",
+                "info": "began and ended with Trey on acoustic guitar"
+              },
+              {
+                "name": "Run Like an Antelope"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/phish/2024/sphere-at-the-venetian-resort-las-vegas-nv-2babb81a.html"
+    }
+  ]
+}

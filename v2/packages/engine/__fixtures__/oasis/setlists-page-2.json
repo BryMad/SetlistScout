@@ -1,0 +1,2848 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 2,
+  "total": 959,
+  "setlist": [
+    {
+      "id": "b53619e",
+      "versionId": "g737c2a89",
+      "eventDate": "31-08-2025",
+      "lastUpdated": "2025-09-01T15:59:11.989+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd72160",
+        "name": "MetLife Stadium",
+        "city": {
+          "id": "5097459",
+          "name": "East Rutherford",
+          "state": "New Jersey",
+          "stateCode": "NJ",
+          "coords": {
+            "lat": 40.833989,
+            "long": -74.0970865
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/metlife-stadium-east-rutherford-nj-usa-1bd72160.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Love You",
+                "tape": true,
+                "cover": {
+                  "mbid": "b071f9fa-14b0-4217-8e97-eb41da73f598",
+                  "name": "The Rolling Stones",
+                  "sortName": "Rolling Stones, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-rolling-stones-bd6ad22.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello",
+                "info": "Noel accidentally began to play 'Acquiesce' at beginning"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to ‘the Irish’"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to ‘the warriors, not the worriers’"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to ‘the lovebirds’"
+              },
+              {
+                "name": "Whatever",
+                "info": "with snippet of The Beatles’ ‘Octopus's Garden’"
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to 'the kiddies in Minneapolis'"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck (without Liam):  \"Acquiesce\", \"Some Might Say\", \"Bring It On Down\", \"Half the World Away\", \"D'You Know What I Mean?\", \"Rock 'n' Roll Star\" and \"Champagne Supernova\".",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/metlife-stadium-east-rutherford-nj-b53619e.html"
+    },
+    {
+      "id": "1353619d",
+      "versionId": "g2b79a47a",
+      "eventDate": "28-08-2025",
+      "lastUpdated": "2025-10-06T14:57:49.806+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "4bd637ce",
+        "name": "Soldier Field",
+        "city": {
+          "id": "4887398",
+          "name": "Chicago",
+          "state": "Illinois",
+          "stateCode": "IL",
+          "coords": {
+            "lat": 41.850033,
+            "long": -87.6500523
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/soldier-field-chicago-il-usa-4bd637ce.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "dedicated to the “early risers”"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to “the professional glue sniffers”"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with snippet of The Beatles’ “Octopus's Garden”"
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to “all the people that can’t be here”"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by fireworks"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/soldier-field-chicago-il-1353619d.html"
+    },
+    {
+      "id": "b5345ee",
+      "versionId": "g137ab501",
+      "eventDate": "25-08-2025",
+      "lastUpdated": "2025-09-14T02:34:26.723+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bde9998",
+        "name": "Rogers Stadium",
+        "city": {
+          "id": "6167865",
+          "name": "Toronto",
+          "state": "Ontario",
+          "stateCode": "ON",
+          "coords": {
+            "lat": 43.700113788,
+            "long": -79.416304194
+          },
+          "country": {
+            "code": "CA",
+            "name": "Canada"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/rogers-stadium-toronto-on-canada-1bde9998.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to \"them proper drug-takers, the glue-sniffers\""
+              },
+              {
+                "name": "Cigarettes & Alcohol",
+                "info": "Liam led the crowd into a Poznań before starting the song"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the Irish"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to \"all the people who cannot be here\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "with a snippet of \"Columbia\" at the end of the song, followed by a fireworks show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/rogers-stadium-toronto-on-canada-b5345ee.html"
+    },
+    {
+      "id": "b536192",
+      "versionId": "g1379a505",
+      "eventDate": "24-08-2025",
+      "lastUpdated": "2025-10-06T14:41:57.199+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bde9998",
+        "name": "Rogers Stadium",
+        "city": {
+          "id": "6167865",
+          "name": "Toronto",
+          "state": "Ontario",
+          "stateCode": "ON",
+          "coords": {
+            "lat": 43.700113788,
+            "long": -79.416304194
+          },
+          "country": {
+            "code": "CA",
+            "name": "Canada"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/rogers-stadium-toronto-on-canada-1bde9998.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to the warriors"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with The Beatles' \"Octopus's Garden\" outro snippet"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "snippet of \"Columbia\" at the end of the song. Followed by pyrotechnics show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck included \"Acquiesce\", \"Some Might Say\", \"Bring It On Down\", \"Half the World Away\", \"D'You Know What I Mean?\", \"Rock 'n' Roll Star\" and \"Champagne Supernova\".",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/rogers-stadium-toronto-on-canada-b536192.html"
+    },
+    {
+      "id": "1b52e140",
+      "versionId": "g37e713b",
+      "eventDate": "17-08-2025",
+      "lastUpdated": "2025-08-17T23:12:52.334+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62380",
+        "name": "Croke Park",
+        "city": {
+          "id": "2964574",
+          "name": "Dublin",
+          "state": "Dublin",
+          "stateCode": "07",
+          "coords": {
+            "lat": 53.3330556,
+            "long": -6.2488889
+          },
+          "country": {
+            "code": "IE",
+            "name": "Ireland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/croke-park-dublin-ireland-5bd62380.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Auld Triangle",
+                "tape": true,
+                "cover": {
+                  "mbid": "d18ffad7-355c-40af-b754-01eb21e04d9f",
+                  "name": "Brendan Behan",
+                  "sortName": "Behan, Brendan",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brendan-behan-7bd552fc.html"
+                },
+                "info": "Luke Kelly version"
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the people of Co. Mayo and Charlestown"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to The Royle Family from the BBC sitcom"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me",
+                "info": "dedicated to Peggy Gallagher"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by pyrotechnics show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/croke-park-dublin-ireland-1b52e140.html"
+    },
+    {
+      "id": "1b52e144",
+      "versionId": "g337c546d",
+      "eventDate": "16-08-2025",
+      "lastUpdated": "2025-09-04T18:02:50.425+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62380",
+        "name": "Croke Park",
+        "city": {
+          "id": "2964574",
+          "name": "Dublin",
+          "state": "Dublin",
+          "stateCode": "07",
+          "coords": {
+            "lat": 53.3330556,
+            "long": -6.2488889
+          },
+          "country": {
+            "code": "IE",
+            "name": "Ireland"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/croke-park-dublin-ireland-5bd62380.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "The Auld Triangle",
+                "tape": true,
+                "cover": {
+                  "mbid": "d18ffad7-355c-40af-b754-01eb21e04d9f",
+                  "name": "Brendan Behan",
+                  "sortName": "Behan, Brendan",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/brendan-behan-7bd552fc.html"
+                },
+                "info": "Luke Kelly version"
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It",
+                "info": "dedicated to Charlestown, County Mayo, birthplace of Peggy Gallagher"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to the Royle family"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me",
+                "info": "dedicated to Peggy Gallagher"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to \"The Duleek Posse\", a reference to the Gallaghers' extended paternal family"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "snippet of \"Columbia\" at the end of the song"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Wonderwall\" was recorded for their Oasis Live' 2025 Tour, and was released as a single online on September 4, 2025.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/croke-park-dublin-ireland-1b52e144.html"
+    },
+    {
+      "id": "7b52ce6c",
+      "versionId": "g737e129d",
+      "eventDate": "12-08-2025",
+      "lastUpdated": "2025-08-17T03:45:58.602+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d154b1",
+        "name": "Scottish Gas Murrayfield Stadium",
+        "city": {
+          "id": "2650225",
+          "name": "Edinburgh",
+          "state": "Scotland",
+          "stateCode": "SCT",
+          "coords": {
+            "lat": 55.95,
+            "long": -3.2
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/scottish-gas-murrayfield-stadium-edinburgh-scotland-33d154b1.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Born Slippy .NUXX",
+                "tape": true,
+                "cover": {
+                  "mbid": "ba2f4f3b-0293-4bc8-bb94-2f73b5207343",
+                  "name": "Underworld",
+                  "sortName": "Underworld",
+                  "disambiguation": "UK electronic music group",
+                  "url": "https://www.setlist.fm/setlists/underworld-23d6b0b7.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "preceded by criticism of the City of Edinburgh Council"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to Argentinian and South American fans"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me",
+                "info": "dedicated to Susan Boyle"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "dedicated to the young fans"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "with \"Columbia\" tease. Song followed by pyrotechnics show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/scottish-gas-murrayfield-stadium-edinburgh-scotland-7b52ce6c.html"
+    },
+    {
+      "id": "b52e13a",
+      "versionId": "g2b7c5472",
+      "eventDate": "09-08-2025",
+      "lastUpdated": "2025-09-04T18:00:21.427+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d154b1",
+        "name": "Scottish Gas Murrayfield Stadium",
+        "city": {
+          "id": "2650225",
+          "name": "Edinburgh",
+          "state": "Scotland",
+          "stateCode": "SCT",
+          "coords": {
+            "lat": 55.95,
+            "long": -3.2
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/scottish-gas-murrayfield-stadium-edinburgh-scotland-33d154b1.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Born Slippy .NUXX",
+                "tape": true,
+                "cover": {
+                  "mbid": "ba2f4f3b-0293-4bc8-bb94-2f73b5207343",
+                  "name": "Underworld",
+                  "sortName": "Underworld",
+                  "disambiguation": "UK electronic music group",
+                  "url": "https://www.setlist.fm/setlists/underworld-23d6b0b7.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "followed by Liam slamming Edinburgh City Council"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "for all \"the young ones\""
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to ‘The Royle Family’"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to the ‘lovebirds’"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to \"the ones who aren’t here but stuck with us\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "with \"Columbia\" tease. Song followed by pyrotechnics show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Bring It On Down\" was recorded for their Oasis Live' 2025 Tour, and was released as a single online on August 22, 2025.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/scottish-gas-murrayfield-stadium-edinburgh-scotland-b52e13a.html"
+    },
+    {
+      "id": "1352e139",
+      "versionId": "g3b7edc0c",
+      "eventDate": "08-08-2025",
+      "lastUpdated": "2025-08-14T16:53:15.187+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d154b1",
+        "name": "Scottish Gas Murrayfield Stadium",
+        "city": {
+          "id": "2650225",
+          "name": "Edinburgh",
+          "state": "Scotland",
+          "stateCode": "SCT",
+          "coords": {
+            "lat": 55.95,
+            "long": -3.2
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/scottish-gas-murrayfield-stadium-edinburgh-scotland-33d154b1.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Born Slippy .NUXX",
+                "tape": true,
+                "cover": {
+                  "mbid": "ba2f4f3b-0293-4bc8-bb94-2f73b5207343",
+                  "name": "Underworld",
+                  "sortName": "Underworld",
+                  "disambiguation": "UK electronic music group",
+                  "url": "https://www.setlist.fm/setlists/underworld-23d6b0b7.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "preceded by Liam slamming Edinburgh Council"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to \"the ladies\""
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to 'The real Royle Family'"
+              },
+              {
+                "name": "Little by Little",
+                "info": "dedicated to \"the lads\""
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to \"the ones who couldn’t make it to see us reunite\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "dedicated to the \"atheist lesbians\""
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by pyrotechnics show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/scottish-gas-murrayfield-stadium-edinburgh-scotland-1352e139.html"
+    },
+    {
+      "id": "b52e13e",
+      "versionId": "g53718f91",
+      "eventDate": "03-08-2025",
+      "lastUpdated": "2025-08-05T17:02:14.357+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to 'all the glue sniffers'"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the young ones"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to 'Mancunians'"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to ‘the lovebirds’"
+              },
+              {
+                "name": "Whatever",
+                "info": "With a snippet of \"Octopus's Garden\" by The Beatles"
+              },
+              {
+                "name": "Live Forever",
+                "info": "Dedicated to \"all the people that aren't here, but are here\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions, dedicated to the 'Maida Vale Mandem'"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-b52e13e.html"
+    },
+    {
+      "id": "1b52e13c",
+      "versionId": "g237c5437",
+      "eventDate": "02-08-2025",
+      "lastUpdated": "2025-09-04T18:11:53.891+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to 'all the glue sniffers'"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the young ones"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to 'Mancunians'"
+              },
+              {
+                "name": "Little by Little",
+                "info": "was recorded for their Oasis Live' 2025 Tour, and was released as a single online on August 14, 2025"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to ‘the lovebirds’"
+              },
+              {
+                "name": "Whatever",
+                "info": "With a snippet of \"Octopus's Garden\" by The Beatles"
+              },
+              {
+                "name": "Live Forever",
+                "info": "Dedicated to \"all the people that aren't here, but are here\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "'The Rastaplan' - Noel Gallagher"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "During the performance, a man in his 40s died after falling from a height, at 22:19.\n\nOasis said in a statement: \"We would like to extend our sincere condolences to the family and friends of the person involved.\"",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-1b52e13c.html"
+    },
+    {
+      "id": "6352ce6f",
+      "versionId": "g43718b7f",
+      "eventDate": "30-07-2025",
+      "lastUpdated": "2025-08-05T18:46:18.900+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to 'all the glue sniffers'"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the young ones"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It",
+                "info": "Dedicated to The Lionesses and their Euro 2025 victory"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to 'The Royle Family'"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me",
+                "info": "Dedicated to 'rkid'"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "Dedicated to ‘the lovebirds’"
+              },
+              {
+                "name": "Whatever",
+                "info": "With a snippet of \"Octopus's Garden\" by The Beatles"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "\"Rastaplan\" - Noel Gallagher"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-6352ce6f.html"
+    },
+    {
+      "id": "1352e131",
+      "versionId": "g3b7edc2c",
+      "eventDate": "26-07-2025",
+      "lastUpdated": "2025-08-14T16:48:11.275+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory",
+                "info": "dedicated to the ‘Early Risers’"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to the ‘Mongolians’"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to “The Ladies”"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to \"the lovebirds\""
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to \"Those who aren't here but are here, if you know what I mean.\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a fireworks display"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-1352e131.html"
+    },
+    {
+      "id": "1b52e130",
+      "versionId": "g3379e4f9",
+      "eventDate": "25-07-2025",
+      "lastUpdated": "2025-10-08T17:05:18.831+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6c086",
+        "name": "Wembley Stadium",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/wembley-stadium-london-england-2bd6c086.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Rockin' in the Free World",
+                "tape": true,
+                "cover": {
+                  "mbid": "75167b8b-44e4-407b-9d35-effe87b223cf",
+                  "name": "Neil Young",
+                  "sortName": "Young, Neil",
+                  "disambiguation": "Canadian singer, songwriter & musician",
+                  "url": "https://www.setlist.fm/setlists/neil-young-6bd6b662.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to \"The real Royle family\""
+              },
+              {
+                "name": "Little by Little",
+                "info": "dedicated to the lads"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to all the love birds"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to the Oasis fans that \"can't be here but are here, if you know what I mean\"."
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Ozzy Osbourne,who died 3 days earlier(July 22).Visual appeared during Live Forever solo"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "dedicated to the staff of the Chiltern Firehouse, which burned down in February 2025"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/wembley-stadium-london-england-1b52e130.html"
+    },
+    {
+      "id": "b52e132",
+      "versionId": "g4b7367fa",
+      "eventDate": "20-07-2025",
+      "lastUpdated": "2025-07-26T12:48:19.278+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "Preceded by “Close Encounters of The Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "Dedicated to the people on 'Gallagher Hill'"
+              },
+              {
+                "name": "Cigarettes & Alcohol",
+                "info": "Liam instructs fans to turn around and do the Poznan in tribute to Man City"
+              },
+              {
+                "name": "Fade Away",
+                "info": "Dedicated to the 'actual people from Manchester'"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "Dedicated to ‘The Ladies’"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to 'The real Royle Family'"
+              },
+              {
+                "name": "Little by Little",
+                "info": "Dedicated to ‘The Lads’"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/heaton-park-manchester-england-b52e132.html"
+    },
+    {
+      "id": "352e13f",
+      "versionId": "g6373feab",
+      "eventDate": "19-07-2025",
+      "lastUpdated": "2025-07-21T21:35:59.788+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "Preceded by “Close Encounters of The Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to the ticketless fans listening from 'Gallagher Hill' outside the venue fencing"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to the ladies"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to The Royle Family; “not that f***ing Royal Family”"
+              },
+              {
+                "name": "Little by Little",
+                "info": "dedicated to the lads"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away",
+                "info": "dedicated to “love birds in the house”, who were told they wouldn’t be put on a “Coldplay kiss cam”"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever",
+                "info": "dedicated to the deceased Oasis fans that \"can't be here but are here, if you know what I mean\""
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "with band introductions; dedicated to the Irish"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by pyrotechnic show"
+              },
+              {
+                "name": "Those Were the Days",
+                "tape": true,
+                "cover": {
+                  "mbid": "86b77b16-261b-4573-a239-7ea855c26959",
+                  "name": "Eugene Raskin",
+                  "sortName": "Raskin, Eugene",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/eugene-raskin-3d58da7.html"
+                },
+                "info": "Mary Hopkin version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/heaton-park-manchester-england-352e13f.html"
+    },
+    {
+      "id": "7b52ce68",
+      "versionId": "g7373febd",
+      "eventDate": "16-07-2025",
+      "lastUpdated": "2025-07-21T21:33:34.218+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "Preceded by “Close Encounters of The Third  Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "Dedicated to the Royle Family (TV Show)"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "With a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "Dedicated to Manchester City fans & Super Jack"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "Followed by a pyrotechnic show"
+              },
+              {
+                "name": "Those Were the Days",
+                "tape": true,
+                "cover": {
+                  "mbid": "86b77b16-261b-4573-a239-7ea855c26959",
+                  "name": "Eugene Raskin",
+                  "sortName": "Raskin, Eugene",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/eugene-raskin-3d58da7.html"
+                },
+                "info": "Mary Hopkin version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/heaton-park-manchester-england-7b52ce68.html"
+    },
+    {
+      "id": "352e13b",
+      "versionId": "g4b720706",
+      "eventDate": "12-07-2025",
+      "lastUpdated": "2025-07-18T03:45:23.053+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight",
+                "info": "dedicated to “the ladies”"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to the shop John Lewis"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Mani, The Stone Roses' bassist"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              },
+              {
+                "name": "Those Were the Days",
+                "tape": true,
+                "cover": {
+                  "mbid": "86b77b16-261b-4573-a239-7ea855c26959",
+                  "name": "Eugene Raskin",
+                  "sortName": "Raskin, Eugene",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/eugene-raskin-3d58da7.html"
+                },
+                "info": "Mary Hopkin version"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/heaton-park-manchester-england-352e13b.html"
+    },
+    {
+      "id": "b52e146",
+      "versionId": "g3b67980c",
+      "eventDate": "11-07-2025",
+      "lastUpdated": "2025-10-22T20:50:15.105+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "Preceded by “Close Encounters of the Third  Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down"
+              },
+              {
+                "name": "Cigarettes & Alcohol",
+                "info": "Liam instructs fans to turn around and do the Poznan in tribute to Man City"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away",
+                "info": "dedicated to comedians Craig Cash and Caroline Aherne, the latter of whom died in 2016"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?",
+                "info": "dedicated to football manager Pep Guardiola, who attended the show"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "preceded by band introductions, restarted"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova",
+                "info": "followed by a pyrotechnic show"
+              },
+              {
+                "name": "Those Were the Days",
+                "tape": true,
+                "cover": {
+                  "mbid": "86b77b16-261b-4573-a239-7ea855c26959",
+                  "name": "Eugene Raskin",
+                  "sortName": "Raskin, Eugene",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/eugene-raskin-3d58da7.html"
+                },
+                "info": "Mary Hopkin version"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Cigarettes & Alcohol\" was recorded for their Oasis Live' 2025 Tour, and was released as a single online on July 24, 2025.",
+      "url": "https://www.setlist.fm/setlist/oasis/2025/heaton-park-manchester-england-b52e146.html"
+    },
+    {
+      "id": "1352e141",
+      "versionId": "g7b632e1c",
+      "eventDate": "05-07-2025",
+      "lastUpdated": "2025-11-25T08:54:48.800+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "4bd54b5e",
+        "name": "Principality Stadium",
+        "city": {
+          "id": "2653822",
+          "name": "Cardiff",
+          "state": "Wales",
+          "stateCode": "WLS",
+          "coords": {
+            "lat": 51.48,
+            "long": -3.18
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/principality-stadium-cardiff-wales-4bd54b5e.html"
+      },
+      "tour": {
+        "name": "Oasis Live ’25"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Tomorrow Never Knows",
+                "tape": true,
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              },
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true,
+                "info": "Preceded by “Close Encounters of the Third Kind” dialogue"
+              },
+              {
+                "name": "Hello"
+              },
+              {
+                "name": "Acquiesce"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Some Might Say"
+              },
+              {
+                "name": "Bring It On Down",
+                "info": "dedicated to “all the glue sniffers\""
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Fade Away"
+              },
+              {
+                "name": "Supersonic"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Talk Tonight"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Little by Little"
+              },
+              {
+                "name": "D'You Know What I Mean?"
+              },
+              {
+                "name": "Stand by Me"
+              },
+              {
+                "name": "Cast No Shadow",
+                "info": "dedicated to Richard Ashcroft"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Whatever",
+                "info": "with a snippet of The Beatles' \"Octopus's Garden\""
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "dedicated to Cast"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "The Masterplan",
+                "info": "preceded by band introductions"
+              },
+              {
+                "name": "Don't Look Back in Anger"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "Those Were the Days",
+                "tape": true,
+                "cover": {
+                  "mbid": "86b77b16-261b-4573-a239-7ea855c26959",
+                  "name": "Eugene Raskin",
+                  "sortName": "Raskin, Eugene",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/eugene-raskin-3d58da7.html"
+                },
+                "info": "Mary Hopkin version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2025/principality-stadium-cardiff-wales-1352e141.html"
+    }
+  ]
+}

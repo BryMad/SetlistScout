@@ -1,0 +1,2476 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 4,
+  "total": 959,
+  "setlist": [
+    {
+      "id": "2bd79c66",
+      "versionId": "33b62819",
+      "eventDate": "10-06-2009",
+      "lastUpdated": "2015-06-17T09:01:48.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "63d6cee7",
+        "name": "Stadium of Light",
+        "city": {
+          "id": "2636532",
+          "name": "Sunderland",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 54.7,
+            "long": -3.2666667
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/stadium-of-light-sunderland-england-63d6cee7.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "My Big Mouth"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/stadium-of-light-sunderland-england-2bd79c66.html"
+    },
+    {
+      "id": "1bd61198",
+      "versionId": "2bb6281a",
+      "eventDate": "07-06-2009",
+      "lastUpdated": "2015-06-17T09:01:26.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "My Big Mouth"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/heaton-park-manchester-england-1bd61198.html"
+    },
+    {
+      "id": "3d6115f",
+      "versionId": "3bb62824",
+      "eventDate": "06-06-2009",
+      "lastUpdated": "2015-06-17T09:01:03.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Roll With It"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "My Big Mouth"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              },
+              {
+                "name": "Married With Children",
+                "tape": true
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/heaton-park-manchester-england-3d6115f.html"
+    },
+    {
+      "id": "2bd61432",
+      "versionId": "g5391f7fd",
+      "eventDate": "04-06-2009",
+      "lastUpdated": "2023-06-28T18:51:47.767+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "5bd62f14",
+        "name": "Heaton Park",
+        "city": {
+          "id": "2643123",
+          "name": "Manchester",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 53.4809464283615,
+            "long": -2.23743438720703
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/heaton-park-manchester-england-5bd62f14.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star",
+                "info": "Aborted due to technical fault"
+              },
+              {
+                "name": "Lyla",
+                "info": "Aborted due to technical fault"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "Roll With It",
+                "info": "Tour debut; first time since 2001"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "My Big Mouth"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Half the World Away"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Live Forever"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "There was a 40 minute delay after \"Lyla\" due to a technical problem, and the audience was offered a full refund.",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/heaton-park-manchester-england-2bd61432.html"
+    },
+    {
+      "id": "43d6235b",
+      "versionId": "23b62823",
+      "eventDate": "12-05-2009",
+      "lastUpdated": "2015-06-17T08:57:36.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "2bd6247e",
+        "name": "Gigantinho",
+        "city": {
+          "id": "3452925",
+          "name": "Porto Alegre",
+          "state": "Rio Grande do Sul",
+          "stateCode": "RS",
+          "coords": {
+            "lat": -30.03305556,
+            "long": -51.23
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/gigantinho-porto-alegre-brazil-2bd6247e.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/gigantinho-porto-alegre-brazil-43d6235b.html"
+    },
+    {
+      "id": "4bd623de",
+      "versionId": "g6bca8626",
+      "eventDate": "10-05-2009",
+      "lastUpdated": "2022-04-21T16:07:13.991+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "43d02f1f",
+        "name": "Expotrade Convention Center",
+        "city": {
+          "id": "6317953",
+          "name": "Pinhais",
+          "state": "Paraná",
+          "stateCode": "PR",
+          "coords": {
+            "lat": -25.44472222,
+            "long": -49.1925
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/expotrade-convention-center-pinhais-brazil-43d02f1f.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/expotrade-convention-center-pinhais-brazil-4bd623de.html"
+    },
+    {
+      "id": "13d62189",
+      "versionId": "23b6282f",
+      "eventDate": "09-05-2009",
+      "lastUpdated": "2015-06-17T08:56:55.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "23d6340b",
+        "name": "Arena Skol Anhembi",
+        "city": {
+          "id": "3448439",
+          "name": "São Paulo",
+          "state": "São Paulo",
+          "stateCode": "SP",
+          "coords": {
+            "lat": -23.5475,
+            "long": -46.63611111
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/arena-skol-anhembi-sao-paulo-brazil-23d6340b.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/arena-skol-anhembi-sao-paulo-brazil-13d62189.html"
+    },
+    {
+      "id": "7bd62648",
+      "versionId": "3bb62828",
+      "eventDate": "07-05-2009",
+      "lastUpdated": "2015-06-17T08:56:34.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "33d61c55",
+        "name": "Citibank Hall",
+        "city": {
+          "id": "3451190",
+          "name": "Rio de Janeiro",
+          "state": "Rio de Janeiro",
+          "stateCode": "RJ",
+          "coords": {
+            "lat": -22.903,
+            "long": -43.208
+          },
+          "country": {
+            "code": "BR",
+            "name": "Brazil"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/citibank-hall-rio-de-janeiro-brazil-33d61c55.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Everybody's on the Run\", \"Half the World Away\", \"Live Forever\", \"Gas Panic!\", \"My Big Mouth\", \"Roll with It\", and \"Waiting for the Rapture\" were all soundchecked before the show.",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/citibank-hall-rio-de-janeiro-brazil-7bd62648.html"
+    },
+    {
+      "id": "4bd6273e",
+      "versionId": "23b6282b",
+      "eventDate": "05-05-2009",
+      "lastUpdated": "2015-06-17T08:55:50.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "73d62229",
+        "name": "Movistar Arena",
+        "city": {
+          "id": "3871336",
+          "name": "Santiago",
+          "state": "Región Metropolitana",
+          "stateCode": "12",
+          "coords": {
+            "lat": -33.426,
+            "long": -70.567
+          },
+          "country": {
+            "code": "CL",
+            "name": "Chile"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/movistar-arena-santiago-chile-73d62229.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/movistar-arena-santiago-chile-4bd6273e.html"
+    },
+    {
+      "id": "3d62587",
+      "versionId": "3bb62834",
+      "eventDate": "03-05-2009",
+      "lastUpdated": "2015-06-17T08:55:28.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "7bd62eb4",
+        "name": "Estadio River Plate",
+        "city": {
+          "id": "3435910",
+          "name": "Buenos Aires",
+          "state": "Autonomous City of Buenos Aires",
+          "stateCode": "07",
+          "coords": {
+            "lat": -34.576,
+            "long": -58.409
+          },
+          "country": {
+            "code": "AR",
+            "name": "Argentina"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-river-plate-buenos-aires-argentina-7bd62eb4.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/estadio-river-plate-buenos-aires-argentina-3d62587.html"
+    },
+    {
+      "id": "7bd62aec",
+      "versionId": "7bb61650",
+      "eventDate": "30-04-2009",
+      "lastUpdated": "2015-06-18T20:52:55.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "63d6762f",
+        "name": "Estadio Nacional",
+        "city": {
+          "id": "3936454",
+          "name": "Lima",
+          "state": "Lima",
+          "stateCode": "15",
+          "coords": {
+            "lat": -12.0833333,
+            "long": -77.0833333
+          },
+          "country": {
+            "code": "PE",
+            "name": "Peru"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-nacional-lima-peru-63d6762f.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"To Be Where There's Life\", \"Waiting for the Rapture\", \"My Big Mouth\", \"Live Forever\", \"Roll With It\", \"Half the World Away\", and \"Gas Panic!\" were all soundchecked before the show.",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/estadio-nacional-lima-peru-7bd62aec.html"
+    },
+    {
+      "id": "3bd62474",
+      "versionId": "23b62837",
+      "eventDate": "28-04-2009",
+      "lastUpdated": "2015-06-17T08:54:44.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "53d7bf15",
+        "name": "Estadio de Fútbol de la Universidad Simón Bolívar",
+        "city": {
+          "id": "3646738",
+          "name": "Caracas",
+          "state": "Distrito Federal",
+          "stateCode": "25",
+          "coords": {
+            "lat": 10.5,
+            "long": -66.9166667
+          },
+          "country": {
+            "code": "VE",
+            "name": "Venezuela"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/estadio-de-futbol-de-la-universidad-simon-bolivar-caracas-venezuela-53d7bf15.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning",
+                "info": "First time in South America"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life",
+                "info": "First time in South America"
+              },
+              {
+                "name": "Waiting for the Rapture",
+                "info": "First time in South America"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'",
+                "info": "First time in South America"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time",
+                "info": "First time in South America"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down",
+                "info": "First time in South America"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/estadio-de-futbol-de-la-universidad-simon-bolivar-caracas-venezuela-3bd62474.html"
+    },
+    {
+      "id": "33d63071",
+      "versionId": "1b3b41f4",
+      "eventDate": "13-04-2009",
+      "lastUpdated": "2020-06-07T18:07:14.127+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "53d7377d",
+        "name": "Cape Town Ostrich Ranch",
+        "city": {
+          "id": "3362900",
+          "name": "Philadelphia",
+          "state": "Western Cape",
+          "stateCode": "11",
+          "coords": {
+            "lat": -33.6666667,
+            "long": 18.5833333
+          },
+          "country": {
+            "code": "ZA",
+            "name": "South Africa"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/cape-town-ostrich-ranch-philadelphia-south-africa-53d7377d.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/cape-town-ostrich-ranch-philadelphia-south-africa-33d63071.html"
+    },
+    {
+      "id": "5bd637ec",
+      "versionId": "g6373fa77",
+      "eventDate": "10-04-2009",
+      "lastUpdated": "2025-07-21T23:47:45.706+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "7bd73678",
+        "name": "Riversands Farm",
+        "city": {
+          "id": "993800",
+          "name": "Johannesburg",
+          "state": "Gauteng",
+          "stateCode": "06",
+          "coords": {
+            "lat": -26.2,
+            "long": 28.083
+          },
+          "country": {
+            "code": "ZA",
+            "name": "South Africa"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/riversands-farm-johannesburg-south-africa-7bd73678.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Oasis’ first gig in Africa as part of the Coca-Cola Zero Fest",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/riversands-farm-johannesburg-south-africa-5bd637ec.html"
+    },
+    {
+      "id": "13d63519",
+      "versionId": "430e53af",
+      "eventDate": "07-04-2009",
+      "lastUpdated": "2019-10-16T14:29:17.673+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "1bd245bc",
+        "name": "Arena",
+        "city": {
+          "id": "1818727",
+          "name": "Islands District",
+          "state": "Hong Kong (general)",
+          "stateCode": "00",
+          "coords": {
+            "lat": 22.45,
+            "long": 114.067
+          },
+          "country": {
+            "code": "HK",
+            "name": "Hong Kong SAR China"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/arena-islands-district-hong-kong-sar-china-1bd245bc.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"A Simple Game of Genius\", \"My Big Mouth\", \"To Be Where There's Life\", \"Waiting for the Rapture\", \"The Shock of the Lightning\", \"The Turning\", and \"Stop the Clocks\" were all soundchecked before the show.",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/arena-islands-district-hong-kong-sar-china-13d63519.html"
+    },
+    {
+      "id": "6bd63a5e",
+      "versionId": "g4b6ff7d6",
+      "eventDate": "05-04-2009",
+      "lastUpdated": "2025-12-26T00:24:53.477+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "73d62205",
+        "name": "Singapore Indoor Stadium",
+        "city": {
+          "id": "1880252",
+          "name": "Singapore",
+          "state": "Central Singapore",
+          "stateCode": "01",
+          "coords": {
+            "lat": 1.293,
+            "long": 103.856
+          },
+          "country": {
+            "code": "SG",
+            "name": "Singapore"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/singapore-indoor-stadium-singapore-singapore-73d62205.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird",
+                "info": "Andy Bell on keyboards"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle",
+                "info": "Acoustic"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/singapore-indoor-stadium-singapore-singapore-6bd63a5e.html"
+    },
+    {
+      "id": "2bd79c56",
+      "versionId": "3bb62838",
+      "eventDate": "03-04-2009",
+      "lastUpdated": "2015-06-17T08:51:43.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "4bd65716",
+        "name": "TWTC Nangang Exhibition Hall",
+        "city": {
+          "id": "1668341",
+          "name": "Taipei",
+          "state": "T'ai-pei",
+          "stateCode": "03",
+          "coords": {
+            "lat": 25.0391667,
+            "long": 121.525
+          },
+          "country": {
+            "code": "TW",
+            "name": "Taiwan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/twtc-nangang-exhibition-hall-taipei-taiwan-4bd65716.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "The song \"If I Had a Gun...\" by Noel Gallagher's High Flying Birds was soundchecked before the show.",
+      "url": "https://www.setlist.fm/setlist/oasis/2009/twtc-nangang-exhibition-hall-taipei-taiwan-2bd79c56.html"
+    },
+    {
+      "id": "3d63953",
+      "versionId": "33b62839",
+      "eventDate": "01-04-2009",
+      "lastUpdated": "2015-06-17T08:51:08.000+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "7bd67ec8",
+        "name": "Olympic Gymnastics Arena",
+        "city": {
+          "id": "1835848",
+          "name": "Seoul",
+          "state": "Seoul",
+          "stateCode": "11",
+          "coords": {
+            "lat": 37.5663889,
+            "long": 126.9997222
+          },
+          "country": {
+            "code": "KR",
+            "name": "South Korea"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/olympic-gymnastics-arena-seoul-south-korea-7bd67ec8.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Live Forever",
+                "info": "Acoustic with Noel Gallagher on vocals and tour debut"
+              },
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/olympic-gymnastics-arena-seoul-south-korea-3d63953.html"
+    },
+    {
+      "id": "2bd63c7a",
+      "versionId": "g3980547",
+      "eventDate": "29-03-2009",
+      "lastUpdated": "2023-08-31T09:02:07.265+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "bd1d1b6",
+        "name": "Hall 9-10-11",
+        "city": {
+          "id": "2113015",
+          "name": "Chiba",
+          "state": "Chiba",
+          "stateCode": "04",
+          "coords": {
+            "lat": 35.362,
+            "long": 140.622
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hall-9-10-11-chiba-japan-bd1d1b6.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "Whatever",
+                "info": "Acoustic with Noel Gallagher on vocals"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/hall-9-10-11-chiba-japan-2bd63c7a.html"
+    },
+    {
+      "id": "13d63df1",
+      "versionId": "g1b980544",
+      "eventDate": "28-03-2009",
+      "lastUpdated": "2023-08-31T09:02:23.659+0000",
+      "artist": {
+        "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+        "name": "Oasis",
+        "sortName": "Oasis",
+        "disambiguation": "Noel & Liam Gallagher",
+        "url": "https://www.setlist.fm/setlists/oasis-bd6bd7e.html"
+      },
+      "venue": {
+        "id": "bd1d1b6",
+        "name": "Hall 9-10-11",
+        "city": {
+          "id": "2113015",
+          "name": "Chiba",
+          "state": "Chiba",
+          "stateCode": "04",
+          "coords": {
+            "lat": 35.362,
+            "long": 140.622
+          },
+          "country": {
+            "code": "JP",
+            "name": "Japan"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hall-9-10-11-chiba-japan-bd1d1b6.html"
+      },
+      "tour": {
+        "name": "Dig Out Your Soul"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Fuckin' in the Bushes",
+                "tape": true
+              },
+              {
+                "name": "Rock 'n' Roll Star"
+              },
+              {
+                "name": "Lyla"
+              },
+              {
+                "name": "The Shock of the Lightning"
+              },
+              {
+                "name": "Cigarettes & Alcohol"
+              },
+              {
+                "name": "The Meaning of Soul"
+              },
+              {
+                "name": "To Be Where There's Life"
+              },
+              {
+                "name": "Waiting for the Rapture"
+              },
+              {
+                "name": "The Masterplan"
+              },
+              {
+                "name": "Songbird"
+              },
+              {
+                "name": "Slide Away"
+              },
+              {
+                "name": "Morning Glory"
+              },
+              {
+                "name": "Ain't Got Nothin'"
+              },
+              {
+                "name": "Whatever",
+                "info": "Acoustic with Noel Gallagher on vocals"
+              },
+              {
+                "name": "The Importance of Being Idle"
+              },
+              {
+                "name": "I'm Outta Time"
+              },
+              {
+                "name": "Wonderwall"
+              },
+              {
+                "name": "Supersonic"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Don't Look Back in Anger",
+                "info": "Acoustic"
+              },
+              {
+                "name": "Falling Down"
+              },
+              {
+                "name": "Champagne Supernova"
+              },
+              {
+                "name": "I Am the Walrus",
+                "cover": {
+                  "mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+                  "name": "The Beatles",
+                  "sortName": "Beatles, The",
+                  "disambiguation": "UK rock band, “The Fab Four”",
+                  "url": "https://www.setlist.fm/setlists/the-beatles-23d6a88b.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/oasis/2009/hall-9-10-11-chiba-japan-13d63df1.html"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-07-03T00:59:49.263Z",
+  "query": "Oasis",
+  "matchedName": "Oasis",
+  "mbid": "39ab1aed-75e0-4140-bd47-540276886b60",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "23-11-2025",
+  "oldestDate": "15-02-2009",
+  "tours": {
+    "Oasis Live ’25": {
+      "shows": 41,
+      "medianSongs": 25,
+      "minSongs": 24,
+      "maxSongs": 26
+    },
+    "Dig Out Your Soul": {
+      "shows": 55,
+      "medianSongs": 21,
+      "minSongs": 18,
+      "maxSongs": 24
+    },
+    "(no tour)": {
+      "shows": 4,
+      "medianSongs": 2,
+      "minSongs": 1,
+      "maxSongs": 3
+    }
+  }
+}

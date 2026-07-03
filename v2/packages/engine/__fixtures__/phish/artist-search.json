@@ -1,0 +1,113 @@
+{
+  "type": "artists",
+  "itemsPerPage": 30,
+  "page": 1,
+  "total": 15,
+  "artist": [
+    {
+      "mbid": "e01646f2-2a04-450d-8bf2-0d993082e058",
+      "name": "Phish",
+      "sortName": "Phish",
+      "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+      "url": "https://www.setlist.fm/setlists/phish-13d6ad51.html"
+    },
+    {
+      "mbid": "8b304747-e3b0-40d3-8f59-32ac79d5a7ef",
+      "name": "Readicculus (Phish Tribute)",
+      "sortName": "Readicculus (Phish Tribute)",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/readicculus-phish-tribute-6b9ceab2.html"
+    },
+    {
+      "mbid": "fbb949fc-ecea-46b5-a687-d73a8b62591a",
+      "name": "Big Eyed Phish",
+      "sortName": "Big Eyed Phish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/big-eyed-phish-53f4f319.html"
+    },
+    {
+      "mbid": "ba150be4-db20-4930-83a2-a0b8bfd4e65e",
+      "name": "The Lawn Boys - A Tribute to Phish",
+      "sortName": "The Lawn Boys - A Tribute to Phish",
+      "disambiguation": "Phish cover band",
+      "url": "https://www.setlist.fm/setlists/the-lawn-boys-a-tribute-to-phish-53cc6781.html"
+    },
+    {
+      "mbid": "7c3f25f4-bfec-450d-8e07-7d3e768a8a84",
+      "name": "Uncle Ebenezer- A Tribute to Phish",
+      "sortName": "Uncle Ebenezer- A Tribute to Phish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/uncle-ebenezer-a-tribute-to-phish-5bcb57d8.html"
+    },
+    {
+      "mbid": "856dc614-1579-4290-8d84-4e3175dd41d5",
+      "name": "Phish Bowl",
+      "sortName": "Phish Bowl",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/phish-bowl-73e21231.html"
+    },
+    {
+      "mbid": "fbcba38e-b0f0-41b0-99bb-084e654131ac",
+      "name": "Dead Phish Orchestra",
+      "sortName": "Dead Phish Orchestra",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/dead-phish-orchestra-5be12f9c.html"
+    },
+    {
+      "mbid": "fcc010bb-d46a-48f5-8f06-432035b53b11",
+      "name": "Port Fish",
+      "sortName": "Port Fish",
+      "disambiguation": "electronic music",
+      "url": "https://www.setlist.fm/setlists/port-fish-13f405a5.html"
+    },
+    {
+      "mbid": "173048c5-4cb8-4524-aa6c-b9a8c87feefb",
+      "name": "Solar Garlic - A Tribute to Phish",
+      "sortName": "Solar Garlic - A Tribute to Phish",
+      "disambiguation": "Phish Tribute Band",
+      "url": "https://www.setlist.fm/setlists/solar-garlic-a-tribute-to-phish-bc279fe.html"
+    },
+    {
+      "mbid": "7d133cdb-ceed-4d1b-b3ca-c62896ae2df4",
+      "name": "Phish Heads",
+      "sortName": "Phish Heads",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/phish-heads-5b9a77e0.html"
+    },
+    {
+      "mbid": "52c2dff8-fcbf-45a5-8b15-c32d3abb22b7",
+      "name": "Sarah Elaz's Almost Phish",
+      "sortName": "Sarah Elaz's Almost Phish",
+      "disambiguation": "Brooklyn-based Phish tribute",
+      "url": "https://www.setlist.fm/setlists/sarah-elazs-almost-phish-53e41f39.html"
+    },
+    {
+      "mbid": "ae6dc445-e97f-4cee-88be-bf62f228d983",
+      "name": "Xay Hill & J-Phish",
+      "sortName": "Xay Hill & J Phish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/xay-hill-and-j-phish-1bc93580.html"
+    },
+    {
+      "mbid": "4910ffc5-9d40-401e-b040-4cddb1586d6e",
+      "name": "Cell-Phish",
+      "sortName": "Cell-Phish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/cell-phish-3f6e1db.html"
+    },
+    {
+      "mbid": "2f195f7d-61df-4e9e-8d79-897a4075ce99",
+      "name": "Bad Phish",
+      "sortName": "Bad Phish",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/bad-phish-5b9d6720.html"
+    },
+    {
+      "mbid": "3b67691a-9994-4042-9a6c-895c05d15433",
+      "name": "Phish w/ Oteil Burbridge & Stacy Starkweather",
+      "sortName": "Phish w/ Burbridge, Oteil & Starkweather, Stacy",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/phish-w-oteil-burbridge-and-stacy-starkweather-63f89eeb.html"
+    }
+  ]
+}

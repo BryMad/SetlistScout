@@ -1,0 +1,218 @@
+{
+  "type": "artists",
+  "itemsPerPage": 30,
+  "page": 1,
+  "total": 64,
+  "artist": [
+    {
+      "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+      "name": "Metallica",
+      "sortName": "Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-3bd680c8.html"
+    },
+    {
+      "mbid": "d8ad6566-5207-4d44-ada0-2f2493320451",
+      "name": "One: The ONLY Tribute to Metallica",
+      "sortName": "One: The ONLY Tribute to Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/one-the-only-tribute-to-metallica-5bc6fbe8.html"
+    },
+    {
+      "mbid": "f55b4371-a3ef-4d95-8b5f-0f1bc02a3d10",
+      "name": "Black Metallica",
+      "sortName": "Black Metallica Tribute Band",
+      "disambiguation": "Metallica tribute band from Novi Sad, Serbia",
+      "url": "https://www.setlist.fm/setlists/black-metallica-7bf952e0.html"
+    },
+    {
+      "mbid": "a0b13500-2634-4572-9e66-1afc71319be4",
+      "name": "Some Kind of Metallica",
+      "sortName": "Some Kind of Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/some-kind-of-metallica-2be6a896.html"
+    },
+    {
+      "mbid": "9e8e7fd5-9d42-4474-bc39-bb4a3811e278",
+      "name": "Metallica Reloaded",
+      "sortName": "Metallica Reloaded",
+      "disambiguation": "Metallica tribute band",
+      "url": "https://www.setlist.fm/setlists/metallica-reloaded-63cdf67b.html"
+    },
+    {
+      "mbid": "4b34e494-bbdf-49db-b035-ea2729c1ea2f",
+      "name": "Metallica Jam",
+      "sortName": "Metallica Jam",
+      "disambiguation": "Metallica tribute band",
+      "url": "https://www.setlist.fm/setlists/metallica-jam-1bc76904.html"
+    },
+    {
+      "mbid": "f17b572e-2485-41c2-936a-97839e4676cd",
+      "name": "Orion – A Metallica Experience",
+      "sortName": "Orion – A Metallica Experience",
+      "disambiguation": "Strasbourg, France Metallica tribute",
+      "url": "https://www.setlist.fm/setlists/orion--a-metallica-experience-339d6c01.html"
+    },
+    {
+      "mbid": "4564f586-4d61-46c8-aee4-b88b6e105c69",
+      "name": "Lou Reed & Metallica",
+      "sortName": "Reed, Lou & Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/lou-reed-and-metallica-73d3aea5.html"
+    },
+    {
+      "mbid": "d79d0275-89c2-4223-b52b-3d47379ab9ca",
+      "name": "The Best of Metallica",
+      "sortName": "Best of Metallica, The",
+      "disambiguation": "tribute to Metallica from France/Luxembourg",
+      "url": "https://www.setlist.fm/setlists/the-best-of-metallica-73e1d66d.html"
+    },
+    {
+      "mbid": "f3e7607d-2fdb-49e3-bb79-02d61ab0c5e5",
+      "name": "Metallica feat. Ray Davies",
+      "sortName": "Metallica feat. Davies, Ray",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-ray-davies-bf3f1ce.html"
+    },
+    {
+      "mbid": "b0b72a36-f24f-4a88-b75e-57044646edd3",
+      "name": "Metallica feat. Jeff Beck, Jimmy Page, Ron Wood, J. Perry, Flea",
+      "sortName": "Metallica feat. Beck, Jeff, Page, Jimmy, Wood, Ron, Perry, J., Flea",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-jeff-beck-jimmy-page-ron-wood-j-perry-flea-1bf3f1cc.html"
+    },
+    {
+      "mbid": "21ea5e4b-cd2e-4c6b-93ef-ef5771f4153e",
+      "name": "Metallica with Michael Kamen conducting the San Francisco Symphony Orchestra",
+      "sortName": "Metallica with Kamen, Michael conducting the San Francisco Symphony",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-with-michael-kamen-conducting-the-san-francisco-symphony-orchestra-7bef5edc.html"
+    },
+    {
+      "mbid": "7e7df058-f654-437c-959e-df35219fa8a7",
+      "name": "Metallica & Lemmy",
+      "sortName": "Metallica & Kilmister, Lemmy",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-and-lemmy-3b90a410.html"
+    },
+    {
+      "mbid": "0fb9bdfc-fba3-4960-85f2-86909750d015",
+      "name": "Metallica & Rob Halford",
+      "sortName": "Metallica & Halford, Rob",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-and-rob-halford-4b91e732.html"
+    },
+    {
+      "mbid": "6476c8a5-24d9-4a0b-a1e7-64e000ebec80",
+      "name": "Metallica & Jerry Cantrell",
+      "sortName": "Metallica & Cantrell, Jerry",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-and-jerry-cantrell-4391e733.html"
+    },
+    {
+      "mbid": "4fc6b76d-ea7e-4f0a-9db8-2ecfc88bd7a7",
+      "name": "Metallica con Michael Kamen dirigiendo a la Orquesta Sinfónica De San Francisco",
+      "sortName": "Metallica con Kamen, Michael dirigiendo a la San Francisco Symphony",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-con-michael-kamen-dirigiendo-a-la-orquesta-sinfonica-de-san-francisco-7bef5e88.html"
+    },
+    {
+      "mbid": "6a39c078-a16d-4420-99b5-d9125c642507",
+      "name": "Metallica feat. King Diamond, Hank Shermann, Michael Denner & Timi Hansen",
+      "sortName": "Metallica feat. Diamond, King, Shermann, Hank, Denner, Michael & Hansen, Timi",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-king-diamond-hank-shermann-michael-denner-and-timi-hansen-5bd0fb10.html"
+    },
+    {
+      "mbid": "7af6f1aa-bc2a-4b86-acc7-878ab8dfe5c6",
+      "name": "Metallica feat. Kid Rock",
+      "sortName": "Metallica feat. Kid Rock",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-kid-rock-5bd0fb1c.html"
+    },
+    {
+      "mbid": "5cb7fff6-0d4d-4bde-804d-0636ffdb7512",
+      "name": "Metallica feat. Gary Rossington, Pepper Keenan, Jim Martin & Jerry Cantrell",
+      "sortName": "Metallica feat. Rossington, Gary, Keenan, Pepper, Martin, Jim & Cantrell, Jerry",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-gary-rossington-pepper-keenan-jim-martin-and-jerry-cantrell-3bd0e0c0.html"
+    },
+    {
+      "mbid": "d826444e-befc-4072-9df2-7abbc4819cde",
+      "name": "Metallica feat. Diamond Head",
+      "sortName": "Metallica feat. Diamond Head",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-diamond-head-73dffa1d.html"
+    },
+    {
+      "mbid": "054587fc-788e-43c1-8604-2fa76344e1ab",
+      "name": "Metallica feat. Jerry Cantrell",
+      "sortName": "Metallica feat. Cantrell, Jerry",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-jerry-cantrell-13d0e105.html"
+    },
+    {
+      "mbid": "635e90be-09e5-4e89-9448-4d4978780231",
+      "name": "Ray Davies & Metallica",
+      "sortName": "Davies, Ray & Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/ray-davies-and-metallica-139f992d.html"
+    },
+    {
+      "mbid": "52502882-a7f2-491b-b038-0bd7a70d01e9",
+      "name": "Metallica feat. Biff Byford",
+      "sortName": "Metallica feat. Byford, Biff",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-biff-byford-33dfe015.html"
+    },
+    {
+      "mbid": "375738b0-cd25-480a-b408-ac0f9d9fbca4",
+      "name": "Metallica & Marianne Faithfull",
+      "sortName": "Metallica & Faithfull, Marianne",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-and-marianne-faithfull-6b87faea.html"
+    },
+    {
+      "mbid": "31fd1ad6-3bfa-4589-b4d2-4b23931901af",
+      "name": "Metallica featuring Jeff Beck, Jimmy Page, Ron Wood, Joe Perry, Jason Newsted & Flea",
+      "sortName": "Metallica featuring Beck, Jeff, Page, Jimmy, Wood, Ron, Perry, Joe, Newsted, Jason & Flea",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-featuring-jeff-beck-jimmy-page-ron-wood-joe-perry-jason-newsted-and-flea-53f4d335.html"
+    },
+    {
+      "mbid": "e1fbca95-c037-4ef4-9ce2-b0f89d0f289e",
+      "name": "Hardwell & Metallica",
+      "sortName": "Hardwell & Metallica",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/hardwell-and-metallica-33fa3815.html"
+    },
+    {
+      "mbid": "64c7383d-4d29-4f79-a98c-fd433a122ea5",
+      "name": "No Life 'Til Leather (Metallica Cover Band)",
+      "sortName": "No Life 'Til Leather (Metallica Cover Band)",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/no-life-til-leather-metallica-cover-band-3be7dc28.html"
+    },
+    {
+      "mbid": "55791160-c3ff-40e3-8345-a7956fef419e",
+      "name": "Metallica with Jools Holland",
+      "sortName": "Metallica with Holland, Jools",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-with-jools-holland-2390a417.html"
+    },
+    {
+      "mbid": "c6d49f91-670a-4a37-aa42-6ebca4ab92c6",
+      "name": "Metallica feat. Joseph Guariglia",
+      "sortName": "Metallica feat. Guariglia, Joseph",
+      "disambiguation": "",
+      "url": "https://www.setlist.fm/setlists/metallica-feat-joseph-guariglia-33dff85d.html"
+    },
+    {
+      "mbid": "3cc58f89-767e-4926-9ac4-160b8e280cd4",
+      "name": "Metallica 2",
+      "sortName": "Metallica 2",
+      "disambiguation": "Chilean tribal ambient/metal",
+      "url": "https://www.setlist.fm/setlists/metallica-2-bfb4dda.html"
+    }
+  ]
+}

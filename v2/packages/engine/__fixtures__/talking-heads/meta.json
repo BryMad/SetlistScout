@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-07-03T01:00:07.461Z",
+  "query": "Talking Heads",
+  "matchedName": "Talking Heads",
+  "mbid": "a94a7155-c79d-4409-9fcf-220cb0e4dc3a",
+  "pagesCaptured": 5,
+  "showCount": 100,
+  "newestDate": "18-03-2002",
+  "oldestDate": "26-07-1982",
+  "tours": {
+    "(no tour)": {
+      "shows": 2,
+      "medianSongs": 15,
+      "minSongs": 4,
+      "maxSongs": 15
+    },
+    "Speaking In Tongues": {
+      "shows": 63,
+      "medianSongs": 21,
+      "minSongs": 0,
+      "maxSongs": 22
+    },
+    "The Name of This Band Is Talking Heads": {
+      "shows": 35,
+      "medianSongs": 15,
+      "minSongs": 0,
+      "maxSongs": 16
+    }
+  }
+}

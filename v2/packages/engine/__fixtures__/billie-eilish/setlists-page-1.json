@@ -1,0 +1,3171 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 519,
+  "setlist": [
+    {
+      "id": "6b47d66a",
+      "versionId": "g13110169",
+      "eventDate": "23-11-2025",
+      "lastUpdated": "2026-04-24T15:24:48.100+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "4bd3f3f2",
+        "name": "Chase Center",
+        "city": {
+          "id": "5391959",
+          "name": "San Francisco",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 37.775,
+            "long": -122.419
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/chase-center-san-francisco-ca-usa-4bd3f3f2.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "INTRO",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“TRUE BLUE” version; barricade walk"
+              },
+              {
+                "name": "lovely / idontwannabeyouanymore / ocean eyes",
+                "info": "FINNEAS came out at the end of “lovely”",
+                "with": {
+                  "mbid": "151cd917-1ee2-4702-859f-90899ad897f8",
+                  "name": "FINNEAS",
+                  "sortName": "FINNEAS",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/finneas-3bce50a0.html"
+                }
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“BORN BLUE” version; movie trailer played"
+              },
+              {
+                "name": "goodbye",
+                "tape": true
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Final show of the 'HIT ME HARD AND SOFT' tour.",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/chase-center-san-francisco-ca-6b47d66a.html"
+    },
+    {
+      "id": "6347d66b",
+      "versionId": "g4b1e3352",
+      "eventDate": "22-11-2025",
+      "lastUpdated": "2026-04-30T00:25:34.266+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "4bd3f3f2",
+        "name": "Chase Center",
+        "city": {
+          "id": "5391959",
+          "name": "San Francisco",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 37.775,
+            "long": -122.419
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/chase-center-san-francisco-ca-usa-4bd3f3f2.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "INTRO",
+                "tape": true,
+                "info": "contains elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Another Love",
+                "cover": {
+                  "mbid": "fee6a7fb-80d9-4290-a171-e48f1f20e381",
+                  "name": "Tom Odell",
+                  "sortName": "Odell, Tom",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/tom-odell-53dfcf35.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "“featuring billie eilish” remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“TRUE BLUE” version; barricade walk"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes",
+                "info": "“BORN BLUE” version"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“BORN BLUE” version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/chase-center-san-francisco-ca-6347d66b.html"
+    },
+    {
+      "id": "7347d675",
+      "versionId": "g131f5d19",
+      "eventDate": "19-11-2025",
+      "lastUpdated": "2026-05-09T23:21:37.717+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "1bde6564",
+        "name": "Mortgage Matchup Center",
+        "city": {
+          "id": "5308655",
+          "name": "Phoenix",
+          "state": "Arizona",
+          "stateCode": "AZ",
+          "coords": {
+            "lat": 33.4483771,
+            "long": -112.0740373
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mortgage-matchup-center-phoenix-az-usa-1bde6564.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looping vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Halley's Comet"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "intermission; snippet"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version; barricade walk"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "transitions into “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "'Billie Eilish - Hit Me Hard and Soft: The Tour (Live in 3D)' concert film (released worldwide 8 May 2026) contains footage from this date.",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/mortgage-matchup-center-phoenix-az-7347d675.html"
+    },
+    {
+      "id": "6347d677",
+      "versionId": "g731146dd",
+      "eventDate": "18-11-2025",
+      "lastUpdated": "2026-04-26T07:07:57.060+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "1bde6564",
+        "name": "Mortgage Matchup Center",
+        "city": {
+          "id": "5308655",
+          "name": "Phoenix",
+          "state": "Arizona",
+          "stateCode": "AZ",
+          "coords": {
+            "lat": 33.4483771,
+            "long": -112.0740373
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/mortgage-matchup-center-phoenix-az-usa-1bde6564.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended intro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "“featuring billie eilish” remixed version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“TRUE BLUE” version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes",
+                "info": "fan project where fans held papers for the 10th anniversary for the song “ocean eyes”"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "With “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“BORN BLUE” version"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "'Billie Eilish - Hit Me Hard and Soft: The Tour (Live in 3D)' concert film (released worldwide\n8 May 2026) contains footage from this date.",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/mortgage-matchup-center-phoenix-az-6347d677.html"
+    },
+    {
+      "id": "6b47d672",
+      "versionId": "g3b628cdc",
+      "eventDate": "14-11-2025",
+      "lastUpdated": "2025-11-15T04:01:56.347+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "3bd02c30",
+        "name": "Moody Center",
+        "city": {
+          "id": "4671654",
+          "name": "Austin",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 30.267153,
+            "long": -97.7430608
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/moody-center-austin-tx-usa-3bd02c30.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“TRUE BLUE” version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "“BORN BLUE” version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/moody-center-austin-tx-6b47d672.html"
+    },
+    {
+      "id": "7347d67d",
+      "versionId": "g5b62b3e4",
+      "eventDate": "13-11-2025",
+      "lastUpdated": "2025-11-14T04:01:19.964+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "3bd02c30",
+        "name": "Moody Center",
+        "city": {
+          "id": "4671654",
+          "name": "Austin",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 30.267153,
+            "long": -97.7430608
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/moody-center-austin-tx-usa-3bd02c30.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Cry Me a River",
+                "cover": {
+                  "mbid": "e7ee5f13-baf5-4a87-b58b-f871c137d4f5",
+                  "name": "Julie London",
+                  "sortName": "London, Julie",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/julie-london-5bd6bbc0.html"
+                }
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/moody-center-austin-tx-7347d67d.html"
+    },
+    {
+      "id": "6b47d67e",
+      "versionId": "g63657a8b",
+      "eventDate": "11-11-2025",
+      "lastUpdated": "2025-11-12T03:29:43.371+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "4bd62312",
+        "name": "BOK Center",
+        "city": {
+          "id": "4553433",
+          "name": "Tulsa",
+          "state": "Oklahoma",
+          "stateCode": "OK",
+          "coords": {
+            "lat": 36.1539816,
+            "long": -95.992775
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/bok-center-tulsa-ok-usa-4bd62312.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Halley's Comet"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended intro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with ‘OVER NOW’ extended version"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/bok-center-tulsa-ok-6b47d67e.html"
+    },
+    {
+      "id": "7347d679",
+      "versionId": "g6b6516ee",
+      "eventDate": "10-11-2025",
+      "lastUpdated": "2025-11-11T04:00:11.323+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "4bd62312",
+        "name": "BOK Center",
+        "city": {
+          "id": "4553433",
+          "name": "Tulsa",
+          "state": "Oklahoma",
+          "stateCode": "OK",
+          "coords": {
+            "lat": 36.1539816,
+            "long": -95.992775
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/bok-center-tulsa-ok-usa-4bd62312.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "“featuring billie eilish” remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version; barricade walk"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with ‘OVER NOW’ extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/bok-center-tulsa-ok-7347d679.html"
+    },
+    {
+      "id": "6347d67b",
+      "versionId": "g5365cb5d",
+      "eventDate": "08-11-2025",
+      "lastUpdated": "2025-11-09T15:51:53.935+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "6bd4e206",
+        "name": "Smoothie King Center",
+        "city": {
+          "id": "4335045",
+          "name": "New Orleans",
+          "state": "Louisiana",
+          "stateCode": "LA",
+          "coords": {
+            "lat": 29.955,
+            "long": -90.075
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/smoothie-king-center-new-orleans-la-usa-6bd4e206.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              }
+            ]
+          },
+          {
+            "name": "Acoustic",
+            "song": [
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Halley's Comet"
+              }
+            ]
+          },
+          {
+            "name": "",
+            "song": [
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version; barricade walk"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with “OVER NOW” extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/smoothie-king-center-new-orleans-la-6347d67b.html"
+    },
+    {
+      "id": "5b47d784",
+      "versionId": "g3b65d048",
+      "eventDate": "07-11-2025",
+      "lastUpdated": "2025-11-09T07:23:14.110+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "6bd4e206",
+        "name": "Smoothie King Center",
+        "city": {
+          "id": "4335045",
+          "name": "New Orleans",
+          "state": "Louisiana",
+          "stateCode": "LA",
+          "coords": {
+            "lat": 29.955,
+            "long": -90.075
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/smoothie-king-center-new-orleans-la-usa-6bd4e206.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro; shortened"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ remix version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "A-Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with ‘OVER NOW’ extended edit"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/smoothie-king-center-new-orleans-la-5b47d784.html"
+    },
+    {
+      "id": "4b47d786",
+      "versionId": "g4b648f02",
+      "eventDate": "26-10-2025",
+      "lastUpdated": "2025-10-31T14:30:26.858+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "7bd0da88",
+        "name": "UBS Arena",
+        "city": {
+          "id": "5116508",
+          "name": "Elmont",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.700936,
+            "long": -73.712909
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ubs-arena-elmont-ny-usa-7bd0da88.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "",
+                "tape": true,
+                "info": "Contains elements of \"THE GREATEST\""
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "Shortened"
+              },
+              {
+                "name": "Therefore I Am",
+                "info": "Shortened"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "Vocal layer loops"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "I Fall in Love Too Easily",
+                "cover": {
+                  "mbid": "1ba1d493-7114-45e2-b163-a36d49a0c065",
+                  "name": "Chet Baker",
+                  "sortName": "Baker, Chet",
+                  "disambiguation": "American jazz trumpeter and vocalist",
+                  "url": "https://www.setlist.fm/setlists/chet-baker-3d601f7.html"
+                }
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "Transition / Interlude"
+              },
+              {
+                "name": "bury a friend",
+                "info": "Shortened"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "Shortened"
+              },
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted",
+                "info": "Shortened"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Interlude / Intermission"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "Extended \"Over Now\" Version"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "Shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Outro"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/ubs-arena-elmont-ny-4b47d786.html"
+    },
+    {
+      "id": "4347d787",
+      "versionId": "g36705db",
+      "eventDate": "25-10-2025",
+      "lastUpdated": "2025-10-27T08:14:45.807+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "7bd0da88",
+        "name": "UBS Arena",
+        "city": {
+          "id": "5116508",
+          "name": "Elmont",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.700936,
+            "long": -73.712909
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ubs-arena-elmont-ny-usa-7bd0da88.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "‘Contains elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "Shortened"
+              },
+              {
+                "name": "Therefore I Am",
+                "info": "Shortened"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "‘Vocal layer loops’ / The crowd failed"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "Shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "Transition/Interlude/Intermission"
+              },
+              {
+                "name": "bury a friend",
+                "info": "Shortened"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "Shortened"
+              },
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted",
+                "info": "Shortened"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Interlude/Intermission/Barricade Walk"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "‘Extended version of ‘OVER NOW’"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever",
+                "info": "Shortened"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "OUTRO"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/ubs-arena-elmont-ny-4347d787.html"
+    },
+    {
+      "id": "5347d781",
+      "versionId": "g367d167",
+      "eventDate": "23-10-2025",
+      "lastUpdated": "2025-10-25T02:07:37.211+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "3bde3018",
+        "name": "Xfinity Mobile Arena",
+        "city": {
+          "id": "4560349",
+          "name": "Philadelphia",
+          "state": "Pennsylvania",
+          "stateCode": "PA",
+          "coords": {
+            "lat": 39.952335,
+            "long": -75.163789
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/xfinity-mobile-arena-philadelphia-pa-usa-3bde3018.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "Contains Elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "I'm in the Mood for Love",
+                "cover": {
+                  "mbid": "c414371b-3377-43b5-9dc2-2a20254ed520",
+                  "name": "Jimmy McHugh",
+                  "sortName": "McHugh, Jimmy",
+                  "disambiguation": "songwriter",
+                  "url": "https://www.setlist.fm/setlists/jimmy-mchugh-7bd38e14.html"
+                }
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "Transition / Interlude"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              },
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Interlude/intermission"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "‘Extended version of ‘Over Now’"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/xfinity-mobile-arena-philadelphia-pa-5347d781.html"
+    },
+    {
+      "id": "4347d783",
+      "versionId": "g236c947f",
+      "eventDate": "20-10-2025",
+      "lastUpdated": "2026-01-04T21:39:37.425+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "23d514af",
+        "name": "Spectrum Center",
+        "city": {
+          "id": "4460243",
+          "name": "Charlotte",
+          "state": "North Carolina",
+          "stateCode": "NC",
+          "coords": {
+            "lat": 35.2270869,
+            "long": -80.8431268
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/spectrum-center-charlotte-nc-usa-23d514af.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "includes elements of 'THE GREATEST'"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "Shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live with looped vocals"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Halley's Comet"
+              },
+              {
+                "name": "Bittersuite",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "'TRUE BLUE' Version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with 'OVER NOW EXTENDED VERSION'"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/spectrum-center-charlotte-nc-4347d783.html"
+    },
+    {
+      "id": "5347d78d",
+      "versionId": "gb67998e",
+      "eventDate": "19-10-2025",
+      "lastUpdated": "2025-10-22T20:30:55.451+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "23d514af",
+        "name": "Spectrum Center",
+        "city": {
+          "id": "4460243",
+          "name": "Charlotte",
+          "state": "North Carolina",
+          "stateCode": "NC",
+          "coords": {
+            "lat": 35.2270869,
+            "long": -80.8431268
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/spectrum-center-charlotte-nc-usa-23d514af.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "OVER NOW EXTENDED EDIT"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Outro"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/spectrum-center-charlotte-nc-5347d78d.html"
+    },
+    {
+      "id": "5b47d788",
+      "versionId": "gb66351e",
+      "eventDate": "17-10-2025",
+      "lastUpdated": "2025-10-18T03:01:24.101+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "33de9cd9",
+        "name": "Lenovo Center",
+        "city": {
+          "id": "4487042",
+          "name": "Raleigh",
+          "state": "North Carolina",
+          "stateCode": "NC",
+          "coords": {
+            "lat": 35.772096,
+            "long": -78.6386145
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/lenovo-center-raleigh-nc-usa-33de9cd9.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "includes elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "I Fall in Love Too Easily",
+                "cover": {
+                  "mbid": "1ba1d493-7114-45e2-b163-a36d49a0c065",
+                  "name": "Chet Baker",
+                  "sortName": "Baker, Chet",
+                  "disambiguation": "American jazz trumpeter and vocalist",
+                  "url": "https://www.setlist.fm/setlists/chet-baker-3d601f7.html"
+                }
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro"
+              }
+            ]
+          },
+          {
+            "name": "B-Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                },
+                "info": "‘featuring billie eilish’ version"
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘TRUE BLUE’ version"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "with 'OVER NOW EXTENDED EDIT‘"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "‘BORN BLUE’ version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/lenovo-center-raleigh-nc-5b47d788.html"
+    },
+    {
+      "id": "5347d789",
+      "versionId": "g23656c3b",
+      "eventDate": "16-10-2025",
+      "lastUpdated": "2025-11-12T11:53:14.784+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "33de9cd9",
+        "name": "Lenovo Center",
+        "city": {
+          "id": "4487042",
+          "name": "Raleigh",
+          "state": "North Carolina",
+          "stateCode": "NC",
+          "coords": {
+            "lat": 35.772096,
+            "long": -78.6386145
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/lenovo-center-raleigh-nc-usa-33de9cd9.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "Live looped vocals"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              }
+            ]
+          },
+          {
+            "name": "B Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Snippet"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "Extended version"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Outro"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/lenovo-center-raleigh-nc-5347d789.html"
+    },
+    {
+      "id": "4347d78b",
+      "versionId": "g1b6699bc",
+      "eventDate": "14-10-2025",
+      "lastUpdated": "2025-10-15T04:06:07.020+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "13d119ad",
+        "name": "Kia Center",
+        "city": {
+          "id": "4167147",
+          "name": "Orlando",
+          "state": "Florida",
+          "stateCode": "FL",
+          "coords": {
+            "lat": 28.5383355,
+            "long": -81.3792365
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/kia-center-orlando-fl-usa-13d119ad.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "Contains elements of “THE GREATEST”"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "Shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "Live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "Transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              }
+            ]
+          },
+          {
+            "name": "B Stage",
+            "song": [
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Snippet"
+              }
+            ]
+          },
+          {
+            "name": "Main Stage",
+            "song": [
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "Extended version"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Outro"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/kia-center-orlando-fl-4347d78b.html"
+    },
+    {
+      "id": "4b47d796",
+      "versionId": "g53665b7d",
+      "eventDate": "12-10-2025",
+      "lastUpdated": "2025-10-20T19:16:04.682+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "23d18c7b",
+        "name": "Kaseya Center",
+        "city": {
+          "id": "4164138",
+          "name": "Miami",
+          "state": "Florida",
+          "stateCode": "FL",
+          "coords": {
+            "lat": 25.7742658,
+            "long": -80.1936589
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/kaseya-center-miami-fl-usa-23d18c7b.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "",
+                "tape": true,
+                "info": "Contains Elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "Shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "Live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "Halley's Comet",
+                "info": "Surprise song"
+              },
+              {
+                "name": "BITTERSUITE/The Diner",
+                "tape": true,
+                "info": "Transition / Interlude"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin"
+              },
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "Over Now Extended"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE Outro",
+                "tape": true
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Day 3 Of Miami",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/kaseya-center-miami-fl-4b47d796.html"
+    },
+    {
+      "id": "4b47d792",
+      "versionId": "gb6f85e6",
+      "eventDate": "11-10-2025",
+      "lastUpdated": "2025-12-24T21:52:18.649+0000",
+      "artist": {
+        "mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+        "name": "Billie Eilish",
+        "sortName": "Eilish, Billie",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/billie-eilish-1bc3b540.html"
+      },
+      "venue": {
+        "id": "23d18c7b",
+        "name": "Kaseya Center",
+        "city": {
+          "id": "4164138",
+          "name": "Miami",
+          "state": "Florida",
+          "stateCode": "FL",
+          "coords": {
+            "lat": 25.7742658,
+            "long": -80.1936589
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/kaseya-center-miami-fl-usa-23d18c7b.html"
+      },
+      "tour": {
+        "name": "HIT ME HARD AND SOFT"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "Intro",
+                "tape": true,
+                "info": "contains elements of ‘THE GREATEST’"
+              },
+              {
+                "name": "CHIHIRO"
+              },
+              {
+                "name": "LUNCH"
+              },
+              {
+                "name": "NDA",
+                "info": "shortened"
+              },
+              {
+                "name": "Therefore I Am"
+              },
+              {
+                "name": "WILDFLOWER"
+              },
+              {
+                "name": "when the party's over",
+                "info": "live looped vocal layers intro"
+              },
+              {
+                "name": "THE DINER"
+              },
+              {
+                "name": "ilomilo",
+                "info": "Shortened"
+              },
+              {
+                "name": "bad guy"
+              },
+              {
+                "name": "my future"
+              },
+              {
+                "name": "THE GREATEST"
+              },
+              {
+                "name": "Your Power"
+              },
+              {
+                "name": "SKINNY"
+              },
+              {
+                "name": "TV"
+              },
+              {
+                "name": "BITTERSUITE",
+                "tape": true,
+                "info": "transition; shortened"
+              },
+              {
+                "name": "bury a friend"
+              },
+              {
+                "name": "Oxytocin",
+                "info": "extended outro"
+              },
+              {
+                "name": "Guess",
+                "cover": {
+                  "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+                  "name": "Charli xcx",
+                  "sortName": "Charli xcx",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/charli-xcx-33d5dcdd.html"
+                }
+              },
+              {
+                "name": "everything i wanted",
+                "info": "shortened"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "'TRUE BLUE' first half, runs around main stage barricade"
+              },
+              {
+                "name": "lovely / BLUE / ocean eyes"
+              },
+              {
+                "name": "L'AMOUR DE MA VIE",
+                "info": "'[OVER NOW EXTENDED EDIT]' only"
+              },
+              {
+                "name": "What Was I Made For?"
+              },
+              {
+                "name": "Happier Than Ever"
+              },
+              {
+                "name": "BIRDS OF A FEATHER"
+              },
+              {
+                "name": "BLUE",
+                "tape": true,
+                "info": "Outro"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "BLUE",
+      "url": "https://www.setlist.fm/setlist/billie-eilish/2025/kaseya-center-miami-fl-4b47d792.html"
+    }
+  ]
+}
