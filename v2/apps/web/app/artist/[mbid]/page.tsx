@@ -7,8 +7,10 @@ import { getShows, matchTracks, runPrediction } from "@/lib/data";
 import type { MatchedTrack } from "@setlistscout/clients";
 import type { PredictMode } from "@setlistscout/engine";
 
-/** How many top songs get Spotify matching and go into the playlist. */
+/** How many top songs go into the playlist. */
 const PLAYLIST_SIZE = 30;
+/** How many songs get Spotify matching (art, links) — deeper than the playlist. */
+const MATCH_SIZE = 60;
 
 interface PageProps {
   params: Promise<{ mbid: string }>;
@@ -36,7 +38,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
 
   let matches = new Map<string, MatchedTrack | null>();
   if (prediction) {
-    matches = await matchTracks(name, prediction.songs.slice(0, PLAYLIST_SIZE));
+    matches = await matchTracks(name, prediction.songs.slice(0, MATCH_SIZE));
   }
   const playlistUris = prediction
     ? prediction.songs
@@ -54,7 +56,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
+      <h1 className="font-display text-3xl font-bold tracking-tight">{name}</h1>
       <SectionNav mbid={mbid} name={name} active="predict" />
 
       <nav className="mt-6 flex flex-wrap items-center gap-2">
@@ -87,11 +89,11 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
           <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`rounded-full border px-3 py-0.5 text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
+                className={`rounded-full border px-3 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}
               >
                 {prediction.confidence} confidence
               </span>
-              <span className="text-sm text-zinc-500">
+              <span className="font-mono text-xs text-zinc-500">
                 {prediction.showsAnalyzed} shows · {prediction.dateRange.from} →{" "}
                 {prediction.dateRange.to}
               </span>

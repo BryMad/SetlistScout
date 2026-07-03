@@ -20,9 +20,9 @@ export default function SectionNav({ mbid, name, active }: SectionNavProps) {
         <Link
           key={section.key}
           href={section.href}
-          className={`rounded-lg px-5 py-2 text-sm font-semibold ${
+          className={`rounded-lg px-5 py-2 font-display text-sm font-semibold uppercase tracking-wider ${
             active === section.key
-              ? "bg-indigo-600 text-white"
+              ? "bg-indigo-600 text-white shadow-[0_0_16px_rgba(99,102,241,0.45)]"
               : "text-zinc-400 hover:text-zinc-200"
           }`}
         >

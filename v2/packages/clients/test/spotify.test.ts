@@ -8,7 +8,7 @@ const track = (over: Record<string, unknown> = {}) => ({
   uri: "spotify:track:t1",
   name: "Even Flow",
   artists: [{ name: "Pearl Jam" }],
-  album: { images: [{ url: "https://img/640", width: 640 }, { url: "https://img/300", width: 300 }, { url: "https://img/64", width: 64 }] },
+  album: { name: "Ten", images: [{ url: "https://img/640", width: 640 }, { url: "https://img/300", width: 300 }, { url: "https://img/64", width: 64 }] },
   external_urls: { spotify: "https://open.spotify.com/track/t1" },
   popularity: 70,
   ...over,
@@ -74,6 +74,7 @@ describe("SpotifyClient matching", () => {
     const match = await client.matchSong({ key: "k", name: "Even Flow", artist: "Pearl Jam" });
     expect(match!.id).toBe("studio");
     expect(match!.albumArt).toBe("https://img/300");
+    expect(match!.album).toBe("Ten");
   });
 
   it("falls back to a plain-text query when the fielded search misses", async () => {
@@ -111,7 +112,7 @@ describe("SpotifyClient matching", () => {
     expect(sleeps).toContain(3000);
   });
 
-  it("matchSongs keys results by song key and survives individual failures", async () => {
+  it("matchSongs omits errored lookups so callers can't cache them as no-match", async () => {
     const { client } = makeClient([
       { body: TOKEN },
       { body: { tracks: { items: [track()] } } },
@@ -125,7 +126,7 @@ describe("SpotifyClient matching", () => {
       { concurrency: 1 }
     );
     expect(result.get("even flow")!.uri).toBe("spotify:track:t1");
-    expect(result.get("broken")).toBeNull();
+    expect(result.has("broken")).toBe(false); // errored ≠ "no match"
   });
 });
 

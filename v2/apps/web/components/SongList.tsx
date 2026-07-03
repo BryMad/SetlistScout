@@ -27,90 +27,101 @@ interface SongListProps {
 export default function SongList({ songs, matches, showLikelihood = true }: SongListProps) {
   return (
     <>
-    {showLikelihood && (
-      <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500">
-        {BANDS.map((band) => (
-          <span key={band.label} className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${band.bar}`} />
-            {band.label}
-          </span>
-        ))}
-      </div>
-    )}
-    <ol className={`${showLikelihood ? "mt-3" : "mt-8"} space-y-1`}>
-      {songs.map((song, index) => {
-        const pct = Math.round(song.likelihood * 100);
-        const band = bandFor(pct);
-        const match = matches.get(song.key);
-        return (
-          <li
-            key={song.key}
-            className={`group grid items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900 ${
-              showLikelihood
-                ? "grid-cols-[2rem_2.75rem_1fr_3.5rem]"
-                : "grid-cols-[2rem_2.75rem_1fr]"
-            }`}
-          >
-            <span className="text-right text-sm tabular-nums text-zinc-600">
-              {index + 1}
+      {showLikelihood && (
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500">
+          {BANDS.map((band) => (
+            <span key={band.label} className="flex items-center gap-1.5">
+              <span className={`h-2 w-2 rounded-full ${band.bar}`} />
+              {band.label}
             </span>
-            {match?.albumArt ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={match.albumArt}
-                alt=""
-                loading="lazy"
-                className="h-11 w-11 rounded object-cover"
-              />
-            ) : (
-              <div className="h-11 w-11 rounded bg-zinc-900" />
-            )}
-            <div className="min-w-0">
-              <div className="flex items-baseline gap-2">
-                {match?.url ? (
-                  <a
-                    href={match.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="truncate font-medium hover:underline"
-                  >
-                    {song.name}
-                  </a>
-                ) : (
-                  <span className="truncate font-medium">{song.name}</span>
-                )}
-                {song.isCover && (
-                  <span className="shrink-0 rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400">
-                    {song.coverArtist} cover
-                  </span>
+          ))}
+        </div>
+      )}
+      <ol className={`${showLikelihood ? "mt-3" : "mt-8"} space-y-1`}>
+        {songs.map((song, index) => {
+          const pct = Math.round(song.likelihood * 100);
+          const band = bandFor(pct);
+          const match = matches.get(song.key);
+          return (
+            <li
+              key={song.key}
+              className={`group grid items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900 ${
+                showLikelihood
+                  ? "grid-cols-[1.75rem_4rem_1fr_4.5rem]"
+                  : "grid-cols-[1.75rem_4rem_1fr]"
+              }`}
+            >
+              <span className="text-right font-mono text-sm text-zinc-600">
+                {index + 1}
+              </span>
+
+              {/* Spotify content zone: canonical track presentation — artwork
+                  unaltered, then track / artist / album stacked, platform
+                  sans-serif (mirrors v1's Track component per the guidelines). */}
+              {match?.albumArt ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={match.albumArt}
+                  alt=""
+                  className="h-16 w-16 rounded object-cover shadow-md"
+                />
+              ) : (
+                <div className="h-16 w-16 rounded bg-zinc-900" />
+              )}
+              <div className="min-w-0">
+                <div className="flex items-baseline gap-2">
+                  {match?.url ? (
+                    <a
+                      href={match.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="truncate text-sm font-bold hover:underline"
+                    >
+                      {match.name}
+                    </a>
+                  ) : (
+                    <span className="truncate text-sm font-bold">{song.name}</span>
+                  )}
+                  {song.isCover && (
+                    <span className="shrink-0 rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400">
+                      {song.coverArtist} cover
+                    </span>
+                  )}
+                </div>
+                {match && (
+                  <>
+                    <p className="truncate text-sm text-zinc-400">{match.artist}</p>
+                    {match.album && (
+                      <p className="truncate text-xs text-zinc-500">{match.album}</p>
+                    )}
+                  </>
                 )}
                 {showLikelihood && (
-                  <span className="ml-auto shrink-0 text-xs text-zinc-600">
-                    {song.showsPlayed}/{song.totalShows} shows
-                  </span>
+                  <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+                    <div
+                      className={`h-full rounded-full ${band.bar}`}
+                      style={{ width: `${Math.max(pct, 1)}%` }}
+                    />
+                  </div>
                 )}
               </div>
               {showLikelihood && (
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
-                  <div
-                    className={`h-full rounded-full ${band.bar}`}
-                    style={{ width: `${Math.max(pct, 1)}%` }}
-                  />
+                <div className="text-right">
+                  <span
+                    title={band.label}
+                    className={`block font-mono text-sm font-semibold ${band.text}`}
+                  >
+                    {pct}%
+                  </span>
+                  <span className="block font-mono text-[10px] text-zinc-600">
+                    {song.showsPlayed}/{song.totalShows}
+                  </span>
                 </div>
               )}
-            </div>
-            {showLikelihood && (
-              <span
-                title={band.label}
-                className={`text-right text-sm font-semibold tabular-nums ${band.text}`}
-              >
-                {pct}%
-              </span>
-            )}
-          </li>
-        );
-      })}
-    </ol>
+            </li>
+          );
+        })}
+      </ol>
     </>
   );
 }

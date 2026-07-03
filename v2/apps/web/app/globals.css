@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-chakra-petch);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* SetlistScout atmosphere: neon glow bleeding down from the top of the page.
+   Kept on the body so Spotify content zones stay untouched. */
+body {
+  background-color: #09090b;
+  background-image:
+    radial-gradient(55% 32rem at 50% 0%, rgba(99, 102, 241, 0.14), transparent 70%),
+    radial-gradient(30% 20rem at 85% 0%, rgba(34, 211, 238, 0.07), transparent 70%);
+  background-repeat: no-repeat;
+}

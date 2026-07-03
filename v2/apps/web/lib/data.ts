@@ -211,8 +211,9 @@ export async function matchTracks(
   artistName: string,
   songs: MatchableSong[]
 ): Promise<Map<string, MatchedTrack | null>> {
+  // "track2": entries carry album names since the canonical-display change
   const keyFor = (song: MatchableSong) =>
-    `v2:track:${(song.coverArtist ?? artistName).toLowerCase()}::${song.key}`;
+    `v2:track2:${(song.coverArtist ?? artistName).toLowerCase()}::${song.key}`;
 
   const cached = await cacheGetMany<CachedMatch>(songs.map(keyFor));
 
@@ -235,7 +236,13 @@ export async function matchTracks(
       songs
         .filter((song) => !results.has(song.key))
         .map(async (song) => {
-          const match = fresh.get(song.key) ?? null;
+          if (!fresh.has(song.key)) {
+            // lookup errored (rate limit, network) — show nothing this render
+            // but do NOT cache it as "no match" for 90 days
+            results.set(song.key, null);
+            return;
+          }
+          const match = fresh.get(song.key)!;
           results.set(song.key, match);
           await cacheSet(keyFor(song), { m: match }, TRACK_TTL_S);
         })

@@ -25,6 +25,7 @@ const trackSchema = z.object({
   artists: z.array(z.object({ name: z.string() })).default([]),
   album: z
     .object({
+      name: z.string().optional(),
       images: z
         .array(z.object({ url: z.string(), width: z.number().nullish() }))
         .default([]),
@@ -69,6 +70,7 @@ export interface MatchedTrack {
   uri: string;
   name: string;
   artist: string;
+  album: string | null;
   albumArt: string | null;
   url: string | null;
 }
@@ -194,7 +196,12 @@ export class SpotifyClient {
     return best;
   }
 
-  /** Match many songs with bounded concurrency. Result map is keyed by song.key. */
+  /**
+   * Match many songs with bounded concurrency. Result map is keyed by
+   * song.key. A `null` value means Spotify genuinely has no match; songs
+   * whose lookup ERRORED are omitted entirely — callers must not cache
+   * their absence as "no match".
+   */
   async matchSongs(
     songs: SongToMatch[],
     options: { concurrency?: number } = {}
@@ -202,16 +209,16 @@ export class SpotifyClient {
     const limit = pLimit(options.concurrency ?? 6);
     const entries = await Promise.all(
       songs.map((song) =>
-        limit(async (): Promise<[string, MatchedTrack | null]> => {
+        limit(async (): Promise<[string, MatchedTrack | null] | null> => {
           try {
             return [song.key, await this.matchSong(song)];
           } catch {
-            return [song.key, null]; // one bad lookup never breaks the batch
+            return null; // one bad lookup never breaks the batch
           }
         })
       )
     );
-    return new Map(entries);
+    return new Map(entries.filter((entry) => entry !== null));
   }
 
   private async searchTracks(query: string) {
@@ -255,6 +262,7 @@ export class SpotifyClient {
       uri: best.track.uri,
       name: best.track.name,
       artist: best.track.artists[0]?.name ?? song.artist,
+      album: best.track.album?.name ?? null,
       albumArt: art?.url ?? null,
       url: best.track.external_urls?.spotify ?? null,
     };
