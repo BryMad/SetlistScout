@@ -61,9 +61,11 @@ export default async function TourPage({ params, searchParams }: PageProps) {
       ) : (
         <>
           <p className="mt-6 text-sm leading-relaxed text-zinc-400">
-            They played about {prediction.typicalSetLength} songs a night on this
-            tour — below is everything they pulled out, ranked by how often it
-            came up.
+            {/* explicit {" "} — Turbopack's JSX transform drops the space
+                between an expression and trailing text that meets a newline */}
+            They played about {prediction.typicalSetLength}{" "}
+            songs a night on this tour — below is everything they pulled out,
+            ranked by how often it came up.
           </p>
 
           <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">

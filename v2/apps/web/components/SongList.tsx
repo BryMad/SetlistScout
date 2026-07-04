@@ -92,16 +92,12 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
                     )}
                   </>
                 )}
-                {showLikelihood && (
-                  <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
-                    <div
-                      className={`h-full rounded-full ${band.bar}`}
-                      style={{ width: `${Math.max(pct, 1)}%` }}
-                    />
-                  </div>
-                )}
               </div>
               <div className="flex flex-col items-end gap-1">
+                {/* the likelihood gauge lives out here, not under the track
+                    metadata — the Spotify guidelines want title/artist/album
+                    centered on the artwork as one clean block (v1 solved this
+                    the same way, with an inline circular gauge) */}
                 {showLikelihood && (
                   <>
                     <span
@@ -110,6 +106,12 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
                     >
                       {pct}%
                     </span>
+                    <div className="h-1 w-16 overflow-hidden rounded-full bg-zinc-800">
+                      <div
+                        className={`h-full rounded-full ${band.bar}`}
+                        style={{ width: `${Math.max(pct, 2)}%` }}
+                      />
+                    </div>
                     <span className="font-mono text-[10px] text-zinc-600">
                       {song.showsPlayed}/{song.totalShows}
                     </span>
