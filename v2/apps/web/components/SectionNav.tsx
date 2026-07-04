@@ -15,7 +15,7 @@ export default function SectionNav({ mbid, name, active }: SectionNavProps) {
   ] as const;
 
   return (
-    <nav className="mt-5 inline-flex rounded-lg border border-zinc-800 bg-zinc-900 p-1">
+    <nav className="cascade-in mt-5 inline-flex rounded-lg border border-zinc-800 bg-zinc-900 p-1 [animation-delay:60ms]">
       {sections.map((section) => (
         <Link
           key={section.key}

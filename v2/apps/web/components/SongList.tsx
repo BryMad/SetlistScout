@@ -28,7 +28,7 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
   return (
     <>
       {showLikelihood && (
-        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500">
+        <div className="cascade-in mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500 [animation-delay:300ms]">
           {BANDS.map((band) => (
             <span key={band.label} className="flex items-center gap-1.5">
               <span className={`h-2 w-2 rounded-full ${band.bar}`} />
@@ -42,10 +42,13 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
           const pct = Math.round(song.likelihood * 100);
           const band = bandFor(pct);
           const match = matches.get(song.key);
+          // stagger the first screenful, then the rest arrive together
+          const delay = 360 + Math.min(index, 12) * 60;
           return (
             <li
               key={song.key}
-              className="group grid grid-cols-[1.75rem_4rem_1fr_auto] items-center gap-3 rounded-lg px-2 py-2 hover:bg-zinc-900"
+              className="group cascade-in row-lit grid grid-cols-[1.75rem_4rem_1fr_auto] items-center gap-3 rounded-r-lg px-2 py-2"
+              style={{ animationDelay: `${delay}ms` }}
             >
               <span className="text-right font-mono text-sm text-zinc-600">
                 {index + 1}
@@ -106,10 +109,10 @@ export default function SongList({ songs, matches, showLikelihood = true }: Song
                     >
                       {pct}%
                     </span>
-                    <div className="h-1 w-16 overflow-hidden rounded-full bg-zinc-800">
+                    <div className="h-1.5 w-16 overflow-hidden rounded-sm bg-zinc-800/60">
                       <div
-                        className={`h-full rounded-full ${band.bar}`}
-                        style={{ width: `${Math.max(pct, 2)}%` }}
+                        className={`bar-seg h-full ${band.bar}`}
+                        style={{ width: `${Math.max(pct, 4)}%`, animationDelay: `${delay + 280}ms` }}
                       />
                     </div>
                     <span className="font-mono text-[10px] text-zinc-600">

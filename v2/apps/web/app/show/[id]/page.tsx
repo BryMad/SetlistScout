@@ -43,8 +43,8 @@ export default async function ShowPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
-      <p className="mt-1 text-lg text-zinc-400">
+      <h1 className="cascade-in text-3xl font-semibold tracking-tight">{name}</h1>
+      <p className="cascade-in mt-1 text-lg text-zinc-400 [animation-delay:60ms]">
         {place || "Unknown venue"} · {show.date}
       </p>
       {show.tourName && (
@@ -52,7 +52,7 @@ export default async function ShowPage({ params, searchParams }: PageProps) {
       )}
       {show.info && <p className="mt-3 text-sm italic text-zinc-500">{show.info}</p>}
 
-      <section className="mt-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+      <section className="cascade-in mt-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 [animation-delay:180ms]">
         <p className="text-sm text-zinc-300">
           The exact setlist from this night — {songs.length} songs as played.
         </p>

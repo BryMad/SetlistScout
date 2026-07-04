@@ -59,10 +59,10 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
+      <h1 className="cascade-in text-3xl font-semibold tracking-tight">{name}</h1>
       <SectionNav mbid={mbid} name={name} active="predict" />
 
-      <nav className="mt-6 flex flex-wrap items-center gap-2">
+      <nav className="cascade-in mt-6 flex flex-wrap items-center gap-2 [animation-delay:120ms]">
         {tabs.map((tab) => (
           <Link
             key={tab.key}
@@ -84,7 +84,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
         </p>
       ) : (
         <>
-          <p className="mt-6 text-sm leading-relaxed text-zinc-400">
+          <p className="cascade-in mt-6 text-sm leading-relaxed text-zinc-400 [animation-delay:180ms]">
             {/* explicit {" "} — Turbopack's JSX transform drops the space
                 between an expression and trailing text that meets a newline */}
             They play about {prediction.typicalSetLength}{" "}
@@ -92,7 +92,7 @@ export default async function ArtistPage({ params, searchParams }: PageProps) {
             the odds you&apos;ll hear it.
           </p>
 
-          <section className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+          <section className="cascade-in mt-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 [animation-delay:240ms]">
             <div className="flex flex-wrap items-center gap-3">
               <span
                 className={`rounded-md border px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide ${CONFIDENCE_STYLE[prediction.confidence]}`}

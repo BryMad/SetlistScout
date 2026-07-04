@@ -10,3 +10,60 @@ body:has([data-lab]) > header,
 body:has([data-lab]) > footer {
   display: none;
 }
+
+/* ── cascade motion language (design lab winner, 2026-07) ─────────────
+   Entrances slide in from the left and resolve from a slight blur; rows
+   light an indigo left edge on hover; likelihood meters are segmented
+   ticks that grow in. Stagger via inline animation-delay. */
+
+@keyframes cascade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+}
+
+.cascade-in {
+  animation: cascade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.row-lit {
+  border-left: 2px solid transparent;
+  transition:
+    border-color 0.18s,
+    background-color 0.18s,
+    padding-left 0.18s;
+}
+.row-lit:hover {
+  border-left-color: #6366f1; /* indigo-500 */
+  background-color: #18181b; /* zinc-900 */
+  padding-left: 1rem;
+}
+
+.bar-seg {
+  animation: bar-grow 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px);
+  mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cascade-in,
+  .bar-seg {
+    animation: none;
+  }
+  .row-lit {
+    transition: none;
+  }
+}
