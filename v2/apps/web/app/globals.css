@@ -4,3 +4,9 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* design-lab pages (/lab/*) take over the whole viewport — hide site chrome */
+body:has([data-lab]) > header,
+body:has([data-lab]) > footer {
+  display: none;
+}
