@@ -276,9 +276,9 @@ const minimal: LabSkin = {
   tourMeta: "text-xs text-[#aaa]",
 };
 
-/* ── 05 · MOTION ──────────────────────────────────────────────────── */
+/* ── 05 · MOTION (the winner) — five personalities on one chassis ─── */
 
-const motion: LabSkin = {
+const motionSpring: LabSkin = {
   css: `
     @keyframes moUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     @keyframes moGrow { from { width: 0; } }
@@ -343,6 +343,150 @@ const motion: LabSkin = {
     "mo-row block rounded-xl border border-zinc-800 bg-zinc-900/40 px-5 py-4 hover:border-indigo-600 hover:bg-zinc-900",
   tourName: "font-semibold",
   tourMeta: "font-mono text-xs text-zinc-500",
+};
+
+/* 05b · CASCADE — everything enters from the left; edge-lit hover; segmented bars */
+
+const motionCascade: LabSkin = {
+  ...motionSpring,
+  css: `
+    @keyframes moUp { from { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+      to { opacity: 1; transform: none; filter: blur(0); } }
+    @keyframes moGrow { from { width: 0; } }
+    .mo-up { animation: moUp .6s cubic-bezier(.22,1,.36,1) both; }
+    .mo-row { border-left: 2px solid transparent; transition: border-color .18s, background .18s, padding-left .18s; }
+    .mo-row:hover { border-left-color: #6366f1; background: #18181b; padding-left: 16px; }
+    .mo-bar { animation: moGrow 1.1s cubic-bezier(.22,1,.36,1) both;
+      -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px);
+      mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px); }
+  `,
+  chip: "rounded-full border border-indigo-500/50 bg-indigo-500/10 px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide text-indigo-300",
+  row: "mo-row mo-up rounded-r-xl px-3 py-2",
+  rowStyle: (i) => ({ animationDelay: `${360 + i * 80}ms` }),
+  gauge: (t: LabTrack) => (
+    <>
+      <span className="font-mono text-sm font-semibold" style={{ color: at(V1, t.pct) }}>
+        {t.pct}%
+      </span>
+      <div className="h-1.5 w-16 overflow-hidden rounded-sm bg-zinc-800/60">
+        <div
+          className="mo-bar h-full"
+          style={{ width: `${Math.max(t.pct, 4)}%`, background: at(V1, t.pct), animationDelay: `${640 + t.rank * 80}ms` }}
+        />
+      </div>
+      <span className="font-mono text-[10px] text-zinc-600">{t.plays}/40</span>
+    </>
+  ),
+};
+
+/* 05c · POP — bouncy scale-ins and percentages that count up from zero */
+
+const motionPop: LabSkin = {
+  ...motionSpring,
+  css: `
+    @property --n { syntax: "<integer>"; initial-value: 0; inherits: false; }
+    @keyframes moUp { 0% { opacity: 0; transform: scale(.92); } 70% { transform: scale(1.015); } 100% { opacity: 1; transform: none; } }
+    @keyframes moGrow { from { width: 0; } }
+    @keyframes moCount { from { --n: 0; } }
+    .mo-up { animation: moUp .5s cubic-bezier(.34,1.56,.64,1) both; }
+    .mo-row { transition: transform .18s cubic-bezier(.34,1.56,.64,1), background .18s, box-shadow .18s; }
+    .mo-row:hover { transform: scale(1.012); background: #18181b; box-shadow: 0 8px 30px rgba(0,0,0,.45); }
+    .mo-row:hover img { transform: scale(1.08) rotate(-2deg); }
+    .mo-row img { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+    .mo-bar { animation: moGrow 1.2s cubic-bezier(.34,1.56,.64,1) both; }
+    .mo-count { animation: moCount 1.4s cubic-bezier(.22,1,.36,1) both; counter-reset: cnt var(--n); }
+    .mo-count::after { content: counter(cnt) "%"; }
+  `,
+  gauge: (t: LabTrack) => (
+    <>
+      <span
+        className="mo-count font-mono text-sm font-semibold"
+        style={{ color: at(V1, t.pct), animationDelay: `${500 + t.rank * 70}ms`, ["--n" as string]: t.pct } as React.CSSProperties}
+      />
+      <div className="h-1 w-16 overflow-hidden rounded-full bg-zinc-800">
+        <div
+          className="mo-bar h-full rounded-full"
+          style={{ width: `${Math.max(t.pct, 2)}%`, background: at(V1, t.pct), animationDelay: `${500 + t.rank * 70}ms` }}
+        />
+      </div>
+      <span className="font-mono text-[10px] text-zinc-600">{t.plays}/40</span>
+    </>
+  ),
+  rowStyle: (i) => ({ animationDelay: `${340 + i * 70}ms` }),
+};
+
+/* 05d · CALM — nothing translates; long soft fades, gentle hovers */
+
+const motionCalm: LabSkin = {
+  ...motionSpring,
+  css: `
+    @keyframes moUp { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes moGrow { from { width: 0; } }
+    .mo-up { animation: moUp 1.1s ease both; }
+    .mo-row { transition: background .35s ease; }
+    .mo-row:hover { background: #18181b; }
+    .mo-bar { animation: moGrow 1.8s ease both; }
+  `,
+  panel: "mo-up mt-4 rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 [animation-delay:240ms]",
+  chip: "rounded-full border border-zinc-700 bg-zinc-800/60 px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide text-zinc-300",
+  row: "mo-row mo-up rounded-2xl px-3 py-2.5",
+  rowStyle: (i) => ({ animationDelay: `${400 + i * 110}ms` }),
+  gauge: (t: LabTrack) => (
+    <>
+      <span className="font-mono text-sm font-semibold" style={{ color: at(V1, t.pct) }}>
+        {t.pct}%
+      </span>
+      <div className="h-1 w-16 overflow-hidden rounded-full bg-zinc-800">
+        <div
+          className="mo-bar h-full rounded-full"
+          style={{ width: `${Math.max(t.pct, 2)}%`, background: at(V1, t.pct), animationDelay: `${700 + t.rank * 110}ms` }}
+        />
+      </div>
+      <span className="font-mono text-[10px] text-zinc-600">{t.plays}/40</span>
+    </>
+  ),
+  tourCard:
+    "mo-row block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 px-5 py-4 hover:border-zinc-700 hover:bg-zinc-900",
+};
+
+/* 05e · KINETIC — 3D flip-ins and five-cell meters that light up in sequence */
+
+const motionKinetic: LabSkin = {
+  ...motionSpring,
+  css: `
+    @keyframes moUp { from { opacity: 0; transform: perspective(600px) rotateX(-14deg) translateY(10px); }
+      to { opacity: 1; transform: none; } }
+    @keyframes moCell { from { opacity: 0; transform: scaleY(.2); } to { opacity: 1; transform: none; } }
+    .mo-up { animation: moUp .6s cubic-bezier(.22,1,.36,1) both; transform-origin: top center; }
+    .mo-row { transition: transform .18s cubic-bezier(.34,1.56,.64,1), background .18s, box-shadow .18s; }
+    .mo-row:hover { transform: translateX(5px); background: #18181b; box-shadow: -4px 0 0 #6366f1, 0 8px 30px rgba(0,0,0,.45); }
+    .mo-cell { transform-origin: bottom; animation: moCell .3s cubic-bezier(.34,1.56,.64,1) both; }
+  `,
+  rowStyle: (i) => ({ animationDelay: `${360 + i * 65}ms` }),
+  gauge: (t: LabTrack) => {
+    const filled = Math.max(1, Math.round(t.pct / 20));
+    return (
+      <>
+        <span className="font-mono text-sm font-semibold" style={{ color: at(V1, t.pct) }}>
+          {t.pct}%
+        </span>
+        <div className="flex gap-[3px]">
+          {Array.from({ length: 5 }, (_, i) => (
+            <span
+              key={i}
+              className={i < filled ? "mo-cell h-2 w-3 rounded-[2px]" : "h-2 w-3 rounded-[2px] bg-zinc-800"}
+              style={
+                i < filled
+                  ? { background: at(V1, t.pct), animationDelay: `${600 + t.rank * 65 + i * 80}ms` }
+                  : undefined
+              }
+            />
+          ))}
+        </div>
+        <span className="font-mono text-[10px] text-zinc-600">{t.plays}/40</span>
+      </>
+    );
+  },
 };
 
 /* ── 06 · TELEMETRY ───────────────────────────────────────────────── */
@@ -669,7 +813,11 @@ export const SKINS: Record<string, LabSkin> = {
   hifi,
   winamp,
   minimal,
-  motion,
+  "motion-spring": motionSpring,
+  "motion-cascade": motionCascade,
+  "motion-pop": motionPop,
+  "motion-calm": motionCalm,
+  "motion-kinetic": motionKinetic,
   hud,
   editorial,
   brutalist,
