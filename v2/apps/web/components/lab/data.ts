@@ -94,6 +94,14 @@ export const TRACKS: LabTrack[] = [
   T(12, "Silver Lake, 1974", "unreleased", "", 8, { matched: false }),
 ];
 
+/** Dummy tour history for the Relive half. */
+export const TOURS = [
+  { name: "Night Geometry Tour", years: "2026", shows: 40 },
+  { name: "American Static Tour", years: "2023–2024", shows: 62 },
+  { name: "Voltage & Velvet Tour", years: "2021", shows: 28 },
+  { name: "The Basement Years", years: "2019", shows: 12 },
+];
+
 /** The five likelihood bands (labels are product canon; hues vary per variant). */
 export const BAND_LABEL = (pct: number) =>
   pct >= 80 ? "Very likely" : pct >= 60 ? "Likely" : pct >= 40 ? "Possible" : pct >= 20 ? "Rare" : "Very rare";

@@ -10,9 +10,10 @@ export default function LabIndexPage() {
       <p className="font-mono text-xs uppercase tracking-[0.25em] text-indigo-400">Design lab</p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">Ten takes on the same setlist</h1>
       <p className="mt-2 text-sm text-zinc-400">
-        Same dummy data everywhere — a fictional band, 12 songs, every likelihood band, one cover, one
-        unmatched track. The Spotify zones (64px art, stacked track metadata, OPEN SPOTIFY) stay
-        canonical in all ten; everything else goes wild. Use the pill at the bottom of each page to
+        The real site, reskinned — header search, Predict my set / Relive a set, the Auto / Latest
+        tour / Last 60 shows pills (all clickable), confidence panel, legend, and the track list,
+        running on dummy data. The Spotify elements are identical and untouched in all ten per the
+        branding guidelines; everything else changes. Use the pill at the bottom of each page to
         flip through.
       </p>
 
