@@ -351,7 +351,7 @@ const motionCascade: LabSkin = {
   ...motionSpring,
   css: `
     @keyframes moUp { from { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
-      to { opacity: 1; transform: none; filter: blur(0); } }
+      to { opacity: 1; transform: none; filter: none; } }
     @keyframes moGrow { from { width: 0; } }
     .mo-up { animation: moUp .6s cubic-bezier(.22,1,.36,1) both; }
     .mo-row { border-left: 2px solid transparent; transition: border-color .18s, background .18s, padding-left .18s; }
@@ -487,6 +487,84 @@ const motionKinetic: LabSkin = {
       </>
     );
   },
+};
+
+/* 05f · NIGHT CITY FUSION — cascade's motion in night-city atmosphere:
+   scanlines, a glitching title, terminal accents, cyan edge light. The
+   spectrum shifts to cyber hues (cyan→magenta) but stays cool→hot. */
+
+const NC = ["#22d3ee", "#818cf8", "#ffe600", "#ff9e00", "#ff2965"];
+
+const motionNightCity: LabSkin = {
+  ...motionSpring,
+  css: `
+    .nc-scan { position: fixed; inset: 0; pointer-events: none; z-index: 20;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px); }
+    @keyframes moUp { from { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+      to { opacity: 1; transform: none; filter: none; } }
+    @keyframes moGrow { from { width: 0; } }
+    /* fill backwards, not both: a filled animation keeps a stacking context
+       forever, which would trap the z-30 Spotify pills under the scanlines */
+    .mo-up { animation: moUp .6s cubic-bezier(.22,1,.36,1) backwards; }
+    .mo-row { border-left: 2px solid transparent; transition: border-color .18s, background .18s, padding-left .18s; }
+    .mo-row:hover { border-left-color: #22d3ee; background: #0d1319; padding-left: 16px; }
+    .mo-bar { animation: moGrow 1.1s cubic-bezier(.22,1,.36,1) both;
+      -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px);
+      mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 7px); }
+    .cp-glitch { position: relative; display: inline-block; }
+    .cp-glitch::before, .cp-glitch::after { content: attr(data-text); position: absolute; inset: 0; overflow: hidden; }
+    .cp-glitch::before { color: #ff2965; animation: ncA 7s infinite linear; }
+    .cp-glitch::after { color: #22d3ee; animation: ncB 7s infinite linear; }
+    @keyframes ncA { 0%, 94%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
+      95% { clip-path: inset(12% 0 60% 0); transform: translate(-3px, -1px); }
+      97% { clip-path: inset(60% 0 8% 0); transform: translate(3px, 1px); } }
+    @keyframes ncB { 0%, 93%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
+      94% { clip-path: inset(70% 0 5% 0); transform: translate(3px, 1px); }
+      96.5% { clip-path: inset(8% 0 70% 0); transform: translate(-3px, 0); } }
+    @keyframes ncBlink { 50% { opacity: 0; } }
+    .nc-cursor::after { content: "▊"; margin-left: 4px; color: #22d3ee; animation: ncBlink 1.1s steps(1) infinite; }
+  `,
+  page: "min-h-screen bg-[#050507] text-zinc-100",
+  decor: <div className="nc-scan" />,
+  header:
+    "sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-[#22d3ee]/15 bg-[#050507]/85 px-6 py-3 backdrop-blur",
+  brand: "font-mono text-sm tracking-[0.25em] text-[#22d3ee]",
+  brandText: "SETLIST://SCOUT",
+  search:
+    "w-56 rounded-md border border-zinc-800 bg-[#0a0d12] px-3 py-1.5 font-mono text-sm placeholder-zinc-600 outline-none transition focus:border-[#22d3ee]",
+  h1: "mo-up text-3xl font-semibold tracking-widest",
+  glitchTitle: true,
+  navActive: "rounded-md bg-[#22d3ee]/15 px-4 py-1.5 text-sm font-medium text-[#22d3ee] transition",
+  navIdle: "rounded-md px-4 py-1.5 text-sm font-medium text-zinc-500 transition hover:text-zinc-200",
+  pillActive:
+    "rounded-md border border-[#22d3ee]/60 bg-[#22d3ee]/10 px-3 py-1.5 text-sm font-medium text-[#22d3ee] transition",
+  pillIdle:
+    "rounded-md border border-zinc-800 px-3 py-1.5 text-sm font-medium text-zinc-500 transition hover:border-zinc-700 hover:text-zinc-200",
+  panel: "mo-up mt-4 rounded-xl border border-[#22d3ee]/20 bg-[#0a0d12]/80 p-5 [animation-delay:240ms]",
+  chip: "rounded-md border border-[#22d3ee]/50 bg-[#22d3ee]/10 px-2.5 py-0.5 font-mono text-xs font-medium uppercase tracking-wide text-[#22d3ee]",
+  metaLine: "nc-cursor font-mono text-xs text-zinc-500",
+  legendSwatch: (band) => ({ background: NC[band] }),
+  row: "mo-row mo-up rounded-r-xl px-3 py-2",
+  rowStyle: (i) => ({ animationDelay: `${360 + i * 80}ms` }),
+  coverBadge: "ml-2 rounded border border-zinc-800 px-1.5 py-0.5 text-xs font-normal text-zinc-500",
+  gauge: (t: LabTrack) => (
+    <>
+      <span className="font-mono text-sm font-semibold" style={{ color: at(NC, t.pct) }}>
+        {t.pct}%
+      </span>
+      <div className="h-1.5 w-16 overflow-hidden rounded-sm bg-zinc-800/60">
+        <div
+          className="mo-bar h-full"
+          style={{ width: `${Math.max(t.pct, 4)}%`, background: at(NC, t.pct), animationDelay: `${640 + t.rank * 80}ms` }}
+        />
+      </div>
+      <span className="font-mono text-[10px] text-zinc-600">{t.plays}/40</span>
+    </>
+  ),
+  tourCard:
+    "mo-row block rounded-r-xl border border-zinc-800 bg-[#0a0d12]/60 px-5 py-4",
+  tourName: "font-semibold",
+  tourMeta: "font-mono text-xs text-zinc-500",
 };
 
 /* ── 06 · TELEMETRY ───────────────────────────────────────────────── */
@@ -818,6 +896,7 @@ export const SKINS: Record<string, LabSkin> = {
   "motion-pop": motionPop,
   "motion-calm": motionCalm,
   "motion-kinetic": motionKinetic,
+  "motion-nightcity": motionNightCity,
   hud,
   editorial,
   brutalist,

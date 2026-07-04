@@ -18,6 +18,7 @@ export const VARIANTS: LabVariantMeta[] = [
   { slug: "motion-pop", name: "Motion · Pop", vibe: "bouncy scale-ins, percentages count up from zero", swatch: ["#09090b", "#18181b", "#a78bfa", "#a1a1aa"] },
   { slug: "motion-calm", name: "Motion · Calm", vibe: "long soft fades only — nothing jumps, nothing lifts", swatch: ["#09090b", "#18181b", "#52525b", "#a1a1aa"] },
   { slug: "motion-kinetic", name: "Motion · Kinetic", vibe: "3D flip-ins, five-cell meters lighting in sequence", swatch: ["#09090b", "#18181b", "#4f46e5", "#a1a1aa"] },
+  { slug: "motion-nightcity", name: "Motion · Night City", vibe: "cascade motion, cyber atmosphere — scanlines, glitch title, cyan edge light", swatch: ["#050507", "#22d3ee", "#818cf8", "#ff2965"] },
   { slug: "hud", name: "Telemetry", vibe: "mission-control data HUD, gauges, brackets", swatch: ["#04070d", "#67e8f9", "#4b7f96", "#ffffff"] },
   { slug: "editorial", name: "The Review", vibe: "print magazine, serif masthead, drop cap", swatch: ["#faf7f0", "#1c1a16", "#b91c1c", "#8a8378"] },
   { slug: "brutalist", name: "Concrete", vibe: "4px borders, hard shadows, taxi yellow", swatch: ["#f4f4f0", "#000000", "#ffe600", "#ffffff"] },
